@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on ServiceMesher</title>
+    <link>https://servicemesher.github.io/categories/</link>
+    <description>Recent content in Categories on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    
+	<atom:link href="https://servicemesher.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Istio</title>
+      <link>https://servicemesher.github.io/categories/istio/</link>
+      <pubDate>Mon, 04 Jun 2018 16:09:57 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/categories/istio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Service Mesh</title>
+      <link>https://servicemesher.github.io/categories/service-mesh/</link>
+      <pubDate>Wed, 30 May 2018 15:00:22 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/categories/service-mesh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>译文</title>
+      <link>https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/</link>
+      <pubDate>Tue, 05 Jun 2018 19:12:42 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

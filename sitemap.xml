@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/8-ways-a-service-mesh-eases-microservices-deployment/</loc>
+    <lastmod>2018-06-05T19:12:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/helm-chart-for-istio-0.8/</loc>
+    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/the-path-to-service-mesh/</loc>
+    <lastmod>2018-06-04T15:55:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/building-istio-with-minikube-in-a-container-and-jenkins/</loc>
+    <lastmod>2018-06-04T11:33:16+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/istio-0.8-release-note/</loc>
+    <lastmod>2018-06-01T11:41:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/gitops-for-istio-manage-istio-config-like-code/</loc>
+    <lastmod>2018-05-31T21:12:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/the-desigin-patterns-for-a-commercial-service-mesh/</loc>
+    <lastmod>2018-05-30T15:00:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/deepin-service-mesh-tech-details/</loc>
+    <lastmod>2018-05-23T16:09:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/istio-service-mesh-tutorial/</loc>
+    <lastmod>2018-05-22T12:16:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/service-mesh-rebuild-microservice-market/</loc>
+    <lastmod>2018-05-21T21:48:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/</loc>
+    <lastmod>2018-06-05T19:12:42+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/chart/</loc>
+    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/gitops/</loc>
+    <lastmod>2018-05-31T21:12:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/helm/</loc>
+    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/istio/</loc>
+    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/categories/istio/</loc>
+    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/jenkins/</loc>
+    <lastmod>2018-06-04T11:33:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/service-mesh/</loc>
+    <lastmod>2018-06-05T19:12:42+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/categories/service-mesh/</loc>
+    <lastmod>2018-05-30T15:00:22+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/</loc>
+    <lastmod>2018-06-05T19:12:42+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/</loc>
+    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</loc>
+    <lastmod>2018-05-21T21:48:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2018-05-22T12:16:22+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/activity/</loc>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/</loc>
+    <lastmod>2018-06-05T19:12:42+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

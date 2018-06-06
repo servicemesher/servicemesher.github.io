@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>教程 on ServiceMesher</title>
+    <link>https://servicemesher.github.io/tags/%E6%95%99%E7%A8%8B/</link>
+    <description>Recent content in 教程 on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 22 May 2018 12:16:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://servicemesher.github.io/tags/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Istio Service Mesh 教程</title>
+      <link>https://servicemesher.github.io/blog/istio-service-mesh-tutorial/</link>
+      <pubDate>Tue, 22 May 2018 12:16:22 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/istio-service-mesh-tutorial/</guid>
+      <description>本文是 Istio 管理 Java 微服务的案例教程，使用的所有工具和软件全部基于开源方案，替换了 redhat-developer-demos/istio-tutorial 中的 minishift 环境，使用 kubernetes-vagrant-centos-cluster 替代，沿用了原有的微服务示例，使用 Zipkin 做分布式追踪而不是 Jaeger。
+本文中的代码和 YAML 文件见 https://github.com/rootsongjc/istio-tutorial。
+原文地址：https://jimmysong.io/posts/istio-tutorial/
+准备环境 在进行本教程前需要先准备以下工具和环境。
+ 8G 以上内存 Vagrant 2.0+ Virtualbox 5.0 + 提前下载 kubernetes1.9.1 的 release 压缩包 docker 1.12+ kubectl 1.9.1+ maven 3.5.2+ istioctl 0.7.1 git curl、gzip、tar kubetail siege  安装 Kubernetes 请参考 kubernetes-vagrant-centos-cluster 在本地启动拥有三个节点的 kubernetes 集群。
+git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git cd kubernetes-vagrant-centos-cluster vagrant up  安装 Istio 在 kubernetes-vagrant-centos-cluster 中的包含 Istio 0.7.1 的安装 YAML 文件，运行下面的命令安装 Istio。</description>
+    </item>
+    
+  </channel>
+</rss>

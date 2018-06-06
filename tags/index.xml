@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on ServiceMesher</title>
+    <link>https://servicemesher.github.io/tags/</link>
+    <description>Recent content in Tags on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 04 Jun 2018 16:09:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://servicemesher.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Chart</title>
+      <link>https://servicemesher.github.io/tags/chart/</link>
+      <pubDate>Mon, 04 Jun 2018 16:09:57 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/tags/chart/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gitops</title>
+      <link>https://servicemesher.github.io/tags/gitops/</link>
+      <pubDate>Thu, 31 May 2018 21:12:03 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/tags/gitops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Helm</title>
+      <link>https://servicemesher.github.io/tags/helm/</link>
+      <pubDate>Mon, 04 Jun 2018 16:09:57 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/tags/helm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Istio</title>
+      <link>https://servicemesher.github.io/tags/istio/</link>
+      <pubDate>Mon, 04 Jun 2018 16:09:57 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/tags/istio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jenkins</title>
+      <link>https://servicemesher.github.io/tags/jenkins/</link>
+      <pubDate>Mon, 04 Jun 2018 11:33:16 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Service Mesh</title>
+      <link>https://servicemesher.github.io/tags/service-mesh/</link>
+      <pubDate>Tue, 05 Jun 2018 19:12:42 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/tags/service-mesh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>微服务</title>
+      <link>https://servicemesher.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Mon, 21 May 2018 21:48:05 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>教程</title>
+      <link>https://servicemesher.github.io/tags/%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 22 May 2018 12:16:22 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/tags/%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

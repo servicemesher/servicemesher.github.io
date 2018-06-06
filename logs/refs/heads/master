@@ -1,0 +1,49 @@
+0000000000000000000000000000000000000000 0dfc6b84708ad8265cd718fe44217a6369558916 Jimmy Song <rootsongjc@gmail.com> 1526547271 +0800	clone: from https://github.com/servicemesher/servicemesher.github.io
+0dfc6b84708ad8265cd718fe44217a6369558916 53f27d7c94c6cee9a810c8aa156ce06f4d8c8a68 Jimmy Song <rootsongjc@gmail.com> 1526908616 +0800	commit: first commit
+53f27d7c94c6cee9a810c8aa156ce06f4d8c8a68 9167e6950da50fa30aed0b39abd032a5900e4792 Jimmy Song <rootsongjc@gmail.com> 1526908840 +0800	commit: update
+9167e6950da50fa30aed0b39abd032a5900e4792 82b1a4b0ac0d17c71699a04b8b0f243d11f7da16 Jimmy Song <rootsongjc@gmail.com> 1526908999 +0800	commit: delete livereload
+82b1a4b0ac0d17c71699a04b8b0f243d11f7da16 3fc064a630395a00ce24ce2d801bb119b88a6391 Jimmy Song <rootsongjc@gmail.com> 1526909460 +0800	commit: delete google maps
+3fc064a630395a00ce24ce2d801bb119b88a6391 6ed0400784e329a0c032efd5655c3c55c93746b1 Jimmy Song <rootsongjc@gmail.com> 1526909722 +0800	commit: delte livereload block
+6ed0400784e329a0c032efd5655c3c55c93746b1 abe6d24a2e691218fdca55a7f39c12b12cb8f252 Jimmy Song <rootsongjc@gmail.com> 1526912954 +0800	commit: post service mesh rebuild microservice market
+abe6d24a2e691218fdca55a7f39c12b12cb8f252 29576f86a03663e7162248d166ee14da9841b1db Jimmy Song <rootsongjc@gmail.com> 1526913233 +0800	commit: post service mesh rebuild microservice market
+29576f86a03663e7162248d166ee14da9841b1db 3e4bd9a30dbcf4ce065d0e4d168e0b5cd2803b89 Jimmy Song <rootsongjc@gmail.com> 1526963672 +0800	commit: post isito serivce mesh tutorial
+3e4bd9a30dbcf4ce065d0e4d168e0b5cd2803b89 e6b03abd2912a8a52df2394e43ad5e02206f4706 Jimmy Song <rootsongjc@gmail.com> 1526983283 +0800	commit: update theme
+e6b03abd2912a8a52df2394e43ad5e02206f4706 6f01f6d1ea3b121fd667a364ba1a6ed0c3377221 Jimmy Song <rootsongjc@gmail.com> 1526984874 +0800	commit: add error page image
+6f01f6d1ea3b121fd667a364ba1a6ed0c3377221 2549ed4474dcb26c765d8f85516b437a9f8971f3 Jimmy Song <rootsongjc@gmail.com> 1526985801 +0800	commit: change image
+2549ed4474dcb26c765d8f85516b437a9f8971f3 f8cd4919fcedbcbdb01761f9e0e1042c1a76cc1f Jimmy Song <rootsongjc@gmail.com> 1526985867 +0800	commit: fix typo
+f8cd4919fcedbcbdb01761f9e0e1042c1a76cc1f 7f6455570064fc128be918686a309b2d89e9241c Jimmy Song <rootsongjc@gmail.com> 1526992409 +0800	commit: change website logo
+7f6455570064fc128be918686a309b2d89e9241c a2389f576cd03e85b4fac9f4e5b51d3ba72f2fd2 Jimmy Song <rootsongjc@gmail.com> 1527054329 +0800	commit: change table style
+a2389f576cd03e85b4fac9f4e5b51d3ba72f2fd2 b3af3534febcccd992b28f98538b795f59baf40a Jimmy Song <rootsongjc@gmail.com> 1527057870 +0800	commit: fix some bugs
+b3af3534febcccd992b28f98538b795f59baf40a 5e8eda28e09a8ad1e0d08383dd4b0aaae04000ef Jimmy Song <rootsongjc@gmail.com> 1527060422 +0800	commit: crop image
+5e8eda28e09a8ad1e0d08383dd4b0aaae04000ef 134e911d0dcce305ebfbca6ce11cd0d353c46dc5 Jimmy Song <rootsongjc@gmail.com> 1527068079 +0800	commit: post 深入解读SERVICE MESH背后的技术细节 by 刘超
+134e911d0dcce305ebfbca6ce11cd0d353c46dc5 20094f16783716f8ed63132a64250f624147ce3f Jimmy Song <rootsongjc@gmail.com> 1527070073 +0800	commit: cancel gray image display
+20094f16783716f8ed63132a64250f624147ce3f c0a961a54940dc8494cf9539df0568bdec424a5f Jimmy Song <rootsongjc@gmail.com> 1527078029 +0800	commit: change font size
+c0a961a54940dc8494cf9539df0568bdec424a5f 553b5c18ec9632539ad60c174940d1f73ad7eb7d Jimmy Song <rootsongjc@gmail.com> 1527081048 +0800	commit: add carousel background image setting
+553b5c18ec9632539ad60c174940d1f73ad7eb7d ad2416d68d6cbabcbe1a72b60b6cbddfd07a5fec Jimmy Song <rootsongjc@gmail.com> 1527083345 +0800	commit: add google verification file
+ad2416d68d6cbabcbe1a72b60b6cbddfd07a5fec f346bf613a80f8d7788d2ddbdf271f5cb235197f Jimmy Song <rootsongjc@gmail.com> 1527085462 +0800	commit: align text to center
+f346bf613a80f8d7788d2ddbdf271f5cb235197f bb9af59cfdea085fc7f8bf2273387598dfeca559 Jimmy Song <rootsongjc@gmail.com> 1527156876 +0800	commit: change homepage title
+bb9af59cfdea085fc7f8bf2273387598dfeca559 bcfb5b66a2c74f4de8a47bc23d7803d78b7e0d97 Jimmy Song <rootsongjc@gmail.com> 1527161861 +0800	commit: change background color
+bcfb5b66a2c74f4de8a47bc23d7803d78b7e0d97 c977cca9410a13baa3dbe00f97a93255af07ae36 Jimmy Song <rootsongjc@gmail.com> 1527164103 +0800	commit: use remote pic instead of local
+c977cca9410a13baa3dbe00f97a93255af07ae36 c70691dabb5aced5c5cde1d3cb54167d0a3d8e15 Jimmy Song <rootsongjc@gmail.com> 1527164597 +0800	commit: use larger size
+c70691dabb5aced5c5cde1d3cb54167d0a3d8e15 bbbcafb7991336f6cfbd5c93a61edb16ed5d033d Jimmy Song <rootsongjc@gmail.com> 1527165653 +0800	commit: resize
+bbbcafb7991336f6cfbd5c93a61edb16ed5d033d 84deab6cd1d8b63a671a20b4372d06baceaee183 Jimmy Song <rootsongjc@gmail.com> 1527244303 +0800	commit: add topbar
+84deab6cd1d8b63a671a20b4372d06baceaee183 c29f101336ea61a0111d200e2458d6499f0436ff Jimmy Song <rootsongjc@gmail.com> 1527566062 +0800	commit: fix typo
+c29f101336ea61a0111d200e2458d6499f0436ff 803eba4211b92eb00120b55f605c5c3d61e38dd0 Jimmy Song <rootsongjc@gmail.com> 1527664029 +0800	commit: post the design patterns for a commercial service mesh
+803eba4211b92eb00120b55f605c5c3d61e38dd0 8895821d3c670b412b42c34e4cffd5a0351627b7 Jimmy Song <rootsongjc@gmail.com> 1527666262 +0800	commit: update
+8895821d3c670b412b42c34e4cffd5a0351627b7 04e9a135a382811f9b3ce840b81ce2aff80a682c Jimmy Song <rootsongjc@gmail.com> 1527755668 +0800	commit: delete google api
+04e9a135a382811f9b3ce840b81ce2aff80a682c ba4e6a74c10e82f4daaa7f7395144866774d4ff7 Jimmy Song <rootsongjc@gmail.com> 1527773605 +0800	commit: post GitOps for Istio - Manage Istio Config like Code
+ba4e6a74c10e82f4daaa7f7395144866774d4ff7 72a082f30d56ca71643d797d6af10d19b7082837 Jimmy Song <rootsongjc@gmail.com> 1527774193 +0800	commit: add new activity
+72a082f30d56ca71643d797d6af10d19b7082837 af623084619027a9ce7a357e542918d05f100027 Jimmy Song <rootsongjc@gmail.com> 1527824795 +0800	commit: istio 0.8 released
+af623084619027a9ce7a357e542918d05f100027 092b6882fe0017e1339fb16e60648f468b623394 Jimmy Song <rootsongjc@gmail.com> 1527825056 +0800	commit: update
+092b6882fe0017e1339fb16e60648f468b623394 e93493b0c5e9bec10442a199b29aba8077a37010 Jimmy Song <rootsongjc@gmail.com> 1527832132 +0800	commit: rebuilding site Fri Jun 1 13:48:44 CST 2018
+e93493b0c5e9bec10442a199b29aba8077a37010 0758837feb2763acbe0482257180abffee32cf1b Jimmy Song <rootsongjc@gmail.com> 1527834136 +0800	commit: update homepage
+0758837feb2763acbe0482257180abffee32cf1b 74489c2642883a0f6a8f8a7c5ec52acb41eacbd2 Jimmy Song <rootsongjc@gmail.com> 1528084840 +0800	commit: 发布使用 MINIKUBE-IN-A-CONTAINER 和 JENKINS 构建 ISTIO
+74489c2642883a0f6a8f8a7c5ec52acb41eacbd2 381f417b790877ca1eadb00f9d325bf7b5911cd3 Jimmy Song <rootsongjc@gmail.com> 1528091530 +0800	commit: service mesher activity foreshow
+381f417b790877ca1eadb00f9d325bf7b5911cd3 29a3bb7ad09a4c59f8537336fa2bc14ad4cd9a24 Jimmy Song <rootsongjc@gmail.com> 1528094841 +0800	commit: change categories
+29a3bb7ad09a4c59f8537336fa2bc14ad4cd9a24 63ce02fc921f973a82ee89f11f799dd6a6615899 Jimmy Song <rootsongjc@gmail.com> 1528099587 +0800	commit: add new post
+63ce02fc921f973a82ee89f11f799dd6a6615899 89905b17646f08345486528236a212a076455758 Jimmy Song <rootsongjc@gmail.com> 1528101400 +0800	commit: add post istio 0.8 helm chart
+89905b17646f08345486528236a212a076455758 cf3d2d9711961fe3ed864fa5bc0a890f8eca913f Jimmy Song <rootsongjc@gmail.com> 1528106204 +0800	commit: add activiy topics
+cf3d2d9711961fe3ed864fa5bc0a890f8eca913f 00fe9731c77a2e18442af603dfcb693b62211d46 Jimmy Song <rootsongjc@gmail.com> 1528117224 +0800	commit: delete toc
+00fe9731c77a2e18442af603dfcb693b62211d46 2292a1c601ade43bffc8be4359a1e303274df5de Jimmy Song <rootsongjc@gmail.com> 1528117899 +0800	commit: add qr-code
+2292a1c601ade43bffc8be4359a1e303274df5de 426b65495fadf09d99bf891ef45ff039cf7c56bd Jimmy Song <rootsongjc@gmail.com> 1528197748 +0800	commit: 8 Ways a Service Mesh Eases Microservices Deployment
+426b65495fadf09d99bf891ef45ff039cf7c56bd 9d2fb24638c5c0436cb847be498cf20e8167cde7 Jimmy Song <rootsongjc@gmail.com> 1528197892 +0800	commit: change banner
