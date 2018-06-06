@@ -102,6 +102,24 @@
         ]
     },
     {
+        "title": "Istio v1aplha3 routing API介绍",
+        "uri": "blog/introducing-the-istio-v1alpha3-routing-api",
+        "content": "https   istio io blog 2018 v1alpha3 routing        Frank Budinsky  IBM  Shriram Rajagopalan  VMware                              Istio        API         API        RouteRule DestinationPolicy EgressRule Ingress      Kubernets Ingress       API         Istio          API                                                                    API        Istio                     API                                   HTTP             Kubernetes Ingress                                         Istio         API v1alpha3     API        API    v1alpha3                    API          API            Istio                                      v1alpha3 API                     API                                                                                                                                                     Controller                            Host                               Host                                    v1alpha3                               TLS                      gateway         sidecar   sidecar gateway                              Google Maps API                                                             Egress gateway                             v1alpha3                                     Gateway VirtualService DestinationRule ServiceEntry VirtualService DestinationRule ServiceEntry      API  RouteRule DestinationPolicy EgressRule Gateway                                                   Gateway Gateway   HTTP TCP                                      Gateway        Gateway                          Pod       Gateway                          Gateway Controller                                   Kubernetes Ingress API    Ingress API    Istio      Ingress      HTTP                       HTTP                         annotation                            Istio Gateway    L4 L6   L7          Ingress      Gateway     L4 L6              TLS         L7                        Gateway   VirtualService           Istio       Gateway HTTP TCP              Gateway     Load Balancer      host bookinfo com https     mesh   apiVersion  networking istio io v1alpha3 kind  Gateway metadata  name  bookinfo gateway spec  servers  port  number  443 name  https protocol  HTTPS hosts  bookinfo com tls  mode  SIMPLE serverCertificate   tmp tls crt privateKey   tmp tls key        Gateway                 host    VirtualService                 gateways          Gateway    apiVersion  networking istio io v1alpha3 kind  VirtualService metadata  name  bookinfo spec  hosts  bookinfo com gateways  bookinfo gateway",
+        "objectID": "blog/introducing-the-istio-v1alpha3-routing-api",
+        "date": "2018-06-06T10:30:53.000Z",
+        "draft": false,
+        "banner": "https://ws1.sinaimg.cn/large/00704eQkgy1fs1n3xnagxj30rs0kuke9.jpg",
+        "author": "Frank Budinsky & Shriram Rajagopalan",
+        "authorlink": "https://istio.io/blog/2018/v1alpha3-routing",
+        "summary": "本文讲解的是Istio 0.8中的一项重大变化——引入v1alpha3 routing API，旧版本的API将不再兼容，未来会提供模型转换工具来转换旧版 API。",
+        "tags": [
+            "istio"
+        ],
+        "categories": [
+            "译文"
+        ]
+    },
+    {
         "title": "Istio 0.8 发布了！",
         "uri": "blog/istio-0.8-release-note",
         "content": "Isito 0 8        Jimmy Song      2018   6   1          9  30 Istio 0 8 0 LTS                                                                                                          istioctl                                 Ingress Egress            Kubernetes Ingress     Istio                          Istio         Kubernetes   Cloud Foundry     ingress egress                                Server Name Indication          SNI       HTTPS           SNI      Envoy v2          Envoy   v2 API    sidecar        Pilot   Envoy   v2        API                                         Pod             Pod                       Citadel                           Istio Auth   Istio CA           Citadel                          Citadel      Citade                                                         TLS                TLS                                        Mixer   Pilot           Isitio                           Istio    Istio                             Helm   istioctl gen deploy                             Pilot                Mixer   Citadel        Helm     istioctl gen deploy  Mixer     CloudWatch Mixer       AWS CloudWatch            0 8            headless serivce             Issue  5005     Kubernetes 1 10 2              Kubernetes 1 9           Ubuntu",
