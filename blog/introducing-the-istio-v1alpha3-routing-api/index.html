@@ -242,7 +242,7 @@
 
 <p>在一个典型的网格中，通常有一个或多个用于终止外部TLS链接，将流量引入网格的负载均衡器（我们称之为gateway）。 然后流量通过sidecar网关（sidecar gateway）流经内部服务。应用程序使用外部服务的情况也很常见（例如访问Google Maps API），一些情况下，这些外部服务可能被直接调用；但在某些部署中，网格中所有访问外部服务的流量可能被要求强制通过专用的出口网关（Egress gateway）。 下图描绘了网关在网格中的使用情况。</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/6ce41a46ly1fs1eqjfubij20m308mgmu.jpg" alt="" /></p>
+<p><img src="https://ww1.sinaimg.cn/large/6ce41a46ly1fs1eqjfubij20m308mgmu.jpg" alt="" /></p>
 
 <p>考虑到上述因素，<code>v1alpha3</code>引入了以下这些新的配置资源来控制进入网格、网格内部和离开网格的流量路由。</p>
 
@@ -256,7 +256,7 @@
 <p><code>VirtualService</code>、<code>DestinationRule</code>和<code>ServiceEntry</code>分别替换了原API中的<code>RouteRule</code>、<code>DestinationPolicy</code>和<code>EgressRule</code>。<code>Gateway</code>是一个独立于平台的抽象，用于对流入专用中间设备的流量进行建模。</p>
 
 <p>下图描述了跨多个配置资源的控制流程。
-<img src="http://ww1.sinaimg.cn/large/6ce41a46ly1fs1erey8a3j20lt0acgmi.jpg" alt="" /></p>
+<img src="https://ww1.sinaimg.cn/large/6ce41a46ly1fs1erey8a3j20lt0acgmi.jpg" alt="" /></p>
 
 <h3 id="gateway">Gateway</h3>
 
@@ -652,24 +652,28 @@ spec:
 
 
 
-<div>
+<div class="panel panel-default sidebar-menu">
      
-     <h2>相关文章</h2>
-     <ul>
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/manage-microservices-traffic-using-istio/"><i class="fa fa-link"></i>使用 Istio 为微服务提供高级流量管理和请求跟踪功能</a></li>
          
-         <li><a href="/blog/manage-microservices-traffic-using-istio/">使用 Istio 为微服务提供高级流量管理和请求跟踪功能</a></li>
+        <li><a href="/blog/helm-chart-for-istio-0.8/"><i class="fa fa-link"></i>Istio 0.8 的 Helm Chart 解析</a></li>
          
-         <li><a href="/blog/helm-chart-for-istio-0.8/">Istio 0.8 的 Helm Chart 解析</a></li>
+        <li><a href="/blog/building-istio-with-minikube-in-a-container-and-jenkins/"><i class="fa fa-link"></i>使用 Minikube-in-a-Container 和 Jenkins 构建 Istio</a></li>
          
-         <li><a href="/blog/building-istio-with-minikube-in-a-container-and-jenkins/">使用 Minikube-in-a-Container 和 Jenkins 构建 Istio</a></li>
+        <li><a href="/blog/istio-0.8-release-note/"><i class="fa fa-link"></i>Istio 0.8 发布了！</a></li>
          
-         <li><a href="/blog/istio-0.8-release-note/">Istio 0.8 发布了！</a></li>
-         
-         <li><a href="/blog/gitops-for-istio-manage-istio-config-like-code/">Istio 的 GitOps——像代码一样管理 Istio 配置</a></li>
+        <li><a href="/blog/gitops-for-istio-manage-istio-config-like-code/"><i class="fa fa-link"></i>Istio 的 GitOps——像代码一样管理 Istio 配置</a></li>
          
      </ul>
+     <div>
      
- </div>
+</div>
 
 
 
