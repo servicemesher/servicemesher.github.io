@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Service Mesh · Service Mesh爱好者</title>
+  <title>Istio Mixer Cache工作原理与源码分析Part1－基本概念 · Service Mesh爱好者</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh">	
+  <meta name="keywords" content="service mesh, istio, 源码解析">
   
 
   
@@ -58,9 +58,9 @@
   <link rel="stylesheet" href="https://servicemesher.github.io/css/prism.css" />
 
   
-  <meta property="og:title" content="Service Mesh" />
+  <meta property="og:title" content="Istio Mixer Cache工作原理与源码分析Part1－基本概念" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/categories/service-mesh//" />
+  <meta property="og:url" content="/blog/istio-mixer-cache-part1-concepts//" />
   <meta property="og:image" content="img/logo.png" />
 
   
@@ -89,9 +89,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://servicemesher.github.io/">
-                    <img src="https://servicemesher.github.io/img/logo.png" alt="Service Mesh logo" class="hidden-xs hidden-sm">
-                    <img src="https://servicemesher.github.io/img/logo-small.png" alt="Service Mesh logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Service Mesh - 跳到主页</span>
+                    <img src="https://servicemesher.github.io/img/logo.png" alt="Istio Mixer Cache工作原理与源码分析Part1－基本概念 logo" class="hidden-xs hidden-sm">
+                    <img src="https://servicemesher.github.io/img/logo-small.png" alt="Istio Mixer Cache工作原理与源码分析Part1－基本概念 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Istio Mixer Cache工作原理与源码分析Part1－基本概念 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -211,7 +211,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Service Mesh</h1>
+                <h1>Istio Mixer Cache工作原理与源码分析Part1－基本概念</h1>
             </div>
         </div>
     </div>
@@ -220,137 +220,220 @@ autocomplete('#aa-search-input',
 
         <div id="content">
             <div class="container">
+
                 <div class="row">
+
                     
 
-                    <div class="col-md-9" id="blog-listing-medium">
+                    <div class="col-md-9" id="blog-post">
 
+                        <p class="text-muted text-uppercase mb-small text-left">
+                        作者 <a href="https://skyao.io/post/201804-istio-mixer-cache-concepts/">敖小剑</a>
+                        
+                        |
                         
                         
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="https://servicemesher.github.io/blog/the-desigin-patterns-for-a-commercial-service-mesh/">
-                                          
-                                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1frtdesg6toj30rs0kuwtz.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="https://servicemesher.github.io/blog/the-desigin-patterns-for-a-commercial-service-mesh/">一个商用级Service Mesh服务的设计之道</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          作者 <a href="https://github.com/tianxiaoliang">田晓亮</a>
-                                          
-                                          
-                                          
-                                          归档于<a href="https://servicemesher.github.io/categories/service-mesh">service mesh</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="https://servicemesher.github.io/blog/the-desigin-patterns-for-a-commercial-service-mesh/"><i class="fa fa-calendar-o"></i> 2018-05-30</a>
-                                        </p>
-                                    </div>
-                                    
-                                    <p class="intro">本文分享了微服务中存在的问题，以及如何通过商用级的 Service Mesh 设计来解决问题，作者分享了华为的 Service Mesh 设计之道。</p>
-                                    
-                                    <p class="read-more"><a href="https://servicemesher.github.io/blog/the-desigin-patterns-for-a-commercial-service-mesh/" class="btn btn-template-main">继续阅读</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
                         
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="https://servicemesher.github.io/blog/deepin-service-mesh-tech-details/">
-                                          
-                                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1frjbk1wgc3j30ll0h6qja.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="https://servicemesher.github.io/blog/deepin-service-mesh-tech-details/">深入解读Service Mesh背后的技术细节</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          作者 刘超
-                                          
-                                          
-                                          
-                                          归档于<a href="https://servicemesher.github.io/categories/service-mesh">service mesh</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="https://servicemesher.github.io/blog/deepin-service-mesh-tech-details/"><i class="fa fa-calendar-o"></i> 2018-05-23</a>
-                                        </p>
-                                    </div>
-                                    
-                                    <p class="intro">在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章，来解析Service Mesh背后的技术细节。</p>
-                                    
-                                    <p class="read-more"><a href="https://servicemesher.github.io/blog/deepin-service-mesh-tech-details/" class="btn btn-template-main">继续阅读</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+                        归档于<a href="https://servicemesher.github.io/categories/istio">istio</a>
                         
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="https://servicemesher.github.io/blog/service-mesh-rebuild-microservice-market/">
-                                          
-                                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1frjbqc9faoj30rs0kuwnv.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="https://servicemesher.github.io/blog/service-mesh-rebuild-microservice-market/">Service Mesh：重塑微服务市场</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          作者 <a href="https://skyao.io">敖小剑</a>
-                                          
-                                          
-                                          
-                                          归档于<a href="https://servicemesher.github.io/categories/service-mesh">service mesh</a>
-                                          
-                                          
+                        |
+                        
+                        发表于
+                        2018-06-07
+                        |
+                        
+                        
+                        
+                        <a href="https://servicemesher.github.io/tags/istio/">#istio</a>&nbsp;
+                        
+                        
+                        
+                        </p>
+                        <div id="post-content">
+                          
 
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="https://servicemesher.github.io/blog/service-mesh-rebuild-microservice-market/"><i class="fa fa-calendar-o"></i> 2018-05-21</a>
-                                        </p>
-                                    </div>
-                                    
-                                    <p class="intro">今天我们不谈技术，不谈架构，也不谈具体的产品，我们来聊一聊在未来一两年之内，Service Mesh技术会在微服务相关的市场带来什么样的变化？</p>
-                                    
-                                    <p class="read-more"><a href="https://servicemesher.github.io/blog/service-mesh-rebuild-microservice-market/" class="btn btn-template-main">继续阅读</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+<h2 id="前言">前言</h2>
+
+<p>本系列文章将详细介绍Istio中Mixer Cache的工作原理，为了避免空谈，将引入广大程序员同学喜闻乐见的源码分析环节，并结合Mixer的接口API，详细展现Mixer Cache的各种细节。</p>
+
+<blockquote>
+<p>预警：Mixer Cache系列文章除了本文讲述概念比较简单外，其它文章会包含大量复杂和繁琐的细节，包括设计／实现／API等，适合追求深度的同学。</p>
+</blockquote>
+
+<p>阅读本系列文章前，请确保对Service Mesh和Istio有基本的认知，临时上车的同学请自觉补课：</p>
+
+<ul>
+<li><a href="https://skyao.io/publication/service-mesh-next-generation-microservice/">Service Mesh：下一代微服务</a>: Service Mesh介绍</li>
+<li><a href="https://skyao.io/publication/istio-introduction/">服务网格新生代-Istio</a>：Istio介绍</li>
+</ul>
+
+<p>此外如果对Mixer职责和设计不熟悉的同学，请先阅读下文（本文可以理解为是此文的番外篇）：</p>
+
+<ul>
+<li><a href="https://skyao.io/post/201804-servicemesh-architecture-introspection/">Service Mesh架构反思：数据平面和控制平面的界线该如何划定？</a></li>
+</ul>
+
+<p>在这篇文章中，出于对Istio性能的担忧和疑虑，我们探讨了Mixer的架构设计，工作原理，并猜测了Mixer的设计初衷。期间，我们介绍到，为了保证运行时性能，避免每次请求都远程访问Mixer，Istio特意为Mixer增加了缓存。当时出于篇幅考虑，我们没有深入到缓存的细节，现在将在这个系列文章中就这一点深入展开。</p>
+
+<p>在展开代码实现细节之前，我们先介绍和Mixer Cache相关的基本概念。</p>
+
+<h2 id="属性">属性</h2>
+
+<p>属性（Attuibute）是Istio中非常一个关键设计，对于Mixer更是特别重要，可以说Mixer的所有功能都是建立在属性这个核心概念之上。</p>
+
+<p>搬运一段官方文档的介绍：</p>
+
+<blockquote>
+<p>Istio使用 <em>属性</em> 来控制在服务网格中运行的服务的运行时行为。属性是具有名称和类型的元数据片段，用以描述入口和出口流量，以及这些流量所属的环境。Istio属性携带特定信息片段，例如API请求的错误代码，API请求的延迟或TCP连接的原始IP地址。</p>
+</blockquote>
+
+<p>属性的形式如下：</p>
+
+<pre><code>request.path: xyz/abc
+request.size: 234
+request.time: 12:34:56.789 04/17/2017
+source.ip: 192.168.0.1
+target.service: example
+</code></pre>
+
+<h2 id="属性词汇">属性词汇</h2>
+
+<p>需要特别强调的是：<strong>Istio中可以使用的属性是固定的</strong>，而不是随意设定的，在这一点上，和一般系统中的类似设计有根本性的差异。</p>
+
+<blockquote>
+<p>每个给定的Istio部署有固定的能够理解的属性词汇。这个特定的词汇由当前部署中正在使用的属性生产者集合决定。Istio中首要的属性生产者是Envoy，然后特定的Mixer适配器和服务也会产生属性。</p>
+</blockquote>
+
+<p>这些将被Istio使用的属性集合，被称为属性词汇，总数大概是50个，详细列表可以参看文档：</p>
+
+<ul>
+<li><a href="https://istio.io/docs/reference/config/mixer/attribute-vocabulary.html">Attribute Vocabulary</a>: 来自Istio官方文档中的Reference</li>
+<li><a href="http://istio.doczh.cn/docs/reference/config/mixer/attribute-vocabulary.html">属性词汇</a>：此文档的中文文档翻译，来自istio.doczh.cn</li>
+</ul>
+
+<h2 id="引用属性">引用属性</h2>
+
+<p>引用属性（Referenced Attributes）是在Mixer Cache的设计和实现中引入的一个非常特别的概念。</p>
+
+<blockquote>
+<p>特别提醒：要理解Mixer Cache，必须深刻理解Referenced Attritutes。</p>
+</blockquote>
+
+<h3 id="什么是引用属性">什么是引用属性？</h3>
+
+<p>这个需要从Envoy和Mixer之间的Check方法说起：</p>
+
+<pre><code>rpc Check(CheckRequest) returns (CheckResponse)
+</code></pre>
+
+<p>在CheckRequest中，Envoy会提交所有的Attribute，而在CheckResponse的应答中，PreconditionResult 表示前置条件检查的结果：</p>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="https://skyao.io/post/201804-istio-mixer-cache-concepts/#google.rpc.Status">google.rpc.Status</a></td>
+<td>状态码OK表示所有前置条件均满足。任何其它状态码表示不是所有的前置条件都满足，并且在detail中描述为什么。</td>
+</tr>
+
+<tr>
+<td>validDuration</td>
+<td><a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration">google.protobuf.Duration</a></td>
+<td>时间量，在此期间这个结果可以认为是有效的</td>
+</tr>
+
+<tr>
+<td>validUseCount</td>
+<td>int32</td>
+<td>可使用的次数，在此期间这个结果可以认为是有效的</td>
+</tr>
+
+<tr>
+<td>attributes</td>
+<td>CompressedAttributes</td>
+<td>mixer返回的属性。 返回的切确属性集合由mixer配置的adapter决定。这些属性用于传送新属性，这些新属性是Mixer根据输入的属性集合和它的配置派生的。</td>
+</tr>
+
+<tr>
+<td><strong>referencedAttributes</strong></td>
+<td>ReferencedAttributes</td>
+<td><strong>在匹配条件并生成结果的过程中使用到的全部属性集合。</strong></td>
+</tr>
+</tbody>
+</table>
+
+<p>“在匹配条件并生成结果的过程中使用到的全部属性集合”是什么意思呢？我们给个例子：</p>
+
+<ul>
+<li>假定envoy提交的请求中有5个属性，”a=1,b=2,c=3,e=0,f=0”</li>
+<li>假定mixer中有三个adapter，每个adapter只使用提交属性中的一个属性a/b/c</li>
+</ul>
+
+<p>如下图所示，mixer会在CheckResponse中返回referencedAttributes字段，内容为”a,b,c”，以此表明这三个属性是mixer的adapter在实际的处理过程中使用到的属性：</p>
+
+<p><img src="https://skyao.io/post/201804-istio-mixer-cache-concepts/images/referenced-attributes.jpg" alt="img" /></p>
+
+<p>envoy在收到CheckResponse时，就可以从referencedAttributes字段的值中得知： 原来提交上去的”a=1,b=2,c=3,e=0,f=0”这样一个5个属性的集合，实际adapter使用到的只有”a,b,c”。</p>
+
+<h3 id="引用属性的作用">引用属性的作用</h3>
+
+<p>为什么envoy要这么关心哪些属性被adapter使用了？以至于需要在交互的过程中，特意让mixer收集这些使用过的属性并明确在CheckResponse中返回给Envoy？</p>
+
+<p>这是因为Mixer Cache的需要。为了缓存Mixer的结果，避免每次请求都发起一次envoy对mixer的调用，istio在envoy中增加了mixer cache。而要让缓存工作，则必须在每次请求中想办法得到一个有效的key，将调用结果作为value存放起来。</p>
+
+<p>现在关键点就来了：key要如何设计？</p>
+
+<p>最简单的方式，自然是将请求中所有的属性都作为key的组成部分，直接做一个简单的hash，得到的值作为key。但是这个方案不可行的地方在于，请求中可能提交的属性大概有二十个上下，有些属性的值变化非常频繁，取值范围也很大，典型如request.id这样每次请求都会给出一个全局唯一值。如果直接将所有属性都作为key的组成部分，那么很可能每次算出来的key都是一个唯一值，这样缓存也就失去意义了。</p>
+
+<p>因此，不能将全部属性都作为key，那么，挑选部分属性如何？只计算部分我们判断为有必要被adapter使用的属性来计算key。但是，等等，我们会立马反应出来：这违背了mixer adapter的设计原则。</p>
+
+<ul>
+<li>adapter是独立于envoy</li>
+<li>envoy不应该知道有哪些adapter的存在</li>
+<li>更不应该知道这些adapter使用了哪些属性</li>
+</ul>
+
+<p>因此，在envoy试图计算key时，就面临两难的境地：</p>
+
+<ol>
+<li>envoy无法预计哪些属性是adapter需要的</li>
+<li>envoy也不能将所有的属性都作为key</li>
+</ol>
+
+<p>那怎么办，mixer cache可是必须要加的。只能见招拆招了，思路倒是直白，容易理解：</p>
+
+<ol>
+<li>谁可以切确的知道哪些属性被adapter使用过？</li>
+</ol>
+
+<p>当然是被调用过的adapter自己了，每个adapter在执行完成后，都可以给出自己使用属性集合，mixer只要做一个简单收集就可以拿到这个信息。</p>
+
+<ol>
+<li>mixer知道了，怎么告之envoy？</li>
+</ol>
+
+<p>不是有个现成的response嘛，将前面收集到的属性集合通过response传递回envoy就是了。</p>
+
+<p>搞定！现在再重新看回前面给出的这个图片，就很容易理解了。</p>
+
+<p><img src="https://skyao.io/post/201804-istio-mixer-cache-concepts/images/referenced-attributes.jpg" alt="img" /></p>
+
+<h2 id="下一步">下一步</h2>
+
+<p>在介绍完基本概念之后，我们将在下一篇文章中开始讲解mixer cache的工作原理，然后在更后面的章节中深入实现细节。</p>
+
+                        </div>
+                        
                         
 
-                        <ul class="pager">
-                            
-                            <li class="previous disabled"><a href="#">&larr; 更新</a></li>
-                            
-
-                            
-                            <li class="next disabled"><a href="#">更旧 &rarr;</a></li>
-                            
-                        </ul>
                     </div>
                     
 
@@ -363,6 +446,25 @@ autocomplete('#aa-search-input',
                         
 
                         <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/deepin-service-mesh-tech-details/"><i class="fa fa-link"></i>深入解读Service Mesh背后的技术细节</a></li>
+         
+        <li><a href="/blog/istio-service-mesh-tutorial/"><i class="fa fa-link"></i>Istio Service Mesh 教程</a></li>
+         
+        <li><a href="/blog/introducing-the-istio-v1alpha3-routing-api/"><i class="fa fa-link"></i>Istio v1aplha3 routing API介绍</a></li>
+         
+        <li><a href="/blog/manage-microservices-traffic-using-istio/"><i class="fa fa-link"></i>使用 Istio 为微服务提供高级流量管理和请求跟踪功能</a></li>
+         
+        <li><a href="/blog/helm-chart-for-istio-0.8/"><i class="fa fa-link"></i>Istio 0.8 的 Helm Chart 解析</a></li>
+         
+     </ul>
+    </div>
      
 </div>
 
@@ -449,6 +551,7 @@ autocomplete('#aa-search-input',
 
                 </div>
                 
+
             </div>
             
         </div>

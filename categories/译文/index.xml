@@ -6,10 +6,19 @@
     <description>Recent content in 译文 on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 06 Jun 2018 18:30:53 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 07 Jun 2018 19:27:19 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Service Mesh Security Addressing Attack Vectors With Istio</title>
+      <link>https://servicemesher.github.io/blog/service-mesh-security-addressing-attack-vectors-with-istio/</link>
+      <pubDate>Thu, 07 Jun 2018 19:27:19 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/service-mesh-security-addressing-attack-vectors-with-istio/</guid>
+      <description>原文：Service Mesh Security: Addressing Attack Vectors with Istio 作者： Zach Jory 译者：崔秀龙 把单体应用拆分为微服务之后，会得到不少好处，例如稳定性的提高、持续运行时间的增长以及</description>
+    </item>
     
     <item>
       <title>Istio v1aplha3 routing API介绍</title>

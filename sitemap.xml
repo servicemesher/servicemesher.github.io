@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://servicemesher.github.io/blog/service-mesh-security-addressing-attack-vectors-with-istio/</loc>
+    <lastmod>2018-06-07T19:27:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/istio-mixer-cache-part2-principle/</loc>
+    <lastmod>2018-06-07T19:19:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/blog/istio-mixer-cache-part1-concepts/</loc>
+    <lastmod>2018-06-07T19:16:21+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/blog/introducing-the-istio-v1alpha3-routing-api/</loc>
     <lastmod>2018-06-06T18:30:53+08:00</lastmod>
   </url>
@@ -64,7 +79,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/blog/</loc>
-    <lastmod>2018-06-06T18:30:53+08:00</lastmod>
+    <lastmod>2018-06-07T19:27:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -93,13 +108,13 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/istio/</loc>
-    <lastmod>2018-06-06T18:30:53+08:00</lastmod>
+    <lastmod>2018-06-07T19:27:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://servicemesher.github.io/categories/istio/</loc>
-    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
+    <lastmod>2018-06-07T19:19:44+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -123,7 +138,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/</loc>
-    <lastmod>2018-06-06T18:30:53+08:00</lastmod>
+    <lastmod>2018-06-07T19:27:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -155,7 +170,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/</loc>
-    <lastmod>2018-06-06T18:30:53+08:00</lastmod>
+    <lastmod>2018-06-07T19:27:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
