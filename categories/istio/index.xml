@@ -17,11 +17,7 @@
       <pubDate>Mon, 04 Jun 2018 16:09:57 +0800</pubDate>
       
       <guid>https://servicemesher.github.io/blog/helm-chart-for-istio-0.8/</guid>
-      <description>儿童节期间，拖拉了一个多月的 Istio 0.8 正式发布了，这可能是 Istio 1.0 之前的最后一个 LTS 版本，意义重大。
-新版本中，原来的 Kubernetes 安装文件 install/kubernetes/istio.yaml，变成了 install/kubernetes/istio-demo.yaml，是的，你没看错，这个 LTS 的安装文件名字叫 demo。查看了一下文档，大概察觉到不靠谱的 Istio 发布组的意图了：这个项目的组件相对比较复杂，原有的一些选项是靠 ConfigMap 以及 istioctl 分别调整的，现在通过重新设计的 Helm Chart，安装选项用 values.yml 或者 helm 命令行的方式来进行集中管理了。下面就由看看 Istio 的 Helm Chart 的安装部署及其结构。
-使用 Helm 安装 Istio 安装包内的 Helm 目录中包含了 Istio 的 Chart，官方提供了两种方法：
- 用 Helm 生成 istio.yaml，然后自行安装。 用 Tiller 直接安装。  很明显，两种方法并没有什么本质区别。例如第一个命令：
-helm template install/kubernetes/helm/istio \ --name istio --namespace \ istio-system &amp;gt; $HOME/istio.yaml  这里说的是使用 install/kubernetes/helm/istio 目录中的 Chart 进行渲染，生成的内容保存到 $HOME/istio.</description>
+      <description>儿童节期间，拖拉了一个多月的 Istio 0.8 正式发布了，这可能是 Istio 1.0 之前的最后一个 LTS 版本，意义重大。 新版本中，原来的 Kubernetes 安装文件 install/kuber</description>
     </item>
     
     <item>
@@ -30,12 +26,7 @@ helm template install/kubernetes/helm/istio \ --name istio --namespace \ istio-s
       <pubDate>Tue, 22 May 2018 12:16:22 +0800</pubDate>
       
       <guid>https://servicemesher.github.io/blog/istio-service-mesh-tutorial/</guid>
-      <description>本文是 Istio 管理 Java 微服务的案例教程，使用的所有工具和软件全部基于开源方案，替换了 redhat-developer-demos/istio-tutorial 中的 minishift 环境，使用 kubernetes-vagrant-centos-cluster 替代，沿用了原有的微服务示例，使用 Zipkin 做分布式追踪而不是 Jaeger。
-本文中的代码和 YAML 文件见 https://github.com/rootsongjc/istio-tutorial。
-原文地址：https://jimmysong.io/posts/istio-tutorial/
-准备环境 在进行本教程前需要先准备以下工具和环境。
- 8G 以上内存 Vagrant 2.0+ Virtualbox 5.0 + 提前下载 kubernetes1.9.1 的 release 压缩包 docker 1.12+ kubectl 1.9.1+ maven 3.5.2+ istioctl 0.7.1 git curl、gzip、tar kubetail siege  安装 Kubernetes 请参考 kubernetes-vagrant-centos-cluster 在本地启动拥有三个节点的 kubernetes 集群。
-git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git cd kubernetes-vagrant-centos-cluster vagrant up  安装 Istio 在 kubernetes-vagrant-centos-cluster 中的包含 Istio 0.7.1 的安装 YAML 文件，运行下面的命令安装 Istio。</description>
+      <description>本文是 Istio 管理 Java 微服务的案例教程，使用的所有工具和软件全部基于开源方案，替换了 redhat-developer-demos/istio-tutorial 中的 minishift 环境，使用 kubernetes-vagrant-centos-cluster 替代，沿用了原有的微服务示例，使用 Zipkin 做分布式</description>
     </item>
     
   </channel>
