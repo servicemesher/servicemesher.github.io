@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://servicemesher.github.io/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/</loc>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/blog/tracing-grpc-with-istio/</loc>
     <lastmod>2018-06-08T12:40:05+08:00</lastmod>
   </url>
@@ -83,8 +88,14 @@
   </url>
   
   <url>
+    <loc>https://servicemesher.github.io/tags/baggage/</loc>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/blog/</loc>
-    <lastmod>2018-06-08T12:40:05+08:00</lastmod>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -119,7 +130,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/istio/</loc>
-    <lastmod>2018-06-08T12:40:05+08:00</lastmod>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -132,6 +143,12 @@
   <url>
     <loc>https://servicemesher.github.io/tags/jenkins/</loc>
     <lastmod>2018-06-04T11:33:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/opentracing/</loc>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -149,19 +166,19 @@
   
   <url>
     <loc>https://servicemesher.github.io/</loc>
-    <lastmod>2018-06-08T12:40:05+08:00</lastmod>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://servicemesher.github.io/tags/</loc>
-    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://servicemesher.github.io/tags/tracing/</loc>
-    <lastmod>2018-06-08T12:40:05+08:00</lastmod>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -173,7 +190,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2018-06-06T15:32:26+08:00</lastmod>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -182,12 +199,18 @@
   </url>
   
   <url>
+    <loc>https://servicemesher.github.io/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2018-06-07T19:19:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/contact/</loc>
   </url>
   
   <url>
     <loc>https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/</loc>
-    <lastmod>2018-06-08T12:40:05+08:00</lastmod>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

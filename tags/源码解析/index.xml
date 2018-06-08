@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>源码解析 on ServiceMesher</title>
+    <link>https://servicemesher.github.io/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
+    <description>Recent content in 源码解析 on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 07 Jun 2018 19:19:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://servicemesher.github.io/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Istio Mixer Cache工作原理与源码分析part2－工作原理</title>
+      <link>https://servicemesher.github.io/blog/istio-mixer-cache-part2-principle/</link>
+      <pubDate>Thu, 07 Jun 2018 19:19:44 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/istio-mixer-cache-part2-principle/</guid>
+      <description>转载自敖小剑的博客 前言 经过前面的基础概念的介绍，我们现在已经可以勾勒出一个mixer cache的实现轮廓，当然实际代码实现时会有很多细节。但</description>
+    </item>
+    
+    <item>
+      <title>Istio Mixer Cache工作原理与源码分析Part1－基本概念</title>
+      <link>https://servicemesher.github.io/blog/istio-mixer-cache-part1-concepts/</link>
+      <pubDate>Thu, 07 Jun 2018 19:16:21 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/istio-mixer-cache-part1-concepts/</guid>
+      <description>前言 本系列文章将详细介绍Istio中Mixer Cache的工作原理，为了避免空谈，将引入广大程序员同学喜闻乐见的源码分析环节，并结合Mixe</description>
+    </item>
+    
+  </channel>
+</rss>
