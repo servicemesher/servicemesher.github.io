@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://servicemesher.github.io/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/</loc>
+    <lastmod>2018-06-11T20:40:28+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/blog/istio-mixer-cache-part4-signature/</loc>
     <lastmod>2018-06-11T14:03:34+08:00</lastmod>
   </url>
@@ -110,7 +115,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/blog/</loc>
-    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
+    <lastmod>2018-06-11T20:40:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -145,7 +150,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/istio/</loc>
-    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
+    <lastmod>2018-06-11T20:40:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -175,7 +180,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/security/</loc>
-    <lastmod>2018-06-11T10:56:15+08:00</lastmod>
+    <lastmod>2018-06-11T20:40:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -193,7 +198,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/</loc>
-    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
+    <lastmod>2018-06-11T20:40:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -237,7 +242,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/</loc>
-    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
+    <lastmod>2018-06-11T20:40:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   

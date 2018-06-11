@@ -6,10 +6,19 @@
     <description>Recent content in Security on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 11 Jun 2018 10:56:15 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jun 2018 20:40:28 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Twistlock使Istio的安全层更强大，更易于监控</title>
+      <link>https://servicemesher.github.io/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/</link>
+      <pubDate>Mon, 11 Jun 2018 20:40:28 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/</guid>
+      <description>原文地址：Twistlock Makes Istio’s Security Layer More Robust, Easier to Monitor 译者：宋净超 Istio已经成为一种流行且可靠的服务网格管理平台，使用它可以更轻松地</description>
+    </item>
     
     <item>
       <title>Istio 安全设置笔记</title>
