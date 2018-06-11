@@ -231,7 +231,7 @@ autocomplete('#aa-search-input',
                         
                         
                         |
-                        2800字 | 阅读大约需要6分钟
+                        2900字 | 阅读大约需要6分钟
                         |
                         
                         
@@ -285,7 +285,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="属性">属性</h2>
 
-<p>属性（Attuibute）是Istio中非常一个关键设计，对于Mixer更是特别重要，可以说Mixer的所有功能都是建立在属性这个核心概念之上。</p>
+<p>属性（attribute）是Istio中非常一个关键设计，对于Mixer更是特别重要，可以说Mixer的所有功能都是建立在属性这个核心概念之上。</p>
 
 <p>搬运一段官方文档的介绍：</p>
 
@@ -295,7 +295,7 @@ autocomplete('#aa-search-input',
 
 <p>属性的形式如下：</p>
 
-<pre><code>request.path: xyz/abc
+<pre><code class="language-ini">request.path: xyz/abc
 request.size: 234
 request.time: 12:34:56.789 04/17/2017
 source.ip: 192.168.0.1
@@ -313,8 +313,8 @@ target.service: example
 <p>这些将被Istio使用的属性集合，被称为属性词汇，总数大概是50个，详细列表可以参看文档：</p>
 
 <ul>
-<li><a href="https://istio.io/docs/reference/config/mixer/attribute-vocabulary.html">Attribute Vocabulary</a>: 来自Istio官方文档中的Reference</li>
-<li><a href="http://istio.doczh.cn/docs/reference/config/mixer/attribute-vocabulary.html">属性词汇</a>：此文档的中文文档翻译，来自istio.doczh.cn</li>
+<li><a href="https://istio.io/docs/reference/config/mixer/attribute-vocabulary.html">Attribute Vocabulary</a>：来自Istio官方文档中的Reference</li>
+<li><a href="http://istio.doczh.cn/docs/reference/config/mixer/attribute-vocabulary.html">属性词汇</a>：此文档的中文文档翻译，来自<a href="http://istio.doczh.cn">http://istio.doczh.cn</a></li>
 </ul>
 
 <h2 id="引用属性">引用属性</h2>
@@ -329,7 +329,7 @@ target.service: example
 
 <p>这个需要从Envoy和Mixer之间的Check方法说起：</p>
 
-<pre><code>rpc Check(CheckRequest) returns (CheckResponse)
+<pre><code class="language-c++">rpc Check(CheckRequest) returns (CheckResponse)
 </code></pre>
 
 <p>在CheckRequest中，Envoy会提交所有的Attribute，而在CheckResponse的应答中，PreconditionResult 表示前置条件检查的结果：</p>
@@ -365,7 +365,7 @@ target.service: example
 <tr>
 <td>attributes</td>
 <td>CompressedAttributes</td>
-<td>mixer返回的属性。 返回的切确属性集合由mixer配置的adapter决定。这些属性用于传送新属性，这些新属性是Mixer根据输入的属性集合和它的配置派生的。</td>
+<td>mixer返回的属性。返回的切确属性集合由mixer配置的adapter决定。这些属性用于传送新属性，这些新属性是Mixer根据输入的属性集合和它的配置派生的。</td>
 </tr>
 
 <tr>
@@ -387,7 +387,7 @@ target.service: example
 
 <p><img src="https://skyao.io/post/201804-istio-mixer-cache-concepts/images/referenced-attributes.jpg" alt="img" /></p>
 
-<p>envoy在收到CheckResponse时，就可以从referencedAttributes字段的值中得知： 原来提交上去的”a=1,b=2,c=3,e=0,f=0”这样一个5个属性的集合，实际adapter使用到的只有”a,b,c”。</p>
+<p>Envoy在收到CheckResponse时，就可以从referencedAttributes字段的值中得知： 原来提交上去的”a=1,b=2,c=3,e=0,f=0”这样一个5个属性的集合，实际adapter使用到的只有”a,b,c”。</p>
 
 <h3 id="引用属性的作用">引用属性的作用</h3>
 
