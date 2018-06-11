@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 11 Jun 2018 10:56:15 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jun 2018 13:43:10 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio Mixer Cache工作原理与源码分析part3——主流程</title>
+      <link>https://servicemesher.github.io/blog/istio-mixer-cache-part3-main/</link>
+      <pubDate>Mon, 11 Jun 2018 13:43:10 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/istio-mixer-cache-part3-main/</guid>
+      <description>本文转载自敖小剑的博客 经过前面基本概念和实现原理的介绍，大家对mixer check cache应该有了基本的了解，下面我们开始展开源代码来细细研读。 Check</description>
+    </item>
     
     <item>
       <title>Istio 安全设置笔记</title>
