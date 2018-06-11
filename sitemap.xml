@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://servicemesher.github.io/blog/istio-mixer-cache-part4-signature/</loc>
+    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/blog/istio-mixer-cache-part3-main/</loc>
     <lastmod>2018-06-11T13:43:10+08:00</lastmod>
   </url>
@@ -105,7 +110,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/blog/</loc>
-    <lastmod>2018-06-11T13:43:10+08:00</lastmod>
+    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -140,13 +145,19 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/istio/</loc>
-    <lastmod>2018-06-11T13:43:10+08:00</lastmod>
+    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://servicemesher.github.io/categories/istio/</loc>
-    <lastmod>2018-06-11T13:43:10+08:00</lastmod>
+    <lastmod>2018-06-11T10:56:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/categories/istio%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -182,7 +193,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/</loc>
-    <lastmod>2018-06-11T13:43:10+08:00</lastmod>
+    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -216,7 +227,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2018-06-11T13:43:10+08:00</lastmod>
+    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
