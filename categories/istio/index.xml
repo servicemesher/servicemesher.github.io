@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 07 Jun 2018 19:19:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jun 2018 10:56:15 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio 安全设置笔记</title>
+      <link>https://servicemesher.github.io/blog/istio-security-notes-by-fleeto/</link>
+      <pubDate>Mon, 11 Jun 2018 10:56:15 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/istio-security-notes-by-fleeto/</guid>
+      <description>本文转载自 伪架构师。 Istio 为网格中的微服务提供了较为完善的安全加固功能，在不影响代码的前提下，可以从多个角度提供安全支撑，官方文档做了较为详细的</description>
+    </item>
     
     <item>
       <title>Istio Mixer Cache工作原理与源码分析part2－工作原理</title>

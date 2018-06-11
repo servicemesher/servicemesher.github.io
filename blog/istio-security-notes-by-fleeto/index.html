@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Istio 的 GitOps——像代码一样管理 Istio 配置 · Service Mesh爱好者</title>
+  <title>Istio 安全设置笔记 · Service Mesh爱好者</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="gitops, kubecon, git, CI/CD, Istio, weavecloud">
+  <meta name="keywords" content="service mesh, istio, 安全, 服务网格">
   
 
   
@@ -58,9 +58,9 @@
   <link rel="stylesheet" href="https://servicemesher.github.io/css/prism.css" />
 
   
-  <meta property="og:title" content="Istio 的 GitOps——像代码一样管理 Istio 配置" />
+  <meta property="og:title" content="Istio 安全设置笔记" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/gitops-for-istio-manage-istio-config-like-code//" />
+  <meta property="og:url" content="/blog/istio-security-notes-by-fleeto//" />
   <meta property="og:image" content="img/logo.png" />
 
   
@@ -89,9 +89,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://servicemesher.github.io/">
-                    <img src="https://servicemesher.github.io/img/logo.png" alt="Istio 的 GitOps——像代码一样管理 Istio 配置 logo" class="hidden-xs hidden-sm">
-                    <img src="https://servicemesher.github.io/img/logo-small.png" alt="Istio 的 GitOps——像代码一样管理 Istio 配置 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Istio 的 GitOps——像代码一样管理 Istio 配置 - 跳到主页</span>
+                    <img src="https://servicemesher.github.io/img/logo.png" alt="Istio 安全设置笔记 logo" class="hidden-xs hidden-sm">
+                    <img src="https://servicemesher.github.io/img/logo-small.png" alt="Istio 安全设置笔记 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Istio 安全设置笔记 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -211,7 +211,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Istio 的 GitOps——像代码一样管理 Istio 配置</h1>
+                <h1>Istio 安全设置笔记</h1>
             </div>
         </div>
     </div>
@@ -227,22 +227,21 @@ autocomplete('#aa-search-input',
 
                     <div class="col-md-9" id="blog-post">
                         <p class="text-muted mb-small text-left">
-                        作者 Anita
+                        作者 <a href="https://blog.fleeto.us/post/istio-security-notes/">崔秀龙</a>
                         
-                         | 译者 宋净超
                         
                         |
-                        2000字 | 阅读大约需要4分钟
+                        1800字 | 阅读大约需要4分钟
                         |
                         
                         
                         
-                        归档于<a href="https://servicemesher.github.io/categories/%e8%af%91%e6%96%87">译文</a>
+                        归档于<a href="https://servicemesher.github.io/categories/istio">istio</a>
                         
                         |
                         
                         发表于
-                        2018-05-31
+                        2018-06-11
                         
                         
                         <p class="text=muted mb-small text-uppercase text-left">
@@ -250,7 +249,7 @@ autocomplete('#aa-search-input',
                         
                         <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/istio/"><i>#istio</i></a>
                         
-                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/gitops/"><i>#gitops</i></a>
+                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/security/"><i>#security</i></a>
                         
                         </p>
                         
@@ -260,105 +259,238 @@ autocomplete('#aa-search-input',
                           
 
 <blockquote>
-<p>译者：<a href="https://jimmysong.io">Jimmy Song</a></p>
-
-<p>原文地址：<a href="https://www.weave.works/blog/gitops-for-istio-manage-istio-config-like-code">GitOps for Istio - Manage Istio Config like Code</a></p>
+<p>本文转载自 <a href="https://blog.fleeto.us/post/istio-security-notes/">伪架构师</a>。</p>
 </blockquote>
 
-<p>在今年的哥本哈根 Kubecon 大会上，Weaveworks 的 CEO Alexis Richardson 与 Varun Talwar（来自一家隐形创业公司）谈到了 GitOps 工作流程和 Istio。会后 Weaveworks 的 Stefan Prodan 进行了的演示，介绍如何使用 GitOps 上线和管理 Istio 的金丝雀部署。</p>
+<p><a href="https://istio.io/">Istio</a> 为网格中的微服务提供了较为完善的安全加固功能，在不影响代码的前提下，可以从多个角度提供安全支撑，<a href="https://istio.io/docs/tasks/security/">官方文档</a>做了较为详细的介绍，但是也比较破碎，这里尝试做个简介兼索引，实现过程还是要根据官方文档进行。</p>
 
-<p>会谈和演示中解释了：</p>
-
-<ul>
-<li>什么是 GitOps？为什么需要它？</li>
-<li>Istio 和 GitOps 的最佳实践是如何管理在其上运行的应用程序的。</li>
-<li>如何使用 GitOps 工作流程和 Istio 进行金丝雀部署。</li>
-</ul>
-
-<h3 id="什么是gitops">什么是GitOps？</h3>
-
-<p><a href="https://www.weave.works/blog/the-gitops-pipeline">GitOps 是实现持续交付的一种方式</a>。“GitOps 使用 Git 作为声明式基础架构和应用程序的真实来源” Alexis Richardson 说。</p>
-
-<p>当对 Git 进行更改时，自动化交付管道会上线对基础架构的更改。但是这个想法还可以更进一步——使用工具来比较实际的生产状态和源代码控制中描述的状态，然后告诉你什么时候集群的状态跟描述的不符。</p>
-
-<h3 id="git-启用声明式工具">Git 启用声明式工具</h3>
-
-<p>通过使用 Git 这样的声明式工具可以对整套配置文件做版本控制。通过将 Git 作为唯一的配置来源，可以很方便的复制整套基础架构，从而将系统的平均恢复时间从几小时缩短到几分钟。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fruc9ao41vj317o0oqq80.jpg" alt="" /></p>
-
-<h3 id="gitops-赋能开发人员拥抱运维">GitOps 赋能开发人员拥抱运维</h3>
-
-<p><a href="https://cloud.weave.works/signup">Weave Cloud</a> 的 GitOps 核心机制在于 CI/CD 工具，其关键是<a href="https://github.com/weaveworks/flux/blob/master/site/introduction.md#automated-git-cluster-synchronisation">支持 Git 集群同步</a>的持续部署（CD）和发布管理。Weave Cloud 部署专为版本控制系统和声明式应用程序堆栈而设计。以往开发人员都是使用 Git 管理代码和提交 PR（Pull Request），现在他们也可以使用 Git 来加速和简化 Kubernetes 和 Istio 等其他声明式技术的运维工作。</p>
-
-<h4 id="gitops-的三个核心原则">GitOps 的三个核心原则</h4>
-
-<p>根据 Alexis 的说法，下面描述的是为何 GitOps 既是 Kubernetes 又是云原生核心的原因：</p>
-
-<p><strong>1. GitOps 的核心是声明式配置</strong></p>
-
-<p>通过使用 Git 作为实体源，并使用 Kubernetes 做滚动更新，可以观察集群并将其与期望的状态进行比较。 <a href="https://www.weave.works/blog/gitops-operations-by-pull-request">通过将声明性配置视为代码</a>，它允许您通过在未成功时重新应用更改来强制收敛。</p>
-
-<p><strong>2. 不应该直接使用 Kubectl</strong></p>
-
-<p>根据一般规则来看，将代码经过 CI 直接 push 到生产并不是个好主意。许多人通过 CI 工具驱动部署，但是当你这样做的时候<a href="https://www.weave.works/blog/how-secure-is-your-cicd-pipeline">你可能不得不做一个访问生产的东西</a>。</p>
-
-<p><strong>3. 使用 operator 模式</strong></p>
-
-<p>通过 operator 模式，集群将始终与 Git 中签入的内容保持同步。Weave Flux 是开源的，它是使用 Istio 演示下面的金丝雀部署的基础，您可以使用 operator 管理集群中的更改。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fruc9qogakj312t0ls41d.jpg" alt="" /></p>
-
-<p>无论是开发流程还是生产流程，还是从预发到合并到生产，operator 都会将更改 pull 到集群中，即使是有多个更改也能以原子的方式部署。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fruca1y7xqj312p0jmn09.jpg" alt="" /></p>
-
-<h3 id="istio-的-gitops-工作流程">Istio 的 GitOps 工作流程</h3>
-
-<p>接下来，Varun Talwar 谈到了 Istio 是什么以及如何使用 GitOps 工作流管理应用程序。</p>
-
-<p>Istio 是一年前发布的服务网格。它是一个专用的基础设施层，用于为微服务架构中的所有服务间交互提供服务。Istio 中的所有操作都是通过声明式配置文件驱动的。也就是说像 Istio 这样的服务网格可以让开发人员在 Git 中像管理代码一样完全的管理服务行为。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frucacq5nij317u0oo46y.jpg" alt="" /></p>
-
-<p>借助 Git 工作流程，开发人员可以对 Istio 中的任何内容进行建模，包括服务行为及其交互，如超时、断路器、流量路由、负载均衡及 A/B 测试和金丝雀发布等。</p>
-
-<h3 id="跨团队的多组配置">跨团队的多组配置</h3>
-
-<p>Istio 有四个广泛的领域应用，都是通过声明式配置驱动的：</p>
+<p>Istio 的安全功能主要分为三个部分的实现：</p>
 
 <ol>
-<li>流量管理：与管理入口和服务流量有关。</li>
-<li>可观察性：监控、流量延迟、QPS、错误率等。</li>
-<li>安全性：所有服务间调用的认证与授权。</li>
-<li>性能：包括重试超时、故障注入和断路等。</li>
+<li>双向 TLS 支持。</li>
+<li>基于黑白名单的访问控制。</li>
+<li>基于角色的访问控制。</li>
+<li>JWT 认证支持。</li>
 </ol>
 
-<p>因为所有这些领域都可以跨越组织内的不同团队，所以这使得在 Istio 上管理应用程序尤其具有挑战性。</p>
+<p>首先回顾一下 Istio 网格中的服务通信过程：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frucalfge7j317u0oq7aq.jpg" alt="" /></p>
+<ol>
+<li>利用自动或者手工注入，把 Envoy Proxy 注入到每个服务 Pod 中，用 Sidecar 的方式运行。</li>
+<li>Pod 初始化过程里，使用 iptables 劫持所在 Pod 的<strong>出入</strong>流量。</li>
+<li>服务间的通信，从原来的直接通信，转换为现在的 Envoy 之间通信，Envoy 在这里同时作为客户端和服务端负载均衡组件。</li>
+<li>Envoy 的工作过程中，可能会和 Mixer、Pilot 以及 Citadel 等组件发生互动。</li>
+</ol>
 
-<p>这些配置驱动的很多设置是跨团队的。例如，有的团队想用 Zipkin 进行跟踪，而另一个团队可能想用 Jaeger。这些决策可以针对某一项服务进行，也可以跨服务进行。当决策跨越团队时，审批工作流程将变得更加复杂，并不总是原子性的。金丝雀发布不是原子的一次性事情。</p>
+<h2 id="双向-tls-支持">双向 TLS 支持</h2>
 
-<h3 id="通过-gitops-工作流程在-istio-上做金丝雀部署">通过 GitOps 工作流程在 Istio 上做金丝雀部署</h3>
+<p>双向 TLS 支持主要针对的是通信方面，把明文传输的服务通信，通过转换为 Envoy 之间的加密通信。这一安全设置较为基础，可以在全局、Namespace 或者单个服务的范围内生效。</p>
 
-<p>Stefan Prodan 向我们展示了如何使用带有 Weave Flux 和 Prometheus 的 GitOps 工作流程在 Istio 中做一次金丝雀发布——您可以在 Weave Cloud 中使用这些工具以及金丝雀部署和可观察性。</p>
+<p>这一功能主要通过两个 Istio CRD 对象来完成：</p>
 
-<p>简而言之，当您想要用一部分用户测试某些新功能时，会使用金丝雀部署或发布。传统上，您可能拥有两台几乎完全相同的服务器：一台用于所有用户，另一台用于将新功能部署到某一组用户。</p>
+<h3 id="policy">Policy</h3>
 
-<p>但通过使用 GitOps 工作流程，您可以通过 Git 控制您的金丝雀，而不是设置两个独立的服务器。当出现问题时，可以回滚到旧版本，并且可以在金丝雀部署分支上进行迭代，并继续发布，直到满足预期为止。</p>
+<p>例如 <a href="https://istio.io/docs/tasks/security/authn-policy/">Basic Authentication Policy</a> 中的一个样例，用于给单个服务设置 mtls：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frucatn3n3j312q0lw102.jpg" alt="" /></p>
+<pre><code class="language-yaml">apiVersion: &quot;authentication.istio.io/v1alpha1&quot;
+kind: &quot;Policy&quot;
+metadata:
+  name: &quot;example-2&quot;
+spec:
+  targets:
+  - name: httpbin
+  peers:
+  - mtls:
+</code></pre>
 
-<h4 id="在-weave-cloud-中-git-控制的金丝雀发布具有完全可观察性">在 Weave Cloud 中，Git 控制的金丝雀发布具有完全可观察性</h4>
+<p>其中 <code>target</code> 是可选项，如果去掉的话，作用域将扩展到整个 Namespace。</p>
 
-<p>通过流水线推送变更，您可以向用户发送部分一定比例的流量。使用 Weave Cloud，您可以在仪表板中观察金丝雀是否按预期工作。如果有问题可以继续修改，然后推出下一个版本，对其进行标记后通过同一流水线部署。这就是 GitOps 工作流程帮助您管理的迭代过程。</p>
+<h3 id="destinationrule">DestinationRule</h3>
 
-<h3 id="总结">总结</h3>
+<p>同样的一个例子里面的目标规则如下：</p>
 
-<p>Alexis Richardson 给了我们关于 GitOps 的概述，以及为什么您需要在管理运行在 Kubernetes 和 Istio 上的应用程序时考虑这种方法。然后 Varun Talwar 谈到了 Istio 是什么以及如何使用 GitOps 工作流程来管理应用程序。最后，Stefan Prodan 向我们展示了一个特殊用例，其中非原子工作流程（如金丝雀发布）也可以通过像 Istio 这样的服务网格上的 GitOps 进行管理。</p>
+<pre><code class="language-yaml">apiVersion: &quot;networking.istio.io/v1alpha3&quot;
+kind: &quot;DestinationRule&quot;
+metadata:
+  name: &quot;example-2&quot;
+spec:
+  host: httpbin.bar.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: DISABLE
+    portLevelSettings:
+    - port:
+        number: 1234
+      tls:
+        mode: ISTIO_MUTUAL
+</code></pre>
 
-<p>本次演讲的视频请见：<a href="https://www.youtube.com/watch?v=VkKMf23ZokY">GitOps for Istio - Manage Istio Config like Code - Varun Talwar &amp; Alexis Richardson</a></p>
+<p>这个也很容易理解，这一规则用于指派对该地址的访问方式：</p>
+
+<ul>
+<li><code>tls.mode = DISABLE</code>，这个服务缺省是不开启 tls 支持的，如果取值 <code>ISTIO_MUTUAL</code>，则代表这个地址（服务）的所有端口都开启 TLS。</li>
+<li><code>port...ISTIO_MUTUAL</code>，只针对这一个端口启用 mTLS 支持。</li>
+</ul>
+
+<p>创建 Policy 之后，Citadel 会生成证书文件，并传递给 Envoy，我们可以在 Envoy 容器（kube-proxy）的 <code>/etc/certs/</code> 目录中看到这几个 <code>*.pem</code> 文件。如果使用 <code>openssl x509 -text -noout</code> 查看 <code>cert-chain.pem</code> 的证书内容，会看到 spiffe 编码的 ServiceAccount 内容来作为 SAN：</p>
+
+<pre><code class="language-yaml"> X509v3 Subject Alternative Name:
+            URI:spiffe://cluster.local/ns/default/sa/default
+</code></pre>
+
+<p>规则生效之后，原有的服务间调用是没有差异的，但是如果在网格之外，就必须 https，结合上面谈到的证书来访问目标服务才能完成访问。</p>
+
+<blockquote>
+<p>另外这里也提供了<a href="https://istio.io/docs/tasks/security/plugin-ca-cert/">外部 CA 的支持</a>，可以使用已有的证书体系来替换网格内的自签发体系。</p>
+</blockquote>
+
+<h2 id="基于黑白名单的访问控制">基于黑白名单的访问控制</h2>
+
+<h3 id="黑名单">黑名单</h3>
+
+<p>下面的例子来自<a href="https://raw.githubusercontent.com/istio/istio/release-0.8/samples/bookinfo/kube/mixer-rule-deny-label.yaml">官方</a>，禁止 Reviews 的 v3 版本访问 Ratings 服务。</p>
+
+<p>首先使用 <code>denier</code> 适配器定义一个拒绝响应</p>
+
+<pre><code class="language-yaml">apiVersion: &quot;config.istio.io/v1alpha2&quot;
+kind: denier
+metadata:
+  name: denyreviewsv3handler
+spec:
+  status:
+    code: 7
+    message: Not allowed
+</code></pre>
+
+<p>这里不需要额外属性输入，因此采用了 <code>checknothing</code> 模板：</p>
+
+<pre><code class="language-yaml">apiVersion: &quot;config.istio.io/v1alpha2&quot;
+kind: checknothing
+metadata:
+  name: denyreviewsv3request
+spec:
+</code></pre>
+
+<p>最后使用 <code>rule</code> 对象把这两者联系起来，并配合一个表达式来使之生效：</p>
+
+<pre><code class="language-yaml">apiVersion: &quot;config.istio.io/v1alpha2&quot;
+kind: rule
+metadata:
+  name: denyreviewsv3
+spec:
+  match: destination.labels[&quot;app&quot;] == &quot;ratings&quot; &amp;&amp; source.labels[&quot;app&quot;]==&quot;reviews&quot; &amp;&amp; source.labels[&quot;version&quot;] == &quot;v3&quot;
+  actions:
+  - handler: denyreviewsv3handler.denier
+    instances: [ denyreviewsv3request.checknothing ]
+</code></pre>
+
+<h3 id="白名单">白名单</h3>
+
+<p>官方案例设置了一个允许 <code>v2</code> 和 <code>v3</code> 版本访问 <code>ratings</code> 服务的白名单。</p>
+
+<p>白名单适配器要使用的是 <code>listchecker</code>，提供了一个允许访问的数组。</p>
+
+<pre><code class="language-yaml">apiVersion: config.istio.io/v1alpha2
+kind: listchecker
+metadata:
+  name: whitelist
+spec:
+  # providerUrl: 可以从外部 URL 获取列表内容
+  overrides: [&quot;v1&quot;, &quot;v2&quot;]  # 静态列表
+  blacklist: false
+</code></pre>
+
+<p>需要使用一个模板将 Pod 标签转换为 <code>listchecker</code> 的版本列表。</p>
+
+<pre><code class="language-yaml">apiVersion: config.istio.io/v1alpha2
+kind: listentry
+metadata:
+  name: appversion
+spec:
+  value: source.labels[&quot;version&quot;]
+</code></pre>
+
+<p>最后使用 Rule 进行连接：</p>
+
+<pre><code class="language-yaml">apiVersion: config.istio.io/v1alpha2
+kind: rule
+metadata:
+  name: checkversion
+spec:
+  match: destination.labels[&quot;app&quot;] == &quot;ratings&quot;
+  actions:
+  - handler: whitelist.listchecker
+    instances:
+    - appversion.listentry
+</code></pre>
+
+<blockquote>
+<p>注意：如果开启了 mTLS，可以使用 <code>source.user == &quot;cluster.local/ns/default/sa/bookinfo-productpage&quot;</code> 的形式来匹配 ServiceAccount。</p>
+</blockquote>
+
+<h2 id="rbac">RBAC</h2>
+
+<blockquote>
+<p>Helm 安装时，需要设置 <code>global.rbacEnabled: true</code>。</p>
+</blockquote>
+
+<p>RBAC 提供较细粒度的访问控制。另外其中所使用的 <code>ServiceRole</code> 和 <code>ServiceRoleBinding</code> 也更直观、更加易于管理。</p>
+
+<p>例如来自<a href="https://istio.io/docs/tasks/security/role-based-access-control/">官方 Task</a> 的 <code>ServiceRole</code> 定义，这个角色允许对指定服务进行只读访问：</p>
+
+<pre><code class="language-yaml">apiVersion: &quot;config.istio.io/v1alpha2&quot;
+kind: ServiceRole
+metadata:
+  name: productpage-viewer
+  namespace: default
+spec:
+  rules:
+  - services: [&quot;productpage.default.svc.cluster.local&quot;]
+    methods: [&quot;GET&quot;]
+</code></pre>
+
+<p>如果在 Namespace 级别进行设置，则可以这样：</p>
+
+<pre><code class="language-yaml">...
+  rules:
+  - services: [&quot;*&quot;]
+    methods: [&quot;GET&quot;]
+    constraints:
+    - key: &quot;app&quot;
+      values: [&quot;productpage&quot;]
+...
+</code></pre>
+
+<p>和 Kubernetes 的 Rolebinding 类似，把用户和角色绑定起来，才能最后生效。</p>
+
+<p>例如：</p>
+
+<pre><code class="language-yaml">  - user: alice@yahoo.com
+</code></pre>
+
+<p>或者</p>
+
+<pre><code class="language-yaml">  - properties:
+      service: &quot;reviews&quot;
+      namespace: &quot;abc&quot;
+</code></pre>
+
+<blockquote>
+<p><code>subject</code> 的内容，同样属于 Adapter 模型的实现范围，因此其可选项目仍然是由 Template 的输入产生的。具体样例可以参考 <a href="https://github.com/istio/istio/blob/release-0.8/samples/bookinfo/kube/istio-rbac-enable.yaml">bookinfo 的 rbac 样板</a></p>
+</blockquote>
+
+<h2 id="jwt-认证">JWT 认证</h2>
+
+<p>没有外部认证的需求，因此就先不理了 lol。</p>
+
+<h2 id="参考链接">参考链接</h2>
+
+<ul>
+<li>安全任务：<a href="https://istio.io/docs/tasks/security">https://istio.io/docs/tasks/security</a></li>
+<li>Istio RBAC 参考：<a href="https://istio.io/docs/reference/config/istio.rbac.v1alpha1/">https://istio.io/docs/reference/config/istio.rbac.v1alpha1/</a></li>
+<li>Istio Adapters 参考：<a href="https://istio.io/docs/reference/config/policy-and-telemetry/adapters/">https://istio.io/docs/reference/config/policy-and-telemetry/adapters/</a></li>
+<li>Bookinfo 示例：<a href="https://github.com/istio/istio/blob/release-0.8/samples/bookinfo/kube/">https://github.com/istio/istio/blob/release-0.8/samples/bookinfo/kube/</a></li>
+</ul>
 
                         </div>
                         
@@ -383,9 +515,15 @@ autocomplete('#aa-search-input',
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/deepin-service-mesh-tech-details/"><i class="fa fa-link"></i>深入解读Service Mesh背后的技术细节</a></li>
+        <li><a href="/blog/service-mesh-security-addressing-attack-vectors-with-istio/"><i class="fa fa-link"></i>Service Mesh 安全：用 Istio 应对攻击</a></li>
          
         <li><a href="/blog/istio-service-mesh-tutorial/"><i class="fa fa-link"></i>Istio Service Mesh 教程</a></li>
+         
+        <li><a href="/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/"><i class="fa fa-link"></i>在 Istio 中使用 OpenTracing Baggage 进行传播和路由</a></li>
+         
+        <li><a href="/blog/tracing-grpc-with-istio/"><i class="fa fa-link"></i>在 Istio 中跟踪 gRPC</a></li>
+         
+        <li><a href="/blog/istio-mixer-cache-part2-principle/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part2－工作原理</a></li>
          
      </ul>
     </div>

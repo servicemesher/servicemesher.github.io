@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on ServiceMesher</title>
+    <link>https://servicemesher.github.io/tags/security/</link>
+    <description>Recent content in Security on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 11 Jun 2018 10:56:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://servicemesher.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Istio 安全设置笔记</title>
+      <link>https://servicemesher.github.io/blog/istio-security-notes-by-fleeto/</link>
+      <pubDate>Mon, 11 Jun 2018 10:56:15 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/istio-security-notes-by-fleeto/</guid>
+      <description>本文转载自 伪架构师。 Istio 为网格中的微服务提供了较为完善的安全加固功能，在不影响代码的前提下，可以从多个角度提供安全支撑，官方文档做了较为详细的</description>
+    </item>
+    
+  </channel>
+</rss>
