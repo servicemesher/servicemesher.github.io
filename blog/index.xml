@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 11 Jun 2018 20:40:28 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 12 Jun 2018 15:06:25 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio服务网格的崛起</title>
+      <link>https://servicemesher.github.io/blog/the-rise-of-the-istio-service-mesh/</link>
+      <pubDate>Tue, 12 Jun 2018 15:06:25 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/the-rise-of-the-istio-service-mesh/</guid>
+      <description>原文链接：https://www.infoworld.com/article/3273547/containers/the-rise-of-</description>
+    </item>
     
     <item>
       <title>Twistlock使Istio的安全层更强大，更易于监控</title>
