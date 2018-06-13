@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 12 Jun 2018 15:06:25 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 13 Jun 2018 18:58:33 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>蚂蚁金服是如何实现经典服务化架构向Service Mesh方向演进的？</title>
+      <link>https://servicemesher.github.io/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</link>
+      <pubDate>Wed, 13 Jun 2018 18:58:33 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</guid>
+      <description>蚂蚁金服在服务化上面已经经过多年的沉淀，支撑了每年双十一的高峰峰值。Service Mesh 作为微服务的一个新方向，在最近两年成为领域的一个大热点，</description>
+    </item>
     
     <item>
       <title>Istio服务网格的崛起</title>
@@ -224,7 +233,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://servicemesher.github.io/contact/</guid>
-      <description>您可以通过以下方式联系我们 微信群 请联系管理员，加入微信群 GitHub https://github.com/servicemesher 微信公众号 ServiceMesher 线下 meetup 请访问活动页面了解 meetup 安排。</description>
+      <description>我们是 Service Mesh 爱好者社区，我们的使命是：传播 Service Mesh 技术、加强行业内部交流、推动 Service Mesh 在企业落地。 联系方式 微信群 请联系管理员，加入微信群 GitHub https://github.com/servicemesher 微信公众号</description>
     </item>
     
   </channel>

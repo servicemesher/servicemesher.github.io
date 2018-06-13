@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 12 Jun 2018 15:06:25 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 13 Jun 2018 18:58:33 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>蚂蚁金服是如何实现经典服务化架构向Service Mesh方向演进的？</title>
+      <link>https://servicemesher.github.io/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</link>
+      <pubDate>Wed, 13 Jun 2018 18:58:33 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</guid>
+      <description>蚂蚁金服在服务化上面已经经过多年的沉淀，支撑了每年双十一的高峰峰值。Service Mesh 作为微服务的一个新方向，在最近两年成为领域的一个大热点，</description>
+    </item>
     
     <item>
       <title>Istio服务网格的崛起</title>
