@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>使用 Minikube-in-a-Container 和 Jenkins 构建 Istio · Service Mesh爱好者</title>
+  <title>轻量 Service Mesh 在 Ucloud 的实践 · Service Mesh爱好者</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="minikube, 容器, Jenkis, Istio, CI/CD, Jenkinsfile">
+  <meta name="keywords" content="service mesh, 服务网格, UCloud">
   
 
   
@@ -58,9 +58,9 @@
   <link rel="stylesheet" href="https://servicemesher.github.io/css/prism.css" />
 
   
-  <meta property="og:title" content="使用 Minikube-in-a-Container 和 Jenkins 构建 Istio" />
+  <meta property="og:title" content="轻量 Service Mesh 在 Ucloud 的实践" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/building-istio-with-minikube-in-a-container-and-jenkins//" />
+  <meta property="og:url" content="/blog/lightweight-service-mesh-practice-in-ucloud//" />
   <meta property="og:image" content="img/logo.png" />
 
   
@@ -89,9 +89,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://servicemesher.github.io/">
-                    <img src="https://servicemesher.github.io/img/logo.png" alt="使用 Minikube-in-a-Container 和 Jenkins 构建 Istio logo" class="hidden-xs hidden-sm">
-                    <img src="https://servicemesher.github.io/img/logo-small.png" alt="使用 Minikube-in-a-Container 和 Jenkins 构建 Istio logo" class="visible-xs visible-sm">
-                    <span class="sr-only">使用 Minikube-in-a-Container 和 Jenkins 构建 Istio - 跳到主页</span>
+                    <img src="https://servicemesher.github.io/img/logo.png" alt="轻量 Service Mesh 在 Ucloud 的实践 logo" class="hidden-xs hidden-sm">
+                    <img src="https://servicemesher.github.io/img/logo-small.png" alt="轻量 Service Mesh 在 Ucloud 的实践 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">轻量 Service Mesh 在 Ucloud 的实践 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -211,7 +211,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>使用 Minikube-in-a-Container 和 Jenkins 构建 Istio</h1>
+                <h1>轻量 Service Mesh 在 Ucloud 的实践</h1>
             </div>
         </div>
     </div>
@@ -227,29 +227,29 @@ autocomplete('#aa-search-input',
 
                     <div class="col-md-9" id="blog-post">
                         <p class="text-muted mb-small text-left">
-                        作者 Andrew Jenkins
+                        作者 <a href="https://mp.weixin.qq.com/s/R5lHgGH5jz992S3eL2FTJw">徐亮</a>
                         
                         
                         |
-                        3400字 | 阅读大约需要7分钟
+                        2800字 | 阅读大约需要6分钟
                         |
                         
                         
                         
-                        归档于<a href="https://servicemesher.github.io/categories/%e8%af%91%e6%96%87">译文</a>
+                        归档于<a href="https://servicemesher.github.io/categories/service-mesh">service mesh</a>
                         
                         |
                         
                         发表于
-                        2018-06-04
+                        2018-06-14
                         
                         
                         <p class="text=muted mb-small text-uppercase text-left">
                         标签
                         
-                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/istio/"><i>#istio</i></a>
+                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/service-mesh/"><i>#service mesh</i></a>
                         
-                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/jenkins/"><i>#jenkins</i></a>
+                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/ucloud/"><i>#UCloud</i></a>
                         
                         </p>
                         
@@ -259,267 +259,100 @@ autocomplete('#aa-search-input',
                           
 
 <blockquote>
-<p>原文链接：<a href="https://blog.aspenmesh.io/blog/2018/01/building-istio-with-minikube-in-a-container-and-jenkins/">https://blog.aspenmesh.io/blog/2018/01/building-istio-with-minikube-in-a-container-and-jenkins/</a></p>
-
-<p>作者：Andrew Jenkins</p>
-
-<p>译者：戴佳顺</p>
+<p>UCloud 作为一家To B的公有云服务商，我们的CTO莫显峰经常说：“研发团队最首要的任务是提供稳定的服务，然后才是提供符合客户需求的、易用和低成本的产品”。但事实是，在提供稳定云服务的同时，面对快速发展的客户业务场景，我们还需要不断 “拥抱变化”。</p>
 </blockquote>
 
-<p>AspenMesh提供一种Istio的分布式架构支持，这意味着即使与上游Istio项目无关，我们也需要能够测试和修复Bug。为此我们已开发构建了我们自己的打包和测试基础架构方案。如果你对Istio的CI（持续集成）也感兴趣，请参考我们已经投入使用，可能有用但还没有提交给Circle CI或GKE的组件。</p>
-
-<p>这篇文章描述的是我们如何制作一个新的<code>Minikube-in-a-Container</code>容器和使用<code>Jenkins Pipeline</code>来构建和测试Istio的流程脚本。如果你觉得有必要，你可以通过<code>docker run</code>上运行minikube容器，然后在容器中部署功能性的kubernetes集群，不需要使用时可随时删除。Jenkins bits现在可帮助你构建Istio，也可以作为初始环境，以便在容器内构建容器。</p>
-
-<h2 id="minikube-in-a-container">Minikube-in-a-container</h2>
-
-<p>这部分描述了我们如何构建一个可以在构建过程中用来运行Istio冒烟测试的Minikube-in-a-container镜像。我们最初不是这么想的，我们最初使用本地localkube环境。我们不能让它在特定环境外工作，我们认为这是由于localkube和minikube之间有一点差异导致的。所以这是一个作为我们修复它使它能正常工作的记录。我们还添加了一些额外选项和工具，以便在生成的容器中使用Istio。这没有什么太多花样，但如果你要做类似的事情，我们希望它给你启发。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1frx72gvbeqj20az0960t7.jpg" alt="minikube" /></p>
-
-<p><a href="https://github.com/kubernetes/minikube">Minikube</a>可能对你来说是一个可以在随身携带的笔记本上通过虚机运行自己kubernetes集群的非常熟悉的项目。这种方法非常方便，但在某些情况下（比如不提供嵌套虚拟化的云提供商），你就不能或者不希望基于虚机来完成了。由于docker现在可以运行在docker内部，我们决定尝试在docker容器内制作我们自己的kubernetes集群。一个非持久性的kubernetes容器很容易启动，也可进行一些测试，并在完成后进行删除。同时这也非常适合持续集成。</p>
-
-<p>在我们的模型方案中，Kubernetes集群创建子docker容器（而不是Jérôme Petazzoni所<a href="http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/">提到</a>的兄弟容器方案）。我们是故意这样做的，宁愿隔离子容器，而不是共享Docker构建的缓存。但是你应该在将你应用改造为DinD（docker in docker）之前阅读Jérôme的文章，也许DooD（在docker out of docker）是对你而言更好的方案。这篇文章供你参考。我们避免架构“变得更坏”的同时，对看起来“坏”和“丑”部分也应进行避免。</p>
-
-<p>当你启动docker容器时，会要求docker在OS内核中创建和设置一些命名空间（namespaces），然后在通过这些命名空间启动你的容器。命名空间像一个沙箱：当你在命名空间中（即通过命名空间隔离），通常只能看到命名空间内的东西。chroot命令，不仅影响文件系统，还影响PID，网络接口等。如果你通过 <code>--privileged</code> 参数启动了一个docker容器，那么所涉及的命名空间隔离将获得额外的权限，比如创建更多子命名空间隔离的能力。这是完成docker-in-docker（即在docker中运行docker）的核心技巧。有关更多细节，Jérôme是这方面的专家，请在<a href="https://blog.docker.com/2013/09/docker-can-now-run-within-docker/">这里</a>关注他的详细说明。</p>
-
-<p>总之，这就是大致步骤：</p>
+<p>Max Kanat-Alexander 在《简约之美：软件设计之道》（Code Simplicity）中提出的软件设计的 6 条法则恰到好处的描述了这一矛盾的事实，具体内容如下：</p>
 
 <ol>
-<li><p>构建一个容器环境，完成docker，minikube，kubectl和依赖项的安装。</p></li>
-
-<li><p>添加一个假的systemctl shim来欺骗Minikube在没有真正安装systemd的环境中运行。</p></li>
-
-<li><p>使用 <code>--privileged</code> 参数启动容器</p></li>
-
-<li><p>让容器启动它自己内部的dockerd，这就是DinD的一部分。</p></li>
-
-<li><p>让容器通过参数 <code>minikube --vm-driver = none</code> 启动minikube，以便在容器中的minikube可以与与之一起运行的dockerd连接。</p></li>
+<li>软件的目的是帮助他人；</li>
+<li>相比降低开发成本，更重要的是降低维护成本；</li>
+<li>变化定律：软件存在的时间越久，它的某部分需要变化的可能性越大；</li>
+<li>缺陷定律：软件出现缺陷的可能性，正比于你对它所做修改的程度；</li>
+<li>简洁定律：软件任一部分的维护难度，正比于该部分的复杂程度；</li>
+<li>测试定律：你对软件行为的了解程度，等于你真正测试它的程度。</li>
 </ol>
 
-<p>所有你需要做的就是通过 <code>docker run --privileged</code> 运行容器，接着你就可以去使用kubectl了。这时如果你愿意，你可以在容器内运行kubectl，并得到一个真正的用完可随时删除的环境。</p>
+<p>正像法则1、3、4和6所说的软件的目的就是满足客户的需求，而随着时间的推移，用户需求总会改变；伴随着用户需求的改变，软件也需要适应新的需求而做修改，修改必然会引入缺陷；如果要排除缺陷就必须进行测试。</p>
 
-<p>你现在可以试试它：</p>
+<p>但目前软件行业的现状大部分面临这样的问题，即无论花多大的成本去测试，真正的用户行为背后的需求总是不可能被完全满足的，缺陷总是会有的，这时我们最后的安全网就是“灰度发布”（又名“金丝雀发布”）。在采用用户真实行为作为终极测试的同时，通过控制变更范围尽可能的减少风险；一旦真的有缺陷可以快速回滚，尽可能以最大程度降低影响。</p>
 
-<pre><code class="language-bash">docker run --privileged --rm -it quay.io/aspenmesh/minikube-dind
-docker exec -it &lt;container&gt; /bin/bash
-# kubectl get nodes
-&lt;....&gt;
-# kubectl create -f https://k8s.io/docs/tasks/debug-application-cluster/shell-demo.yaml
-# kubectl exec -it shell-demo -- /bin/bash
-</code></pre>
+<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsaihrzqrjj30fo0hwgwj.jpg" alt="金丝雀" /></p>
 
-<p>当你退出时，启动时 <code>--rm</code> 参数使docker容器实例会被卸载并完全删除。</p>
+<h2 id="为何采用service-mesh实现灰度发布">为何采用Service Mesh实现灰度发布</h2>
 
-<p>对于比较重量级的使用方案，你可能需要通过<code>docker cp</code>命令将kubeconfig文件存放到主机上，并通过8443端口暴露的kube API与容器内的kubernetes进行通信。</p>
+<p>Service Mesh 是用来处理各服务间通信的基础设施层。它主要通过构建云原生应用程序的各种复杂拓扑结构来完成传递请求。实际上，Service Mesh 通常与应用程序代码一起部署轻量级网络代理的阵列来实现请求。</p>
 
-<p>下面是可以使用的Dockerfile（你可以复制它，其中的相关支持脚本在<a href="https://gist.github.com/andrewjjenkins/798f5c736a187d616d256095662c0a76">这里</a>）：</p>
+<p>在Service Mesh之前，我们已经采用了APIGateway来实现灰度发布，但APIGateway通常仅部署在用户流量的入口，完全灰度发布就需要完整地部署两套系统。但是在微服务时代，任何一个微服务发生变更都需要完整地部署两套系统，这不仅成本很高而且严重影响了产品变更的速度。</p>
 
-<pre><code class="language-bash"># Portions Copyright 2016 The Kubernetes Authors All rights reserved.
-# Portions Copyright 2018 AspenMesh
-#
-# Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# Based on:
-# https://github.com/kubernetes/minikube/tree/master/deploy/docker/localkube-dind
+<p>而Service Mesh正好可以解决这些问题，它的应用类似于将APIGateway部署到本地，同时提供了集中化控制，极大地简化了灰度发布的实现流程、降低了变更成本、同时加快了产品发布的进度。</p>
 
+<h2 id="为何采用轻量service-mesh">为何采用轻量Service Mesh</h2>
 
-FROM debian:jessie
+<p>正如敖小剑在《DreamMesh抛砖引玉》系列文章中提到的：“Service Mesh 的发展进程，当前还处于前景虽然一致看好，但是脚下的路还处于需要一步一步走的早期艰难阶段。由于 Istio 和 Conduit 的尚未成熟，造成目前 Service Mesh 青黄不接的尴尬局面。” 到底该如何让Service Mesh落地，这也是我们在2017年10月选择了Service Mesh之后面临的难题。</p>
 
-# Install minikube dependencies
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -y &amp;&amp; \
-  DEBIAN_FRONTEND=noninteractive apt-get -yy -q --no-install-recommends install \
-  iptables \
-  ebtables \
-  ethtool \
-  ca-certificates \
-  conntrack \
-  socat \
-  git \
-  nfs-common \
-  glusterfs-client \
-  cifs-utils \
-  apt-transport-https \
-  ca-certificates \
-  curl \
-  gnupg2 \
-  software-properties-common \
-  bridge-utils \
-  ipcalc \
-  aufs-tools \
-  sudo \
-  &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get clean &amp;&amp; \
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+<p>Istio可以提供一个完整的解决方案，通过为整个服务网格（Service Mesh）提供行为检测和操作控制来满足微服务应用程序的各种需求。它在服务网络中提供了许多关键功能例如：流量管理、可观察性、策略执行、服务身份和安全、平台支持、集成和定制。</p>
 
-# Install docker
-RUN \
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - &amp;&amp; \
-  apt-key export &quot;9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88&quot; | gpg - &amp;&amp; \
-  echo &quot;deb [arch=amd64] https://download.docker.com/linux/debian jessie stable&quot; &gt;&gt; \
-    /etc/apt/sources.list.d/docker.list &amp;&amp; \
-  DEBIAN_FRONTEND=noninteractive apt-get update &amp;&amp; \
-  DEBIAN_FRONTEND=noninteractive apt-get -yy -q --no-install-recommends install \
-    docker-ce \
-  &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get clean &amp;&amp; \
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-VOLUME /var/lib/docker
-EXPOSE 2375
+<p>事实上我对Istio的流量管理DSL非常满意，同时通过评测也能够接受Envoy的性能开销，从当时来看Istio确实是一个非常优秀的且是唯一的候选者。但敖小剑在《DreamMesh抛砖引玉》描述的几个问题，也困扰着我是否采用Istio:</p>
 
-# Install minikube
-RUN curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.24.1/minikube-linux-amd64 &amp;&amp; chmod +x minikube
-ENV MINIKUBE_WANTUPDATENOTIFICATION=false
-ENV MINIKUBE_WANTREPORTERRORPROMPT=false
-ENV CHANGE_MINIKUBE_NONE_USER=true
-# minikube --vm-driver=none checks systemctl before starting.  Instead of
-# setting up a real systemd environment, install this shim to tell minikube
-# what it wants to know: localkube isn't started yet.
-COPY fake-systemctl.sh /usr/local/bin/systemctl
-EXPOSE 8443
+<p><strong>1. Ready for Cloud Native?</strong></p>
 
-# Install kubectl
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.9.1/bin/linux/amd64/kubectl &amp;&amp; \
-  chmod a+x kubectl &amp;&amp; \
-  mv kubectl /usr/local/bin
+<p>我们目前并没有采用K8S，事实上我们所开发的IaaS控制面程序，本身就和K8S的功能类似。</p>
 
-# Copy local start.sh
-COPY start.sh /start.sh
-RUN chmod a+x /start.sh
+<p><strong>2. 如何从非 Service Mesh 体系过渡到 Service Mesh？</strong></p>
 
-# If nothing else specified, start up docker and kubernetes.
-CMD /start.sh &amp; sleep 4 &amp;&amp; tail -F /var/log/docker.log /var/log/dind.log /var/log/minikube-start.log
-</code></pre>
+<p>我们有大量既有的服务。</p>
 
-<h2 id="istio整合jenkins">Istio整合Jenkins</h2>
+<p><strong>3. 零侵入的代价</strong></p>
 
-<p>现在我们已经构建了Kubernetes-in-a-container环境，我们可以将它用于我们的Istio版本。将构建系统Docker化非常有好处，因为开发人员可以快速创建用于CI构建的真实可用实例。以下是我们用于Istio构建的CI大致架构：</p>
+<p>K8S的网络方案已经是非常复杂且性能堪忧了，再通过IPTables来透明引流确实是雪上加霜，给未来的运维、Trouble-Shooting带来了很高的复杂度。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1frx9by15u1j20b20bhdgg.jpg" alt="" /></p>
+<p><strong>4. 网络通讯方案</strong></p>
 
-<ol>
-<li><p><strong>Jenkins工作节点</strong>： 这是一个让Jenkins运行构建作业的虚拟机。它可能在同一时间被多个不同的构建作业共享。我们在工作节点上安装的任何工具对每个构建作业而言都是本地范围内（因此它不会影响其他构建），同时工作节点生命周期是临时短暂的（我们为了节省成本自动弹性缩放Jenkins工作节点），这一点很重要。</p></li>
+<p>目前我们主要使用gRPC和HTTP，但仍有数据库服务等业务不适合跑在K8S中，而K8S的网络方案需要能够兼容现有的数据库等业务。</p>
 
-<li><p><strong>Minikube容器</strong>： 我们所做的第一件事就是构建并进入到我们上文所谈到的Minikube容器。构建作业的其余部分在此容器（或其子容器）内进行。Jenkins打包的工作区挂载到这里。Jenkins的docker插件负责在成功或失败后卸载删除这个我们需要清理的，涉及正在运行的Kubernetes和Istio相关组件的容器。</p></li>
+<h2 id="如何实现轻量service-mesh">如何实现轻量Service Mesh</h2>
 
-<li><p><strong>构建作业的容器</strong>：这是一个包含安装golang相关及其他构建工具的容器。这是我们编译Istio并构建其容器的地方。我们在minikube容器中测试这些组件，如果测试通过，则认为构建成功并将容器推送到我们的容器仓库中。</p></li>
-</ol>
+<p>Istio在逻辑上可以分为数据面板和控制面板，这两部分的具体功能如下：</p>
 
-<p>Jenkinsfile的大部分内容都是关于如何设置这些部分。接着，我们运行相同的步骤来构建Istio，以便在你的笔记本上进行 <code>make depend</code>、<code>make build</code>、<code>make test</code> 。</p>
+<ul>
+<li>数据面板由一组智能代理（Envoy）组成，代理部署为sidecar，调解和控制微服务之间所有的网络通信。</li>
+<li>控制面板负责管理和配置代理来路由流量，以及在运行时执行策略。</li>
+</ul>
 
-<p>在这里查看Jenkinsfile：</p>
+<p>下图是构成每个面板的不同组件：</p>
 
-<pre><code class="language-lua">node('docker') {
-  properties([disableConcurrentBuilds()])
+<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsaijefq2qj30hs09e0vi.jpg" alt="Istio 架构图" /></p>
 
-  wkdir = &quot;src/istio.io/istio&quot;
+<p>经过一些代码级别的Research之后，我们最终选择了将Pilot从Istio中剥离出来，脱离K8S运行的轻量级Service Mesh方案。</p>
 
-  stage('Checkout') {
-    checkout scm
-  }
+<p><strong>1.从Istio中剥离Pilot和Envoy</strong></p>
 
-  // withRegistry writes to /home/ubuntu/.dockercfg outside of the container
-  // (even if you run it inside the docker plugin) which won't be visible
-  // inside the builder container, so copy them somewhere that will be
-  // visible.  We will symlink to .dockercfg only when needed to reduce
-  // the chance of accidentally using the credentials outside of push
-  docker.withRegistry('https://quay.io', 'name-of-your-credentials-in-jenkins') {
-    stage('Load Push Credentials') {
-      sh &quot;cp ~/.dockercfg ${pwd()}/.dockercfg-quay-creds&quot;
-    }
-  }
+<p>在Istio中Pilot作为Envoy的控制面板提供集中式流量管理功能的模块，这是实现灰度发布必不可少的功能，事实上也是Service Mesh的核心功能。Mixer提供访问策略和控制功能，Istio-Auth提供安全认证功能，但在UCloud的内网环境下，我们可以将这两个模块去掉。</p>
 
-  k8sImage = docker.build(
-    &quot;k8s-${env.BUILD_TAG}&quot;,
-    &quot;-f $wkdir/.jenkins/Dockerfile.minikube &quot; +
-    &quot;$wkdir/.jenkins/&quot;
-  )
-  k8sImage.withRun('--privileged') { k8s -&gt;
-    stage('Get kubeconfig') {
-      sh &quot;docker exec ${k8s.id} /bin/bash -c \&quot;while ! [ -e /kubeconfig ]; do echo waiting for kubeconfig; sleep 3; done\&quot;&quot;
-      sh &quot;rm -f ${pwd()}/kubeconfig &amp;&amp; docker cp ${k8s.id}:/kubeconfig ${pwd()}/kubeconfig&quot;
+<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsaijtidnzj30hs0edq67.jpg" alt="Istio Pilot架构图" /></p>
 
-      // Replace &quot;127.0.0.1&quot; with the path that peer containers can use to
-      // get to minikube.
-      // minikube will bake certs including the subject &quot;kubernetes&quot; so
-      // the kube-api server needs to be reachable from the client's concept
-      // of &quot;https://kubernetes:8443&quot; or kubectl will refuse to connect. 
-      sh &quot;sed -i'' -e 's;server: https://127.0.0.1:8443;server: https://kubernetes:8443;' kubeconfig&quot;
-    }
+<p>得益于Pilot的良好设计，ETCD Platform很容易实现，进而从ETCD获取Service和ServiceInstance信息。然后我们重写了Pilot的main.go，保留了Pilot的model、proxy和proxy/envoy模块；删除其他的Platform仅保留新增的ETCD Platform。</p>
 
-    builder = docker.build(
-      &quot;istio-builder-${env.BUILD_TAG}&quot;,
-      &quot;-f $wkdir/.jenkins/Dockerfile.jenkins-build &quot; +
-        &quot;--build-arg UID=`id -u` --build-arg GID=`id -g` &quot; +
-        &quot;$wkdir/.jenkins&quot;,
-    )
+<p>最后我们在保留完整的Istio DSL支持的同时，得到了完全脱离K8S运行和编译的Pilot。同时我们将Pilot和ETCD gRPC naming and discovery做了深度整合，自动剔除没有在线的ServiceInstance信息。</p>
 
-    builder.inside(
-      &quot;-e GOPATH=${pwd()} &quot; +
-      &quot;-e HOME=${pwd()} &quot; +
-      &quot;-e PATH=${pwd()}/bin:\$PATH &quot; +
-      &quot;-e KUBECONFIG=${pwd()}/kubeconfig &quot; +
-      &quot;-e DOCKER_HOST=\&quot;tcp://kubernetes:2375\&quot; &quot; +
-      &quot;--link ${k8s.id}:kubernetes&quot;
-    ) {
-      stage('Check') {
-        sh &quot;ls -al&quot;
+<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsaik5pa5ej30hs0bg41v.jpg" alt="YAML" /></p>
 
-        // If there are old credentials from a previous build, destroy them -
-        // we will only load them when needed in the push stage
-        sh &quot;rm -f ~/.dockercfg&quot;
+<p><strong>2.采用docker-compose管理container实现sidecar</strong></p>
 
-        sh &quot;cd $wkdir &amp;&amp; go get -u github.com/golang/lint/golint&quot;
-        sh &quot;cd $wkdir &amp;&amp; make check&quot;
-      }
+<p>我们仍然采用container的方式打包和部署微服务，但采用Host的网络方式简化了现存服务的网络通信方式。为了实现Envoy的sidecar部署，我们采用docker-compose模拟k8s的POD，管理服务间的依赖关系。通过实现一个简单的服务管理、版本管理、集群管理、路由策略管理层，为集群中的每台Node（VM或物理服务器）生成docker-compose配置文件，从而实现每台Node的服务部署和管理。</p>
 
-      stage('Build') {
-        sh &quot;cd $wkdir &amp;&amp; make depend&quot;
-        sh &quot;cd $wkdir &amp;&amp; make build&quot;
-      }
+<p>最后针对HTTP 1.0、HTTP 2.0和gRPC的RPC方式，采用显式代理而不是IPTables透明引流和Envoy集成。</p>
 
-      stage('Test') {
-        sh &quot;cp kubeconfig $wkdir/pilot/platform/kube/config&quot;
-        sh &quot;&quot;&quot;PROXYVERSION=\$(grep envoy-debug $wkdir/pilot/docker/Dockerfile.proxy_debug  |cut -d: -f2) &amp;&amp;
-          PROXY=debug-\$PROXYVERSION &amp;&amp;
-          curl -Lo - https://storage.googleapis.com/istio-build/proxy/envoy-\$PROXY.tar.gz | tar xz &amp;&amp;
-          mv usr/local/bin/envoy ${pwd()}/bin/envoy &amp;&amp;
-          rm -r usr/&quot;&quot;&quot;
-        sh &quot;cd $wkdir &amp;&amp; make test&quot;
-      }
+<ul>
+<li>如果服务中配置了Envoy的Proxy Port，则通过Envoy接入Service Mesh；</li>
+<li>如果配置是IP地址和端口，则直连这个地址；</li>
+<li>如果配置的是域名且没有配置Envoy的Proxy，则自动采用ETCD gRPC naming and discovery的方式去发现远端服务。</li>
+</ul>
 
-      stage('Push') {
-        sh &quot;cd &amp;&amp; ln -sf .dockercfg-quay-creds .dockercfg&quot;
-        sh &quot;cd $wkdir &amp;&amp; &quot; +
-          &quot;make HUB=yourhub TAG=$BUILD_TAG push&quot;
-        gitTag = getTag(wkdir)
-        if (gitTag) {
-          sh &quot;cd $wkdir &amp;&amp; &quot; +
-            &quot;make HUB=yourhub TAG=$gitTag push&quot;
-        }
-        sh &quot;cd &amp;&amp; rm .dockercfg&quot;
-      }
-    }
-  }
-}
+<h2 id="总结">总结</h2>
 
-String getTag(String wkdir) {
-  return sh(
-    script: &quot;cd $wkdir &amp;&amp; &quot; +
-      &quot;git describe --exact-match --tags \$GIT_COMMIT || true&quot;,
-    returnStdout: true
-  ).trim()
-}
-</code></pre>
-
-<p>如果你想获取本文中的文件和支持脚本，你可以点击<a href="https://gist.github.com/andrewjjenkins/798f5c736a187d616d256095662c0a76">这里</a>。</p>
+<p>通过一系列的设计改造，最终我们得到了一个轻量的Service Mesh实践，实现了优化灰度发布的目标。在保证了更好的控制变更范围的同时，也能以提供更稳定的服务为最终目的。</p>
 
                         </div>
                         
@@ -544,13 +377,15 @@ String getTag(String wkdir) {
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/gitops-for-istio-manage-istio-config-like-code/"><i class="fa fa-link"></i>Istio 的 GitOps——像代码一样管理 Istio 配置</a></li>
+        <li><a href="/blog/8-ways-a-service-mesh-eases-microservices-deployment/"><i class="fa fa-link"></i>服务网格：8种方式简化微服务部署</a></li>
          
-        <li><a href="/blog/istio-0.8-release-note/"><i class="fa fa-link"></i>Istio 0.8 发布了！</a></li>
+        <li><a href="/blog/the-path-to-service-mesh/"><i class="fa fa-link"></i>服务网格之路</a></li>
          
-        <li><a href="/blog/deepin-service-mesh-tech-details/"><i class="fa fa-link"></i>深入解读Service Mesh背后的技术细节</a></li>
+        <li><a href="/blog/the-desigin-patterns-for-a-commercial-service-mesh/"><i class="fa fa-link"></i>一个商用级Service Mesh服务的设计之道</a></li>
          
-        <li><a href="/blog/istio-service-mesh-tutorial/"><i class="fa fa-link"></i>Istio Service Mesh 教程</a></li>
+        <li><a href="/blog/service-mesh-rebuild-microservice-market/"><i class="fa fa-link"></i>Service Mesh：重塑微服务市场</a></li>
+         
+        <li><a href="/blog/istio-security-notes-by-fleeto/"><i class="fa fa-link"></i>Istio 安全设置笔记</a></li>
          
      </ul>
     </div>

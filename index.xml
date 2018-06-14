@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 13 Jun 2018 18:58:33 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 Jun 2018 10:43:16 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>轻量 Service Mesh 在 Ucloud 的实践</title>
+      <link>https://servicemesher.github.io/blog/lightweight-service-mesh-practice-in-ucloud/</link>
+      <pubDate>Thu, 14 Jun 2018 10:43:16 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/lightweight-service-mesh-practice-in-ucloud/</guid>
+      <description>UCloud 作为一家To B的公有云服务商，我们的CTO莫显峰经常说：“研发团队最首要的任务是提供稳定的服务，然后才是提供符合客户需求的、易用和低成本的</description>
+    </item>
     
     <item>
       <title>蚂蚁金服是如何实现经典服务化架构向Service Mesh方向演进的？</title>
