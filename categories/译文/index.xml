@@ -6,10 +6,19 @@
     <description>Recent content in 译文 on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 19 Jun 2018 15:54:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Jun 2018 18:04:08 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Service Mesh来充分利用微服务</title>
+      <link>https://servicemesher.github.io/blog/making-most-out-microservices-service-mesh/</link>
+      <pubDate>Tue, 19 Jun 2018 18:04:08 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/making-most-out-microservices-service-mesh/</guid>
+      <description>原文：https://www.linux.com/blog/event/kubecon/2018/4/making-most-out-mic</description>
+    </item>
     
     <item>
       <title>服务网格在Cookpad网站中的实践</title>
