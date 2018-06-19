@@ -6,10 +6,19 @@
     <description>Recent content in 译文 on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 12 Jun 2018 15:06:25 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Jun 2018 11:42:58 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>WePay如何使用Linkerd作为服务网格代理</title>
+      <link>https://servicemesher.github.io/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</link>
+      <pubDate>Tue, 19 Jun 2018 11:42:58 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</guid>
+      <description>原文地址：Using Linkerd as a Service Mesh Proxy at WePay 作者：Mohsen Rezaei 译者：Kael Zhang 在接下来的几个月中，我们将撰写一系列文章来记录从传统负载均衡器到谷歌</description>
+    </item>
     
     <item>
       <title>Istio服务网格的崛起</title>

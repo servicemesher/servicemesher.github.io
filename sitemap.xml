@@ -199,12 +199,6 @@
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/categories/linkerd/</loc>
-    <lastmod>2018-06-19T11:42:58+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://servicemesher.github.io/tags/opentracing/</loc>
     <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
@@ -292,7 +286,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/</loc>
-    <lastmod>2018-06-12T15:06:25+08:00</lastmod>
+    <lastmod>2018-06-19T11:42:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
