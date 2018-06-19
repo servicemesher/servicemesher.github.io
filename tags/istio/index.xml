@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 12 Jun 2018 15:06:25 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Jun 2018 15:54:19 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格在Cookpad网站中的实践</title>
+      <link>https://servicemesher.github.io/blog/service-mesh-in-cookpad/</link>
+      <pubDate>Tue, 19 Jun 2018 15:54:19 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/service-mesh-in-cookpad/</guid>
+      <description>原文：http://techlife.cookpad.com/entry/2018/06/11/100355 作者：Taiki 译者：殷龙飞 校对</description>
+    </item>
     
     <item>
       <title>Istio服务网格的崛起</title>
