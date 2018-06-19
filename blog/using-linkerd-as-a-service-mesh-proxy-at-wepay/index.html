@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Istio服务网格的崛起 · Service Mesh爱好者</title>
+  <title>WePay如何使用Linkerd作为服务网格代理 · Service Mesh爱好者</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh, istio, 微服务">
+  <meta name="keywords" content="service mesh, linkerd, wepay">
   
 
   
@@ -58,9 +58,9 @@
   <link rel="stylesheet" href="https://servicemesher.github.io/css/prism.css" />
 
   
-  <meta property="og:title" content="Istio服务网格的崛起" />
+  <meta property="og:title" content="WePay如何使用Linkerd作为服务网格代理" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/the-rise-of-the-istio-service-mesh//" />
+  <meta property="og:url" content="/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay//" />
   <meta property="og:image" content="img/logo.png" />
 
   
@@ -89,9 +89,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://servicemesher.github.io/">
-                    <img src="https://servicemesher.github.io/img/logo.png" alt="Istio服务网格的崛起 logo" class="hidden-xs hidden-sm">
-                    <img src="https://servicemesher.github.io/img/logo-small.png" alt="Istio服务网格的崛起 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Istio服务网格的崛起 - 跳到主页</span>
+                    <img src="https://servicemesher.github.io/img/logo.png" alt="WePay如何使用Linkerd作为服务网格代理 logo" class="hidden-xs hidden-sm">
+                    <img src="https://servicemesher.github.io/img/logo-small.png" alt="WePay如何使用Linkerd作为服务网格代理 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">WePay如何使用Linkerd作为服务网格代理 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -211,7 +211,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Istio服务网格的崛起</h1>
+                <h1>WePay如何使用Linkerd作为服务网格代理</h1>
             </div>
         </div>
     </div>
@@ -227,32 +227,28 @@ autocomplete('#aa-search-input',
 
                     <div class="col-md-9" id="blog-post">
                         <p class="text-muted mb-small text-left">
-                        作者 <a href="https://www.infoworld.com/article/3273547/containers/the-rise-of-the-istio-service-mesh.html">Diogenes Rettori</a>
+                        作者 <a href="https://wecode.wepay.com/posts/using-l5d-as-a-service-mesh-proxy-at-wepay">Mohsen Rezaei</a>
                         
-                         | 译者 戴佳顺
+                         | 译者 Kael Zhang
                         
                         |
-                        2600字 | 阅读大约需要6分钟
+                        2900字 | 阅读大约需要6分钟
                         |
                         
                         
                         
-                        归档于<a href="https://servicemesher.github.io/categories/%e8%af%91%e6%96%87">译文</a>
+                        归档于<a href="https://servicemesher.github.io/categories/linkerd">linkerd</a>
                         
                         |
                         
                         发表于
-                        2018-06-12
+                        2018-06-19
                         
                         
                         <p class="text=muted mb-small text-uppercase text-left">
                         标签
                         
-                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/istio/"><i>#istio</i></a>
-                        
-                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/service-mesh/"><i>#service mesh</i></a>
-                        
-                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"><i>#微服务</i></a>
+                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/linkerd/"><i>#linkerd</i></a>
                         
                         </p>
                         
@@ -262,109 +258,123 @@ autocomplete('#aa-search-input',
                           
 
 <blockquote>
-<p>原文链接：<a href="https://www.infoworld.com/article/3273547/containers/the-rise-of-the-istio-service-mesh.html">https://www.infoworld.com/article/3273547/containers/the-rise-of-the-istio-service-mesh.html</a></p>
+<p>原文地址：<a href="https://wecode.wepay.com/posts/using-l5d-as-a-service-mesh-proxy-at-wepay">Using Linkerd as a Service Mesh Proxy at WePay</a></p>
 
-<p>作者：Diogenes Rettori</p>
+<p>作者：Mohsen Rezaei</p>
 
-<p>译者：戴佳顺</p>
+<p>译者：<a href="http://kaelzhang81.github.io/">Kael Zhang</a></p>
 </blockquote>
 
-<p>如何确保微服务之间网络通信的可靠性、安全性和可管理性？ 使用服务网格吧！</p>
+<p>在接下来的几个月中，我们将撰写一系列文章来记录从传统负载均衡器到<a href="https://cloud.google.com/kubernetes-engine/">谷歌Kubernetes引擎</a>（GKE）之上服务网格的<a href="https://wecode.wepay.com/">WePay工程化</a>之路。</p>
 
-<p>在过去一年中，<a href="https://istio.io/">Istio</a>服务网格技术引发关注度和吸引力的持续提升，这是一件非常有趣的事情。 事实上，在我写这篇文章时，Istio仅为0.8版本，但对于最近两届<a href="https://events.linuxfoundation.org/events/kubecon-cloudnativecon-europe-2018/">KubeCon/CloudNativeCon</a>活动而言，它一直是<a href="https://events.linuxfoundation.org/events/kubecon-cloudnativecon-europe-2018/program/schedule/">热门话题</a>，仅在丹麦的活动中就有超过十几个不同的活动议题。 那么它为什么会这样受欢迎？</p>
+<p>在本系列的第一部分中，我们将看看曾使用过的一些路由和负载均衡选项并将它们与服务网格代理进行比较，以及它们是如何改变我们基础设施的运行方式的。</p>
 
-<p>在深入研究Istio受欢迎的原因之前，让我们先来介绍一下服务网格。 这是一个通用术语，其早已被投入在多个不同场景中。例如定义不同无线设备之间的通信方法；或者定义一个系统，各个应用程序可以直接通过它与其他应用程序通信。<a href="https://istio.io/docs/concepts/what-is-istio/overview.html">最近</a>，这个术语被用来表示应用或微服务的网络，以及它们之间的互相作用关系。后者是本文的重点。</p>
+<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiygfruj20ie0gfgmw.jpg" alt="数据面板使用sidecar代理模式" /></p>
 
-<p>事实上红帽公司一直参与云原生和微服务领域建设，包括四年前决定将OpenShift向Kubernetes和Docker转变，这帮助我们理解了服务网格技术，尤其是Istio的重要性。本文将探讨为什么我会坚信Istio会很受欢迎的四个原因。</p>
+<p>图1.数据面板使用sidecar代理模式</p>
 
-<h2 id="微服务和转型">微服务和转型</h2>
+<p>图1显示了一个数据面板的简化版本。用服务网格术语来描述就是：服务X通过其sidecar代理向服务Y发送请求。由于服务X通过其代理发送请求，所以请求首先被传递给服务X的代理（PX），然后在到达目的服务Y之前被发送到服务Y的代理（PY）。在大多数情况下，PX通过服务发现服务发现PY，例如Namerd。</p>
 
-<p>纵观你整个职业生涯，或者结合如今的工作，你可能已经发现从代码完成开发到部署至生产之间的时间不断被延长，以至于开发资源被转移到其他项目，同时也使你的产品反馈周期变得无效或无关紧要。为了缩短交付时间，一些公司决定以功能服务架构或微服务架构来将大型应用拆散，以此提高效率。即曾经具有多种功能的单个应用程序（包）被切分成可独立更新的单个程序包。</p>
+<p>我们有期<a href="https://www.youtube.com/watch?v=8KWmNw9jQ04&amp;feature=youtu.be&amp;t=28m59s">主题为gRPC的meetup</a>讨论了一些关于使用该模式进行代理负载平衡的内容。</p>
 
-<p>这当然是有价值的，但同时也要承认，使用这种架构需要对单独的服务和它们之间的接口进行更多的开发治理。例如曾经定义在应用程序内部的一部分API调用关系现在上升在到网络层中。</p>
+<p>本文由于简便起见将专注于数据面板，并为进一步简化，将只讨论使用sidecar模式的代理。</p>
 
-<p>Christian Posta的演讲“<a href="https://www.slideshare.net/ceposta/the-hardest-part-of-microservices-calling-your-services">微服务中最困难的部分：调用你的服务</a>”谈到了一个重要问题。当调用API时，你可能会认为你在处理A和B之间的直接集成调用（下图1）。然而计算机网络并不会针对直接通信进行优化（下图2）。因此在某些情况，尤其当应用处于你正考虑或使用的云环境中时，你不可避免且不得不考虑这些不同的失控物理和虚拟网络设备。例如，就可能存在这样一种情况：其中一台设备的性能低于最佳性能，这将影响整个应用程序的响应时间（下图3）。</p>
+<p>注意：本文所提到的全部技术都是非常复杂的软件，由许多天才工程师所著，且可供其他面临类似案例的公司开源使用。下面的对比完全基于WePay的应用案例，包括哪种技术最适合这些案例，且不打算诋毁其他提及的技术。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fs7fmkvibwj20jf0dfq40.jpg" alt="A和B之间的调用关系图" /></p>
+<h2 id="设置阶段">设置阶段</h2>
 
-<h2 id="微服务先驱和netflix-oss">微服务先驱和Netflix OSS</h2>
+<p>在WePay我们目前正在GKE中运行许多微服务（Sx）。 在同一个数据中心一些微服务与其他微服务通信，如下图所示：</p>
 
-<p>有些公司似乎是为了云计算而生的。为了在云中提供弹性服务，应用程序不得不保护自己免受环境异常影响。</p>
+<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiypj5yj20b60d974p.jpg" alt="使用GKE和NGINX的简单负载均衡" /></p>
 
-<p>Netflix构建并随后<a href="https://netflix.github.io/">开源</a>了一系列涉及诸如断路、边缘路由、服务发现和负载均衡等功能的Java技术解决方案。这些组件使应用能够更好地控制通信，从而提高整体可用性。为了测试并确保组件的弹性，Netflix还使用了<a href="http://principlesofchaos.org/">混沌工程</a>，通过将各种现实中可能存在的问题注入到应用程序的网络中，以便能在任何给定时间中断工作流。 Netflix开发的技术组合允许其应用程序投入到一个以应用程序为中心的网络中，这实际上就是服务网格。</p>
+<p>图2.使用GKE和NGINX的简单负载均衡</p>
 
-<p>在构建Netflix OSS堆栈的时代，虚拟机是在云中运行应用程序的唯一方式。因此Netflix选择Java作为开发语言来构建服务网格功能。</p>
+<p>在图2所示的模型中，服务Y向服务X发送请求，并且Kubernetes的负载均衡对象通过将请求转发给X1的NGINXsidecar来为服务X执行负载平衡。当NGINX收到请求时，它终止SSL并将数据包转发到X1。</p>
 
-<p>除了Netflix OSS堆栈的纯Java依赖，另一个挑战是为了实现服务网格功能，开发人员必须将Java库包含在其应用程序中，并在代码中引用来使用这些组件。但在当时，那些希望强制使用这些技术的公司无法在平台级进行如上工作。</p>
+<p>过去一年左右的时间，我们的基础设施中微服务的数量随之不断增长，以下问题已被证明对我们非常重要，在某些方面我们转向服务网格的动机如下：</p>
 
-<p>随着<a href="https://www.infoworld.com/article/3268073/containers/what-is-kubernetes-container-orchestration-explained.html">Kubernetes</a>的来临，诸如服务发现和负载均衡等功能成为平台本身的一部分，并且平台允许用任何语言编写的应用程序都可以使用。通过声明式和活动状态管理，Kubernetes还能够通过自动重启无响应的应用来提高整体应用的可用性。在当今世界，Kubernetes和容器是运行微服务应用程序的标准。</p>
+<ul>
+<li>更智能，高性能和并发的负载均衡</li>
+<li>对平台和协议无感知的路由，要求：HTTP和HTTP/2（聚焦gRPC）</li>
+<li>独立于应用的路由和指标追踪</li>
+<li>通信安全</li>
+</ul>
 
-<p>在Kubernetes中，你的应用程序以由一个或多个容器组成“pod”运行。在pod中运行多个容器的技术有时也被称为“sidecar”，其实质上是一种将你的应用程序拆散，将子模块运行在共享隔离空间（pod）的解决方案。</p>
+<p>一旦我们意识到我们想要迁移到服务网格基础设施，我们就会研究构建数据面板的各种不同的代理。 从名单上看，<a href="https://www.envoyproxy.io/">Envoy</a>和<a href="https://linkerd.io/">Linkerd</a>看起来最为接近我们的需求，两者都同时提供了一套成熟的功能。</p>
 
-<p>Kubernetes为Istio这样的技术的崛起创造了有利条件。出行共享公司Lyft已经开始通过智能代理<a href="https://github.com/envoyproxy/envoy">Envoy</a>来提供微服务部署所需的弹性和动态路由功能。 sidecar容器和Envoy这类架构允许为每个应用程序实例附加一个轻量级代理，以支持服务发现、负载均衡、断路器、链路跟踪以及服务网格的其他功能。将它与一个控制面板结合，并添加服务治理和Envoy实例配置管理功能，你就拥有了Istio。</p>
+<p>注意：在研究过程中，NGINX自身暂不支持服务网格，但为了支持服务网格基础设施，<a href="https://www.nginx.com/press/implementation-nginx-as-serviceproxy-istio/">NGINX增加了对Istio支持</a>。 以对比为目的，将Envoy和NGINX放到同一边。</p>
 
-<h2 id="拥抱分布式架构">拥抱分布式架构</h2>
+<h2 id="更好的负载均衡">更好的负载均衡</h2>
 
-<p>最后，Istio和服务网格通常与“拥抱”<a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing">分布式计算的谬论</a>有关。 换而言之，”<strong>Istio允许应用程序假定网络是可靠的、快速的、安全的、不变的等等——这使得分布式计算的谬论不再是谬论</strong> “。说Istio和Kubernetes可以解决所有这些问题，但忽视这些谬论可能导致企业犯大错误。 企业必须接受这样一个事实：当你有多个微服务和功能服务互相交互时，你就处理分布式系统。</p>
+<p>Envoy和Linkerd都可以访问一些更复杂的负载均衡算法，但Linkerd聚焦于<a href="https://blog.buoyant.io/2017/01/31/making-things-faster-by-adding-more-steps/">性能调优</a>及其平台使用的是<a href="https://twitter.github.io/finagle/">Finagle</a>，使其成为负载均衡的最佳选择。</p>
 
-<p>请参阅下面的分布式计算谬论的完整列表以及Istio的解决方案：</p>
+<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiywhuqj20fa0e50te.jpg" alt="Sidecar模式处理负载均衡" /></p>
 
-<table>
-<thead>
-<tr>
-<th>谬论</th>
-<th>Istio的解决方案</th>
-</tr>
-</thead>
+<p>图3. Sidecar模式处理负载均衡</p>
 
-<tbody>
-<tr>
-<td>可靠网络</td>
-<td>断路和负载均衡</td>
-</tr>
+<p>图3展示了服务网格代理如何通过服务发现获取可用目标列表来处理负载均衡。</p>
 
-<tr>
-<td>延迟为零</td>
-<td>超时和重试</td>
-</tr>
+<p>除基本的负载均衡功能外，Linkerd还支持Kubernetes DaemonSet，使负载均衡更接近每个Kubernetes节点边缘。从资源分配的角度看，这同样显著降低了在大型集群中运行代理的成本。</p>
 
-<tr>
-<td>忽略带宽</td>
-<td>服务评级和限制</td>
-</tr>
+<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsgc5lihpkj30fa0e5q3u.jpg" alt="DaemonSet代理模式" />)</p>
 
-<tr>
-<td>安全网络</td>
-<td>相互TLS</td>
-</tr>
+<p>图4.DaemonSet代理模式</p>
 
-<tr>
-<td>拓扑不可改</td>
-<td>服务发现</td>
-</tr>
+<p>在图4中，DaemonSet模式显示每个Kubernetes集群节点托管一个代理。当服务Y向服务Z发送请求时，该请求被传递给发送方的节点代理，在使用服务发现的情况下，代理将请求转发给接收方的节点代理，并且最终将该请求发送到服务Z.通过分离与运行在同一集群中的微服务代理的生命周期，该模式使维护和配置这些代理变得更简单。</p>
 
-<tr>
-<td>单一管理员</td>
-<td>基于角色的访问控制</td>
-</tr>
+<h2 id="相同基础设施上的新协议">相同基础设施上的新协议</h2>
 
-<tr>
-<td>零传输成本</td>
-<td>gRPC和Protobuf</td>
-</tr>
+<p>早在2017年，当我们考虑改进服务与gRPC进行服务通信时，<a href="https://blog.buoyant.io/2017/01/10/http2-grpc-and-linkerd/">Linkerd对HTTP/2和gRPC开箱即用的支持</a>，使得应用Linkerd更易于迁移到服务网格。</p>
 
-<tr>
-<td>同质化网络</td>
-<td>动态路由，A/B测试和金丝雀部署</td>
-</tr>
-</tbody>
-</table>
+<p>此外，为任意微服务提供HTTP和HTTP/2（gRPC）的能力，以及在我们的基础设施中同时支持多种协议的需求，意味着多协议支持已经成为为我们的基础设施选择代理服务器的一项艰巨任务。</p>
 
-<p>在我与OpenShift客户的沟通中，我经常发现他们由于自身需求，已经实现了类似Netflix模式的功能。我也对实现这些功能的团队很有兴趣，经常听到他们说“我们是断路小组”或“我们是服务发现小组”。</p>
+<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiykzugj20h40dot9a.jpg" alt="代理在相同的设置中接收和转发gRPC和HTTP" /></p>
 
-<p>创建自己的服务网格功能的公司现在有机会使用Kubernetes和Istio。通过使用这些被标准化的开源技术，他们可以获得由大型社区开发的功能、整理知识和用例，并帮助他们实现更具弹性的应用程序，同时以更低的成本更快地将产品推向市场。</p>
+<p>图5.代理在相同的设置中接收和转发gRPC和HTTP</p>
 
-<p>作者Diogenes Rettori是<a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">红帽OpenShift</a>的主任产品经理。在加入OpenShift团队之前，他专注于红帽JBoss中间件的客户培训。 Diogenes拥有强大的工程背景，曾为爱立信和IBM等公司工作。</p>
+<p>该图展示了一些请求使用HTTP而其他请求使用HTTP/2。 当我们计划从HTTP到HTTP/2（gRPC）的迁移时，能够使用具有相同基础结构配置的多种协议被证明是一项关键功能。 在迁移期间，我们有一些服务通过HTTP彼此通信，而其他服务通过HTTP/2进行通信。 图5假设了随着时间推移产生的基础设施。 在后续文章中，我们将深入探讨微服务如何在我们的基础设施中发送和接收不同类型的有效负载，例如 REST，Protobufs等。</p>
+
+<p>当下包括Envoy在内的大多数服务网格代理都能处理最新的协议，如HTTP，HTTP/2等。</p>
+
+<h2 id="指标测量">指标测量</h2>
+
+<p>在基础设施中，我们利用<a href="https://prometheus.io/">Prometheus</a>来监控Kubernetes、微服务及其他内部服务。 <a href="https://www.datawire.io/faster/ambassador-prometheus/">Envoy需要额外的一个步骤</a>才能使用Prometheus，但使用Linkerd的即用型<a href="https://linkerd.io/administration/telemetry/">Prometheus遥测插件</a>，我们可以更容易地启动和运行各种指标视图，而无需额外的服务将服务网格代理胶合到我们的可视化仪表板：</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiytks8j21xg072mz2.jpg" alt="集群和应用程序级别代理指标视图" /></p>
+
+<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiz6wbij21xg0vtwks.jpg" alt="集群和应用程序级别代理指标视图" /></p>
+
+<p>图6.集群和应用程序级别代理指标视图</p>
+
+<p>图6中的示例仪表板展示了位于同一处的全局、单个微服务和单个代理的流量，以更好地了解DaemonSet代理模式中通过基础设施发生的操作。</p>
+
+<p>使用Linkerd的其他便利部分之一是代理随附的指标范围。 此外，Linkerd还使编写自定义插件更容易，例如：使用这些自定义指标来控制重试机制。 因此可对任何特定的指标、警报和监控进行改造以满足运行服务网格的基础设施的需求。</p>
+
+<h2 id="安全性就是启动它">安全性就是启动它</h2>
+
+<p>如今大多数代理支持各类代理加密和授权方法，并且以sidecar模式与Linkerd一起使用时，我们能够更进一步。 使用sidecar模式，我们可以在Linkerd中对每个服务进行授权，这使我们能够在合适的时机和位置最大限度地提高基础设施的安全性。</p>
+
+<p>在使用sidecar代理模式的环境设置中，工作方式有所不同的是SSL握手的每个服务TLS证书。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiz1aqlj20h40cnaan.jpg" alt="用于SSL握手的每个服务TLS证书" /></p>
+
+<p>图7.用于SSL握手的每个服务TLS证书</p>
+
+<p>图7显示了服务Z的Linkerd代理使用服务X的证书向服务X发送请求的同时，使用服务Y的证书向服务Y发送请求。这使我们能够维护每个服务，更新和修改SSL证书使服务彼此独立，并且还增加微服务的安全性。</p>
+
+<p>该功能对某些设置可能很有用，但对于其他设置来说则相当麻烦，所以具有相互选择功能是非常不错的能力。</p>
+
+<h2 id="结论">结论</h2>
+
+<p>基于基础设施需求和改进思路，我们决定选择Linkerd作为我们的技术栈。</p>
+
+<p>使用Linkerd，我们可以获得所需的可靠性，引入新协议到基础设施以供微服务引用，更好地可视化服务流量，并根据需要调整安全性。</p>
+
+<p>在本系列即将发布的博文中，我们将讨论服务网格架构中的不同部分，以及它们如何应用于WePay的架构中。</p>
+
+<hr />
+
+<p>关于WePay：WePay is a platform payments company that provides payment, risk and support products and services to software and platform companies. We do payments for software and platforms, that’s all we do and we do it better than anyone else. WePay is a JPMorgan Chase company.</p>
 
                         </div>
                         
@@ -389,15 +399,15 @@ autocomplete('#aa-search-input',
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/deepin-service-mesh-tech-details/"><i class="fa fa-link"></i>深入解读Service Mesh背后的技术细节</a></li>
+        <li><a href="/blog/lightweight-service-mesh-practice-in-ucloud/"><i class="fa fa-link"></i>轻量 Service Mesh 在 Ucloud 的实践</a></li>
          
-        <li><a href="/blog/service-mesh-rebuild-microservice-market/"><i class="fa fa-link"></i>Service Mesh：重塑微服务市场</a></li>
+        <li><a href="/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/"><i class="fa fa-link"></i>蚂蚁金服是如何实现经典服务化架构向Service Mesh方向演进的？</a></li>
+         
+        <li><a href="/blog/the-rise-of-the-istio-service-mesh/"><i class="fa fa-link"></i>Istio服务网格的崛起</a></li>
          
         <li><a href="/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/"><i class="fa fa-link"></i>Twistlock使Istio的安全层更强大，更易于监控</a></li>
          
         <li><a href="/blog/istio-mixer-cache-part4-signature/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part4－签名</a></li>
-         
-        <li><a href="/blog/istio-mixer-cache-part3-main/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part3—主流程</a></li>
          
      </ul>
     </div>
