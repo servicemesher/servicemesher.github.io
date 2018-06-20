@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 19 Jun 2018 15:54:19 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Jun 2018 10:25:16 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vistio—使用Netflix的Vizceral可视化Istio service mesh</title>
+      <link>https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/</link>
+      <pubDate>Wed, 20 Jun 2018 10:25:16 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/</guid>
+      <description>原文：https://itnext.io/vistio-visualize-your-istio-mesh-using-netflixs-v</description>
+    </item>
     
     <item>
       <title>服务网格在Cookpad网站中的实践</title>
