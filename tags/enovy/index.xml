@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Envoy on ServiceMesher</title>
-    <link>https://servicemesher.github.io/tags/envoy/</link>
-    <description>Recent content in Envoy on ServiceMesher</description>
+    <title>Enovy on ServiceMesher</title>
+    <link>https://servicemesher.github.io/tags/enovy/</link>
+    <description>Recent content in Enovy on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 21 Jun 2018 16:11:03 +0800</lastBuildDate>
     
-	<atom:link href="https://servicemesher.github.io/tags/envoy/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://servicemesher.github.io/tags/enovy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://servicemesher.github.io/blog/the-universal-data-plane-api/</guid>
       <description>原文地址：https://blog.envoyproxy.io/the-universal-data-plane-api-d15cec7a 作</description>
-    </item>
-    
-    <item>
-      <title>服务网格在Cookpad网站中的实践</title>
-      <link>https://servicemesher.github.io/blog/service-mesh-in-cookpad/</link>
-      <pubDate>Tue, 19 Jun 2018 15:54:19 +0800</pubDate>
-      
-      <guid>https://servicemesher.github.io/blog/service-mesh-in-cookpad/</guid>
-      <description>原文：http://techlife.cookpad.com/entry/2018/06/11/100355 作者：Taiki 译者：殷龙飞 校对</description>
     </item>
     
   </channel>

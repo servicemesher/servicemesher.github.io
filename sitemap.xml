@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://servicemesher.github.io/blog/the-universal-data-plane-api/</loc>
+    <lastmod>2018-06-21T16:11:03+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/</loc>
     <lastmod>2018-06-20T10:25:16+08:00</lastmod>
   </url>
@@ -150,7 +155,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/blog/</loc>
-    <lastmod>2018-06-20T10:25:16+08:00</lastmod>
+    <lastmod>2018-06-21T16:11:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -167,7 +172,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/envoy/</loc>
-    <lastmod>2018-06-19T15:54:19+08:00</lastmod>
+    <lastmod>2018-06-21T16:11:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -239,7 +244,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/service-mesh/</loc>
-    <lastmod>2018-06-19T18:04:08+08:00</lastmod>
+    <lastmod>2018-06-21T16:11:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -251,7 +256,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/</loc>
-    <lastmod>2018-06-20T10:25:16+08:00</lastmod>
+    <lastmod>2018-06-21T16:11:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -325,7 +330,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/</loc>
-    <lastmod>2018-06-20T10:25:16+08:00</lastmod>
+    <lastmod>2018-06-21T16:11:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
