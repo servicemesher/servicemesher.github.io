@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>容器、服务网格和 API 网关：从边缘开始 · Service Mesh爱好者</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, envoy, ambassador">
+  
+
+  
+  <meta name="description" content="Service Mesh爱好者网站">	
+  
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="https://servicemesher.github.io/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="https://servicemesher.github.io/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="https://servicemesher.github.io/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://servicemesher.github.io/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="https://servicemesher.github.io/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://servicemesher.github.io/img/apple-touch-icon.png" />
+  
+
+  <link href="https://servicemesher.github.io/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://servicemesher.github.io/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://servicemesher.github.io/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="https://servicemesher.github.io/css/prism.css" />
+
+  
+  <meta property="og:title" content="容器、服务网格和 API 网关：从边缘开始" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge//" />
+  <meta property="og:image" content="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" />
+
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?761ec5e305f799778975c1f71c47a520";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://servicemesher.github.io/">
+                    
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="容器、服务网格和 API 网关：从边缘开始 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="容器、服务网格和 API 网关：从边缘开始 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">容器、服务网格和 API 网关：从边缘开始 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/activity/">活动</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/awesome-servicemesh/">黄页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+            
+            <div id="modalSearch" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">博客搜索</h4>
+                  </div>
+                  <div class="modal-body">
+                      
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="https:\/\/servicemesher.github.io\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>容器、服务网格和 API 网关：从边缘开始</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <p class="text-muted mb-small text-left">
+                        作者 <a href="https://devops.com/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/">Daniel Bryant</a>
+                        
+                         | 译者 崔秀龙
+                        
+                        |
+                        2100字 | 阅读大约需要5分钟
+                        |
+                        
+                        
+                        
+                        归档于<a href="https://servicemesher.github.io/categories/%e8%af%91%e6%96%87">译文</a>
+                        
+                        |
+                        
+                        发表于
+                        2018-06-21
+                        
+                        
+                        <p class="text=muted mb-small text-uppercase text-left">
+                        标签
+                        
+                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/envoy/"><i>#envoy</i></a>
+                        
+                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/istio/"><i>#istio</i></a>
+                        
+                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/service-mesh/"><i>#service mesh</i></a>
+                        
+                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/ambassador/"><i>#ambassador</i></a>
+                        
+                        </p>
+                        
+                        
+                        </p>
+                        <div id="post-content">
+                          
+
+<blockquote>
+<p>原文：<a href="https://devops.com/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/">https://devops.com/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</a></p>
+
+<p>译者：<a href="https://blog.fleeto.us">崔秀龙</a></p>
+</blockquote>
+
+<p><a href="https://www.docker.com/">Docker</a> 和 <a href="https://kubernetes.io/">Kubernetes</a> 为代表的容器技术炙手可热，熟知这一技术领域的用户，一定都知道下一个热点：Service Mesh，它承诺将微服务之间的内部网络通信均一化，并解决一系列监控、故障隔离等通用非功能性需求。底层的代理服务器技术是 Service Mesh 的立身之本，这种技术在 Service Mesh 之外，还能以 API 网关的形式在边缘为业务系统提供一系列的增强。</p>
+
+<p>虽说 Service Mesh 的爆发之势让人误以为罗马是一日建成的，事实上，在这一热点浮出水面之前，包括 <a href="https://getnelson.github.io/nelson/">Verizon</a>、<a href="https://fabiolb.net/">eBday</a> 以及 <a href="https://code.facebook.com/posts/1906146702752923/open-sourcing-katran-a-scalable-network-load-balancer/">Facebook</a> 在内的很多组织已经在应用后来被我们称之为 Service Mesh 的技术了。这些早期应用 Service Mesh 的组织之一就是 <a href="https://www.microservices.com/talks/lyfts-envoy-monolith-service-mesh-matt-klein/">Lyft</a>，这是一家年收入超过十亿美元的美国网约车巨头。Lyft 还是开源软件 <a href="https://www.envoyproxy.io/">Envoy Proxy</a> 的诞生地，Envoy 在 Service Mesh 世界中举足轻重，Kubernetes 原生的 <a href="https://istio.io/docs/concepts/what-is-istio/overview/">Istio 控制面</a> 和 <a href="https://www.getambassador.io/">Ambassador API 网关</a> 也都建筑在 Lyft 的基础之上。</p>
+
+<h2 id="soa-网络的烦恼">SOA 网络的烦恼</h2>
+
+<p>Matt Klein 是 Envoy Proxy 的作者之一，他去年的一次谈话中说到，SOA（面向服务的架构）和微服务网络是“<a href="https://www.microservices.com/talks/lyfts-envoy-monolith-service-mesh-matt-klein/">混乱的庞然大物</a>”。身处其中的每个应用都输出了不同的统计和日志，整个服务堆栈如何处理请求生成响应的过程也是无法跟踪的，在这样的情况下进行 Debug 的巨大难度也就可以想象了。同时对类似负载均衡器、缓存以及网络拓扑这样的基础设施组件的监控能力也是很有限的。</p>
+
+<p>他觉得：“这很痛苦，我认为多数公司都赞同 SOA（微服务）是个可见趋势，在这一趋势的践行过程中会收获很多，但是其中也满是痛苦。主要的痛苦来源就是 Debug”。</p>
+
+<p>对于大规模组织来说，分布式 Web 应用的可靠性和高可用支持是一个核心挑战。这种挑战的应对方式中，普遍包含包含重试、超时、频率控制和熔断等功能逻辑的各种实现。很多系统，不论开源与否，都会使用锁定特定语言（甚至锁定框架）的形式来实现这种方案，这就意味着开发人员也同时被进行锁定。Klein 和他在 Lyft 的团队认为，一定有更好的办法。最终 Envoy 项目诞生了。</p>
+
+<h2 id="外部干预-边缘代理的优势">外部干预：边缘代理的优势</h2>
+
+<p><a href="https://eng.lyft.com/announcing-envoy-c-l7-proxy-and-communication-bus-92520b6c8191">2016 年 9 月</a> 以开源形式发布了 Envoy Proxy，Klein 和 Lyft 工程师团队一夕成名，但这并非一蹴而就，Lyft 架构从最初的混合 SOA 架构起步，花费了四年，突破层层险阻升级为服务网格治理之下的微服务体系。2017 年的<a href="https://www.microservices.com/talks/mechanics-deploying-envoy-lyft-matt-klein/">微服务实践者虚拟峰会</a>上，Klein 讲述了向服务网格进行技术迁移的过程中面对基本需求和相关挑战，及其商业价值。</p>
+
+<p>Klein 的第一次艰苦取胜是“从边缘代理开始”的。微服务为基础的 Web 应用需要在边缘提供反向代理，一方面可以防止暴露内部业务服务接口（会违反松耦合原则），另一方面，暴露大量服务也意味着大量的独立 URI 以及 RPC 端点，这会消耗大量的运维资源。现存的云所提供的边缘代理服务器或者网关都不很好，不同产品呈现给工程师的是不同的、易混淆的工作界面。Klein 倡议在边缘实现一个现代化的代理服务，在其中提供改进的监控、负载均衡以及动态路由能力，以此来产生商业价值。工程师团队理解和掌握了边缘代理的运维之后，就可以向内部团队进行推广，最终形成内部的服务网格了。</p>
+
+<h2 id="边缘进化-从代理到-api-网关">边缘进化：从代理到 API 网关</h2>
+
+<p>AppDirect 是一个端到端提供云端产品和服务管理的商业平台，预计年收入 5000 万美元。在 AppDirect 最近的博客 <a href="https://www.appdirect.com/blog/evolution-of-the-appdirect-kubernetes-network-infrastructure">Evolution of the AppDirect Kubernetes Network Infrastructure</a> 中，他们着重介绍了和 Lyft 类似的经历。云技术和 Kubernetes 之类的编排平台带来的不只是有规模、弹性之类的好处，还因为与生俱来的易变和动态特性，提出了新的挑战：微服务构建的商业功能如何合适的在公共端点上提供服务？</p>
+
+<p>AppDirect 工程师团队采用了一种可靠的方法来应对挑战，首先把配置的核心部分（例如暴露的服务端口）静态化，然后在每个应用之前部署负载均衡器。接下来的迭代就是使用 HashiCorp 的分布式键值库 <a href="https://www.consul.io/">Consul</a> 结合支持热重载的 HAProxy 反向代理来提供更好的动态管理能力。团队的终极目标是用更丰富功能的 API 网关来提供更丰富的功能。</p>
+
+<p>文中说到：“API 网关的目标是在不变更已公开 API 的访问性的情况下（这种不经变更的可访问性也包含了旧有的 URL 以及友商的定制域名等），通过注入和替换的方式逐个实现转换过程。”</p>
+
+<p>在对一系列的开源和商业产品进行评估之后，AppDirect 团队选择了构建在 Envoy proxy 之上的 Kubernetes 原生的 Ambassador API 网关产品：</p>
+
+<p>“构建于我们了解和喜爱的 Kubernetes API 之上的 Ambassador，是一个轻量、稳定以及没有外部数据库依赖的产品。Ambassador 很独特，使用 Kubernetes 对象标注功能来定义路由配置（也就是以此实现 <a href="https://blog.envoyproxy.io/the-universal-data-plane-api-d15cec7a">Envoy 数据面</a>的控制平面）”——团队博客如是说。</p>
+
+<p>虽然 AppDirect 还没有完全实现内部通信的网格化，但是已经感受到了 Envoy Proxy 这样的技术所带来的好处，更学到了在产品中应用这些技术的能力。</p>
+
+<h2 id="星火燎原">星火燎原</h2>
+
+<p>服务网格技术的实现和迁移过程才刚刚开始，但是已经可以肯定，这一技术弥合了 Kubernetes 这样的现代容器化平台中应用之间的鸿沟。服务网格带来的，包括频率控制、断路器以及监控性等在内的所有好处，都可以从服务边缘开始享用。如果想要对这一技术进行进一步的探索和学习，在系统边缘开始，农村包围城市是一种行之有效的策略。这种策略无需全面部署，就能迅速的在监控、弹性等方面展示出特有的商业价值。</p>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/the-universal-data-plane-api/"><i class="fa fa-link"></i>Service Mesh中的通用数据平面API设计</a></li>
+         
+        <li><a href="/blog/service-mesh-in-cookpad/"><i class="fa fa-link"></i>服务网格在Cookpad网站中的实践</a></li>
+         
+        <li><a href="/blog/deepin-service-mesh-tech-details/"><i class="fa fa-link"></i>深入解读Service Mesh背后的技术细节</a></li>
+         
+        <li><a href="/blog/the-rise-of-the-istio-service-mesh/"><i class="fa fa-link"></i>Istio服务网格的崛起</a></li>
+         
+        <li><a href="/blog/istio-service-mesh-pilot-xds-note/"><i class="fa fa-link"></i>服务网格Istio之pilot-xDS接口笔记</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://servicemesher.github.io/categories/istio"><i class="fa fa-navicon"></i>istio (4)</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/categories/istio%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90"><i class="fa fa-navicon"></i>istio源码解析 (4)</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (5)</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/categories/%e8%af%91%e6%96%87"><i class="fa fa-navicon"></i>译文 (18)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://servicemesher.github.io/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/service"><i class="fa fa-tags"></i> service</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/%e5%8d%8e%e4%b8%ba"><i class="fa fa-tags"></i> 华为</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/%e5%be%ae%e6%9c%8d%e5%8a%a1"><i class="fa fa-tags"></i> 微服务</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/%e6%95%99%e7%a8%8b"><i class="fa fa-tags"></i> 教程</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90"><i class="fa fa-tags"></i> 源码解析</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/%e8%9a%82%e8%9a%81%e9%87%91%e6%9c%8d"><i class="fa fa-tags"></i> 蚂蚁金服</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播 Service Mesh 技术、加强行业内部交流、推动 Service Mesh 在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://servicemesher.github.io/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsiynxp5e2j30rs0ku7l4.jpg" class="img-responsive" alt="容器、服务网格和 API 网关：从边缘开始">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://servicemesher.github.io/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/">容器、服务网格和 API 网关：从边缘开始</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsix68f9vbj30rs0ku7wh.jpg" class="img-responsive" alt="服务网格Istio之pilot-xDS接口笔记">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/">服务网格Istio之pilot-xDS接口笔记</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://servicemesher.github.io/blog/the-universal-data-plane-api/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsivgisloaj30rs0kuqsq.jpg" class="img-responsive" alt="Service Mesh中的通用数据平面API设计">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://servicemesher.github.io/blog/the-universal-data-plane-api/">Service Mesh中的通用数据平面API设计</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>Service Mesh爱好者社区</p><p><a href="https://jimmysong.io/about">管理员</a></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://servicemesher.github.io/js/front.js"></script>
+
+
+<script src="https://servicemesher.github.io/js/owl.carousel.min.js"></script>
+
+<script src="https://servicemesher.github.io/js/prism.js"></script>
+
+
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
