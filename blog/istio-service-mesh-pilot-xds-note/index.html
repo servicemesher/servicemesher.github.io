@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>服务网格Istio之pilot-xDS接口笔记 · Service Mesh爱好者</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, istio">
+  
+
+  
+  <meta name="description" content="Service Mesh爱好者网站">	
+  
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="https://servicemesher.github.io/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="https://servicemesher.github.io/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="https://servicemesher.github.io/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://servicemesher.github.io/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="https://servicemesher.github.io/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://servicemesher.github.io/img/apple-touch-icon.png" />
+  
+
+  <link href="https://servicemesher.github.io/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://servicemesher.github.io/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://servicemesher.github.io/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="https://servicemesher.github.io/css/prism.css" />
+
+  
+  <meta property="og:title" content="服务网格Istio之pilot-xDS接口笔记" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/istio-service-mesh-pilot-xds-note//" />
+  <meta property="og:image" content="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" />
+
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?761ec5e305f799778975c1f71c47a520";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://servicemesher.github.io/">
+                    
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="服务网格Istio之pilot-xDS接口笔记 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="服务网格Istio之pilot-xDS接口笔记 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">服务网格Istio之pilot-xDS接口笔记 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/activity/">活动</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/awesome-servicemesh/">黄页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+            
+            <div id="modalSearch" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">博客搜索</h4>
+                  </div>
+                  <div class="modal-body">
+                      
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="https:\/\/servicemesher.github.io\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>服务网格Istio之pilot-xDS接口笔记</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <p class="text-muted mb-small text-left">
+                        作者 <a href="https://ninokop.github.io/">Tian Zhou</a>
+                        
+                        
+                        |
+                        2700字 | 阅读大约需要6分钟
+                        |
+                        
+                        
+                        
+                        归档于<a href="https://servicemesher.github.io/categories/istio">istio</a>
+                        
+                        |
+                        
+                        发表于
+                        2018-06-21
+                        
+                        
+                        <p class="text=muted mb-small text-uppercase text-left">
+                        标签
+                        
+                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/istio/"><i>#istio</i></a>
+                        
+                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/pilot/"><i>#pilot</i></a>
+                        
+                        </p>
+                        
+                        
+                        </p>
+                        <div id="post-content">
+                          
+
+<blockquote>
+<p>本文转载自<a href="https://ninokop.github.io/2018/06/19/pilot-xDS/">nino&rsquo;s blog</a>。</p>
+</blockquote>
+
+<p>本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理和服务发现的实现。简单来说istio做为管理面，集合了配置中心和服务中心两个功能，并把配置发现和服务发现以一组统一的xDS接口提供出来，数据面的envoy通过xDS获取需要的信息来做服务间通信和服务治理。</p>
+
+<h2 id="api-v1-reference">api v1 reference</h2>
+
+<p>Istio中部署pilot的启动方式是<code>pilot-discovery discovery</code>。初始化阶段依次init了各种模块，其中discovery service就是xDS相关实现。<a href="https://www.envoyproxy.io/docs/envoy/latest/">envoy API reference</a> 可以查到v1和v2两个版本的API文档。<a href="https://github.com/envoyproxy/go-control-plane">envoy control plane</a> 给了v2 grpc接口相关的数据结构和接口。</p>
+
+<blockquote>
+<p><a href="https://github.com/ninokop/nino-notes/blob/master/istio/pilot-xDS.md">pilot-xDS</a>是几个月前0.6.0版本的环境上实验的接口，今天在0.8.0上跑发现RDS和CDS都查不到配置了，心好累。追到对应版本的代码发现因为routerule的配置升级到v1alpha3 routing API之后，APIV1只支持原来route rule配置，APIV2才支持virtual service相关配置，所以0.8.0环境上RDS查不到信息。</p>
+</blockquote>
+
+<h3 id="sds">sDS</h3>
+
+<blockquote>
+<p><strong>Tips</strong> 最初看xDS的文档的时候，非常疑惑这些接口里的service-key service-node cluster-name到底是什么含义，在0.6.0版本中有个cache_stats接口，只要envoy调用过，这次查询记录就可以在cache_stats中看到。本节记录每个字段的含义和查询方式。</p>
+</blockquote>
+
+<pre><code class="language-bash">curl http://xx/v1/registration
+curl http://xx/v1/registration/reviews.nino.svc.cluster.local\|http
+curl http://xx/v1/registration/reviews.nino.svc.cluster.local\|http\|version=v2
+</code></pre>
+
+<p><strong>pilot/pkg/proxy/envoy/v1/discovery.go</strong> 里v1接口文件中register函数完成了向go-restful注册服务。查询可以根据条件除了带上service-key，还可以在末尾带上labels，比如version=v2。在kube-service-registry当中service的查询是通过service endpoint 的shared informer查询的，可以很方便的匹配labels。</p>
+
+<pre><code class="language-json">[{
+   &quot;service-key&quot;: &quot;details.nino.svc.cluster.local|http&quot;,
+   &quot;hosts&quot;: [{
+     &quot;ip_address&quot;: &quot;10.244.0.37&quot;,
+     &quot;port&quot;: 9080
+   }]
+  }, {
+   &quot;service-key&quot;: &quot;reviews.nino.svc.cluster.local|http&quot;,
+   &quot;hosts&quot;: [{
+     &quot;ip_address&quot;: &quot;10.244.0.38&quot;,
+     &quot;port&quot;: 9080
+    }, {
+     &quot;ip_address&quot;: &quot;10.244.0.41&quot;,
+     &quot;port&quot;: 9080
+    }, {
+     &quot;ip_address&quot;: &quot;10.244.0.42&quot;,
+     &quot;port&quot;: 9080
+    }]
+}]
+</code></pre>
+
+<h3 id="cds">cDS</h3>
+
+<p>cDS的接口里的cluster_name和service_node可以通过envoy启动参数配置。其中cluster_name可以通过serviceCluster配置，service_node默认通过ENVOY_TYPE、POD_NAME、POD_NAMESPACE和INSTANCE_IP这些环境变量合成。</p>
+
+<blockquote>
+<p>/v1/{:cluster_name}/{:service_node}</p>
+</blockquote>
+
+<pre><code class="language-bash">curl http://xx/v1/clusters/productpage/sidecar~10.244.0.40~productpage-v1-
+8666ffbd7c-mf5f4.nino~nino.svc.cluster.local
+</code></pre>
+
+<pre><code class="language-json">{
+  &quot;clusters&quot;: [{
+    &quot;name&quot;: &quot;in.9080&quot;,
+    &quot;connect_timeout_ms&quot;: 1000,
+    &quot;type&quot;: &quot;static&quot;,
+    &quot;lb_type&quot;: &quot;round_robin&quot;,
+    &quot;hosts&quot;: [{
+      &quot;url&quot;: &quot;tcp://127.0.0.1:9080&quot;
+     }]
+   },{
+    &quot;name&quot;: &quot;out.ratings.nino.svc.cluster.local|http|version=v1&quot;,
+    &quot;service_name&quot;: &quot;ratings.nino.svc.cluster.local|http|version=v1&quot;,
+    &quot;connect_timeout_ms&quot;: 1000,
+    &quot;type&quot;: &quot;sds&quot;,
+    &quot;lb_type&quot;: &quot;round_robin&quot;
+   },{
+    &quot;name&quot;: &quot;out.reviews.nino.svc.cluster.local|http|version=v1&quot;,
+    &quot;service_name&quot;: &quot;reviews.nino.svc.cluster.local|http|version=v1&quot;,
+    &quot;connect_timeout_ms&quot;: 1000,
+    &quot;type&quot;: &quot;sds&quot;,
+    &quot;lb_type&quot;: &quot;round_robin&quot;
+   },{
+    &quot;name&quot;: &quot;out.reviews.nino.svc.cluster.local|http|version=v2&quot;,
+    &quot;service_name&quot;: &quot;reviews.nino.svc.cluster.local|http|version=v2&quot;,
+    &quot;connect_timeout_ms&quot;: 1000,
+    &quot;type&quot;: &quot;sds&quot;,
+    &quot;lb_type&quot;: &quot;round_robin&quot;
+   }]
+ }
+</code></pre>
+
+<h3 id="rds">rDS</h3>
+
+<p>接口类似cDS，通过istioctl创建了route rule之后可以通过routes查到结果。下面的例子是发布了关于reviews服务的权重规则。可以通过以下RDS接口查到对应的权重规则。</p>
+
+<blockquote>
+<p>/v1/{:route_config_name}/{:cluster_name}/{:service_node}</p>
+</blockquote>
+
+<pre><code class="language-bash">curl http://xx/v1/routes/9080/productpage/sidecar~10.244.0.40~
+productpage-v1-8666ffbd7c-mf5f4.nino~nino.svc.cluster.local
+</code></pre>
+
+<pre><code class="language-json">{
+  &quot;validate_clusters&quot;: true,
+  &quot;virtual_hosts&quot;: [
+   {
+    &quot;name&quot;: &quot;ratings.nino.svc.cluster.local|http&quot;,
+    &quot;domains&quot;: [
+     &quot;ratings:9080&quot;,
+     &quot;ratings&quot;,
+     &quot;ratings.nino:9080&quot;,
+     &quot;ratings.nino&quot;,
+     &quot;ratings.nino.svc:9080&quot;,
+     &quot;ratings.nino.svc&quot;,
+     &quot;ratings.nino.svc.cluster:9080&quot;,
+     &quot;ratings.nino.svc.cluster&quot;,
+     &quot;ratings.nino.svc.cluster.local:9080&quot;,
+     &quot;ratings.nino.svc.cluster.local&quot;,
+     &quot;10.101.178.48:9080&quot;,
+     &quot;10.101.178.48&quot;
+    ],
+    &quot;routes&quot;: [
+     {
+      &quot;prefix&quot;: &quot;/&quot;,
+      &quot;cluster&quot;: &quot;out.ratings.nino.svc.cluster.local|http|version=v1&quot;,
+      &quot;timeout_ms&quot;: 0,
+      &quot;decorator&quot;: {
+       &quot;operation&quot;: &quot;ratings-default&quot;
+      }
+     }
+    ]
+   },
+   {
+    &quot;name&quot;: &quot;reviews.nino.svc.cluster.local|http&quot;,
+    &quot;domains&quot;: [
+     &quot;reviews:9080&quot;,
+     &quot;reviews&quot;,
+     &quot;reviews.nino:9080&quot;,
+     &quot;reviews.nino&quot;,
+     &quot;reviews.nino.svc:9080&quot;,
+     &quot;reviews.nino.svc&quot;,
+     &quot;reviews.nino.svc.cluster:9080&quot;,
+     &quot;reviews.nino.svc.cluster&quot;,
+     &quot;reviews.nino.svc.cluster.local:9080&quot;,
+     &quot;reviews.nino.svc.cluster.local&quot;,
+     &quot;10.108.121.171:9080&quot;,
+     &quot;10.108.121.171&quot;
+    ],
+    &quot;routes&quot;: [
+     {
+      &quot;prefix&quot;: &quot;/&quot;,
+      &quot;weighted_clusters&quot;: {
+       &quot;clusters&quot;: [
+        {
+         &quot;name&quot;: &quot;out.reviews.nino.svc.cluster.local|http|version=v1&quot;,
+         &quot;weight&quot;: 50
+        },
+        {
+         &quot;name&quot;: &quot;out.reviews.nino.svc.cluster.local|http|version=v2&quot;,
+         &quot;weight&quot;: 50
+        }
+       ]
+      },
+      &quot;timeout_ms&quot;: 0,
+      &quot;decorator&quot;: {
+       &quot;operation&quot;: &quot;reviews-default&quot;
+      }
+     }
+    ]
+   }
+  ]
+ }
+</code></pre>
+
+<h2 id="api-v2-reference">api v2 reference</h2>
+
+<h3 id="eds-http-debug">eds http debug</h3>
+
+<p>虽然v2是grpc的接口，但是pilot提供了<code>InitDebug</code>，可以通过debug接口查询服务和routes等服务和配置信息。比如下面是edsz的debug接口。</p>
+
+<pre><code class="language-bash">curl http://10.99.241.12:8080/debug/edsz
+</code></pre>
+
+<pre><code class="language-json">[{
+    &quot;clusterName&quot;: &quot;outbound|9080||reviews.nino.svc.cluster.local&quot;,
+    &quot;endpoints&quot;: [{
+        &quot;lbEndpoints&quot;: [{
+            &quot;endpoint&quot;: {
+                &quot;address&quot;: {
+                    &quot;socketAddress&quot;: {
+                        &quot;address&quot;: &quot;10.244.0.56&quot;,
+                        &quot;portValue&quot;: 9080
+                    }
+                }
+            }
+        }, {
+            &quot;endpoint&quot;: {
+                &quot;address&quot;: {
+                    &quot;socketAddress&quot;: {
+                        &quot;address&quot;: &quot;10.244.0.58&quot;,
+                        &quot;portValue&quot;: 9080
+                    }
+                }
+            }
+        }, {
+            &quot;endpoint&quot;: {
+                &quot;address&quot;: {
+                    &quot;socketAddress&quot;: {
+                        &quot;address&quot;: &quot;10.244.2.25&quot;,
+                        &quot;portValue&quot;: 9080
+                    }
+                }
+            }
+        }]
+    }]
+}, {
+    &quot;clusterName&quot;: &quot;outbound|9080|v3|reviews.nino.svc.cluster.local&quot;,
+    &quot;endpoints&quot;: [{
+        &quot;lbEndpoints&quot;: [{
+            &quot;endpoint&quot;: {
+                &quot;address&quot;: {
+                    &quot;socketAddress&quot;: {
+                        &quot;address&quot;: &quot;10.244.0.58&quot;,
+                        &quot;portValue&quot;: 9080
+                    }
+                }
+            }
+        }]
+    }]
+}]
+</code></pre>
+
+<h3 id="eds-grpc">eds grpc</h3>
+
+<p>在envoy的go-control-plane接口定义中istio需要实现以下接口，结果pilot只实现了StreamEndpoints。看了下基本实现eds只需要DiscoveryRequest里的ResourceNames这个字段，其实跟v1的接口一样就是需要service-key。NodeId和TypeUrl可省略，后者默认就是EndpointType。</p>
+
+<pre><code class="language-go">type EndpointDiscoveryServiceServer interface {
+    StreamEndpoints(EndpointDiscoveryService_StreamEndpointsServer) error
+    FetchEndpoints(context.Context, *DiscoveryRequest) (*DiscoveryResponse, error)
+}
+
+type EndpointDiscoveryService_StreamEndpointsServer interface {
+    Send(*DiscoveryResponse) error
+    Recv() (*DiscoveryRequest, error)
+    grpc.ServerStream
+}
+</code></pre>
+
+<p>这个ResourceNames支持两种格式，其中v1和version=v1可以没有，这个代表labels和新版定义的subsets。eds的解析里兼容两个版本的解析方式。</p>
+
+<blockquote>
+<p>outbound|http|v1|istioserver.pilot.svc.cluster.local</p>
+
+<p>istioserver.pilot.svc.cluster.local|http|version=v1</p>
+</blockquote>
+
+<p><strong>istio/pilot/pkg/proxy/envoy/v2/eds.go</strong></p>
+
+<pre><code class="language-go">xds := xdsapi.NewEndpointDiscoveryServiceClient(conn)
+edsstr, err := xds.StreamEndpoints(context.Background())
+err = edsstr.Send(&amp;xdsapi.DiscoveryRequest{
+    ResourceNames: []string{&quot;istioserver.pilot.svc.cluster.local|http|version=v1&quot;},
+	TypeUrl:       EndpointType,
+})
+res1, err := edsstr.Recv()
+cla, err := getLoadAssignment(res1)
+</code></pre>
+
+<p>pilot把这个响应<code>DiscoveryResponse</code>的Resources字段用<code>ClusterLoadAssignment</code>代替。客户端需要<code>getLoadAssignment</code>从res1.Resources[0].Value反序列化出真正的响应结构。</p>
+
+<p><strong>github.com/envoyproxy/go-control-plane/envoy/api/v2/eds.pb.go</strong></p>
+
+<pre><code class="language-go">type ClusterLoadAssignment struct {
+    ClusterName string 
+    // List of endpoints to load balance to.
+    Endpoints []envoy_api_v2_endpoint.LocalityLbEndpoints 
+    // Load balancing policy settings.
+    Policy *ClusterLoadAssignment_Policy
+}
+</code></pre>
+
+<h3 id="ads-grpc">ads grpc</h3>
+
+<p>查询eds还有另一种方式ads，即Aggregated Discovery Service，它封装了下面这个接口。istio在实现过程中根据typeUrl识别xDS的类别。除了eds以外，其他lds rds cds都是由ads集成的，没有单独的xds接口了。</p>
+
+<pre><code class="language-go">type AggregatedDiscoveryServiceServer interface {
+    // This is a gRPC-only API.
+    StreamAggregatedResources(AggregatedDiscoveryService_StreamAggregatedResourcesServer) error
+}
+</code></pre>
+
+<p>当类型选择为EndpointType时，查询结果跟eds一致，不过ads接口要求NodeID必须在pilot缓存中存在。</p>
+
+<pre><code class="language-go">xds := ads.NewAggregatedDiscoveryServiceClient(conn)
+adser, err := xds.StreamAggregatedResources(context.Background())
+err = adser.Send(&amp;xdsapi.DiscoveryRequest{
+    Node: &amp;envoy_api_v2_core1.Node{
+        Id: &quot;sidecar~10.109.11.31~productpage-v1-586c4486b7-rk2rh.nino~nino.svc.cluster.local&quot;,
+	},
+    ResourceNames: []string{&quot;istioserver.pilot.svc.cluster.local|http&quot;},
+    TypeUrl:       EndpointType,
+})
+res1, err := adser.Recv()
+cla, err := getLoadAssignment(res1)
+</code></pre>
+
+<h3 id="cds-http-debug">cds http debug</h3>
+
+<p>通过cdsz可以看到每个nodeID对应的clusters的配置，如果系统中用户没有发布subnets，从cds实际上查不到带tag或者说带version的信息。</p>
+
+<blockquote>
+<p>curl <a href="http://10.99.241.12:8080/debug/cdsz">http://10.99.241.12:8080/debug/cdsz</a></p>
+</blockquote>
+
+<pre><code class="language-go">{
+  &quot;name&quot;: &quot;outbound|8084||istioserver.pilot.svc.cluster.local&quot;,
+  &quot;type&quot;: &quot;EDS&quot;,
+  &quot;edsClusterConfig&quot;: {
+    &quot;edsConfig&quot;: {
+      &quot;ads&quot;: {
+      }
+    },
+    &quot;serviceName&quot;: &quot;outbound|8084||istioserver.pilot.svc.cluster.local&quot;
+  },
+  &quot;connectTimeout&quot;: &quot;1.000s&quot;,
+  &quot;circuitBreakers&quot;: {
+    &quot;thresholds&quot;: [
+      {
+      }
+    ]
+  }
+},
+</code></pre>
+
+<h3 id="cds-grpc">cds grpc</h3>
+
+<p>cds接口返回的数据是Cluster，包含了所有这个服务的配置信息。但因为目前用不到就布列出来了，具体定义见文件 <strong>github.com/envoyproxy/go-control-plane/envoy/api/v2/cds.pb.go</strong></p>
+
+<pre><code class="language-go">type Cluster struct {
+    Name string 
+    ...
+    Type Cluster_DiscoveryType 
+    EdsClusterConfig *Cluster_EdsClusterConfig 
+    ConnectTimeout time.Duration 
+    LbPolicy Cluster_LbPolicy 
+
+    CircuitBreakers *envoy_api_v2_cluster.CircuitBreakers 
+    ...
+}
+</code></pre>
+
+<h3 id="rds-grpc">rds grpc</h3>
+
+<p>rds接口返回的数据结构是<code>RouteConfiguration</code>，这个RouteConfiguration对应的是新版本的路由配置格式，就是virtual service和destination rules这对规则。</p>
+
+<p><strong>github.com/envoyproxy/go-control-plane/envoy/api/v2/rds.pb.go</strong></p>
+
+<pre><code class="language-go">type RouteConfiguration struct {
+    Name string
+    VirtualHosts []envoy_api_v2_route.VirtualHost 
+    InternalOnlyHeaders []string 
+    ResponseHeadersToAdd []*envoy_api_v2_core1.HeaderValueOption 
+    ResponseHeadersToRemove []string 
+    RequestHeadersToAdd []*envoy_api_v2_core1.HeaderValueOption 
+    ValidateClusters *google_protobuf.BoolValue 
+}
+</code></pre>
+
+<blockquote>
+<p>看了数据结构注释，在RDS当中ResourceName填的是routeConfiguration的名字。</p>
+</blockquote>
+
+<pre><code class="language-go">rds.Send(&amp;xdsapi.DiscoveryRequest{
+    ResponseNonce: time.Now().String(),
+    Node: &amp;envoy_api_v2_core1.Node{
+        Id: &quot;sidecar~10.244.0.58~reviews-v3-79fb5c99d5-d9k7b.nino~nino.svc.cluster.local&quot;,
+    },
+    ResourceNames: []string{&quot;9080&quot;},
+    TypeUrl:       RouteType})
+</code></pre>
+
+<p>rds的查询结果实例如下，我就是发布了一个reviews的50%：50%的权重规则。</p>
+
+<pre><code class="language-json">{
+ &quot;versionInfo&quot;: &quot;2018-06-21 07:23:37.290525595 +0000 UTC m=+600.138437218&quot;,
+ &quot;resources&quot;: [
+  {
+   &quot;@type&quot;: &quot;type.googleapis.com/envoy.api.v2.RouteConfiguration&quot;,
+   &quot;name&quot;: &quot;9080&quot;,
+   &quot;virtualHosts&quot;: [
+    {
+     &quot;name&quot;: &quot;productpage.nino.svc.cluster.local:9080&quot;,
+     &quot;domains&quot;: [
+      &quot;productpage.nino.svc.cluster.local&quot;,
+      &quot;productpage.nino.svc.cluster.local:9080&quot;,
+      &quot;productpage&quot;,
+      &quot;productpage:9080&quot;,
+      &quot;productpage.nino.svc.cluster&quot;,
+      &quot;productpage.nino.svc.cluster:9080&quot;,
+      &quot;productpage.nino.svc&quot;,
+      &quot;productpage.nino.svc:9080&quot;,
+      &quot;productpage.nino&quot;,
+      &quot;productpage.nino:9080&quot;,
+      &quot;10.109.11.31&quot;,
+      &quot;10.109.11.31:9080&quot;
+     ],
+     &quot;routes&quot;: [
+      {
+       &quot;match&quot;: {
+        &quot;prefix&quot;: &quot;/&quot;
+       },
+       &quot;route&quot;: {
+        &quot;cluster&quot;: &quot;outbound|9080|v1|productpage.nino.svc.cluster.local&quot;,
+        &quot;useWebsocket&quot;: false
+       },
+       &quot;decorator&quot;: {
+        &quot;operation&quot;: &quot;productpage&quot;
+       }
+      }
+     ]
+    },
+    {
+     &quot;name&quot;: &quot;reviews.nino.svc.cluster.local:9080&quot;,
+     &quot;domains&quot;: [
+      &quot;reviews.nino.svc.cluster.local&quot;,
+      &quot;reviews.nino.svc.cluster.local:9080&quot;,
+      &quot;reviews&quot;,
+      &quot;reviews:9080&quot;,
+      &quot;reviews.nino.svc.cluster&quot;,
+      &quot;reviews.nino.svc.cluster:9080&quot;,
+      &quot;reviews.nino.svc&quot;,
+      &quot;reviews.nino.svc:9080&quot;,
+      &quot;reviews.nino&quot;,
+      &quot;reviews.nino:9080&quot;,
+      &quot;10.109.242.124&quot;,
+      &quot;10.109.242.124:9080&quot;
+     ],
+     &quot;routes&quot;: [
+      {
+       &quot;match&quot;: {
+        &quot;prefix&quot;: &quot;/&quot;
+       },
+       &quot;route&quot;: {
+        &quot;weightedClusters&quot;: {
+         &quot;clusters&quot;: [
+          {
+           &quot;name&quot;: &quot;outbound|9080|v2|reviews.nino.svc.cluster.local&quot;,
+           &quot;weight&quot;: 50
+          },
+          {
+           &quot;name&quot;: &quot;outbound|9080|v3|reviews.nino.svc.cluster.local&quot;,
+           &quot;weight&quot;: 50
+          }
+         ]
+        },
+        &quot;useWebsocket&quot;: false
+       },
+       &quot;decorator&quot;: {
+        &quot;operation&quot;: &quot;reviews&quot;
+       }
+      }
+     ]
+    }
+   ],
+   &quot;validateClusters&quot;: false
+  }
+ ],
+ &quot;typeUrl&quot;: &quot;type.googleapis.com/envoy.api.v2.RouteConfiguration&quot;,
+ &quot;nonce&quot;: &quot;2018-06-21 07:23:59.18418814 +0000 UTC m=+622.032099759&quot;
+}
+</code></pre>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/">envoy API reference</a></li>
+<li><a href="https://github.com/envoyproxy/go-control-plane">envoy control plane</a></li>
+<li><a href="https://istio.io/">istio指南</a></li>
+</ul>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/"><i class="fa fa-link"></i>Vistio—使用Netflix的Vizceral可视化Istio service mesh</a></li>
+         
+        <li><a href="/blog/the-rise-of-the-istio-service-mesh/"><i class="fa fa-link"></i>Istio服务网格的崛起</a></li>
+         
+        <li><a href="/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/"><i class="fa fa-link"></i>Twistlock使Istio的安全层更强大，更易于监控</a></li>
+         
+        <li><a href="/blog/istio-mixer-cache-part4-signature/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part4－签名</a></li>
+         
+        <li><a href="/blog/istio-mixer-cache-part3-main/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part3—主流程</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://servicemesher.github.io/categories/istio"><i class="fa fa-navicon"></i>istio (4)</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/categories/istio%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90"><i class="fa fa-navicon"></i>istio源码解析 (4)</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (5)</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/categories/%e8%af%91%e6%96%87"><i class="fa fa-navicon"></i>译文 (17)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://servicemesher.github.io/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/service"><i class="fa fa-tags"></i> service</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/%e5%8d%8e%e4%b8%ba"><i class="fa fa-tags"></i> 华为</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/%e5%be%ae%e6%9c%8d%e5%8a%a1"><i class="fa fa-tags"></i> 微服务</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/%e6%95%99%e7%a8%8b"><i class="fa fa-tags"></i> 教程</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90"><i class="fa fa-tags"></i> 源码解析</a>
+            </li>
+            
+            <li><a href="https://servicemesher.github.io/tags/%e8%9a%82%e8%9a%81%e9%87%91%e6%9c%8d"><i class="fa fa-tags"></i> 蚂蚁金服</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播 Service Mesh 技术、加强行业内部交流、推动 Service Mesh 在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsix68f9vbj30rs0ku7wh.jpg" class="img-responsive" alt="服务网格Istio之pilot-xDS接口笔记">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/">服务网格Istio之pilot-xDS接口笔记</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://servicemesher.github.io/blog/the-universal-data-plane-api/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsivgisloaj30rs0kuqsq.jpg" class="img-responsive" alt="Service Mesh中的通用数据平面API设计">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://servicemesher.github.io/blog/the-universal-data-plane-api/">Service Mesh中的通用数据平面API设计</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshii8ckauj30rs0kujvm.jpg" class="img-responsive" alt="Vistio—使用Netflix的Vizceral可视化Istio service mesh">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/">Vistio—使用Netflix的Vizceral可视化Istio service mesh</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>Service Mesh爱好者社区</p><p><a href="https://jimmysong.io/about">管理员</a></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://servicemesher.github.io/js/front.js"></script>
+
+
+<script src="https://servicemesher.github.io/js/owl.carousel.min.js"></script>
+
+<script src="https://servicemesher.github.io/js/prism.js"></script>
+
+
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js"></script>
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

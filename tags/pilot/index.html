@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Istio 安全设置笔记 · Service Mesh爱好者</title>
+  <title>Pilot · Service Mesh爱好者</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh, istio, 安全, 服务网格">
+  <meta name="keywords" content="service mesh">	
   
 
   
@@ -58,9 +58,9 @@
   <link rel="stylesheet" href="https://servicemesher.github.io/css/prism.css" />
 
   
-  <meta property="og:title" content="Istio 安全设置笔记" />
+  <meta property="og:title" content="Pilot" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/istio-security-notes-by-fleeto//" />
+  <meta property="og:url" content="/tags/pilot//" />
   <meta property="og:image" content="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" />
 
   
@@ -90,9 +90,9 @@
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://servicemesher.github.io/">
                     
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio 安全设置笔记 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio 安全设置笔记 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Istio 安全设置笔记 - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Pilot logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Pilot logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Pilot - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -212,7 +212,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Istio 安全设置笔记</h1>
+                <h1>Pilot</h1>
             </div>
         </div>
     </div>
@@ -221,282 +221,65 @@ autocomplete('#aa-search-input',
 
         <div id="content">
             <div class="container">
-
                 <div class="row">
-
                     
 
-                    <div class="col-md-9" id="blog-post">
-                        <p class="text-muted mb-small text-left">
-                        作者 <a href="https://blog.fleeto.us/post/istio-security-notes/">崔秀龙</a>
+                    <div class="col-md-9" id="blog-listing-medium">
+
                         
                         
-                        |
-                        1800字 | 阅读大约需要4分钟
-                        |
-                        
-                        
-                        
-                        归档于<a href="https://servicemesher.github.io/categories/istio">istio</a>
-                        
-                        |
-                        
-                        发表于
-                        2018-06-11
-                        
-                        
-                        <p class="text=muted mb-small text-uppercase text-left">
-                        标签
-                        
-                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/istio/"><i>#istio</i></a>
-                        
-                        <a style="text-transform:capitalize" href="https://servicemesher.github.io/tags/security/"><i>#security</i></a>
-                        
-                        </p>
-                        
-                        
-                        </p>
-                        <div id="post-content">
-                          
+                        <section class="post">
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <div class="image">
+                                      <a href="https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/">
+                                          
+                                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsix68f9vbj30rs0ku7wh.jpg" class="img-responsive" alt="">
+                                          
+                                      </a>
+                                  </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h2><a href="https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/">服务网格Istio之pilot-xDS接口笔记</a></h2>
+                                    <div class="clearfix">
+                                        <p class="author-category">
+                                          
+                                          作者 <a href="https://ninokop.github.io/">Tian Zhou</a>
+                                          
+                                          
+                                          |
+                                          2700字 | 阅读大约需要6分钟
+                                          |
+                                          
+                                          
+                                          归档于<a href="https://servicemesher.github.io/categories/istio">istio</a>
+                                          
+                                          
 
-<blockquote>
-<p>本文转载自 <a href="https://blog.fleeto.us/post/istio-security-notes/">伪架构师</a>。</p>
-</blockquote>
-
-<p><a href="https://istio.io/">Istio</a> 为网格中的微服务提供了较为完善的安全加固功能，在不影响代码的前提下，可以从多个角度提供安全支撑，<a href="https://istio.io/docs/tasks/security/">官方文档</a>做了较为详细的介绍，但是也比较破碎，这里尝试做个简介兼索引，实现过程还是要根据官方文档进行。</p>
-
-<p>Istio 的安全功能主要分为三个部分的实现：</p>
-
-<ol>
-<li>双向 TLS 支持。</li>
-<li>基于黑白名单的访问控制。</li>
-<li>基于角色的访问控制。</li>
-<li>JWT 认证支持。</li>
-</ol>
-
-<p>首先回顾一下 Istio 网格中的服务通信过程：</p>
-
-<ol>
-<li>利用自动或者手工注入，把 Envoy Proxy 注入到每个服务 Pod 中，用 Sidecar 的方式运行。</li>
-<li>Pod 初始化过程里，使用 iptables 劫持所在 Pod 的<strong>出入</strong>流量。</li>
-<li>服务间的通信，从原来的直接通信，转换为现在的 Envoy 之间通信，Envoy 在这里同时作为客户端和服务端负载均衡组件。</li>
-<li>Envoy 的工作过程中，可能会和 Mixer、Pilot 以及 Citadel 等组件发生互动。</li>
-</ol>
-
-<h2 id="双向-tls-支持">双向 TLS 支持</h2>
-
-<p>双向 TLS 支持主要针对的是通信方面，把明文传输的服务通信，通过转换为 Envoy 之间的加密通信。这一安全设置较为基础，可以在全局、Namespace 或者单个服务的范围内生效。</p>
-
-<p>这一功能主要通过两个 Istio CRD 对象来完成：</p>
-
-<h3 id="policy">Policy</h3>
-
-<p>例如 <a href="https://istio.io/docs/tasks/security/authn-policy/">Basic Authentication Policy</a> 中的一个样例，用于给单个服务设置 mtls：</p>
-
-<pre><code class="language-yaml">apiVersion: &quot;authentication.istio.io/v1alpha1&quot;
-kind: &quot;Policy&quot;
-metadata:
-  name: &quot;example-2&quot;
-spec:
-  targets:
-  - name: httpbin
-  peers:
-  - mtls:
-</code></pre>
-
-<p>其中 <code>target</code> 是可选项，如果去掉的话，作用域将扩展到整个 Namespace。</p>
-
-<h3 id="destinationrule">DestinationRule</h3>
-
-<p>同样的一个例子里面的目标规则如下：</p>
-
-<pre><code class="language-yaml">apiVersion: &quot;networking.istio.io/v1alpha3&quot;
-kind: &quot;DestinationRule&quot;
-metadata:
-  name: &quot;example-2&quot;
-spec:
-  host: httpbin.bar.svc.cluster.local
-  trafficPolicy:
-    tls:
-      mode: DISABLE
-    portLevelSettings:
-    - port:
-        number: 1234
-      tls:
-        mode: ISTIO_MUTUAL
-</code></pre>
-
-<p>这个也很容易理解，这一规则用于指派对该地址的访问方式：</p>
-
-<ul>
-<li><code>tls.mode = DISABLE</code>，这个服务缺省是不开启 tls 支持的，如果取值 <code>ISTIO_MUTUAL</code>，则代表这个地址（服务）的所有端口都开启 TLS。</li>
-<li><code>port...ISTIO_MUTUAL</code>，只针对这一个端口启用 mTLS 支持。</li>
-</ul>
-
-<p>创建 Policy 之后，Citadel 会生成证书文件，并传递给 Envoy，我们可以在 Envoy 容器（kube-proxy）的 <code>/etc/certs/</code> 目录中看到这几个 <code>*.pem</code> 文件。如果使用 <code>openssl x509 -text -noout</code> 查看 <code>cert-chain.pem</code> 的证书内容，会看到 spiffe 编码的 ServiceAccount 内容来作为 SAN：</p>
-
-<pre><code class="language-yaml"> X509v3 Subject Alternative Name:
-            URI:spiffe://cluster.local/ns/default/sa/default
-</code></pre>
-
-<p>规则生效之后，原有的服务间调用是没有差异的，但是如果在网格之外，就必须 https，结合上面谈到的证书来访问目标服务才能完成访问。</p>
-
-<blockquote>
-<p>另外这里也提供了<a href="https://istio.io/docs/tasks/security/plugin-ca-cert/">外部 CA 的支持</a>，可以使用已有的证书体系来替换网格内的自签发体系。</p>
-</blockquote>
-
-<h2 id="基于黑白名单的访问控制">基于黑白名单的访问控制</h2>
-
-<h3 id="黑名单">黑名单</h3>
-
-<p>下面的例子来自<a href="https://raw.githubusercontent.com/istio/istio/release-0.8/samples/bookinfo/kube/mixer-rule-deny-label.yaml">官方</a>，禁止 Reviews 的 v3 版本访问 Ratings 服务。</p>
-
-<p>首先使用 <code>denier</code> 适配器定义一个拒绝响应</p>
-
-<pre><code class="language-yaml">apiVersion: &quot;config.istio.io/v1alpha2&quot;
-kind: denier
-metadata:
-  name: denyreviewsv3handler
-spec:
-  status:
-    code: 7
-    message: Not allowed
-</code></pre>
-
-<p>这里不需要额外属性输入，因此采用了 <code>checknothing</code> 模板：</p>
-
-<pre><code class="language-yaml">apiVersion: &quot;config.istio.io/v1alpha2&quot;
-kind: checknothing
-metadata:
-  name: denyreviewsv3request
-spec:
-</code></pre>
-
-<p>最后使用 <code>rule</code> 对象把这两者联系起来，并配合一个表达式来使之生效：</p>
-
-<pre><code class="language-yaml">apiVersion: &quot;config.istio.io/v1alpha2&quot;
-kind: rule
-metadata:
-  name: denyreviewsv3
-spec:
-  match: destination.labels[&quot;app&quot;] == &quot;ratings&quot; &amp;&amp; source.labels[&quot;app&quot;]==&quot;reviews&quot; &amp;&amp; source.labels[&quot;version&quot;] == &quot;v3&quot;
-  actions:
-  - handler: denyreviewsv3handler.denier
-    instances: [ denyreviewsv3request.checknothing ]
-</code></pre>
-
-<h3 id="白名单">白名单</h3>
-
-<p>官方案例设置了一个允许 <code>v2</code> 和 <code>v3</code> 版本访问 <code>ratings</code> 服务的白名单。</p>
-
-<p>白名单适配器要使用的是 <code>listchecker</code>，提供了一个允许访问的数组。</p>
-
-<pre><code class="language-yaml">apiVersion: config.istio.io/v1alpha2
-kind: listchecker
-metadata:
-  name: whitelist
-spec:
-  # providerUrl: 可以从外部 URL 获取列表内容
-  overrides: [&quot;v1&quot;, &quot;v2&quot;]  # 静态列表
-  blacklist: false
-</code></pre>
-
-<p>需要使用一个模板将 Pod 标签转换为 <code>listchecker</code> 的版本列表。</p>
-
-<pre><code class="language-yaml">apiVersion: config.istio.io/v1alpha2
-kind: listentry
-metadata:
-  name: appversion
-spec:
-  value: source.labels[&quot;version&quot;]
-</code></pre>
-
-<p>最后使用 Rule 进行连接：</p>
-
-<pre><code class="language-yaml">apiVersion: config.istio.io/v1alpha2
-kind: rule
-metadata:
-  name: checkversion
-spec:
-  match: destination.labels[&quot;app&quot;] == &quot;ratings&quot;
-  actions:
-  - handler: whitelist.listchecker
-    instances:
-    - appversion.listentry
-</code></pre>
-
-<blockquote>
-<p>注意：如果开启了 mTLS，可以使用 <code>source.user == &quot;cluster.local/ns/default/sa/bookinfo-productpage&quot;</code> 的形式来匹配 ServiceAccount。</p>
-</blockquote>
-
-<h2 id="rbac">RBAC</h2>
-
-<blockquote>
-<p>Helm 安装时，需要设置 <code>global.rbacEnabled: true</code>。</p>
-</blockquote>
-
-<p>RBAC 提供较细粒度的访问控制。另外其中所使用的 <code>ServiceRole</code> 和 <code>ServiceRoleBinding</code> 也更直观、更加易于管理。</p>
-
-<p>例如来自<a href="https://istio.io/docs/tasks/security/role-based-access-control/">官方 Task</a> 的 <code>ServiceRole</code> 定义，这个角色允许对指定服务进行只读访问：</p>
-
-<pre><code class="language-yaml">apiVersion: &quot;config.istio.io/v1alpha2&quot;
-kind: ServiceRole
-metadata:
-  name: productpage-viewer
-  namespace: default
-spec:
-  rules:
-  - services: [&quot;productpage.default.svc.cluster.local&quot;]
-    methods: [&quot;GET&quot;]
-</code></pre>
-
-<p>如果在 Namespace 级别进行设置，则可以这样：</p>
-
-<pre><code class="language-yaml">...
-  rules:
-  - services: [&quot;*&quot;]
-    methods: [&quot;GET&quot;]
-    constraints:
-    - key: &quot;app&quot;
-      values: [&quot;productpage&quot;]
-...
-</code></pre>
-
-<p>和 Kubernetes 的 Rolebinding 类似，把用户和角色绑定起来，才能最后生效。</p>
-
-<p>例如：</p>
-
-<pre><code class="language-yaml">  - user: alice@yahoo.com
-</code></pre>
-
-<p>或者</p>
-
-<pre><code class="language-yaml">  - properties:
-      service: &quot;reviews&quot;
-      namespace: &quot;abc&quot;
-</code></pre>
-
-<blockquote>
-<p><code>subject</code> 的内容，同样属于 Adapter 模型的实现范围，因此其可选项目仍然是由 Template 的输入产生的。具体样例可以参考 <a href="https://github.com/istio/istio/blob/release-0.8/samples/bookinfo/kube/istio-rbac-enable.yaml">bookinfo 的 rbac 样板</a></p>
-</blockquote>
-
-<h2 id="jwt-认证">JWT 认证</h2>
-
-<p>没有外部认证的需求，因此就先不理了 lol。</p>
-
-<h2 id="参考链接">参考链接</h2>
-
-<ul>
-<li>安全任务：<a href="https://istio.io/docs/tasks/security">https://istio.io/docs/tasks/security</a></li>
-<li>Istio RBAC 参考：<a href="https://istio.io/docs/reference/config/istio.rbac.v1alpha1/">https://istio.io/docs/reference/config/istio.rbac.v1alpha1/</a></li>
-<li>Istio Adapters 参考：<a href="https://istio.io/docs/reference/config/policy-and-telemetry/adapters/">https://istio.io/docs/reference/config/policy-and-telemetry/adapters/</a></li>
-<li>Bookinfo 示例：<a href="https://github.com/istio/istio/blob/release-0.8/samples/bookinfo/kube/">https://github.com/istio/istio/blob/release-0.8/samples/bookinfo/kube/</a></li>
-</ul>
-
-                        </div>
-                        
+                                        </p>
+                                        <p class="date-comments">
+                                            <a href="https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/"><i class="fa fa-calendar-o"></i> 2018-06-21</a>
+                                        </p>
+                                    </div>
+                                    
+                                    <p class="intro">本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理和服务发现的实现。简单来说istio做为管理面，集合了配置中心和服务中心两个功能，并把配置发现和服务发现以一组统一的xDS接口提供出来，数据面的envoy通过xDS获取需要的信息来做服务间通信和服务治理。</p>
+                                    
+                                    <p class="read-more"><a href="https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/" class="btn btn-template-main">继续阅读</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
                         
 
+                        <ul class="pager">
+                            
+                            <li class="previous disabled"><a href="#">&larr; 更新</a></li>
+                            
+
+                            
+                            <li class="next disabled"><a href="#">更旧 &rarr;</a></li>
+                            
+                        </ul>
                     </div>
                     
 
@@ -509,25 +292,6 @@ spec:
                         
 
                         <div class="panel panel-default sidebar-menu">
-     
-    <div class="panel-heading">
-     <h3 class="panel-title">相关文章</h3>
-    </div>
-    <div class="panel-body">
-     <ul class="nav nav-pills nav-stacked">
-        
-        <li><a href="/blog/service-mesh-security-addressing-attack-vectors-with-istio/"><i class="fa fa-link"></i>Service Mesh 安全：用 Istio 应对攻击</a></li>
-         
-        <li><a href="/blog/istio-service-mesh-tutorial/"><i class="fa fa-link"></i>Istio Service Mesh 教程</a></li>
-         
-        <li><a href="/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/"><i class="fa fa-link"></i>在 Istio 中使用 OpenTracing Baggage 进行传播和路由</a></li>
-         
-        <li><a href="/blog/tracing-grpc-with-istio/"><i class="fa fa-link"></i>在 Istio 中跟踪 gRPC</a></li>
-         
-        <li><a href="/blog/istio-mixer-cache-part2-principle/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part2－工作原理</a></li>
-         
-     </ul>
-    </div>
      
 </div>
 
@@ -662,7 +426,6 @@ spec:
 
                 </div>
                 
-
             </div>
             
         </div>
