@@ -264,12 +264,6 @@
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/service/</loc>
-    <lastmod>2018-06-19T15:54:19+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://servicemesher.github.io/tags/service-mesh/</loc>
     <lastmod>2018-06-21T18:00:58+08:00</lastmod>
     <priority>0</priority>

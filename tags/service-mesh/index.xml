@@ -39,6 +39,15 @@
     </item>
     
     <item>
+      <title>服务网格在Cookpad网站中的实践</title>
+      <link>https://servicemesher.github.io/blog/service-mesh-in-cookpad/</link>
+      <pubDate>Tue, 19 Jun 2018 15:54:19 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/service-mesh-in-cookpad/</guid>
+      <description>原文：http://techlife.cookpad.com/entry/2018/06/11/100355 作者：Taiki 译者：殷龙飞 校对</description>
+    </item>
+    
+    <item>
       <title>轻量 Service Mesh 在 Ucloud 的实践</title>
       <link>https://servicemesher.github.io/blog/lightweight-service-mesh-practice-in-ucloud/</link>
       <pubDate>Thu, 14 Jun 2018 10:43:16 +0800</pubDate>
