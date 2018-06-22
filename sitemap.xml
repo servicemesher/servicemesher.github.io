@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</loc>
+    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/blog/soft-multitenancy-in-istio-service-mesh/</loc>
     <lastmod>2018-06-21T18:11:13+08:00</lastmod>
   </url>
@@ -175,12 +180,6 @@
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/</loc>
-    <lastmod>2018-06-21T18:11:13+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://servicemesher.github.io/categories/</loc>
     <priority>0</priority>
   </url>
@@ -216,6 +215,12 @@
   </url>
   
   <url>
+    <loc>https://servicemesher.github.io/tags/infoq/</loc>
+    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/tags/istio/</loc>
     <lastmod>2018-06-21T18:11:13+08:00</lastmod>
     <priority>0</priority>
@@ -246,6 +251,12 @@
   </url>
   
   <url>
+    <loc>https://servicemesher.github.io/tags/matt-klein/</loc>
+    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/tags/opentracing/</loc>
     <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
@@ -265,7 +276,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/service-mesh/</loc>
-    <lastmod>2018-06-21T18:00:58+08:00</lastmod>
+    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -277,7 +288,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/</loc>
-    <lastmod>2018-06-21T18:11:13+08:00</lastmod>
+    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -318,6 +329,11 @@
   </url>
   
   <url>
+    <loc>https://servicemesher.github.io/blog/</loc>
+    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</loc>
     <lastmod>2018-06-12T15:06:25+08:00</lastmod>
     <priority>0</priority>
@@ -351,7 +367,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/</loc>
-    <lastmod>2018-06-21T18:11:13+08:00</lastmod>
+    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   

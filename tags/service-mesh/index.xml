@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 21 Jun 2018 18:00:58 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 22 Jun 2018 19:01:51 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>InfoQ访谈：使用服务网格的微服务通信与治理</title>
+      <link>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</link>
+      <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</guid>
+      <description>原文：https://www.infoq.com/articles/vp-microservices-communication-gover</description>
+    </item>
     
     <item>
       <title>容器、服务网格和 API 网关：从边缘开始</title>

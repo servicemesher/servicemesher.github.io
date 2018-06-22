@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogs on ServiceMesher</title>
+    <title>博客 on ServiceMesher</title>
     <link>https://servicemesher.github.io/blog/</link>
-    <description>Recent content in Blogs on ServiceMesher</description>
+    <description>Recent content in 博客 on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 21 Jun 2018 18:11:13 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 22 Jun 2018 19:01:51 +0800</lastBuildDate>
     
 	<atom:link href="https://servicemesher.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>InfoQ访谈：使用服务网格的微服务通信与治理</title>
+      <link>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</link>
+      <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</guid>
+      <description>原文：https://www.infoq.com/articles/vp-microservices-communication-gover</description>
+    </item>
     
     <item>
       <title>Istio 的软性多租户支持</title>

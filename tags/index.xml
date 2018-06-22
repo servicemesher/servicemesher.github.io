@@ -75,6 +75,15 @@
     </item>
     
     <item>
+      <title>Infoq</title>
+      <link>https://servicemesher.github.io/tags/infoq/</link>
+      <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/tags/infoq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Istio</title>
       <link>https://servicemesher.github.io/tags/istio/</link>
       <pubDate>Thu, 21 Jun 2018 18:11:13 +0800</pubDate>
@@ -98,6 +107,15 @@
       <pubDate>Tue, 19 Jun 2018 11:42:58 +0800</pubDate>
       
       <guid>https://servicemesher.github.io/tags/linkerd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Matt Klein</title>
+      <link>https://servicemesher.github.io/tags/matt-klein/</link>
+      <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/tags/matt-klein/</guid>
       <description></description>
     </item>
     
@@ -131,7 +149,7 @@
     <item>
       <title>Service Mesh</title>
       <link>https://servicemesher.github.io/tags/service-mesh/</link>
-      <pubDate>Thu, 21 Jun 2018 18:00:58 +0800</pubDate>
+      <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
       
       <guid>https://servicemesher.github.io/tags/service-mesh/</guid>
       <description></description>
