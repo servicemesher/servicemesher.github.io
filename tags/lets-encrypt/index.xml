@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lets Encrypt on ServiceMesher</title>
+    <link>https://servicemesher.github.io/tags/lets-encrypt/</link>
+    <description>Recent content in Lets Encrypt on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 25 Jun 2018 20:30:52 +0800</lastBuildDate>
+    
+	<atom:link href="https://servicemesher.github.io/tags/lets-encrypt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持</title>
+      <link>https://servicemesher.github.io/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/</link>
+      <pubDate>Mon, 25 Jun 2018 20:30:52 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/</guid>
+      <description>原文链接：https://medium.com/@prune998/istio-envoy-cert-manager-lets-encryp</description>
+    </item>
+    
+  </channel>
+</rss>

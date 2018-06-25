@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://servicemesher.github.io/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/</loc>
+    <lastmod>2018-06-25T20:30:52+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</loc>
     <lastmod>2018-06-22T19:01:51+08:00</lastmod>
   </url>
@@ -192,7 +197,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/envoy/</loc>
-    <lastmod>2018-06-21T18:00:58+08:00</lastmod>
+    <lastmod>2018-06-25T20:30:52+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -222,7 +227,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/tags/istio/</loc>
-    <lastmod>2018-06-21T18:11:13+08:00</lastmod>
+    <lastmod>2018-06-25T20:30:52+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -241,6 +246,12 @@
   <url>
     <loc>https://servicemesher.github.io/tags/jenkins/</loc>
     <lastmod>2018-06-04T11:33:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/lets-encrypt/</loc>
+    <lastmod>2018-06-25T20:30:52+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -288,13 +299,19 @@
   
   <url>
     <loc>https://servicemesher.github.io/</loc>
-    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+    <lastmod>2018-06-25T20:30:52+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://servicemesher.github.io/tags/</loc>
     <lastmod>2018-06-21T18:00:58+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://servicemesher.github.io/tags/tls/</loc>
+    <lastmod>2018-06-25T20:30:52+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -330,7 +347,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/blog/</loc>
-    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+    <lastmod>2018-06-25T20:30:52+08:00</lastmod>
   </url>
   
   <url>
@@ -367,7 +384,7 @@
   
   <url>
     <loc>https://servicemesher.github.io/categories/%E8%AF%91%E6%96%87/</loc>
-    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+    <lastmod>2018-06-25T20:30:52+08:00</lastmod>
     <priority>0</priority>
   </url>
   
