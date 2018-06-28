@@ -196,6 +196,12 @@
   </url>
   
   <url>
+    <loc>https://servicemesher.github.io/blog/</loc>
+    <lastmod>2018-06-28T15:09:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://servicemesher.github.io/categories/</loc>
     <priority>0</priority>
   </url>
@@ -384,11 +390,6 @@
     <loc>https://servicemesher.github.io/tags/vizceral/</loc>
     <lastmod>2018-06-20T10:25:16+08:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://servicemesher.github.io/blog/</loc>
-    <lastmod>2018-06-28T15:09:03+08:00</lastmod>
   </url>
   
   <url>
