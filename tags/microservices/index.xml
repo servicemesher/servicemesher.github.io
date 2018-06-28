@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microservices on ServiceMesher</title>
+    <link>https://servicemesher.github.io/tags/microservices/</link>
+    <description>Recent content in Microservices on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 12 Jun 2018 15:06:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://servicemesher.github.io/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Istio服务网格的崛起</title>
+      <link>https://servicemesher.github.io/blog/the-rise-of-the-istio-service-mesh/</link>
+      <pubDate>Tue, 12 Jun 2018 15:06:25 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/the-rise-of-the-istio-service-mesh/</guid>
+      <description>原文链接：https://www.infoworld.com/article/3273547/containers/the-rise-of-</description>
+    </item>
+    
+    <item>
+      <title>Service Mesh：重塑微服务市场</title>
+      <link>https://servicemesher.github.io/blog/service-mesh-rebuild-microservice-market/</link>
+      <pubDate>Mon, 21 May 2018 21:48:05 +0800</pubDate>
+      
+      <guid>https://servicemesher.github.io/blog/service-mesh-rebuild-microservice-market/</guid>
+      <description>今天我们不谈技术，不谈架构，也不谈具体的产品，我们来聊一聊在未来一两年之内，Service Mesh技术会在微服务相关的市场带来什么样的变化？</description>
+    </item>
+    
+  </channel>
+</rss>
