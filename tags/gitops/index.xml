@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gitops on ServiceMesher</title>
-    <link>https://servicemesher.github.io/tags/gitops/</link>
+    <link>http://www.servicemesher.com/tags/gitops/</link>
     <description>Recent content in Gitops on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 31 May 2018 21:12:03 +0800</lastBuildDate>
     
-	<atom:link href="https://servicemesher.github.io/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.servicemesher.com/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Istio 的 GitOps——像代码一样管理 Istio 配置</title>
-      <link>https://servicemesher.github.io/blog/gitops-for-istio-manage-istio-config-like-code/</link>
+      <link>http://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</link>
       <pubDate>Thu, 31 May 2018 21:12:03 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/gitops-for-istio-manage-istio-config-like-code/</guid>
+      <guid>http://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</guid>
       <description>译者：Jimmy Song 原文地址：GitOps for Istio - Manage Istio Config like Code 在今年的哥本哈根 Kubecon 大会上，Weaveworks 的 CEO Alexis Richardson 与 Varun Talwar（来自一家隐形</description>
     </item>
     

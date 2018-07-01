@@ -3,400 +3,440 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-is-not-just-for-microservices/</loc>
+    <loc>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</loc>
+    <lastmod>2018-07-01T12:33:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</loc>
+    <lastmod>2018-06-29T15:51:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/istio-is-not-just-for-microservices/</loc>
     <lastmod>2018-06-28T15:09:03+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/</loc>
+    <loc>http://www.servicemesher.com/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/</loc>
     <lastmod>2018-06-25T20:30:52+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</loc>
+    <loc>http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/</loc>
     <lastmod>2018-06-22T19:01:51+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/soft-multitenancy-in-istio-service-mesh/</loc>
+    <loc>http://www.servicemesher.com/blog/soft-multitenancy-in-istio-service-mesh/</loc>
     <lastmod>2018-06-21T18:11:13+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</loc>
+    <loc>http://www.servicemesher.com/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</loc>
     <lastmod>2018-06-21T18:00:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/</loc>
+    <loc>http://www.servicemesher.com/blog/istio-service-mesh-pilot-xds-note/</loc>
     <lastmod>2018-06-21T16:55:56+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/the-universal-data-plane-api/</loc>
+    <loc>http://www.servicemesher.com/blog/the-universal-data-plane-api/</loc>
     <lastmod>2018-06-21T16:11:03+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/</loc>
+    <loc>http://www.servicemesher.com/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/</loc>
     <lastmod>2018-06-20T10:25:16+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/making-most-out-microservices-service-mesh/</loc>
+    <loc>http://www.servicemesher.com/blog/making-most-out-microservices-service-mesh/</loc>
     <lastmod>2018-06-19T18:04:08+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/service-mesh-in-cookpad/</loc>
+    <loc>http://www.servicemesher.com/blog/service-mesh-in-cookpad/</loc>
     <lastmod>2018-06-19T15:54:19+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</loc>
+    <loc>http://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</loc>
     <lastmod>2018-06-19T11:42:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/lightweight-service-mesh-practice-in-ucloud/</loc>
+    <loc>http://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</loc>
     <lastmod>2018-06-14T10:43:16+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</loc>
+    <loc>http://www.servicemesher.com/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</loc>
     <lastmod>2018-06-13T18:58:33+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/the-rise-of-the-istio-service-mesh/</loc>
+    <loc>http://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/</loc>
     <lastmod>2018-06-12T15:06:25+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/</loc>
+    <loc>http://www.servicemesher.com/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/</loc>
     <lastmod>2018-06-11T20:40:28+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-mixer-cache-part4-signature/</loc>
+    <loc>http://www.servicemesher.com/blog/istio-mixer-cache-part4-signature/</loc>
     <lastmod>2018-06-11T14:03:34+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-mixer-cache-part3-main/</loc>
+    <loc>http://www.servicemesher.com/blog/istio-mixer-cache-part3-main/</loc>
     <lastmod>2018-06-11T13:43:10+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-security-notes-by-fleeto/</loc>
+    <loc>http://www.servicemesher.com/blog/istio-security-notes-by-fleeto/</loc>
     <lastmod>2018-06-11T10:56:15+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/</loc>
+    <loc>http://www.servicemesher.com/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/</loc>
     <lastmod>2018-06-08T16:01:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/tracing-grpc-with-istio/</loc>
+    <loc>http://www.servicemesher.com/blog/tracing-grpc-with-istio/</loc>
     <lastmod>2018-06-08T12:40:05+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/service-mesh-security-addressing-attack-vectors-with-istio/</loc>
+    <loc>http://www.servicemesher.com/blog/service-mesh-security-addressing-attack-vectors-with-istio/</loc>
     <lastmod>2018-06-07T19:27:19+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-mixer-cache-part2-principle/</loc>
+    <loc>http://www.servicemesher.com/blog/istio-mixer-cache-part2-principle/</loc>
     <lastmod>2018-06-07T19:19:44+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-mixer-cache-part1-concepts/</loc>
+    <loc>http://www.servicemesher.com/blog/istio-mixer-cache-part1-concepts/</loc>
     <lastmod>2018-06-07T19:16:21+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/introducing-the-istio-v1alpha3-routing-api/</loc>
+    <loc>http://www.servicemesher.com/blog/introducing-the-istio-v1alpha3-routing-api/</loc>
     <lastmod>2018-06-06T18:30:53+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/manage-microservices-traffic-using-istio/</loc>
+    <loc>http://www.servicemesher.com/blog/manage-microservices-traffic-using-istio/</loc>
     <lastmod>2018-06-06T15:32:26+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/8-ways-a-service-mesh-eases-microservices-deployment/</loc>
+    <loc>http://www.servicemesher.com/blog/8-ways-a-service-mesh-eases-microservices-deployment/</loc>
     <lastmod>2018-06-05T19:12:42+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/helm-chart-for-istio-0.8/</loc>
+    <loc>http://www.servicemesher.com/blog/helm-chart-for-istio-0.8/</loc>
     <lastmod>2018-06-04T16:09:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/the-path-to-service-mesh/</loc>
+    <loc>http://www.servicemesher.com/blog/the-path-to-service-mesh/</loc>
     <lastmod>2018-06-04T15:55:08+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/building-istio-with-minikube-in-a-container-and-jenkins/</loc>
+    <loc>http://www.servicemesher.com/blog/building-istio-with-minikube-in-a-container-and-jenkins/</loc>
     <lastmod>2018-06-04T11:33:16+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-0.8-release-note/</loc>
+    <loc>http://www.servicemesher.com/blog/istio-0.8-release-note/</loc>
     <lastmod>2018-06-01T11:41:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/gitops-for-istio-manage-istio-config-like-code/</loc>
+    <loc>http://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</loc>
     <lastmod>2018-05-31T21:12:03+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/the-desigin-patterns-for-a-commercial-service-mesh/</loc>
+    <loc>http://www.servicemesher.com/blog/the-desigin-patterns-for-a-commercial-service-mesh/</loc>
     <lastmod>2018-05-30T15:00:22+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/deepin-service-mesh-tech-details/</loc>
+    <loc>http://www.servicemesher.com/blog/deepin-service-mesh-tech-details/</loc>
     <lastmod>2018-05-23T16:09:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/istio-service-mesh-tutorial/</loc>
+    <loc>http://www.servicemesher.com/blog/istio-service-mesh-tutorial/</loc>
     <lastmod>2018-05-22T12:16:22+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/service-mesh-rebuild-microservice-market/</loc>
+    <loc>http://www.servicemesher.com/blog/service-mesh-rebuild-microservice-market/</loc>
     <lastmod>2018-05-21T21:48:05+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/ambassador/</loc>
+    <loc>http://www.servicemesher.com/blog/</loc>
+    <lastmod>2018-05-20T15:51:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ambassador/</loc>
     <lastmod>2018-06-21T18:00:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/ant-financial/</loc>
+    <loc>http://www.servicemesher.com/tags/ant-financial/</loc>
     <lastmod>2018-06-13T18:58:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/baggage/</loc>
+    <loc>http://www.servicemesher.com/tags/baggage/</loc>
     <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/categories/</loc>
+    <loc>http://www.servicemesher.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/chart/</loc>
+    <loc>http://www.servicemesher.com/tags/chart/</loc>
     <lastmod>2018-06-04T16:09:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/envoy/</loc>
+    <loc>http://www.servicemesher.com/tags/cilium/</loc>
+    <lastmod>2018-07-01T12:33:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/distributing-system/</loc>
+    <lastmod>2018-06-29T15:51:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/envoy/</loc>
     <lastmod>2018-06-25T20:30:52+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/gitops/</loc>
+    <loc>http://www.servicemesher.com/tags/gitops/</loc>
     <lastmod>2018-05-31T21:12:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/grpc/</loc>
+    <loc>http://www.servicemesher.com/tags/grpc/</loc>
     <lastmod>2018-06-08T12:40:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/helm/</loc>
+    <loc>http://www.servicemesher.com/tags/helm/</loc>
     <lastmod>2018-06-04T16:09:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/huawei/</loc>
+    <loc>http://www.servicemesher.com/tags/huawei/</loc>
     <lastmod>2018-05-30T15:00:22+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/infoq/</loc>
+    <loc>http://www.servicemesher.com/tags/infoq/</loc>
     <lastmod>2018-06-22T19:01:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/istio/</loc>
+    <loc>http://www.servicemesher.com/tags/istio/</loc>
     <lastmod>2018-06-28T15:09:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/categories/istio/</loc>
+    <loc>http://www.servicemesher.com/categories/istio/</loc>
     <lastmod>2018-06-21T16:55:56+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/categories/istio-source-code/</loc>
+    <loc>http://www.servicemesher.com/categories/istio-source-code/</loc>
     <lastmod>2018-06-11T14:03:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/jenkins/</loc>
+    <loc>http://www.servicemesher.com/tags/jenkins/</loc>
     <lastmod>2018-06-04T11:33:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/lets-encrypt/</loc>
+    <loc>http://www.servicemesher.com/tags/lets-encrypt/</loc>
     <lastmod>2018-06-25T20:30:52+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/linkerd/</loc>
+    <loc>http://www.servicemesher.com/tags/linkerd/</loc>
     <lastmod>2018-06-19T11:42:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/matt-klein/</loc>
+    <loc>http://www.servicemesher.com/tags/matt-klein/</loc>
     <lastmod>2018-06-22T19:01:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/microservices/</loc>
+    <loc>http://www.servicemesher.com/tags/microservices/</loc>
     <lastmod>2018-06-12T15:06:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/opentracing/</loc>
+    <loc>http://www.servicemesher.com/tags/opentracing/</loc>
     <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/pilot/</loc>
+    <loc>http://www.servicemesher.com/tags/pilot/</loc>
     <lastmod>2018-06-21T16:55:56+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/security/</loc>
+    <loc>http://www.servicemesher.com/tags/proxy/</loc>
+    <lastmod>2018-07-01T12:33:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/rate-limiting/</loc>
+    <lastmod>2018-06-29T15:51:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/rate-limiting/</loc>
+    <lastmod>2018-06-29T15:51:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/security/</loc>
     <lastmod>2018-06-11T20:40:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/servcie-mesh/</loc>
+    <loc>http://www.servicemesher.com/tags/servcie-mesh/</loc>
     <lastmod>2018-06-28T15:09:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/service-mesh/</loc>
-    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
+    <lastmod>2018-07-01T12:33:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/categories/service-mesh/</loc>
-    <lastmod>2018-06-14T10:43:16+08:00</lastmod>
+    <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
+    <lastmod>2018-07-01T12:33:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/</loc>
-    <lastmod>2018-06-28T15:09:03+08:00</lastmod>
+    <loc>http://www.servicemesher.com/</loc>
+    <lastmod>2018-07-01T12:33:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/source-code/</loc>
+    <loc>http://www.servicemesher.com/tags/source-code/</loc>
     <lastmod>2018-06-11T14:03:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/</loc>
+    <loc>http://www.servicemesher.com/tags/</loc>
     <lastmod>2018-06-21T18:00:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/tls/</loc>
+    <loc>http://www.servicemesher.com/tags/tls/</loc>
     <lastmod>2018-06-25T20:30:52+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/tracing/</loc>
+    <loc>http://www.servicemesher.com/tags/tracing/</loc>
     <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/categories/translation/</loc>
-    <lastmod>2018-06-28T15:09:03+08:00</lastmod>
+    <loc>http://www.servicemesher.com/categories/translation/</loc>
+    <lastmod>2018-06-29T15:51:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/tutorial/</loc>
+    <loc>http://www.servicemesher.com/tags/tutorial/</loc>
     <lastmod>2018-06-20T10:25:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/ucloud/</loc>
+    <loc>http://www.servicemesher.com/tags/ucloud/</loc>
     <lastmod>2018-06-14T10:43:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/vistio/</loc>
+    <loc>http://www.servicemesher.com/tags/vistio/</loc>
     <lastmod>2018-06-20T10:25:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/tags/vizceral/</loc>
+    <loc>http://www.servicemesher.com/tags/vizceral/</loc>
     <lastmod>2018-06-20T10:25:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/blog/</loc>
-    <lastmod>2018-06-28T15:09:03+08:00</lastmod>
+    <loc>http://www.servicemesher.com/activity/</loc>
   </url>
   
   <url>
-    <loc>https://servicemesher.github.io/activity/</loc>
-  </url>
-  
-  <url>
-    <loc>https://servicemesher.github.io/contact/</loc>
+    <loc>http://www.servicemesher.com/contact/</loc>
   </url>
   
 </urlset>

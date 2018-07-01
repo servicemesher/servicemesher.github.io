@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Infoq on ServiceMesher</title>
-    <link>https://servicemesher.github.io/tags/infoq/</link>
+    <link>http://www.servicemesher.com/tags/infoq/</link>
     <description>Recent content in Infoq on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 22 Jun 2018 19:01:51 +0800</lastBuildDate>
     
-	<atom:link href="https://servicemesher.github.io/tags/infoq/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.servicemesher.com/tags/infoq/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>InfoQ访谈：使用服务网格的微服务通信与治理</title>
-      <link>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</link>
+      <link>http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/</link>
       <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</guid>
+      <guid>http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/</guid>
       <description>原文：https://www.infoq.com/articles/vp-microservices-communication-gover</description>
     </item>
     

@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Istio on ServiceMesher</title>
-    <link>https://servicemesher.github.io/categories/istio/</link>
+    <link>http://www.servicemesher.com/categories/istio/</link>
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 21 Jun 2018 16:55:56 +0800</lastBuildDate>
     
-	<atom:link href="https://servicemesher.github.io/categories/istio/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.servicemesher.com/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>服务网格Istio之pilot-xDS接口笔记</title>
-      <link>https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/</link>
+      <link>http://www.servicemesher.com/blog/istio-service-mesh-pilot-xds-note/</link>
       <pubDate>Thu, 21 Jun 2018 16:55:56 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/</guid>
+      <guid>http://www.servicemesher.com/blog/istio-service-mesh-pilot-xds-note/</guid>
       <description>本文转载自nino&amp;rsquo;s blog。 本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理</description>
     </item>
     
     <item>
       <title>Istio 安全设置笔记</title>
-      <link>https://servicemesher.github.io/blog/istio-security-notes-by-fleeto/</link>
+      <link>http://www.servicemesher.com/blog/istio-security-notes-by-fleeto/</link>
       <pubDate>Mon, 11 Jun 2018 10:56:15 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/istio-security-notes-by-fleeto/</guid>
+      <guid>http://www.servicemesher.com/blog/istio-security-notes-by-fleeto/</guid>
       <description>本文转载自 伪架构师。 Istio 为网格中的微服务提供了较为完善的安全加固功能，在不影响代码的前提下，可以从多个角度提供安全支撑，官方文档做了较为详细的</description>
     </item>
     
     <item>
       <title>Istio 0.8 的 Helm Chart 解析</title>
-      <link>https://servicemesher.github.io/blog/helm-chart-for-istio-0.8/</link>
+      <link>http://www.servicemesher.com/blog/helm-chart-for-istio-0.8/</link>
       <pubDate>Mon, 04 Jun 2018 16:09:57 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/helm-chart-for-istio-0.8/</guid>
+      <guid>http://www.servicemesher.com/blog/helm-chart-for-istio-0.8/</guid>
       <description>儿童节期间，拖拉了一个多月的 Istio 0.8 正式发布了，这可能是 Istio 1.0 之前的最后一个 LTS 版本，意义重大。 新版本中，原来的 Kubernetes 安装文件 install/kuber</description>
     </item>
     
     <item>
       <title>Istio Service Mesh 教程</title>
-      <link>https://servicemesher.github.io/blog/istio-service-mesh-tutorial/</link>
+      <link>http://www.servicemesher.com/blog/istio-service-mesh-tutorial/</link>
       <pubDate>Tue, 22 May 2018 12:16:22 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/istio-service-mesh-tutorial/</guid>
+      <guid>http://www.servicemesher.com/blog/istio-service-mesh-tutorial/</guid>
       <description>本文是 Istio 管理 Java 微服务的案例教程，使用的所有工具和软件全部基于开源方案，替换了 redhat-developer-demos/istio-tutorial 中的 minishift 环境，使用 kubernetes-vagrant-centos-cluster 替代，沿用了原有的微服务示例，使用 Zipkin 做分布式</description>
     </item>
     

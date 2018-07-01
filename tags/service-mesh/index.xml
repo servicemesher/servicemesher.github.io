@@ -2,129 +2,138 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Service Mesh on ServiceMesher</title>
-    <link>https://servicemesher.github.io/tags/service-mesh/</link>
+    <link>http://www.servicemesher.com/tags/service-mesh/</link>
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 22 Jun 2018 19:01:51 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jul 2018 12:33:23 +0800</lastBuildDate>
     
-	<atom:link href="https://servicemesher.github.io/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>探讨Service Mesh中一种更高效的代理模式</title>
+      <link>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</link>
+      <pubDate>Sun, 01 Jul 2018 12:33:23 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</guid>
+      <description>背景和想法 Service Mesh 提供了微服务化开发的新思路，核心思想是构建一个代理转发网络并结合控制和转发分离的做法来对成千上万个微服务间做流量、策略、安全等</description>
+    </item>
+    
+    <item>
       <title>InfoQ访谈：使用服务网格的微服务通信与治理</title>
-      <link>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</link>
+      <link>http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/</link>
       <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/vp-microservices-communication-governance-using-service-mesh/</guid>
+      <guid>http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/</guid>
       <description>原文：https://www.infoq.com/articles/vp-microservices-communication-gover</description>
     </item>
     
     <item>
       <title>容器、服务网格和 API 网关：从边缘开始</title>
-      <link>https://servicemesher.github.io/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</link>
+      <link>http://www.servicemesher.com/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</link>
       <pubDate>Thu, 21 Jun 2018 18:00:58 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</guid>
+      <guid>http://www.servicemesher.com/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</guid>
       <description>原文：https://devops.com/containers-service-mesh-and-api-gateways-it-star</description>
     </item>
     
     <item>
       <title>Service Mesh中的通用数据平面API设计</title>
-      <link>https://servicemesher.github.io/blog/the-universal-data-plane-api/</link>
+      <link>http://www.servicemesher.com/blog/the-universal-data-plane-api/</link>
       <pubDate>Thu, 21 Jun 2018 16:11:03 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/the-universal-data-plane-api/</guid>
+      <guid>http://www.servicemesher.com/blog/the-universal-data-plane-api/</guid>
       <description>原文地址：https://blog.envoyproxy.io/the-universal-data-plane-api-d15cec7a 作</description>
     </item>
     
     <item>
       <title>使用Service Mesh来充分利用微服务</title>
-      <link>https://servicemesher.github.io/blog/making-most-out-microservices-service-mesh/</link>
+      <link>http://www.servicemesher.com/blog/making-most-out-microservices-service-mesh/</link>
       <pubDate>Tue, 19 Jun 2018 18:04:08 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/making-most-out-microservices-service-mesh/</guid>
+      <guid>http://www.servicemesher.com/blog/making-most-out-microservices-service-mesh/</guid>
       <description>原文：https://www.linux.com/blog/event/kubecon/2018/4/making-most-out-mic</description>
     </item>
     
     <item>
       <title>服务网格在Cookpad网站中的实践</title>
-      <link>https://servicemesher.github.io/blog/service-mesh-in-cookpad/</link>
+      <link>http://www.servicemesher.com/blog/service-mesh-in-cookpad/</link>
       <pubDate>Tue, 19 Jun 2018 15:54:19 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/service-mesh-in-cookpad/</guid>
+      <guid>http://www.servicemesher.com/blog/service-mesh-in-cookpad/</guid>
       <description>原文：http://techlife.cookpad.com/entry/2018/06/11/100355 作者：Taiki 译者：殷龙飞 校对</description>
     </item>
     
     <item>
       <title>轻量 Service Mesh 在 Ucloud 的实践</title>
-      <link>https://servicemesher.github.io/blog/lightweight-service-mesh-practice-in-ucloud/</link>
+      <link>http://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</link>
       <pubDate>Thu, 14 Jun 2018 10:43:16 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/lightweight-service-mesh-practice-in-ucloud/</guid>
+      <guid>http://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</guid>
       <description>UCloud 作为一家To B的公有云服务商，我们的CTO莫显峰经常说：“研发团队最首要的任务是提供稳定的服务，然后才是提供符合客户需求的、易用和低成本的</description>
     </item>
     
     <item>
       <title>蚂蚁金服是如何实现经典服务化架构向Service Mesh方向演进的？</title>
-      <link>https://servicemesher.github.io/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</link>
+      <link>http://www.servicemesher.com/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</link>
       <pubDate>Wed, 13 Jun 2018 18:58:33 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</guid>
+      <guid>http://www.servicemesher.com/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</guid>
       <description>蚂蚁金服在服务化上面已经经过多年的沉淀，支撑了每年双十一的高峰峰值。Service Mesh 作为微服务的一个新方向，在最近两年成为领域的一个大热点，</description>
     </item>
     
     <item>
       <title>Istio服务网格的崛起</title>
-      <link>https://servicemesher.github.io/blog/the-rise-of-the-istio-service-mesh/</link>
+      <link>http://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/</link>
       <pubDate>Tue, 12 Jun 2018 15:06:25 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/the-rise-of-the-istio-service-mesh/</guid>
+      <guid>http://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/</guid>
       <description>原文链接：https://www.infoworld.com/article/3273547/containers/the-rise-of-</description>
     </item>
     
     <item>
       <title>服务网格：8种方式简化微服务部署</title>
-      <link>https://servicemesher.github.io/blog/8-ways-a-service-mesh-eases-microservices-deployment/</link>
+      <link>http://www.servicemesher.com/blog/8-ways-a-service-mesh-eases-microservices-deployment/</link>
       <pubDate>Tue, 05 Jun 2018 19:12:42 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/8-ways-a-service-mesh-eases-microservices-deployment/</guid>
+      <guid>http://www.servicemesher.com/blog/8-ways-a-service-mesh-eases-microservices-deployment/</guid>
       <description>原文地址：https://thenewstack.io/8-ways-a-service-mesh-eases-microservices-</description>
     </item>
     
     <item>
       <title>服务网格之路</title>
-      <link>https://servicemesher.github.io/blog/the-path-to-service-mesh/</link>
+      <link>http://www.servicemesher.com/blog/the-path-to-service-mesh/</link>
       <pubDate>Mon, 04 Jun 2018 15:55:08 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/the-path-to-service-mesh/</guid>
+      <guid>http://www.servicemesher.com/blog/the-path-to-service-mesh/</guid>
       <description>原文链接：https://blog.aspenmesh.io/blog/2018/03/the-path-to-service-mesh/ 作</description>
     </item>
     
     <item>
       <title>一个商用级Service Mesh服务的设计之道</title>
-      <link>https://servicemesher.github.io/blog/the-desigin-patterns-for-a-commercial-service-mesh/</link>
+      <link>http://www.servicemesher.com/blog/the-desigin-patterns-for-a-commercial-service-mesh/</link>
       <pubDate>Wed, 30 May 2018 15:00:22 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/the-desigin-patterns-for-a-commercial-service-mesh/</guid>
+      <guid>http://www.servicemesher.com/blog/the-desigin-patterns-for-a-commercial-service-mesh/</guid>
       <description>作者介绍：田晓亮，8年软件行业经验，曾就职于三星，2012年进入云计算领域，对PaaS，DevOps，APM有深入的研究和实践经验，方案支撑</description>
     </item>
     
     <item>
       <title>深入解读Service Mesh背后的技术细节</title>
-      <link>https://servicemesher.github.io/blog/deepin-service-mesh-tech-details/</link>
+      <link>http://www.servicemesher.com/blog/deepin-service-mesh-tech-details/</link>
       <pubDate>Wed, 23 May 2018 16:09:57 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/deepin-service-mesh-tech-details/</guid>
+      <guid>http://www.servicemesher.com/blog/deepin-service-mesh-tech-details/</guid>
       <description>在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章</description>
     </item>
     
     <item>
       <title>Service Mesh：重塑微服务市场</title>
-      <link>https://servicemesher.github.io/blog/service-mesh-rebuild-microservice-market/</link>
+      <link>http://www.servicemesher.com/blog/service-mesh-rebuild-microservice-market/</link>
       <pubDate>Mon, 21 May 2018 21:48:05 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/service-mesh-rebuild-microservice-market/</guid>
+      <guid>http://www.servicemesher.com/blog/service-mesh-rebuild-microservice-market/</guid>
       <description>今天我们不谈技术，不谈架构，也不谈具体的产品，我们来聊一聊在未来一两年之内，Service Mesh技术会在微服务相关的市场带来什么样的变化？</description>
     </item>
     

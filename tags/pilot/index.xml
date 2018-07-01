@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pilot on ServiceMesher</title>
-    <link>https://servicemesher.github.io/tags/pilot/</link>
+    <link>http://www.servicemesher.com/tags/pilot/</link>
     <description>Recent content in Pilot on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 21 Jun 2018 16:55:56 +0800</lastBuildDate>
     
-	<atom:link href="https://servicemesher.github.io/tags/pilot/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.servicemesher.com/tags/pilot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>服务网格Istio之pilot-xDS接口笔记</title>
-      <link>https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/</link>
+      <link>http://www.servicemesher.com/blog/istio-service-mesh-pilot-xds-note/</link>
       <pubDate>Thu, 21 Jun 2018 16:55:56 +0800</pubDate>
       
-      <guid>https://servicemesher.github.io/blog/istio-service-mesh-pilot-xds-note/</guid>
+      <guid>http://www.servicemesher.com/blog/istio-service-mesh-pilot-xds-note/</guid>
       <description>本文转载自nino&amp;rsquo;s blog。 本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理</description>
     </item>
     

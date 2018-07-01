@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>速率限制—分布式系统的一个实用工具part1 · Service Mesh爱好者</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 速率限制, 分布式系统">
+  
+
+  
+  <meta name="description" content="Service Mesh爱好者网站">	
+  
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="速率限制—分布式系统的一个实用工具part1" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1//" />
+  <meta property="og:image" content="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" />
+
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="速率限制—分布式系统的一个实用工具part1 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="速率限制—分布式系统的一个实用工具part1 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">速率限制—分布式系统的一个实用工具part1 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/activity/">活动</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/awesome-servicemesh/">黄页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>速率限制—分布式系统的一个实用工具part1</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <p class="text-muted mb-small text-left">
+                        作者 <a href="https://blog.getambassador.io/rate-limiting-a-useful-tool-with-distributed-systems-6be2b1a4f5f4">Daniel Bryant</a>
+                        
+                         | 译者 戴佳顺
+                        
+                        |
+                        2200字 | 阅读大约需要5分钟
+                        |
+                        
+                        
+                        
+                        归档于<a href="/categories/translation">translation</a>
+                        
+                        |
+                        
+                        发表于
+                        2018-06-29
+                        
+                        
+                        <p class="text=muted mb-small text-uppercase text-left">
+                        标签
+                        
+                        <a style="text-transform:capitalize" href="/tags/rate-limiting/"><i>#rate limiting</i></a>
+                        
+                        <a style="text-transform:capitalize" href="/tags/distributing-system/"><i>#distributing system</i></a>
+                        
+                        </p>
+                        
+                        
+                        </p>
+                        <div id="post-content">
+                          
+
+<h1 id="速率限制-分布式系统的一个实用工具part1">速率限制—分布式系统的一个实用工具part1</h1>
+
+<blockquote>
+<p>原文链接：<a href="https://blog.getambassador.io/rate-limiting-a-useful-tool-with-distributed-systems-6be2b1a4f5f4">https://blog.getambassador.io/rate-limiting-a-useful-tool-with-distributed-systems-6be2b1a4f5f4</a></p>
+
+<p>作者：Daniel Bryant</p>
+
+<p>译者：<a href="https://github.com/edwin19861218">戴佳顺</a></p>
+
+<p>审校：<a href="https://jimmysong.io">宋净超</a></p>
+</blockquote>
+
+<p>在计算领域，速率限制通常用于控制服务发起或消耗的操作速率，或者是请求发送或接收的流量。如果你有一年以上的软件开发经验，那么你应该会遇到这个概念。但是，和很多软件架构所面临的挑战一样，比起实际出现的问题，需要思考的问题会更多。本文概述了现代分布式应用程序中的一些关于速率限制的实现方案、优势和挑战。</p>
+
+<h2 id="为什么需要速率限制">为什么需要速率限制？</h2>
+
+<p>实现速率限制主要是由于以下三个原因：通过资源节制防止（有意无意的）拒绝服务，限制（潜在的）级联故障的影响，以及限制或计量资源的使用情况。</p>
+
+<p><a href="https://developer.twitter.com/en/docs/basics/rate-limiting">Twitter</a> 或 <a href="https://go.developer.ebay.com/api-call-limits">Ebay</a> 这样的企业组织使用了一种类似的拒绝服务防治模式：在SaaS API之前放置一个速率限制器，以此来避免针对API后端的拒绝服务恶意攻击，同时也可以为所有消费者提供一致的服务。在那些支付API（如 <a href="https://stripe.com/blog/rate-limiters">Stripe</a> ）的减负策略中可以使用速率限制来防止级联故障（通过系统中的一些组件部分降级）。同样，当为外部信息源轮询例像健康检查这些新数据时，也会使用限制（或计量）模式。这样我们只需要定期获取数据，并可以为启动的每个请求付费。</p>
+
+<h2 id="如何选择">如何选择？</h2>
+
+<p>基于简化的原则，我们假设正在处理点对点通信模型中的速率限制。在这种场景下，你可以在数据发送的“发送端”或数据消费“接收端”中的任何地方实施速率限制，当然还有其他“中间件”选项：</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fsmq2gb6qhj20lp05wmx4.jpg" alt="发送端和接收端" /></p>
+
+<ul>
+<li>你可以控制发送端发送请求的速率 ：通过定义时间限制循环来定期发送API请求。</li>
+<li>你可以控制接收端接收请求的速率：在当前任务/线程处理完成之前拒绝新的入站HTTP连接。</li>
+</ul>
+
+<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fsmq7eltt3j20rc06tdfv.jpg" alt="控制速率" /></p>
+
+<ul>
+<li>你可以使用中间层来缓冲发送的请求：通过将请求放入队列（可以通过定义不同优先级，为请求提供不同级别的SLA）。</li>
+</ul>
+
+<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fsmq8on7a0j20lr07eaa2.jpg" alt="请求缓冲" /></p>
+
+<ul>
+<li>你可以使用中间层来限制发送的请求：通过使用某种形式的代理或网关。这样当下游服务不再接受请求时，它会切换至断路器。</li>
+</ul>
+
+<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fsmq9qjzycj20jk06tdgn.jpg" alt="中间层" /></p>
+
+<h2 id="如何权衡">如何权衡？</h2>
+
+<p>如果你正在开发一个需要解决上述问题的系统，可以参考如下方案，并清楚定义在哪些地方（及相应组件）需要实现速率限制。</p>
+
+<p>另一方面，如果你只控制其中一端（比如只控制接收端或只开放公用API），那么你的选择余地就会受到限制，因为你不能依赖现有的设计指南或设计原则（即使系统不包含恶意使用者）。即使你同时控制了两端，你可能仍然想要实现“双保险”，实现同时包括两端的速率限制。</p>
+
+<p>其他需要权衡点包括：</p>
+
+<h3 id="发送端和接收端的处理速率限制的能力">发送端和接收端的处理速率限制的能力</h3>
+
+<ul>
+<li>有时由于开发模型或可用资源限制等原因，不可能在组件内实施有效的速率限制。</li>
+<li>在分布式系统中，单个组件的速率限制可能无法提供所需的功能（至少在一定程度上需要其他协调）。例如，如果你的速率限制了某个请求发送端进行连接，你需要横向扩展至两个发送端来满足需求，这样导致允许的发送端变为两个。</li>
+<li>你可能也不希望后端服务工程师开发速率限制功能，因为这样可能会由于定制开发而引起不同技术栈的差异。</li>
+<li>如果应用程序负载过重，可能需要将所有速率限制功能放到应用外，以避免在应用中执行速率限制功能导致其性能损失。</li>
+<li>我相信你听说过“单一职责”原则。因此在粗颗粒度架构级别，你可能会要求在应用外的组件里提供像速率限制这样的辅助功能。</li>
+</ul>
+
+<h3 id="速率限制中间件的故障模式">速率限制中间件的故障模式</h3>
+
+<ul>
+<li>你有必要知道速率限制服务崩溃（服务启动失败或被关闭）时会发生什么？如果服务能缓冲请求，你可能需要定义服务重启策略（期间的请求需要被缓冲至磁盘）。</li>
+</ul>
+
+<h3 id="速率限制中间件的算法灵活性">速率限制中间件的算法灵活性</h3>
+
+<ul>
+<li>自己实现基于发送端或接收端速率限制功能的主要优势在于是你可以完全控制速率限制算法的实现方式。例如，<a href="https://en.wikipedia.org/wiki/Token_bucket">令牌桶</a> 、 <a href="https://blog.figma.com/an-alternative-approach-to-rate-limiting-f8a06cf7c94c">固定窗口</a> 、 <a href="https://blog.figma.com/an-alternative-approach-to-rate-limiting-f8a06cf7c94c">滑动窗口</a> 以及通过请求（元）数据来进行算法决策。</li>
+<li>你需要经常评估哪些算法可以与外部速率限制服务一起“开箱即用”，同时确定是否需要其他外部数据（包括关联的元数据处理）。</li>
+</ul>
+
+<h2 id="案例">案例</h2>
+
+<p>更具体一点，我们来看几个例子。</p>
+
+<h3 id="运行一个任务来调用第三方sdk-每次调用都具有请求限制-同时按计量收费-即你控制发送端-但无法控制接收端">运行一个任务来调用第三方SDK，每次调用都具有请求限制，同时按计量收费（即你控制发送端，但无法控制接收端）。</h3>
+
+<p>对于请求限制和按计量收费的方案，我希望实施本地（发送端）速率限制。假设请求超过了速率限制，那么可能会收到一个错误，或者可能被（暂时）阻止。我因此需要确认SLA或检查生产实施文档。无论发生什么，我都不会希望我的应用程序简单地在不断尝试循环连接，因为是这只会浪费我的资源。如果发送端没有基于计量收费的速率限制，我会付出很多钱，而且没有人愿意这样做！</p>
+
+<p>在Java语言中，我经常使用Google开源的 Guava RateLimiter 库来解决这类问题。我写的发送端的应用程序示例就像下面这样：</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fsmqalcy5zj20kv03gglu.jpg" alt="Guava案例" /></p>
+
+<p>这是一个基于  <a href="https://google.github.io/guava/releases/19.0/api/docs/index.html?com/google/common/util/concurrent/RateLimiter.html">Guava RateLimiter JavaDoc</a>  的简单示例，实际上我可能在任务执行逻辑中增加一些异常处理块。</p>
+
+<h3 id="提供一个公共api-即你控制接收端-但无法控制-全部-发送端">提供一个公共API （即你控制接收端，但无法控制（全部）发送端）</h3>
+
+<p>在这种场景下，可以防止API后端过载的唯一方法是通过对接收端进行速率限制，最好是将限制功能放到如API网关这类外部服务上。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fsmqcco3umj20h80bemxj.jpg" alt="API Gateway" /></p>
+
+<h2 id="结论">结论</h2>
+
+<p>通过这篇速率限制文章的三部分，我们了解了速率限制的动机、可以选择的方案和相关的权衡。在下一篇文章中，我将详细介绍如何实现API网关的速率限制算法！</p>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/istio-is-not-just-for-microservices/"><i class="fa fa-link"></i>Istio不仅为微服务而生——使用Istio Service Mesh保护Kubernetes中的服务</a></li>
+         
+        <li><a href="/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/"><i class="fa fa-link"></i>利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持</a></li>
+         
+        <li><a href="/blog/vp-microservices-communication-governance-using-service-mesh/"><i class="fa fa-link"></i>InfoQ访谈：使用服务网格的微服务通信与治理</a></li>
+         
+        <li><a href="/blog/soft-multitenancy-in-istio-service-mesh/"><i class="fa fa-link"></i>Istio 的软性多租户支持</a></li>
+         
+        <li><a href="/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/"><i class="fa fa-link"></i>容器、服务网格和 API 网关：从边缘开始</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-code"><i class="fa fa-navicon"></i>istio-source-code (4)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (1)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (6)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (23)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播 Service Mesh 技术、加强行业内部交流、推动 Service Mesh 在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/a-new-more-efficient-proxy-model/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsu9cwhaghj30rs0ku7j7.jpg" class="img-responsive" alt="探讨Service Mesh中一种更高效的代理模式">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/a-new-more-efficient-proxy-model/">探讨Service Mesh中一种更高效的代理模式</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fss3yvsw2ej30rs0kuq8e.jpg" class="img-responsive" alt="速率限制—分布式系统的一个实用工具part1">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/">速率限制—分布式系统的一个实用工具part1</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/istio-is-not-just-for-microservices/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsqwqgx0ylj30rs0kualy.jpg" class="img-responsive" alt="Istio不仅为微服务而生——使用Istio Service Mesh保护Kubernetes中的服务">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/istio-is-not-just-for-microservices/">Istio不仅为微服务而生——使用Istio Service Mesh保护Kubernetes中的服务</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>Service Mesh爱好者社区</p><p><a href="https://jimmysong.io/about">管理员</a></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
