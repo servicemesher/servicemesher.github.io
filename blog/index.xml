@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>探讨Service Mesh中一种更高效的代理模式</title>
-      <link>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</link>
-      <pubDate>Sun, 01 Jul 2018 12:33:23 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</guid>
-      <description>背景和想法 Service Mesh 提供了微服务化开发的新思路，核心思想是构建一个代理转发网络并结合控制和转发分离的做法来对成千上万个微服务间做流量、策略、安全等</description>
-    </item>
-    
-    <item>
       <title>速率限制—分布式系统的一个实用工具part1</title>
       <link>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</link>
       <pubDate>Fri, 29 Jun 2018 15:51:19 +0800</pubDate>

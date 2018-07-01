@@ -48,15 +48,6 @@
     </item>
     
     <item>
-      <title>Cilium</title>
-      <link>http://www.servicemesher.com/tags/cilium/</link>
-      <pubDate>Sun, 01 Jul 2018 12:33:23 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/cilium/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Distributing System</title>
       <link>http://www.servicemesher.com/tags/distributing-system/</link>
       <pubDate>Fri, 29 Jun 2018 15:51:19 +0800</pubDate>
@@ -192,15 +183,6 @@
     </item>
     
     <item>
-      <title>Proxy</title>
-      <link>http://www.servicemesher.com/tags/proxy/</link>
-      <pubDate>Sun, 01 Jul 2018 12:33:23 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/proxy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Rate Limiting</title>
       <link>http://www.servicemesher.com/tags/rate-limiting/</link>
       <pubDate>Fri, 29 Jun 2018 15:51:19 +0800</pubDate>
@@ -230,7 +212,7 @@
     <item>
       <title>Service Mesh</title>
       <link>http://www.servicemesher.com/tags/service-mesh/</link>
-      <pubDate>Sun, 01 Jul 2018 12:33:23 +0800</pubDate>
+      <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/service-mesh/</guid>
       <description></description>
