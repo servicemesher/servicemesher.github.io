@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Meetup on ServiceMesher</title>
+    <link>http://www.servicemesher.com/categories/meetup/</link>
+    <description>Recent content in Meetup on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 03 Jul 2018 12:22:47 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/categories/meetup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Service Mesh杭州Meetup回顾</title>
+      <link>http://www.servicemesher.com/blog/hangzhou-meetup-20180630/</link>
+      <pubDate>Tue, 03 Jul 2018 12:22:47 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/hangzhou-meetup-20180630/</guid>
+      <description>6月30日，杭州，蚂蚁Z空间，一大早就下起了雨，我还心想，这雨要是下大了会不会很多人不来了？而且我们还一早就放出了IT大咖说的直播链接。没想</description>
+    </item>
+    
+  </channel>
+</rss>

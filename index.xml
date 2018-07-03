@@ -6,13 +6,31 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 29 Jun 2018 15:51:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Jul 2018 12:22:47 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>速率限制—分布式系统的一个实用工具part1</title>
+      <title>Service Mesh杭州Meetup回顾</title>
+      <link>http://www.servicemesher.com/blog/hangzhou-meetup-20180630/</link>
+      <pubDate>Tue, 03 Jul 2018 12:22:47 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/hangzhou-meetup-20180630/</guid>
+      <description>6月30日，杭州，蚂蚁Z空间，一大早就下起了雨，我还心想，这雨要是下大了会不会很多人不来了？而且我们还一早就放出了IT大咖说的直播链接。没想</description>
+    </item>
+    
+    <item>
+      <title>速率限制——作用于 API 网关的速率限制Part2</title>
+      <link>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</link>
+      <pubDate>Tue, 03 Jul 2018 12:11:49 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</guid>
+      <description>原文地址：https://blog.getambassador.io/rate-limiting-for-api-gateways-8923</description>
+    </item>
+    
+    <item>
+      <title>速率限制——分布式系统的一个实用工具part1</title>
       <link>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</link>
       <pubDate>Fri, 29 Jun 2018 15:51:19 +0800</pubDate>
       

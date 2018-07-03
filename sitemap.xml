@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/hangzhou-meetup-20180630/</loc>
+    <lastmod>2018-07-03T12:22:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</loc>
+    <lastmod>2018-07-03T12:11:49+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</loc>
     <lastmod>2018-06-29T15:51:19+08:00</lastmod>
   </url>
@@ -218,7 +228,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/distributing-system/</loc>
-    <lastmod>2018-06-29T15:51:19+08:00</lastmod>
+    <lastmod>2018-07-03T12:11:49+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -301,6 +311,18 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/meetup/</loc>
+    <lastmod>2018-07-03T12:22:47+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/meetup/</loc>
+    <lastmod>2018-07-03T12:22:47+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/microservices/</loc>
     <lastmod>2018-06-12T15:06:25+08:00</lastmod>
     <priority>0</priority>
@@ -320,13 +342,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/rate-limiting/</loc>
-    <lastmod>2018-06-29T15:51:19+08:00</lastmod>
+    <lastmod>2018-07-03T12:11:49+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/rate-limiting/</loc>
-    <lastmod>2018-06-29T15:51:19+08:00</lastmod>
+    <lastmod>2018-07-03T12:11:49+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -356,7 +378,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-06-29T15:51:19+08:00</lastmod>
+    <lastmod>2018-07-03T12:22:47+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -386,7 +408,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-06-29T15:51:19+08:00</lastmod>
+    <lastmod>2018-07-03T12:11:49+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,13 +6,22 @@
     <description>Recent content in Distributing System on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 29 Jun 2018 15:51:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Jul 2018 12:11:49 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/distributing-system/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>速率限制—分布式系统的一个实用工具part1</title>
+      <title>速率限制——作用于 API 网关的速率限制Part2</title>
+      <link>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</link>
+      <pubDate>Tue, 03 Jul 2018 12:11:49 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</guid>
+      <description>原文地址：https://blog.getambassador.io/rate-limiting-for-api-gateways-8923</description>
+    </item>
+    
+    <item>
+      <title>速率限制——分布式系统的一个实用工具part1</title>
       <link>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</link>
       <pubDate>Fri, 29 Jun 2018 15:51:19 +0800</pubDate>
       
