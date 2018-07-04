@@ -231,7 +231,7 @@ autocomplete('#aa-search-input',
                         
                         
                         |
-                        6300字 | 阅读大约需要13分钟
+                        6200字 | 阅读大约需要13分钟
                         |
                         
                         
@@ -380,7 +380,7 @@ spec:
 
 <p>对于Handler而言，<code>{metadata.name}.{kind}.{metadata.namespace}</code>是其完全限定名（Fully Qualified name），上述Handler的完全限定名是<strong>handler.prometheus.istio-system</strong>，完全限定名是全局唯一的。</p>
 
-<p>adapter的配置信息定义在spec段中，每个adapter配置的格式都有所区别，可以从[这里]查看(<a href="https://istio.io/docs/reference/config/adapters/">https://istio.io/docs/reference/config/adapters/</a>)指定的adapter配置格式。上述Handler中引用了<code>requestduration.metric.istio-system</code>这个Instance。</p>
+<p>adapter的配置信息定义在spec段中，每个adapter配置的格式都有所区别，可以从<a href="https://istio.io/docs/reference/config/adapters/">这里查看</a>指定的adapter配置格式。上述Handler中引用了<code>requestduration.metric.istio-system</code>这个Instance。</p>
 
 <h4 id="instance">Instance</h4>
 
@@ -513,7 +513,7 @@ func runServer(sa *server.Args, printf, fatalf shared.FormatFn) {
 
 <p>gRPC server启动主要逻辑在<code>istio/mixer/pkg/server/server.go#newServer</code>：</p>
 
-<pre><code>func newServer(a *Args, p *patchTable) (*Server, error) {
+<pre><code class="language-go">func newServer(a *Args, p *patchTable) (*Server, error) {
     ...
     s := &amp;Server{}
     // 初始化API worker线程池
@@ -731,6 +731,18 @@ message ReportResponse {
                         </div>
                         
                         
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/" data-toggle="tooltip" data-placement="top" title="Istio源码解析系列part2—服务治理配置生效流程解析">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/" data-toggle="tooltip" data-placement="top" title="蚂蚁金服大规模微服务架构下的Service Mesh探索之路">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
 
                     </div>
                     
