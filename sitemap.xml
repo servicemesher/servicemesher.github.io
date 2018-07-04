@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/</loc>
+    <lastmod>2018-07-04T19:56:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</loc>
+    <lastmod>2018-07-04T19:44:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/</loc>
+    <lastmod>2018-07-04T19:24:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/istio-deepin-part1-framework-and-environment/</loc>
+    <lastmod>2018-07-04T19:11:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/</loc>
+    <lastmod>2018-07-04T17:54:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/</loc>
+    <lastmod>2018-07-04T17:44:01+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/consul-1-2-service-mesh/</loc>
     <lastmod>2018-07-04T12:48:07+08:00</lastmod>
   </url>
@@ -215,7 +245,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/ant-financial/</loc>
-    <lastmod>2018-06-13T18:58:33+08:00</lastmod>
+    <lastmod>2018-07-04T19:56:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -251,6 +281,18 @@
   <url>
     <loc>http://www.servicemesher.com/tags/envoy/</loc>
     <lastmod>2018-06-25T20:30:52+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/fn/</loc>
+    <lastmod>2018-07-04T17:44:01+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/function/</loc>
+    <lastmod>2018-07-04T17:44:01+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -292,7 +334,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-06-28T15:09:03+08:00</lastmod>
+    <lastmod>2018-07-04T19:44:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -303,8 +345,14 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/istio-source-code/</loc>
+    <loc>http://www.servicemesher.com/categories/istio-mixer-cache/</loc>
     <lastmod>2018-06-11T14:03:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/istio-source-deepin/</loc>
+    <lastmod>2018-07-04T19:44:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -351,6 +399,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/monitoring/</loc>
+    <lastmod>2018-07-04T17:54:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/opentracing/</loc>
     <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
@@ -381,26 +435,32 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/serverless/</loc>
+    <lastmod>2018-07-04T17:44:01+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
+    <lastmod>2018-07-04T19:56:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2018-06-14T10:43:16+08:00</lastmod>
+    <lastmod>2018-07-04T19:56:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
+    <lastmod>2018-07-04T19:56:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/tags/source-code/</loc>
-    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
+    <lastmod>2018-07-04T19:44:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -424,7 +484,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
+    <lastmod>2018-07-04T17:54:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   

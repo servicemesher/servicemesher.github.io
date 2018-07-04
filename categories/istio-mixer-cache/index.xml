@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Istio Mixer Cache on ServiceMesher</title>
+    <link>http://www.servicemesher.com/categories/istio-mixer-cache/</link>
+    <description>Recent content in Istio Mixer Cache on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 11 Jun 2018 14:03:34 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/categories/istio-mixer-cache/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Istio Mixer Cache工作原理与源码分析part4－签名</title>
+      <link>http://www.servicemesher.com/blog/istio-mixer-cache-part4-signature/</link>
+      <pubDate>Mon, 11 Jun 2018 14:03:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part4-signature/</guid>
+      <description>本文转载自敖小剑的博客 接前文，继续分析Mixer Check Cache的源码，这次的重点是签名算法，也就是Referenced::Signature(</description>
+    </item>
+    
+    <item>
+      <title>Istio Mixer Cache工作原理与源码分析part3—主流程</title>
+      <link>http://www.servicemesher.com/blog/istio-mixer-cache-part3-main/</link>
+      <pubDate>Mon, 11 Jun 2018 13:43:10 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part3-main/</guid>
+      <description>本文转载自敖小剑的博客 经过前面基本概念和实现原理的介绍，大家对mixer check cache应该有了基本的了解，下面我们开始展开源代码来细细研读。 Check</description>
+    </item>
+    
+    <item>
+      <title>Istio Mixer Cache工作原理与源码分析part2－工作原理</title>
+      <link>http://www.servicemesher.com/blog/istio-mixer-cache-part2-principle/</link>
+      <pubDate>Thu, 07 Jun 2018 19:19:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part2-principle/</guid>
+      <description>转载自敖小剑的博客 前言 经过前面的基础概念的介绍，我们现在已经可以勾勒出一个mixer cache的实现轮廓，当然实际代码实现时会有很多细节。但</description>
+    </item>
+    
+    <item>
+      <title>Istio Mixer Cache工作原理与源码分析part1－基本概念</title>
+      <link>http://www.servicemesher.com/blog/istio-mixer-cache-part1-concepts/</link>
+      <pubDate>Thu, 07 Jun 2018 19:16:21 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part1-concepts/</guid>
+      <description>前言 本系列文章将详细介绍Istio中Mixer Cache的工作原理，为了避免空谈，将引入广大程序员同学喜闻乐见的源码分析环节，并结合Mixe</description>
+    </item>
+    
+  </channel>
+</rss>

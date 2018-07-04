@@ -6,10 +6,37 @@
     <description>Recent content in Source Code on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 11 Jun 2018 14:03:34 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Jul 2018 19:44:08 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/source-code/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio源码解析系列part3—Mixer工作流程浅析</title>
+      <link>http://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</link>
+      <pubDate>Wed, 04 Jul 2018 19:44:08 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</guid>
+      <description>本文转载自：https://www.jianshu.com/p/312b9b9a7e01 作者：郑伟，小米信息部技术架构组 本系列文章主要从源码</description>
+    </item>
+    
+    <item>
+      <title>Istio源码解析系列part2-服务治理配置生效流程解析</title>
+      <link>http://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/</link>
+      <pubDate>Wed, 04 Jul 2018 19:24:37 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/</guid>
+      <description>本文转载自：https://www.jianshu.com/p/c07ed0ef821e 作者：郑伟，小米信息部技术架构组 本系列文章主要从源码</description>
+    </item>
+    
+    <item>
+      <title>Istio源码解析系列part1—Istio源码架构介绍及开发环境搭建</title>
+      <link>http://www.servicemesher.com/blog/istio-deepin-part1-framework-and-environment/</link>
+      <pubDate>Wed, 04 Jul 2018 19:11:00 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-deepin-part1-framework-and-environment/</guid>
+      <description>本文转载自：https://www.jianshu.com/p/c7785663bc8a 作者：郑伟，小米信息部技术架构组 本系列文章主要从源码</description>
+    </item>
     
     <item>
       <title>Istio Mixer Cache工作原理与源码分析part4－签名</title>
@@ -39,7 +66,7 @@
     </item>
     
     <item>
-      <title>Istio Mixer Cache工作原理与源码分析Part1－基本概念</title>
+      <title>Istio Mixer Cache工作原理与源码分析part1－基本概念</title>
       <link>http://www.servicemesher.com/blog/istio-mixer-cache-part1-concepts/</link>
       <pubDate>Thu, 07 Jun 2018 19:16:21 +0800</pubDate>
       

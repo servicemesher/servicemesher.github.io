@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Istio源码解析系列part1—Istio源码架构介绍及开发环境搭建 · Service Mesh爱好者</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, istio">
+  
+
+  
+  <meta name="description" content="Service Mesh爱好者网站">	
+  
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Istio源码解析系列part1—Istio源码架构介绍及开发环境搭建" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/istio-deepin-part1-framework-and-environment//" />
+  <meta property="og:image" content="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" />
+
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio源码解析系列part1—Istio源码架构介绍及开发环境搭建 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio源码解析系列part1—Istio源码架构介绍及开发环境搭建 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Istio源码解析系列part1—Istio源码架构介绍及开发环境搭建 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/activity/">活动</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/awesome-servicemesh/">黄页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Istio源码解析系列part1—Istio源码架构介绍及开发环境搭建</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <p class="text-muted mb-small text-left">
+                        作者 <a href="https://www.jianshu.com/u/07afa5f80e95">郑伟</a>
+                        
+                        
+                        |
+                        3400字 | 阅读大约需要7分钟
+                        |
+                        
+                        
+                        
+                        归档于<a href="/categories/istio-source-deepin">istio source deepin</a>
+                        
+                        |
+                        
+                        发表于
+                        2018-07-04
+                        
+                        
+                        <p class="text=muted mb-small text-uppercase text-left">
+                        标签
+                        
+                        <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                        
+                        <a style="text-transform:capitalize" href="/tags/source-code/"><i>#source code</i></a>
+                        
+                        </p>
+                        
+                        
+                        </p>
+                        <div id="post-content">
+                          
+
+<blockquote>
+<p>本文转载自：<a href="https://www.jianshu.com/p/c7785663bc8a">https://www.jianshu.com/p/c7785663bc8a</a></p>
+
+<p>作者：郑伟，小米信息部技术架构组</p>
+</blockquote>
+
+<p>本系列文章主要从源码（<a href="https://github.com/istio/istio/tree/35e2b9042fe3d4ebe68772311aa1ebe46b66a1be">35e2b904</a>）出发，对istio做深入剖析，让大家对istio有更深的认知，从而方便平时排查问题。不了解Service Mesh和Istio的同学请先阅读敖小剑老师如下文章进行概念上的理解：</p>
+
+<ul>
+<li><a href="https://skyao.io/publication/service-mesh-next-generation-microservice/">Service Mesh：下一代微服务</a></li>
+<li><a href="https://skyao.io/publication/istio-introduction/">服务网格新生代-Istio</a></li>
+</ul>
+
+<p>本文主要对istio在ubuntu16.04下环境搭建做简单介绍，Mac用户和其他linux发行版用户请根据bash脚本做相应调整。</p>
+
+<h1 id="概述">概述</h1>
+
+<p>Istio为希腊文，意思是“启航”，和“kubernetes（舵手）”遥相呼应，是一个开源的微服务管理、保护、监控的基础设施。Istio发音<strong>“意丝帝欧”</strong>，重音在“意”上。</p>
+
+<p>前两篇文章主要对istio开发环境以及通过服务治理配置生效流程做了介绍。考虑到有些用户可能没有接触过Istio，本文会对Istio整体架构、内部各组件做介绍。</p>
+
+<p>Istio是逻辑上分为数据平面（Data Plane）和控制平面（Control Plane）。</p>
+
+<ul>
+<li>数据平面的含义是什么？官网是这么描述的：</li>
+</ul>
+
+<blockquote>
+<p>The data plane is composed of a set of intelligent proxies (Envoy) deployed as sidecars that mediate and control all network communication between microservices.</p>
+</blockquote>
+
+<p>数据平面由一组作为sidecar智能代理（Envoy）和它掌控网络通信的的微服务实例组成。sidecar的意思是边三轮，一个Envoy实例掌控一个微服务实例的入口和出口流量，像边三轮一样。</p>
+
+<ul>
+<li>对于控制平面，官网给出的定义是：</li>
+</ul>
+
+<blockquote>
+<p>The control plane is responsible for managing and configuring proxies to route traffic, as well as enforcing policies at runtime.</p>
+</blockquote>
+
+<p>控制平面由Pliot、Mixer、Istio-Auth组成，负责管理和配置代理的路由流量以及运行时服务治理策略的执行。</p>
+
+<h1 id="整体架构">整体架构</h1>
+
+<p>Istio架构图如下所示：</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsy1vhmk1nj30jg0acq4e.jpg" alt="" /></p>
+
+<ul>
+<li>Envoy
+是一个高性能轻量级代理，它掌控了service的入口流量和出口流量，它提供了很多内置功能，如动态负载服务发现、负载均衡、TLS终止、HTTP/2 &amp; gRPC流量代理、熔断、健康检查等功能。</li>
+<li>Mixer
+翻译过来是混音器，Mixer负责在整个Service Mesh中实施访问控制和使用策略。Mixer是一个可扩展组件，内部提供了多个模块化的适配器(<a href="https://github.com/istio/istio/tree/master/mixer/adapter">adapter</a>)。
+Envoy提供request级别的属性（<a href="https://istio.io/docs/concepts/policy-and-control/attributes.html">attributes</a>）数据。这些数据交由Mixer进行评估和处理，Mixer中的各种适配器(<a href="https://github.com/istio/istio/tree/master/mixer/adapter">adapter</a>)基于这些属性数据，来实现日志记录、监控指标采集展示、配额管理、ACL检查等功能。</li>
+<li>Pilot
+翻译过来是领航员，Pliot对Envoy的生命周期进行管理，同时提供了智能路由（如A/B测试、金丝雀部署）、流量管理（超时、重试、熔断）功能。Pliot接收用户指定的高级路由规则配置，转换成Envoy的配置，使这些规则生效。</li>
+<li>Istio-Auth
+服务间认证和终端用户认证功能。</li>
+</ul>
+
+<h2 id="源码结构介绍">源码结构介绍</h2>
+
+<p>Istio源码托管于<a href="https://github.com/istio/istio">Github</a>，项目使用Go开发。</p>
+
+<p>以<a href="https://github.com/istio/istio/tree/35e2b9042fe3d4ebe68772311aa1ebe46b66a1be">35e2b904</a>为例，istio代码结构如下所示：</p>
+
+<pre><code class="language-bash">.
+├── addons                                   
+├── bin
+├── broker
+├── docker
+├── galley
+├── install
+├── istioctl
+├── mixer
+├── pilot
+├── pkg
+├── prow
+├── release
+├── samples
+├── security
+├── tests
+├── tools
+├── vendor
+├── codecov.requirement
+├── codecov.skip
+├── CONTRIBUTING.md
+├── downloadIstio.sh
+├── Gopkg.lock
+├── Gopkg.toml
+├── istio.deps
+├── istio.VERSION
+├── istio.yaml
+├── LICENSE
+├── lintconfig_base.json
+├── Makefile
+├── OWNERS
+└── README.md
+</code></pre>
+
+<p>部分包\文件\文件夹功能列表如下：</p>
+
+<table>
+<thead>
+<tr>
+<th>Package/Directory/File</th>
+<th>Introduction</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>addons</td>
+<td>一些插件，比如展示metrics的grafana和绘制服务调用图的servicegraph</td>
+</tr>
+
+<tr>
+<td>bin</td>
+<td>存放初始化依赖、编译、插件证书检查、代码生成的脚本</td>
+</tr>
+
+<tr>
+<td>broker</td>
+<td>Istio对Open Service Broker的一种实现，该API使得外部服务能自动访问Istio服务。broker目前还处于研发阶段。</td>
+</tr>
+
+<tr>
+<td>galley</td>
+<td>提供了Istio的配置管理功能，目前还处于研发阶段。</td>
+</tr>
+
+<tr>
+<td>install</td>
+<td>生成各环境（ansible、consul、ereka、kubernetes等）安装istio时需要yaml配置清单。</td>
+</tr>
+
+<tr>
+<td>istioctl</td>
+<td>istio终端控制工具（类似kubectl之于kubernetes），用户通过istioctl来修改istio运行时配置，执行服务治理策略。</td>
+</tr>
+
+<tr>
+<td>mixer</td>
+<td>“混音器”，参与到tracffic处理流程。通过对envoy上报的attributes进行处理，结合内部的adapters实现日志记录、监控指标采集展示、配额管理、ACL检查等功能。</td>
+</tr>
+
+<tr>
+<td>pilot</td>
+<td>“领航员”，pliot对Envoy的生命周期进行管理，同时提供了智能路由（如A/B测试、金丝雀部署）、流量管理（超时、重试、熔断）功能。</td>
+</tr>
+
+<tr>
+<td>pkg</td>
+<td>顶级公共包，包含istio版本处理、tracing、日志记录、缓存管理等。</td>
+</tr>
+
+<tr>
+<td>release</td>
+<td>包含Istio在各平台上进行编译的脚本。</td>
+</tr>
+
+<tr>
+<td>samples</td>
+<td>Istio提供的微服务样例，比如bookinfo。</td>
+</tr>
+
+<tr>
+<td>security</td>
+<td>Istio用户身份验证、服务间认证。</td>
+</tr>
+
+<tr>
+<td>tests</td>
+<td>测试用例、脚本等。</td>
+</tr>
+
+<tr>
+<td>vendor</td>
+<td>dep生成的第三方依赖。</td>
+</tr>
+
+<tr>
+<td>Gopkg.*</td>
+<td>dep需要version constraint和version lock文件。</td>
+</tr>
+
+<tr>
+<td>Makefile</td>
+<td>Istio Makefile，编译docker镜像时会引用tools/istio-docker.mk这个Makefile。</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="开发环境搭建">开发环境搭建</h1>
+
+<h2 id="安装docker">安装docker</h2>
+
+<p>参考 <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1">https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1</a></p>
+
+<h3 id="配置docker代理-可选">配置docker代理[可选]</h3>
+
+<p>新建<code>/etc/systemd/system/docker.service.d/http-proxy.conf</code>，添加如下配置</p>
+
+<pre><code class="language-bash">[Service]
+Environment=&quot;HTTP_PROXY=http://&lt;your_proxy&gt;/&quot; &quot;HTTPS_PROXY=http://&lt;your_proxy&gt;/&quot; &quot;NO_PROXY=192.168.0.0/16,127.0.0.0/8&quot; # your_proxy替换成你自己的代理
+</code></pre>
+
+<h2 id="安装virtualbox">安装virtualbox</h2>
+
+<pre><code class="language-bash"># virtualbox需要装最新的5.2.10, https://www.virtualbox.org/wiki/Linux_Downloads
+# Mac OS
+wget https://download.virtualbox.org/virtualbox/5.2.10/VirtualBox-5.2.10-122088-OSX.dmg
+# ubuntu AMD64
+wget https://download.virtualbox.org/virtualbox/5.2.10/virtualbox-5.2_5.2.10-122088~Ubuntu~xenial_amd64.deb &amp;&amp; sudo apt install ./virtualbox-5.2_5.2.10-122088~Ubuntu~xenial_amd64.deb
+# centos6 AMD64
+wget https://download.virtualbox.org/virtualbox/5.2.10/VirtualBox-5.2-5.2.10_122088_el6-1.x86_64.rpm &amp;&amp; yum install ./VirtualBox-5.2-5.2.10_122088_el7-1.x86_64.rpm
+# centos7 AMD64
+wget https://download.virtualbox.org/virtualbox/5.2.10/VirtualBox-5.2-5.2.10_122088_el7-1.x86_64.rpm &amp;&amp; yum install ./VirtualBox-5.2-5.2.10_122088_el7-1.x86_64.rpm
+</code></pre>
+
+<h2 id="安装k8s集群">安装k8s集群</h2>
+
+<h3 id="使用vagrant安装k8s集群-建议">使用vagrant安装k8s集群[建议]</h3>
+
+<p>参考<a href="https://jimmysong.io">Jimmy Song</a>的vagrant教程<a href="https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster">kubernetes-vagrant-centos-cluster</a>，其中节点个数根据自己机器配置酌情更改（参考<a href="https://github.com/sevenNt/kubernetes-vagrant-centos-cluster">kubernetes-vagrant-centos-cluster</a>）。</p>
+
+<h3 id="使用-minikube-https-github-com-kubernetes-minikube-安装k8s集群-可选">使用<a href="https://github.com/kubernetes/minikube">minikube</a>安装k8s集群[可选]</h3>
+
+<ul>
+<li>安装minikube</li>
+</ul>
+
+<pre><code class="language-bash">curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 &amp;&amp; chmod +x minikube &amp;&amp; sudo mv minikube /usr/local/bin/ # 下载minikube
+curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl &amp;&amp; chmod +x kubectl &amp;&amp; sudo mv kubectl /usr/local/bin/ # 下载kubectl
+</code></pre>
+
+<ul>
+<li>启动k8s</li>
+</ul>
+
+<pre><code class="language-bash"># 注minikube可以不使用virtualbox启动k8s，不过需要dockerc处于桥接模式，否则可能导致网络连接不通，配置过程请自行搜索
+minikube start \
+--extra-config=controller-manager.ClusterSigningCertFile=&quot;/var/lib/localkube/certs/ca.crt&quot; \
+--extra-config=controller-manager.ClusterSigningKeyFile=&quot;/var/lib/localkube/certs/ca.key&quot; \
+--extra-config=apiserver.Admission.PluginNames=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,DefaultTolerationSeconds,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota \
+--kubernetes-version=v1.9.4 \
+--logtostderr
+</code></pre>
+
+<h2 id="配置istio-repo">配置Istio repo</h2>
+
+<ul>
+<li>配置github并拉取代码</li>
+</ul>
+
+<pre><code class="language-bash"># 配置github代理
+git config --global http.https://github.com.proxy http://proxy:1080
+
+# 在github上fork Istio，并clone到自己公共的$GOPATH/src/istio.io/下
+mkdir -p $GOPATH/src/istio.io
+cd $GOPATH/src/istio.io
+git clone https://github.com/$YOU/istio
+cd istio
+git remote add upstream 'https://github.com/istio/istio'
+git config --global --add http.followRedirects 1
+</code></pre>
+
+<ul>
+<li>配置环境变量</li>
+</ul>
+
+<p>未避免污染全局环境变量，强烈建议安装<a href="https://github.com/kennethreitz/autoenv">autoenv</a>。</p>
+
+<pre><code class="language-bash">cd $GOPATH/src/istio.io/istio
+</code></pre>
+
+<p>在istio根目录下新增<code>.env</code>文件，配置如下：</p>
+
+<pre><code class="language-bash">export GOPATH=$YOUR_GOPATH # $YOUR_GOPATH为你的GOPATH路径
+export PATH=$PATH:$GOPATH/bin
+export ISTIO=$GOPATH/src/istio.io # eg. ~/go/src/istio.io
+
+# Please change HUB to the desired HUB for custom docker container
+# builds.
+export HUB=&quot;docker.io/$USER&quot; # $USER为你的dockerhub账号
+
+# The Istio Docker build system will build images with a tag composed of
+# $USER and timestamp. The codebase doesn't consistently use the same timestamp
+# tag. To simplify development the development process when later using
+# updateVersion.sh you may find it helpful to set TAG to something consistent
+# such as $USER.
+export TAG=$USER # TAG为你编译Istio各组建后打包镜像的tag，建议Mac/ubuntu当前账号
+
+# If your github username is not the same as your local user name (saved in the
+# shell variable $USER), then replace &quot;$USER&quot; below with your github username
+export GITHUB_USER=$USER # GITHUB_USER为你的github账号
+
+# Specify which Kube config you'll use for testing. This depends on whether
+# you're using Minikube or your own Kubernetes cluster for local testing
+# For a GKE cluster:
+export KUBECONFIG=${HOME}/.kube/config
+# Alternatively, for Minikube:
+# export KUBECONFIG=${GOPATH}/src/istio.io/istio/.circleci/config
+
+export ISTIO_DOCKER_HUB=&quot;docker.io/$USER&quot; # make build时使用此变量
+export ISTIO_VERSION=$USER                # make build时使用此变量
+</code></pre>
+
+<p>使当前.env生效：</p>
+
+<pre><code class="language-bash">cd .
+</code></pre>
+
+<h2 id="istio编译组件并测试">Istio编译组件并测试</h2>
+
+<ul>
+<li>编译镜像</li>
+</ul>
+
+<pre><code class="language-bash"># make init # 初始化，检查目录结构、Go版本号、初始化环境变量、检查vendor等
+make docker # 对各组件（istioctl、mixer、pilot、istio-auth等）进行二进制包编译、测试、镜像编译
+make push # 推送镜像到dockerhub
+</code></pre>
+
+<pre><code class="language-bash"># 其他指令
+make pilot  docker.pilot # 编译pilot组件和镜像
+make app  docker.app # 编译app组件和镜像
+make proxy  docker.proxy # 编译proxy组件和镜像
+make proxy_init  docker.proxy_init # 编译proxy_init组件和镜像
+make proxy_debug  docker.proxy_debug # 编译proxy_debug组件和镜像
+make sidecar_injector  docker.sidecar_injector # 编译sidecar_injector组件和镜像
+make proxyv2  docker.proxyv2 # 编译proxyv2组件和镜像
+
+make push.docker.pilot # 推送pilot镜像到dockerhub，其他组件类似
+</code></pre>
+
+<ul>
+<li>其他脚本</li>
+</ul>
+
+<pre><code class="language-bash">cd $GOPATH/src/istio.io/istio
+
+./bin/get_workspace_status # 查看当前工作目录状态，包括环境变量等
+install/updateVersion.sh -a ${HUB},${TAG} # 使用当前环境变量生成Istio清单
+samples/bookinfo/build_push_update_images.sh # 使用当前环境变量编译并推送bookinfo镜像
+</code></pre>
+
+<ul>
+<li>测试镜像</li>
+</ul>
+
+<p>参考<a href="https://istio.io/docs/setup/kubernetes/quick-start.html">Istio doc</a></p>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/istio-mixer-cache-part4-signature/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part4－签名</a></li>
+         
+        <li><a href="/blog/istio-mixer-cache-part3-main/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part3—主流程</a></li>
+         
+        <li><a href="/blog/istio-mixer-cache-part2-principle/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part2－工作原理</a></li>
+         
+        <li><a href="/blog/istio-mixer-cache-part1-concepts/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part1－基本概念</a></li>
+         
+        <li><a href="/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/"><i class="fa fa-link"></i>使用Kubernetes和Istio对基于容器基础设施的全面服务监控</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (3)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (1)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (6)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (28)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播 Service Mesh 技术、加强行业内部交流、推动 Service Mesh 在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/the-way-to-service-mesh-in-ant-financial/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsy0uinng2j31ji15onpf.jpg" class="img-responsive" alt="蚂蚁金服大规模微服务架构下的Service Mesh探索之路">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/the-way-to-service-mesh-in-ant-financial/">蚂蚁金服大规模微服务架构下的Service Mesh探索之路</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/istio-deepin-part3-mixer-workflow/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsy2tb10m8j315o0v9qv6.jpg" class="img-responsive" alt="Istio源码解析系列part3—Mixer工作流程浅析">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/istio-deepin-part3-mixer-workflow/">Istio源码解析系列part3—Mixer工作流程浅析</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/istio-deepin-part2-serivce-management-workflow/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsy2tydge8j315o0rs4p9.jpg" class="img-responsive" alt="Istio源码解析系列part2-服务治理配置生效流程解析">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/istio-deepin-part2-serivce-management-workflow/">Istio源码解析系列part2-服务治理配置生效流程解析</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>Service Mesh爱好者社区</p><p><a href="https://jimmysong.io/about">管理员</a></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

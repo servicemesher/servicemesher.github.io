@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Serverless on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/serverless/</link>
+    <description>Recent content in Serverless on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 04 Jul 2018 17:44:01 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/serverless/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 Istio 控制 Fn Project 中的函数间流量路由</title>
+      <link>http://www.servicemesher.com/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/</link>
+      <pubDate>Wed, 04 Jul 2018 17:44:01 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/</guid>
+      <description>原文链接：https://hackernoon.com/traffic-routing-between-fn-functions-using</description>
+    </item>
+    
+  </channel>
+</rss>
