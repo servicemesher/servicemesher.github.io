@@ -12,16 +12,16 @@
     
     
     <item>
-      <title>速率限制Part3——基于Ambassador API网关实现Java速率限制服务</title>
-      <link>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part-3/</link>
+      <title>速率限制part3—基于Ambassador API网关实现Java速率限制服务</title>
+      <link>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3/</link>
       <pubDate>Wed, 04 Jul 2018 12:26:02 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part-3/</guid>
+      <guid>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3/</guid>
       <description>原文链接：https://blog.getambassador.io/implementing-a-java-rate-limiting-s</description>
     </item>
     
     <item>
-      <title>速率限制Part2——作用于 API 网关的速率限制</title>
+      <title>速率限制part2—作用于API网关的速率限制</title>
       <link>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</link>
       <pubDate>Tue, 03 Jul 2018 12:11:49 +0800</pubDate>
       
@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>速率限制Part1——分布式系统的一个实用工具</title>
+      <title>速率限制part1—分布式系统的一个实用工具</title>
       <link>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</link>
       <pubDate>Fri, 29 Jun 2018 15:51:19 +0800</pubDate>
       
