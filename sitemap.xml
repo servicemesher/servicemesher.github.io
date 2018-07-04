@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/consul-1-2-service-mesh/</loc>
+    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part-3/</loc>
     <lastmod>2018-07-04T12:26:02+08:00</lastmod>
   </url>
@@ -232,6 +237,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/consul/</loc>
+    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/distributing-system/</loc>
     <lastmod>2018-07-04T12:26:02+08:00</lastmod>
     <priority>0</priority>
@@ -252,6 +263,12 @@
   <url>
     <loc>http://www.servicemesher.com/tags/grpc/</loc>
     <lastmod>2018-06-08T12:40:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/harshicorp/</loc>
+    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -365,7 +382,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-06-28T15:09:03+08:00</lastmod>
+    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -377,7 +394,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-07-04T12:26:02+08:00</lastmod>
+    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -407,7 +424,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-07-04T12:26:02+08:00</lastmod>
+    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Service Mesh新成员：Consul 1.2</title>
+      <link>http://www.servicemesher.com/blog/consul-1-2-service-mesh/</link>
+      <pubDate>Wed, 04 Jul 2018 12:48:07 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/consul-1-2-service-mesh/</guid>
+      <description>本文译自 HashiCorp 官网关于 Consul 1.2 支持 Service Mesh 发布的博客文章。 原文链接：https://www.hashicorp.com/blog/consul-1-2-</description>
+    </item>
+    
+    <item>
       <title>速率限制Part3——基于Ambassador API网关实现Java速率限制服务</title>
       <link>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part-3/</link>
       <pubDate>Wed, 04 Jul 2018 12:26:02 +0800</pubDate>
