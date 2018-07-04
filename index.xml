@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 03 Jul 2018 12:22:47 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Jul 2018 12:26:02 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>速率限制Part3——基于Ambassador API网关实现Java速率限制服务</title>
+      <link>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part-3/</link>
+      <pubDate>Wed, 04 Jul 2018 12:26:02 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part-3/</guid>
+      <description>原文链接：https://blog.getambassador.io/implementing-a-java-rate-limiting-s</description>
+    </item>
     
     <item>
       <title>Service Mesh杭州Meetup回顾</title>
@@ -21,7 +30,7 @@
     </item>
     
     <item>
-      <title>速率限制——作用于 API 网关的速率限制Part2</title>
+      <title>速率限制Part2——作用于 API 网关的速率限制</title>
       <link>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</link>
       <pubDate>Tue, 03 Jul 2018 12:11:49 +0800</pubDate>
       
@@ -30,7 +39,7 @@
     </item>
     
     <item>
-      <title>速率限制——分布式系统的一个实用工具part1</title>
+      <title>速率限制Part1——分布式系统的一个实用工具</title>
       <link>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</link>
       <pubDate>Fri, 29 Jun 2018 15:51:19 +0800</pubDate>
       

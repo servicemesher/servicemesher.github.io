@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>速率限制Part3——基于Ambassador API网关实现Java速率限制服务 · Service Mesh爱好者</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 速率限制, 分布式系统">
+  
+
+  
+  <meta name="description" content="Service Mesh爱好者网站">	
+  
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="速率限制Part3——基于Ambassador API网关实现Java速率限制服务" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part-3//" />
+  <meta property="og:image" content="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" />
+
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="速率限制Part3——基于Ambassador API网关实现Java速率限制服务 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="速率限制Part3——基于Ambassador API网关实现Java速率限制服务 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">速率限制Part3——基于Ambassador API网关实现Java速率限制服务 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/activity/">活动</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/awesome-servicemesh/">黄页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>速率限制Part3——基于Ambassador API网关实现Java速率限制服务</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <p class="text-muted mb-small text-left">
+                        作者 <a href="https://www.infoq.com/profile/Daniel-Bryant">Daniel Bryant</a>
+                        
+                         | 译者 戴佳顺
+                        
+                        |
+                        5000字 | 阅读大约需要10分钟
+                        |
+                        
+                        
+                        
+                        归档于<a href="/categories/rate-limiting">rate limiting</a>
+                        
+                        |
+                        
+                        发表于
+                        2018-07-04
+                        
+                        
+                        <p class="text=muted mb-small text-uppercase text-left">
+                        标签
+                        
+                        <a style="text-transform:capitalize" href="/tags/rate-limiting/"><i>#rate limiting</i></a>
+                        
+                        <a style="text-transform:capitalize" href="/tags/distributing-system/"><i>#distributing system</i></a>
+                        
+                        </p>
+                        
+                        
+                        </p>
+                        <div id="post-content">
+                          
+
+<blockquote>
+<p>原文链接：<a href="https://blog.getambassador.io/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-e09d542455da">https://blog.getambassador.io/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-e09d542455da</a></p>
+
+<p>作者：Daniel Bryant</p>
+
+<p>译者：<a href="https://github.com/edwin19861218">戴佳顺</a></p>
+
+<p>校对：<a href="https://jimmysong.io">宋净超</a></p>
+</blockquote>
+
+<p>基于Kubernetes云原生的<a href="https://www.getambassador.io/">Ambassador API</a>网关所提供的速率限制功能是完全可定制的，其允许任何实现gRPC服务端点的服务自行决定是否需要对请求进行限制。本文在先前<a href="rate-limiting-a-useful-tool-with-distributed-systems-part1.md">第1部分</a>和<a href="rate-limiting-for-api-gateway-daniel-bryant-part2.md">第2部分</a>的基础上，阐述如何为Ambassador API网关创建和部署简单的基于Java的速率限制服务。</p>
+
+<h2 id="部署docker-java-shop">部署Docker Java Shop</h2>
+
+<p>在我之前的教程“<a href="https://blog.getambassador.io/deploying-java-apps-with-kubernetes-and-the-ambassador-api-gateway-c6e9d9618f1b">使用Kubernetes和Ambassador API网关部署Java应用</a>”中，我将开源的Ambassador API网关添加到现有的一个部署于Kubernetes的Java（Spring Boot和Dropwizard）服务中。 如果你之前不了解这个，建议你先阅读下此教程及其他相关内容来熟悉基础知识。
+本文假定你熟悉如何构建基于Java的微服务并将其部署到Kubernetes，同时已经完成安装所有的必备组件（我在本文中使用<a href="https://docs.docker.com/docker-for-mac/edge-release-notes/">Docker for Mac Edge</a>，并启用其内置的Kubernetes支持。若使用minikube或远程群集应该也类似）。</p>
+
+<h2 id="先决条件">先决条件</h2>
+
+<p>需要在本地安装：</p>
+
+<ul>
+<li>Docker for Desktop：我使用edge community edition (18.04.0-ce)，内置了对本地Kubernetes集群的支持。由于Java应用对内存有一定要求，我还将Docker可用内存增加到8G。</li>
+<li>编辑器选择：Atom 或者 VS code；当写Java代码时也可以使用IntelliJ。</li>
+</ul>
+
+<p>你可以在这里获取最新版本的“Docker Java Shop”源代码：</p>
+
+<p><a href="https://github.com/danielbryantuk/oreilly-docker-java-shopping">https://github.com/danielbryantuk/oreilly-docker-java-shopping</a></p>
+
+<p>你可以通过如下命令使用SSH克隆仓库：</p>
+
+<pre><code class="language-bash">$ git clone git@github.com:danielbryantuk/oreilly-docker-java-shopping.git
+</code></pre>
+
+<p>第一阶段的服务和部署架构如下图所示：</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fsvwpjxbzuj20hi0gjdga.jpg" alt="第一阶段架构" /></p>
+
+<p>从图中可以看到，Docker Java Shopping应用程序主要由三个服务组成。在先前的教程中，你已经添加Ambassador API网关作为系统的“front door”（大门）。需要注意的是，Ambassador API网关直接使用Web 80号端口，因此需要确保本地运行的其他应用没有占用该端口。</p>
+
+<h2 id="ambassador-api网关速率限制入门">Ambassador API网关速率限制入门</h2>
+
+<p>我在本教程的仓库中增加了一个新文件夹 “<a href="https://github.com/danielbryantuk/oreilly-docker-java-shopping/tree/master/kubernetes-ambassador-ratelimit">kubernetes-ambassador-ratelimit</a>”，用于包含Kubernetes相关配置。请通过命令行导航到此目录。此目录应包含如下文件：</p>
+
+<pre><code class="language-bash">(master *) oreilly-docker-java-shopping $ cd kubernetes-ambassador-ratelimit/
+(master *) kubernetes-ambassador-ratelimit $ ll
+total 48
+0 drwxr-xr-x 8 danielbryant staff 256 23 Apr 09:27 .
+0 drwxr-xr-x 19 danielbryant staff 608 23 Apr 09:27 ..
+8 -rw-r — r — 1 danielbryant staff 2033 23 Apr 09:27 ambassador-no-rbac.yaml
+8 -rw-r — r — 1 danielbryant staff 698 23 Apr 10:30 ambassador-rate-limiter.yaml
+8 -rw-r — r — 1 danielbryant staff 476 23 Apr 10:30 ambassador-service.yaml
+8 -rw-r — r — 1 danielbryant staff 711 23 Apr 09:27 productcatalogue-service.yaml
+8 -rw-r — r — 1 danielbryant staff 659 23 Apr 10:02 shopfront-service.yaml
+8 -rw-r — r — 1 danielbryant staff 678 23 Apr 09:27 stockmanager-service.yaml
+</code></pre>
+
+<p>你可以使用以下命令来提交Kubernetes配置：</p>
+
+<pre><code class="language-bash">$ kubectl apply -f .
+</code></pre>
+
+<p>通过以上命令部署，这与之前架构的区别在于添加了<code>ratelimiter</code>服务。 这个服务是用Java编写的，且没有使用微服务框架。它发布了一个gRPC端点，可供Ambassador来使用以实现速率限制。这种方案允许灵活定制速率限制算法（关于这点的好处请查看我<a href="https://blog.getambassador.io/rate-limiting-for-api-gateways-892310a2da02">以前的文章</a>）。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fsvwvs0d8kj20hi0gj74v.jpg" alt="限速架构" /></p>
+
+<h2 id="探索部署于kubernetes的限速器服务">探索部署于Kubernetes的限速器服务</h2>
+
+<p>与任何其他服务一样，部署到Kubernetes的限速服务也可以根据需要进行水平扩展。 以下是Kubernetes配置文件<code>ambassador-rate-limiter.yaml</code>的内容：</p>
+
+<pre><code class="language-yaml">---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ratelimiter
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind: RateLimitService
+      name: ratelimiter_svc
+      service: &quot;ratelimiter:50051&quot;
+  labels:
+    app: ratelimiter
+spec:
+  type: ClusterIP
+  selector:
+    app: ratelimiter
+  ports:
+  - protocol: TCP
+    port: 50051
+    name: http
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: ratelimiter
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ratelimiter
+    spec:
+      containers:
+      - name: ratelimiter
+        image: danielbryantuk/ratelimiter:0.3
+        ports:
+        - containerPort: 50051
+</code></pre>
+
+<p>这里不需要关注最后Docker Image处的<code>danielbryantuk/ratelimiter:0.3</code> ，而需要注意的是：此服务在集群使用50051 TCP端口。</p>
+
+<p>在<code>ambassador-service.yaml</code>配置文件中，还更新了Ambassador Kubernetes annotations配置，以确保能通过包含<code>rate_limits</code>属性来限制对shopfront服务的请求。 我还添加了一些额外的元数据<code>- descriptor: Example descriptor</code>，这将在下一篇文章中更详细地解释。这里我们需要注意的是，如果要将元数据传递到速率限制服务，这种方法不错。</p>
+
+<pre><code class="language-yaml">---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: ambassador
+  name: ambassador
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name:  shopfront_stable
+      prefix: /shopfront/
+      service: shopfront:8010
+      rate_limits:
+        - descriptor: Example descriptor
+</code></pre>
+
+<p>你可以使用kubectl命令来检查部署是否成功：</p>
+
+<pre><code class="language-bash">(master *) kubernetes-ambassador-ratelimit $ kubectl get svc
+NAME               TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+ambassador         LoadBalancer   10.105.253.3     localhost     80:30051/TCP     1d
+ambassador-admin   NodePort       10.107.15.225    &lt;none&gt;        8877:30637/TCP   1d
+kubernetes         ClusterIP      10.96.0.1        &lt;none&gt;        443/TCP          16d
+productcatalogue   ClusterIP      10.109.48.26     &lt;none&gt;        8020/TCP         1d
+ratelimiter        ClusterIP      10.97.122.140    &lt;none&gt;        50051/TCP        1d
+shopfront          ClusterIP      10.98.207.100    &lt;none&gt;        8010/TCP         1d
+stockmanager       ClusterIP      10.107.208.180   &lt;none&gt;        8030/TCP         1d
+</code></pre>
+
+<p>6个业务服务看起来都不错（去除Kubernetes服务）：包含3个Java服务，2个Ambassador服务和1个ratelimiter服务。</p>
+
+<p>你可以通过curl命令对shopfront的服务端点进行测试，其应绑定在外部IP localhost的80端口上（如上文所示）：</p>
+
+<pre><code class="language-xml">(master *) kubernetes-ambassador-ratelimit $ curl localhost/shopfront/
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+...
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- jQuery (necessary for Bootstrap's JavaScript plugins) --&gt;
+&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;
+&lt;script src=&quot;js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;(master *) kubernetes-ambassador-ratelimit $
+</code></pre>
+
+<p>你会注意到这里显示了一些HTML，这只是Docker Java Shop的首页。虽然可以通过浏览器在<a href="http://localhost/shopfront/">http://localhost/shopfront/</a>访问，对于我们的速率限制实验，最好还是使用curl命令。</p>
+
+<h2 id="速率限制测试">速率限制测试</h2>
+
+<p>对于这种演示性质的速率限制服务，这里仅对服务本身进行限制。比如当速率限制服务需要计算是否需要限制请求时，唯一需要考虑的指标是在一段时间内针对特定后端的请求数量。在代码实现中使用<a href="https://en.wikipedia.org/wiki/Token_bucket">令牌桶算法</a>。假设桶中令牌容量为20，并且每秒钟的补充10个令牌。由于速率限制与请求相关联，这意味着你可以每秒发出10次API请求，这没有任何问题，同时由于存储桶最初包含20个令牌，你可以暂时超过此并发数量。但是，一旦最初额外的令牌使用完，并且你仍在尝试每秒发出10个以上请求，那么你将收到HTTP 429 “Too Many Requests” 状态码。这时，Ambassador API网关不会再将请求转发到后端服务。</p>
+
+<p>让我看下如何通过curl发出大量请求来模拟这个操作。避免显示的HTML页面（通过<code>-output /dev/null</code>参数）及curl请求（通过<code>--silent</code>参数），但需要显示符合预期的HTTP响应状态（通过<code>-- show-error  --fail</code>参数）。下文通过一个bash循环脚本，并记录时间输出（以显示发出请求的时间），以此来创建一个非常粗颗粒度的负载发生器（可以通过<code>CTRL-C</code>来终止循环）：</p>
+
+<pre><code class="language-bash">$ while true; do curl --silent --output /dev/null --show-error --fail http://localhost/shopfront/; echo -e $(date);done
+(master *) kubernetes-ambassador-ratelimit $ while true; do curl --silent --output /dev/null --show-error --fail http://localhost/shopfront/; echo -e $(date);done
+Tue 24 Apr 2018 14:16:31 BST
+Tue 24 Apr 2018 14:16:31 BST
+Tue 24 Apr 2018 14:16:31 BST
+Tue 24 Apr 2018 14:16:31 BST
+...
+Tue 24 Apr 2018 14:16:35 BST
+curl: (22) The requested URL returned error: 429 Too Many Requests
+Tue 24 Apr 2018 14:16:35 BST
+curl: (22) The requested URL returned error: 429 Too Many Requests
+Tue 24 Apr 2018 14:16:35 BST
+Tue 24 Apr 2018 14:16:35 BST
+curl: (22) The requested URL returned error: 429 Too Many Requests
+Tue 24 Apr 2018 14:16:35 BST
+curl: (22) The requested URL returned error: 429 Too Many Requests
+Tue 24 Apr 2018 14:16:35 BST
+^C
+</code></pre>
+
+<p>如你所见，从输出日志来看，前几个请求显示日期且没有错误，一切正常。过不了多久，当在我测试的Mac上的请求循环超过每秒10次，HTTP 429错误便开始出现。</p>
+
+<p>顺便说一下，我通常使用<a href="https://httpd.apache.org/docs/2.4/programs/ab.html"> Apache Benchmarking “ab”</a> 负载生成工具来进行这种简单实验，但这工具在调用本地localhost会有问题（同时Docker配置也给我带来了额外问题）。</p>
+
+<h2 id="检验速率限制器服务">检验速率限制器服务</h2>
+
+<p>Ambassador Java限速服务的源代码在我GitHub帐户的<a href="https://github.com/danielbryantuk/ambassador-java-rate-limiter">ambassador-java-rate-limiter</a>仓库中。其中也包含用于构建我推送到DockerHub中容器镜像的<a href="https://github.com/danielbryantuk/ambassador-java-rate-limiter/blob/master/Dockerfile">Dockerfile</a>。你可以以此Dockerfile作为模板进行修改，然后构建和推送自己的镜像至DockerHub。你也可以修改在Docker Java Shopping仓库中的<a href="https://github.com/danielbryantuk/oreilly-docker-java-shopping/blob/master/kubernetes-ambassador-ratelimit/ambassador-rate-limiter.yaml">ambassador-rate-limiter.yaml</a>文件来扩展使用你自己的速率限制服务。</p>
+
+<h2 id="研究java代码">研究Java代码</h2>
+
+<p>如果你深入研究Java代码，最需要关注的类应该是<a href="https://github.com/danielbryantuk/ambassador-java-rate-limiter/blob/master/src/main/java/io/datawire/ambassador/ratelimiter/simpleimpl/RateLimitServer.java">RateLimiterServer</a>，它实现了在Ambassador API中使用的<a href="https://www.datawire.io/envoyproxy/">Envoy代理</a>所定义的速率限制gRPC接口。我创建了一个<a href="https://github.com/danielbryantuk/ambassador-java-rate-limiter/blob/master/src/main/proto/ratelimit.proto">ratelimit.proto</a>接口的副本，其通过Maven <a href="https://github.com/danielbryantuk/ambassador-java-rate-limiter/blob/master/pom.xml">pom.xml</a>中定义的gRPC Java构建工具来构建使用。代码主要涉及三点：实现gRPC接口，运行gRPC服务器，并实现速率限制。下面让我们来进一步分析。</p>
+
+<h3 id="实现速率限制grpc接口">实现速率限制gRPC接口</h3>
+
+<p>查看<code>RateLimitServer</code>中的内部类<code>RateLimiterImpl</code>，其对<code>RateLimitServiceGrpc.RateLimitServiceImplBase</code>进行扩展，你可以看到此抽象类中的下列方法被重写：</p>
+
+<pre><code class="language-java">public void shouldRateLimit(Ratelimit.RateLimitRequest rateLimitRequest, StreamObserver&lt;Ratelimit.RateLimitResponse&gt; responseStreamObserver)
+</code></pre>
+
+<p>这里使用的很多命名规约来自于Java gRPC库，进一步信息请参阅<a href="https://grpc.io/docs/tutorials/basic/java.html">gRPC Java文档</a>。 尽管这样，如果查看<a href="https://github.com/danielbryantuk/ambassador-java-rate-limiter/blob/master/src/main/proto/ratelimit.proto">ratelimit.proto</a>文件，你可以清楚看到很多命名根，这些命名根定义了在Ambassador中使用的Envoy代理所需要的速率限制接口。例如，你可以看到此文件中定义的核心服务名为<code>RateLimitService</code>（第9行），并且在服务<code>rpc ShouldRateLimit (RateLimitRequest) returns (RateLimitResponse) {}</code>（第11行）中定义了一个RPC方法， 它在Java中实现通过上面所定义的<code>shouldRateLimit</code>方法。</p>
+
+<p>如果有兴趣，可以看看那些由<code>protobuf-maven-plugin</code>（<a href="https://github.com/danielbryantuk/ambassador-java-rate-limiter/blob/master/pom.xml">pom.xml</a>的第99行）生成的Java gRPC代码。</p>
+
+<h3 id="运行grpc服务器">运行gRPC服务器</h3>
+
+<p>一旦你实现了用<code>ratelimit.proto</code>定义的gRPC接口，下一件事情就是创建一个gRPC服务器用来监听和回复请求。可以根据<code>main</code>方法调用链来查看<a href="https://github.com/danielbryantuk/ambassador-java-rate-limiter/blob/master/src/main/java/io/datawire/ambassador/ratelimiter/simpleimpl/RateLimitServer.java">RateLimitServer</a>的内容。简而言之，<code>main</code>方法创建一个<code>RateLimitServer</code>类的实例，调用<code>start()</code>方法，再调用<code>blockUntilShutdown()</code>方法。 这将启动一个应用实例，并在指定的服务端点上发布gRPC接口，同时侦听请求。</p>
+
+<h3 id="实现java速率限制">实现Java速率限制</h3>
+
+<p>负责速率限制过程的实际Java代码包含在<code>RateLimiterImpl</code>内部类的<code>shouldRateLimit()</code>方法（第75行）中。我没有自己实现算法，而是使用基于<a href="https://en.wikipedia.org/wiki/Token_bucket">令牌桶算法</a>的Java速度限制开源库<a href="https://github.com/vladimir-bukhtoyarov/bucket4j">bucket4j</a>。由于我限制了对每个服务的请求，因此每个存储桶与服务名称所绑定。对每个服务的请求都会从其所关联的存储桶中删除一个令牌。在本案例中，桶没有存储在外部数据库，而是存储在内存中的<code>ConcurrentHashMap</code>中。如果在生产环境中，通常会使用类似Redis的外部持久化存储方案来实现横向扩展。这里必须注意，如果在不更改每个服务桶限制的前提下水平扩展速率限制服务，那么将直接导致（非速率限制）请求数量的增加，但实际服务可支持的请求数量没有增加。</p>
+
+<p>创建bucket4j存储桶的<code>RateLimiterImpl</code>大致代码如下：</p>
+
+<pre><code class="language-java">private Bucket createNewBucket() {
+    long overdraft = 20;
+    Refill refill = Refill.smooth(10, Duration.ofSeconds(1));
+    Bandwidth limit = Bandwidth.classic(overdraft, refill);
+    return Bucket4j.builder().addLimit(limit).build();
+}
+</code></pre>
+
+<p>在下面可以看到<code>shouldRateLimit</code>方法的代码，它只是简单地尝试执行<code>tryConsume(1)</code>使用桶中一个令牌，并返回适当的HTTP响应。</p>
+
+<pre><code class="language-java">@Override
+public void shouldRateLimit(Ratelimit.RateLimitRequest rateLimitRequest, StreamObserver&lt;Ratelimit.RateLimitResponse&gt; responseStreamObserver) {
+    logDebug(rateLimitRequest);
+    String destServiceName = extractDestServiceNameFrom(rateLimitRequest);
+    Bucket bucket = getServiceBucketFor(destServiceName);
+Ratelimit.RateLimitResponse.Code code;
+    if (bucket.tryConsume(1)) {
+        code = Ratelimit.RateLimitResponse.Code.OK;
+    } else {
+        code = Ratelimit.RateLimitResponse.Code.OVER_LIMIT;
+    }
+Ratelimit.RateLimitResponse rateLimitResponse = generateRateLimitResponse(code);
+    responseStreamObserver.onNext(rateLimitResponse);
+    responseStreamObserver.onCompleted();
+}
+</code></pre>
+
+<p>代码比较容易解释。如果当前请求不需要进行速率限制，则此方法返回<code>Ratelimit.RateLimitResponse.Code.OK;</code>如果当前请求由于速度限制而被拒绝，则此方法返回<code>Ratelimit.RateLimitResponse.Code.OVER_LIMIT</code>。根据此gRPC服务的响应，Ambassador API网关将请求传递给后端服务，或者中断请求并返回HTTP状态码429 “Too Many Requests” 而不再调用后端服务。</p>
+
+<p>这个简单案例只可以防止一个服务的访问过载，但也希望这能够阐明速率限制的核心概念，进而可以相对容易实现基于请求元数据（例如用户ID等）的速率限制。</p>
+
+<h2 id="下一阶段">下一阶段</h2>
+
+<p>本文演示了如何在Java中创建速率限制服务，并轻易与Ambassador网关所集成。如果需要，你也可以基于任何自定义的速率限制算法实现。 在本系列的最后一篇文章中，您将更深入地了解Envoy速率限制API，以便进一步学习如何设计速率限制服务。</p>
+
+<p>如果有任何疑问，欢迎在Ambassador Gitter或通过<a href="https://twitter.com/danielbryantuk/">@danielbryantuk</a>及<a href="https://twitter.com/datawireio?lang=en">@datawireio</a>联系。</p>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/"><i class="fa fa-link"></i>速率限制Part2——作用于 API 网关的速率限制</a></li>
+         
+        <li><a href="/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/"><i class="fa fa-link"></i>速率限制Part1——分布式系统的一个实用工具</a></li>
+         
+        <li><a href="/blog/hangzhou-meetup-20180630/"><i class="fa fa-link"></i>Service Mesh杭州Meetup回顾</a></li>
+         
+        <li><a href="/blog/istio-is-not-just-for-microservices/"><i class="fa fa-link"></i>Istio不仅为微服务而生——使用Istio Service Mesh保护Kubernetes中的服务</a></li>
+         
+        <li><a href="/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/"><i class="fa fa-link"></i>利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-code"><i class="fa fa-navicon"></i>istio-source-code (4)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (1)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (5)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (25)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播 Service Mesh 技术、加强行业内部交流、推动 Service Mesh 在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part-3/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsxqadfbiwj31ji15o4qr.jpg" class="img-responsive" alt="速率限制Part3——基于Ambassador API网关实现Java速率限制服务">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part-3/">速率限制Part3——基于Ambassador API网关实现Java速率限制服务</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/hangzhou-meetup-20180630/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fswkasm3a7j30rs0kue81.jpg" class="img-responsive" alt="Service Mesh杭州Meetup回顾">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/hangzhou-meetup-20180630/">Service Mesh杭州Meetup回顾</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fswjxhtkcxj30rs0kuqlp.jpg" class="img-responsive" alt="速率限制Part2——作用于 API 网关的速率限制">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/">速率限制Part2——作用于 API 网关的速率限制</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>Service Mesh爱好者社区</p><p><a href="https://jimmysong.io/about">管理员</a></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

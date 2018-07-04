@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part-3/</loc>
+    <lastmod>2018-07-04T12:26:02+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/hangzhou-meetup-20180630/</loc>
     <lastmod>2018-07-03T12:22:47+08:00</lastmod>
   </url>
@@ -228,7 +233,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/distributing-system/</loc>
-    <lastmod>2018-07-03T12:11:49+08:00</lastmod>
+    <lastmod>2018-07-04T12:26:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -342,13 +347,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/rate-limiting/</loc>
-    <lastmod>2018-07-03T12:11:49+08:00</lastmod>
+    <lastmod>2018-07-04T12:26:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/rate-limiting/</loc>
-    <lastmod>2018-07-03T12:11:49+08:00</lastmod>
+    <lastmod>2018-07-04T12:26:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -359,14 +364,8 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/servcie-mesh/</loc>
-    <lastmod>2018-06-28T15:09:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+    <lastmod>2018-06-28T15:09:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -378,7 +377,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-07-03T12:22:47+08:00</lastmod>
+    <lastmod>2018-07-04T12:26:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -408,7 +407,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-07-03T12:11:49+08:00</lastmod>
+    <lastmod>2018-07-04T12:26:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
