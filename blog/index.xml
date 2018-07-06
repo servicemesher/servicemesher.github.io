@@ -26,7 +26,7 @@
       <pubDate>Wed, 04 Jul 2018 19:44:08 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</guid>
-      <description>本文转载自：https://www.jianshu.com/p/312b9b9a7e01 作者：郑伟，小米信息部技术架构组 本系列文章主要从源码</description>
+      <description>本文系转载，作者：郑伟，小米信息部技术架构组 本系列文章主要从源码（35e2b904）出发，对istio做深入剖析，让大家对istio有更深的</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Wed, 04 Jul 2018 19:24:37 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/</guid>
-      <description>本文转载自：https://www.jianshu.com/p/c07ed0ef821e 作者：郑伟，小米信息部技术架构组 本系列文章主要从源码</description>
+      <description>本文系转载，原文作者：郑伟，小米信息部技术架构组 本系列文章主要从源码（35e2b904）出发，对istio做深入剖析，让大家对istio有更</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Wed, 04 Jul 2018 19:11:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-deepin-part1-framework-and-environment/</guid>
-      <description>本文转载自：https://www.jianshu.com/p/c7785663bc8a 作者：郑伟，小米信息部技术架构组 本系列文章主要从源码</description>
+      <description>本文系转载，作者：郑伟，小米信息部技术架构组 本系列文章主要从源码（35e2b904）出发，对istio做深入剖析，让大家对istio有更深的</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Wed, 04 Jul 2018 17:54:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/</guid>
-      <description>原文链接：https://www.circonus.com/2018/06/comprehensive-container-based-se</description>
+      <description>运营容器化基础设施给我们带来了一系列新的挑战。您需要对容器进行测试，评估您的 API 端点性能，并确定您的基础架构中的不良的组件。Istio 服务网格</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Wed, 04 Jul 2018 17:44:01 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/</guid>
-      <description>原文链接：https://hackernoon.com/traffic-routing-between-fn-functions-using</description>
+      <description>在本文中，我将解释如何在 Fn 函数之间使用 Istio 服务网格实现基于版本的流量路由。 我将首先解释 Istio 路由的基础知识以及将 Fn 部署和运行在 Kubernetes 上的方式。最后，我</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@
       <pubDate>Wed, 04 Jul 2018 12:48:07 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/consul-1-2-service-mesh/</guid>
-      <description>本文译自 HashiCorp 官网关于 Consul 1.2 支持 Service Mesh 发布的博客文章。 原文链接：https://www.hashicorp.com/blog/consul-1-2-</description>
+      <description>本文译自 HashiCorp 官网关于 Consul 1.2 支持 Service Mesh 发布的博客文章。 本文是 HashiCorp 创始人 Mitchell Hashimoto 在 2018 年 6 月 26 日发布的关于 Consul 1.2 新功能 Service Mesh 的官方介绍。译者接触过的 Hashicorp 的产品有过不</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
       <pubDate>Wed, 04 Jul 2018 12:26:02 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3/</guid>
-      <description>原文链接：https://blog.getambassador.io/implementing-a-java-rate-limiting-s</description>
+      <description>基于Kubernetes云原生的Ambassador API网关所提供的速率限制功能是完全可定制的，其允许任何实现gRPC服务端点的服务自行决</description>
     </item>
     
     <item>
@@ -98,7 +98,7 @@
       <pubDate>Tue, 03 Jul 2018 12:11:49 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</guid>
-      <description>原文地址：https://blog.getambassador.io/rate-limiting-for-api-gateways-8923</description>
+      <description>在本速率限制系列的第一篇文章中，介绍了实施速率限制的动机，并讨论了几种实施方案（取决于你是否同时作为通信的发送端和接收端）以及相关的权衡。本</description>
     </item>
     
     <item>
@@ -107,7 +107,7 @@
       <pubDate>Fri, 29 Jun 2018 15:51:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</guid>
-      <description>速率限制—分布式系统的一个实用工具part1 原文链接：https://blog.getambassador.io/rate-limiting</description>
+      <description>速率限制—分布式系统的一个实用工具part1 在计算领域，速率限制通常用于控制服务发起或消耗的操作速率，或者是请求发送或接收的流量。如果你有一</description>
     </item>
     
     <item>
@@ -116,7 +116,7 @@
       <pubDate>Thu, 28 Jun 2018 15:09:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-is-not-just-for-microservices/</guid>
-      <description>原文地址：https://github.com/todkap/istio-index-conf2018/blob/master/README</description>
+      <description>通过使用 Istio Service Mesh 来保障 Kubernetes 平台服务。通常可以运行示例代码有助于用户更清晰的理解并将概念应用到实际的案例中。该项目围绕一个简单的 Node.js 应用程序演示了以</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@
       <pubDate>Mon, 25 Jun 2018 20:30:52 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/</guid>
-      <description>原文链接：https://medium.com/@prune998/istio-envoy-cert-manager-lets-encryp</description>
+      <description>更新 感谢 Laurent Demailly 的评论，这里有一些更新。这篇文章已经得到了更新： 现在有一个 Cert-Manager 官方 Helm chart Istio Ingress 也支持基于 HTTP/2 的 GRPC Istio Istio 是管理微服务世界中数据流的一种新方式</description>
     </item>
     
     <item>
@@ -134,7 +134,7 @@
       <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/</guid>
-      <description>原文：https://www.infoq.com/articles/vp-microservices-communication-gover</description>
+      <description>关键点 服务网格框架用于处理服务间的通信，并提供连接、管理和保护微服务的平台。 服务网格通过处理需要复杂编码的功能来帮助应用程序开发人员，例如路</description>
     </item>
     
     <item>
@@ -143,7 +143,7 @@
       <pubDate>Thu, 21 Jun 2018 18:11:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/soft-multitenancy-in-istio-service-mesh/</guid>
-      <description>原文：Istio Soft Multi-tenancy Support 作者：John Joyce &amp;amp; Rich Curran 转载自：https://blog.fleeto.us/post/soft-multitenanc</description>
+      <description>多租户是一个在各种环境和各种应用中都得到了广泛应用的概念，但是不同环境中，为每租户提供的具体实现和功能性都是有差异的。Kubernetes 多</description>
     </item>
     
     <item>
@@ -152,7 +152,7 @@
       <pubDate>Thu, 21 Jun 2018 18:00:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</guid>
-      <description>原文：https://devops.com/containers-service-mesh-and-api-gateways-it-star</description>
+      <description>Docker 和 Kubernetes 为代表的容器技术炙手可热，熟知这一技术领域的用户，一定都知道下一个热点：Service Mesh，它承诺将微服务之间的内部网络通信均一化</description>
     </item>
     
     <item>
@@ -170,7 +170,7 @@
       <pubDate>Thu, 21 Jun 2018 16:11:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-universal-data-plane-api/</guid>
-      <description>原文地址：https://blog.envoyproxy.io/the-universal-data-plane-api-d15cec7a 作</description>
+      <description>正如我之前所说的，在如此短的时间内，Envoy 带来的兴奋既神奇又震撼人心。我经常问自己：envoy 的哪些方面导致了我们所看到的异常的社区增长</description>
     </item>
     
     <item>
@@ -188,7 +188,7 @@
       <pubDate>Tue, 19 Jun 2018 18:04:08 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/making-most-out-microservices-service-mesh/</guid>
-      <description>原文：https://www.linux.com/blog/event/kubecon/2018/4/making-most-out-mic</description>
+      <description>Aspen Mesh的Andrew Jenkins说，转向微服务本身并不能消除复杂性。 在本文中，我们与Aspen Mesh的首席架构师Andrew Jenk</description>
     </item>
     
     <item>
@@ -197,7 +197,7 @@
       <pubDate>Tue, 19 Jun 2018 15:54:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-in-cookpad/</guid>
-      <description>原文：http://techlife.cookpad.com/entry/2018/06/11/100355 作者：Taiki 译者：殷龙飞 校对</description>
+      <description>这个原文是 5 月初发表的日文原文的翻译。补充一下这篇文章的背景，Cookpad 是一家拥有 200 多种产品开发的中型科技公司，拥有 10 多支团队，每月平均</description>
     </item>
     
     <item>
@@ -206,7 +206,7 @@
       <pubDate>Tue, 19 Jun 2018 11:42:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</guid>
-      <description>原文地址：Using Linkerd as a Service Mesh Proxy at WePay 作者：Mohsen Rezaei 译者：Kael Zhang 在接下来的几个月中，我们将撰写一系列文章来记录从传统负载均衡器到谷歌</description>
+      <description>在接下来的几个月中，我们将撰写一系列文章来记录从传统负载均衡器到谷歌Kubernetes引擎（GKE）之上服务网格的WePay工程化之路。 在</description>
     </item>
     
     <item>
@@ -233,7 +233,7 @@
       <pubDate>Tue, 12 Jun 2018 15:06:25 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/</guid>
-      <description>原文链接：https://www.infoworld.com/article/3273547/containers/the-rise-of-</description>
+      <description>如何确保微服务之间网络通信的可靠性、安全性和可管理性？ 使用服务网格吧！ 在过去一年中，Istio服务网格技术引发关注度和吸引力的持续提升，这是</description>
     </item>
     
     <item>
@@ -242,7 +242,7 @@
       <pubDate>Mon, 11 Jun 2018 20:40:28 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/</guid>
-      <description>原文地址：Twistlock Makes Istio’s Security Layer More Robust, Easier to Monitor 译者：宋净超 Istio已经成为一种流行且可靠的服务网格管理平台，使用它可以更轻松地</description>
+      <description>Istio已经成为一种流行且可靠的服务网格管理平台，使用它可以更轻松地部署、操作和扩展跨云部署的微服务。作为保证这些服务网格的一种方式，Tw</description>
     </item>
     
     <item>
@@ -278,7 +278,7 @@
       <pubDate>Fri, 08 Jun 2018 16:01:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/</guid>
-      <description>原文地址：Medium 译者：崔秀龙 校对：宋净超 转载自：伪架构师 现代服务网格架构提供了很多的新功能，基础设施相关的依赖部分被逐步从代码中移除，</description>
+      <description>现代服务网格架构提供了很多的新功能，基础设施相关的依赖部分被逐步从代码中移除，极大的降低了编码工作量。除此之外，这一架构的智能路由功能还把金</description>
     </item>
     
     <item>
@@ -287,7 +287,7 @@
       <pubDate>Fri, 08 Jun 2018 12:40:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/tracing-grpc-with-istio/</guid>
-      <description>原文地址：https://blog.aspenmesh.io/blog/2018/04/tracing-grpc-with-istio/ 作者</description>
+      <description>Aspen Mesh很喜欢用gRPC。Apen Mesh面向公众的API和许多内部API大多都是使用gRPC构建的。如果您还没有听说过 gRPC（熟练掌握</description>
     </item>
     
     <item>
@@ -296,7 +296,7 @@
       <pubDate>Thu, 07 Jun 2018 19:27:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-security-addressing-attack-vectors-with-istio/</guid>
-      <description>原文：Service Mesh Security: Addressing Attack Vectors with Istio 作者： Zach Jory 译者：崔秀龙 把单体应用拆分为微服务之后，会得到不少好处，例如稳定性的提高、持续运行时间的增长以及</description>
+      <description>把单体应用拆分为微服务之后，会得到不少好处，例如稳定性的提高、持续运行时间的增长以及更好的故障隔离等。然而把大应用拆分为小服务的过程中，也会</description>
     </item>
     
     <item>
@@ -323,7 +323,7 @@
       <pubDate>Wed, 06 Jun 2018 18:30:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/introducing-the-istio-v1alpha3-routing-api/</guid>
-      <description>原文链接：https://istio.io/blog/2018/v1alpha3-routing 作者：Frank Budinsky (IBM) and Shriram Rajagopalan (VMware) 译者：赵化冰 校对</description>
+      <description>到目前为止，Istio提供了一个简单的API来进行流量管理，该API包括了四种资源：RouteRule、DestinationPolicy、</description>
     </item>
     
     <item>
@@ -332,7 +332,7 @@
       <pubDate>Wed, 06 Jun 2018 15:32:26 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/manage-microservices-traffic-using-istio/</guid>
-      <description>原文地址：https://developer.ibm.com/code/patterns/manage-microservices-traf</description>
+      <description>说明 开发人员正在摆脱大型单体应用的束缚，转而采用小巧而专一的微服务，以加速软件开发并加强系统弹性。为了满足这个新生态的需求，开发人员需要为部</description>
     </item>
     
     <item>
@@ -341,7 +341,7 @@
       <pubDate>Tue, 05 Jun 2018 19:12:42 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/8-ways-a-service-mesh-eases-microservices-deployment/</guid>
-      <description>原文地址：https://thenewstack.io/8-ways-a-service-mesh-eases-microservices-</description>
+      <description>本文系转载，译者：Grace 基于微服务的架构是未来的趋势，但是实现这种架构会面临许多困难。现代应用架构远比过去的架构复杂，因此实现微服务架构</description>
     </item>
     
     <item>
@@ -359,7 +359,7 @@
       <pubDate>Mon, 04 Jun 2018 15:55:08 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-path-to-service-mesh/</guid>
-      <description>原文链接：https://blog.aspenmesh.io/blog/2018/03/the-path-to-service-mesh/ 作</description>
+      <description>当我们谈论服务网格的时候，有几个问题经常被提及。这些问题的范围覆盖从简单的了解服务网格的历史，到产品和架构相关的比较深入的技术问题。 为了回答</description>
     </item>
     
     <item>
@@ -368,7 +368,7 @@
       <pubDate>Mon, 04 Jun 2018 11:33:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/building-istio-with-minikube-in-a-container-and-jenkins/</guid>
-      <description>原文链接：https://blog.aspenmesh.io/blog/2018/01/building-istio-with-miniku</description>
+      <description>AspenMesh提供一种Istio的分布式架构支持，这意味着即使与上游Istio项目无关，我们也需要能够测试和修复Bug。为此我们已开发构</description>
     </item>
     
     <item>
@@ -377,7 +377,7 @@
       <pubDate>Fri, 01 Jun 2018 11:41:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-0.8-release-note/</guid>
-      <description>原文地址：Isito 0.8 译者：Jimmy Song 北京时间 2018 年 6 月 1 日（儿童节）上午 9: 30 Istio 0.8.0 LTS（长期支持版本）发布。该版本除了常见的一堆错误修复和</description>
+      <description>北京时间 2018 年 6 月 1 日（儿童节）上午 9: 30 Istio 0.8.0 LTS（长期支持版本）发布。该版本除了常见的一堆错误修复和性能改进之外，还包含以下更新和新功能。 网</description>
     </item>
     
     <item>
@@ -386,7 +386,7 @@
       <pubDate>Thu, 31 May 2018 21:12:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</guid>
-      <description>译者：Jimmy Song 原文地址：GitOps for Istio - Manage Istio Config like Code 在今年的哥本哈根 Kubecon 大会上，Weaveworks 的 CEO Alexis Richardson 与 Varun Talwar（来自一家隐形</description>
+      <description>在今年的哥本哈根 Kubecon 大会上，Weaveworks 的 CEO Alexis Richardson 与 Varun Talwar（来自一家隐形创业公司）谈到了 GitOps 工作流程和 Istio。会后 Weaveworks 的 Stefan Prodan 进行</description>
     </item>
     
     <item>

@@ -26,7 +26,7 @@
       <pubDate>Fri, 08 Jun 2018 16:01:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/</guid>
-      <description>原文地址：Medium 译者：崔秀龙 校对：宋净超 转载自：伪架构师 现代服务网格架构提供了很多的新功能，基础设施相关的依赖部分被逐步从代码中移除，</description>
+      <description>现代服务网格架构提供了很多的新功能，基础设施相关的依赖部分被逐步从代码中移除，极大的降低了编码工作量。除此之外，这一架构的智能路由功能还把金</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Wed, 06 Jun 2018 15:32:26 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/manage-microservices-traffic-using-istio/</guid>
-      <description>原文地址：https://developer.ibm.com/code/patterns/manage-microservices-traf</description>
+      <description>说明 开发人员正在摆脱大型单体应用的束缚，转而采用小巧而专一的微服务，以加速软件开发并加强系统弹性。为了满足这个新生态的需求，开发人员需要为部</description>
     </item>
     
     <item>

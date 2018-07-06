@@ -17,7 +17,7 @@
       <pubDate>Wed, 04 Jul 2018 12:26:02 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3/</guid>
-      <description>原文链接：https://blog.getambassador.io/implementing-a-java-rate-limiting-s</description>
+      <description>基于Kubernetes云原生的Ambassador API网关所提供的速率限制功能是完全可定制的，其允许任何实现gRPC服务端点的服务自行决</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 03 Jul 2018 12:11:49 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</guid>
-      <description>原文地址：https://blog.getambassador.io/rate-limiting-for-api-gateways-8923</description>
+      <description>在本速率限制系列的第一篇文章中，介绍了实施速率限制的动机，并讨论了几种实施方案（取决于你是否同时作为通信的发送端和接收端）以及相关的权衡。本</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Fri, 29 Jun 2018 15:51:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</guid>
-      <description>速率限制—分布式系统的一个实用工具part1 原文链接：https://blog.getambassador.io/rate-limiting</description>
+      <description>速率限制—分布式系统的一个实用工具part1 在计算领域，速率限制通常用于控制服务发起或消耗的操作速率，或者是请求发送或接收的流量。如果你有一</description>
     </item>
     
   </channel>

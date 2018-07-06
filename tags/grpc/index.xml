@@ -17,7 +17,7 @@
       <pubDate>Fri, 08 Jun 2018 12:40:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/tracing-grpc-with-istio/</guid>
-      <description>原文地址：https://blog.aspenmesh.io/blog/2018/04/tracing-grpc-with-istio/ 作者</description>
+      <description>Aspen Mesh很喜欢用gRPC。Apen Mesh面向公众的API和许多内部API大多都是使用gRPC构建的。如果您还没有听说过 gRPC（熟练掌握</description>
     </item>
     
   </channel>

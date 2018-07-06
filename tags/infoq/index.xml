@@ -17,7 +17,7 @@
       <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/</guid>
-      <description>原文：https://www.infoq.com/articles/vp-microservices-communication-gover</description>
+      <description>关键点 服务网格框架用于处理服务间的通信，并提供连接、管理和保护微服务的平台。 服务网格通过处理需要复杂编码的功能来帮助应用程序开发人员，例如路</description>
     </item>
     
   </channel>

@@ -17,7 +17,7 @@
       <pubDate>Tue, 19 Jun 2018 11:42:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</guid>
-      <description>原文地址：Using Linkerd as a Service Mesh Proxy at WePay 作者：Mohsen Rezaei 译者：Kael Zhang 在接下来的几个月中，我们将撰写一系列文章来记录从传统负载均衡器到谷歌</description>
+      <description>在接下来的几个月中，我们将撰写一系列文章来记录从传统负载均衡器到谷歌Kubernetes引擎（GKE）之上服务网格的WePay工程化之路。 在</description>
     </item>
     
   </channel>

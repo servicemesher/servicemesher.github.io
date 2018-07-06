@@ -17,7 +17,7 @@
       <pubDate>Mon, 25 Jun 2018 20:30:52 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/</guid>
-      <description>原文链接：https://medium.com/@prune998/istio-envoy-cert-manager-lets-encryp</description>
+      <description>更新 感谢 Laurent Demailly 的评论，这里有一些更新。这篇文章已经得到了更新： 现在有一个 Cert-Manager 官方 Helm chart Istio Ingress 也支持基于 HTTP/2 的 GRPC Istio Istio 是管理微服务世界中数据流的一种新方式</description>
     </item>
     
   </channel>

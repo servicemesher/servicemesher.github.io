@@ -17,7 +17,7 @@
       <pubDate>Mon, 04 Jun 2018 11:33:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/building-istio-with-minikube-in-a-container-and-jenkins/</guid>
-      <description>原文链接：https://blog.aspenmesh.io/blog/2018/01/building-istio-with-miniku</description>
+      <description>AspenMesh提供一种Istio的分布式架构支持，这意味着即使与上游Istio项目无关，我们也需要能够测试和修复Bug。为此我们已开发构</description>
     </item>
     
   </channel>
