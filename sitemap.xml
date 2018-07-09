@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/istio-future-service-mesh/</loc>
+    <lastmod>2018-07-09T12:37:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/rip-conduit/</loc>
+    <lastmod>2018-07-09T12:19:53+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/</loc>
     <lastmod>2018-07-04T19:56:20+08:00</lastmod>
   </url>
@@ -267,6 +277,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/conduit/</loc>
+    <lastmod>2018-07-09T12:19:53+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/consul/</loc>
     <lastmod>2018-07-04T12:48:07+08:00</lastmod>
     <priority>0</priority>
@@ -334,13 +350,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-07-04T19:44:08+08:00</lastmod>
+    <lastmod>2018-07-09T12:37:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/istio/</loc>
-    <lastmod>2018-06-21T16:55:56+08:00</lastmod>
+    <lastmod>2018-07-09T12:37:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -370,7 +386,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/linkerd/</loc>
-    <lastmod>2018-06-19T11:42:58+08:00</lastmod>
+    <lastmod>2018-07-09T12:19:53+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -442,19 +458,19 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-07-04T19:56:20+08:00</lastmod>
+    <lastmod>2018-07-09T12:37:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2018-07-04T19:56:20+08:00</lastmod>
+    <lastmod>2018-07-09T12:19:53+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-07-04T19:56:20+08:00</lastmod>
+    <lastmod>2018-07-09T12:37:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
