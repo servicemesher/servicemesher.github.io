@@ -6,10 +6,28 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 09 Jul 2018 12:37:48 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jul 2018 15:32:40 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>速率限制系列part4—为Ambassador API网关设计速率限制服务</title>
+      <link>http://www.servicemesher.com/blog/designing-a-rate-limiting-service-for-ambassador-part-4/</link>
+      <pubDate>Wed, 11 Jul 2018 15:32:40 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/designing-a-rate-limiting-service-for-ambassador-part-4/</guid>
+      <description>先前关于速率限制文章主要描述如何构建并部署基于Java的速率限制服务，该服务可以和开源的Ambassador API网关以及Kubernete</description>
+    </item>
+    
+    <item>
+      <title>Service Mesh深度学习系列part1——istio源码分析之pilot-agent模块分析</title>
+      <link>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin/</link>
+      <pubDate>Wed, 11 Jul 2018 14:24:24 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin/</guid>
+      <description>本文作者 丁轶群博士，谐云科技CTO 2004年作为高级技术顾问加入美国道富银行(浙江)技术中心，负责分布式大型金融系统的设计与研发。2011年</description>
+    </item>
     
     <item>
       <title>Istio以及Service Mesh的未来</title>

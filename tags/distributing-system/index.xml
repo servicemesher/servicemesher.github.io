@@ -6,10 +6,19 @@
     <description>Recent content in Distributing System on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 04 Jul 2018 12:26:02 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jul 2018 15:32:40 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/distributing-system/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>速率限制系列part4—为Ambassador API网关设计速率限制服务</title>
+      <link>http://www.servicemesher.com/blog/designing-a-rate-limiting-service-for-ambassador-part-4/</link>
+      <pubDate>Wed, 11 Jul 2018 15:32:40 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/designing-a-rate-limiting-service-for-ambassador-part-4/</guid>
+      <description>先前关于速率限制文章主要描述如何构建并部署基于Java的速率限制服务，该服务可以和开源的Ambassador API网关以及Kubernete</description>
+    </item>
     
     <item>
       <title>速率限制part3—基于Ambassador API网关实现Java速率限制服务</title>

@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 09 Jul 2018 12:37:48 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jul 2018 14:24:24 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Service Mesh深度学习系列part1——istio源码分析之pilot-agent模块分析</title>
+      <link>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin/</link>
+      <pubDate>Wed, 11 Jul 2018 14:24:24 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin/</guid>
+      <description>本文作者 丁轶群博士，谐云科技CTO 2004年作为高级技术顾问加入美国道富银行(浙江)技术中心，负责分布式大型金融系统的设计与研发。2011年</description>
+    </item>
     
     <item>
       <title>Istio以及Service Mesh的未来</title>
