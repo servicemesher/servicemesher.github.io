@@ -6,10 +6,19 @@
     <description>Recent content in Tags on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 21 Jun 2018 18:00:58 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 13 Jul 2018 12:38:44 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ab Test</title>
+      <link>http://www.servicemesher.com/tags/ab-test/</link>
+      <pubDate>Fri, 13 Jul 2018 12:38:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/ab-test/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Ambassador</title>
@@ -158,7 +167,7 @@
     <item>
       <title>Istio</title>
       <link>http://www.servicemesher.com/tags/istio/</link>
-      <pubDate>Wed, 11 Jul 2018 14:24:24 +0800</pubDate>
+      <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/istio/</guid>
       <description></description>
@@ -170,6 +179,15 @@
       <pubDate>Mon, 04 Jun 2018 11:33:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>http://www.servicemesher.com/tags/kubernetes/</link>
+      <pubDate>Fri, 13 Jul 2018 12:38:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
@@ -228,6 +246,15 @@
     </item>
     
     <item>
+      <title>Mosn</title>
+      <link>http://www.servicemesher.com/tags/mosn/</link>
+      <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/mosn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Opentracing</title>
       <link>http://www.servicemesher.com/tags/opentracing/</link>
       <pubDate>Fri, 08 Jun 2018 16:01:00 +0800</pubDate>
@@ -275,9 +302,36 @@
     <item>
       <title>Service Mesh</title>
       <link>http://www.servicemesher.com/tags/service-mesh/</link>
-      <pubDate>Wed, 11 Jul 2018 14:24:24 +0800</pubDate>
+      <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/service-mesh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sofa</title>
+      <link>http://www.servicemesher.com/tags/sofa/</link>
+      <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/sofa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sofamesh</title>
+      <link>http://www.servicemesher.com/tags/sofamesh/</link>
+      <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/sofamesh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sofastack</title>
+      <link>http://www.servicemesher.com/tags/sofastack/</link>
+      <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/sofastack/</guid>
       <description></description>
     </item>
     
@@ -332,6 +386,15 @@
       <pubDate>Thu, 14 Jun 2018 10:43:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/ucloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vamp</title>
+      <link>http://www.servicemesher.com/tags/vamp/</link>
+      <pubDate>Fri, 13 Jul 2018 12:38:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/vamp/</guid>
       <description></description>
     </item>
     

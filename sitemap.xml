@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</loc>
+    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0.8/</loc>
+    <lastmod>2018-07-13T12:38:44+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/designing-a-rate-limiting-service-for-ambassador-part-4/</loc>
     <lastmod>2018-07-11T15:32:40+08:00</lastmod>
   </url>
@@ -258,6 +268,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/ab-test/</loc>
+    <lastmod>2018-07-13T12:38:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/ambassador/</loc>
     <lastmod>2018-06-21T18:00:58+08:00</lastmod>
     <priority>0</priority>
@@ -360,7 +376,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-07-11T14:24:24+08:00</lastmod>
+    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -385,6 +401,12 @@
   <url>
     <loc>http://www.servicemesher.com/tags/jenkins/</loc>
     <lastmod>2018-06-04T11:33:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
+    <lastmod>2018-07-13T12:38:44+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -431,6 +453,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/mosn/</loc>
+    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/opentracing/</loc>
     <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
@@ -468,19 +496,37 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-07-11T14:24:24+08:00</lastmod>
+    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2018-07-11T14:24:24+08:00</lastmod>
+    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-07-11T15:32:40+08:00</lastmod>
+    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/sofa/</loc>
+    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/sofamesh/</loc>
+    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/sofastack/</loc>
+    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -498,7 +544,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/</loc>
-    <lastmod>2018-06-21T18:00:58+08:00</lastmod>
+    <lastmod>2018-07-13T12:38:44+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -533,6 +579,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/vamp/</loc>
+    <lastmod>2018-07-13T12:38:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/vistio/</loc>
     <lastmod>2018-06-20T10:25:16+08:00</lastmod>
     <priority>0</priority>
@@ -550,6 +602,12 @@
   
   <url>
     <loc>http://www.servicemesher.com/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/%E8%AF%91%E6%96%87/</loc>
+    <lastmod>2018-07-13T12:38:44+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

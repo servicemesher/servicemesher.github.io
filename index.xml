@@ -6,10 +6,28 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 11 Jul 2018 15:32:40 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 16 Jul 2018 15:51:34 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案</title>
+      <link>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</link>
+      <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</guid>
+      <description>4月，蚂蚁金服自主研发的分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA ）启动开源计划，并开放多个组件，（相关背景请点</description>
+    </item>
+    
+    <item>
+      <title>使用Istio 0.8对Kubernetes进行A/B测试</title>
+      <link>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0.8/</link>
+      <pubDate>Fri, 13 Jul 2018 12:38:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0.8/</guid>
+      <description>这是我们正在发布的系列文章中的第二篇，描述了我们在 Kubernetes 上采用 Istio 进行流量路由的经验。有关我们试图通过Vamp实现的更多详情以及我们选择 Istio 的原因，</description>
+    </item>
     
     <item>
       <title>速率限制系列part4—为Ambassador API网关设计速率限制服务</title>
