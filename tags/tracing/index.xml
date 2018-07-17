@@ -6,10 +6,19 @@
     <description>Recent content in Tracing on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 08 Jun 2018 16:01:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Jul 2018 12:53:14 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/tracing/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Istio分布式跟踪应用程序</title>
+      <link>http://www.servicemesher.com/blog/distributed-tracing-istio-and-your-applications/</link>
+      <pubDate>Tue, 17 Jul 2018 12:53:14 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/distributed-tracing-istio-and-your-applications/</guid>
+      <description>在微服务领域，分布式跟踪正逐渐成为调试和跟踪应用程序最重要的依赖工具。 最近的聚会和会议上，我发现很多人对分布式跟踪的工作原理很感兴趣，但同时</description>
+    </item>
     
     <item>
       <title>在Istio中使用OpenTracing Baggage进行传播和路由</title>

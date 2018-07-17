@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/distributed-tracing-istio-and-your-applications/</loc>
+    <lastmod>2018-07-17T12:53:14+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</loc>
     <lastmod>2018-07-16T15:51:34+08:00</lastmod>
   </url>
@@ -376,7 +381,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <lastmod>2018-07-17T12:53:14+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -496,7 +501,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <lastmod>2018-07-17T12:53:14+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -508,7 +513,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <lastmod>2018-07-17T12:53:14+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -556,13 +561,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/tracing/</loc>
-    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
+    <lastmod>2018-07-17T12:53:14+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-07-13T12:38:44+08:00</lastmod>
+    <lastmod>2018-07-17T12:53:14+08:00</lastmod>
     <priority>0</priority>
   </url>
   

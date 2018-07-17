@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Infoq · ServiceMesher</title>
+  <title>使用Istio分布式跟踪应用程序 · ServiceMesher</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh, 服务网格">
+  <meta name="keywords" content="“service mesh”, 分布式跟踪, istio, 服务网格">
   
 
   <meta name="generator" content="Hugo 0.44" />
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="Infoq" />
+  <meta property="og:title" content="使用Istio分布式跟踪应用程序" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/tags/infoq//" />
+  <meta property="og:url" content="/blog/distributed-tracing-istio-and-your-applications//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="ServiceMesher - Service Mesh极客社区">
-  <meta property="og:description" content="ServiceMesher - Service Mesh极客社区">
-  <meta name="twitter:description" content="ServiceMesher - Service Mesh极客社区">
-  <meta property="og:description" content="ServiceMesher - Service Mesh极客社区" />
+  <meta name="description" content="本文是由Aspen Mesh（隶属于F5）公司的Neeraj Poddar介绍如何在Istio中使用分布式跟踪，需要修改程序才能利用Istio做分布式追踪，Istio报告的Span如何与应用程序创建的Span交互。">
+  <meta property="og:description" content="本文是由Aspen Mesh（隶属于F5）公司的Neeraj Poddar介绍如何在Istio中使用分布式跟踪，需要修改程序才能利用Istio做分布式追踪，Istio报告的Span如何与应用程序创建的Span交互。">
+  <meta name="twitter:description" content="本文是由Aspen Mesh（隶属于F5）公司的Neeraj Poddar介绍如何在Istio中使用分布式跟踪，需要修改程序才能利用Istio做分布式追踪，Istio报告的Span如何与应用程序创建的Span交互。">
+  <meta property="og:description" content="本文是由Aspen Mesh（隶属于F5）公司的Neeraj Poddar介绍如何在Istio中使用分布式跟踪，需要修改程序才能利用Istio做分布式追踪，Istio报告的Span如何与应用程序创建的Span交互。" />
 
   
   
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Infoq logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Infoq logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Infoq - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="使用Istio分布式跟踪应用程序 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="使用Istio分布式跟踪应用程序 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">使用Istio分布式跟踪应用程序 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -223,7 +223,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Infoq</h1>
+                <h1>使用Istio分布式跟踪应用程序</h1>
             </div>
         </div>
     </div>
@@ -232,74 +232,216 @@ autocomplete('#aa-search-input',
 
         <div id="content">
             <div class="container">
+
                 <div class="row">
+
                     
 
-                    <div class="col-md-9" id="blog-listing-medium">
-
-                        
-                        
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/vp-microservices-communication-governance-using-service-mesh/">
-                                          
-                                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsjtk0n9rhj30rs0ku117.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/vp-microservices-communication-governance-using-service-mesh/">InfoQ访谈：使用服务网格的微服务通信与治理</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          作者 <a href="https://www.infoq.com/articles/vp-microservices-communication-governance-using-service-mesh">InfoQ</a>
-                                          
-                                          
-                                          | 译者 <a href="https://jimmysong.io">宋净超</a>
-                                          
-                                          |
-                                          12500字 | 阅读大约需要25分钟
-                                          |
-                                          
-                                          
-                                          归档于<a href="/categories/translation">translation</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/vp-microservices-communication-governance-using-service-mesh/"><i class="fa fa-calendar-o"></i> 2018年6月22日</a>
-                                        </p>
-                                    </div>
-                                    
-                                    <p class="intro">本文是InfoQ对Serivce Mesh业界领袖Matt Klein、Dan Berg、Priyanka Sharma、Lachlan Evenson、Varun Talwar、Oliver Gould的采访，几位大咖分别就Service Mesh的定义及其在微服务交互和治理方面带来的优势、服务网格与ESB的区别，谁应该关心服务网格，服务网格的运行方式、sidecar以及学习曲线展开了讨论。</p>
-                                    
-                                    <p class="read-more"><a href="http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/" class="btn btn-template-main">继续阅读</a>
-                                    </p>
-                                </div>
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年7月17日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://thenewstack.io/author/neeraj-poddar/">Neeraj Poddar</a>
+                            
+                            
+                            | 译者 <a href="https://www.do1618.com">狄卫华</a>
+                            
+                            
+                            | 审校者 <a href="https://jimmysong.io">宋净超</a>
+                            
+                            |
+                            3100字 | 阅读大约需要7分钟
                             </div>
-                        </section>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://thenewstack.io/distributed-tracing-istio-and-your-applications/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/tracing/"><i>#tracing</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p>在微服务领域，分布式跟踪正逐渐成为调试和跟踪应用程序最重要的依赖工具。</p>
+
+<p>最近的聚会和会议上，我发现很多人对分布式跟踪的工作原理很感兴趣，但同时对于分布式跟踪如何与Istio和<a href="https://aspenmesh.io/">Aspen Mesh</a>等服务网格进行配合使用存在较大的困惑。特别地，我经常被问及以下问题：</p>
+
+<ul>
+<li>Tracing如何与Istio一起使用？在Span中收集和报告哪些信息？</li>
+<li>是否必须更改应用程序才能从Istio的分布式跟踪中受益？</li>
+<li>如果目前在应用程序中报告Span，它将如何与Istio中的Span进行交互？</li>
+</ul>
+
+<p>在这篇博客中，我将尝试回答这些问题。</p>
+
+<p>在我们深入研究这些问题之前，建议先快速了解为什么我要写与分布式跟踪相关博客。如果您关注<a href="https://aspenmesh.io/blog/">Aspen Mesh</a>的博客，您会注意到我写了两篇与tracing相关的博客，一篇关于 <a href="https://aspenmesh.io/2018/01/distributed-tracing-with-istio-in-aws/">”使用Istio跟踪AWS中的服务请求“</a>，另一篇关于<a href="https://aspenmesh.io/2018/04/tracing-grpc-with-istio/">”使用Istio跟踪gRPC应用程序&rdquo;</a>。</p>
+
+<p>我们在Aspen Mesh有一个非常小的工程团队，如果经常在子系统或组件上工作，您很快就会成为（或标记或分配）常驻专家。我在微服务中添加了分布式跟踪，并在AWS环境中将其与Istio集成，在此过程中发现了值得分享的各种有趣的经验。在过去的几个月里，我们一直在大量使用跟踪来了解我们的微服务，现在这种方法已经成为我们排查问题首先采用的手段。后续，我们继续回答上面提到的问题。</p>
+
+<h2 id="tracing如何与istio一起使用">Tracing如何与Istio一起使用？</h2>
+
+<p>Istio在应用程序运行的Pod容器中注入sidecar代理（Envoy）。sidecar代理透明地拦截（防火墙魔法）进出应用程序的所有网络流量。拦截模式下，sidecar代理处于一个独特的位置，可以自动跟踪所有网络请求（包括HTTP/1.1、HTTP/2.0和gRPC）。</p>
+
+<p>让我们看看sidecar代理对来自客户端（外部或其他微服务）的传入Pod请求所做的更改。从现在开始，为了简单起见，我将假设跟踪标头采用<a href="https://github.com/openzipkin/b3-propagation">Zipkin</a>格式。</p>
+
+<ul>
+<li>如果传入请求没有任何跟踪头，则在请求传递到与sidecar同一Pod中的应用程序容器前，sidecar代理将创建根Span（其中trace、parent和Span ID具有完全相同的Span）。</li>
+<li>如果传入的请求有跟踪信息（如正在使用Istio Ingress或者微服务是从另一个注入了sidecar代理的微服务中调用），那么sidecar代理将从跟踪头中提取Span上下文，在将请求传递到同一Pod中的应用程序容器之前，创建一个新的兄弟（sibling）Span（与传入头相同的trace、parent和Span ID）。</li>
+</ul>
+
+<p>在应用程序容器发出相反方向上的出站请求（外部服务或集群中的服务）时，Pod中的sidecar代理在向上游服务发出请求之前执行以下操作：</p>
+
+<ul>
+<li>如果不存在跟踪头，则sidecar代理会创建根Span并将Span上下文作为头部注入新请求。</li>
+<li>如果存在跟踪头，则sidecar代理从头部中提取Span上下文，并基于此上下文创建<strong>子Span</strong>。新上下文作为请求中的跟踪头传播到上游服务。</li>
+</ul>
+
+<p>根据上面的解释，您应该注意到对于微服务调用链中的每一跳，将获得Istio报告的两个Span，一个来自客户端sidecar（<code>span.kind</code>设置为client）和一个来自服务器sidecar（<code>span.kind</code>设置为server）。sidecar创建的所有Span都由sidecar自动报告给配置的后端跟踪系统，比如Jaeger或Zipkin等。</p>
+
+<p>接下来，让我们看一下Span中报告的信息。Span包含以下信息：</p>
+
+<ul>
+<li><strong>x-request-id</strong>：报告为 <code>guid:x-request-id</code>，这对于将访问日志与Span相关联非常有用。</li>
+<li><strong>upstream cluster</strong>：发出请求的上游服务。如果Span跟踪对Pod的传入请求，则通常将其设置为 <code>in.&lt;name&gt;</code>。如果Span跟踪出站请求，则将其设置为 <code>out.&lt;name&gt;</code>。</li>
+<li><strong>HTTP headers</strong>：在可用时报告以下 HTTP 头部信息：
+
+<ul>
+<li>+URL</li>
+<li>+Method</li>
+<li>+User 代理</li>
+<li>+Protocol</li>
+<li>+Request 大小</li>
+<li>+Response 大小</li>
+<li>+Response 标记</li>
+</ul></li>
+<li>每个Span的开始和结束时间。</li>
+<li>跟踪的元数据：这包括trace ID、Span ID和Span类型（client或server）。除此之外，还会报告每个Span的操作名称。操作名称设置为影响路由配置的虚拟服务（或 v1alpha1 中的路由规则），如果选择了默认路由，则设置为 “default-route”。这对于了解哪个Istio路由配置对Span生效非常有用。</li>
+</ul>
+
+<p>接下来让我们继续讨论第二个问题。</p>
+
+<h2 id="是否必须修改应用程序才能利用istio追踪">是否必须修改应用程序才能利用Istio追踪？</h2>
+
+<p>是的，您需要在应用程序中添加逻辑，以便将传入跟踪头部信息从传入请求传播到传出请求，这样才能从Istio的分布式跟踪中获得更多有价值的信息。</p>
+
+<p>如果应用程序容器在传入请求的上下文中发出新的出站请求，且传入请求中未包括跟踪头，则sidecar代理会为出站请求创建根Span。这意味着您将始终只看到两个微服务的路径。另一方面，如果应用程序容器确实将跟踪头部信息从传入请求传播到传出请求，则sidecar代理将创建如上所述的子Span。通过创建子Span，您可以了解跨多个微服务的依赖关系。</p>
+
+<p>在应用程序中传播跟踪头有两种选择。</p>
+
+<ol>
+<li>查找<a href="https://istio.io/docs/tasks/telemetry/distributed-tracing/#understanding-what-happened">Istio文档</a>中提到的跟踪头，并将其从传入请求传输到传出请求。这种方法很简单，几乎适用于所有情况。但是，它有一个主要缺点，无法向Span添加自定义标记信息例如用户信息等。您无法创建应用程序中的事件相关的子Span。由于是在不了解Span格式或上下文的情况下传播跟踪信息，因此添加特定于应用程序的信息的能力有限。</li>
+<li>第二种方法是在应用程序中设置跟踪客户端，并使用<a href="http://opentracing.io/documentation/pages/api/index">Opentracing API</a>将跟踪头部信息从传入请求传播到传出请求。我创建了一个<a href="https://github.com/aspenmesh/tracing-go">跟踪示例包</a>，它提供了一种在您的应用程序中设置<a href="https://github.com/jaegertracing/jaeger-client-go">jaeger-client-go</a>的简单方法，该方法与Istio兼容。以下代码段可用于应用程序的主功能中：</li>
+</ol>
+
+<pre><code class="language-go">import (
+	&quot;log&quot;
+	&quot;github.com/spf13/cobra&quot;
+	&quot;github.com/spf13/viper&quot;
+	&quot;github.com/aspenmesh/tracing-go&quot;
+)
+
+func setupTracing() {
+	// Configure Tracing
+	tOpts := &amp;tracing.Options{
+		ZipkinURL: viper.GetString(&quot;trace_zipkin_url&quot;),
+		JaegerURL: viper.GetString(&quot;trace_jaeger_url&quot;),
+		LogTraceSpans: viper.GetBool(&quot;trace_log_spans&quot;),
+	}
+
+	if err := tOpts.Validate(); err != nil {
+		log.Fatal(&quot;Invalid options for tracing: &quot;, err)
+	}
+
+	var tracer io.Closer
+	if tOpts.TracingEnabled() {
+		tracer, err = tracing.Configure(&quot;myapp&quot;, tOpts)
+		if err != nil {
+			tracer.Close()
+			log.Fatal(&quot;Failed to configure tracing: &quot;, err)
+		} else {
+			defer tracer.Close()
+		}
+	}
+}
+</code></pre>
+
+<p>需要注意的关键点是在<a href="https://github.com/aspenmesh/tracing-go/blob/master/config.go#L124">tracing-go</a>包中我将Opentracing全局跟踪器设置Jaeger。 这使我能够使用Opentracing API将跟踪头从传入请求传播到传出请求，如下所示：</p>
+
+<pre><code class="language-go">import (
+	&quot;net/http&quot;
+	&quot;golang.org/x/net/context&quot;
+	&quot;golang.org/x/net/context/ctxhttp&quot;
+	&quot;ot &quot;github.com/opentracing/opentracing-go&quot;
+)
+
+func injectTracingHeaders(incomingReq *http.Request, addr string) {
+	ifSpan:= ot.SpanFromContext(incomingReq.Context());Span!= nil {
+		outgoingReq, _ := http.NewRequest(&quot;GET&quot;, addr, nil)
+		ot.GlobalTracer().Inject(
+			span.Context(),
+			ot.HTTPHeaders,
+			ot.HTTPHeadersCarrier(outgoingReq.Header))
+		resp, err := ctxhttp.Do(ctx, nil, outgoingReq)
+		// Do something with resp
+	}
+}
+</code></pre>
+
+<p>您还可以使用Opentracing API 来设置Span标记或从Istio添加的跟踪上下文创建子Span，如下所示：</p>
+
+<pre><code class="language-go">func SetSpanTag(incomingReq *http.Request, key string, value interface{}) {
+	ifSpan:= ot.SpanFromContext(incomingReq.Context());Span!= nil {
+		span.SetTag(key, value)
+	}
+}
+</code></pre>
+
+<p>除了上述好处之外，您不必直接处理跟踪信息，但跟踪器（在本例中为Jaeger）会为您处理它。 我强烈建议使用此方法，因为它在应用程序中提供了跟踪的基础，增强了跟踪功能而不会产生太多开销。</p>
+
+<p>现在让我们继续讨论第三个问题。</p>
+
+<h2 id="istio报告的span如何与应用程序创建的span交互">Istio报告的Span如何与应用程序创建的Span交互？</h2>
+
+<p>如果您希望应用程序报告的Span是Istio添加的跟踪上下文的子Span，则应使用OpenTracing API <a href="https://godoc.org/github.com/opentracing/opentracing-go#StartSpanFromContext">StartSpanFromContext</a>而不是使用<a href="https://godoc.org/github.com/opentracing/opentracing%20go#StartSpan">StartSpan</a>。如果存在跟踪头部信息，则<code>StartSpanFromContext</code>从父级上下文创建子Span，否则创建根Span。</p>
+
+<p>请注意，在上面的所有示例中，我都使用了OpenTracing Go API，但您应该能够使用与应用程序相同语言编写的任何跟踪客户端库，只要它与OpenTracing API兼容即可。</p>
+
+                        </div>
                         
-
-                        <ul class="pager">
-                            
-                            <li class="previous disabled"><a href="#">&larr; 更新</a></li>
-                            
-
-                            
-                            <li class="next disabled"><a href="#">更旧 &rarr;</a></li>
-                            
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/" data-toggle="tooltip" data-placement="top" title="蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案">&larr; 更旧</a>
+                        </li>
+                         
                         </ul>
 
-                        <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        
-
-                        
-                        
-                        </div>
                     </div>
                     
 
@@ -312,6 +454,25 @@ autocomplete('#aa-search-input',
                         
 
                         <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/istio-security-notes-by-fleeto/"><i class="fa fa-link"></i>Istio安全设置笔记</a></li>
+         
+        <li><a href="/blog/istio-service-mesh-tutorial/"><i class="fa fa-link"></i>Istio Service Mesh教程</a></li>
+         
+        <li><a href="/blog/istio-service-mesh-source-code-pilot-agent-deepin/"><i class="fa fa-link"></i>Service Mesh深度学习系列part1—istio源码分析之pilot-agent模块分析</a></li>
+         
+        <li><a href="/blog/istio-future-service-mesh/"><i class="fa fa-link"></i>Istio以及Service Mesh的未来</a></li>
+         
+        <li><a href="/blog/istio-is-not-just-for-microservices/"><i class="fa fa-link"></i>Istio不仅为微服务而生—使用Istio Service Mesh保护Kubernetes中的服务</a></li>
+         
+     </ul>
+    </div>
      
 </div>
 
@@ -521,6 +682,7 @@ autocomplete('#aa-search-input',
 
                 </div>
                 
+
             </div>
             
         </div>
