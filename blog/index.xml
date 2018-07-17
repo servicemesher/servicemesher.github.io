@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Service Mesh深度学习系列part2—istio源码分析之pilot-discovery模块分析</title>
+      <link>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin/</link>
+      <pubDate>Tue, 17 Jul 2018 17:32:31 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin/</guid>
+      <description>本文分析的istio代码版本为0.8.0，commit为0cd8d67，commit时间为2018年6月18日。 本文为Service Mesh</description>
+    </item>
+    
+    <item>
       <title>使用Istio分布式跟踪应用程序</title>
       <link>http://www.servicemesher.com/blog/distributed-tracing-istio-and-your-applications/</link>
       <pubDate>Tue, 17 Jul 2018 12:53:14 +0800</pubDate>
@@ -53,7 +62,7 @@
       <pubDate>Wed, 11 Jul 2018 14:24:24 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin/</guid>
-      <description>本文作者 丁轶群博士，谐云科技CTO 2004年作为高级技术顾问加入美国道富银行(浙江)技术中心，负责分布式大型金融系统的设计与研发。2011年</description>
+      <description>本文分析的istio代码版本为0.8.0，commit为0cd8d67，commit时间为2018年6月18日。 本文为Service Mesh</description>
     </item>
     
     <item>
