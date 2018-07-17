@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 17 Jul 2018 12:53:14 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Jul 2018 20:12:18 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Circonus Istio Mixer适配器</title>
+      <link>http://www.servicemesher.com/blog/the-circonus-istio-mixer-adapter/</link>
+      <pubDate>Tue, 17 Jul 2018 20:12:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/the-circonus-istio-mixer-adapter/</guid>
+      <description>本文英文原文最初发表时间：2017年12月6日 Circonus 参与开源软件有着悠久的传统。因此，当看到 Istio 提供了一个精心设计的接口，通过适配器连接 syndicate 服务遥测</description>
+    </item>
     
     <item>
       <title>使用Istio分布式跟踪应用程序</title>

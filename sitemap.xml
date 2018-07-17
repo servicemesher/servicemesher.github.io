@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/the-circonus-istio-mixer-adapter/</loc>
+    <lastmod>2018-07-17T20:12:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin/</loc>
     <lastmod>2018-07-17T17:32:31+08:00</lastmod>
   </url>
@@ -313,6 +318,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/circonus/</loc>
+    <lastmod>2018-07-17T20:12:18+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/conduit/</loc>
     <lastmod>2018-07-09T12:19:53+08:00</lastmod>
     <priority>0</priority>
@@ -386,7 +397,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-07-17T17:32:31+08:00</lastmod>
+    <lastmod>2018-07-17T20:12:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -518,7 +529,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-07-17T17:32:31+08:00</lastmod>
+    <lastmod>2018-07-17T20:12:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -572,7 +583,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-07-17T12:53:14+08:00</lastmod>
+    <lastmod>2018-07-17T20:12:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
