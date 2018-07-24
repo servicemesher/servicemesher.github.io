@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Service Mesh架构解析</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-architectures/</link>
+      <pubDate>Tue, 24 Jul 2018 14:49:07 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-architectures/</guid>
+      <description>注：这是介绍服务网格的软件架构方面系列的第二篇文章。要了解更多，请查看The Path to Service Mesh。 如果你正在围绕微服务构建软件和团队，并且在寻找更</description>
+    </item>
+    
+    <item>
       <title>Circonus Istio Mixer适配器</title>
       <link>http://www.servicemesher.com/blog/the-circonus-istio-mixer-adapter/</link>
       <pubDate>Tue, 17 Jul 2018 20:12:18 +0800</pubDate>
