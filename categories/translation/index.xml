@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 24 Jul 2018 14:49:07 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Jul 2018 21:12:31 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格架构激活了容器网络管理—来自于服务网格创建者们的见解与展望</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-architecture-radicalizes-container-networking/</link>
+      <pubDate>Thu, 26 Jul 2018 21:12:31 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-architecture-radicalizes-container-networking/</guid>
+      <description>容器是IT行业的超级英雄，它与服务网格是最佳组合。它们联手对抗混乱的网络管理。 容器和微服务出现催生了一种称为服务网格的新型网络架构范例，但 IT</description>
+    </item>
     
     <item>
       <title>Service Mesh架构解析</title>
