@@ -6,10 +6,28 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 26 Jul 2018 21:12:31 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Jul 2018 17:49:21 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Service Mesh深度学习系列part3—istio源码分析之pilot-discovery模块分析（续）</title>
+      <link>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/</link>
+      <pubDate>Sat, 28 Jul 2018 17:49:21 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/</guid>
+      <description>本文为Service Mesh深度学习系列之一： Service Mesh深度学习系列part1—istio源码分析之pilot-agent模块分析 Service Mesh</description>
+    </item>
+    
+    <item>
+      <title>Service Mesh 如何解决微服务中的3个主要挑战</title>
+      <link>http://www.servicemesher.com/blog/how-service-mesh-addresses-3-major-microservices/</link>
+      <pubDate>Sat, 28 Jul 2018 17:11:16 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/how-service-mesh-addresses-3-major-microservices/</guid>
+      <description>我们都知道微服务会增加复杂性。 了解服务网络如何解决这一问题和其他挑战。 我最近正在阅读 Dimensional Research 撰写的全球微服务趋势报告，在阅读的同时，我个人也认为</description>
+    </item>
     
     <item>
       <title>服务网格架构激活了容器网络管理—来自于服务网格创建者们的见解与展望</title>

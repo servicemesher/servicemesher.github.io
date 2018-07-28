@@ -6,10 +6,19 @@
     <description>Recent content in Microservices on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 12 Jun 2018 15:06:25 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Jul 2018 17:11:16 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Service Mesh 如何解决微服务中的3个主要挑战</title>
+      <link>http://www.servicemesher.com/blog/how-service-mesh-addresses-3-major-microservices/</link>
+      <pubDate>Sat, 28 Jul 2018 17:11:16 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/how-service-mesh-addresses-3-major-microservices/</guid>
+      <description>我们都知道微服务会增加复杂性。 了解服务网络如何解决这一问题和其他挑战。 我最近正在阅读 Dimensional Research 撰写的全球微服务趋势报告，在阅读的同时，我个人也认为</description>
+    </item>
     
     <item>
       <title>Istio服务网格的崛起</title>
