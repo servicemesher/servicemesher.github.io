@@ -6,13 +6,22 @@
     <description>Recent content in Meetup on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 03 Jul 2018 12:22:47 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jul 2018 19:08:31 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/meetup/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Service Mesh杭州Meetup回顾</title>
+      <title>第二届Service Mesh Meetup北京站回顾</title>
+      <link>http://www.servicemesher.com/blog/beijng-meetup-20180729/</link>
+      <pubDate>Mon, 30 Jul 2018 19:08:31 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/beijng-meetup-20180729/</guid>
+      <description>2018年7月29日，周日，天气闷热，北京中关村e世界。 由ServiceMesher社区和蚂蚁金服联合举办的，Sharding-Sphere</description>
+    </item>
+    
+    <item>
+      <title>第一届Service Mesh Meetup杭州站回顾</title>
       <link>http://www.servicemesher.com/blog/hangzhou-meetup-20180630/</link>
       <pubDate>Tue, 03 Jul 2018 12:22:47 +0800</pubDate>
       
