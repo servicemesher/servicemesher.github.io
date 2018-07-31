@@ -6,17 +6,26 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 30 Jul 2018 19:08:31 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 31 Jul 2018 21:44:58 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Istio 1.0发布，核心功能可用于生产！</title>
+      <link>http://www.servicemesher.com/blog/annoucing-istio-1.0/</link>
+      <pubDate>Tue, 31 Jul 2018 21:44:58 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/annoucing-istio-1.0/</guid>
+      <description>今天，我们很高兴地宣布 Istio 1.0。这距离最初的 0.1 版本发布以来已经过了一年多时间了。从 0.1 起，Istio 就在蓬勃发展的社区、贡献者和用户的帮助下迅</description>
+    </item>
+    
+    <item>
       <title>第二届Service Mesh Meetup北京站回顾</title>
-      <link>http://www.servicemesher.com/blog/beijng-meetup-20180729/</link>
+      <link>http://www.servicemesher.com/blog/beijing-meetup-20180729/</link>
       <pubDate>Mon, 30 Jul 2018 19:08:31 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/beijng-meetup-20180729/</guid>
+      <guid>http://www.servicemesher.com/blog/beijing-meetup-20180729/</guid>
       <description>2018年7月29日，周日，天气闷热，北京中关村e世界。 由ServiceMesher社区和蚂蚁金服联合举办的，Sharding-Sphere</description>
     </item>
     
@@ -557,7 +566,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/activity/</guid>
-      <description>Service Mesh Meetup #2 北京站 Service Mesh Meetup北京站，是ServiceMesher社区举行的第二届meetup，关于第一届的情况请查看杭州站回顾。 扫描下图中</description>
+      <description>Service Mesh Meetup #3 深圳站 8月底，具体时间地点待定，请关注本站后续通告。 Service Mesh Meetup #2 北京站 Service Mesh Meetup #2，2018年7月29日，北京中关村e世界，查看北京站回顾</description>
     </item>
     
     <item>

@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 28 Jul 2018 17:49:21 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 31 Jul 2018 21:44:58 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio 1.0发布，核心功能可用于生产！</title>
+      <link>http://www.servicemesher.com/blog/annoucing-istio-1.0/</link>
+      <pubDate>Tue, 31 Jul 2018 21:44:58 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/annoucing-istio-1.0/</guid>
+      <description>今天，我们很高兴地宣布 Istio 1.0。这距离最初的 0.1 版本发布以来已经过了一年多时间了。从 0.1 起，Istio 就在蓬勃发展的社区、贡献者和用户的帮助下迅</description>
+    </item>
     
     <item>
       <title>Service Mesh深度学习系列part3—istio源码分析之pilot-discovery模块分析（续）</title>
