@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Service Mesh数据平面SOFAMosn深层揭秘 · ServiceMesher</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, sofa-mesh, sofa-mosn">
+  
+
+  <meta name="generator" content="Hugo 0.44" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Service Mesh数据平面SOFAMosn深层揭秘" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/sofa-mosn-deep-dive//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文基于蚂蚁金服高级技术专家朵晓东在第二届Service Mesh Meetup北京站分享的部分内容所整理。">
+  <meta property="og:description" content="本文基于蚂蚁金服高级技术专家朵晓东在第二届Service Mesh Meetup北京站分享的部分内容所整理。">
+  <meta name="twitter:description" content="本文基于蚂蚁金服高级技术专家朵晓东在第二届Service Mesh Meetup北京站分享的部分内容所整理。">
+  <meta property="og:description" content="本文基于蚂蚁金服高级技术专家朵晓东在第二届Service Mesh Meetup北京站分享的部分内容所整理。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Service Mesh数据平面SOFAMosn深层揭秘 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Service Mesh数据平面SOFAMosn深层揭秘 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Service Mesh数据平面SOFAMosn深层揭秘 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/activity/">活动</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Service Mesh数据平面SOFAMosn深层揭秘</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年8月2日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://github.com/ldxdl">朵晓东</a>
+                            
+                            
+                            
+                            |
+                            4500字 | 阅读大约需要9分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            
+                            归档于 <a href="/categories/service-mesh">service mesh</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/mosn/"><i>#MOSN</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/sofa/"><i>#SOFA</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/ant-financial/"><i>#Ant Financial</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/sofamesh/"><i>#SOFAMesh</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p>本文作者：朵晓东，花名奕杉，蚂蚁金服高级技术专家，专注云计算技术及产品。Apache Kylin 创始团队核心成员，蚂蚁金融云 PaaS 创始团队核心成员，Antstack 网络产品负责人，SOFAMesh 创始团队核心成员。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/0069RVTdgy1ftvf883plij30sg0j0n1e.jpg" alt="朵晓东 service mesh meetup" /></p>
+
+<p>本文是基于作者在第二届 Service Mesh Meetup 的主题分享《蚂蚁金服 Service Mesh 数据平面 SOFAMosn 深层解密》部分内容所整理，以下是具体内容。关于本次meetup的情况请访问<a href="/blog/beijing-meetup-20180729/">第二届Service Mesh Meetup北京站回顾</a>。</p>
+
+<h3 id="前言">前言</h3>
+
+<p>今天给大家带来的分享内容是蚂蚁金服 Service Mesh 数据平面 SOFAMosn 深层揭秘。</p>
+
+<p>承接小剑老师月初《大规模微服务架构下的 ServiceMesh 探索之路》对 SOFAMosn 的分享，本次聚焦在数据平面在蚂蚁落地的思考和探索。</p>
+
+<h3 id="背景">背景</h3>
+
+<p>上一次分享小剑老师已经介绍了 SOFAMesh 的技术选型，以及我们在开源和自研方面的一些权衡。</p>
+
+<blockquote>
+<p>呼应这个话题我们首先来看一下为什么蚂蚁会选择 Service Mesh</p>
+</blockquote>
+
+<h4 id="重点归纳为-4-个方面">重点归纳为 4 个方面：</h4>
+
+<p>蚂蚁正在全面拥抱微服务，云原生，不管是 SOFA5，还是兼容 K8S 的容器平台 Sigma 落地，Service Mesh 都是不可获取的重要组件。</p>
+
+<p>其次，蚂蚁的运维体系在服务层面基于流量调度工作，比如说 LDC 架构在逻辑 zone 间的调度流量，再比如弹性伸缩，本质上也是在异构机房间调度流量，此外还有像逻辑 zone 蓝绿发布，机房容灾等都需要在流量调度能力上更健壮，更灵活，更具扩展性。</p>
+
+<p>此外，由于蚂蚁的金融属性，我们在服务鉴权等方面有更严格的要求，比如说国密的落地，加密卡内的证书管理，加解密等方面，不止要求更高的安全级别，还要有承载大流量的能力。同时我们看到，zero trust网络架构也在加速发展，这与我们的诉求不谋而合。</p>
+
+<p>最后，蚂蚁内部技术栈多样，但多种语言体系融合仍然成本很高。举个例子，非 SOFA 语言与 SOFA 互通要理解配置中心，SOFARPC 的序列化等逻辑，如果在生产环境部署还要理解 LDC 路由规则，而这些共性需求都可以通过下沉到 Mesh 体系来解决。</p>
+
+<p>了解 SOFAMesh 的同学应该知道，蚂蚁选择了使用 Golang 自研数据平面，做这个决定我们重点考虑了未来的技术选型，跨团队研发效率，蚂蚁现有技术体系，运维体系等因素；同时通过调研和验证，Golang 版本的性能也是我们可以接受的。</p>
+
+<blockquote>
+<p>接下来，我会向大家介绍由蚂蚁和 UC 联合研发的 Mesh 数据平面，我们为它取名 <strong>SOFAMosn</strong> 。</p>
+</blockquote>
+
+<h3 id="架构设计">架构设计</h3>
+
+<p>首先我们由浅入深看一下 <strong>SOFAMosn</strong> 的架构设计</p>
+
+<h4 id="1-sofamesh-的整体架构">1. SOFAMesh 的整体架构</h4>
+
+<p>大家看到的图示是基于 Istio 的架构，在数据平面我们使用 SOFAMosn 替代了 Envoy，同时加入了一些蚂蚁实践中摸索的改进，比如说 Mixer 的位置，我们考虑把 Mixer下沉到 SOFAMosn ，比如说对 SOFA，DUBBO 协议的支持等。</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1ftvcgxiw5cj31kw0zk45v.jpg" alt="" /></p>
+
+<p>0.1.0 版本的 SOFAMosn 支持了 xDS V0.4 api 核心能力，重点支持了 SOFARPC 协议，并在蚂蚁内部在生产环境使用；同时支持了HTTP/1.1，HTTP/2.0的基本功能，但目前暂未在生产环境使用。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/0069RVTdgy1ftvchc91q9j31kw0zkgs2.jpg" alt="" /></p>
+
+<h4 id="2-sofamosn-的核心设计思路">2. SOFAMosn 的核心设计思路</h4>
+
+<p>首先，将 SOFAMosn 作为代理处理的数据流划分为4层，在入方向数据依次经过网络 IO 层，二进制协议处理层，协议流程处理层，转发路由处理层；出向与入向过程基本相反。</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/0069RVTdgy1ftvchpmtzoj31kw0zkq9h.jpg" alt="" /></p>
+
+<p>了解了分层的基本思路，具体介绍一下各层的具体职能：</p>
+
+<ul>
+<li><strong>IO 层</strong>提供了 IO 读写的封装以及可扩展的 IO 事件订阅机制</li>
+<li><strong>PROTOCOL 层</strong>提供了根据不同协议对数据进行序列化/反序列化的处理能力</li>
+<li><strong>STREAMING 层</strong>提供向上的协议一致性，负责 STREAM 生命周期，管理 Client / Server 模式的请求流行为，对 Client 端stream 提供池化机制等</li>
+<li><strong>Proxy 层</strong>提供路由选择，负载均衡等的能力，让前后端 stream 流转起来。大家可以从这张图清晰的看到单向请求流转的过程。</li>
+</ul>
+
+<p><img src="https://ws1.sinaimg.cn/large/0069RVTdgy1ftvcj3iaa9j31kw0zkn5w.jpg" alt="" /></p>
+
+<h4 id="3-了解了分层设计及转发流程-我们再看一下线程模型">3. 了解了分层设计及转发流程，我们再看一下线程模型</h4>
+
+<p>我们先看看 0.1.0 版本的线程模型，可以看到每个链接的 IO 协程是成对出现的，读协程负责读取，事件机制及 Codec 逻辑，数据上升到 steam 层，具体的 stream 事件由独立的常驻 worker 协程池负责处理。在 0.2.0 版本中我们将会进行多核优化，读协程将不再负责 codec 逻辑，将转发由 codec worker pool 来进行。从发展方向上看，我们会借鉴 SEDA 的思路，将转发流程中每一阶段的处理抽象为一个 stage，通过 task queue，worker 协程池，controller 的机制来对每一个阶段进行处理。从技术实现上看，Golang 实现 SEDA 机制的组件也更简单。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/0069RVTdgy1ftvcjbqg8zj31kw0zkn5c.jpg" alt="" /></p>
+
+<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1ftvcjhuyiuj31kw0zkgu6.jpg" alt="" /></p>
+
+<h4 id="4-sofamosn-的模块划分">4. SOFAMosn 的模块划分</h4>
+
+<p>除了刚才介绍了 4 个核心模块，还有如路由模块负责请求的路由寻址，后端管理模块负责管理后端的生命周期，健康度等。其中蓝色的框是 SOFAMosn 0.1.0 会涉及到的功能模块，红色的虚线框是我们规划去实现，或实验的一些topic。这方面也欢迎大家加入我们一起来建设。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/0069RVTdgy1ftvcjr017oj31kw0zkqju.jpg" alt="" /></p>
+
+<blockquote>
+<p>最后总结一下，模块化，分层解耦是 SOFAMosn 设计的初衷，此外可编程性，事件机制，扩展性，高吞吐量，都是设计中的重要考量因素。</p>
+</blockquote>
+
+<h3 id="sofamosn-核心能力">SOFAMosn 核心能力</h3>
+
+<p>介绍完结构设计方面的一些思路，我们来看看 SOFAMosn 0.1.0 的核心能力。</p>
+
+<p>在网络核心能力方面，我们将 IO 处理相关能力封装抽象成可编程接口，这部分我们已经做过性能优化，可以单独使用；SOFAMosn 提供了内置的 TCP 代理功能，也做过性能优化，可单独使用；此外 SOFAMosn 支持 TLS 链路加密，目前复用了 Golang 的实现，后面的章节会介绍 Golang TLS 性能实验。SOFAMosn 可以配合 iptables 透明转发支持TProxy 模式。同时，MOSN 支持平滑 reload，平滑升级。</p>
+
+<p>在多协议方面，0.1.0 版本中 SOFAMosn 重点支持 SOFARPC，并已运用在蚂蚁生产环境中。同时 SOFAMosn 支持HTTP/1.1，HTTP/2.0 的基本功能，实现方式是使用开源的 HTTP/1.1实现 FastHTTP 和 Golang 自带的 HTTP2 实现。由于 FastHTTP 和 HTTP2 都自带了 IO，链接池等功能，所以这两个协议的支持暂时是脱离 SOFAMosn 整体设计的，性能等方面也还没有做优化，我们会在后续版本迭代考虑将其纳入到 SOFAMosn 的框架体系，并进行性能优化。此外，我们正在研发 Dubbo，HSF 的支持，会在后续版本中推出。同时，目前已支持的 SOFARPC，HTTP/1.1，HTTP/2.0 都支持 Mes h间的 TLS 链路加密。</p>
+
+<p>此处，在核心路由方面，0.1.0 版本 SOFAMosn 在核心功能上对齐 Envoy，支持 virtual host 匹配，支持 route match匹配，支持 subset 路由匹配/负载均衡。</p>
+
+<p>在后端管理功能方面，支持基础负载均衡算法，支持主动健康检查等必须功能。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/0069RVTdgy1ftvck8jjfgj31kw0zkgu4.jpg" alt="" /></p>
+
+<p>除核心功能外，SOFAMosn 根据我们落地的一些经验提供了一些亮点功能。</p>
+
+<p>首先，SOFAMosn 支持 X-PROTOCOL，一种更轻量级的方式支持自定义 RPC 协议，对于无需解包的相对简单的场景，将 RPC 数据作为 TCP 或者 HTTP/2.0 的payload 进行转发，同时支持所有无需解包的路由负载策略。</p>
+
+<p>同时我们计划在 X-PROTOCOL 中加入编解码扩展点，支持需要解包的场景。在平滑升级的支持上，除了经典的传递 listener fd+ 协议层等待方式，SOFAMosn 支持对存量链接进行协议无关的迁移。同时为了部署升级，SOFAMosn 支持指定 / 更新前后端通信协议。</p>
+
+<p>在 Istio 集成方案上，SOFAMosn 0.1.0 支持 Istio 0.8 版本 Pilot V0.4API 全动态配置运行，支持 xDS on ADS 核心功能，后续版本会不断补齐功能。SOFAMosn 同时支持静态配置模型运行。</p>
+
+<p>除了能力支持，SOFAMosn 在网络层，协议处理层，基于 TCP 的私有协议层都提供了可扩展的能力，使得自定义业务可以优雅集成。在蚂蚁落地的过程中我们内部的 SOFAMosn 依赖于开源版本，通过可扩展的方式来实现蚂蚁内部的自有业务，在工程落地上提供了可行的方案。</p>
+
+<h3 id="性能">性能</h3>
+
+<p>在介绍了核心功能以后，我们再看另一个大家非常关注的问题，性能，这也是目前关注度较高的问题之一。</p>
+
+<p>在 SOFAMosn 0.1.0 版本，我们重点优化了基于 SOFAMosn 整体框架的协议在 Sidecar 模式下单核转发的性能，即 TCP，SOFARPC 的单核转发性能。</p>
+
+<p>首先我们分享一下我们在单核场景下优化的一些手段和经验。我们使用的方式主要是独占绑核，内存，IO，调度等方面进行优化。</p>
+
+<p>首先看绑核，在指定 P=1 的情况下，独占绑核不论在系统调用执行效率，cache locality affinity 两个方面都比更表现更好，整体吞吐量提升大约 30%。其次是内存优化，我们采样了 SLAB-style 的回收机制来提高复用，减少内存 copy；</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1ftvckkrfijj31kw0zkam1.jpg" alt="" /></p>
+
+<p>同时在内存分配上需要考虑 Golang 内存模型的亲和性，尽量减少 arena 区内存申请；最后，大家都知道 Golang的 GC 需要是你要去熟悉并适应他的，很多细节需要关注，尽量减少GC scanobject的压力。</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1ftvckray2rj31kw0zk7ek.jpg" alt="" /></p>
+
+<p>在 IO 方案，Golang 的 IO 模型是同步化的，在读方面既要尽可能多读，又要避免频繁调用 SetReadDeadline 造成的的影响，在我们压测下面频繁调用 SetReadDeadline 会对吞吐量有一定影响。在写方面需要适度 buffer，例如由多 worker 协程驱动造成某个 IO 协程频繁写系统 IO 也会造成吞吐量下降。另一个需要注意的方面是，在多协程场景下需要避免读写频率不均衡，这也是造成整体吞吐量下降的一个潜在原因。另外，如果读或写大量触发，会造成大量系统调用，这会引起 Golang runtime 调度成本升高。在 Golang runtime 调度方面，首先会触发协程调度造成时间消耗，同时 runtime 调度本身没有 OS 线程调度灵敏，也会有一定的时间损耗。同时 OS 系统调用本身也有会耗时，会造成性能下降。</p>
+
+<blockquote>
+<p>这里我分享一些我们在性能优化过程中遇到的真实的 case</p>
+</blockquote>
+
+<p><strong>除了 IO 方面的思考，还要关注一下调度均衡方面的问题。</strong></p>
+
+<p>首先我们利用协程池化来避免 runtime.morestack 的问题，其次在单核场景下需要重点关注 G 是否在饥饿状态，造成资源浪费。</p>
+
+<p>介绍完性能优化的一些过程，我们来看一下目前我们在性能优化上的一些结果，即单核 TCP 转发的性能，和单核SOFARPC 转发的性能。可以看到，在单核 TCP 转发场景，SOFAMosn 0.1.0 版本和 Envoy 1.7版本转发性能差距可控，后续版本我们会继续优化。</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1ftvcl25xaej31kw0zkdmu.jpg" alt="" /></p>
+
+<p><img src="https://ws1.sinaimg.cn/large/0069RVTdgy1ftvclh0lu9j31kw0zktgn.jpg" alt="" /></p>
+
+<p>此外，前面提到过 TLS 的实现，我们再来看一下性能方面的一些探索。首先介绍了一下测试的场景。在这个场景下，我们发现对于 ECDHE 算法，Golang 原生的实现性能虽然低于Ningx（使用 OpenSSL），但是高于 Golang with boring SSL。通过对具体算法和协议的性能压测，代码调研我们得出如下结论。可以看出对于 ECDHE-P256加密套件，Golang 原生实现的性能是很不错的，可以放心使用。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/0069RVTdgy1ftvclp075yj31kw0zkdm4.jpg" alt="" /></p>
+
+<p>除了这些优化点以后，我们会在后续版本持续进行性能优化，多核优化，内存优化，同时利用用户态，内核态的加速技术来提升 SOFAMosn 的转发性能。在TLS加解密方面，我们将会尝试基于本地加速卡和 Keyless 架构的 Offload 加速，这也是我们在蚂蚁网络从中已经落地的一些技术手段。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/0069RVTdgy1ftvclv2763j31kw0zkn4s.jpg" alt="" /></p>
+
+<h3 id="roadmap">RoadMap</h3>
+
+<p>最后我介绍一下SOFAMosn 的 RoadMap（时间为大体范围，具体发布请关注本公众号）：</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1ftvcm43sg5j31kw0sp1kx.jpg" alt="" /></p>
+
+<p>8月第一周我们将发布 SOFAMesh 0.1.0 版本，这个版本重点支持 Proxy 核心能力，支持 xDS V0.4 API 核心功能，支持 SOFARPC 等通信协议。</p>
+
+<p>8月底我们将发布 0.2.0 版本，在不断完善提升核心能力的基础上，我们会完善 X-Protocol 的功能和扩展性，以支持私有 RPC 协议扩展；同时我们将支持 Dubbo/HSF 通讯协议，并接入基于 ZK 的服务注册中心。同时我们将重点加强 HTTP/2.0 的功能，性能优化。我们还将支持 K8S operator，使得 SOFA Mesh 可以接入 K8S 资源。</p>
+
+<p>除功能性补强以外，我们会持续优进行性能优化，重点在多核性能，整体内存优化。此外，我们会持续推进代码优化，完善测试等基础性工作。</p>
+
+<p>9月底我们将发布 0.3.0，重点提供 Mixer 集成，提供 precondition，quota，report 功能。同时在9月提供熔断和限流的能力。</p>
+
+<p>目前SOFAMosn仍然是一个初级版本，我们将持续投入补充，改进，优化，也欢迎开源社区感兴趣的朋友一起加入SOFAMesh开源版的建设。</p>
+
+<h3 id="补充">补充</h3>
+
+<p>本文基于作者在 Service Mesh Meetup #2 分享的部分内容所整理，现场分享的 PPT 以及视频，可以在 <a href="https://www.itdks.com/eventlist/detail/2455">IT 大咖说</a>观看；</p>
+
+<p>PPT下载地址：<a href="https://github.com/servicemesher/meetup-slides">https://github.com/servicemesher/meetup-slides</a></p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/announcing-istio-1.0/" data-toggle="tooltip" data-placement="top" title="Istio 1.0发布，已生产就绪！">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="http://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/" data-toggle="tooltip" data-placement="top" title="微服务中的Sidecar设计模式解析">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/"><i class="fa fa-link"></i>Service Mesh深度学习系列part3—istio源码分析之pilot-discovery模块分析（续）</a></li>
+         
+        <li><a href="/blog/how-service-mesh-addresses-3-major-microservices/"><i class="fa fa-link"></i>Service Mesh 如何解决微服务中的3个主要挑战</a></li>
+         
+        <li><a href="/blog/service-mesh-architecture-radicalizes-container-networking/"><i class="fa fa-link"></i>服务网格架构激活了容器网络管理—来自于服务网格创建者们的见解与展望</a></li>
+         
+        <li><a href="/blog/service-mesh-architectures/"><i class="fa fa-link"></i>Service Mesh架构解析</a></li>
+         
+        <li><a href="/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin/"><i class="fa fa-link"></i>Service Mesh深度学习系列part2—istio源码分析之pilot-discovery模块分析</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (6)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (2)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (12)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (36)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/sidecar-design-pattern-in-microservices-ecosystem/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/0069RVTdgy1ftvf1qzyiyj31ji15mu10.jpg" class="img-responsive" alt="微服务中的Sidecar设计模式解析">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/sidecar-design-pattern-in-microservices-ecosystem/">微服务中的Sidecar设计模式解析</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/sofa-mosn-deep-dive/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/0069RVTdgy1ftvcv7vup2j31jk15m1kz.jpg" class="img-responsive" alt="Service Mesh数据平面SOFAMosn深层揭秘">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/sofa-mosn-deep-dive/">Service Mesh数据平面SOFAMosn深层揭秘</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/announcing-istio-1.0/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/0069RVTdgy1fttdt7l2qxj30rs0ku0yj.jpg" class="img-responsive" alt="Istio 1.0发布，已生产就绪！">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/announcing-istio-1.0/">Istio 1.0发布，已生产就绪！</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/</loc>
+    <lastmod>2018-08-02T15:32:40+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/sofa-mosn-deep-dive/</loc>
+    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/announcing-istio-1.0/</loc>
     <lastmod>2018-07-31T21:44:58+08:00</lastmod>
   </url>
@@ -326,7 +336,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/ant-financial/</loc>
-    <lastmod>2018-07-04T19:56:20+08:00</lastmod>
+    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -427,7 +437,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-07-31T21:44:58+08:00</lastmod>
+    <lastmod>2018-08-02T15:32:40+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -493,7 +503,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/microservices/</loc>
-    <lastmod>2018-07-28T17:11:16+08:00</lastmod>
+    <lastmod>2018-08-02T15:32:40+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -505,7 +515,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/mosn/</loc>
-    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -547,31 +557,37 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-07-28T17:49:21+08:00</lastmod>
+    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2018-07-28T17:49:21+08:00</lastmod>
+    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-07-31T21:44:58+08:00</lastmod>
+    <lastmod>2018-08-02T15:32:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/sidecar/</loc>
+    <lastmod>2018-08-02T15:32:40+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/tags/sofa/</loc>
-    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/tags/sofamesh/</loc>
-    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -613,7 +629,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-07-28T17:11:16+08:00</lastmod>
+    <lastmod>2018-08-02T15:32:40+08:00</lastmod>
     <priority>0</priority>
   </url>
   

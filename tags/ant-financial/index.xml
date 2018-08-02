@@ -6,10 +6,19 @@
     <description>Recent content in Ant Financial on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 04 Jul 2018 19:56:20 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Aug 2018 14:31:43 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/ant-financial/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Service Mesh数据平面SOFAMosn深层揭秘</title>
+      <link>http://www.servicemesher.com/blog/sofa-mosn-deep-dive/</link>
+      <pubDate>Thu, 02 Aug 2018 14:31:43 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/sofa-mosn-deep-dive/</guid>
+      <description>本文作者：朵晓东，花名奕杉，蚂蚁金服高级技术专家，专注云计算技术及产品。Apache Kylin 创始团队核心成员，蚂蚁金融云 PaaS 创始团队核心成员，Ant</description>
+    </item>
     
     <item>
       <title>蚂蚁金服大规模微服务架构下的Service Mesh探索之路</title>
