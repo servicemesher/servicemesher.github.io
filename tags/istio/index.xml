@@ -6,10 +6,28 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 02 Aug 2018 15:32:40 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 06 Aug 2018 08:43:29 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio service mesh示例教程汇总</title>
+      <link>http://www.servicemesher.com/blog/istio-tutorials-collection/</link>
+      <pubDate>Mon, 06 Aug 2018 08:43:29 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-tutorials-collection/</guid>
+      <description>8月1日0点，Istio 1.0发布，已生产就绪！大家都已经跃跃欲试了，几天前我发布了一键在本地搭建运行Istio 1.0的分布式Kuberne</description>
+    </item>
+    
+    <item>
+      <title>采纳运行在Kubernetes上的Istio服务网格的利弊分析</title>
+      <link>http://www.servicemesher.com/blog/istio-service-mesh-tech-boosts-kubernetes-work-with-trade-offs/</link>
+      <pubDate>Sun, 05 Aug 2018 15:47:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-service-mesh-tech-boosts-kubernetes-work-with-trade-offs/</guid>
+      <description>IT 团队能否只使用一种工具，使开发人员能够专注于编写应用程序代码，使管理员只专注于 IT 资源的管理？使用 Istio 可以实现，尽管如此，采纳 Istio 前确实需要研究</description>
+    </item>
     
     <item>
       <title>微服务中的Sidecar设计模式解析</title>
