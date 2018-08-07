@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</title>
+      <link>http://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/</link>
+      <pubDate>Tue, 07 Aug 2018 22:20:49 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/</guid>
+      <description>我们都是知道Kubernetes中个资源对象叫 autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动</description>
+    </item>
+    
+    <item>
       <title>Istio service mesh示例教程汇总</title>
       <link>http://www.servicemesher.com/blog/istio-tutorials-collection/</link>
       <pubDate>Mon, 06 Aug 2018 08:43:29 +0800</pubDate>
