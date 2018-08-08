@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>服务网格加速金融科技向微服务转型</title>
+      <link>http://www.servicemesher.com/blog/enabling-the-financial-services-shift-to-microservices/</link>
+      <pubDate>Wed, 08 Aug 2018 22:12:16 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/enabling-the-financial-services-shift-to-microservices/</guid>
+      <description>金融服务公司通常都拥有沉重的历史包袱，当然对于想要进入这个行业的新秀来说也算是商业壁垒，因为他们很难突破低利润和严苛的监管规则。曾占主导地位</description>
+    </item>
+    
+    <item>
       <title>基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</title>
       <link>http://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/</link>
       <pubDate>Tue, 07 Aug 2018 22:20:49 +0800</pubDate>
