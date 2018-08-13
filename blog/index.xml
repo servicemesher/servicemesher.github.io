@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>使用Cilium增强Istio—通过Socket感知BPF程序</title>
+      <link>http://www.servicemesher.com/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/</link>
+      <pubDate>Mon, 13 Aug 2018 16:19:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/</guid>
+      <description>8月1日Istio 1.0 发布，Cilium社区感谢所有Istio贡献者为此付出的巨大努力。我们很幸运能够参与社区活动，为Istio做出贡献，并帮</description>
+    </item>
+    
+    <item>
       <title>服务网格加速金融科技向微服务转型</title>
       <link>http://www.servicemesher.com/blog/enabling-the-financial-services-shift-to-microservices/</link>
       <pubDate>Wed, 08 Aug 2018 22:12:16 +0800</pubDate>

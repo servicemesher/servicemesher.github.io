@@ -6,18 +6,14 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cilium · Service Mesh爱好者</title>
+  <title>Cilium · ServiceMesher</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh">	
+  <meta name="keywords" content="service mesh, 服务网格">
   
 
-  
-  <meta name="description" content="Service Mesh爱好者网站">	
-  
-
-  <meta name="generator" content="Hugo 0.41" />
+  <meta name="generator" content="Hugo 0.44" />
 
   
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -30,7 +26,6 @@
   
   <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
   
-
 
   
   <link href="/css/custom.css" rel="stylesheet">
@@ -47,11 +42,10 @@
   
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-  
 
+  
   <link href="/css/owl.carousel.css" rel="stylesheet">
   <link href="/css/owl.theme.css" rel="stylesheet">
-
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
 
   
@@ -61,8 +55,16 @@
   <meta property="og:title" content="Cilium" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/tags/cilium//" />
-  <meta property="og:image" content="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
 
+  
+  <meta name="description" content="ServiceMesher - Service Mesh极客社区">
+  <meta property="og:description" content="ServiceMesher - Service Mesh极客社区">
+  <meta name="twitter:description" content="ServiceMesher - Service Mesh极客社区">
+  <meta property="og:description" content="ServiceMesher - Service Mesh极客社区" />
+
+  
   
   <script>
   var _hmt = _hmt || [];
@@ -73,8 +75,9 @@
     s.parentNode.insertBefore(hm, s);
   })();
   </script>
-</head>
 
+
+</head>
 
   <body>
 
@@ -119,13 +122,22 @@
                   
                   <li class="dropdown">
                     
-                    <a href="/activity/">活动</a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                    </ul>
                     
                   </li>
                   
                   <li class="dropdown">
                     
-                    <a href="/awesome-servicemesh/">黄页</a>
+                    <a href="/activity/">活动</a>
                     
                   </li>
                   
@@ -165,7 +177,7 @@
       <div class="modal-body">
           
 <div class="aa-input-container" id="aa-input-container">
-    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" />
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
     <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
         <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
     </svg>
@@ -231,23 +243,25 @@ autocomplete('#aa-search-input',
                             <div class="row">
                                 <div class="col-md-4">
                                   <div class="image">
-                                      <a href="/blog/a-new-more-efficient-proxy-model/">
+                                      <a href="/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/">
                                           
-                                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsu9cwhaghj30rs0ku7j7.jpg" class="img-responsive" alt="">
+                                          <img src="https://ws2.sinaimg.cn/large/0069RVTdly1fu85h49e29j30rs0ku76p.jpg" class="img-responsive" alt="">
                                           
                                       </a>
                                   </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h2><a href="/blog/a-new-more-efficient-proxy-model/">探讨Service Mesh中一种更高效的代理模式</a></h2>
+                                    <h2><a href="/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/">使用Cilium增强Istio—通过Socket感知BPF程序</a></h2>
                                     <div class="clearfix">
                                         <p class="author-category">
                                           
-                                          作者 <a href="http://yangjunsss.github.io/">陈洋钧</a>
+                                          作者 <a href="https://cilium.io">Cilium</a>
                                           
+                                          
+                                          | 译者 <a href="https://github.com/meua">甄中元</a>
                                           
                                           |
-                                          4800字 | 阅读大约需要10分钟
+                                          4400字 | 阅读大约需要9分钟
                                           |
                                           
                                           
@@ -257,13 +271,13 @@ autocomplete('#aa-search-input',
 
                                         </p>
                                         <p class="date-comments">
-                                            <a href="/blog/a-new-more-efficient-proxy-model/"><i class="fa fa-calendar-o"></i> 2018-07-01</a>
+                                            <a href="/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/"><i class="fa fa-calendar-o"></i> 2018年8月13日</a>
                                         </p>
                                     </div>
                                     
-                                    <p class="intro">借助 eBPF，作为 Service Mesh 的数据转发层，对接 Pilot、Mixer 等控制面，实现策略、流量和安全管理，是不是一种更高效的方式？这会比 Envoy 拥有更好的性能，虽然性能未必是 Mesh 首要考虑的问题，本文中讲述使用 Cilium 的尝试。</p>
+                                    <p class="intro">本博客将介绍BPF和Cilium如何增强Istio的一些细节，主要关注Istio的安全性，开启Istio对外部服务的支持和性能部分。</p>
                                     
-                                    <p class="read-more"><a href="http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/" class="btn btn-template-main">继续阅读</a>
+                                    <p class="read-more"><a href="http://www.servicemesher.com/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/" class="btn btn-template-main">继续阅读</a>
                                     </p>
                                 </div>
                             </div>
@@ -314,19 +328,31 @@ autocomplete('#aa-search-input',
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (4)</a>
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (6)</a>
             </li>
             
-            <li><a href="/categories/istio-source-code"><i class="fa fa-navicon"></i>istio-source-code (4)</a>
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
             </li>
             
-            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (1)</a>
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (6)</a>
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (1)</a>
             </li>
             
-            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (23)</a>
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (2)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (13)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (38)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (1)</a>
             </li>
             
         </ul>
@@ -348,6 +374,9 @@ autocomplete('#aa-search-input',
     <div class="panel-body">
         <ul class="tag-cloud">
             
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
             <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
             </li>
             
@@ -363,16 +392,37 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
             </li>
             
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
             <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
             </li>
             
             <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
             </li>
             
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
             <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
             </li>
             
             <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
             </li>
             
             <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
@@ -390,6 +440,12 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
             </li>
             
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
             <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
             </li>
             
@@ -399,7 +455,16 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
             </li>
             
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
             <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
             </li>
             
             <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
@@ -408,22 +473,34 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
             </li>
             
-            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
-            </li>
-            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
             <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
             </li>
             
-            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
             </li>
             
             <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
             </li>
             
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
             <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
             </li>
             
             <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
@@ -436,6 +513,9 @@ autocomplete('#aa-search-input',
             </li>
             
             <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
             </li>
             
             <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
@@ -474,7 +554,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播 Service Mesh 技术、加强行业内部交流、推动 Service Mesh 在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -492,40 +572,40 @@ autocomplete('#aa-search-input',
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="/blog/a-new-more-efficient-proxy-model/">
+                        <a href="/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsu9cwhaghj30rs0ku7j7.jpg" class="img-responsive" alt="探讨Service Mesh中一种更高效的代理模式">
+                          <img src="https://ws2.sinaimg.cn/large/0069RVTdly1fu85h49e29j30rs0ku76p.jpg" class="img-responsive" alt="使用Cilium增强Istio—通过Socket感知BPF程序">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="/blog/a-new-more-efficient-proxy-model/">探讨Service Mesh中一种更高效的代理模式</a></h5>
+                        <h5><a href="/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/">使用Cilium增强Istio—通过Socket感知BPF程序</a></h5>
                     </div>
                 </div>
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/">
+                        <a href="/blog/enabling-the-financial-services-shift-to-microservices/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fss3yvsw2ej30rs0kuq8e.jpg" class="img-responsive" alt="速率限制—分布式系统的一个实用工具part1">
+                          <img src="https://ws1.sinaimg.cn/large/0069RVTdgy1fu2nmrwb02j31ji15mnpf.jpg" class="img-responsive" alt="服务网格加速金融科技向微服务转型">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/">速率限制—分布式系统的一个实用工具part1</a></h5>
+                        <h5><a href="/blog/enabling-the-financial-services-shift-to-microservices/">服务网格加速金融科技向微服务转型</a></h5>
                     </div>
                 </div>
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="/blog/istio-is-not-just-for-microservices/">
+                        <a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsqwqgx0ylj30rs0kualy.jpg" class="img-responsive" alt="Istio不仅为微服务而生——使用Istio Service Mesh保护Kubernetes中的服务">
+                          <img src="https://ws3.sinaimg.cn/large/0069RVTdgy1fu1i0mvc5yj31ji15ob2b.jpg" class="img-responsive" alt="基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="/blog/istio-is-not-just-for-microservices/">Istio不仅为微服务而生——使用Istio Service Mesh保护Kubernetes中的服务</a></h5>
+                        <h5><a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/">基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</a></h5>
                     </div>
                 </div>
                 
@@ -542,7 +622,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>Service Mesh爱好者社区</p><p><a href="https://jimmysong.io/about">管理员</a></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
       
 
 
