@@ -243,6 +243,50 @@ autocomplete('#aa-search-input',
                             <div class="row">
                                 <div class="col-md-4">
                                   <div class="image">
+                                      <a href="/blog/soft-multitenancy-in-istio-service-mesh/">
+                                          
+                                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsj0l63vq1j30rs0kutl4.jpg" class="img-responsive" alt="">
+                                          
+                                      </a>
+                                  </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h2><a href="/blog/soft-multitenancy-in-istio-service-mesh/">Istio的软性多租户支持</a></h2>
+                                    <div class="clearfix">
+                                        <p class="author-category">
+                                          
+                                          作者 <a href="https://istio.io/blog/2018/soft-multitenancy/">John Joyce &amp; Rich Curran</a>
+                                          
+                                          
+                                          | 译者 <a href="https://blog.fleeto.us">崔秀龙</a>
+                                          
+                                          |
+                                          3400字 | 阅读大约需要7分钟
+                                          |
+                                          
+                                          
+                                          归档于<a href="/categories/translation">translation</a>
+                                          
+                                          
+
+                                        </p>
+                                        <p class="date-comments">
+                                            <a href="/blog/soft-multitenancy-in-istio-service-mesh/"><i class="fa fa-calendar-o"></i> 2018年6月21日</a>
+                                        </p>
+                                    </div>
+                                    
+                                    <p class="intro">多租户是一个在各种环境和各种应用中都得到了广泛应用的概念，但是不同环境中，为每租户提供的具体实现和功能性都是有差异的。Kubernetes 多租户工作组致力于在 Kubernetes 中定义多租户用例和功能。然而根据他们的工作进展来看，恶意容器和负载对于其他租户的 Pod 和内核资源的访问无法做到完全控制，因此只有“软性多租户”支持是可行的。</p>
+                                    
+                                    <p class="read-more"><a href="http://www.servicemesher.com/blog/soft-multitenancy-in-istio-service-mesh/" class="btn btn-template-main">继续阅读</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="post">
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <div class="image">
                                       <a href="/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/">
                                           
                                           <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsiynxp5e2j30rs0ku7l4.jpg" class="img-responsive" alt="">
@@ -634,50 +678,6 @@ autocomplete('#aa-search-input',
                             </div>
                         </section>
                         
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/tracing-grpc-with-istio/">
-                                          
-                                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fs3o6ljkknj30rs0ku4qp.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/tracing-grpc-with-istio/">在Istio中跟踪gRPC</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          作者 <a href="https://aspenmesh.io">Aspen Mesh</a>
-                                          
-                                          
-                                          | 译者 <a href="https://jimmysong.io">宋净超</a>
-                                          
-                                          |
-                                          2700字 | 阅读大约需要6分钟
-                                          |
-                                          
-                                          
-                                          归档于<a href="/categories/translation">translation</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/tracing-grpc-with-istio/"><i class="fa fa-calendar-o"></i> 2018年6月8日</a>
-                                        </p>
-                                    </div>
-                                    
-                                    <p class="intro">本文介绍的是如何在Istio中使用grpc并设置跟踪（tracing）与header传播，包括gRPC到grpc请求传播header、gRPC到HTTP请求传播header、使用grpc-gateway时传播header等</p>
-                                    
-                                    <p class="read-more"><a href="http://www.servicemesher.com/blog/tracing-grpc-with-istio/" class="btn btn-template-main">继续阅读</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-                        
 
                         <ul class="pager">
                             
@@ -818,7 +818,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (13)</a>
             </li>
             
-            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (38)</a>
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (39)</a>
             </li>
             
             <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (1)</a>
@@ -883,6 +883,9 @@ autocomplete('#aa-search-input',
             </li>
             
             <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
             </li>
             
             <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
@@ -1041,6 +1044,19 @@ autocomplete('#aa-search-input',
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="/blog/why-you-should-care-about-istio-gateways/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/0069RVTdly1fu8d0j11kij30rs0ku11a.jpg" class="img-responsive" alt="为什么你应该关心Istio gateway">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/why-you-should-care-about-istio-gateways/">为什么你应该关心Istio gateway</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/">
                           
                           <img src="https://ws2.sinaimg.cn/large/0069RVTdly1fu85h49e29j30rs0ku76p.jpg" class="img-responsive" alt="使用Cilium增强Istio—通过Socket感知BPF程序">
@@ -1062,19 +1078,6 @@ autocomplete('#aa-search-input',
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="/blog/enabling-the-financial-services-shift-to-microservices/">服务网格加速金融科技向微服务转型</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/">
-                          
-                          <img src="https://ws3.sinaimg.cn/large/0069RVTdgy1fu1i0mvc5yj31ji15ob2b.jpg" class="img-responsive" alt="基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/">基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</a></h5>
                     </div>
                 </div>
                 
