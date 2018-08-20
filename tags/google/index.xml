@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/google/</link>
+    <description>Recent content in Google on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 20 Aug 2018 16:14:16 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力</title>
+      <link>http://www.servicemesher.com/blog/google-istio-bigger-kubernetes-serverless/</link>
+      <pubDate>Mon, 20 Aug 2018 16:14:16 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/google-istio-bigger-kubernetes-serverless/</guid>
+      <description>Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。 随着现代数字计算基础设施的不断发</description>
+    </item>
+    
+  </channel>
+</rss>

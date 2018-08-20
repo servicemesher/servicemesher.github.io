@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力 · ServiceMesher</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh">
+  
+
+  <meta name="generator" content="Hugo 0.44" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/google-istio-bigger-kubernetes-serverless//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。你可以在任何你喜欢的云提供商之间自由迁移，且使你上云之路更加平稳。一旦人们熟悉了Kubernetes和Istio的管理和编排方式，上云就不会变得可怕了。">
+  <meta property="og:description" content="Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。你可以在任何你喜欢的云提供商之间自由迁移，且使你上云之路更加平稳。一旦人们熟悉了Kubernetes和Istio的管理和编排方式，上云就不会变得可怕了。">
+  <meta name="twitter:description" content="Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。你可以在任何你喜欢的云提供商之间自由迁移，且使你上云之路更加平稳。一旦人们熟悉了Kubernetes和Istio的管理和编排方式，上云就不会变得可怕了。">
+  <meta property="og:description" content="Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。你可以在任何你喜欢的云提供商之间自由迁移，且使你上云之路更加平稳。一旦人们熟悉了Kubernetes和Istio的管理和编排方式，上云就不会变得可怕了。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/activity/">活动</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年8月20日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://cilium.io">Cilium</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/meua">甄中元</a>
+                            
+                            
+                            | 审校者 <a href="https://jimmysong.io">宋净超</a>
+                            
+                            |
+                            2200字 | 阅读大约需要5分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://diginomica.com/2018/08/03/google-istio-bigger-kubernetes-serverless/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/istio">Istio</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/serverless/"><i>#serverless</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/google/"><i>#Google</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p><img src="https://ws1.sinaimg.cn/large/00704eQkly1fug8z3tpgcj30lc0ao44a.jpg" alt="" /></p>
+
+<p>Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。</p>
+
+<p>随着现代数字计算基础设施的不断发展，新的自动化层加速了创新和提升了适应性。一旦实现容器化微服务几秒之内部署一个新功能成为可能。那么Kubernetes和类似工具的出现增加了一层业务流程，以便大规模协调容器部署。在基础设施中一个功能很容易抽象成为一个满足需求的serverless模型。现在，正在形成一个称为“service mesh”的新层，以便在所有这些功能中添加服务间治理、管理和通信功能。8月1号一个名为Istio的service mesh的新开源框架1.0版本发布生产版本，像之前的Kubernetes一样，由谷歌以及IBM支持。</p>
+
+<h2 id="比kubernetes更有价值">比Kubernetes更有价值</h2>
+
+<p>您可能没有听说过Istio，但如果您进行任何形式的敏捷数字开发或运维工作，您很快就会知道Istio。 Google云计算CTO（UrsHölzle）上周告诉我，他预计service mesh将会被普遍采用：“我希望看到的是，在两年后90％的Kubernetes用户将会使用Istio。Istio与Kubernetes提供的产品非常吻合，几乎感觉就像Kubernetes的下一次迭代。这是由同一个团队完成的，Istio和Kubernetes的功能能够很好的互补。”</p>
+
+<p>Hölzle没有明确地说Istio一定会比Kubernetes更大，但他非常确信Istio会和Kubernetes具有一样大的应用前景，甚至超过Kubernetes。</p>
+
+<h2 id="istio-kubernetes和serverless">Istio、Kubernetes和Serverless</h2>
+
+<p>在某种程度上，Hölzle的信心源于谷歌决定将Istio标准化为其云服务平台（<a href="https://cloudplatform.googleblog.com/2018/07/cloud-services-platform-bringing-the-best-of-the-cloud-to-you.html">Cloud Services Platform </a>）的管理层，该服务于上周在Cloud Next会议上宣布。这与上周推出的另外两个新项目同时启动。一个是<a href="https://www.infoq.com/news/2018/07/knative-kubernetes-serverless">Knative</a>—一个基于Kubernetes的开源框架，用于构建、部署和管理serverless工作负载，正如Kurt Marko本周早些时候在他的<a href="https://diginomica.com/2018/07/30/google-cloud-platform-removes-barriers-between-it-business/">Cloud Next文章</a>中所解释的那样，“Knative不仅仅是一个serverless的容器包装器，而是一个容器化应用的开发框架“。另一个是谷歌GKE（Google Kubernetes Engine）私有云版本，是云供应商的容器管理工具。结合Istio的管理层，这实际上意味着组织可以从私有云到公有云使用CSP管理整个IT基础架构中的容器生态系统和serverless。</p>
+
+<p>Istio是Google、IBM和Lyft共同努力在一年多前推出的一项开放式技术框架，用于连接、保护、管理和监控云的服务网络。这三家公司都贡献了他们单独开发的现有技术。</p>
+
+<h2 id="减轻企业上云难度">减轻企业上云难度</h2>
+
+<p>Hölzle认为，Istio将加速企业采用公有云，因为它可以在私有化部署和云之间实现更高的同质化：“公司决定将所有内容（包括他们不想重写的旧代码）移至Istio，去包装旧代码而不去重写它这是非常合理的。我们相信GKE私有化部署将带领更多客户深入云技术。因为它与现代云思维非常融合，它保留了它们的地址以及何时何地去迁移的选择机会。你可以在任何你喜欢的云提供商之间自由迁移，且使你上云之路更加平稳。一旦人们熟悉了Kubernetes和Istio的管理和编排方式，上云就不会变得可怕了。”</p>
+
+<p>Hölzle认为BigQuery这样的云原生功能将继续为它们提供最终结果。与此同时，它依靠思科等合作伙伴提供GKE和Knative的私有化版本，而不是成为该技术本身的直销商。</p>
+
+<h2 id="合作伙伴和开发者">合作伙伴和开发者</h2>
+
+<p>合作伙伴还将发现Istio有助于他们从硬件产品转向安全等领域的软件和服务云转型。Hölzle认为：“许多合作伙伴正在转向销售软件和销售服务，这是进入该领域的理想切入点。如果您是正在使用Istio的服务安全提供商，将服务从本地迁移到云将不受影响，只有位置发生变化了。在当前模型中，如果您是本地提供商，所有API都不同，所有需要回答的问题都是新的，您可能会失去现任状态，因为您无法轻松移植到云端”。</p>
+
+<p>开发人员也需要得到说服。但谷歌开发者关系部副总裁亚当·塞利格曼认为，他对Istio为他们开放的东西感到很兴奋：“使用Istio不需要大量的重新编程。现有的应用程序、功能和服务可以使用Istio进行流量路由，并立即看到当前各维度的运行状态。你将没有使用Istio的应用程序加入Istio，你会获得以前无法获得的所有可见性。我认为这会刺激很多开发人员，加速Istio被采用的速度。我认为开发人员需要接受SLO（服务级别目标）监控、金丝雀部署、流量控制、A/B测试甚至多变量测试等技术培训。”</p>
+
+<h2 id="我的见解">我的见解</h2>
+
+<p>Istio不是唯一实现service mesh的技术框架，linkerd—由Buoyant支持的开源项目，早于Istio，已经投入生产。但谷歌、IBM和思科等重量级合作伙伴给Istio带来了比Bouyant对linkerd更大的支持。最后，重要的是服务网格的原则而不是具体的实现。一直存在着反对过度使用微服务的争论，因为你拥有的自主服务越多，管理它们就越复杂。在Istio的支持下，Google正在验证解决这个棘手问题的微服务架构，以便所有这些松散耦合的端点可以合理地协调以产生有用的业务成果。这似乎应该是云计算发展中非常重要的进展。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/the-enterprise-path-to-service-mesh-architectures/" data-toggle="tooltip" data-placement="top" title="企业级服务网格架构之路解读—Service Mesh在会话层解耦">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="http://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/" data-toggle="tooltip" data-placement="top" title="使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/istio-tutorials-collection/"><i class="fa fa-link"></i>Istio service mesh示例教程汇总</a></li>
+         
+        <li><a href="/blog/istio-service-mesh-tech-boosts-kubernetes-work-with-trade-offs/"><i class="fa fa-link"></i>采纳运行在Kubernetes上的Istio服务网格的利弊分析</a></li>
+         
+        <li><a href="/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/"><i class="fa fa-link"></i>Service Mesh深度学习系列part3—istio源码分析之pilot-discovery模块分析（续）</a></li>
+         
+        <li><a href="/blog/service-mesh-architecture-radicalizes-container-networking/"><i class="fa fa-link"></i>服务网格架构激活了容器网络管理—来自于服务网格创建者们的见解与展望</a></li>
+         
+        <li><a href="/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin/"><i class="fa fa-link"></i>Service Mesh深度学习系列part2—istio源码分析之pilot-discovery模块分析</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (7)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (1)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (2)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (15)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (40)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (1)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fugh01eg74j31ji15o1l1.jpg" class="img-responsive" alt="使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/">使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/google-istio-bigger-kubernetes-serverless/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkly1fugaipib9ij31ji15okjn.jpg" class="img-responsive" alt="Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/google-istio-bigger-kubernetes-serverless/">Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/the-enterprise-path-to-service-mesh-architectures/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fug0qf4f7qj31jk15ox6r.jpg" class="img-responsive" alt="企业级服务网格架构之路解读—Service Mesh在会话层解耦">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/the-enterprise-path-to-service-mesh-architectures/">企业级服务网格架构之路解读—Service Mesh在会话层解耦</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

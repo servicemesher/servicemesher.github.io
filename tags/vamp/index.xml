@@ -6,10 +6,19 @@
     <description>Recent content in Vamp on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 13 Jul 2018 12:38:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Aug 2018 21:04:02 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/vamp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务</title>
+      <link>http://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</link>
+      <pubDate>Mon, 20 Aug 2018 21:04:02 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</guid>
+      <description>使用Let’s Encrypt在Kubernetes上保护Istio的Ingress services 这是我在kubernetes之上部署Istio系列文章中</description>
+    </item>
     
     <item>
       <title>使用Istio 0.8对Kubernetes进行A/B测试</title>

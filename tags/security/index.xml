@@ -6,10 +6,19 @@
     <description>Recent content in Security on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 11 Jun 2018 20:40:28 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Aug 2018 21:04:02 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务</title>
+      <link>http://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</link>
+      <pubDate>Mon, 20 Aug 2018 21:04:02 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</guid>
+      <description>使用Let’s Encrypt在Kubernetes上保护Istio的Ingress services 这是我在kubernetes之上部署Istio系列文章中</description>
+    </item>
     
     <item>
       <title>Twistlock使Istio的安全层更强大，更易于监控</title>
