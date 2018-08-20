@@ -6,10 +6,28 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 13 Aug 2018 20:44:06 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Aug 2018 11:38:59 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>企业级服务网格架构之路解读—Service Mesh在会话层解耦</title>
+      <link>http://www.servicemesher.com/blog/the-enterprise-path-to-service-mesh-architectures/</link>
+      <pubDate>Mon, 20 Aug 2018 11:38:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/the-enterprise-path-to-service-mesh-architectures/</guid>
+      <description>追本溯源，Service Mesh实际上是一种SDN，等同于OSI模型中的会话层。 每一次技术变革，必然要导致生产力和生产关系的变革，我们看到这</description>
+    </item>
+    
+    <item>
+      <title>蚂蚁金服开源Go语言版Service Mesh数据平面SOFAMosn性能报告</title>
+      <link>http://www.servicemesher.com/blog/sofa-mosn-performance-report-0.1.0/</link>
+      <pubDate>Mon, 20 Aug 2018 11:24:33 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/sofa-mosn-performance-report-0.1.0/</guid>
+      <description>以下的的性能报告为 SOFAMosn 0.1.0 在做 Bolt 与 HTTP1.x 协议的纯 TCP 转发上与 envoy 的一些性能对比数据，主要表现在 QPS、RTT、失败率/成功率等。 本文原文来自：https</description>
+    </item>
     
     <item>
       <title>为什么你应该关心Istio gateway</title>
