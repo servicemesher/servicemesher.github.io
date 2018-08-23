@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格</title>
+      <link>http://www.servicemesher.com/blog/application-safety-and-correctness-cannot-be-offloaded-to-istio-or-any-service-mesh/</link>
+      <pubDate>Thu, 23 Aug 2018 15:31:39 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/application-safety-and-correctness-cannot-be-offloaded-to-istio-or-any-service-mesh/</guid>
+      <description>我最近在讨论集成服务的演进以及服务网格的使用，特别是关于 Istio 。自从2017年1月我听说了 Istio 以来，我一直很兴奋，事实上我是为这种新技术感到兴奋，</description>
+    </item>
+    
+    <item>
       <title>使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务</title>
       <link>http://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</link>
       <pubDate>Mon, 20 Aug 2018 21:04:02 +0800</pubDate>
