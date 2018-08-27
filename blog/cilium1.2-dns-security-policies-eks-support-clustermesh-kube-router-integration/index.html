@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等 · ServiceMesher</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh">
+  
+
+  <meta name="generator" content="Hugo 0.44" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/cilium1.2-dns-security-policies-eks-support-clustermesh-kube-router-integration//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="Cilum使用Kube-router在Kubernetes Pod与集群外部运行的服务之间建立连接，再引入基于DNS 名称的安全策略保护对集群外服务的访问，再增加Cluster Mesh增加对多Kubernetes集群的支持。">
+  <meta property="og:description" content="Cilum使用Kube-router在Kubernetes Pod与集群外部运行的服务之间建立连接，再引入基于DNS 名称的安全策略保护对集群外服务的访问，再增加Cluster Mesh增加对多Kubernetes集群的支持。">
+  <meta name="twitter:description" content="Cilum使用Kube-router在Kubernetes Pod与集群外部运行的服务之间建立连接，再引入基于DNS 名称的安全策略保护对集群外服务的访问，再增加Cluster Mesh增加对多Kubernetes集群的支持。">
+  <meta property="og:description" content="Cilum使用Kube-router在Kubernetes Pod与集群外部运行的服务之间建立连接，再引入基于DNS 名称的安全策略保护对集群外服务的访问，再增加Cluster Mesh增加对多Kubernetes集群的支持。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/activity/">活动</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年8月27日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://cilium.io">Cilium</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/meua">甄中元</a>
+                            
+                            
+                            | 审校者 <a href="https://jimmysong.io">宋净超</a>
+                            
+                            |
+                            3400字 | 阅读大约需要7分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://cilium.io/blog/2018/08/21/cilium-12/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/cilium/"><i>#cilium</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/kube-router/"><i>#kube-router</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fuohqoaw4wj310o0qegwa.jpg" alt="Cilium" /></p>
+
+<p>我们很高兴地宣布推出Cilium 1.2。该版本引入了几个新功能实现了Cilium用户和社区成员最迫切想要的功能。其中最吸引人的功能之一是引入基于DNS 名称的安全策略，目的是保护对集群外服务的访问。另一个最受关注的问题是加入了连接和保护多个Kubernetes集群的能力。我们将ClusterMesh功能进入Alpha版本。它可以连接和保护在多个Kubernetes集群中运行的pod。Kube-router与Cilium的集成同等重要。DigitalOcean团队的努力使kube-router提供BGP网络与Cilium提供的基于BPF的安全性和负载均衡相结合。整个Cilium开发者社区贡献者总数已增加到85个，在1.1到1.2版本内贡献了579个PR。</p>
+
+<h4 id="cilium是什么">Cilium是什么？</h4>
+
+<p>Cilium是一个开源软件，用于在Kubernetes、Docker和Mesos等Linux容器管理平台部署的应用程序服务之间提供透明连接、保护网络和API。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fuohq4pg7kj31kw0cjtcq.jpg" alt="" /></p>
+
+<p>Cilium是基于一种叫BPF的新内核技术，它使得能够在Linux自身内部动态插入强大的安全性、可见性和网络控制逻辑。除了提供传统的网络级安全性之外，BPF的灵活性还可以在API和进程级别实现安全性，以保护容器或pod内的通信。</p>
+
+<p>有关Cilium的更详细的介绍，请参阅<a href="http://docs.cilium.io/en/v1.1/intro/">Cilium简介</a>部分。</p>
+
+<h4 id="1-2版本的重要功能">1.2版本的重要功能</h4>
+
+<ul>
+<li>基于DNS/FQDN的安全策略
+
+<ul>
+<li>基于FQDN/DNS命名定义网络安全规则，表示允许连接到外部服务。例如，允许访问foo.com。（处于Beta版）</li>
+</ul></li>
+<li>支持AWS EKS
+
+<ul>
+<li>为管理Kubernetes集成量身定制的etcd operator，消除了对需要外部kvstore的依赖。（处于Beta版）</li>
+</ul></li>
+<li>Clustermesh（集群间连接）
+
+<ul>
+<li>跨多个Kubernetes集群的pod间网络连接。（处于Alpha版）</li>
+<li>跨集群的基于label的网络安全策略实施，例如允许cluster1中的pod foo与cluster2中的pod bar通信。</li>
+</ul></li>
+<li>为支持BPF集成Kube-route
+
+<ul>
+<li>与kube-router一起协作运行以启用BGP网络。</li>
+</ul></li>
+<li>基于节点发现的KV存储
+
+<ul>
+<li>在非Kubernetes环境中启用自动节点发现。</li>
+</ul></li>
+<li>负载均衡
+
+<ul>
+<li>支持一致的后端selection用于服务后端扩缩容</li>
+<li>支持基于服务label/name的策略以及L4规则</li>
+</ul></li>
+<li>高效性 &amp; 扩缩容
+
+<ul>
+<li>对于大型和多集群规模的环境，安全身份认证空间从16bits增加到24bits。</li>
+<li>首次实现基于BPF的数据路径通知聚合。</li>
+<li>取得持续高效的CPU利用进展。</li>
+<li>自动检测underlying网络的MTU。</li>
+<li>禁用DSR时使用本地service ID分配以提高负载均衡可伸缩性。</li>
+</ul></li>
+<li>文档
+
+<ul>
+<li>新的AWS EKS安装指南。</li>
+<li>参考kubespray安装指南。</li>
+<li>新的简化安装和升级说明。</li>
+</ul></li>
+</ul>
+
+<h4 id="基于dns的安全策略">基于DNS的安全策略</h4>
+
+<p>在Kubernetes集群中运行的服务通常与集群外部的一系列服务进行交互。常见示例包括SaaS服务，如S3、RDS、DynamoDB等。基于API的服务，例如Google地图、Salesforce API、Twilio等。或自托管服务，如Oracle数据库集群、基于Windows的应用程序等。到目前为止，Cilium支持基于CIDR的策略，以便与此类外部服务进行交互。然而，基于CIDR的策略很难定义和维护，因为服务的IP地址可能经常发生变化。Cilium 1.2现在支持基于DNS名称的特定策略。当前实现支持基于其FQDN的白名单外部服务的核心实例。考虑到DNS解决方案（例如TTL、CNAME等）和相关策略要求（例如<code>*.google.com</code>等基于通配符的规范）的复杂性，对于基于DNS的综合策略，后续版本中还有更多工作要做。</p>
+
+<h4 id="示例-允许访问my-remote-service-com">示例：允许访问my-remote-service.com</h4>
+
+<p>下面的简单示例演示了如何定义网络安全策略，该策略允许所有label为<code>app = test-app</code>的pod通过kube-dns解析DNS名称，并向服务<code>my-remote-service.com</code>发出外部请求：</p>
+
+<pre><code class="language-yaml">apiVersion: &quot;cilium.io/v2&quot;
+kind: CiliumNetworkPolicy
+metadata:
+  name: &quot;to-fqdn-example&quot;
+spec:
+  endpointSelector:
+    matchLabels:
+      app: test-app
+  egress:
+    - toFQDNs:
+        - matchName: &quot;my-remote-service.com&quot;
+    - toEndpoints:
+      - matchLabels:
+          &quot;k8s:io.cilium.k8s.policy.serviceaccount&quot;: kube-dns
+          &quot;k8s:io.kubernetes.pod.namespace&quot;: kube-system
+          &quot;k8s:k8s-app&quot;: kube-dns
+      toPorts:
+      - ports:
+        - port: &quot;53&quot;
+          protocol: UDP
+</code></pre>
+
+<p>Cilium将自动维护相应的基于CIDR的规则，以允许所有pod与所有为该DNS名称返回的IP地址进行通信。</p>
+
+<h4 id="支持aws-eks">支持AWS EKS</h4>
+
+<p>按照<a href="http://docs.cilium.io/en/v1.2/kubernetes/install/eks/">AWS EKS上使用etcd operator的新指南</a>，在AWS EKS托管的Kubernetes集群上安装Cilium。</p>
+
+<p>安装指南为Cilium提供全新的集成etcd operator，以管理自己的etcd集群。在许多情况下，Kubernetes使用的etcd无法被Cilium使用。例如，在管理的Kubernetes中，例如EKS、GKE、AKS等。可以有限地访问Kubernetes etcd服务。在Cilium 1.2中，我们使用了一个etcd operator，它将安装和管理一个高度可用的etcd集群供Cilium使用。这将使Cilium的安装和使用变得更加容易，而不依赖于Kubernetes等，并且不需要对etcd集群进行额外管理。我们正在积极致力于AKS整合，并将在未来几周内发布关于如何在GKE上运行的指南。如果您有任何问题或需要帮助，请使用<a href="http://cilium.io/slack">Slack</a>联系。</p>
+
+<h4 id="clustermesh-跨多个kubernetes集群的网络连通和安全性">ClusterMesh：跨多个Kubernetes集群的网络连通和安全性</h4>
+
+<p>运行多个Kubernetes集群变得越来越普遍。运行在不同可用区或Regions服务的高可用实例；在多个集群中运行的point-of-presence，服务于不同的地理位置；组织原因如分离PCI与非PCI兼容服务；或者简单地分离dev、test和prod工作负载。</p>
+
+<p>运行多个Kubernetes集群的基本要求之一是如何连接服务以及如何为跨集群交互保证东西流量安全。在Cilium 1.2中，我们将引入多集群中不请求ingress controller或者负载均衡实现不同集群pod之间连接的能力。由于pod间可以直接交互，因此Cilium能够保留其身份认证并对东西向流量实施完整的L3/L4和L7访问控制。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fuohqzj9tnj30jg08a0ts.jpg" alt="" /></p>
+
+<p>Cilium使用去中心化的方式创建Cluster Mesh并建立pod身份认证，而不是为所有集群使用单个集中式etcd。用这种方式，每个集群都能独立管理它们pod的身份。每个集群都被赋予一个独立的标识作为身份命名空间。因此pod身份成为集群身份+ pod身份的组合。这种方法易于管理和扩展，而不用协调所有集群中的身份。这种方式与多集群高可用目标保持一致，每个集群的生命周期独立于其他集群的生命周期。查看<a href="https://cilium.readthedocs.io/en/stable/install/guides/clustermesh/">多集群安装指南</a>试着体验Cilium cluster-mesh。</p>
+
+<h4 id="bgp支持-基于kube-router-cilium">BGP支持：基于Kube-router + Cilium</h4>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fuohrg84iaj30du03ojrm.jpg" alt="" /></p>
+
+<p>Kube-router是一个由cloudnativelabs倡议，旨在满足各种Kubernetes网络需求并提供统一的解决方案。从数据转发的角度来看，Kube-router使用BGP来广播和管理集群中所有pod的路由。通过与外部路由器进行BGP配对，Kube-router可以轻松地在Kubernetes pod与集群外部运行的服务之间建立连接。此外，Kube-router创建服务时告知cluster IP，这意味着可以使用单个cluster IP和标准端口从集群外部访问服务。</p>
+
+<p>由DigitalOcean团队领导的社区工作，Cilium现已集成Kube-router，整合了BPF和基于BGP路由。查看<a href="http://docs.cilium.io/en/v1.2/kubernetes/install/kube-router/">使用kube-router运行BGP指南</a>去了解如何并行运行kube-router和Cilium以运行拥有Cilium L3-L7策略和负载均衡的BGP网络。</p>
+
+<h4 id="支持istio-1-0">支持Istio 1.0</h4>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fuohrvd6guj30e204lweo.jpg" alt="" /></p>
+
+<p>Istio 1.0发布了快一个月了。Cilium已与Istio完美集成，可为Service Mesh架构提供高效的数据转发以及L3/L4和L7安全性。我们在博客 中详细介绍了这一点<a href="http://www.servicemesher.com/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/">Istio 1.0：Cilium如何通过socket感知BPF程序增强Istio</a>。Cilium 1.2包含了与Istio 1.0集成的几项改进。</p>
+
+<h4 id="可扩展性和高效">可扩展性和高效</h4>
+
+<p>同样，通过在各种环境中大量分析Cilium性能指标和并优化连接跟踪和其他关键数据结构的操作，继续大力改进已经很好的可扩展性并提高CPU效率。如果您想了解更多，请在<a href="http://cilium.io/slack">Slack</a>上跟我们联系。</p>
+
+<h4 id="升级说明">升级说明</h4>
+
+<p>同样，请按照<a href="https://cilium.readthedocs.io/en/v1.2/install/upgrade/#upgrading-minor-versions">指南升级</a>升级你的Cilium deployment。随意在<a href="http://cilium.io/slack">Slack</a>上联系我们。</p>
+
+<h4 id="发布">发布</h4>
+
+<ul>
+<li>容器镜像：</li>
+</ul>
+
+<pre><code class="language-bash">docker.io/cilium/cilium:v1.2.0
+</code></pre>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/service-mesh-meetup-shenzhen-20180825/" data-toggle="tooltip" data-placement="top" title="Service Mesh Meetup深圳站回顾">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/"><i class="fa fa-link"></i>使用Cilium增强Istio—通过Socket感知BPF程序</a></li>
+         
+        <li><a href="/blog/application-safety-and-correctness-cannot-be-offloaded-to-istio-or-any-service-mesh/"><i class="fa fa-link"></i>应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格</a></li>
+         
+        <li><a href="/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/"><i class="fa fa-link"></i>使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务</a></li>
+         
+        <li><a href="/blog/google-istio-bigger-kubernetes-serverless/"><i class="fa fa-link"></i>Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力</a></li>
+         
+        <li><a href="/blog/why-you-should-care-about-istio-gateways/"><i class="fa fa-link"></i>为什么你应该关心Istio gateway</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (7)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (1)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (2)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (16)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (42)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (1)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/cilium1.2-dns-security-policies-eks-support-clustermesh-kube-router-integration/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fuoi8hqqk5j30rs0kutf9.jpg" class="img-responsive" alt="Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/cilium1.2-dns-security-policies-eks-support-clustermesh-kube-router-integration/">Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/service-mesh-meetup-shenzhen-20180825/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fuoa8b64wqj31ji15mx6s.jpg" class="img-responsive" alt="Service Mesh Meetup深圳站回顾">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/service-mesh-meetup-shenzhen-20180825/">Service Mesh Meetup深圳站回顾</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/application-safety-and-correctness-cannot-be-offloaded-to-istio-or-any-service-mesh/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fujolc6ciwj31ji15mx6q.jpg" class="img-responsive" alt="应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/application-safety-and-correctness-cannot-be-offloaded-to-istio-or-any-service-mesh/">应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
