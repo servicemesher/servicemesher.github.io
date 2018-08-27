@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Service Mesh Meetup深圳站回顾</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-meetup-shenzhen-20180825/</link>
+      <pubDate>Mon, 27 Aug 2018 11:40:45 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-meetup-shenzhen-20180825/</guid>
+      <description>ServiceMesher社区和蚂蚁金服联合主办、SOFAStack社区协办的第三届Service Mesh Meetup深圳站收官，感谢各位现场参加</description>
+    </item>
+    
+    <item>
       <title>应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格</title>
       <link>http://www.servicemesher.com/blog/application-safety-and-correctness-cannot-be-offloaded-to-istio-or-any-service-mesh/</link>
       <pubDate>Thu, 23 Aug 2018 15:31:39 +0800</pubDate>

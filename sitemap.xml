@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/service-mesh-meetup-shenzhen-20180825/</loc>
+    <lastmod>2018-08-27T11:40:45+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/application-safety-and-correctness-cannot-be-offloaded-to-istio-or-any-service-mesh/</loc>
     <lastmod>2018-08-23T15:31:39+08:00</lastmod>
   </url>
@@ -515,14 +520,14 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-08-23T15:31:39+08:00</lastmod>
+    <loc>http://www.servicemesher.com/categories/istio/</loc>
+    <lastmod>2018-08-20T16:14:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/istio/</loc>
-    <lastmod>2018-08-20T16:14:16+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/istio/</loc>
+    <lastmod>2018-08-23T15:31:39+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -545,13 +550,13 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/knative/</loc>
+    <loc>http://www.servicemesher.com/categories/knative/</loc>
     <lastmod>2018-08-07T22:20:49+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/knative/</loc>
+    <loc>http://www.servicemesher.com/tags/knative/</loc>
     <lastmod>2018-08-07T22:20:49+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -581,14 +586,14 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/meetup/</loc>
+    <loc>http://www.servicemesher.com/categories/meetup/</loc>
     <lastmod>2018-07-30T19:08:31+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/meetup/</loc>
-    <lastmod>2018-07-30T19:08:31+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/meetup/</loc>
+    <lastmod>2018-08-27T11:40:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -623,13 +628,13 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/rate-limiting/</loc>
+    <loc>http://www.servicemesher.com/categories/rate-limiting/</loc>
     <lastmod>2018-07-11T15:32:40+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/rate-limiting/</loc>
+    <loc>http://www.servicemesher.com/tags/rate-limiting/</loc>
     <lastmod>2018-07-11T15:32:40+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -647,20 +652,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
+    <lastmod>2018-08-27T11:40:45+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
     <lastmod>2018-08-23T15:31:39+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2018-08-20T11:38:59+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-08-23T15:31:39+08:00</lastmod>
+    <lastmod>2018-08-27T11:40:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -731,13 +736,13 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/tutorial/</loc>
+    <loc>http://www.servicemesher.com/categories/tutorial/</loc>
     <lastmod>2018-08-06T08:43:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/tutorial/</loc>
+    <loc>http://www.servicemesher.com/tags/tutorial/</loc>
     <lastmod>2018-08-06T08:43:29+08:00</lastmod>
     <priority>0</priority>
   </url>

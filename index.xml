@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 23 Aug 2018 15:31:39 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 27 Aug 2018 11:40:45 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Service Mesh Meetup深圳站回顾</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-meetup-shenzhen-20180825/</link>
+      <pubDate>Mon, 27 Aug 2018 11:40:45 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-meetup-shenzhen-20180825/</guid>
+      <description>ServiceMesher社区和蚂蚁金服联合主办、SOFAStack社区协办的第三届Service Mesh Meetup深圳站收官，感谢各位现场参加</description>
+    </item>
     
     <item>
       <title>应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格</title>
@@ -683,7 +692,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/activity/</guid>
-      <description>第三届Service Mesh Meetup深圳站 时间：2018年8月25日（星期六）下午1:00-5:30 地点：深圳市福田区彩田路3001号彩福大厦</description>
+      <description>Service Mesh Meetup活动索引 以下是历届Service Mesh Meetup的活动信息索引。 历届幻灯片下载地址：https://github.com/se</description>
     </item>
     
     <item>
