@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/istio-aims-to-be-the-mesh-plumbing-for-containerized-microservices/</loc>
+    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/cilium1.2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</loc>
     <lastmod>2018-08-27T19:52:29+08:00</lastmod>
   </url>
@@ -490,7 +495,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/google/</loc>
-    <lastmod>2018-08-20T16:14:16+08:00</lastmod>
+    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -519,6 +524,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/ibm/</loc>
+    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/infoq/</loc>
     <lastmod>2018-06-22T19:01:51+08:00</lastmod>
     <priority>0</priority>
@@ -526,7 +537,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-08-27T19:52:29+08:00</lastmod>
+    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -676,7 +687,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-08-27T19:52:29+08:00</lastmod>
+    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -742,7 +753,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-08-27T19:52:29+08:00</lastmod>
+    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
