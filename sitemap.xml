@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</loc>
+    <lastmod>2018-08-30T15:21:45+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-aims-to-be-the-mesh-plumbing-for-containerized-microservices/</loc>
     <lastmod>2018-08-28T16:15:25+08:00</lastmod>
   </url>
@@ -537,7 +542,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
+    <lastmod>2018-08-30T15:21:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -585,7 +590,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
-    <lastmod>2018-08-20T21:04:02+08:00</lastmod>
+    <lastmod>2018-08-30T15:21:45+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/kublr/</loc>
+    <lastmod>2018-08-30T15:21:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -675,7 +686,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-08-23T15:31:39+08:00</lastmod>
+    <lastmod>2018-08-30T15:21:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -687,7 +698,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
+    <lastmod>2018-08-30T15:21:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -753,7 +764,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
+    <lastmod>2018-08-30T15:21:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   

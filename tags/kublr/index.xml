@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kublr on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/kublr/</link>
+    <description>Recent content in Kublr on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 30 Aug 2018 15:21:45 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/kublr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>教程|使用Istio实现一个Service Mesh以简化微服务间的通信模式</title>
+      <link>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</link>
+      <pubDate>Thu, 30 Aug 2018 15:21:45 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</guid>
+      <description>本文为该教程的第1部分。 如果你之前没有听说过Service Mesh，不用担心。虽然从可用文档、公开讨论和Github活跃度来看，它是一个相对</description>
+    </item>
+    
+  </channel>
+</rss>

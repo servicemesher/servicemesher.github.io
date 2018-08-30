@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 28 Aug 2018 16:15:25 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 30 Aug 2018 15:21:45 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>教程|使用Istio实现一个Service Mesh以简化微服务间的通信模式</title>
+      <link>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</link>
+      <pubDate>Thu, 30 Aug 2018 15:21:45 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</guid>
+      <description>本文为该教程的第1部分。 如果你之前没有听说过Service Mesh，不用担心。虽然从可用文档、公开讨论和Github活跃度来看，它是一个相对</description>
+    </item>
     
     <item>
       <title>IBM云计算CTO讲述Istio项目的起源、分工及目标</title>
