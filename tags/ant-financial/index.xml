@@ -6,10 +6,19 @@
     <description>Recent content in Ant Financial on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 20 Aug 2018 11:24:33 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 31 Aug 2018 12:27:25 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/ant-financial/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>蚂蚁金服开源的 SOFAMesh 的通用协议扩展解析</title>
+      <link>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</link>
+      <pubDate>Fri, 31 Aug 2018 12:27:25 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</guid>
+      <description>本文作者：邵俊雄（熊啸），蚂蚁金服中间件团队高级技术专家，目前主要负责 SOFAMesh 的开发工作。 本文是基于作者在 Service Mesh Meetup #3 深圳的主题分享《SOFAMesh</description>
+    </item>
     
     <item>
       <title>蚂蚁金服开源Go语言版Service Mesh数据平面SOFAMosn性能报告</title>

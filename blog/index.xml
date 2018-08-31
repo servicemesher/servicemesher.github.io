@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>蚂蚁金服开源的 SOFAMesh 的通用协议扩展解析</title>
+      <link>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</link>
+      <pubDate>Fri, 31 Aug 2018 12:27:25 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</guid>
+      <description>本文作者：邵俊雄（熊啸），蚂蚁金服中间件团队高级技术专家，目前主要负责 SOFAMesh 的开发工作。 本文是基于作者在 Service Mesh Meetup #3 深圳的主题分享《SOFAMesh</description>
+    </item>
+    
+    <item>
       <title>教程|使用Istio实现一个Service Mesh以简化微服务间的通信模式</title>
       <link>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</link>
       <pubDate>Thu, 30 Aug 2018 15:21:45 +0800</pubDate>

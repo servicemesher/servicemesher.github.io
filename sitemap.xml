@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</loc>
+    <lastmod>2018-08-31T12:27:25+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</loc>
     <lastmod>2018-08-30T15:21:45+08:00</lastmod>
   </url>
@@ -411,7 +416,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/ant-financial/</loc>
-    <lastmod>2018-08-20T11:24:33+08:00</lastmod>
+    <lastmod>2018-08-31T12:27:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -686,19 +691,19 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-08-30T15:21:45+08:00</lastmod>
+    <lastmod>2018-08-31T12:27:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2018-08-20T11:38:59+08:00</lastmod>
+    <lastmod>2018-08-31T12:27:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-08-30T15:21:45+08:00</lastmod>
+    <lastmod>2018-08-31T12:27:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -716,13 +721,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/sofamesh/</loc>
-    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
+    <lastmod>2018-08-31T12:27:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/tags/sofamosn/</loc>
-    <lastmod>2018-08-20T11:24:33+08:00</lastmod>
+    <lastmod>2018-08-31T12:27:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
