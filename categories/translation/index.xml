@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 30 Aug 2018 15:21:45 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 02 Sep 2018 13:48:47 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Envoy服务网格在Lyft的实践及未来路线图</title>
+      <link>http://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</link>
+      <pubDate>Sun, 02 Sep 2018 13:48:47 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</guid>
+      <description>关键要点 在过去的四年中，Lyft 已从单体架构转变为数百个微服务。随着微服务数量的增加，由于级联故障或意外内部拒绝服务导致的中断次数也在增加。</description>
+    </item>
     
     <item>
       <title>教程|使用Istio实现一个Service Mesh以简化微服务间的通信模式</title>
