@@ -6,10 +6,28 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 02 Sep 2018 13:48:47 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 07 Sep 2018 12:33:30 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在Play with Kubernetes平台上以测试驱动的方式部署Istio</title>
+      <link>http://www.servicemesher.com/blog/test-drive-your-first-istio-deployment-using-play-with-kubernetes-platform-cloud-computing/</link>
+      <pubDate>Fri, 07 Sep 2018 12:33:30 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/test-drive-your-first-istio-deployment-using-play-with-kubernetes-platform-cloud-computing/</guid>
+      <description>作为一名全栈开发，假如最近花了不少时间开发应用，肯定已经理解了微服务架构下要面临的一系列全新挑战。尽管应用已经从庞大的单体应用转变成了开发更</description>
+    </item>
+    
+    <item>
+      <title>后Kubernetes时代的微服务</title>
+      <link>http://www.servicemesher.com/blog/microservices-post-kubernetes/</link>
+      <pubDate>Fri, 07 Sep 2018 12:27:58 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/microservices-post-kubernetes/</guid>
+      <description>关键要点 微服务架构仍然是分布式系统最流行的架构风格。 但 Kubernetes 和云原生运动已经在很大程度上重新定义了应用程序的设计和开发。 在云原生平台上，服务的可</description>
+    </item>
     
     <item>
       <title>Envoy服务网格在Lyft的实践及未来路线图</title>
