@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>F5 on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/f5/</link>
+    <description>Recent content in F5 on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 10 Sep 2018 15:18:18 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/f5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>“F5公司Aspen Mesh 1.0发布，基于Istio 1.0&#34;</title>
+      <link>http://www.servicemesher.com/blog/aspen-mesh-released/</link>
+      <pubDate>Mon, 10 Sep 2018 15:18:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/aspen-mesh-released/</guid>
+      <description>Aspen Mesh这家公司隶属于F5，Aspen Mesh基于Istio 1.0开发，这个周末刚发布了1.0版本，可以申请免费试用。 Aspen Mesh对比Ist</description>
+    </item>
+    
+  </channel>
+</rss>

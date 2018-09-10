@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 30 Aug 2018 15:21:45 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Sep 2018 15:18:18 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>“F5公司Aspen Mesh 1.0发布，基于Istio 1.0&#34;</title>
+      <link>http://www.servicemesher.com/blog/aspen-mesh-released/</link>
+      <pubDate>Mon, 10 Sep 2018 15:18:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/aspen-mesh-released/</guid>
+      <description>Aspen Mesh这家公司隶属于F5，Aspen Mesh基于Istio 1.0开发，这个周末刚发布了1.0版本，可以申请免费试用。 Aspen Mesh对比Ist</description>
+    </item>
     
     <item>
       <title>教程|使用Istio实现一个Service Mesh以简化微服务间的通信模式</title>

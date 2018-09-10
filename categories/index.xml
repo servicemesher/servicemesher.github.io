@@ -56,6 +56,15 @@
     </item>
     
     <item>
+      <title>News</title>
+      <link>http://www.servicemesher.com/categories/news/</link>
+      <pubDate>Mon, 10 Sep 2018 15:18:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/news/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Rate Limiting</title>
       <link>http://www.servicemesher.com/categories/rate-limiting/</link>
       <pubDate>Wed, 11 Jul 2018 15:32:40 +0800</pubDate>
@@ -88,6 +97,15 @@
       <pubDate>Thu, 30 Aug 2018 15:21:45 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/categories/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Weekly</title>
+      <link>http://www.servicemesher.com/categories/weekly/</link>
+      <pubDate>Mon, 10 Sep 2018 14:43:33 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/weekly/</guid>
       <description></description>
     </item>
     

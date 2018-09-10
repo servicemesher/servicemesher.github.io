@@ -6,10 +6,28 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 07 Sep 2018 12:33:30 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Sep 2018 15:18:18 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>“F5公司Aspen Mesh 1.0发布，基于Istio 1.0&#34;</title>
+      <link>http://www.servicemesher.com/blog/aspen-mesh-released/</link>
+      <pubDate>Mon, 10 Sep 2018 15:18:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/aspen-mesh-released/</guid>
+      <description>Aspen Mesh这家公司隶属于F5，Aspen Mesh基于Istio 1.0开发，这个周末刚发布了1.0版本，可以申请免费试用。 Aspen Mesh对比Ist</description>
+    </item>
+    
+    <item>
+      <title>Service Mesh Weekly #14 2018.09.03 - 2018.09.09</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-weekly-20180903-20180909/</link>
+      <pubDate>Mon, 10 Sep 2018 14:43:33 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-weekly-20180903-20180909/</guid>
+      <description>Service Mesh周报第14期，2018年9月3日至2018年9月9日。 之前的周报暂时不发到本网站上了，大家可以通过Service Mesh中文资料库</description>
+    </item>
     
     <item>
       <title>在Play with Kubernetes平台上以测试驱动的方式部署Istio</title>

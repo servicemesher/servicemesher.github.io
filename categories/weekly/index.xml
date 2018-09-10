@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Weekly on ServiceMesher</title>
+    <link>http://www.servicemesher.com/categories/weekly/</link>
+    <description>Recent content in Weekly on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 10 Sep 2018 14:43:33 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/categories/weekly/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Service Mesh Weekly #14 2018.09.03 - 2018.09.09</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-weekly-20180903-20180909/</link>
+      <pubDate>Mon, 10 Sep 2018 14:43:33 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-weekly-20180903-20180909/</guid>
+      <description>Service Mesh周报第14期，2018年9月3日至2018年9月9日。 之前的周报暂时不发到本网站上了，大家可以通过Service Mesh中文资料库</description>
+    </item>
+    
+  </channel>
+</rss>
