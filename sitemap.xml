@@ -619,12 +619,6 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/knative/</loc>
-    <lastmod>2018-08-07T22:20:49+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.servicemesher.com/tags/kube-router/</loc>
     <lastmod>2018-08-27T19:52:29+08:00</lastmod>
     <priority>0</priority>
@@ -735,6 +729,12 @@
   <url>
     <loc>http://www.servicemesher.com/tags/serverless/</loc>
     <lastmod>2018-08-20T16:14:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/serverless/</loc>
+    <lastmod>2018-08-07T22:20:49+08:00</lastmod>
     <priority>0</priority>
   </url>
   

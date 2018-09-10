@@ -10,7 +10,7 @@
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh, knative, istio, kubernetes">
+  <meta name="keywords" content="service mesh, knative, istio, kubernetes, serverless">
   
 
   <meta name="generator" content="Hugo 0.44" />
@@ -59,10 +59,10 @@
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="我们都是知道Kubernetes中个资源对象叫 autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。">
-  <meta property="og:description" content="我们都是知道Kubernetes中个资源对象叫 autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。">
-  <meta name="twitter:description" content="我们都是知道Kubernetes中个资源对象叫 autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。">
-  <meta property="og:description" content="我们都是知道Kubernetes中个资源对象叫 autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。" />
+  <meta name="description" content="我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。">
+  <meta property="og:description" content="我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。">
+  <meta name="twitter:description" content="我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。">
+  <meta property="og:description" content="我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。" />
 
   
   
@@ -130,6 +130,8 @@
                         <li><a href="/envoy/">Envoy</a></li>
                       
                         <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/weekly">Weekly</a></li>
                       
                     </ul>
                     
@@ -257,7 +259,7 @@ autocomplete('#aa-search-input',
                             <div class="author-category">
                             
                             
-                            归档于 <a href="/categories/knative">knative</a>
+                            归档于 <a href="/categories/serverless">serverless</a>
                             
                             |
                             
@@ -270,6 +272,8 @@ autocomplete('#aa-search-input',
                             <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
                             
                             <a style="text-transform:capitalize" href="/tags/kubernetes/"><i>#kubernetes</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/serverless/"><i>#serverless</i></a>
                             
                             </div>
                             
@@ -452,6 +456,8 @@ data:
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
+        <li><a href="/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/"><i class="fa fa-link"></i>使用Istio控制Serverless架构Fn Project中的函数间流量路由</a></li>
+         
         <li><a href="/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/"><i class="fa fa-link"></i>使用Kubernetes和Istio对基于容器基础设施的全面服务监控</a></li>
          
         <li><a href="/blog/deepin-service-mesh-tech-details/"><i class="fa fa-link"></i>深入解读Service Mesh背后的技术细节</a></li>
@@ -459,8 +465,6 @@ data:
         <li><a href="/blog/ab-testing-on-kubernetes-with-istio-0.8/"><i class="fa fa-link"></i>使用Istio 0.8对Kubernetes进行A/B测试</a></li>
          
         <li><a href="/blog/istio-tutorials-collection/"><i class="fa fa-link"></i>Istio service mesh示例教程汇总</a></li>
-         
-        <li><a href="/blog/announcing-istio-1.0/"><i class="fa fa-link"></i>Istio 1.0发布，已生产就绪！</a></li>
          
      </ul>
     </div>
@@ -489,9 +493,6 @@ data:
             <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
             </li>
             
-            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (1)</a>
-            </li>
-            
             <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (3)</a>
             </li>
             
@@ -499,6 +500,9 @@ data:
             </li>
             
             <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (1)</a>
             </li>
             
             <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (16)</a>
