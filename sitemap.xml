@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/</loc>
+    <lastmod>2018-09-11T14:48:53+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/aspen-mesh-released/</loc>
     <lastmod>2018-09-10T15:18:18+08:00</lastmod>
   </url>
@@ -500,7 +505,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/envoy/</loc>
-    <lastmod>2018-09-02T13:48:47+08:00</lastmod>
+    <lastmod>2018-09-11T14:48:53+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -583,14 +588,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/iptables/</loc>
+    <lastmod>2018-09-11T14:48:53+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-09-10T15:18:18+08:00</lastmod>
+    <lastmod>2018-09-11T14:48:53+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/istio/</loc>
-    <lastmod>2018-08-20T16:14:16+08:00</lastmod>
+    <lastmod>2018-09-11T14:48:53+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -752,13 +763,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-09-10T15:18:18+08:00</lastmod>
+    <lastmod>2018-09-11T14:48:53+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/tags/sidecar/</loc>
-    <lastmod>2018-08-02T15:32:40+08:00</lastmod>
+    <lastmod>2018-09-11T14:48:53+08:00</lastmod>
     <priority>0</priority>
   </url>
   
