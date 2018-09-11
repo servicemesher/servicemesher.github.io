@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>X Protocol on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/x-protocol/</link>
+    <description>Recent content in X Protocol on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 11 Sep 2018 19:06:22 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/x-protocol/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dubbo on x-protocol——SOFAMesh中的x-protocol示例演示</title>
+      <link>http://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</link>
+      <pubDate>Tue, 11 Sep 2018 19:06:22 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</guid>
+      <description>本文作者：彭泽文，阿里巴巴UC事业部高级开发工程师 X-protocol 的定位是云原生、高性能、低侵入性的通用 Service Mesh 落地方案，依托 Kubernetes 基座，利用其原生的服务注册和服</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 31 Aug 2018 12:27:25 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 11 Sep 2018 19:06:22 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dubbo on x-protocol——SOFAMesh中的x-protocol示例演示</title>
+      <link>http://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</link>
+      <pubDate>Tue, 11 Sep 2018 19:06:22 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</guid>
+      <description>本文作者：彭泽文，阿里巴巴UC事业部高级开发工程师 X-protocol 的定位是云原生、高性能、低侵入性的通用 Service Mesh 落地方案，依托 Kubernetes 基座，利用其原生的服务注册和服</description>
+    </item>
     
     <item>
       <title>蚂蚁金服开源的 SOFAMesh 的通用协议扩展解析</title>
