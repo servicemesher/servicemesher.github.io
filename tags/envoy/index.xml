@@ -6,10 +6,19 @@
     <description>Recent content in Envoy on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 11 Sep 2018 14:48:53 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 12 Sep 2018 12:38:52 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/envoy/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格的控制平面和边缘代理的重要性</title>
+      <link>http://www.servicemesher.com/blog/the-importance-of-control-planes-with-service-mesh/</link>
+      <pubDate>Wed, 12 Sep 2018 12:38:52 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/the-importance-of-control-planes-with-service-mesh/</guid>
+      <description>本文将带您了解为什么服务网格和边缘代理如此重要以及它们与持续交付的关系。 了解现代云架构如何使用微服务具有的许多优势，使开发人员能够以CI/C</description>
+    </item>
     
     <item>
       <title>理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</title>

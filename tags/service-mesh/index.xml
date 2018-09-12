@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 07 Sep 2018 12:33:30 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 12 Sep 2018 12:38:52 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格的控制平面和边缘代理的重要性</title>
+      <link>http://www.servicemesher.com/blog/the-importance-of-control-planes-with-service-mesh/</link>
+      <pubDate>Wed, 12 Sep 2018 12:38:52 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/the-importance-of-control-planes-with-service-mesh/</guid>
+      <description>本文将带您了解为什么服务网格和边缘代理如此重要以及它们与持续交付的关系。 了解现代云架构如何使用微服务具有的许多优势，使开发人员能够以CI/C</description>
+    </item>
     
     <item>
       <title>在Play with Kubernetes平台上以测试驱动的方式部署Istio</title>

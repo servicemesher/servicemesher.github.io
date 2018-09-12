@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>服务网格的控制平面和边缘代理的重要性</title>
+      <link>http://www.servicemesher.com/blog/the-importance-of-control-planes-with-service-mesh/</link>
+      <pubDate>Wed, 12 Sep 2018 12:38:52 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/the-importance-of-control-planes-with-service-mesh/</guid>
+      <description>本文将带您了解为什么服务网格和边缘代理如此重要以及它们与持续交付的关系。 了解现代云架构如何使用微服务具有的许多优势，使开发人员能够以CI/C</description>
+    </item>
+    
+    <item>
       <title>Dubbo on x-protocol——SOFAMesh中的x-protocol示例演示</title>
       <link>http://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</link>
       <pubDate>Tue, 11 Sep 2018 19:06:22 +0800</pubDate>
