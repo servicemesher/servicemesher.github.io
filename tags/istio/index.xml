@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 11 Sep 2018 14:48:53 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Sep 2018 20:26:56 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>教程|使用Istio在Kubernetes集群中实现金丝雀部署</title>
+      <link>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</link>
+      <pubDate>Thu, 13 Sep 2018 20:26:56 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</guid>
+      <description>本文为 Kublr 团队推出的 Istio Service Mesh 教程系列的第二篇。 作为Istio教程第二篇文章本教程将一步步带领你熟悉指令并解释指令的作用。我们的前一篇文章解析了i</description>
+    </item>
     
     <item>
       <title>理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</title>
