@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/serverless-vs-containers/</loc>
+    <lastmod>2018-09-16T16:49:58+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</loc>
     <lastmod>2018-09-13T20:26:56+08:00</lastmod>
   </url>
@@ -513,6 +518,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/container/</loc>
+    <lastmod>2018-09-16T16:49:58+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/distributing-system/</loc>
     <lastmod>2018-07-11T15:32:40+08:00</lastmod>
     <priority>0</priority>
@@ -760,7 +771,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/serverless/</loc>
-    <lastmod>2018-08-20T16:14:16+08:00</lastmod>
+    <lastmod>2018-09-16T16:49:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -784,7 +795,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-09-13T20:26:56+08:00</lastmod>
+    <lastmod>2018-09-16T16:49:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -850,7 +861,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-09-13T20:26:56+08:00</lastmod>
+    <lastmod>2018-09-16T16:49:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   

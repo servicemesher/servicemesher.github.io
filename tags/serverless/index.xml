@@ -6,10 +6,19 @@
     <description>Recent content in Serverless on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 20 Aug 2018 16:14:16 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 16 Sep 2018 16:49:58 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/serverless/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Serverless vs Container——开发人员向左，DevOps向右</title>
+      <link>http://www.servicemesher.com/blog/serverless-vs-containers/</link>
+      <pubDate>Sun, 16 Sep 2018 16:49:58 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/serverless-vs-containers/</guid>
+      <description>让我们来看看Serverless与容器的采用率、工具支持以及围绕Serverless和容器化的其他争论。 在Serverless和容器中，我们</description>
+    </item>
     
     <item>
       <title>Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力</title>
