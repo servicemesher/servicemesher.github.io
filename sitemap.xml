@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/istio-service-mesh-interview-redbear-brian-harrington/</loc>
+    <lastmod>2018-09-17T19:19:27+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/serverless-vs-containers/</loc>
     <lastmod>2018-09-16T16:49:58+08:00</lastmod>
   </url>
@@ -627,7 +632,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-09-13T20:26:56+08:00</lastmod>
+    <lastmod>2018-09-17T19:19:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -783,7 +788,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-09-12T12:38:52+08:00</lastmod>
+    <lastmod>2018-09-17T19:19:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -795,7 +800,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-09-16T16:49:58+08:00</lastmod>
+    <lastmod>2018-09-17T19:19:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -861,7 +866,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-09-16T16:49:58+08:00</lastmod>
+    <lastmod>2018-09-17T19:19:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   

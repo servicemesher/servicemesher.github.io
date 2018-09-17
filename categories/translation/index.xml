@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 16 Sep 2018 16:49:58 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 17 Sep 2018 19:19:27 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Service Mesh的未来将与Knative和Apahce Whisk等技术和谐共存——采访RedHat的Istio产品经理</title>
+      <link>http://www.servicemesher.com/blog/istio-service-mesh-interview-redbear-brian-harrington/</link>
+      <pubDate>Mon, 17 Sep 2018 19:19:27 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-service-mesh-interview-redbear-brian-harrington/</guid>
+      <description>Istio正在引发大量的关注，特别是1.0版本发布后。但它是否成为Kubernetes之上的事实的服务网络标准呢？ 我们采访了Red Hat的I</description>
+    </item>
     
     <item>
       <title>Serverless vs Container——开发人员向左，DevOps向右</title>
