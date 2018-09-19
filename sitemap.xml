@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/linkerd-2-0-in-general-availability/</loc>
+    <lastmod>2018-09-19T10:18:54+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-service-mesh-interview-redbear-brian-harrington/</loc>
     <lastmod>2018-09-17T19:19:27+08:00</lastmod>
   </url>
@@ -692,7 +697,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/linkerd/</loc>
-    <lastmod>2018-07-09T12:19:53+08:00</lastmod>
+    <lastmod>2018-09-19T10:18:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -788,7 +793,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-09-17T19:19:27+08:00</lastmod>
+    <lastmod>2018-09-19T10:18:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -800,7 +805,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-09-17T19:19:27+08:00</lastmod>
+    <lastmod>2018-09-19T10:18:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -866,7 +871,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-09-17T19:19:27+08:00</lastmod>
+    <lastmod>2018-09-19T10:18:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   

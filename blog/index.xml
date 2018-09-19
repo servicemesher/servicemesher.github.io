@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Linkerd 2.0 GA版本发布</title>
+      <link>http://www.servicemesher.com/blog/linkerd-2-0-in-general-availability/</link>
+      <pubDate>Wed, 19 Sep 2018 10:18:54 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/linkerd-2-0-in-general-availability/</guid>
+      <description>今天，云原生计算基金会（CNCF）和Linkerd的维护者很高兴地宣布Linkerd 2.0 GA发布。 2.0版本为Linkerd带来了性能、资源消</description>
+    </item>
+    
+    <item>
       <title>Service Mesh的未来将与Knative和Apahce Whisk等技术和谐共存——采访RedHat的Istio产品经理</title>
       <link>http://www.servicemesher.com/blog/istio-service-mesh-interview-redbear-brian-harrington/</link>
       <pubDate>Mon, 17 Sep 2018 19:19:27 +0800</pubDate>

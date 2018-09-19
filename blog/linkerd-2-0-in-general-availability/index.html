@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Service Mesh 如何解决微服务中的3个主要挑战 · ServiceMesher|服务网格中文社区</title>
+  <title>Linkerd 2.0 GA版本发布 · ServiceMesher|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh">
+  <meta name="keywords" content="service mesh, 服务网格, linkerd">
   
 
   <meta name="generator" content="Hugo 0.44" />
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="Service Mesh 如何解决微服务中的3个主要挑战" />
+  <meta property="og:title" content="Linkerd 2.0 GA版本发布" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/how-service-mesh-addresses-3-major-microservices//" />
+  <meta property="og:url" content="/blog/linkerd-2-0-in-general-availability//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="本文讲述的是企业在实施微服务时遇到的挑战，以及如何使用Service Mesh应对这些挑战。">
-  <meta property="og:description" content="本文讲述的是企业在实施微服务时遇到的挑战，以及如何使用Service Mesh应对这些挑战。">
-  <meta name="twitter:description" content="本文讲述的是企业在实施微服务时遇到的挑战，以及如何使用Service Mesh应对这些挑战。">
-  <meta property="og:description" content="本文讲述的是企业在实施微服务时遇到的挑战，以及如何使用Service Mesh应对这些挑战。" />
+  <meta name="description" content="Linkerd 2.0版本为Linkerd带来了性能、资源消耗和易用性方面的显着改进。它还将项目从集群范围的service mesh转换为可组合的service sidecar，旨在为开发人员和服务所有者提供在云原生环境中成功所需的关键工具。">
+  <meta property="og:description" content="Linkerd 2.0版本为Linkerd带来了性能、资源消耗和易用性方面的显着改进。它还将项目从集群范围的service mesh转换为可组合的service sidecar，旨在为开发人员和服务所有者提供在云原生环境中成功所需的关键工具。">
+  <meta name="twitter:description" content="Linkerd 2.0版本为Linkerd带来了性能、资源消耗和易用性方面的显着改进。它还将项目从集群范围的service mesh转换为可组合的service sidecar，旨在为开发人员和服务所有者提供在云原生环境中成功所需的关键工具。">
+  <meta property="og:description" content="Linkerd 2.0版本为Linkerd带来了性能、资源消耗和易用性方面的显着改进。它还将项目从集群范围的service mesh转换为可组合的service sidecar，旨在为开发人员和服务所有者提供在云原生环境中成功所需的关键工具。" />
 
   
   
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Service Mesh 如何解决微服务中的3个主要挑战 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Service Mesh 如何解决微服务中的3个主要挑战 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Service Mesh 如何解决微服务中的3个主要挑战 - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Linkerd 2.0 GA版本发布 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Linkerd 2.0 GA版本发布 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Linkerd 2.0 GA版本发布 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -225,7 +225,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Service Mesh 如何解决微服务中的3个主要挑战</h1>
+                <h1>Linkerd 2.0 GA版本发布</h1>
             </div>
         </div>
     </div>
@@ -243,26 +243,24 @@ autocomplete('#aa-search-input',
                         <div class="well">
                             <div class="author-category">
                             <i class="fa fa-calendar-o">
-                            2018年7月28日
+                            2018年9月19日
                             </i>
                             |
                             
-                            作者 <a href="https://twitter.com/zjory">Zach Jory</a>
+                            作者 <a href="https://www.cncf.io/author/kevans/">Kristen Evans</a>
                             
                             
-                            | 译者 <a href="https://darrenxyli.com/">李昕阳</a>
+                            | 译者 <a href="https://jimmysong.io">宋净超</a>
                             
-                            
-                            | 审校者 <a href="https://jimmysong.io">宋净超</a>
                             
                             |
-                            1300字 | 阅读大约需要3分钟
+                            1500字 | 阅读大约需要3分钟
                             </div>
                             
                             
                             <div class="author-category">
                             
-                            <a href="https://dzone.com/articles/how-service-mesh-addresses-3-major-microservices-c">查看原文</a>
+                            <a href="https://www.cncf.io/blog/2018/09/18/linkerd-2-0-in-general-availability/">查看原文</a>
                             |
                             
                             
@@ -274,9 +272,9 @@ autocomplete('#aa-search-input',
                             
                             标签
                             
-                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
+                            <a style="text-transform:capitalize" href="/tags/linkerd/"><i>#linkerd</i></a>
                             
-                            <a style="text-transform:capitalize" href="/tags/microservices/"><i>#microservices</i></a>
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
                             
                             </div>
                             
@@ -285,48 +283,42 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><strong>我们都知道微服务会增加复杂性。 了解服务网络如何解决这一问题和其他挑战。</strong></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fven4mbx0kj30db02xmxa.jpg" alt="Linkerd" /></p>
 
-<p>我最近正在阅读 Dimensional Research 撰写的<a href="https://go.lightstep.com/global-microservices-trends-report-2018">全球微服务趋势报告</a>，在阅读的同时，我个人也认为“服务网络可以帮助解决这个问题。”所以我将阐述这3个挑战以及服务网格是如何解决它们。报告中引用的受访者表明微服务正在得到广泛采用。同样清楚的是，除了微服务带来的无数好处之外，同样也带来了一些严峻的挑战。报告显示：</p>
+<p>今天，<a href="https://www.cncf.io/">云原生计算基金会</a>（CNCF）和<a href="https://linkerd.io/">Linkerd的维护者</a>很高兴地宣布Linkerd 2.0 GA发布。</p>
+
+<p>2.0版本为Linkerd带来了性能、资源消耗和易用性方面的显着改进。它还将项目从集群范围的service mesh转换为可组合的 <em>service sidecar</em> ，旨在为开发人员和服务所有者提供在云原生环境中成功所需的关键工具。</p>
+
+<p>2016年，Linkerd <a href="https://www.cncf.io/blog/2017/01/23/linkerd-project-joins-cloud-native-computing-foundation/">由Buoyant</a>创始人William Morgan和Oliver Gould发布，<a href="https://www.cncf.io/blog/2017/01/23/linkerd-project-joins-cloud-native-computing-foundation/">于2017年初捐献给CNCF</a>。从那时起，该项目经历了快速增长，现在为全球各种应用程序生态系统提供支持，从卫星成像到支付处理再到人类基因组计划。</p>
+
+<p>Linkerd 2.0的service sidecar设计使开发人员和服务所有者能够在他们的服务上运行Linkerd，提供自动可观察性、可靠性和运行时诊断，而无需更改配置或代码。通过提供轻量级的增量路径来获得平台范围的遥测、安全性和可靠性的传统service mesh功能，service sidecar方法还降低了平台所有者和系统架构师的风险。</p>
+
+<h2 id="值得注意的发布亮点">值得注意的发布亮点</h2>
 
 <ul>
-<li>91％的企业<strong>正在使用</strong>微服务或有计划使用</li>
-<li>99％的用户认为在使用微服务时遇到了<strong>挑战</strong></li>
+<li>独立的“service sidecar”设计，无需集群范围的安装即可增强单一服务。</li>
+<li>集群范围service mesh的增量路径，跨多个服务的service sidecar链接成为service mesh。</li>
+<li>安装过程零配置，零代码更改。</li>
+<li>自动Grafana仪表板和Prometheus监控服务“黄金指标”。</li>
+<li>服务之间的自动TLS，包括证书生成和分发。</li>
+<li>Rust中完整的代理重写，在延迟，吞吐量和资源消耗方面产生了数量级的改进。</li>
 </ul>
 
-<h2 id="微服务主要的挑战">微服务主要的挑战</h2>
+<h2 id="service-sidecar-service-owner和service-ops">Service Sidecar、Service Owner和Service Ops</h2>
 
-<p>该报告指出了公司面临的一系列挑战。</p>
+<p>“随着2.0发布，社区重点关注’service ops’的概念，即服务所有者不仅负责构建服务，还负责部署服务、维护服务，如果服务中断会所有者要在凌晨3点醒来， “Linkerd的核心维护者，Buoyant的首席技术官Oliver Gould说道。“服务所有者是我们正在构建的所有这些平台技术的最终客户，我们希望直接满足他们的需求。”</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/855e972fly1fto3iki07wj20zh0d9404.jpg" alt="" /></p>
+<p>云原生计算基金会首席运营官Chris Aniszczyk表示：“自从Linkerd加入CNCF以来，我们已经看到Linkerd以惊人的速度增长，现在它每天处理数十亿的生产请求。” “从1.0到2.0的迁移路径是服务和平台所有者协同工作的重大进步，我们期待看到它如何更深入地集成到云原生用户社区中。”</p>
 
-<p>大量公司既面临着技术上的挑战，同时也面临着组织结构上的挑战。而我将专注于能够用服务网格解决的技术挑战，但值得注意的是，服务网格所做的一件事就是带来一致性，因此可以在团队之间实现相同的愿景，从而减少对某些技能的需求。</p>
+<p>该项目的贡献者和最终用户社区现在涵盖了数十个组织，包括Salesforce、Walmart、Comcast、CreditKarma、PayPal、WePay和Buoyant。</p>
 
-<h2 id="每个额外的微服务都会增加运维的难度">每个额外的微服务都会增加运维的难度</h2>
+<p>“在Linkerd 2.0之前，对于服务我所拥有的只是我的公共API的统计数据。现在，我可以在一个非常精细的层面上看到每项服务的表现，“Studyo的首席技术官兼联合创始人Pascal Bourque说道，Studyo为学校设计的任务和项目管理软件。“它可以无痛安装事实甚至更好。“</p>
 
-<p>如果没有服务网格，这句话将成为现实！服务网格可以通过 API 提供监控，可伸缩性和高可用性，而不是通过分离设备。这种灵活的框架消除了与现代应用相关的操作复杂性。基础设施服务传统上是通过分离设备实现的，这意味着需要到达实际的设备来获得服务。因为每个设备的唯一性，导致为每个设备提供监控，扩展和高可用性有很高的难度。服务网格通过 API 在计算集群内部提供这些服务，不需要任何其他设备。实现服务网格意味着添加新的微服务不必增加复杂性。</p>
+<p>“在我们重新部署一项关键服务并转向Linkerd 2.0来诊断问题后，我们遇到了不稳定和延迟的问题，”专注于化妆品的社交商业公司Hush的CTO和联合创始人Will King说。“能够看到实时的请求和响应非常有用，远远超出我们的预期。我们现在使用Linkerd 2.0 tap进行所有容器服务调试。“</p>
 
-<h2 id="识别性能问题的根本原因更加困难">识别性能问题的根本原因更加困难</h2>
+<h2 id="加入社区">加入社区</h2>
 
-<p>服务网格工具箱为您提供了一些有助于解决此问题的方法：</p>
-
-<h3 id="分布式跟踪">分布式跟踪</h3>
-
-<p>跟踪为不同的微服务提供服务依赖性分析，并在请求穿梭于多个微服务时跟踪此请求。它也是识别性能瓶颈和放大特定请求以定义诸如哪些微服务导致请求延迟或哪些服务产生错误之类的事情的好方法。</p>
-
-<h3 id="指标的集合">指标的集合</h3>
-
-<p>通过服务网格能够获得的另一个有用的功能是收集指标的能力。指标是在各个时间维度上了解应用程序中发生了什么，以及何时它们是健康的或者不健康的关键。服务网格可以从网格中收集遥测数据，并为每一跳产生一致的指标。这样可以更轻松地快速解决问题，并在将来构建更具弹性的应用程序。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/855e972fly1ftobpzbxnzj20rl0b2mya.jpg" alt="" /></p>
-
-<h2 id="不同的开发语言和框架">不同的开发语言和框架</h2>
-
-<p>报告受访者指出的另一个主要挑战是在多语言世界中维护分布式架构的挑战。当从单体服务到微服务的转变时，许多公司都面临着一个现实就是，他们必须使用不同的语言和工具来让系统工作起来。大型企业尤其受此影响，因为他们拥有许多大型分布式团队。服务网格通过提供编程语言不可知性来提供一致性，这解决了多语言世界中的不一致性，其中不同的团队（每个团队都有自己的微服务）可能使用不同的编程语言和框架。网格还提供了统一的、覆盖整个应用程序的观测点，用于将可见性和控制性引入应用程序，同时将服务间的通信从隐含的基础架构领域移出到一个可以轻松查看，监视，管理和控制的位置。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/855e972fly1ftobqt0wv7j20ry0ce0uc.jpg" alt="" /></p>
-
-<p>微服务很酷，但服务网格使得它更酷。如果您正处于微服务的路途中并且发现难以应付基础架构挑战，那么服务网格可能是正确的答案。如果您对如何充分利用服务网格有任何疑问，请告诉我们，我们的工程团队随时可以与您交流。</p>
+<p>Linkerd 2.0可以<a href="https://github.com/linkerd/linkerd2">在GitHub上下载</a>，社区欢迎<a href="https://linkerd.io/2/getting-started/">新用户+贡献者</a>。可以在<a href="https://linkerd.slack.com/messages">Slack</a>、<a href="https://twitter.com/linkerd">Twitter</a>和<a href="https://lists.cncf.io/g/cncf-linkerd-users/topics">邮件列表</a>联系到Linkerd核心维护团队，也可以通过云原生社区的聚会和其他活动中联络。</p>
 
                         </div>
                         
@@ -336,13 +328,9 @@ autocomplete('#aa-search-input',
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/service-mesh-architecture-radicalizes-container-networking/" data-toggle="tooltip" data-placement="top" title="服务网格架构激活了容器网络管理—来自于服务网格创建者们的见解与展望">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/istio-service-mesh-interview-redbear-brian-harrington/" data-toggle="tooltip" data-placement="top" title="Service Mesh的未来将与Knative和Apahce Whisk等技术和谐共存——采访RedHat的Istio产品经理">&larr; 更旧</a>
                         </li>
                          
-                        <li class="next">
-                        <a href="http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/" data-toggle="tooltip" data-placement="top" title="Service Mesh深度学习系列part3—istio源码分析之pilot-discovery模块分析（续）">更新 &rarr;</a>
-                        </li>
-                        
                         </ul>
 
                     </div>
@@ -364,15 +352,15 @@ autocomplete('#aa-search-input',
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/the-rise-of-the-istio-service-mesh/"><i class="fa fa-link"></i>Istio服务网格的崛起</a></li>
+        <li><a href="/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/"><i class="fa fa-link"></i>WePay如何使用Linkerd作为服务网格代理</a></li>
          
-        <li><a href="/blog/service-mesh-rebuild-microservice-market/"><i class="fa fa-link"></i>Service Mesh：重塑微服务市场</a></li>
+        <li><a href="/blog/istio-service-mesh-interview-redbear-brian-harrington/"><i class="fa fa-link"></i>Service Mesh的未来将与Knative和Apahce Whisk等技术和谐共存——采访RedHat的Istio产品经理</a></li>
+         
+        <li><a href="/blog/the-importance-of-control-planes-with-service-mesh/"><i class="fa fa-link"></i>服务网格的控制平面和边缘代理的重要性</a></li>
          
         <li><a href="/blog/service-mesh-architecture-radicalizes-container-networking/"><i class="fa fa-link"></i>服务网格架构激活了容器网络管理—来自于服务网格创建者们的见解与展望</a></li>
          
         <li><a href="/blog/service-mesh-architectures/"><i class="fa fa-link"></i>Service Mesh架构解析</a></li>
-         
-        <li><a href="/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin/"><i class="fa fa-link"></i>Service Mesh深度学习系列part2—istio源码分析之pilot-discovery模块分析</a></li>
          
      </ul>
     </div>

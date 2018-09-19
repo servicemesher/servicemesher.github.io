@@ -425,7 +425,7 @@ Router type is used for standalone proxies acting as L7/L4 routers</li>
 <p>CloudFoundryRegistry is a service registry backed by Cloud Foundry.</p>
 
 <blockquote>
-<p><a href="https://istio.io/about/intro/">官方about文档</a>说当前支持Kubernetes、Nomad with Consul，未来准备支持 Cloud Foundry、Apache Mesos。另外根据<a href="https://istio.io/about/feature-stages/">官方的feature成熟度文档</a>，当前只有Kubernetes的集成达到stable程度，Consul、Eureka和Cloud Foundry都还是alpha水平。</p>
+<p><a href="https://istio.io/zh/docs/concepts/what-is-istio/">官方文档</a>说当前支持Kubernetes、Nomad with Consul，未来准备支持 Cloud Foundry、Apache Mesos。另外根据<a href="https://istio.io/zh/about/feature-stages/">官方的feature成熟度文档</a>，当前只有Kubernetes的集成达到stable程度，Consul、Eureka和Cloud Foundry都还是alpha水平。</p>
 </blockquote>
 
 <h3 id="envoy配置文件及命令行参数">envoy配置文件及命令行参数</h3>
@@ -527,15 +527,19 @@ terminate方法比较简单，向所有的envoy进程的abortCh发出errAbort消
 <li>第一个map是agent.epochs，它将整数epoch序列号映射到agent.desiredConfig。这个序列号从0开始计数，也就是第一个envoy进程对应epoch 0，后面递增1。但是如果有envoy进程异常退出，它对应的序列号并非是最大的情况下，这个空出来的序列号不会在计算下一个新的epoch序列号时（agent.latestEpoch方法负责计算当前最大的epoch序列号）被优先使用。所以从理论上来说序列号是会被用光的</li>
 <li>第二个map是agent.abortCh，它将epoch序列号映射到与envoy进程一一对应的abortCh。abortCh使得pilot-agent可以在必要时通知对应的envoy进程推出。这个channel初始化buffer大小为常量10，至于为什么需要10个buffer，代码中的注释说buffer aborts to prevent blocking on failing proxy，也就是万一想要abort某个envoy进程，但是envoy卡住了abort不了，有buffer的话，就不会使得管理进程也卡住。</li>
 </ol></li>
-<li>waitForExit会调用agent.proxy.Run，也就是<strong>envoy的Run方法</strong>，<strong>这里会启动envoy</strong>。envoy的Run方法流程如下：<br />
+
+<li><p>waitForExit会调用agent.proxy.Run，也就是<strong>envoy的Run方法</strong>，<strong>这里会启动envoy</strong>。envoy的Run方法流程如下：</p>
 
 <ol>
-<li>调用exec.Cmd.Start方法(启动了一个新进程)，并将envoy的标准输出和标准错误置为os.Stdout和Stderr。<br /></li>
-<li>持续监听前面说到由agent创建并管理的，并与envoy进程一一对应的abortCh，如果收到abort事件通知，则会调用Cmd.Process.Kill方法杀掉envoy，如果杀进程的过程中发生错误，也会把错误信息log一下，然后把从abortCh读到的事件返回给waitForExit。waitForExit会把该错误再封装一下，加入epoch序列号，然后作为envoy的exitStatus，并写入到agent.statusCh里</li>
-<li>启动一个新的协程来wait刚刚启动的envoy进程，并把得到的结果写到done channel里，envoy结构体的Run方法也会监听done channel，并把得到的结果返回给waitForExit<br />
-这里我们总结启动envoy过程中的协程关系：agent是全局唯一一个agent协程，它在启动每个envoy的时候，会再启动一个waitForExit协程，waitForExit会调用Command.Start启动另外一个进程运行envoy，然后waitForExit负责监听abortCh和envoy进程执行结果。</li>
+<li><p>调用exec.Cmd.Start方法(启动了一个新进程)，并将envoy的标准输出和标准错误置为os.Stdout和Stderr。</p></li>
+
+<li><p>持续监听前面说到由agent创建并管理的，并与envoy进程一一对应的abortCh，如果收到abort事件通知，则会调用Cmd.Process.Kill方法杀掉envoy，如果杀进程的过程中发生错误，也会把错误信息log一下，然后把从abortCh读到的事件返回给waitForExit。waitForExit会把该错误再封装一下，加入epoch序列号，然后作为envoy的exitStatus，并写入到agent.statusCh里</p></li>
+
+<li><p>启动一个新的协程来wait刚刚启动的envoy进程，并把得到的结果写到done channel里，envoy结构体的Run方法也会监听done channel，并把得到的结果返回给waitForExit</p></li>
 </ol></li>
 </ol>
+
+<p>这里我们总结启动envoy过程中的协程关系：agent是全局唯一一个agent协程，它在启动每个envoy的时候，会再启动一个waitForExit协程，waitForExit会调用Command.Start启动另外一个进程运行envoy，然后waitForExit负责监听abortCh和envoy进程执行结果。</p>
 
 <blockquote>
 <p>Cmd.Wait只能用于等待由Cmd.Start启动的进程,如果进程结束并范围值为0，则返回nil，如果返回其他值则返回ExitError，也可能在其他情况下返回IO错误等，Wait会释放Cmd所占用的所有资源</p>
@@ -654,7 +658,7 @@ terminate方法比较简单，向所有的envoy进程的abortCh发出errAbort消
             <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (17)</a>
             </li>
             
-            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (51)</a>
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (52)</a>
             </li>
             
             <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
@@ -923,6 +927,19 @@ terminate方法比较简单，向所有的envoy进程的abortCh发出errAbort消
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="/blog/linkerd-2-0-in-general-availability/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fven1sgw0kj32pa210am1.jpg" class="img-responsive" alt="Linkerd 2.0 GA版本发布">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/linkerd-2-0-in-general-availability/">Linkerd 2.0 GA版本发布</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="/blog/istio-service-mesh-interview-redbear-brian-harrington/">
                           
                           <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fvcrbgqiizj31ji15o4qs.jpg" class="img-responsive" alt="Service Mesh的未来将与Knative和Apahce Whisk等技术和谐共存——采访RedHat的Istio产品经理">
@@ -944,19 +961,6 @@ terminate方法比较简单，向所有的envoy进程的abortCh发出errAbort消
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="/blog/serverless-vs-containers/">Serverless vs Container——开发人员向左，DevOps向右</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/">
-                          
-                          <img src="https://ws1.sinaimg.cn/large/0069RVTdgy1fv86ysmdi2j31ji15m4qr.jpg" class="img-responsive" alt="教程|使用Istio在Kubernetes集群中实现金丝雀部署">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/">教程|使用Istio在Kubernetes集群中实现金丝雀部署</a></h5>
                     </div>
                 </div>
                 
