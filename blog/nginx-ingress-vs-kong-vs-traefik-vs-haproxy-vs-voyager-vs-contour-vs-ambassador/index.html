@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>8款开源的Kubernetes Ingress Controller/API Gateway推荐 · ServiceMesher|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格">
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="8款开源的Kubernetes Ingress Controller/API Gateway推荐" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文是对可作为Kubernetes中的API网关的开源软件的推荐列表。">
+  <meta property="og:description" content="本文是对可作为Kubernetes中的API网关的开源软件的推荐列表。">
+  <meta name="twitter:description" content="本文是对可作为Kubernetes中的API网关的开源软件的推荐列表。">
+  <meta property="og:description" content="本文是对可作为Kubernetes中的API网关的开源软件的推荐列表。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="8款开源的Kubernetes Ingress Controller/API Gateway推荐 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="8款开源的Kubernetes Ingress Controller/API Gateway推荐 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">8款开源的Kubernetes Ingress Controller/API Gateway推荐 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/weekly">Weekly</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/activity/">活动</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>8款开源的Kubernetes Ingress Controller/API Gateway推荐</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年9月20日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://kubedex.com/">Steven Acreman</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/meua">甄中元</a>
+                            
+                            
+                            | 审校者 <a href="https://jimmysong.io">宋净超</a>
+                            
+                            |
+                            1600字 | 阅读大约需要4分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://kubedex.com/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/gateway/"><i>#gateway</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/ingress/"><i>#ingress</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p>据我所知，这是kubernetes可用网关的最完整的列表。从技术上来讲，Ambassador不是ingress，但是它表现地已经非常好了。你可能已经看到了我制作的大表。</p>
+
+<p>下面有个连接可以打开并清晰的看到一个excel表格，包含了图表的详细内容，如果发现不正确的地方，请在文章末尾留言，我将及时修改。</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fvg5y29nebj31430l2wio.jpg" alt="" /></p>
+
+<p><a href="https://docs.google.com/spreadsheets/d/16bxRgpO1H_Bn-5xVZ1WrR_I-0A-GOI6egmhvqqLMOmg/edit?usp=sharing">查看全表请点击这里</a>。</p>
+
+<p>基于这些特点和我自己的经验、从别人的描述和其他相关文章中得知，我尝试着给每一个网关提供了一些选择的参考条件。下面描述先后顺序没有特别含义。</p>
+
+<h2 id="1-ingress-nginx">1. ingress-nginx</h2>
+
+<p>这可能是最常用的ingress。安全、简单可靠。支持http、https和ssl termination。你可能还想通过它支TCP、UDP，但是从GitHub上提的issue来看，目前你最好别这样做。您可以获得一些良好负载均衡选项以及强大的路由，websocket支持，基础身份认证和追踪。</p>
+
+<p>但是没有动态服务发现有点遗憾。有个配置生成器可以自动生成但还是不太完美。</p>
+
+<p>注意：我们在这里谈论的内容有官方的Kubernetes ingress。还有来自Nginx公司的Ingress有些设置不一样。</p>
+
+<h2 id="2-kong">2. Kong</h2>
+
+<p>绝大多数的人认为Kong只是API网关。它有扩展插件系统使它的功能远远超出了正常ingress该有的功能。我不会使用它去做通用的负载均衡但是如果你想用它做API管理也是一个不错的选择。</p>
+
+<h2 id="3-traefik">3. Traefik</h2>
+
+<p>Traefik的功能多的让我惊讶。它的弹性伸缩功能很棒，而且我们从很多博客上可以了解到它运行稳定。如果您当前正在使用ingress-nginx，那么为了让它支持动态配置将是一个很大的升级。事实上，没有理由让我不去用traefik。而且它应该会比现在更加出名。</p>
+
+<p>唯一的缺点是它只支持http、https和grpc。如果你非需要TCP负载均衡，那么您需要选择其他方案了。</p>
+
+<h2 id="4-haproxy">4. HAProxy</h2>
+
+<p>它是负载均衡算法之王。它似乎也非常适合负载均衡TCP连接。这是官方的HAProxy ingress，在生产环境使用的经验告诉我们它具有极其稳定的记录。如果需要，您还可以获得付费支持订阅。</p>
+
+<h2 id="5-voyager">5. Voyager</h2>
+
+<p>Voyager是一个基于HAProxy的Ingress。完美封装了HAProxy并提供了很好的文档说明。我没有看到负载均衡算法的配置位置，所以假设它只是默认为轮询。如果那是错的，请在评论中告诉我，我会更新。</p>
+
+<h2 id="6-contour">6. Contour</h2>
+
+<p>基于Envoy，它有一些更现代的功能，如支持金丝雀部署。它还具有一套良好的负载均衡算法，并支持多种协议。与列出的其他Ingress不同，我从Github那里了解到它仍处于快速发展阶段，有望添加更多功能。</p>
+
+<h2 id="7-ambassador">7. Ambassador</h2>
+
+<p>如上所述，如果你遵循严格的kubernetes定义，那么这个技术上它并不算是一个Ingress。使用Ambassador您只需简单注释您的服务，它就像一个ingress路由流量。Ambassador有一些非常酷的功能，其他任何一个Ingress都没有像影子流量那样允许您通过镜像请求数据在实时生产环境中测试服务。</p>
+
+<p>Ambassador与Opentracing和Istio很好地集成。</p>
+
+<h2 id="8-istio-ingress">8. Istio Ingress</h2>
+
+<p>如果您已经在运行Istio，那么这可能是一个很好的默认选择。它具有Ambassador拥有的一些更现代的功能。它也有故障注入，看起来可能很有趣。然而，Istio目前在这个领域做了很多工作，并且已经从Ingress转向Gateway。因此，如果您正在寻找每5秒钟没有发生变化的Ingress，您可能仍然需要考虑Ambassador。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>这里没有明显的赢家，因为你需要根据你的需求选择合适的Ingress。目前没有某一个Ingress可以做到这一切。</p>
+
+<p>我建议您使用Ambassador。如果您只是运行标准的基于http的微服务并且喜欢了解技术前沿，那么你应该毫不犹豫的选择Istio，Ambassador和Jaeger。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/kong-at-1-0-a-service-control-platform/" data-toggle="tooltip" data-placement="top" title="Kong 1.0发布，从网关转型为服务控制平台">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/linkerd-2-0-in-general-availability/"><i class="fa fa-link"></i>Linkerd 2.0 GA版本发布</a></li>
+         
+        <li><a href="/blog/istio-service-mesh-interview-redbear-brian-harrington/"><i class="fa fa-link"></i>Service Mesh的未来将与Knative和Apahce Whisk等技术和谐共存——采访RedHat的Istio产品经理</a></li>
+         
+        <li><a href="/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/"><i class="fa fa-link"></i>教程|使用Istio在Kubernetes集群中实现金丝雀部署</a></li>
+         
+        <li><a href="/blog/the-importance-of-control-planes-with-service-mesh/"><i class="fa fa-link"></i>服务网格的控制平面和边缘代理的重要性</a></li>
+         
+        <li><a href="/blog/dubbo-on-x-protocol-in-sofa-mesh/"><i class="fa fa-link"></i>Dubbo on x-protocol——SOFAMesh中的x-protocol示例演示</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (8)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (3)</a>
+            </li>
+            
+            <li><a href="/categories/news"><i class="fa fa-navicon"></i>news (1)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (1)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (17)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (54)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+            <li><a href="/categories/weekly"><i class="fa fa-navicon"></i>weekly (1)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/weekly"><i class="fa fa-tags"></i> weekly</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fvg61iq4y9j31jk15mhdt.jpg" class="img-responsive" alt="8款开源的Kubernetes Ingress Controller/API Gateway推荐">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/">8款开源的Kubernetes Ingress Controller/API Gateway推荐</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/kong-at-1-0-a-service-control-platform/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fvfv07ixx3j30yv0q41kx.jpg" class="img-responsive" alt="Kong 1.0发布，从网关转型为服务控制平台">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/kong-at-1-0-a-service-control-platform/">Kong 1.0发布，从网关转型为服务控制平台</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/linkerd-2-0-in-general-availability/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fven1sgw0kj32pa210am1.jpg" class="img-responsive" alt="Linkerd 2.0 GA版本发布">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/linkerd-2-0-in-general-availability/">Linkerd 2.0 GA版本发布</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

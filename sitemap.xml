@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</loc>
+    <lastmod>2018-09-20T18:00:47+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/kong-at-1-0-a-service-control-platform/</loc>
     <lastmod>2018-09-20T11:35:02+08:00</lastmod>
   </url>
@@ -582,7 +587,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/gateway/</loc>
-    <lastmod>2018-09-20T11:35:02+08:00</lastmod>
+    <lastmod>2018-09-20T18:00:47+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -631,6 +636,12 @@
   <url>
     <loc>http://www.servicemesher.com/tags/infoq/</loc>
     <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ingress/</loc>
+    <lastmod>2018-09-20T18:00:47+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -816,7 +827,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-09-20T11:35:02+08:00</lastmod>
+    <lastmod>2018-09-20T18:00:47+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -882,7 +893,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-09-20T11:35:02+08:00</lastmod>
+    <lastmod>2018-09-20T18:00:47+08:00</lastmod>
     <priority>0</priority>
   </url>
   
