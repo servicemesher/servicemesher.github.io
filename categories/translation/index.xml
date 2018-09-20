@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 19 Sep 2018 10:18:54 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 20 Sep 2018 11:35:02 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kong 1.0发布，从网关转型为服务控制平台</title>
+      <link>http://www.servicemesher.com/blog/kong-at-1-0-a-service-control-platform/</link>
+      <pubDate>Thu, 20 Sep 2018 11:35:02 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/kong-at-1-0-a-service-control-platform/</guid>
+      <description>图片：Kong公司员工们在庆祝第一届Kong Summit举办（来自Kong官方Twitter） Kong公司的前身是Mashape，发布了其核</description>
+    </item>
     
     <item>
       <title>Linkerd 2.0 GA版本发布</title>

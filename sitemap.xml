@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/kong-at-1-0-a-service-control-platform/</loc>
+    <lastmod>2018-09-20T11:35:02+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/linkerd-2-0-in-general-availability/</loc>
     <lastmod>2018-09-19T10:18:54+08:00</lastmod>
   </url>
@@ -577,7 +582,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/gateway/</loc>
-    <lastmod>2018-08-13T20:44:06+08:00</lastmod>
+    <lastmod>2018-09-20T11:35:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -668,6 +673,12 @@
   <url>
     <loc>http://www.servicemesher.com/tags/knative/</loc>
     <lastmod>2018-08-07T22:20:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/kong/</loc>
+    <lastmod>2018-09-20T11:35:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -805,7 +816,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-09-19T10:18:54+08:00</lastmod>
+    <lastmod>2018-09-20T11:35:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -871,7 +882,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-09-19T10:18:54+08:00</lastmod>
+    <lastmod>2018-09-20T11:35:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
