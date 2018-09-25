@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 19 Sep 2018 10:18:54 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Sep 2018 16:09:49 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Red Hat OpenShift发布Istio预览版</title>
+      <link>http://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</link>
+      <pubDate>Tue, 25 Sep 2018 16:09:49 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</guid>
+      <description>Red Hat的OpenShift服务网格技术预览版上线，基于Istio。 软件开发实践的进步与软件交付中的技术改进相结合导致了组织中的应用程序实例</description>
+    </item>
     
     <item>
       <title>Linkerd 2.0 GA版本发布</title>

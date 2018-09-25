@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Open Shift on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/open-shift/</link>
+    <description>Recent content in Open Shift on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 25 Sep 2018 16:09:49 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/open-shift/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Red Hat OpenShift发布Istio预览版</title>
+      <link>http://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</link>
+      <pubDate>Tue, 25 Sep 2018 16:09:49 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</guid>
+      <description>Red Hat的OpenShift服务网格技术预览版上线，基于Istio。 软件开发实践的进步与软件交付中的技术改进相结合导致了组织中的应用程序实例</description>
+    </item>
+    
+  </channel>
+</rss>

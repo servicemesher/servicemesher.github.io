@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Red Hat on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/red-hat/</link>
+    <description>Recent content in Red Hat on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 25 Sep 2018 16:22:22 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/red-hat/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>通过消除对特权容器的需求来提高Istio Deployment的安全性</title>
+      <link>http://www.servicemesher.com/blog/increasing-security-of-istio-deployments-by-removing-the-need-for-privileged-containers/</link>
+      <pubDate>Tue, 25 Sep 2018 16:22:22 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/increasing-security-of-istio-deployments-by-removing-the-need-for-privileged-containers/</guid>
+      <description>随着 Istio 1.0 版本的发布，Istio 正在为开发云原生应用并希望采用服务网格解决方案的公司准备黄金时间。但是，有一个潜在的问题可能会降低这些公司的采</description>
+    </item>
+    
+    <item>
+      <title>Red Hat OpenShift发布Istio预览版</title>
+      <link>http://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</link>
+      <pubDate>Tue, 25 Sep 2018 16:09:49 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</guid>
+      <description>Red Hat的OpenShift服务网格技术预览版上线，基于Istio。 软件开发实践的进步与软件交付中的技术改进相结合导致了组织中的应用程序实例</description>
+    </item>
+    
+  </channel>
+</rss>

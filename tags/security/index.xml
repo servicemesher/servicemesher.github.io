@@ -6,10 +6,19 @@
     <description>Recent content in Security on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 20 Aug 2018 21:04:02 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Sep 2018 16:22:22 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>通过消除对特权容器的需求来提高Istio Deployment的安全性</title>
+      <link>http://www.servicemesher.com/blog/increasing-security-of-istio-deployments-by-removing-the-need-for-privileged-containers/</link>
+      <pubDate>Tue, 25 Sep 2018 16:22:22 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/increasing-security-of-istio-deployments-by-removing-the-need-for-privileged-containers/</guid>
+      <description>随着 Istio 1.0 版本的发布，Istio 正在为开发云原生应用并希望采用服务网格解决方案的公司准备黄金时间。但是，有一个潜在的问题可能会降低这些公司的采</description>
+    </item>
     
     <item>
       <title>使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务</title>

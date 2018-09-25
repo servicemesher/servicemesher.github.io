@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/increasing-security-of-istio-deployments-by-removing-the-need-for-privileged-containers/</loc>
+    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</loc>
+    <lastmod>2018-09-25T16:09:49+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</loc>
     <lastmod>2018-09-20T18:00:47+08:00</lastmod>
   </url>
@@ -653,7 +663,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-09-17T19:19:27+08:00</lastmod>
+    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -772,6 +782,18 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/open-shift/</loc>
+    <lastmod>2018-09-25T16:09:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/openshift/</loc>
+    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/opentracing/</loc>
     <lastmod>2018-06-08T16:01:00+08:00</lastmod>
     <priority>0</priority>
@@ -796,8 +818,14 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/red-hat/</loc>
+    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/security/</loc>
-    <lastmod>2018-08-20T21:04:02+08:00</lastmod>
+    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -815,7 +843,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-09-19T10:18:54+08:00</lastmod>
+    <lastmod>2018-09-25T16:09:49+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -827,7 +855,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-09-20T18:00:47+08:00</lastmod>
+    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -893,7 +921,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-09-20T18:00:47+08:00</lastmod>
+    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
     <priority>0</priority>
   </url>
   
