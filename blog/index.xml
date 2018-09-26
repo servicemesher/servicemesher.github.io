@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性</title>
+      <link>http://www.servicemesher.com/blog/microservice-observability-with-istio/</link>
+      <pubDate>Wed, 26 Sep 2018 15:49:30 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/microservice-observability-with-istio/</guid>
+      <description>Trulia是一个多功能的房地产网站，为您提供有关待售房屋、出租公寓、邻里洞察、市场和趋势的本地独家新闻，以帮助您确切了解房屋购买、出售或出</description>
+    </item>
+    
+    <item>
       <title>通过消除对特权容器的需求来提高Istio Deployment的安全性</title>
       <link>http://www.servicemesher.com/blog/increasing-security-of-istio-deployments-by-removing-the-need-for-privileged-containers/</link>
       <pubDate>Tue, 25 Sep 2018 16:22:22 +0800</pubDate>
