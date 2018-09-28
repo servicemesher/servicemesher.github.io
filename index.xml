@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 26 Sep 2018 15:49:30 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Sep 2018 19:07:20 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Envoy 中的 xDS REST 和 gRPC 协议详解</title>
+      <link>http://www.servicemesher.com/blog/envoy-xds-protocol/</link>
+      <pubDate>Fri, 28 Sep 2018 19:07:20 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-xds-protocol/</guid>
+      <description>Envoy 通过查询文件或管理服务器来动态发现资源。概括地讲，对应的发现服务及其相应的 API 被称作 _xDS_。Envoy 通过订阅（_subscriptio</description>
+    </item>
     
     <item>
       <title>Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性</title>

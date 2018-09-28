@@ -6,10 +6,19 @@
     <description>Recent content in Envoy on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 12 Sep 2018 12:38:52 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Sep 2018 19:07:20 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/envoy/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Envoy 中的 xDS REST 和 gRPC 协议详解</title>
+      <link>http://www.servicemesher.com/blog/envoy-xds-protocol/</link>
+      <pubDate>Fri, 28 Sep 2018 19:07:20 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-xds-protocol/</guid>
+      <description>Envoy 通过查询文件或管理服务器来动态发现资源。概括地讲，对应的发现服务及其相应的 API 被称作 _xDS_。Envoy 通过订阅（_subscriptio</description>
+    </item>
     
     <item>
       <title>服务网格的控制平面和边缘代理的重要性</title>
