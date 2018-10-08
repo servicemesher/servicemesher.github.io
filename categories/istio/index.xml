@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 11 Sep 2018 14:48:53 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Oct 2018 19:29:58 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio流量管理实现机制深度解析</title>
+      <link>http://www.servicemesher.com/blog/istio-traffic-management-impl-intro/</link>
+      <pubDate>Mon, 08 Oct 2018 19:29:58 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-traffic-management-impl-intro/</guid>
+      <description>本文由作者授权，转载自赵化冰的博客。 Istio作为一个service mesh开源项目,其中最重要的功能就是对网格中微服务之间的流量进行管理,</description>
+    </item>
     
     <item>
       <title>理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</title>

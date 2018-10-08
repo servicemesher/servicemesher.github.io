@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>Istio流量管理实现机制深度解析</title>
+      <link>http://www.servicemesher.com/blog/istio-traffic-management-impl-intro/</link>
+      <pubDate>Mon, 08 Oct 2018 19:29:58 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-traffic-management-impl-intro/</guid>
+      <description>本文由作者授权，转载自赵化冰的博客。 Istio作为一个service mesh开源项目,其中最重要的功能就是对网格中微服务之间的流量进行管理,</description>
+    </item>
+    
+    <item>
+      <title>SOFAMesh中的多协议通用解决方案X-protocol介绍系列（1）——DNS通用寻址方案</title>
+      <link>http://www.servicemesher.com/blog/xprotocol-common-address-solution/</link>
+      <pubDate>Mon, 08 Oct 2018 14:58:03 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/xprotocol-common-address-solution/</guid>
+      <description>在本系列文章中，我们将对此进行详解Service Mesh中的多协议解决方案x-protocol，首先介绍的是“DNS通用寻址方案“。 前言 在2</description>
+    </item>
+    
+    <item>
       <title>Envoy 中的 xDS REST 和 gRPC 协议详解</title>
       <link>http://www.servicemesher.com/blog/envoy-xds-protocol/</link>
       <pubDate>Fri, 28 Sep 2018 19:07:20 +0800</pubDate>
@@ -135,15 +153,6 @@
       
       <guid>http://www.servicemesher.com/blog/aspen-mesh-released/</guid>
       <description>Aspen Mesh这家公司隶属于F5，Aspen Mesh基于Istio 1.0开发，这个周末刚发布了1.0版本，可以申请免费试用。 Aspen Mesh对比Ist</description>
-    </item>
-    
-    <item>
-      <title>Service Mesh Weekly #14 2018.09.03 - 2018.09.09</title>
-      <link>http://www.servicemesher.com/blog/service-mesh-weekly-20180903-20180909/</link>
-      <pubDate>Mon, 10 Sep 2018 14:43:33 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/blog/service-mesh-weekly-20180903-20180909/</guid>
-      <description>Service Mesh周报第14期，2018年9月3日至2018年9月9日。 之前的周报暂时不发到本网站上了，大家可以通过Service Mesh中文资料库</description>
     </item>
     
     <item>
