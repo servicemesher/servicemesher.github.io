@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/api-management-and-service-mesh/</loc>
+    <lastmod>2018-10-09T12:26:41+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-traffic-management-impl-intro/</loc>
     <lastmod>2018-10-08T19:29:58+08:00</lastmod>
   </url>
@@ -516,6 +521,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/api-management/</loc>
+    <lastmod>2018-10-09T12:26:41+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/aspen-mesh/</loc>
     <lastmod>2018-09-10T15:18:18+08:00</lastmod>
     <priority>0</priority>
@@ -858,7 +869,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-09-25T16:09:49+08:00</lastmod>
+    <lastmod>2018-10-09T12:26:41+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -870,7 +881,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-10-08T19:29:58+08:00</lastmod>
+    <lastmod>2018-10-09T12:26:41+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -942,7 +953,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-09-28T19:07:20+08:00</lastmod>
+    <lastmod>2018-10-09T12:26:41+08:00</lastmod>
     <priority>0</priority>
   </url>
   
