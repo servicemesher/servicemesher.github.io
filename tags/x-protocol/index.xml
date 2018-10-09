@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>SOFAMesh中的多协议通用解决方案X-protocol介绍系列（1）——DNS通用寻址方案</title>
-      <link>http://www.servicemesher.com/blog/xprotocol-common-address-solution/</link>
+      <title>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（1）——DNS通用寻址方案</title>
+      <link>http://www.servicemesher.com/blog/x-protocol-common-address-solution/</link>
       <pubDate>Mon, 08 Oct 2018 14:58:03 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/xprotocol-common-address-solution/</guid>
+      <guid>http://www.servicemesher.com/blog/x-protocol-common-address-solution/</guid>
       <description>在本系列文章中，我们将对此进行详解Service Mesh中的多协议解决方案x-protocol，首先介绍的是“DNS通用寻址方案“。 前言 在2</description>
     </item>
     
