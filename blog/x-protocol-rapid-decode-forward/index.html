@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Istio Mixer Cache工作原理与源码分析part3—主流程 · ServiceMesher|服务网格中文社区</title>
+  <title>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发 · ServiceMesher|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh, istio, 源码解析">
+  <meta name="keywords" content="service mesh, 服务网格, sofamesh, x-protocol">
   
 
   <meta name="generator" content="Hugo 0.48" />
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="Istio Mixer Cache工作原理与源码分析part3—主流程" />
+  <meta property="og:title" content="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/istio-mixer-cache-part3-main//" />
+  <meta property="og:url" content="/blog/x-protocol-rapid-decode-forward//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="经过前面基本概念和实现原理的介绍，大家对mixer check cache应该有了基本的了解，下面我们开始展开源代码来细细研读。">
-  <meta property="og:description" content="经过前面基本概念和实现原理的介绍，大家对mixer check cache应该有了基本的了解，下面我们开始展开源代码来细细研读。">
-  <meta name="twitter:description" content="经过前面基本概念和实现原理的介绍，大家对mixer check cache应该有了基本的了解，下面我们开始展开源代码来细细研读。">
-  <meta property="og:description" content="经过前面基本概念和实现原理的介绍，大家对mixer check cache应该有了基本的了解，下面我们开始展开源代码来细细研读。" />
+  <meta name="description" content="在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，本文介绍的是快速解码转发方案。">
+  <meta property="og:description" content="在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，本文介绍的是快速解码转发方案。">
+  <meta name="twitter:description" content="在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，本文介绍的是快速解码转发方案。">
+  <meta property="og:description" content="在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，本文介绍的是快速解码转发方案。" />
 
   
   
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio Mixer Cache工作原理与源码分析part3—主流程 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio Mixer Cache工作原理与源码分析part3—主流程 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Istio Mixer Cache工作原理与源码分析part3—主流程 - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -232,7 +232,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Istio Mixer Cache工作原理与源码分析part3—主流程</h1>
+                <h1>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发</h1>
             </div>
         </div>
     </div>
@@ -250,26 +250,26 @@ autocomplete('#aa-search-input',
                         <div class="well">
                             <div class="author-category">
                             <i class="fa fa-calendar-o">
-                            2018年6月11日
+                            2018年10月10日
                             </i>
                             |
                             
-                            作者 <a href="https://skyao.io/post/201806-istio-mixer-cache-main/">敖小剑</a>
+                            作者 <a href="https://skyao.io">敖小剑</a>
                             
                             
                             
                             |
-                            2700字 | 阅读大约需要6分钟
+                            7000字 | 阅读大约需要14分钟
                             </div>
                             
                             
                             <div class="author-category">
                             
-                            <a href="https://skyao.io/post/201806-istio-mixer-cache-main/">查看原文</a>
+                            <a href="https://skyao.io/post/201809-xprotocol-rapid-decode-forward/">查看原文</a>
                             |
                             
                             
-                            归档于 <a href="/categories/istio-mixer-cache">istio mixer cache</a>
+                            归档于 <a href="/categories/sofamesh">sofamesh</a>
                             
                             |
                             
@@ -277,9 +277,9 @@ autocomplete('#aa-search-input',
                             
                             标签
                             
-                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            <a style="text-transform:capitalize" href="/tags/sofamesh/"><i>#sofamesh</i></a>
                             
-                            <a style="text-transform:capitalize" href="/tags/source-code/"><i>#source code</i></a>
+                            <a style="text-transform:capitalize" href="/tags/x-protocol/"><i>#x-protocol</i></a>
                             
                             </div>
                             
@@ -289,253 +289,249 @@ autocomplete('#aa-search-input',
                           
 
 <blockquote>
-<p>本文转载自<a href="https://skyao.io/post/201806-istio-mixer-cache-main/">敖小剑的博客</a></p>
+<p>本文是SOFAMesh中的多协议通用解决方案x-protocol介绍系列文章之一。</p>
+
+<p><a href="/blog/x-protocol-common-address-solution/">SOFAMesh中的多协议通用解决方案x-protocol介绍系列（1）——DNS通用寻址方案</a></p>
+
+<p><a href="/blog/x-protocol-rapid-decode-forward/">SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发</a></p>
 </blockquote>
 
-<p>经过前面基本概念和实现原理的介绍，大家对mixer check cache应该有了基本的了解，下面我们开始展开源代码来细细研读。</p>
+<h2 id="前言">前言</h2>
 
-<h2 id="check-cache的主要流程">Check Cache的主要流程</h2>
+<p>在Istio和Envoy中，对通讯协议的支持，主要体现在HTTP/1.1和HTTP/2上，而我们SOFAMesh，则需要支持以下几个RPC协议：</p>
 
-<h3 id="check-cache的调用入口">Check Cache的调用入口</h3>
+<ul>
+<li>SOFARPC：这是蚂蚁金服大量使用的RPC协议（已开源）</li>
+<li>HSF RPC：这是阿里集团内部大量使用的RPC协议（未开源）</li>
+<li>Dubbo RPC: 这是社区广泛使用的RPC协议（已开源）</li>
+</ul>
 
-<p>对mixer cache的调用在代码 <code>proxy/src/istio/mixerclient/client_impl.cc</code>中的方法Check()中，此处跳过quota cache的内容：</p>
+<h3 id="更适合的平衡点-性能和功能">更适合的平衡点：性能和功能</h3>
 
-<pre><code class="language-c++">CancelFunc MixerClientImpl::Check(
-    const Attributes &amp;attributes,
-    const std::vector&lt;::istio::quota_config::Requirement&gt; &amp;quotas,
-    TransportCheckFunc transport, CheckDoneFunc on_done) {
-	++total_check_calls_;
-    
-    std::unique_ptr&lt;CheckCache::CheckResult&gt; check_result(
-        new CheckCache::CheckResult);
-    // 在这里调用了CheckCache.Check()方法，进行检查
-    check_cache_-&gt;Check(attributes, check_result.get()); 
-    CheckResponseInfo check_response_info;
+<p>对于服务间通讯解决方案，性能永远是一个值得关注的点。而SOFAMesh在项目启动时就明确要求在性能上要有更高的追求，为此，我们不得不在Istio标准实现之外寻求可以获取更高性能的方式，比如支持各种RPC协议。</p>
 
-    check_response_info.is_check_cache_hit = check_result-&gt;IsCacheHit();
-    check_response_info.response_status = check_result-&gt;status();
-
-    // 如果check cache命中，并且结果不OK，则直接结束处理
-    if (check_result-&gt;IsCacheHit() &amp;&amp; !check_result-&gt;status().ok()) {
-        on_done(check_response_info);
-        return nullptr;
-    }
-    ......
-    CheckCache::CheckResult *raw_check_result = check_result.release();
-    ......
-    // 如果check cache没有命中，则需要发起请求到mixer得到response
-    // 然后将response加入check cache中
-    return transport(
-      request, response,
-      [this, request_copy, response, raw_check_result, raw_quota_result,
-       on_done](const Status &amp;status) {
-        raw_check_result-&gt;SetResponse(status, *request_copy, *response);
-        ......
-	});
-}
-</code></pre>
-
-<p>我们先来看看缓存的保存方式，再返回来看Check()方法的具体实现，这样方便理解。</p>
-
-<p>这里的transport是一个TransportCheckFunc，具体定义在<code>include/istio/mixerclient/environment.h</code> 头文件中：</p>
-
-<pre><code class="language-c">// Defines a function prototype to make an asynchronous Check call
-using TransportCheckFunc = std::function&lt;CancelFunc(
-    const ::istio::mixer::v1::CheckRequest&amp; request,
-    ::istio::mixer::v1::CheckResponse* response, DoneFunc on_done)&gt;;
-</code></pre>
-
-<p>其中DoneFunc的定义如下：</p>
-
-<pre><code class="language-c++">// Defines a function prototype used when an asynchronous transport call
-// is completed.
-// Uses UNAVAILABLE status code to indicate network failure.
-using DoneFunc = std::function&lt;void(const ::google::protobuf::util::Status&amp;)&gt;;
-</code></pre>
-
-<p>总结说，Check()方法会通过TransportCheckFunc对mixer发起请求，在得到response之后，再调用DoneFunc。</p>
-
-<p>在这个匿名的DoneFunc中，最关键的代码是：</p>
-
-<pre><code class="language-c++">raw_check_result-&gt;SetResponse(status, *request_copy, *response);
-</code></pre>
-
-<p>这里的 raw_check_result 类型是 CheckCache::CheckResult。</p>
-
-<h2 id="保存check结果">保存Check结果</h2>
-
-<p>CheckResult.SetResponse()方法的源代码在 istio/proxy 项目， <code>src/istio/mixerclient/check_cache.h</code> 文件中</p>
-
-<pre><code class="language-c++">void SetResponse(const ::google::protobuf::util::Status&amp; status,
-                 const ::istio::mixer::v1::Attributes&amp; attributes,
-                 const ::istio::mixer::v1::CheckResponse&amp; response) {
-    if (on_response_) {
-        // 调用on_response_这个Func
-        status_ = on_response_(status, attributes, response);
-    }
-}
-
-// The function to set check response.
-using OnResponseFunc = std::function&lt;::google::protobuf::util::Status(
-    const ::google::protobuf::util::Status&amp;,
-    const ::istio::mixer::v1::Attributes&amp; attributes,
-    const ::istio::mixer::v1::CheckResponse&amp;)&gt;;
-OnResponseFunc on_response_; // on_response_在此定义
-</code></pre>
-
-<p>on_response_这个OnResponseFunc的设定在 <code>src/istio/mixerclient/check_cache.cc</code> 文件中的 CheckCache::Check() 方法中设置：</p>
-
-<pre><code class="language-c++">result-&gt;on_response_ = [this](const Status &amp;status,
-                              const Attributes &amp;attributes,
-                              const CheckResponse &amp;response) -&gt; Status {
-    if (!status.ok()) {
-        // status表示对mixer的远程调用的结果
-        // 如果调用都没有成功，则没有check结果可言，自然不必缓存
-        if (options_.network_fail_open) {
-            // 注意这里有个选项，如果打开，则在mixer调用没有成功时视为check成功
-            return Status::OK;
-        } else {
-            return status;
-        }
-    } else {
-        // 如果对mixer调用成功，拿到了response，则进行缓存
-        return CacheResponse(attributes, response, system_clock::now());
-    }
-};
-</code></pre>
-
-<p>下面是保存缓存的关键代码了，CacheResponse() 方法，清晰起见，忽略分支处理和错误处理代码，日志打印等：</p>
-
-<pre><code class="language-c++">Status CheckCache::CacheResponse(const Attributes &amp;attributes,
-                                 const CheckResponse &amp;response, Tick time_now) {
-  ......
-  // 类Referenced用来保存引用属性，也就是哪些属性被mixer adapter使用了
-  // 记得前面讲述实现原理时的例子吗？这里的Referenced就是&quot;a,b,c&quot;
-  Referenced referenced;
-  // Fill()方法解析response的precondition的referenced_attributes并填充到referenced
-  if (!referenced.Fill(attributes,
-                       response.precondition().referenced_attributes())) {
-	......
-  }
-  
-  std::string signature;
-  // 调用Signature()方法进行签名
-  if (!referenced.Signature(attributes, &quot;&quot;, &amp;signature)) {
-	......
-  }
-  
-  // 进行第一层缓存的保存
-  // referenced_map用于保存各种引用属性的组合
-  // 在实现原理中的例子，就是&quot;a,b,c&quot;和带absence key的&quot;a,b&quot;,&quot;a,c&quot;等
-  std::string hash = referenced.Hash();
-  // 计算当前引用属性的hash值，比如&quot;a,b,c&quot;的hash值
-  // 然后保存进referenced_map
-  if (referenced_map_.find(hash) == referenced_map_.end()) {
-    referenced_map_[hash] = referenced;
-  }
-  
-  // 进行第二层缓存的保存
-  // 用计算而来的签名来在第二层缓存中查找
-  CheckLRUCache::ScopedLookup lookup(cache_.get(), signature);
-  if (lookup.Found()) {
-    // 如果已经存在则更新CacheElem
-    lookup.value()-&gt;SetResponse(response, time_now);
-    return lookup.value()-&gt;status();
-  }
-  
-  // 如果不存在则插入新的CacheElem
-  CacheElem *cache_elem = new CacheElem(*this, response, time_now);
-  cache_-&gt;Insert(signature, cache_elem, 1);
-  return cache_elem-&gt;status();
-}
-</code></pre>
-
-<h3 id="缓存的结构和保存方式">缓存的结构和保存方式</h3>
-
-<p>我们现在可以结合代码来详细的展开缓存的结构和保存方式了：</p>
-
-<pre><code class="language-c++">// 第一层缓存，用于保存引用属性
-// 这个map中，value是Referenced对象，key是Referenced的hash值
-std::unordered_map&lt;std::string, Referenced&gt; referenced_map_;
-
-// 第二层缓存，用于保存check的结果
-// 这是一个 LRU Cache，key是请求的签名，value是check的结果，封装为CacheElem
-using CheckLRUCache = utils::SimpleLRUCache&lt;std::string, CacheElem&gt;;
-std::unique_ptr&lt;CheckLRUCache&gt; cache_;
-</code></pre>
-
-<p>Referenced 中保存使用的属性，包括absence的属性：</p>
-
-<pre><code class="language-c++">// The keys should be absence.
-std::vector&lt;AttributeRef&gt; absence_keys_;
-
-// The keys should match exactly.
-std::vector&lt;AttributeRef&gt; exact_keys_;
-</code></pre>
-
-<p>以前面的例子为例，”a,b,c不存在”这种引用属性组合，在保存时就是a/b保存在exact_keys中，而c保存在absence_keys中。</p>
-
-<p>CacheElem中保存的是检查结果：</p>
-
-<pre><code class="language-c++">::google::protobuf::util::Status status_;
-std::chrono::time_point&lt;std::chrono::system_clock&gt; expire_time_;
-int use_count_;
-</code></pre>
-
-<p>其中status字段是结果，而expire_time和use_count是这个缓存项的过期时间和使用次数，这个细节后面再展开。</p>
-
-<p>两层缓存key值的计算，会比较有意思，我们会在下一节中详细展开，这一节我们先关注在缓存的主要流程。我们继续看缓存的check()方法是如何实现的，即怎么匹配请求和缓存。</p>
-
-<h2 id="匹配请求和缓存">匹配请求和缓存</h2>
-
-<p>每一个请求，都要和 mixer check cache 匹配一下，看是否可以命中缓存从而避免对mixer的远程调用。有了前面的铺垫，再来看缓存是如何匹配就简单了：</p>
-
-<pre><code class="language-c++">check_cache_-&gt;Check(attributes, check_result.get()); 
-</code></pre>
-
-<p>源代码在 <code>src/istio/mixerclient/check_cache.cc</code> 中，去除错误处理和细节处理代码之外，主要代码为：</p>
-
-<pre><code class="language-c++">Status CheckCache::Check(const Attributes &amp;attributes, Tick time_now) {
-    // 游历第一层缓存,
-    // referenced_map中保存的是所有保存的引用属性组合中
-    // 在我们前面的例子中，这里保存有 {“k1”: “a,b,c”, “k2”: “a,b,c不存在” } 等
-    for (const auto &amp;it : referenced_map_) {
-        const Referenced &amp;reference = it.second;
-        std::string signature;
-        // 在所有保存的引用属性组合中，逐个匹配看请求是否具备保存的引用属性结合
-        // 如果引用属性和请求中的属性匹配，则计算签名
-        if (!reference.Signature(attributes, &quot;&quot;, &amp;signature)) {
-          continue;
-        }
-
-        // 进行第二层缓存的查找
-        // 第二层缓存的key是签名，因此简单通过key查找就OK
-        CheckLRUCache::ScopedLookup lookup(cache_.get(), signature);
-        if (lookup.Found()) {
-          CacheElem *elem = lookup.value();
-          return elem-&gt;status();
-        }
-      }
-
-  // 如果游历完第一层缓存，也没能找到匹配的引用属性,则只能返回NOT_FOUND
-  return Status(Code::NOT_FOUND, &quot;&quot;);
-}
-</code></pre>
-
-<p>注意在Signature()方法中实际做了两个事情：</p>
+<p>期间有两个发现：</p>
 
 <ol>
-<li>在referenced_map查找看是否有匹配的引用属性组合</li>
-<li>如果有，则计算签名，以便通过签名来进行第二层缓存的查找</li>
+<li>Istio在处理所有的请求转发如REST/gRPC时，会解码整个请求的header信息，拿到各种数据，提取为Attribute，然后以此为基础，提供各种丰富的功能，典型如Content Based Routing。</li>
+<li>而在测试中，我们发现：解码请求协议的header部分，对CPU消耗较大，直接影响性能。</li>
 </ol>
 
-<p>这个Signature()方法的实现是整个mixer check cache的重中之重，核心所在。</p>
+<p>因此，我们有了一个很简单的想法：是不是可以在转发时，不开启部分功能，以此换取转发过程中的更少更快的解码消耗？毕竟，不是每个服务都需要用到Content Based Routing这样的高级特性，大部分服务只使用 Version Based Routing，尤其是使用RPC通讯协议的服务，没有HTTP那么表现力丰富的header，对Content Based Routing的需求要低很多。</p>
 
-<p>篇幅原因，我们将在下一节中详细展开Signature()方法实现的源代码解析。</p>
+<p>此外，对于部分对性能有极高追求的服务，不开启高级特性而换取更高的性能，也是一种满足性能要求的折中方案。考虑到系统中总存在个别服务对性能非常敏感，我们觉得Service Mesh提供一种性能可以接近直连的方案会是一个有益的补充。为了满足这些特例而不至于因此整体否决Service Mesh方案，我们需要在Service Mesh的大框架下提供一个折中方案。</p>
 
-<h2 id="总结">总结</h2>
+<h2 id="请求转发">请求转发</h2>
 
-<p>Mixer Check Cache的主流程代码，在了解了基本概念和工作原理之后，理解起来并不困难。代码本身并没有特别费解的地方，麻烦之处在于对 Referenced Attribute / 引用属性这个概念的理解。</p>
+<p>在我们进一步深入前，我们先来探讨一下实现请求转发的技术细节。</p>
+
+<p>有一个关键问题：当Envoy/SOFA MOSN这样的代理程序，接收到来自客户端的TCP请求时，需要获得哪些信息，才可以正确的转发请求到上游的服务器端？</p>
+
+<h3 id="最关键的信息-destination">最关键的信息：destination</h3>
+
+<p>首先，毫无疑问的，必须拿到destination/目的地，也就是客户端请求必须通过某种方式明确的告之代理该请求的destination，这样代理程序才能根据这个destionation去找到正确的目标服务器，然后才有后续的连接目标服务器和转发请求等操作。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fw2zu0jen9j30vs0d475q.jpg" alt="" /></p>
+
+<p>Destination信息的表述形式可能有：</p>
+
+<p><strong>1. IP地址</strong></p>
+
+<p>可能是服务器端实例实际工作的IP地址和端口，也可能是某种转发机制，如Nginx/HAProxy等反向代理的地址或者Kubernetes中的ClusterIP。</p>
+
+<p>举例：“192.168.1.1:8080”是实际IP地址和端口，“10.2.0.100:80”是ngxin反向代理地址，“172.168.1.105:80”是Kubernetes的ClusterIP。</p>
+
+<p><strong>2. 目标服务的标识符</strong></p>
+
+<p>可用于名字查找，如服务名，可能带有各种前缀后缀。然后通过名字查找/服务发现等方式，得到地址列表（通常是IP地址+端口形式）。</p>
+
+<p>举例：“userservice”是标准服务名， “com.alipay/userservice”是加了域名前缀的服务名， “service.default.svc.cluster.local”是k8s下完整的全限定名。</p>
+
+<p>Destination信息在请求报文中的携带方式有：</p>
+
+<p><strong>1. 通过通讯协议传递</strong></p>
+
+<p>这是最常见的形式，标准做法是通过header头，典型如HTTP/1.1下一般使用 host header，举例如“Host: userservice”。HTTP/2下，类似的使用“:authority” header。</p>
+
+<p>对于非HTTP协议，通常也会有类似的设计，通过协议中某些字段来承载目标地址信息，只是不同协议中这个字段的名字各有不同。如SOFARPC，HSF等。</p>
+
+<p>有些通讯协议，可能会将这个信息存放在payload中，比如后面我们会介绍到的dubbo协议，导致需要反序列化payload之后才能拿到这个重要信息。</p>
+
+<p><strong>2. 通过TCP协议传递</strong></p>
+
+<p>这是一种非常特殊的方式，通过在TCP option传递，上一节中我们介绍Istio DNS寻址时已经详细介绍过了。</p>
+
+<h3 id="tcp拆包">TCP拆包</h3>
+
+<p>如何从请求的通讯协议中获取destination？这涉及到具体通讯协议的解码，其中第一个要解决的问题就是如何在连续的TCP报文中将每个请求内容拆分开，这里就涉及到经典的TCP沾包、拆包问题。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fw2zuc1molj30vw0ayaax.jpg" alt="" /></p>
+
+<p>转发请求时，由于涉及到负载均衡，我们需要将请求发送给多个服务器端实例。因此，有一个非常明确的要求：就是必须以单个请求为单位进行转发。即单个请求必须完整的转发给某台服务器端实例，负载均衡需要以请求为单位，不能将一个请求的多个报文包分别转发到不同的服务器端实例。所以，拆包是请求转发的必备基础。</p>
+
+<p>由于篇幅和主题限制，我们不在这里展开TCP沾包、拆包的原理。后面针对每个具体的通讯协议进行分析时再具体看各个协议的解决方案。</p>
+
+<h3 id="多路复用的关键参数-requestid">多路复用的关键参数：RequestId</h3>
+
+<p>RequestId用来关联request和对应的response，请求报文中携带一个唯一的id值，应答报文中原值返回，以便在处理response时可以找到对应的request。当然在不同协议中，这个参数的名字可能不同（如streamid等）。</p>
+
+<p>严格说，RequestId对于请求转发是可选的，也有很多通讯协议不提供支持，比如经典的HTTP1.1就没有支持。但是如果有这个参数，则可以实现多路复用，从而可以大幅度提高TCP连接的使用效率，避免出现大量连接。稍微新一点的通讯协议，基本都会原生支持这个特性，比如SOFARPC、Dubbo、HSF，还有HTTP/2就直接內建了多路复用的支持。</p>
+
+<p>HTTP/1.1不支持多路复用（http1.1有提过支持幂等方法的pipeline机制但是未能普及），用的是经典的ping-pong模式：在请求发送之后，必须独占当前连接，等待服务器端给出这个请求的应答，然后才能释放连接。因此HTTP/1.1下，并发多个请求就必须采用多连接，为了提升性能通常会使用长连接+连接池的设计。而如果有了requestid和多路复用的支持，客户端和Mesh之间理论上就可以只用一条连接（实践中可能会选择建立多条）来支持并发请求：</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw2zujxeh7j313x0dwtaz.jpg" alt="" /></p>
+
+<p>而Mesh与服务器（也可能是对端的Mesh）之间，也同样可以受益于多路复用技术，来自不同客户端而去往同一个目的地的请求可以混杂在同一条连接上发送。通过RequestId的关联，Mesh可以正确将reponse发送到请求来自的客户端。</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw2zuxvz4lj310r0dzwgj.jpg" alt="" /></p>
+
+<p>由于篇幅和主题限制，我们不在这里展开多路复用的原理。后面针对每个具体的通讯协议进行分析时再具体看各个协议的支持情况。</p>
+
+<h3 id="请求转发参数总结">请求转发参数总结</h3>
+
+<p>上面的分析中，我们可以总结到，对于Sidecar，要正确转发请求：</p>
+
+<ol>
+<li>必须获取到destination信息，得到转发的目的地，才能进行服务发现类的寻址</li>
+<li>必须要能够正确的拆包，然后以请求为单位进行转发，这是负载均衡的基础</li>
+<li>可选的RequestId，这是开启多路复用的基础</li>
+</ol>
+
+<p>因此，这里我们的第一个优化思路就出来了：尽量只解码获取这三个信息，满足转发的基本要求。其他信息如果有性能开销则跳过解码，所谓“快速解码转发”。基本原理就是牺牲信息完整性追求性能最大化。</p>
+
+<p>而结合上一节中我们引入的DNS通用寻址方案，我们是可以从请求的TCP options中得到ClusterIP，从而实现寻址。这个方式可以实现不解码请求报文，尤其是header部分解码destination信息开销大时。这是我们的第二个优化思路：跳过解码destination信息，直接通过ClusterIP进行寻址。</p>
+
+<p>具体的实现则需要结合特定通讯协议的实际情况进行。</p>
+
+<h2 id="主流通讯协议">主流通讯协议</h2>
+
+<p>现在我们开始，以Proxy、Sidecar、Service Mesh的角度来看看目前主流的通讯协议和我们前面列举的需要在SOFAMesh中支持的几个协议。</p>
+
+<h3 id="sofarpc-bolt协议">SOFARPC/bolt协议</h3>
+
+<p>SOFARPC 是一款基于 Java 实现的 RPC 服务框架，详细资料可以查阅 官方文档。SOFARPC 支持 bolt，rest，dubbo 协议进行通信。REST、dubbo后面单独展开，这里我们关注bolt协议。</p>
+
+<p>bolt 是蚂蚁金服集团开放的基于 Netty 开发的网络通信框架，其协议格式是变长，即协议头+payload。具体格式定义如下，以request为例（response类似）：</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw2zv3sqhij312j0833zq.jpg" alt="" /></p>
+
+<p>我们只关注和请求转发直接相关的字段：</p>
+
+<p><strong>TCP拆包</strong></p>
+
+<p>bolt协议是定长+变长的复合结构，前面22个字节长度固定，每个字节和协议字段的对应如图所示。其中classLen、headerLen和contentLen三个字段指出后面三个变长字段className、header、content的实际长度。和通常的变长方案相比只是变长字段有三个。拆包时思路简单明了：</p>
+
+<ol>
+<li>先读取前22个字节，解出各个协议字段的实际值，包括classLen，headerLen和contentLen</li>
+<li>按照classLen、headerLen和contentLen的大小，继续读取className、header、content</li>
+</ol>
+
+<p><strong>Destination</strong></p>
+
+<p>Bolt协议中的header字段是一个map，其中有一个key为“service”的字段，传递的是接口名/服务名。读取稍微麻烦一点点，需要先解码整个header字段，这里对性能有影响。</p>
+
+<p><strong>RequestId</strong></p>
+
+<p>Blot协议固定字段中的<code>requestID</code>字段，可以直接读取。</p>
+
+<p>SOFARPC中的bolt协议，设计的比较符合请求转发的需要，TCP拆包，读取RequestID，都没有性能问题。只是Destination的获取需要解码整个header，性能开销稍大。</p>
+
+<p>总结：适合配合DNS通用解码方案，跳过对整个header部分的解码，从而提升性能。当然由于这个header本身也不算大，优化的空间有限，具体提升需要等对比测试的结果出来。</p>
+
+<h3 id="hsf协议">HSF协议</h3>
+
+<p>HSF协议是经过精心设计工作在4层的私有协议，由于该协议没有开源，因此不便直接暴露具体格式和字段详细定义。</p>
+
+<p>不过基本的设计和bolt非常类似：</p>
+
+<ul>
+<li>采用变长格式，即协议头+payload</li>
+<li>在协议头中可以直接拿到服务接口名和服务方法名作为Destination</li>
+<li>有RequestID字段</li>
+</ul>
+
+<p>基本和bolt一致，考虑到Destination可以直接读取，比bolt还要方便一些，HSF协议可以说是对请求转发最完美的协议。</p>
+
+<p>总结：目前的实现方案也只解码了这三个关键字段，速度足够快，不需要继续优化。</p>
+
+<h3 id="dubbo协议">Dubbo协议</h3>
+
+<p>Dubbo协议也是类似的协议头+payload的变长结构，其协议格式如下：</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw2zvfi4g9j30oh03gmxj.jpg" alt="" /></p>
+
+<p>其中long类型的<code>id</code>字段用来把请求request和返回的response对应上，即我们所说的<code>RequestId</code>。</p>
+
+<p>这样TCP拆包和多路复用都轻松实现，稍微麻烦一点的是：Destination在哪里？Dubbo在这里的设计有点不够理想，在协议头中没有字段可以直接读取到Destination，需要去读取data字段，也就是payload，里面的path字段通常用来保存服务名或者接口名。method字段用来表示方法名。</p>
+
+<p>从设计上看，path字段和method字段被存放在payload中有些美中不足。庆幸的是，读取这两个字段的时候不需要完整的解开整个payload，好险，不然，那性能会没法接受的。</p>
+
+<p>以hession2为例，data字段的组合是：dubbo version + path + interface version + method + ParameterTypes + Arguments + Attachments。每个字段都是一个byte的长度+字段值的UTF bytes。因此读取时并不复杂，速度也足够快。</p>
+
+<p>基本和HSF一致，就是Destination的读取稍微麻烦一点，放在payload中的设计让人吓了一跳，好在有惊无险。整体说还是很适合转发的。</p>
+
+<p>总结：同HSF，不需要继续优化。</p>
+
+<h3 id="http-1-1">HTTP/1.1</h3>
+
+<p>HTTP/1.1的格式应该大家都熟悉，而在这里，不得不指出，HTTP/1.1协议对请求转发是非常不友好的（甚至可以说是恶劣！）：</p>
+
+<ol>
+<li>HTTP请求在拆包时，需要先按照HTTP header的格式，一行一行读取，直到出现空行表示header结束</li>
+<li>然后必须将整个header的内容全部解析出来，才能取出<code>Content-Length header</code></li>
+<li>通过<code>Content-Length</code> 值，才能完成对body内容的读取，实现正确拆包</li>
+<li>如果是chunked方式，则更复杂一些</li>
+<li>Destination通常从<code>Host</code> header中获取</li>
+<li>没有RequestId，完全无法实现多路复用</li>
+</ol>
+
+<p>这意味着，为了完成最基本的TCP拆包，必须完整的解析全部的HTTP header信息，没有任何可以优化的空间。对比上面几个RPC协议，轻松自如的快速获取几个关键信息，HTTP无疑要重很多。这也造成了在ServiceMesh下，HTTP/1.1和REST协议的性能总是和其他RPC方案存在巨大差异。</p>
+
+<p>对于注定要解码整个header部分，完全没有优化空间可言的HTTP/1.1协议来说，Content Based Routing 的解码开销是必须付出的，无论是否使用 Content Based Routing 。因此，快速解码的构想，对HTTP/1.1无效。</p>
+
+<p>总结：受HTTP/1.1协议格式限制，上述两个优化思路都无法操作。</p>
+
+<h3 id="http-2和grpc">HTTP/2和gRPC</h3>
+
+<p>作为HTTP/1.1的接班人，HTTP/2则表现的要好很多。</p>
+
+<blockquote>
+<p>备注：当然HTTP/2的协议格式复杂多了，由于篇幅和主题的限制，这里不详细介绍HTTP/2的格式。</p>
+</blockquote>
+
+<p>首先HTTP/2是以帧的方式组织报文的，所有的帧都是变长，固定的9个字节+可变的payload，Length字段指定payload的大小：</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fw2zvsjz65j30jg0650tg.jpg" alt="" /></p>
+
+<p>HTTP2的请求和应答，也被称为Message，是由多个帧构成，在去除控制帧之外，Message通常由Header帧开始，后面接CONTINUATION帧和Data帧（也可能没有，如GET请求）。每个帧都可以通过头部的Flags字段来设置END_STREAM标志，表示请求或者应答的结束。即TCP拆包的问题在HTTP/2下是有非常标准而统一的方式完成，完全和HTTP/2上承载的协议无关。</p>
+
+<p>HTTP/2通过Stream內建多路复用，这里的<code>Stream Identifier</code> 扮演了类似前面的<code>RequestId</code>的角色。</p>
+
+<p>而Destination信息则通过Header帧中的伪header <code>:authority</code> 来传递，类似HTTP/1.1中的<code>Host</code> header。不过HTTP/2下header会进行压缩，读取时稍微复杂一点，也存在需要解压缩整个header帧的性能开销。考虑到拆包和获取RequestId都不需要解包（只需读取协议头，即HTTP/2帧的固定字段），速度足够快，因此存在很大的优化空间：不解码header帧，直接通过DNS通用寻址方案，这样性能开销大为减少，有望获得极高的转发速度。</p>
+
+<p>总结：HTTP/2的帧设计，在请求转发时表现的非常友好。唯独Destination信息放在header中，会造成必须解码header帧。好在DNS通用寻址方案可以弥补，实现快速解码和转发。</p>
+
+<h2 id="service-mesh时代的rpc理想方案">Service Mesh时代的RPC理想方案</h2>
+
+<p>在文章的最后，我们总结并探讨一下，对于Service Mesh而言，什么样的RPC方案是最理想的？</p>
+
+<ol>
+<li>必须可以方便做TCP拆包，最好在协议头中就简单搞定，标准方式如固定协议头+length字段+可变payload。HSF协议、 bolt协议和dubbo协议表现完美，HTTP/2采用帧的方式，配合END_STREAM标志，方式独特但有效。HTTP/1.1则是反面典型。</li>
+<li>必须可以方便的获取destination字段，同样最好在协议头中就简单搞定。HSF协议表现完美，dubbo协议藏在payload中但终究还是可以快速解码有惊无险的过关，bolt协议和HTTP/2协议就很遗憾必须解码header才能拿到，好在DNS通用寻址方案可以弥补，但终究丢失了服务名和方法名信息。HTTP/1.1依然是反面典型。</li>
+<li>最好有RequestId字段，同样最好在协议头中就简单搞定。这方面HSF协议、dubbo协议、bolt协议表现完美，HTTP/2协议更是直接內建支持。HTTP/1.1继续反面典型。</li>
+</ol>
+
+<p>因此，仅以方便用最佳性能进行转发，对Service Mesh、sidecar友好而言，最理想的RPC方案是：</p>
+
+<p><strong>传统的变长协议</strong></p>
+
+<p>固定协议头+length字段+可变payload，然后在固定协议头中直接提供RequestId和destination。</p>
+
+<p><strong>基于帧的协议</strong></p>
+
+<p>以HTTP/2为基础，除了请求结束的标志位和RequestId外，还需要通过帧的固定字段来提供destination信息。</p>
+
+<p>或许，在未来，在Service Mesh普及之后，对Service Mesh友好成为RPC协议的特别优化方向，我们会看到表现完美更适合Service Mesh时代的新型RPC方案。</p>
 
                         </div>
                         
@@ -545,13 +541,9 @@ int use_count_;
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/istio-security-notes-by-fleeto/" data-toggle="tooltip" data-placement="top" title="Istio安全设置笔记">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/api-management-and-service-mesh/" data-toggle="tooltip" data-placement="top" title="API管理和服务网格——为什么说服务网格无法替代API管理">&larr; 更旧</a>
                         </li>
                          
-                        <li class="next">
-                        <a href="http://www.servicemesher.com/blog/istio-mixer-cache-part4-signature/" data-toggle="tooltip" data-placement="top" title="Istio Mixer Cache工作原理与源码分析part4－签名">更新 &rarr;</a>
-                        </li>
-                        
                         </ul>
 
                     </div>
@@ -573,15 +565,15 @@ int use_count_;
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/istio-mixer-cache-part2-principle/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part2－工作原理</a></li>
+        <li><a href="/blog/x-protocol-common-address-solution/"><i class="fa fa-link"></i>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（1）——DNS通用寻址方案</a></li>
          
-        <li><a href="/blog/istio-mixer-cache-part1-concepts/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part1－基本概念</a></li>
+        <li><a href="/blog/dubbo-on-x-protocol-in-sofa-mesh/"><i class="fa fa-link"></i>Dubbo on x-protocol——SOFAMesh中的x-protocol示例演示</a></li>
          
-        <li><a href="/blog/istio-security-notes-by-fleeto/"><i class="fa fa-link"></i>Istio安全设置笔记</a></li>
+        <li><a href="/blog/ant-financial-sofamesh-common-protocol-extension/"><i class="fa fa-link"></i>蚂蚁金服开源的 SOFAMesh 的通用协议扩展解析</a></li>
          
-        <li><a href="/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/"><i class="fa fa-link"></i>在Istio中使用OpenTracing Baggage进行传播和路由</a></li>
+        <li><a href="/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/"><i class="fa fa-link"></i>蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案</a></li>
          
-        <li><a href="/blog/tracing-grpc-with-istio/"><i class="fa fa-link"></i>在Istio中跟踪gRPC</a></li>
+        <li><a href="/blog/api-management-and-service-mesh/"><i class="fa fa-link"></i>API管理和服务网格——为什么说服务网格无法替代API管理</a></li>
          
      </ul>
     </div>
