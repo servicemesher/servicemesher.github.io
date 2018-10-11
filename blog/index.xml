@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>容器编排无法解决微服务的所有问题，你还需要服务网格</title>
+      <link>http://www.servicemesher.com/blog/going-beyond-container-orchestration/</link>
+      <pubDate>Thu, 11 Oct 2018 19:28:26 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/going-beyond-container-orchestration/</guid>
+      <description>最近的几次关于容器使用情况的调研都得到了相似的结果，开发团队不仅采用而且开始拥抱容器技术。大多数人并没有像超大型组织那样大规模的使用容器。在</description>
+    </item>
+    
+    <item>
       <title>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发</title>
       <link>http://www.servicemesher.com/blog/x-protocol-rapid-decode-forward/</link>
       <pubDate>Wed, 10 Oct 2018 11:45:26 +0800</pubDate>

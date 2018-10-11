@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>服务网格Istio之pilot-xDS接口笔记 · ServiceMesher|服务网格中文社区</title>
+  <title>容器编排无法解决微服务的所有问题，你还需要服务网格 · ServiceMesher|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh, istio">
+  <meta name="keywords" content="service mesh, 服务网格">
   
 
   <meta name="generator" content="Hugo 0.48" />
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="服务网格Istio之pilot-xDS接口笔记" />
+  <meta property="og:title" content="容器编排无法解决微服务的所有问题，你还需要服务网格" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/istio-service-mesh-pilot-xds-note//" />
+  <meta property="og:url" content="/blog/going-beyond-container-orchestration//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理和服务发现的实现。简单来说istio做为管理面，集合了配置中心和服务中心两个功能，并把配置发现和服务发现以一组统一的xDS接口提供出来，数据面的envoy通过xDS获取需要的信息来做服务间通信和服务治理。">
-  <meta property="og:description" content="本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理和服务发现的实现。简单来说istio做为管理面，集合了配置中心和服务中心两个功能，并把配置发现和服务发现以一组统一的xDS接口提供出来，数据面的envoy通过xDS获取需要的信息来做服务间通信和服务治理。">
-  <meta name="twitter:description" content="本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理和服务发现的实现。简单来说istio做为管理面，集合了配置中心和服务中心两个功能，并把配置发现和服务发现以一组统一的xDS接口提供出来，数据面的envoy通过xDS获取需要的信息来做服务间通信和服务治理。">
-  <meta property="og:description" content="本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理和服务发现的实现。简单来说istio做为管理面，集合了配置中心和服务中心两个功能，并把配置发现和服务发现以一组统一的xDS接口提供出来，数据面的envoy通过xDS获取需要的信息来做服务间通信和服务治理。" />
+  <meta name="description" content="容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用Service Mesh指标和现代架构去实现。">
+  <meta property="og:description" content="容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用Service Mesh指标和现代架构去实现。">
+  <meta name="twitter:description" content="容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用Service Mesh指标和现代架构去实现。">
+  <meta property="og:description" content="容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用Service Mesh指标和现代架构去实现。" />
 
   
   
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="服务网格Istio之pilot-xDS接口笔记 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="服务网格Istio之pilot-xDS接口笔记 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">服务网格Istio之pilot-xDS接口笔记 - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="容器编排无法解决微服务的所有问题，你还需要服务网格 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="容器编排无法解决微服务的所有问题，你还需要服务网格 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">容器编排无法解决微服务的所有问题，你还需要服务网格 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -232,7 +232,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>服务网格Istio之pilot-xDS接口笔记</h1>
+                <h1>容器编排无法解决微服务的所有问题，你还需要服务网格</h1>
             </div>
         </div>
     </div>
@@ -250,26 +250,30 @@ autocomplete('#aa-search-input',
                         <div class="well">
                             <div class="author-category">
                             <i class="fa fa-calendar-o">
-                            2018年6月21日
+                            2018年10月11日
                             </i>
                             |
                             
-                            作者 <a href="https://ninokop.github.io/">Tian Zhou</a>
+                            作者 <a href="https://aspenmesh.io">Lori MacVittie</a>
                             
                             
+                            | 译者 <a href="https://github.com/meua">甄中元</a>
+                            
+                            
+                            | 审校者 <a href="https://jimmysong.io">宋净超</a>
                             
                             |
-                            2700字 | 阅读大约需要6分钟
+                            1600字 | 阅读大约需要4分钟
                             </div>
                             
                             
                             <div class="author-category">
                             
-                            <a href="https://ninokop.github.io/2018/06/19/pilot-xDS/">查看原文</a>
+                            <a href="https://aspenmesh.io/2018/09/going-beyond-container-orchestration/">查看原文</a>
                             |
                             
                             
-                            归档于 <a href="/categories/istio">istio</a>
+                            归档于 <a href="/categories/translation">translation</a>
                             
                             |
                             
@@ -277,9 +281,7 @@ autocomplete('#aa-search-input',
                             
                             标签
                             
-                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
-                            
-                            <a style="text-transform:capitalize" href="/tags/pilot/"><i>#pilot</i></a>
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
                             
                             </div>
                             
@@ -288,486 +290,35 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<blockquote>
-<p>本文转载自<a href="https://ninokop.github.io/2018/06/19/pilot-xDS/">nino&rsquo;s blog</a>。</p>
-</blockquote>
+<p>最近的几次关于容器使用情况的调研都得到了相似的结果，开发团队不仅采用而且开始拥抱容器技术。大多数人并没有像超大型组织那样大规模的使用容器。在一项思科赞助的调研中发现有超过8000家企业在生产环境中使用容器。这听起来令人印象深刻，但他们使用容器的规模有限。在[戴尔EMC，英特尔和红帽委托的Forrester报告]()中，63％使用容器的企业运行的实例超过100个，82％预计到2019年会达到这一规模。这与超大型技术公司使用的数十万的规模相距甚远。</p>
 
-<p>本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理和服务发现的实现。简单来说istio做为管理面，集合了配置中心和服务中心两个功能，并把配置发现和服务发现以一组统一的xDS接口提供出来，数据面的envoy通过xDS获取需要的信息来做服务间通信和服务治理。</p>
+<p>虽然采用率很高，这并不是说组织使用容器的道路就是一帆风顺的。采纳任何一样新技术都是存在挑战的。人们使用容器时最关心的是：网络和管理。其次才去关注安全性和不一致性。</p>
 
-<h2 id="api-v1-reference">api v1 reference</h2>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw4i0hfkbgj30s80koq5c.jpg" alt="" /></p>
 
-<p>Istio中部署pilot的启动方式是<code>pilot-discovery discovery</code>。初始化阶段依次init了各种模块，其中discovery service就是xDS相关实现。<a href="https://www.envoyproxy.io/docs/envoy/latest/">envoy API reference</a> 可以查到v1和v2两个版本的API文档。<a href="https://github.com/envoyproxy/go-control-plane">envoy control plane</a> 给了v2 grpc接口相关的数据结构和接口。</p>
+<p>网络挑战是由于Kubernetes等流行的容器编排软件所带来的。Kubernetes构建的就是要支持微服务架构。这允许开发和运维人员将功能抽象成一组pod，并将其作为“service”暴露出来，并通过定义好的API进行访问。Kubernetes支持DNS和基于TCP的L4负载均衡。</p>
 
-<blockquote>
-<p><a href="https://github.com/ninokop/nino-notes/blob/master/istio/pilot-xDS.md">pilot-xDS</a>是几个月前0.6.0版本的环境上实验的接口，今天在0.8.0上跑发现RDS和CDS都查不到配置了，心好累。追到对应版本的代码发现因为routerule的配置升级到v1alpha3 routing API之后，APIV1只支持原来route rule配置，APIV2才支持virtual service相关配置，所以0.8.0环境上RDS查不到信息。</p>
-</blockquote>
+<p>基于TCP L4负载均衡的问题是它无法与L7(应用程序和API层）交互。对于任何L4负载均衡都是如此；它不是容器和Kubernetes独有的东西。L4负载均衡提供了对连接级别（TCP）协议和指标的可见性，但仅此而已。这使得很难（真的不可能）解决高阶问题，例如每秒请求数或事务等L7指标以及基于路径分割流量（路由请求）。这也意味着您无法在API层进行速率限制或支持重试和断路等关键功能。</p>
 
-<h3 id="sds">sDS</h3>
+<p>因为缺乏这些功能，开发人员就不得不将它们编码到每个微服务中。这导致运维代码包含在业务逻辑中。这明显不太合适，因为它显然违反了微服务设计的原则。因为它为微服务增加了构建和技术债。</p>
 
-<blockquote>
-<p><strong>Tips</strong> 最初看xDS的文档的时候，非常疑惑这些接口里的service-key service-node cluster-name到底是什么含义，在0.6.0版本中有个cache_stats接口，只要envoy调用过，这次查询记录就可以在cache_stats中看到。本节记录每个字段的含义和查询方式。</p>
-</blockquote>
+<p>虽然Kubernetes特别擅长处理容器化应用程序的构建和部署，但是它缺乏在运行时监控基于微服务的应用程序所需的关键功能。Kubernetes只能提供基本的健康检查存活探针和就绪探针，不能为开发和运维人员提供在执行期间快速有效地诊断问题所需的度量和追溯微服务的调用。让开发人员使用微服务来生成一致的指标可能是一项重大挑战，尤其是当他们要在限定时间内完成客户所需功能时，这会给他们带来很大的压力。</p>
 
-<pre><code class="language-bash">curl http://xx/v1/registration
-curl http://xx/v1/registration/reviews.nino.svc.cluster.local\|http
-curl http://xx/v1/registration/reviews.nino.svc.cluster.local\|http\|version=v2
-</code></pre>
+<p>而Service Mesh是解决kubernetes在网络和管理方面问题的完美解决方案。</p>
 
-<p><strong>pilot/pkg/proxy/envoy/v1/discovery.go</strong> 里v1接口文件中register函数完成了向go-restful注册服务。查询可以根据条件除了带上service-key，还可以在末尾带上labels，比如version=v2。在kube-service-registry当中service的查询是通过service endpoint 的shared informer查询的，可以很方便的匹配labels。</p>
+<h2 id="service-mesh如何应对挑战">Service Mesh如何应对挑战</h2>
 
-<pre><code class="language-json">[{
-   &quot;service-key&quot;: &quot;details.nino.svc.cluster.local|http&quot;,
-   &quot;hosts&quot;: [{
-     &quot;ip_address&quot;: &quot;10.244.0.37&quot;,
-     &quot;port&quot;: 9080
-   }]
-  }, {
-   &quot;service-key&quot;: &quot;reviews.nino.svc.cluster.local|http&quot;,
-   &quot;hosts&quot;: [{
-     &quot;ip_address&quot;: &quot;10.244.0.38&quot;,
-     &quot;port&quot;: 9080
-    }, {
-     &quot;ip_address&quot;: &quot;10.244.0.41&quot;,
-     &quot;port&quot;: 9080
-    }, {
-     &quot;ip_address&quot;: &quot;10.244.0.42&quot;,
-     &quot;port&quot;: 9080
-    }]
-}]
-</code></pre>
+<p>Service Mesh通过在Kubernetes的一些列pod中注入sidecar代理能够很好的解决这些问题。通过直接注入到容器环境，sidecar代理能够透明化网络和一致度量指标。由于所有流量都通过sidecar代理进行有效路由，因此它可以自动生成并将所需的指标提供给网格的其它部分。对于在容器环境中部署传统应用程序的组织而言，这非常有价值。传统应用程序不太可能适用于现代环境。使用Service Mesh及其sidecar代理基本使这些应用程序能够产生正确的指标，而无需或很少需要添加/修改代码。</p>
 
-<h3 id="cds">cDS</h3>
+<p>这也意味着您不必花时间协调由各种运行时代理生成的不同指标。您可以依靠服务网格在所有应用程序和微服务中生成一致的度量标准集合。</p>
 
-<p>cDS的接口里的cluster_name和service_node可以通过envoy启动参数配置。其中cluster_name可以通过serviceCluster配置，service_node默认通过ENVOY_TYPE、POD_NAME、POD_NAMESPACE和INSTANCE_IP这些环境变量合成。</p>
+<p>这些指标包含提供给网格的更高阶数据点，并启用更高级的网络以确保对请求的最快可用响应。在Service Mesh中重试和断路器由sidecar代理处理，这减轻了开发人员将运维代码引入其微服务的负担。由于sidecar代理不受限于L4负载均衡（TCP），所以靠L7负载均衡（应用程序和API层）它支持更高级别的消息路由技术。</p>
 
-<blockquote>
-<p>/v1/{:cluster_name}/{:service_node}</p>
-</blockquote>
+<p><img src="https://aspenmesh.io/wp-content/uploads/2018/09/service-mesh-vs-container-orch.jpg" alt="" /></p>
 
-<pre><code class="language-bash">curl http://xx/v1/clusters/productpage/sidecar~10.244.0.40~productpage-v1-
-8666ffbd7c-mf5f4.nino~nino.svc.cluster.local
-</code></pre>
+<p>容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用指标和现代架构去实现。</p>
 
-<pre><code class="language-json">{
-  &quot;clusters&quot;: [{
-    &quot;name&quot;: &quot;in.9080&quot;,
-    &quot;connect_timeout_ms&quot;: 1000,
-    &quot;type&quot;: &quot;static&quot;,
-    &quot;lb_type&quot;: &quot;round_robin&quot;,
-    &quot;hosts&quot;: [{
-      &quot;url&quot;: &quot;tcp://127.0.0.1:9080&quot;
-     }]
-   },{
-    &quot;name&quot;: &quot;out.ratings.nino.svc.cluster.local|http|version=v1&quot;,
-    &quot;service_name&quot;: &quot;ratings.nino.svc.cluster.local|http|version=v1&quot;,
-    &quot;connect_timeout_ms&quot;: 1000,
-    &quot;type&quot;: &quot;sds&quot;,
-    &quot;lb_type&quot;: &quot;round_robin&quot;
-   },{
-    &quot;name&quot;: &quot;out.reviews.nino.svc.cluster.local|http|version=v1&quot;,
-    &quot;service_name&quot;: &quot;reviews.nino.svc.cluster.local|http|version=v1&quot;,
-    &quot;connect_timeout_ms&quot;: 1000,
-    &quot;type&quot;: &quot;sds&quot;,
-    &quot;lb_type&quot;: &quot;round_robin&quot;
-   },{
-    &quot;name&quot;: &quot;out.reviews.nino.svc.cluster.local|http|version=v2&quot;,
-    &quot;service_name&quot;: &quot;reviews.nino.svc.cluster.local|http|version=v2&quot;,
-    &quot;connect_timeout_ms&quot;: 1000,
-    &quot;type&quot;: &quot;sds&quot;,
-    &quot;lb_type&quot;: &quot;round_robin&quot;
-   }]
- }
-</code></pre>
-
-<h3 id="rds">rDS</h3>
-
-<p>接口类似cDS，通过istioctl创建了route rule之后可以通过routes查到结果。下面的例子是发布了关于reviews服务的权重规则。可以通过以下RDS接口查到对应的权重规则。</p>
-
-<blockquote>
-<p>/v1/{:route_config_name}/{:cluster_name}/{:service_node}</p>
-</blockquote>
-
-<pre><code class="language-bash">curl http://xx/v1/routes/9080/productpage/sidecar~10.244.0.40~
-productpage-v1-8666ffbd7c-mf5f4.nino~nino.svc.cluster.local
-</code></pre>
-
-<pre><code class="language-json">{
-  &quot;validate_clusters&quot;: true,
-  &quot;virtual_hosts&quot;: [
-   {
-    &quot;name&quot;: &quot;ratings.nino.svc.cluster.local|http&quot;,
-    &quot;domains&quot;: [
-     &quot;ratings:9080&quot;,
-     &quot;ratings&quot;,
-     &quot;ratings.nino:9080&quot;,
-     &quot;ratings.nino&quot;,
-     &quot;ratings.nino.svc:9080&quot;,
-     &quot;ratings.nino.svc&quot;,
-     &quot;ratings.nino.svc.cluster:9080&quot;,
-     &quot;ratings.nino.svc.cluster&quot;,
-     &quot;ratings.nino.svc.cluster.local:9080&quot;,
-     &quot;ratings.nino.svc.cluster.local&quot;,
-     &quot;10.101.178.48:9080&quot;,
-     &quot;10.101.178.48&quot;
-    ],
-    &quot;routes&quot;: [
-     {
-      &quot;prefix&quot;: &quot;/&quot;,
-      &quot;cluster&quot;: &quot;out.ratings.nino.svc.cluster.local|http|version=v1&quot;,
-      &quot;timeout_ms&quot;: 0,
-      &quot;decorator&quot;: {
-       &quot;operation&quot;: &quot;ratings-default&quot;
-      }
-     }
-    ]
-   },
-   {
-    &quot;name&quot;: &quot;reviews.nino.svc.cluster.local|http&quot;,
-    &quot;domains&quot;: [
-     &quot;reviews:9080&quot;,
-     &quot;reviews&quot;,
-     &quot;reviews.nino:9080&quot;,
-     &quot;reviews.nino&quot;,
-     &quot;reviews.nino.svc:9080&quot;,
-     &quot;reviews.nino.svc&quot;,
-     &quot;reviews.nino.svc.cluster:9080&quot;,
-     &quot;reviews.nino.svc.cluster&quot;,
-     &quot;reviews.nino.svc.cluster.local:9080&quot;,
-     &quot;reviews.nino.svc.cluster.local&quot;,
-     &quot;10.108.121.171:9080&quot;,
-     &quot;10.108.121.171&quot;
-    ],
-    &quot;routes&quot;: [
-     {
-      &quot;prefix&quot;: &quot;/&quot;,
-      &quot;weighted_clusters&quot;: {
-       &quot;clusters&quot;: [
-        {
-         &quot;name&quot;: &quot;out.reviews.nino.svc.cluster.local|http|version=v1&quot;,
-         &quot;weight&quot;: 50
-        },
-        {
-         &quot;name&quot;: &quot;out.reviews.nino.svc.cluster.local|http|version=v2&quot;,
-         &quot;weight&quot;: 50
-        }
-       ]
-      },
-      &quot;timeout_ms&quot;: 0,
-      &quot;decorator&quot;: {
-       &quot;operation&quot;: &quot;reviews-default&quot;
-      }
-     }
-    ]
-   }
-  ]
- }
-</code></pre>
-
-<h2 id="api-v2-reference">api v2 reference</h2>
-
-<h3 id="eds-http-debug">eds http debug</h3>
-
-<p>虽然v2是grpc的接口，但是pilot提供了<code>InitDebug</code>，可以通过debug接口查询服务和routes等服务和配置信息。比如下面是edsz的debug接口。</p>
-
-<pre><code class="language-bash">curl http://10.99.241.12:8080/debug/edsz
-</code></pre>
-
-<pre><code class="language-json">[{
-    &quot;clusterName&quot;: &quot;outbound|9080||reviews.nino.svc.cluster.local&quot;,
-    &quot;endpoints&quot;: [{
-        &quot;lbEndpoints&quot;: [{
-            &quot;endpoint&quot;: {
-                &quot;address&quot;: {
-                    &quot;socketAddress&quot;: {
-                        &quot;address&quot;: &quot;10.244.0.56&quot;,
-                        &quot;portValue&quot;: 9080
-                    }
-                }
-            }
-        }, {
-            &quot;endpoint&quot;: {
-                &quot;address&quot;: {
-                    &quot;socketAddress&quot;: {
-                        &quot;address&quot;: &quot;10.244.0.58&quot;,
-                        &quot;portValue&quot;: 9080
-                    }
-                }
-            }
-        }, {
-            &quot;endpoint&quot;: {
-                &quot;address&quot;: {
-                    &quot;socketAddress&quot;: {
-                        &quot;address&quot;: &quot;10.244.2.25&quot;,
-                        &quot;portValue&quot;: 9080
-                    }
-                }
-            }
-        }]
-    }]
-}, {
-    &quot;clusterName&quot;: &quot;outbound|9080|v3|reviews.nino.svc.cluster.local&quot;,
-    &quot;endpoints&quot;: [{
-        &quot;lbEndpoints&quot;: [{
-            &quot;endpoint&quot;: {
-                &quot;address&quot;: {
-                    &quot;socketAddress&quot;: {
-                        &quot;address&quot;: &quot;10.244.0.58&quot;,
-                        &quot;portValue&quot;: 9080
-                    }
-                }
-            }
-        }]
-    }]
-}]
-</code></pre>
-
-<h3 id="eds-grpc">eds grpc</h3>
-
-<p>在envoy的go-control-plane接口定义中istio需要实现以下接口，结果pilot只实现了StreamEndpoints。看了下基本实现eds只需要DiscoveryRequest里的ResourceNames这个字段，其实跟v1的接口一样就是需要service-key。NodeId和TypeUrl可省略，后者默认就是EndpointType。</p>
-
-<pre><code class="language-go">type EndpointDiscoveryServiceServer interface {
-    StreamEndpoints(EndpointDiscoveryService_StreamEndpointsServer) error
-    FetchEndpoints(context.Context, *DiscoveryRequest) (*DiscoveryResponse, error)
-}
-
-type EndpointDiscoveryService_StreamEndpointsServer interface {
-    Send(*DiscoveryResponse) error
-    Recv() (*DiscoveryRequest, error)
-    grpc.ServerStream
-}
-</code></pre>
-
-<p>这个ResourceNames支持两种格式，其中v1和version=v1可以没有，这个代表labels和新版定义的subsets。eds的解析里兼容两个版本的解析方式。</p>
-
-<blockquote>
-<p>outbound|http|v1|istioserver.pilot.svc.cluster.local</p>
-
-<p>istioserver.pilot.svc.cluster.local|http|version=v1</p>
-</blockquote>
-
-<p><strong>istio/pilot/pkg/proxy/envoy/v2/eds.go</strong></p>
-
-<pre><code class="language-go">xds := xdsapi.NewEndpointDiscoveryServiceClient(conn)
-edsstr, err := xds.StreamEndpoints(context.Background())
-err = edsstr.Send(&amp;xdsapi.DiscoveryRequest{
-    ResourceNames: []string{&quot;istioserver.pilot.svc.cluster.local|http|version=v1&quot;},
-	TypeUrl:       EndpointType,
-})
-res1, err := edsstr.Recv()
-cla, err := getLoadAssignment(res1)
-</code></pre>
-
-<p>pilot把这个响应<code>DiscoveryResponse</code>的Resources字段用<code>ClusterLoadAssignment</code>代替。客户端需要<code>getLoadAssignment</code>从res1.Resources[0].Value反序列化出真正的响应结构。</p>
-
-<p><strong>github.com/envoyproxy/go-control-plane/envoy/api/v2/eds.pb.go</strong></p>
-
-<pre><code class="language-go">type ClusterLoadAssignment struct {
-    ClusterName string 
-    // List of endpoints to load balance to.
-    Endpoints []envoy_api_v2_endpoint.LocalityLbEndpoints 
-    // Load balancing policy settings.
-    Policy *ClusterLoadAssignment_Policy
-}
-</code></pre>
-
-<h3 id="ads-grpc">ads grpc</h3>
-
-<p>查询eds还有另一种方式ads，即Aggregated Discovery Service，它封装了下面这个接口。istio在实现过程中根据typeUrl识别xDS的类别。除了eds以外，其他lds rds cds都是由ads集成的，没有单独的xds接口了。</p>
-
-<pre><code class="language-go">type AggregatedDiscoveryServiceServer interface {
-    // This is a gRPC-only API.
-    StreamAggregatedResources(AggregatedDiscoveryService_StreamAggregatedResourcesServer) error
-}
-</code></pre>
-
-<p>当类型选择为EndpointType时，查询结果跟eds一致，不过ads接口要求NodeID必须在pilot缓存中存在。</p>
-
-<pre><code class="language-go">xds := ads.NewAggregatedDiscoveryServiceClient(conn)
-adser, err := xds.StreamAggregatedResources(context.Background())
-err = adser.Send(&amp;xdsapi.DiscoveryRequest{
-    Node: &amp;envoy_api_v2_core1.Node{
-        Id: &quot;sidecar~10.109.11.31~productpage-v1-586c4486b7-rk2rh.nino~nino.svc.cluster.local&quot;,
-	},
-    ResourceNames: []string{&quot;istioserver.pilot.svc.cluster.local|http&quot;},
-    TypeUrl:       EndpointType,
-})
-res1, err := adser.Recv()
-cla, err := getLoadAssignment(res1)
-</code></pre>
-
-<h3 id="cds-http-debug">cds http debug</h3>
-
-<p>通过cdsz可以看到每个nodeID对应的clusters的配置，如果系统中用户没有发布subnets，从cds实际上查不到带tag或者说带version的信息。</p>
-
-<blockquote>
-<p>curl <a href="http://10.99.241.12:8080/debug/cdsz">http://10.99.241.12:8080/debug/cdsz</a></p>
-</blockquote>
-
-<pre><code class="language-go">{
-  &quot;name&quot;: &quot;outbound|8084||istioserver.pilot.svc.cluster.local&quot;,
-  &quot;type&quot;: &quot;EDS&quot;,
-  &quot;edsClusterConfig&quot;: {
-    &quot;edsConfig&quot;: {
-      &quot;ads&quot;: {
-      }
-    },
-    &quot;serviceName&quot;: &quot;outbound|8084||istioserver.pilot.svc.cluster.local&quot;
-  },
-  &quot;connectTimeout&quot;: &quot;1.000s&quot;,
-  &quot;circuitBreakers&quot;: {
-    &quot;thresholds&quot;: [
-      {
-      }
-    ]
-  }
-},
-</code></pre>
-
-<h3 id="cds-grpc">cds grpc</h3>
-
-<p>cds接口返回的数据是Cluster，包含了所有这个服务的配置信息。但因为目前用不到就布列出来了，具体定义见文件 <strong>github.com/envoyproxy/go-control-plane/envoy/api/v2/cds.pb.go</strong></p>
-
-<pre><code class="language-go">type Cluster struct {
-    Name string 
-    ...
-    Type Cluster_DiscoveryType 
-    EdsClusterConfig *Cluster_EdsClusterConfig 
-    ConnectTimeout time.Duration 
-    LbPolicy Cluster_LbPolicy 
-
-    CircuitBreakers *envoy_api_v2_cluster.CircuitBreakers 
-    ...
-}
-</code></pre>
-
-<h3 id="rds-grpc">rds grpc</h3>
-
-<p>rds接口返回的数据结构是<code>RouteConfiguration</code>，这个RouteConfiguration对应的是新版本的路由配置格式，就是virtual service和destination rules这对规则。</p>
-
-<p><strong>github.com/envoyproxy/go-control-plane/envoy/api/v2/rds.pb.go</strong></p>
-
-<pre><code class="language-go">type RouteConfiguration struct {
-    Name string
-    VirtualHosts []envoy_api_v2_route.VirtualHost 
-    InternalOnlyHeaders []string 
-    ResponseHeadersToAdd []*envoy_api_v2_core1.HeaderValueOption 
-    ResponseHeadersToRemove []string 
-    RequestHeadersToAdd []*envoy_api_v2_core1.HeaderValueOption 
-    ValidateClusters *google_protobuf.BoolValue 
-}
-</code></pre>
-
-<blockquote>
-<p>看了数据结构注释，在RDS当中ResourceName填的是routeConfiguration的名字。</p>
-</blockquote>
-
-<pre><code class="language-go">rds.Send(&amp;xdsapi.DiscoveryRequest{
-    ResponseNonce: time.Now().String(),
-    Node: &amp;envoy_api_v2_core1.Node{
-        Id: &quot;sidecar~10.244.0.58~reviews-v3-79fb5c99d5-d9k7b.nino~nino.svc.cluster.local&quot;,
-    },
-    ResourceNames: []string{&quot;9080&quot;},
-    TypeUrl:       RouteType})
-</code></pre>
-
-<p>rds的查询结果实例如下，我就是发布了一个reviews的50%：50%的权重规则。</p>
-
-<pre><code class="language-json">{
- &quot;versionInfo&quot;: &quot;2018-06-21 07:23:37.290525595 +0000 UTC m=+600.138437218&quot;,
- &quot;resources&quot;: [
-  {
-   &quot;@type&quot;: &quot;type.googleapis.com/envoy.api.v2.RouteConfiguration&quot;,
-   &quot;name&quot;: &quot;9080&quot;,
-   &quot;virtualHosts&quot;: [
-    {
-     &quot;name&quot;: &quot;productpage.nino.svc.cluster.local:9080&quot;,
-     &quot;domains&quot;: [
-      &quot;productpage.nino.svc.cluster.local&quot;,
-      &quot;productpage.nino.svc.cluster.local:9080&quot;,
-      &quot;productpage&quot;,
-      &quot;productpage:9080&quot;,
-      &quot;productpage.nino.svc.cluster&quot;,
-      &quot;productpage.nino.svc.cluster:9080&quot;,
-      &quot;productpage.nino.svc&quot;,
-      &quot;productpage.nino.svc:9080&quot;,
-      &quot;productpage.nino&quot;,
-      &quot;productpage.nino:9080&quot;,
-      &quot;10.109.11.31&quot;,
-      &quot;10.109.11.31:9080&quot;
-     ],
-     &quot;routes&quot;: [
-      {
-       &quot;match&quot;: {
-        &quot;prefix&quot;: &quot;/&quot;
-       },
-       &quot;route&quot;: {
-        &quot;cluster&quot;: &quot;outbound|9080|v1|productpage.nino.svc.cluster.local&quot;,
-        &quot;useWebsocket&quot;: false
-       },
-       &quot;decorator&quot;: {
-        &quot;operation&quot;: &quot;productpage&quot;
-       }
-      }
-     ]
-    },
-    {
-     &quot;name&quot;: &quot;reviews.nino.svc.cluster.local:9080&quot;,
-     &quot;domains&quot;: [
-      &quot;reviews.nino.svc.cluster.local&quot;,
-      &quot;reviews.nino.svc.cluster.local:9080&quot;,
-      &quot;reviews&quot;,
-      &quot;reviews:9080&quot;,
-      &quot;reviews.nino.svc.cluster&quot;,
-      &quot;reviews.nino.svc.cluster:9080&quot;,
-      &quot;reviews.nino.svc&quot;,
-      &quot;reviews.nino.svc:9080&quot;,
-      &quot;reviews.nino&quot;,
-      &quot;reviews.nino:9080&quot;,
-      &quot;10.109.242.124&quot;,
-      &quot;10.109.242.124:9080&quot;
-     ],
-     &quot;routes&quot;: [
-      {
-       &quot;match&quot;: {
-        &quot;prefix&quot;: &quot;/&quot;
-       },
-       &quot;route&quot;: {
-        &quot;weightedClusters&quot;: {
-         &quot;clusters&quot;: [
-          {
-           &quot;name&quot;: &quot;outbound|9080|v2|reviews.nino.svc.cluster.local&quot;,
-           &quot;weight&quot;: 50
-          },
-          {
-           &quot;name&quot;: &quot;outbound|9080|v3|reviews.nino.svc.cluster.local&quot;,
-           &quot;weight&quot;: 50
-          }
-         ]
-        },
-        &quot;useWebsocket&quot;: false
-       },
-       &quot;decorator&quot;: {
-        &quot;operation&quot;: &quot;reviews&quot;
-       }
-      }
-     ]
-    }
-   ],
-   &quot;validateClusters&quot;: false
-  }
- ],
- &quot;typeUrl&quot;: &quot;type.googleapis.com/envoy.api.v2.RouteConfiguration&quot;,
- &quot;nonce&quot;: &quot;2018-06-21 07:23:59.18418814 +0000 UTC m=+622.032099759&quot;
-}
-</code></pre>
-
-<h2 id="参考">参考</h2>
-
-<ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/">envoy API reference</a></li>
-<li><a href="https://github.com/envoyproxy/go-control-plane">envoy control plane</a></li>
-<li><a href="https://istio.io/">istio指南</a></li>
-</ul>
+<p>服务网格可以很好的提供这两种服务。当您需要超越容器编排时，请使用服务网格。</p>
 
                         </div>
                         
@@ -777,13 +328,9 @@ cla, err := getLoadAssignment(res1)
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/the-universal-data-plane-api/" data-toggle="tooltip" data-placement="top" title="Service Mesh中的通用数据平面API设计">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/x-protocol-rapid-decode-forward/" data-toggle="tooltip" data-placement="top" title="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发">&larr; 更旧</a>
                         </li>
                          
-                        <li class="next">
-                        <a href="http://www.servicemesher.com/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/" data-toggle="tooltip" data-placement="top" title="容器、服务网格和API网关：从边缘开始">更新 &rarr;</a>
-                        </li>
-                        
                         </ul>
 
                     </div>
@@ -805,15 +352,15 @@ cla, err := getLoadAssignment(res1)
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/"><i class="fa fa-link"></i>Vistio—使用Netflix的Vizceral可视化Istio service mesh</a></li>
+        <li><a href="/blog/api-management-and-service-mesh/"><i class="fa fa-link"></i>API管理和服务网格——为什么说服务网格无法替代API管理</a></li>
          
-        <li><a href="/blog/the-rise-of-the-istio-service-mesh/"><i class="fa fa-link"></i>Istio服务网格的崛起</a></li>
+        <li><a href="/blog/istio-on-openshift-technology-preview/"><i class="fa fa-link"></i>Red Hat OpenShift发布Istio预览版</a></li>
          
-        <li><a href="/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/"><i class="fa fa-link"></i>Twistlock使Istio的安全层更强大，更易于监控</a></li>
+        <li><a href="/blog/linkerd-2-0-in-general-availability/"><i class="fa fa-link"></i>Linkerd 2.0 GA版本发布</a></li>
          
-        <li><a href="/blog/istio-mixer-cache-part4-signature/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part4－签名</a></li>
+        <li><a href="/blog/istio-service-mesh-interview-redbear-brian-harrington/"><i class="fa fa-link"></i>Service Mesh的未来将与Knative和Apahce Whisk等技术和谐共存——采访RedHat的Istio产品经理</a></li>
          
-        <li><a href="/blog/istio-mixer-cache-part3-main/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part3—主流程</a></li>
+        <li><a href="/blog/the-importance-of-control-planes-with-service-mesh/"><i class="fa fa-link"></i>服务网格的控制平面和边缘代理的重要性</a></li>
          
      </ul>
     </div>

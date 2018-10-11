@@ -1,5 +1,38 @@
 [
   {
+    "author": "敖小剑",
+    "authorlink": "https://skyao.io",
+    "banner": "https://ws4.sinaimg.cn/large/006tNbRwly1fw0twx3z2mj30rs0kujtn.jpg",
+    "categories": [
+      "sofamesh"
+    ],
+    "date": "2018-10-10T11:45:26+08:00",
+    "fuzzywordcount": 7000,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "sofamesh",
+      "x-protocol"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-10-10T11:45:26+08:00",
+    "objectID": "9204d8a05fbb2bea8b07fccc8dd6e8c9",
+    "permalink": "http://www.servicemesher.com/blog/x-protocol-rapid-decode-forward/",
+    "publishdate": "2018-10-10T11:45:26+08:00",
+    "readingtime": 14,
+    "relpermalink": "/blog/x-protocol-rapid-decode-forward/",
+    "summary": "在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，本文介绍的是快速解码转发方案。",
+    "tags": [
+      "sofamesh",
+      "x-protocol"
+    ],
+    "title": "SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发",
+    "translator": null,
+    "url": "/blog/x-protocol-rapid-decode-forward/",
+    "weight": 0,
+    "wordcount": 6937
+  },
+  {
     "author": "Joaquim Moreno",
     "authorlink": "https://itnext.io/@jmprusi?source=post_header_lockup",
     "banner": "https://ws3.sinaimg.cn/large/006tNbRwly1fw1v2jdroej30rs0ku78v.jpg",
@@ -70,11 +103,12 @@
       "sofamesh"
     ],
     "date": "2018-10-08T14:58:03+08:00",
-    "fuzzywordcount": 5900,
+    "fuzzywordcount": 6000,
     "keywords": [
       "service mesh",
       "服务网格",
-      "x-protocol"
+      "x-protocol",
+      "sofamesh"
     ],
     "lang": "zh",
     "lastmod": "2018-10-08T14:58:03+08:00",
@@ -92,7 +126,7 @@
     "translator": null,
     "url": "/blog/x-protocol-common-address-solution/",
     "weight": 0,
-    "wordcount": 5879
+    "wordcount": 5948
   },
   {
     "author": "Envoy Team",
