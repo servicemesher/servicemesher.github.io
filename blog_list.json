@@ -1,5 +1,35 @@
 [
   {
+    "author": "Lori MacVittie",
+    "authorlink": "https://aspenmesh.io",
+    "banner": "https://ws4.sinaimg.cn/large/006tNbRwly1fw4iiiiut1j30rs0ks11j.jpg",
+    "categories": [
+      "translation"
+    ],
+    "date": "2018-10-11T19:28:26+08:00",
+    "fuzzywordcount": 1600,
+    "keywords": [
+      "service mesh",
+      "服务网格"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-10-11T19:28:26+08:00",
+    "objectID": "748a08f901caba3cdbc720a6c92f71ab",
+    "permalink": "http://www.servicemesher.com/blog/going-beyond-container-orchestration/",
+    "publishdate": "2018-10-11T19:28:26+08:00",
+    "readingtime": 4,
+    "relpermalink": "/blog/going-beyond-container-orchestration/",
+    "summary": "容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用Service Mesh指标和现代架构去实现。",
+    "tags": [
+      "service mesh"
+    ],
+    "title": "容器编排无法解决微服务的所有问题，你还需要服务网格",
+    "translator": "甄中元",
+    "url": "/blog/going-beyond-container-orchestration/",
+    "weight": 0,
+    "wordcount": 1552
+  },
+  {
     "author": "敖小剑",
     "authorlink": "https://skyao.io",
     "banner": "https://ws4.sinaimg.cn/large/006tNbRwly1fw0twx3z2mj30rs0kujtn.jpg",
