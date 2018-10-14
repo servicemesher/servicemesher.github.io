@@ -6,10 +6,19 @@
     <description>Recent content in Sofamesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 10 Oct 2018 11:45:26 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Oct 2018 14:53:04 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/sofamesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展</title>
+      <link>http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/</link>
+      <pubDate>Sun, 14 Oct 2018 14:53:04 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/</guid>
+      <description>本文是SOFAMesh中的多协议通用解决方案x-protocol介绍系列文章之一。 SOFAMesh中的多协议通用解决方案x-protocol</description>
+    </item>
     
     <item>
       <title>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发</title>

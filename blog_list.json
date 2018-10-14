@@ -1,5 +1,38 @@
 [
   {
+    "author": "敖小剑",
+    "authorlink": "https://skyao.io",
+    "banner": "https://ws4.sinaimg.cn/large/006tNbRwly1fw0twx3z2mj30rs0kujtn.jpg",
+    "categories": [
+      "sofamesh"
+    ],
+    "date": "2018-10-14T14:53:04+08:00",
+    "fuzzywordcount": 2600,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "sofamesh",
+      "x-protocol"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-10-14T14:53:04+08:00",
+    "objectID": "e6be628a1cbded2e67b400c68270f4b9",
+    "permalink": "http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/",
+    "publishdate": "2018-10-14T14:53:04+08:00",
+    "readingtime": 6,
+    "relpermalink": "/blog/x-protocol-tcp-protocol-extension/",
+    "summary": "在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，本文介绍的是TCP协议扩展。",
+    "tags": [
+      "sofamesh",
+      "x-protocol"
+    ],
+    "title": "SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展",
+    "translator": null,
+    "url": "/blog/x-protocol-tcp-protocol-extension/",
+    "weight": 0,
+    "wordcount": 2569
+  },
+  {
     "author": "Lori MacVittie",
     "authorlink": "https://aspenmesh.io",
     "banner": "https://ws4.sinaimg.cn/large/006tNbRwly1fw4iiiiut1j30rs0ks11j.jpg",
@@ -60,7 +93,7 @@
     "translator": null,
     "url": "/blog/x-protocol-rapid-decode-forward/",
     "weight": 0,
-    "wordcount": 6937
+    "wordcount": 6982
   },
   {
     "author": "Joaquim Moreno",
@@ -156,7 +189,7 @@
     "translator": null,
     "url": "/blog/x-protocol-common-address-solution/",
     "weight": 0,
-    "wordcount": 5948
+    "wordcount": 5993
   },
   {
     "author": "Envoy Team",

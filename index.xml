@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 11 Oct 2018 19:28:26 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Oct 2018 14:53:04 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展</title>
+      <link>http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/</link>
+      <pubDate>Sun, 14 Oct 2018 14:53:04 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/</guid>
+      <description>本文是SOFAMesh中的多协议通用解决方案x-protocol介绍系列文章之一。 SOFAMesh中的多协议通用解决方案x-protocol</description>
+    </item>
     
     <item>
       <title>容器编排无法解决微服务的所有问题，你还需要服务网格</title>
@@ -926,7 +935,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 敖小剑 8 宋净超 6 郑伟 3 崔秀龙 3 丁轶群 3 黄挺 1 陈有坤 1 邵俊雄 1 赵化冰 1 蚂蚁金服 1 田晓亮 1 朵晓</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 敖小剑 9 宋净超 6 崔秀龙 3 丁轶群 3 郑伟 3 蚂蚁金服 1 陈有坤 1 邵俊雄 1 赵化冰 1 田晓亮 1 朵晓东 1 彭</description>
     </item>
     
     <item>
@@ -953,7 +962,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 甄中元 11 殷龙飞 11 宋净超 11 戴佳顺 5 崔秀龙 4 陈冬 3 李昕阳 3 王帅俭 2 狄卫华 2 邵思华 1 赵化冰 1 董干 1 王</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 甄中元 11 殷龙飞 11 宋净超 11 戴佳顺 5 崔秀龙 4 李昕阳 3 陈冬 3 王帅俭 2 狄卫华 2 邵思华 1 赵化冰 1 王全根 1</description>
     </item>
     
   </channel>

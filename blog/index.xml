@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展</title>
+      <link>http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/</link>
+      <pubDate>Sun, 14 Oct 2018 14:53:04 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/</guid>
+      <description>本文是SOFAMesh中的多协议通用解决方案x-protocol介绍系列文章之一。 SOFAMesh中的多协议通用解决方案x-protocol</description>
+    </item>
+    
+    <item>
       <title>容器编排无法解决微服务的所有问题，你还需要服务网格</title>
       <link>http://www.servicemesher.com/blog/going-beyond-container-orchestration/</link>
       <pubDate>Thu, 11 Oct 2018 19:28:26 +0800</pubDate>
