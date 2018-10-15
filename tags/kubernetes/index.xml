@@ -6,10 +6,19 @@
     <description>Recent content in Kubernetes on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 26 Sep 2018 15:49:30 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 15 Oct 2018 19:24:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Go语言操作Istio和其他Kubernetes CRD</title>
+      <link>http://www.servicemesher.com/blog/manipulating-istio-and-other-custom-kubernetes-resources-in-golang/</link>
+      <pubDate>Mon, 15 Oct 2018 19:24:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/manipulating-istio-and-other-custom-kubernetes-resources-in-golang/</guid>
+      <description>在本文中，我将演示如何使用Golang来操作Kubernetes Custom Resources，以Istio为例。 不需要您了解Istio，我只是用它来</description>
+    </item>
     
     <item>
       <title>Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性</title>

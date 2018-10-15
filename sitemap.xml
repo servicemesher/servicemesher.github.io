@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/manipulating-istio-and-other-custom-kubernetes-resources-in-golang/</loc>
+    <lastmod>2018-10-15T19:24:46+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/</loc>
     <lastmod>2018-10-14T14:53:04+08:00</lastmod>
   </url>
@@ -649,6 +654,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/golang/</loc>
+    <lastmod>2018-10-15T19:24:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/google/</loc>
     <lastmod>2018-08-28T16:15:25+08:00</lastmod>
     <priority>0</priority>
@@ -704,7 +715,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-10-08T19:29:58+08:00</lastmod>
+    <lastmod>2018-10-15T19:24:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -752,7 +763,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
-    <lastmod>2018-09-26T15:49:30+08:00</lastmod>
+    <lastmod>2018-10-15T19:24:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -896,7 +907,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-10-14T14:53:04+08:00</lastmod>
+    <lastmod>2018-10-15T19:24:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -968,7 +979,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-10-11T19:28:26+08:00</lastmod>
+    <lastmod>2018-10-15T19:24:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   

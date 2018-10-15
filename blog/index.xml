@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>使用Go语言操作Istio和其他Kubernetes CRD</title>
+      <link>http://www.servicemesher.com/blog/manipulating-istio-and-other-custom-kubernetes-resources-in-golang/</link>
+      <pubDate>Mon, 15 Oct 2018 19:24:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/manipulating-istio-and-other-custom-kubernetes-resources-in-golang/</guid>
+      <description>在本文中，我将演示如何使用Golang来操作Kubernetes Custom Resources，以Istio为例。 不需要您了解Istio，我只是用它来</description>
+    </item>
+    
+    <item>
       <title>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展</title>
       <link>http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/</link>
       <pubDate>Sun, 14 Oct 2018 14:53:04 +0800</pubDate>
