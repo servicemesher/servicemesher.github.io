@@ -6,10 +6,19 @@
     <description>Recent content in Tutorial on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 13 Sep 2018 20:26:56 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Oct 2018 19:13:18 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>教程|构建生产就绪的Istio Adapter</title>
+      <link>http://www.servicemesher.com/blog/set-sail-a-production-ready-istio-adapter/</link>
+      <pubDate>Wed, 17 Oct 2018 19:13:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/set-sail-a-production-ready-istio-adapter/</guid>
+      <description>构建生产就绪的Istio Adapter 你已经浏览了Istio Mixer Adapter的指南 ，现在想要发布自己的Adapter？这篇文章将教你创建自己的Adapt</description>
+    </item>
     
     <item>
       <title>教程|使用Istio在Kubernetes集群中实现金丝雀部署</title>

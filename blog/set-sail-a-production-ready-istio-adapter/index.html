@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>深入解读Service Mesh背后的技术细节 · ServiceMesher|服务网格中文社区</title>
+  <title>教程|构建生产就绪的Istio Adapter · ServiceMesher|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh, istio, kubernetes, envoy">
+  <meta name="keywords" content="service mesh, 服务网格, istio">
   
 
   <meta name="generator" content="Hugo 0.48" />
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="深入解读Service Mesh背后的技术细节" />
+  <meta property="og:title" content="教程|构建生产就绪的Istio Adapter" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/deepin-service-mesh-tech-details//" />
+  <meta property="og:url" content="/blog/set-sail-a-production-ready-istio-adapter//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章，来解析Service Mesh背后的技术细节。">
-  <meta property="og:description" content="在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章，来解析Service Mesh背后的技术细节。">
-  <meta name="twitter:description" content="在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章，来解析Service Mesh背后的技术细节。">
-  <meta property="og:description" content="在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章，来解析Service Mesh背后的技术细节。" />
+  <meta name="description" content="本文通过示例讲解了如何创建并部署一个生产环境就绪的Istio Adapter。">
+  <meta property="og:description" content="本文通过示例讲解了如何创建并部署一个生产环境就绪的Istio Adapter。">
+  <meta name="twitter:description" content="本文通过示例讲解了如何创建并部署一个生产环境就绪的Istio Adapter。">
+  <meta property="og:description" content="本文通过示例讲解了如何创建并部署一个生产环境就绪的Istio Adapter。" />
 
   
   
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="深入解读Service Mesh背后的技术细节 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="深入解读Service Mesh背后的技术细节 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">深入解读Service Mesh背后的技术细节 - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="教程|构建生产就绪的Istio Adapter logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="教程|构建生产就绪的Istio Adapter logo" class="visible-xs visible-sm">
+                    <span class="sr-only">教程|构建生产就绪的Istio Adapter - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -232,7 +232,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>深入解读Service Mesh背后的技术细节</h1>
+                <h1>教程|构建生产就绪的Istio Adapter</h1>
             </div>
         </div>
     </div>
@@ -250,26 +250,30 @@ autocomplete('#aa-search-input',
                         <div class="well">
                             <div class="author-category">
                             <i class="fa fa-calendar-o">
-                            2018年5月23日
+                            2018年10月17日
                             </i>
                             |
                             
-                            作者 <a href="https://mp.weixin.qq.com/s/hq9KTc9fm8Nou8hXmqdKuw">刘超</a>
+                            作者 <a href="https://venilnoronha.io/">Venil Noronha</a>
                             
                             
+                            | 译者 <a href="https://github.com/malphi">马若飞</a>
+                            
+                            
+                            | 审校者 <a href="https://jimmysong.io">宋净超</a>
                             
                             |
-                            5300字 | 阅读大约需要11分钟
+                            3100字 | 阅读大约需要7分钟
                             </div>
                             
                             
                             <div class="author-category">
                             
-                            <a href="https://mp.weixin.qq.com/s/hq9KTc9fm8Nou8hXmqdKuw">查看原文</a>
+                            <a href="https://venilnoronha.io/set-sail-a-production-ready-istio-adapter">查看原文</a>
                             |
                             
                             
-                            归档于 <a href="/categories/service-mesh">service mesh</a>
+                            归档于 <a href="/categories/translation">translation</a>
                             
                             |
                             
@@ -277,228 +281,307 @@ autocomplete('#aa-search-input',
                             
                             标签
                             
-                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
-                            
                             <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/tutorial/"><i>#tutorial</i></a>
                             
                             </div>
                             
                             
                         </div>
                         <div id="post-content">
-                          <p>在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章，来解析Service Mesh背后的技术细节。</p>
+                          
 
-<p><strong>一、Service Mesh是Kubernetes支撑微服务能力拼图的最后一块</strong></p>
+<h1 id="构建生产就绪的istio-adapter">构建生产就绪的Istio Adapter</h1>
 
-<p>在上一篇文章<a href="http://mp.weixin.qq.com/s?__biz=MzI1NzYzODk4OQ==&amp;mid=2247484871&amp;idx=1&amp;sn=4c40df039911e7ef7d355c1435271eb0&amp;chksm=ea1512e5dd629bf368bae145c6c42ad89f260c529d0eb006779768c6f124e0318b653d2d1821&amp;scene=21#wechat_redirect">为什么 kubernetes 天然适合微服务</a>中我们提到，Kubernetes是一个奇葩所在，他的组件复杂，概念复杂，在没有实施微服务之前，你可能会觉得为什么Kubernetes要设计的这么复杂，但是一旦你要实施微服务，你会发现Kubernetes中的所有概念，都是有用的。</p>
+<p>你已经浏览了Istio Mixer Adapter的<a href="https://github.com/istio/istio/wiki/Mixer-Out-Of-Process-Adapter-Dev-Guide">指南</a> ，现在想要发布自己的Adapter？这篇文章将教你创建自己的Adapter，在生产环境的海洋中扬帆起航。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frlc9gw4y0j30u00bm122.jpg" alt="微服务设计" /></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw3hlzj8krj304o06m3ya.jpg" alt="Istio" /></p>
 
-<p>在我们微服务设计的十个要点中，我们会发现Kubernetes都能够有相应的组件和概念，提供相应的支持。</p>
+<h2 id="介绍">介绍</h2>
+
+<p>根据你对<a href="https://golang.org/">Go</a>、<a href="https://developers.google.com/protocol-buffers/">Protobufs</a>、<a href="https://grpc.io/">gRPC</a>、<a href="https://istio.io/">Istio</a>、<a href="https://www.docker.com/">Docker</a>和<a href="https://kubernetes.io/">Kubernetes</a>知识有所了解，你可能会发现发布Istio Mixer Adapter的过程很容易。本文假设你对这些技术有一些经验，并且根据Istio的Wiki已经能够完成至少一个演练。</p>
+
+<p>就本文的目的而言，我将讨论如何构建一个消费<a href="https://preliminary.istio.io/docs/reference/config/policy-and-telemetry/templates/metric/">Metrics</a>的Istio Mixer Adapter。下面是简要步骤：</p>
+
+<ol>
+<li>Istio Mixer - Adapter接口架构</li>
+<li>创建一个简单的Mixer Adapter</li>
+<li>将Adapter发布到Docker Hub</li>
+<li>为Adapter编写Kubernetes Config</li>
+<li>在Istio上部署和测试Adapter</li>
+</ol>
+
+<p>再次强调，我将尽最大努力在这篇文章里呈现所有重要的细节，让你的Adapter运行起来。</p>
+
+<h2 id="istio-mixer-adapter接口架构">Istio Mixer - Adapter接口架构</h2>
+
+<p>让我们首先看看Adapter如何与Istio Mixer结合。Kubernetes在一定程度上抽象了接口；了解这一点对我们来说很重要。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwbaovn3jgj31j00je0u9.jpg" alt="Istio adapter架构" /></p>
+
+<p>下面是对上述架构中的每个元素的简要描述。</p>
+
+<ul>
+<li><strong>Microservice</strong>是在Istio上部署的用户应用程序</li>
+<li><strong>Proxy</strong>是Istio组件，例如<a href="https://www.envoyproxy.io/">Envoy Proxy</a>，控制<a href="https://en.wikipedia.org/wiki/Microservices#Service_Mesh">Service Mesh</a>中的网络通信</li>
+<li><strong>Mixer</strong>是Istio组件，它从Proxy接收指标(和其他)数据，并转发给其他组件(在本例中是Adapter)</li>
+<li><strong>Adapter</strong>是我们正在构建的应用程序，通过gRPC消费来自Mixer的Metrics</li>
+<li><strong>Operator</strong>扮演负责配置和部署的角色，在本例中是Istio和Adapter</li>
+</ul>
 
-<p>其中最后的一块拼图就是服务发现，与熔断限流降级。</p>
+<p>需要注意的一点，每个组件都作为独立的进程运行，并且可能分布在网络上。此外，Mixer还与Adapter建立了一个gRPC通道，以便为其提供用户的配置和Metrics。</p>
+
+<h2 id="创建一个简单的mixer-adapter">创建一个简单的Mixer Adapter</h2>
 
-<p>众所周知，Kubernetes的服务发现是通过Service来实现的，服务之间的转发是通过kube-proxy下发iptables规则来实现的，这个只能实现最基本的服务发现和转发能力，不能满足高并发应用下的高级的服务特性，比较SpringCloud和Dubbo有一定的差距，于是Service Mesh诞生了，他期望讲熔断，限流，降级等特性，从应用层，下沉到基础设施层去实现，从而使得Kubernetes和容器全面接管微服务。</p>
+<p>简单起见，我将按照 <a href="https://github.com/istio/istio/wiki/Mixer-Out-of-Tree-Adapter-Walkthrough">Mixer Out of Tree Adapter Walkthrough</a> 这篇文章建立一个简单的Mixer Adapter。下面是概要，列出了创建消费Metrics的Istio Mixer Adapter的步骤：</p>
 
-<p><strong>二、以Istio为例讲述Service Mesh中的技术关键点</strong></p>
+<ol>
+<li>创建Adapter的配置文件<code>config.proto</code></li>
+<li>创建<code>mygrpcadapter.go</code>文件，实现<code>HandleMetric(context.Context, *metric.HandleMetricRequest) (*v1beta11.ReportResult, error)</code>这个gRPC API的调用</li>
+<li>通过 <code>go generate ./...</code>生成配置文件</li>
+<li>创建<code>main.go</code>文件作为gRPC的服务端，并监听API调用</li>
+<li>为Adapter编写配置文件 <code>sample_operator_config.yaml</code></li>
+<li>启动本地Mixer进程来测试和验证Adapter</li>
+<li>配置项目</li>
+<li>添加必要的依赖包(使用<a href="https://github.com/golang/go/wiki/Modules">Go Modules</a>、 <a href="https://glide.sh/">Glide</a>、<a href="https://golang.github.io/dep/">Dep</a>等)</li>
+<li>通过启动本地Mixer进程来构建和测试Adapter</li>
+</ol>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle3moclsj30u00gmn2n.jpg" alt="" /></p>
+<h2 id="发布adapter到docker-hub">发布Adapter到Docker Hub</h2>
 
-<p>就如SDN一样，Service Mesh将服务请求的转发分为控制面和数据面，因而分析他，也是从数据面先分析转发的能力，然后再分析控制面如何下发命令。今天这篇文章重点讲述两个组件Envoy和Pilot</p>
-
-<p><strong>一切从Envoy开始</strong></p>
-
-<p>我们首先来看，如果没有融入Service Mesh，Envoy本身能够做什么事情呢？</p>
-
-<p>Envoy是一个高性能的C++写的proxy转发器，那Envoy如何转发请求呢？需要定一些规则，然后按照这些规则进行转发。</p>
-
-<p>规则可以是静态的，放在配置文件中的，启动的时候加载，要想重新加载，一般需要重新启动，但是Envoy支持热加载和热重启，一定程度上缓解了这个问题。</p>
-
-<p>当然最好的方式是规则设置为动态的，放在统一的地方维护，这个统一的地方在Envoy眼中看来称为Discovery Service，过一段时间去这里拿一下配置，就修改了转发策略。</p>
-
-<p>无论是静态的，还是动态的，在配置里面往往会配置四个东西。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle43cmthj30py0gignh.jpg" alt="" /></p>
-
-<p>一是listener，也即envoy既然是proxy，专门做转发，就得监听一个端口，接入请求，然后才能够根据策略转发，这个监听的端口称为listener</p>
-
-<p>二是endpoint，是目标的ip地址和端口，这个是proxy最终将请求转发到的地方。</p>
-
-<p>三是cluster，一个cluster是具有完全相同行为的多个endpoint，也即如果有三个容器在运行，就会有三个IP和端口，但是部署的是完全相同的三个服务，他们组成一个Cluster，从cluster到endpoint的过程称为负载均衡，可以轮询等。</p>
-
-<p>四是route，有时候多个cluster具有类似的功能，但是是不同的版本号，可以通过route规则，选择将请求路由到某一个版本号，也即某一个cluster。</p>
-
-<p>这四个的静态配置的例子如下：</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle4hlg1wj30u00kewn6.jpg" alt="" /></p>
-
-<p>如图所示，listener被配置为监听本地127.0.0.1的10000接口，route配置为某个url的前缀转发到哪个cluster，cluster里面配置负载均衡策略，hosts里面是所有的endpoint。</p>
-
-<p>如果你想简单的将envoy使用起来，不用什么service mesh，一个进程，加上这个配置文件，就可以了，就能够转发请求了。</p>
-
-<p>对于动态配置，也应该配置发现中心，也即Discovery Service，对于上述四种配置，各对应相应的DS，所以有LDS, RDS, CDS, EDS。</p>
-
-<p>动态配置的例子如下：</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle4uy7ghj30u00onaie.jpg" alt="" /></p>
-
-<p><strong>控制面Pilot的工作模式</strong></p>
-
-<p>数据面envoy可以通过加装静态配置文件的方式运行，而动态信息，需要从Discovery Service去拿。</p>
-
-<p>Discovery Service就是部署在控制面的，在istio中，是Pilot。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle5drdsxj30u00l944h.jpg" alt="" /></p>
-
-<p>如图为Pilot的架构，最下面一层是envoy的API，就是提供Discovery Service的API，这个API的规则由envoy定，但不是Pilot调用Envoy，而是Envoy去主动调用Pilot的这个API。</p>
-
-<p>Pilot最上面一层称为Platform Adapter，这一层是干什么的呢？这一层不是Kubernetes, Mesos调用Pilot，而是Pilot通过调用Kubernetes来发现服务之间的关系。</p>
-
-<p>这是理解Istio比较绕的一个点。也即pilot使用Kubernetes的Service，仅仅使用它的服务发现功能，而不使用它的转发功能，pilot通过在kubernetes里面注册一个controller来监听事件，从而获取Service和Kubernetes的Endpoint以及Pod的关系，但是在转发层面，就不会再使用kube-proxy根据service下发的iptables规则进行转发了，而是将这些映射关系转换成为pilot自己的转发模型，下发到envoy进行转发，envoy不会使用kube-proxy的那些iptables规则。这样就把控制面和数据面彻底分离开来，服务之间的相互关系是管理面的事情，不要和真正的转发绑定在一起，而是绕到pilot后方。</p>
-
-<p>Pilot另外一个对外的接口是Rules API，这是给管理员的接口，管理员通过这个接口设定一些规则，这些规则往往是应用于Routes, Clusters, Endpoints的，而都有哪些Clusters和Endpoints，是由Platform Adapter这面通过服务发现得到的。</p>
-
-<p>自动发现的这些Clusters和Endpoints，外加管理员设置的规则，形成了Pilot的数据模型，其实就是他自己定义的一系列数据结构，然后通过envoy API暴露出去，等待envoy去拉取这些规则。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle5pyxirj30t60tqgsg.jpg" alt="" /></p>
-
-<p>常见的一种人工规则是Routes，通过服务发现，Pilot可以从Kubernetes那里知道Service B有两个版本，一般是两个Deployment，属于同一个Service，管理员通过调用Pilot的Rules API，来设置两个版本之间的Route规则，一个占99%的流量，一个占1%的流量，这两方面信息形成Pilot的数据结构模型，然后通过Envoy API下发，Envoy就会根据这个规则设置转发策略了。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle5xv31mj30u00ladlv.jpg" alt="" /></p>
-
-<p>另一个常用的场景就是负载均衡，Pilot通过Kubernetes的Service发现Service B包含一个Deployment，但是有三个副本，于是通过Envoy API下发规则，使得Envoy在这三个副本之间进行负载均衡，而非通过Kubernetes本身Service的负载均衡机制。</p>
-
-<p>三、以Istio为例解析Service Mesh的技术细节</p>
-
-<p>了解了Service Mesh的大概原理，接下来我们通过一个例子来解析其中的技术细节。</p>
-
-<p>凡是试验过Istio的同学都应该尝试过下面这个BookInfo的例子，不很复杂，但是麻雀虽小五脏俱全。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle6640jlj30u00kgn3e.jpg" alt="" /></p>
-
-<p>在这个例子中，我们重点关注ProductPage这个服务，对Reviews服务的调用，这里涉及到路由策略和负载均衡。</p>
-
-<p><strong>Productpage就是个Python程序</strong></p>
-
-<p>productpage是一个简单的用python写的提供restful API的程序。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle6n0fjej30u00p2tn6.jpg" alt="" /></p>
-
-<p>在里面定义了很多的route，来接收API请求，并做相应的操作。</p>
-
-<p>在需要请求其他服务，例如reviews, ratings的时候，则需要向后方发起restful调用。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle78bzolj30j10lnwhz.jpg" alt="" /></p>
-
-<p>从代码可以看出，productpage对于后端的调用，都是通过域名来的。</p>
-
-<p>对于productpage这个程序来讲，他觉得很简单，通过这个域名就可以调用了，既不需要通过服务发现系统获取这个域名，也不需要关心转发，更意识不到自己是部署在kubernetes上的，是否用了service mesh，所以服务之间的通信完全交给了基础设施层。</p>
-
-<p>通过Kubernetes编排productpage</p>
-
-<p>有了productpage程序，接下来就是将他部署到kubernetes上，这里没有什么特殊的，用的就是kubernetes默认的编排文件。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle7huccpj30u00hk452.jpg" alt="" /></p>
-
-<p>首先定义了一个Deployment，使用bookinfo的容器镜像，然后定义一个Service，用于这个Deployment的服务发现。</p>
-
-<p><strong>通过Kubernetes编排reviews</strong></p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle7ojet2j30u00ftdkz.jpg" alt="" /></p>
-
-<p>这个稍微有些复杂，定义了三个Deployment，但是版本号分别为V1, V2, V3，但是label都是app: reviews。</p>
-
-<p>最后定义了一个Service，对应的label是app: reviews，作为这三个Deployment的服务发现。</p>
-
-<p><strong>istioctl对productpage进行定制化之一：嵌入proxy_init作为InitContainer</strong>到目前为止，一切正常，接下来就是见证奇迹的时刻，也即istio有个工具istioctl可以对于yaml文件进行定制化</p>
-
-<p>定制化的第一项就是添加了一个initContainer，这种类型的container可以做一些初始化的工作后，成功退出，kubernetes不会保持他长期运行。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle7tzrk3j30u00kijw8.jpg" alt="" /></p>
-
-<p>在这个InitContainer里面做什么事情呢？</p>
-
-<p>我们登录进去发现，在这个InitContainer里面运行了一个shell脚本。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle7xxsqtj30u00bdgsi.jpg" alt="" /></p>
-
-<p>就是这个shell脚本在容器里面写入了大量的iptables规则。</p>
-
-<p>首先定义的一条规则是ISTIO_REDIRECT转发链，这条链不分三七二十一，都将网络包转发给envoy的15000端口。</p>
-
-<p>但是一开始这条链没有被挂到iptables默认的几条链中，所以不起作用。</p>
-
-<p>接下来就是在PREROUTING规则中，使用这个转发链，从而进入容器的所有流量，都被先转发到envoy的15000端口。</p>
-
-<p>envoy作为一个代理，已经被配置好了，将请求转发给productpage程序。</p>
-
-<p>productpage程序接受到请求，会转向调用外部的reviews或者ratings，从上面的分析我们知道，productpage只是做普通的域名调用。</p>
-
-<p>当productpage往后端进行调用的时候，就碰到了output链，这个链会使用转发链，将所有出容器的请求都转发到envoy的15000端口。</p>
-
-<p>这样无论是入口的流量，还是出口的流量，全部用envoy做成了汉堡包。</p>
-
-<p>envoy根据服务发现的配置，知道reviews或者ratings如何访问，于是做最终的对外调用。</p>
-
-<p>这个时候iptables规则会对从envoy出去的流量做一个特殊处理，允许他发出去，不再使用上面的output规则。</p>
-
-<p><strong>istioctl对productpage进行定制化之二：嵌入proxy容器作为sidecar</strong></p>
-
-<p>istioctl做的第二项定制化是，嵌入proxy容器作为sidecar。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle8uebg9j30hr12448p.jpg" alt="" /></p>
-
-<p>这个似乎看起来更加复杂，但是进入容器我们可以看到，启动了两个进程。</p>
-
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1ft3hlljbllj30u00bn41y.jpg" alt="" /></p>
-
-<p>一个是我们熟悉的envoy，他有一个配置文件是/etc/istio/proxy/envoy-rev0.json</p>
-
-<p>我们再前面讲述envoy的时候说过，有了配置文件，envoy就能够转发了，我们先来看看配置文件里面都有啥。</p>
-
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1ft3hluiu2xj30u00gcmzx.jpg" alt="" /></p>
-
-<p>在这里面配置了envoy的管理端口，等一下我们会通过这个端口查看envoy被pilot下发了哪些转发策略。</p>
-
-<p>然后就是动态资源，也即从各种discovery service去拿转发策略。</p>
-
-<p>还有就是静态资源，也即静态配置的，需要重启才能加载的。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle9ch3yzj30u00gcte2.jpg" alt="" /></p>
-
-<p>这就是pilot-agent的作用，他是envoy的一个简单的管理器，因为有些静态资源，如果TLS的证书，envoy还不支持动态下发，因而需要重新静态配置，然后pilot-agent负责将envoy进行热重启加载。</p>
-
-<p>好在envoy有良好的热重启机制，重启的时候，会先启动一个备用进程，将转发的统计数据通过shared memory在两个进程间共享。</p>
-
-<p><strong>深入解析pilot的工作机制</strong></p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle9ka5fnj30u00hytid.jpg" alt="" /></p>
-
-<p>Pilot的工作机制展开后如图所示。</p>
-
-<p>istio config是管理员通过管理接口下发的转发规则。</p>
-
-<p>Service Discovery模块对于Kubernetes来讲，就是创建了一个controller来监听Service创建和删除的事件，当service有变化时，会通知pilot，pilot会根据变化更新下发给envoy的规则。</p>
-
-<p>pilot将管理员输入的转发策略配置和服务发现的当前状态，变成pilot自己的数据结构模型，然后暴露成envoy的api，由于是envoy来调用，因而要实现一个服务端，这里有lds, rds, cds, eds。</p>
-
-<p>接下来我们看，在pilot上配置route之后会发生什么？</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frle9rqoj3j30qr0k1n0f.jpg" alt="" /></p>
-
-<p>如图，我们将所有的流量都发给版本1。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frlea2rgpqj30u00gv7it.jpg" alt="" /></p>
-
-<p>我们查看envoy的管理端口，可以看到只配置了reviews的v1。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frleac3yuwj30u00fmadw.jpg" alt="" /></p>
-
-<p>当我们修改路由为v1和v3比例是五十比五十。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frlealzahyj30u00mdqpx.jpg" alt="" /></p>
-
-<p>可以看到envoy的管理端口，路由有了两个版本的配置，也对应后端的两个ip地址。</p>
+<p>在本地安装和测试了<code>myootadapter</code>项目后，就可以构建并发布Adapter到<a href="https://hub.docker.com/">Docker Hub</a>库了。在继续前请执行以下步骤：</p>
+
+<ol>
+<li>移动<code>mygrpcadapter/testdata/</code>目录下的内容到<code>operatorconfig</code></li>
+<li>创建<code>Dockerfile</code>文件来保存创建Docker镜像的步骤</li>
+<li>最后，在<code>operatorconfig/</code>目录下创建一个名为<code>mygrpcadapter-k8s</code>的文件，稍后将使用它部署到Kubernetes</li>
+</ol>
+
+<p>完成了这些步骤后，你的项目结构会如下所示。</p>
+
+<pre><code class="language-bash">── myootadapter
+   ├── Dockerfile
+   ├── glide.lock # 是否出现此类文件取决于你使用的依赖包管理工具
+   ├── glide.yaml
+   ├── mygrpcadapter
+   │   ├── cmd
+   │   │   └── main.go
+   │   ├── config
+   │   │   ├── config.pb.go
+   │   │   ├── config.proto
+   │   │   ├── config.proto_descriptor
+   │   │   ├── mygrpcadapter.config.pb.html
+   │   │   └── mygrpcadapter.yaml
+   │   └── mygrpcadapter.go
+   └── operatorconfig
+       ├── attributes.yaml
+       ├── metrictemplate.yaml
+       ├── sample_operator_config.yaml
+       ├── mygrpcadapter-k8s.yaml
+       └── mygrpcadapter.yaml
+</code></pre>
+
+<p>现在来构建Docker镜像并发布到Docker Hub。</p>
+
+<h3 id="构建docker镜像">构建Docker镜像</h3>
+
+<p><a href="https://docs.docker.com/develop/develop-images/multistage-build/">多阶段构建（multi-stage builds）</a>模式可以被用来构建Docker镜像。将以下内容复制到<code>Dockerfile</code>中：</p>
+
+<pre><code class="language-dockerfile">FROM golang:1.11 as builder
+WORKDIR /go/src/github.com/username/myootadapter/
+COPY ./ .
+RUN CGO_ENABLED=0 GOOS=linux \
+    go build -a -installsuffix cgo -v -o bin/mygrpcadapter ./mygrpcadapter/cmd/
+
+FROM alpine:3.8
+RUN apk --no-cache add ca-certificates
+WORKDIR /bin/
+COPY --from=builder /go/src/github.com/username/myootadapter/bin/mygrpcadapter .
+ENTRYPOINT [ &quot;/bin/mygrpcadapter&quot; ]
+CMD [ &quot;8000&quot; ]
+EXPOSE 8000
+</code></pre>
+
+<p><code>CMD [ &quot;8000&quot; ]</code> 告诉Docker，将<code>8000</code>作为参数，传递给定义在行<code>ENTRYPOINT [ &quot;/bin/mygrpcadapter&quot; ]</code>的入口。 因为我们在这里把gRPC的监听端口改为了 <code>8000</code>，所以必须更新文件<code>sample_operator_config.yaml</code> 使其一致。把原来的配置 <code>address: &quot;{ADDRESS}&quot;</code> 用 <code>address: mygrpcadapter:8000</code>替换。</p>
+
+<p>还需要更新<code>file_path</code>，在稍后创建的Volume中去存储输出数据。更新<code>file_path: &quot;out.txt&quot;</code>为<code>file_path: &quot;/volume/out.txt&quot;</code> 。然后将得到如下所示的配置：</p>
+
+<pre><code class="language-yaml">apiVersion: &quot;config.istio.io/v1alpha2&quot;
+kind: handler
+metadata:
+ name: h1
+ namespace: istio-system
+spec:
+ adapter: mygrpcadapter
+ connection:
+   address: &quot;mygrpcadapter:8000&quot;
+ params:
+   file_path: &quot;/volume/out.txt&quot;
+</code></pre>
+
+<p>现在，在 <code>myootadapter</code> 目录下运行命令来构建和标记Docker镜像：</p>
+
+<pre><code class="language-bash">docker build -t dockerhub-username/mygrpcadapter:latest .
+</code></pre>
+
+<h3 id="发布镜像到docker-hub">发布镜像到Docker Hub</h3>
+
+<p>首先，通过终端登录到Docker Hub：</p>
+
+<pre><code class="language-bash">docker login
+</code></pre>
+
+<p>接下来，使用下面的命令发布镜像：</p>
+
+<pre><code class="language-bash">docker push dockerhub-username/mygrpcadapter:latest
+</code></pre>
+
+<h2 id="为adapter编写kubernetes配置">为Adapter编写Kubernetes配置</h2>
+
+<p>现在让我们填写部署到Kubernetes的Adapter配置。将以下配置复制到我们之前创建的yaml文件<code>mygrpcadapter-k8s</code>中：</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: mygrpcadapter
+  namespace: istio-system
+  labels:
+    app: mygrpcadapter
+spec:
+  type: ClusterIP
+  ports:
+  - name: grpc
+    protocol: TCP
+    port: 8000
+    targetPort: 8000
+  selector:
+    app: mygrpcadapter
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mygrpcadapter
+  namespace: istio-system
+  labels:
+    app: mygrpcadapter
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mygrpcadapter
+      annotations:
+        sidecar.istio.io/inject: &quot;false&quot;
+        scheduler.alpha.kubernetes.io/critical-pod: &quot;&quot;
+    spec:
+      containers:
+      - name: mygrpcadapter
+        image: dockerhub-username/mygrpcadapter:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - name: transient-storage
+          mountPath: /volume
+      volumes:
+      - name: transient-storage
+        emptyDir: {}
+</code></pre>
+
+<p>上面的配置定义了一个简单的服务，只有一个从<code>dockerhub-username/mygrpcadapter:latest</code>的镜像创建的副本。该服务可以被命名为<code>mygrpcadapter</code>，并通过端口<code>8000</code>访问。这就是如何让配置在<code>sample_operator_config.yaml</code> 文件的 <code>address: &quot;mygrpcadapter:8000&quot;</code> 指向这个特殊的deployment的方法。</p>
+
+<p>同时，注意这些特殊的标记：</p>
+
+<pre><code class="language-yaml">annotations:
+  sidecar.istio.io/inject: &quot;false&quot;
+  scheduler.alpha.kubernetes.io/critical-pod: &quot;&quot;
+</code></pre>
+
+<p>它告诉Kubernetes调度器，不要自动注入Istio的sidecar。这是因为我们并不需要在Adapter前面挂一个Proxy。另外，第二个标注将这个pod标记为系统critical级别。</p>
+
+<p>我们还创建了一个名为<code>transient-storage</code>的临时volume，用于存储Adapter的输出，例如<code>out.txt</code>文件。配置如下所示：</p>
+
+<pre><code class="language-yaml">    volumeMounts:
+    - name: transient-storage
+      mountPath: /volume
+  volumes:
+  - name: transient-storage
+    emptyDir: {}
+</code></pre>
+
+<h2 id="通过istio部署和测试adapter">通过Istio部署和测试Adapter</h2>
+
+<p>为了简洁起见，我将依赖于项目文档 <a href="https://istio.io/zh/docs/setup/kubernetes/quick-start/">部署 Istio</a>， <a href="https://istio.io/zh/docs/examples/bookinfo/">Bookinfo 应用</a> 和 <a href="https://istio.io/zh/docs/tasks/traffic-management/ingress/#%E7%A1%AE%E5%AE%9A%E5%85%A5%E5%8F%A3-ip-%E5%92%8C%E7%AB%AF%E5%8F%A3">确定 ingress IP 和端口</a>进行演示。</p>
+
+<h3 id="部署adapter">部署Adapter</h3>
+
+<p>现在可以通过Kubernetes部署Adapter：</p>
+
+<pre><code class="language-bash">kubectl apply -f operatorconfig/
+</code></pre>
+
+<p><code>mygrpcadapter</code>服务会部署在<code>istio-system</code>的命名空间下。你可以执行下面的命令验证：</p>
+
+<pre><code class="language-bash">kubectl get pods -n istio-system
+</code></pre>
+
+<p>打印的日志如下：</p>
+
+<pre><code>NAME                                       READY     STATUS        RESTARTS   AGE
+istio-citadel-75c88f897f-zfw8b             1/1       Running       0          1m
+istio-egressgateway-7d8479c7-khjvk         1/1       Running       0          1m
+.
+.
+mygrpcadapter-86cb6dd77c-hwvqd             1/1       Running       0          1m
+</code></pre>
+
+<p>也可以执行下面的命令查看Adapter的日志：</p>
+
+<pre><code class="language-bash">kubectl logs mygrpcadapter-86cb6dd77c-hwvqd -n istio-system
+</code></pre>
+
+<p>它应该打印下面的日志：</p>
+
+<pre><code>listening on &quot;[::]:8000&quot;
+</code></pre>
+
+<h3 id="测试adapter">测试Adapter</h3>
+
+<p>在终端执行下面的命令，或者在浏览器输入URL <code>http://${GATEWAY_URL}/productpage</code> 发送请求到部署的Bookinfo应用：</p>
+
+<pre><code class="language-bash">curl -o /dev/null -s -w &quot;%{http_code}\n&quot; http://${GATEWAY_URL}/productpage
+</code></pre>
+
+<p>通过访问Adapter容器验证在<code>/volume/out.txt</code>文件中的输出：</p>
+
+<pre><code class="language-bash">kubectl exec mygrpcadapter-86cb6dd77c-hwvqd cat /volume/out.txt
+</code></pre>
+
+<p>你会看到如下的输出：</p>
+
+<pre><code class="language-bash">HandleMetric invoked with:
+  Adapter config: &amp;Params{FilePath:/volume/out.txt,}
+  Instances: 'i1metric.instance.istio-system':
+  {
+		Value = 1235
+		Dimensions = map[response_code:200]
+  }
+</code></pre>
+
+<h2 id="结论">结论</h2>
+
+<p>Istio提供了一种标准机制来管理和观测云环境下的微服务。Mixer让开发人员能够轻松地将Istio扩展到自定义平台。我希望这篇指南让你对Istio Mixer - Adapter结合有一个初步了解，以及如何自己构建一个生产就绪的Adapter！</p>
+
+<hr />
+
+<p>去发布你自己的Istio Mixer Adapter! 可以用<a href="https://github.com/vmware/wavefront-adapter-for-istio">Wavefront by VMware Adapter for Istio</a> 这篇文章做参考。</p>
+
+<p>如果你希望在<a href="https://istio.io/zh/docs/reference/config/policy-and-telemetry/adapters/">Istio 适配器</a>页面上发布你的Adapter，请参考这个<a href="https://github.com/istio/istio/wiki/Publishing-Adapters-and-Templates-to-istio.io">Wiki</a>。</p>
+
+<p><strong>免责声明</strong>：本文仅属于作者本人，并不代表VMware的立场、策略或观点。</p>
+
+<p><strong>Venil Noronha</strong> 开源软件爱好者</p>
 
                         </div>
                         
@@ -508,13 +591,9 @@ autocomplete('#aa-search-input',
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/istio-service-mesh-tutorial/" data-toggle="tooltip" data-placement="top" title="Istio Service Mesh教程">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/manipulating-istio-and-other-custom-kubernetes-resources-in-golang/" data-toggle="tooltip" data-placement="top" title="使用Go语言操作Istio和其他Kubernetes CRD">&larr; 更旧</a>
                         </li>
                          
-                        <li class="next">
-                        <a href="http://www.servicemesher.com/blog/the-desigin-patterns-for-a-commercial-service-mesh/" data-toggle="tooltip" data-placement="top" title="一个商用级Service Mesh服务的设计之道">更新 &rarr;</a>
-                        </li>
-                        
                         </ul>
 
                     </div>
@@ -538,13 +617,13 @@ autocomplete('#aa-search-input',
         
         <li><a href="/blog/istio-service-mesh-tutorial/"><i class="fa fa-link"></i>Istio Service Mesh教程</a></li>
          
-        <li><a href="/blog/service-mesh-rebuild-microservice-market/"><i class="fa fa-link"></i>Service Mesh：重塑微服务市场</a></li>
+        <li><a href="/blog/istio-traffic-management-impl-intro/"><i class="fa fa-link"></i>Istio流量管理实现机制深度解析</a></li>
          
-        <li><a href="/activity/"><i class="fa fa-link"></i>活动</a></li>
+        <li><a href="/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/"><i class="fa fa-link"></i>理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</a></li>
          
-        <li><a href="/authors/"><i class="fa fa-link"></i>作者投稿</a></li>
+        <li><a href="/blog/istio-security-notes-by-fleeto/"><i class="fa fa-link"></i>Istio安全设置笔记</a></li>
          
-        <li><a href="/translators/"><i class="fa fa-link"></i>译者投稿</a></li>
+        <li><a href="/blog/istio-tutorials-collection/"><i class="fa fa-link"></i>Istio service mesh示例教程汇总</a></li>
          
      </ul>
     </div>

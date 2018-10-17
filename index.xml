@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 15 Oct 2018 19:24:46 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Oct 2018 19:13:18 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>教程|构建生产就绪的Istio Adapter</title>
+      <link>http://www.servicemesher.com/blog/set-sail-a-production-ready-istio-adapter/</link>
+      <pubDate>Wed, 17 Oct 2018 19:13:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/set-sail-a-production-ready-istio-adapter/</guid>
+      <description>构建生产就绪的Istio Adapter 你已经浏览了Istio Mixer Adapter的指南 ，现在想要发布自己的Adapter？这篇文章将教你创建自己的Adapt</description>
+    </item>
     
     <item>
       <title>使用Go语言操作Istio和其他Kubernetes CRD</title>
@@ -944,7 +953,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 敖小剑 9 宋净超 6 崔秀龙 3 丁轶群 3 郑伟 3 蚂蚁金服 1 陈有坤 1 邵俊雄 1 赵化冰 1 田晓亮 1 朵晓东 1 彭</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 敖小剑 9 宋净超 8 崔秀龙 3 丁轶群 3 郑伟 3 蚂蚁金服 1 陈有坤 1 邵俊雄 1 赵化冰 1 田晓亮 1 朵晓东 1 彭</description>
     </item>
     
     <item>
@@ -971,7 +980,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 甄中元 11 殷龙飞 11 宋净超 11 戴佳顺 5 崔秀龙 4 王帅俭 3 李昕阳 3 陈冬 3 狄卫华 2 邵思华 1 赵化冰 1 王全根 1</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 甄中元 11 殷龙飞 11 宋净超 11 戴佳顺 5 崔秀龙 4 王帅俭 3 李昕阳 3 陈冬 3 狄卫华 2 马若飞 1 邵思华 1 赵化冰 1</description>
     </item>
     
   </channel>
