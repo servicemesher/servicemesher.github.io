@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 17 Oct 2018 19:13:18 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 19 Oct 2018 10:24:23 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio微服务平台集成实践</title>
+      <link>http://www.servicemesher.com/blog/istio-paas-integration/</link>
+      <pubDate>Fri, 19 Oct 2018 10:24:23 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-paas-integration/</guid>
+      <description>本文转载自赵化冰的博客。 Istio发布1.0版本后，其服务发现和路由规则功能已基本具备production能力，我们也开始了Istio和公司</description>
+    </item>
     
     <item>
       <title>教程|构建生产就绪的Istio Adapter</title>
@@ -953,7 +962,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 敖小剑 9 宋净超 8 崔秀龙 3 丁轶群 3 郑伟 3 蚂蚁金服 1 陈有坤 1 邵俊雄 1 赵化冰 1 田晓亮 1 朵晓东 1 彭</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 敖小剑 9 宋净超 8 崔秀龙 3 丁轶群 3 郑伟 3 赵化冰 2 蚂蚁金服 1 陈有坤 1 邵俊雄 1 田晓亮 1 朵晓东 1 彭</description>
     </item>
     
     <item>

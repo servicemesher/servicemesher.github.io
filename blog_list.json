@@ -1,5 +1,38 @@
 [
   {
+    "author": "赵化冰",
+    "authorlink": "https://zhaohuabing.com",
+    "banner": "https://ws3.sinaimg.cn/large/006tNbRwly1fwdbqx8d9tj31ji15m1l1.jpg",
+    "categories": [
+      "istio"
+    ],
+    "date": "2018-10-19T10:24:23+08:00",
+    "fuzzywordcount": 3600,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "istio",
+      "paas"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-10-19T10:24:23+08:00",
+    "objectID": "cd4135ab395b19722341c3ebe0e16676",
+    "permalink": "http://www.servicemesher.com/blog/istio-paas-integration/",
+    "publishdate": "2018-10-19T10:24:23+08:00",
+    "readingtime": 8,
+    "relpermalink": "/blog/istio-paas-integration/",
+    "summary": "Istio发布1.0版本后，其服务发现和路由规则功能已基本具备production能力，我们也开始了Istio和公司内部微服务平台的集成工作，打算以Istio为基础打造一个微服务管控中心，在这里把目前的进展和遇到的坑和大家分享一下。",
+    "tags": [
+      "istio",
+      "paas"
+    ],
+    "title": "Istio微服务平台集成实践",
+    "translator": null,
+    "url": "/blog/istio-paas-integration/",
+    "weight": 0,
+    "wordcount": 3568
+  },
+  {
     "author": "Venil Noronha",
     "authorlink": "https://venilnoronha.io/",
     "banner": "https://ws2.sinaimg.cn/large/006tNbRwly1fwbgfw9rc0j30rs0ku7m5.jpg",
