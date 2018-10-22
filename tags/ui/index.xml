@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ui on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/ui/</link>
+    <description>Recent content in Ui on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 22 Oct 2018 19:33:39 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/ui/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>istio-ui——一款开源的简易Istio UI的介绍和使用教程</title>
+      <link>http://www.servicemesher.com/blog/istio-ui-tutorial/</link>
+      <pubDate>Mon, 22 Oct 2018 19:33:39 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-ui-tutorial/</guid>
+      <description>由来 ​ 开发istio-ui是由于运维：到时候线上几百个istio配置文件管理会很麻烦。其实在开始接触istio的时候，我们其他同学就有这样的</description>
+    </item>
+    
+  </channel>
+</rss>
