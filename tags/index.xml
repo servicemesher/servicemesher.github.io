@@ -293,7 +293,7 @@
     <item>
       <title>Istio</title>
       <link>http://www.servicemesher.com/tags/istio/</link>
-      <pubDate>Fri, 19 Oct 2018 10:24:23 +0800</pubDate>
+      <pubDate>Mon, 22 Oct 2018 14:15:27 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/istio/</guid>
       <description></description>
@@ -305,6 +305,15 @@
       <pubDate>Mon, 04 Jun 2018 11:33:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kiali</title>
+      <link>http://www.servicemesher.com/tags/kiali/</link>
+      <pubDate>Mon, 22 Oct 2018 14:15:27 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/kiali/</guid>
       <description></description>
     </item>
     

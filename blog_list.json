@@ -1,5 +1,37 @@
 [
   {
+    "author": "宋净超",
+    "authorlink": "https://jimmysong.io",
+    "banner": "https://ws4.sinaimg.cn/large/006tNbRwly1fwgzqxvy9yj31jk15oaea.jpg",
+    "categories": [
+      "istio"
+    ],
+    "date": "2018-10-22T14:15:27+08:00",
+    "fuzzywordcount": 3000,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "kiali"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-10-22T14:15:27+08:00",
+    "objectID": "b82767a2f27dd3308f5313a53dbb58d9",
+    "permalink": "http://www.servicemesher.com/blog/kiali-the-istio-service-mesh-observability-tool/",
+    "publishdate": "2018-10-22T14:15:27+08:00",
+    "readingtime": 6,
+    "relpermalink": "/blog/kiali-the-istio-service-mesh-observability-tool/",
+    "summary": "本文介绍了 Istio Service Mesh 中的可观察性工具 Kiali 的功能、架构和部分代码。",
+    "tags": [
+      "istio",
+      "kiali"
+    ],
+    "title": "Kiali——Istio Service Mesh 的可观察性工具",
+    "translator": null,
+    "url": "/blog/kiali-the-istio-service-mesh-observability-tool/",
+    "weight": 0,
+    "wordcount": 2916
+  },
+  {
     "author": "赵化冰",
     "authorlink": "https://zhaohuabing.com",
     "banner": "https://ws3.sinaimg.cn/large/006tNbRwly1fwdbqx8d9tj31ji15m1l1.jpg",
