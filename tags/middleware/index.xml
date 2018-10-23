@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Middleware on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/middleware/</link>
+    <description>Recent content in Middleware on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 23 Oct 2018 14:19:51 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/middleware/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>服务网格是中间件的终结者吗？</title>
+      <link>http://www.servicemesher.com/blog/does-the-service-mesh-spell-the-end-for-middleware/</link>
+      <pubDate>Tue, 23 Oct 2018 14:19:51 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/does-the-service-mesh-spell-the-end-for-middleware/</guid>
+      <description>在Istio和相关技术持续获得增势之时，中间件在Service Mesh中的地位正在逐渐减弱。尽管它们都可以用来监管不同应用和服务之间的通信，</description>
+    </item>
+    
+  </channel>
+</rss>

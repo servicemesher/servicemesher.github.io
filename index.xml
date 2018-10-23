@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 22 Oct 2018 19:33:39 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Oct 2018 14:19:51 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格是中间件的终结者吗？</title>
+      <link>http://www.servicemesher.com/blog/does-the-service-mesh-spell-the-end-for-middleware/</link>
+      <pubDate>Tue, 23 Oct 2018 14:19:51 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/does-the-service-mesh-spell-the-end-for-middleware/</guid>
+      <description>在Istio和相关技术持续获得增势之时，中间件在Service Mesh中的地位正在逐渐减弱。尽管它们都可以用来监管不同应用和服务之间的通信，</description>
+    </item>
     
     <item>
       <title>istio-ui——一款开源的简易Istio UI的介绍和使用教程</title>
@@ -1007,7 +1016,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 甄中元 11 殷龙飞 11 宋净超 11 戴佳顺 5 崔秀龙 4 王帅俭 3 李昕阳 3 陈冬 3 狄卫华 2 马若飞 1 邵思华 1 赵化冰 1</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 甄中元 11 殷龙飞 11 宋净超 11 戴佳顺 5 崔秀龙 4 王帅俭 3 李昕阳 3 陈冬 3 王全根 2 狄卫华 2 马若飞 1 邵思华 1</description>
     </item>
     
   </channel>

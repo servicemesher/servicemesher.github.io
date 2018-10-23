@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 11 Oct 2018 19:28:26 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Oct 2018 14:19:51 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格是中间件的终结者吗？</title>
+      <link>http://www.servicemesher.com/blog/does-the-service-mesh-spell-the-end-for-middleware/</link>
+      <pubDate>Tue, 23 Oct 2018 14:19:51 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/does-the-service-mesh-spell-the-end-for-middleware/</guid>
+      <description>在Istio和相关技术持续获得增势之时，中间件在Service Mesh中的地位正在逐渐减弱。尽管它们都可以用来监管不同应用和服务之间的通信，</description>
+    </item>
     
     <item>
       <title>容器编排无法解决微服务的所有问题，你还需要服务网格</title>

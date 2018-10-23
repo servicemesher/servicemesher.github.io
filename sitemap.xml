@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/does-the-service-mesh-spell-the-end-for-middleware/</loc>
+    <lastmod>2018-10-23T14:19:51+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-ui-tutorial/</loc>
     <lastmod>2018-10-22T19:33:39+08:00</lastmod>
   </url>
@@ -842,6 +847,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/middleware/</loc>
+    <lastmod>2018-10-23T14:19:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/monitoring/</loc>
     <lastmod>2018-07-04T17:54:13+08:00</lastmod>
     <priority>0</priority>
@@ -927,7 +938,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-10-11T19:28:26+08:00</lastmod>
+    <lastmod>2018-10-23T14:19:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -939,7 +950,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-10-22T19:33:39+08:00</lastmod>
+    <lastmod>2018-10-23T14:19:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1011,7 +1022,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-10-17T19:13:18+08:00</lastmod>
+    <lastmod>2018-10-23T14:19:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
