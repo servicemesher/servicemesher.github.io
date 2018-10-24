@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 22 Oct 2018 19:33:39 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Oct 2018 11:45:02 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio1.1.0下的TCP流量控制</title>
+      <link>http://www.servicemesher.com/blog/raw-tcp-traffic-shaping-with-istio/</link>
+      <pubDate>Wed, 24 Oct 2018 11:45:02 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/raw-tcp-traffic-shaping-with-istio/</guid>
+      <description>Istio通过虚拟服务, 目标规则, Gateway等概念提供了复杂的路由机制。Istio 1.0通过加权路由定义启用了HTTP流量转移。我提交的</description>
+    </item>
     
     <item>
       <title>istio-ui——一款开源的简易Istio UI的介绍和使用教程</title>

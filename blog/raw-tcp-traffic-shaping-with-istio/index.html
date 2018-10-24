@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Serverless · ServiceMesher|服务网格中文社区</title>
+  <title>Istio1.1.0下的TCP流量控制 · ServiceMesher|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="Serverless" />
+  <meta property="og:title" content="Istio1.1.0下的TCP流量控制" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/tags/serverless//" />
+  <meta property="og:url" content="/blog/raw-tcp-traffic-shaping-with-istio//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="ServiceMesher|服务网格中文社区">
-  <meta property="og:description" content="ServiceMesher|服务网格中文社区">
-  <meta name="twitter:description" content="ServiceMesher|服务网格中文社区">
-  <meta property="og:description" content="ServiceMesher|服务网格中文社区" />
+  <meta name="description" content="本文通过构建一个简单的echo服务演示了如何在Istio1.1.0下进行TCP流量控制。">
+  <meta property="og:description" content="本文通过构建一个简单的echo服务演示了如何在Istio1.1.0下进行TCP流量控制。">
+  <meta name="twitter:description" content="本文通过构建一个简单的echo服务演示了如何在Istio1.1.0下进行TCP流量控制。">
+  <meta property="og:description" content="本文通过构建一个简单的echo服务演示了如何在Istio1.1.0下进行TCP流量控制。" />
 
   
   
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Serverless logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Serverless logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Serverless - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio1.1.0下的TCP流量控制 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio1.1.0下的TCP流量控制 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Istio1.1.0下的TCP流量控制 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -232,7 +232,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Serverless</h1>
+                <h1>Istio1.1.0下的TCP流量控制</h1>
             </div>
         </div>
     </div>
@@ -241,207 +241,432 @@ autocomplete('#aa-search-input',
 
         <div id="content">
             <div class="container">
+
                 <div class="row">
+
                     
 
-                    <div class="col-md-9" id="blog-listing-medium">
-
-                        
-                        
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/serverless-vs-containers/">
-                                          
-                                          <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fvbhgk6aarj30rs0ku0yp.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/serverless-vs-containers/">Serverless vs Container——开发人员向左，DevOps向右</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          作者 <a href="https://dzone.com/users/2836231/yancui.html">Yan Cui</a>
-                                          
-                                          
-                                          | 译者 <a href="https://github.com/loverto">殷龙飞</a>
-                                          
-                                          |
-                                          3600字 | 阅读大约需要8分钟
-                                          |
-                                          
-                                          
-                                          归档于<a href="/categories/translation">translation</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/serverless-vs-containers/"><i class="fa fa-calendar-o"></i> 2018年9月16日</a>
-                                        </p>
-                                    </div>
-                                    
-                                    <p class="intro">本文介绍Serverless与容器的采用率、工具支持以及围绕Serverless和容器化的其他争论。</p>
-                                    
-                                    <p class="read-more"><a href="http://www.servicemesher.com/blog/serverless-vs-containers/" class="btn btn-template-main">继续阅读</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/google-istio-bigger-kubernetes-serverless/">
-                                          
-                                          <img src="https://ws1.sinaimg.cn/large/00704eQkly1fugaipib9ij31ji15okjn.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/google-istio-bigger-kubernetes-serverless/">Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          作者 <a href="https://cilium.io">Cilium</a>
-                                          
-                                          
-                                          | 译者 <a href="https://github.com/meua">甄中元</a>
-                                          
-                                          |
-                                          2200字 | 阅读大约需要5分钟
-                                          |
-                                          
-                                          
-                                          归档于<a href="/categories/istio">Istio</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/google-istio-bigger-kubernetes-serverless/"><i class="fa fa-calendar-o"></i> 2018年8月20日</a>
-                                        </p>
-                                    </div>
-                                    
-                                    <p class="intro">Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。你可以在任何你喜欢的云提供商之间自由迁移，且使你上云之路更加平稳。一旦人们熟悉了Kubernetes和Istio的管理和编排方式，上云就不会变得可怕了。</p>
-                                    
-                                    <p class="read-more"><a href="http://www.servicemesher.com/blog/google-istio-bigger-kubernetes-serverless/" class="btn btn-template-main">继续阅读</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/">
-                                          
-                                          <img src="https://ws3.sinaimg.cn/large/0069RVTdgy1fu1i0mvc5yj31ji15ob2b.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/">基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          作者 陈有坤
-                                          
-                                          
-                                          |
-                                          2300字 | 阅读大约需要5分钟
-                                          |
-                                          
-                                          
-                                          归档于<a href="/categories/serverless">serverless</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/"><i class="fa fa-calendar-o"></i> 2018年8月7日</a>
-                                        </p>
-                                    </div>
-                                    
-                                    <p class="intro">我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。</p>
-                                    
-                                    <p class="read-more"><a href="http://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/" class="btn btn-template-main">继续阅读</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/">
-                                          
-                                          <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsxz66f5xrj30rs0kuqv5.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/">使用Istio控制Serverless架构Fn Project中的函数间流量路由</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          作者 <a href="https://hackernoon.com/@pjausovec">Peter Jansovec</a>
-                                          
-                                          
-                                          | 译者 <a href="https://github.com/loverto">殷龙飞</a>
-                                          
-                                          |
-                                          4500字 | 阅读大约需要9分钟
-                                          |
-                                          
-                                          
-                                          归档于<a href="/categories/translation">translation</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/"><i class="fa fa-calendar-o"></i> 2018年7月4日</a>
-                                        </p>
-                                    </div>
-                                    
-                                    <p class="intro">本文首先解释 Istio 路由的基础知识以及将服务器架构（Serverless framework）Fn 部署和运行在 Kubernetes 上的方式。然后将说明如何利用 Istio 服务网格及其路由规则在两个不同的 Fn 函数之间路由流量的。</p>
-                                    
-                                    <p class="read-more"><a href="http://www.servicemesher.com/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/" class="btn btn-template-main">继续阅读</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-                        
-
-                        <ul class="pager">
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年10月24日
+                            </i>
+                            |
                             
-                            <li class="previous disabled"><a href="#">&larr; 更新</a></li>
+                            作者 <a href="https://venilnoronha.io">Venil Noronha</a>
                             
+                            
+                            | 译者 <a href="https://github.com/malphi">马若飞</a>
+                            
+                            
+                            | 审校者 <a href="https://jimmysong.io">宋净超</a>
+                            
+                            |
+                            2400字 | 阅读大约需要5分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://venilnoronha.io/raw-tcp-traffic-shaping-with-istio-1.1.0">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
 
-                            
-                            <li class="next disabled"><a href="#">更旧 &rarr;</a></li>
-                            
+<p><a href="https://istio.io/">Istio</a>通过<a href="https://istio.io/docs/reference/config/istio.networking.v1alpha3/#VirtualService">虚拟服务</a>, <a href="https://istio.io/docs/reference/config/istio.networking.v1alpha3/#DestinationRule">目标规则</a>, <a href="https://istio.io/docs/reference/config/istio.networking.v1alpha3/#Gateway">Gateway</a>等概念提供了复杂的路由机制。Istio 1.0通过<a href="https://istio.io/docs/tasks/traffic-management/traffic-shifting/#apply-weight-based-routing">加权路由定义</a>启用了HTTP流量转移。我提交的<a href="https://github.com/envoyproxy/envoy/pull/4430">Envoy</a> 和<a href="https://github.com/istio/istio/pull/9112">Istio</a>的pull request为TCP/TLS服务提供了类似的特性。这一特性已经在Envoy <a href="https://www.envoyproxy.io/docs/envoy/latest/intro/version_history#oct-4-2018">1.8.0</a>中发布了。Istio中的这一特性也会在即将发布的<a href="https://github.com/istio/istio/releases/">1.1.0</a>版本中提供使用。</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw3hlzj8krj304o06m3ya.jpg" alt="Istio" /></p>
+
+<p>在本文中，我们将用<a href="https://golang.org/">Go</a>编写的一个简单的TCP Echo服务，用<a href="https://www.docker.com/">Docker</a>将其容器化并部署到<a href="https://kubernetes.io/">Kubernetes</a>上，并通过练习Istio的加权TCP路由特性来理解其在生产服务中的行为。</p>
+
+<h2 id="tcp-echo服务">TCP Echo服务</h2>
+
+<p>在本文中，我们将创建一个简单的监听连接的TCP服务，并在客户端的请求数据加上一个简单的前缀，将其作为响应返回。图示如下：</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwgz3b6bpoj30r607qgm6.jpg" alt="TCP Client - Server Architecture" /></p>
+
+<p>让我们看一下TCP Echo服务端的Go代码：</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;bufio&quot;
+	&quot;fmt&quot;
+	&quot;io&quot;
+	&quot;net&quot;
+	&quot;os&quot;
+)
+
+// main作为程序入口点
+func main() {
+	// 通过程序入参获得端口和前缀
+	port := fmt.Sprintf(&quot;:%s&quot;, os.Args[1])
+	prefix := os.Args[2]
+
+	// 在给定端口上创建tcp监听
+	listener, err := net.Listen(&quot;tcp&quot;, port)
+	if err != nil {
+		fmt.Println(&quot;failed to create listener, err:&quot;, err)
+		os.Exit(1)
+	}
+	fmt.Printf(&quot;listening on %s, prefix: %s\n&quot;, listener.Addr(), prefix)
+
+	// 监听新的连接
+	for {
+		conn, err := listener.Accept()
+		if err != nil {
+			fmt.Println(&quot;failed to accept connection, err:&quot;, err)
+			continue
+		}
+
+		// 启用goroutine处理连接
+		go handleConnection(conn, prefix)
+	}
+}
+
+// handleConnection 处理连接的生命周期
+func handleConnection(conn net.Conn, prefix string) {
+	defer conn.Close()
+	reader := bufio.NewReader(conn)
+	for {
+		// 读取客户端请求数据
+		bytes, err := reader.ReadBytes(byte('\n'))
+		if err != nil {
+			if err != io.EOF {
+				fmt.Println(&quot;failed to read data, err:&quot;, err)
+			}
+			return
+		}
+		fmt.Printf(&quot;request: %s&quot;, bytes)
+
+		// 添加前缀作为response返回
+		line := fmt.Sprintf(&quot;%s %s&quot;, prefix, bytes)
+		fmt.Printf(&quot;response: %s&quot;, line)
+		conn.Write([]byte(line))
+	}
+}
+</code></pre>
+
+<p>要测试这个程序，复制上面代码并命名为<code>main.go</code>，执行命令如下：</p>
+
+<pre><code class="language-bash">$ go run -v main.go 9000 hello
+listening on [::]:9000, prefix: hello
+</code></pre>
+
+<p>我们可以通过 <code>nc</code> (<a href="https://en.wikipedia.org/wiki/Netcat">Netcat</a>)在TCP层面上和这段程序交互。要发送请求，可以使用BusyBox容器，如下所示：</p>
+
+<pre><code class="language-bash">$ docker run -it --rm busybox sh -c 'echo world | nc docker.for.mac.localhost 9000'
+hello world
+</code></pre>
+
+<p>就像你看到的，在请求“world”前面加上了“hello”，“hello world”作为响应。注意，正在执行的BusyBox容器基于 <a href="https://docs.docker.com/docker-for-mac/">Docker for Mac</a>，这就是为什么我访问Echo服务端时用<code>docker.for.mac.localhost</code>代替了<code>localhost</code>。</p>
+
+<h2 id="容器化tcp-echo服务">容器化TCP Echo服务</h2>
+
+<p>因为我们最终想要在Kubernetes集群上运行TCP Echo服务，现在让我们将它容器化并发布镜像到 <a href="https://hub.docker.com/">Docker Hub</a>。</p>
+
+<p>首先，用下面的内容创建<code>Dockerfile</code>：</p>
+
+<pre><code class="language-dockerfile"># 使用golang容器构建可执行文件
+FROM golang:1.11 as builder
+WORKDIR /go/src/github.com/venilnoronha/tcp-echo-server/
+COPY main.go .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main main.go
+
+# 负责bin文件到基于alpine的分离容器
+FROM alpine:3.8
+RUN apk --no-cache add ca-certificates
+WORKDIR /bin/
+COPY --from=builder /go/src/github.com/venilnoronha/tcp-echo-server/main .
+ENTRYPOINT [ &quot;/bin/main&quot; ]
+CMD [ &quot;9000&quot;, &quot;hello&quot; ]
+EXPOSE 9000
+</code></pre>
+
+<p>构建容器并发布镜像到Docker Hub：</p>
+
+<pre><code class="language-bash">$ docker build -t vnoronha/tcp-echo-server:latest .
+Sending build context to Docker daemon  60.93kB
+...
+Successfully built d172af115e18
+Successfully tagged vnoronha/tcp-echo-server:latest
+
+$ docker push vnoronha/tcp-echo-server:latest
+The push refers to repository [docker.io/vnoronha/tcp-echo-server]
+b4cc76510de6: Pushed
+...
+latest: digest: sha256:0a45b5a0d362db6aa9154717ee3f2b... size: 949
+</code></pre>
+
+<h2 id="部署tcp-echo服务到kubernetes">部署TCP Echo服务到Kubernetes</h2>
+
+<h3 id="服务配置">服务配置</h3>
+
+<p>我们需要部署2个版本的TCP ECHO服务，用不同的前缀展示路由行为。创建<code>service.yaml</code>，用Kubernetes <a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</a> 和2个 <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployments</a> 构建2个版本的TCP ECHO服务。</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: tcp-echo-server
+  labels:
+    app: tcp-echo-server
+    istio: ingressgateway # use istio default controller
+spec:
+  selector:
+    app: tcp-echo-server
+  ports:
+  - port: 9000
+    name: tcp
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tcp-echo-server-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tcp-echo-server
+        version: v1
+    spec:
+      containers:
+      - name: tcp-echo-server
+        image: vnoronha/tcp-echo-server:latest
+        args: [ &quot;9000&quot;, &quot;one&quot; ] # prefix: one
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9000
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tcp-echo-server-v2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tcp-echo-server
+        version: v2
+    spec:
+      containers:
+      - name: tcp-echo-server
+        image: vnoronha/tcp-echo-server:latest
+        args: [ &quot;9000&quot;, &quot;two&quot; ] # prefix: two
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9000
+</code></pre>
+
+<h3 id="部署minikube">部署Minikube</h3>
+
+<p><a href="https://kubernetes.io/docs/setup/minikube/">Minikube</a>是Kubernetes本地开发的最佳工具。用下面的命令启动Minikube实例：</p>
+
+<pre><code class="language-bash">$ minikube start --bootstrapper kubeadm       \
+                 --memory=8192                \
+                 --cpus=4                     \
+                 --kubernetes-version=v1.10.0 \
+                 --vm-driver=virtualbox
+Starting local Kubernetes v1.10.0 cluster...
+...
+Kubectl is now configured to use the cluster.
+Loading cached images from config file.
+</code></pre>
+
+<h3 id="安装-istio">安装 Istio</h3>
+
+<p>在撰写本文时，Istio 1.1.0还没有发布。因此我使用了Istio的 <a href="https://gcsweb.istio.io/gcs/istio-prerelease/daily-build/master-20181017-09-15/">Daily Pre-Release</a>来演示这个新特性。请参考<a href="https://istio.io/docs/setup/kubernetes/download-release/">Istio文档</a>学习下载和配置Istio。</p>
+
+<p>一旦配置完成，这里有一个完全部署Istio组件的简单方法：</p>
+
+<pre><code class="language-bash">$ kubectl apply -f install/kubernetes/helm/istio/templates/crds.yaml
+customresourcedefinition.apiextensions.k8s.io/virtualservices.networking.istio.io created
+...
+customresourcedefinition.apiextensions.k8s.io/templates.config.istio.io created
+customresourcedefinition.apiextensions.k8s.io/handlers.config.istio.io created
+
+$ kubectl apply -f install/kubernetes/istio-demo.yaml
+namespace/istio-system created
+...
+destinationrule.networking.istio.io/istio-policy created
+destinationrule.networking.istio.io/istio-telemetry created 
+</code></pre>
+
+<h3 id="使用istio代理部署tcp-echo服务">使用Istio代理部署TCP Echo服务</h3>
+
+<p>为了演示Istio的路由机制，我们以sidecar模式部署<code>tcp-echo-server</code> ：</p>
+
+<pre><code class="language-bash">$ kubectl apply -f &lt;(istioctl kube-inject -f service.yaml)
+service/tcp-echo-server created
+deployment.extensions/tcp-echo-server-v1 created
+deployment.extensions/tcp-echo-server-v2 created
+</code></pre>
+
+<p>通过下面的命令来验证服务运行：</p>
+
+<pre><code class="language-bash">$ kubectl get pods
+NAME                                  READY     STATUS    RESTARTS   AGE
+tcp-echo-server-v1-78684f5697-sv5r5   2/2       Running   0          56s
+tcp-echo-server-v2-74bf9999c8-hhhf9   2/2       Running   0          56s
+
+$ kubectl logs tcp-echo-server-v1-78684f5697-sv5r5 tcp-echo-server
+listening on [::]:9000, prefix: one
+
+$ kubectl logs tcp-echo-server-v2-74bf9999c8-hhhf9 tcp-echo-server
+listening on [::]:9000, prefix: two
+</code></pre>
+
+<h2 id="istio加权tcp路由">Istio加权TCP路由</h2>
+
+<p>这是本练习的最后一部分，定义<code>VirtualService</code>，<code>DestinationRule</code>和带有权重路由的 <code>Gateway</code>，并验证系统行为。</p>
+
+<h3 id="路由配置">路由配置</h3>
+
+<p>创建带有两个<code>subset</code>的<code>DestinationRule</code>来代表两个版本的 TCP Echo服务。<code>Gateway</code> 容许流量通过端口<code>31400</code>访问服务。最后，<code>VirtualService</code>限定了80%的流量必须被路由到TCP Echo服务的v1版本，20%被路由到v2版本。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: destination
+spec:
+  host: tcp-echo-server
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 31400
+      name: tcp
+      protocol: TCP
+    hosts:
+    - &quot;*&quot;
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: route
+spec:
+  hosts:
+  - &quot;*&quot;
+  gateways:
+  - gateway
+  tcp:
+  - match:
+    - port: 31400
+    route:
+    - destination:
+        host: tcp-echo-server
+        port:
+          number: 9000
+        subset: v1
+      weight: 80
+    - destination:
+        host: tcp-echo-server
+        port:
+          number: 9000
+        subset: v2
+      weight: 20
+</code></pre>
+
+<h3 id="部署路由配置">部署路由配置</h3>
+
+<p>为了让配置生效，复制上面的配置内容并创建文件<code>route-config.yaml</code>，用下面的命令进行安装：</p>
+
+<pre><code class="language-bash">kubectl apply -f route-config.yaml
+destinationrule.networking.istio.io/destination created
+gateway.networking.istio.io/gateway created
+virtualservice.networking.istio.io/route created
+</code></pre>
+
+<h3 id="验证istio的tcp路由行为">验证Istio的TCP路由行为</h3>
+
+<p>先来确定一下<a href="https://istio.io/docs/tasks/traffic-management/ingress/#determining-the-ingress-ip-and-ports">Ingress的IP</a>：</p>
+
+<pre><code class="language-bash">$ minikube ip
+192.168.99.100
+</code></pre>
+
+<p>现在可以通过Ingress发送一些请求到加权负载均衡的TCP Echo服务：</p>
+
+<pre><code class="language-bash">$ for i in {1..10}; do
+for&gt; docker run -it --rm busybox sh -c '(date; sleep 1) | nc 192.168.99.100 31400'
+for&gt; done
+one Sat Oct 20 04:38:05 UTC 2018
+two Sat Oct 20 04:38:07 UTC 2018
+two Sat Oct 20 04:38:09 UTC 2018
+one Sat Oct 20 04:38:12 UTC 2018
+one Sat Oct 20 04:38:14 UTC 2018
+one Sat Oct 20 04:38:17 UTC 2018
+one Sat Oct 20 04:38:19 UTC 2018
+one Sat Oct 20 04:38:22 UTC 2018
+one Sat Oct 20 04:38:24 UTC 2018
+two Sat Oct 20 04:38:27 UTC 2018
+</code></pre>
+
+<p>如你所见，大约80%的请求带有“one”前缀，剩下20%带有“two”前缀。这证明了加权TCP路由器确实生效了。</p>
+
+<p>下图能让你很好地了解这个示范的情景：</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwhdkuu6sgj30zg0ikmze.jpg" alt="Architecture" /></p>
+
+<h2 id="清理">清理</h2>
+
+<p>只需要像下面一样删除Minikube的部署：</p>
+
+<pre><code class="language-bash">$ minikube stop &amp;&amp; minikube delete
+Stopping local Kubernetes cluster...
+Machine stopped.
+Deleting local Kubernetes cluster...
+Machine deleted.
+</code></pre>
+
+<h2 id="总结">总结</h2>
+
+<p>如本文所示，即将发布的Istio 1.1.0版本配置加权TCP路由非常容易。本文提供了构建一个加权TCP路由的思路，让你学会如何从头开始控制TCP流量。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/does-the-service-mesh-spell-the-end-for-middleware/" data-toggle="tooltip" data-placement="top" title="服务网格是中间件的终结者吗？">&larr; 更旧</a>
+                        </li>
+                         
                         </ul>
 
-                        <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        
-
-                        
-                        
-                        
-                        
-                        
-                        </div>
                     </div>
                     
 
@@ -454,6 +679,25 @@ autocomplete('#aa-search-input',
                         
 
                         <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/istio-ui-tutorial/"><i class="fa fa-link"></i>istio-ui——一款开源的简易Istio UI的介绍和使用教程</a></li>
+         
+        <li><a href="/blog/kiali-the-istio-service-mesh-observability-tool/"><i class="fa fa-link"></i>Kiali——Istio Service Mesh 的可观察性工具</a></li>
+         
+        <li><a href="/blog/istio-paas-integration/"><i class="fa fa-link"></i>Istio微服务平台集成实践</a></li>
+         
+        <li><a href="/blog/set-sail-a-production-ready-istio-adapter/"><i class="fa fa-link"></i>教程|构建生产就绪的Istio Adapter</a></li>
+         
+        <li><a href="/blog/istio-traffic-management-impl-intro/"><i class="fa fa-link"></i>Istio流量管理实现机制深度解析</a></li>
+         
+     </ul>
+    </div>
      
 </div>
 
@@ -768,6 +1012,7 @@ autocomplete('#aa-search-input',
 
                 </div>
                 
+
             </div>
             
         </div>
