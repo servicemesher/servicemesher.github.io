@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 31 Aug 2018 12:27:25 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Oct 2018 10:44:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小米正式开源Istio管理面板Naftis</title>
+      <link>http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</link>
+      <pubDate>Thu, 25 Oct 2018 10:44:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</guid>
+      <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武汉研发中心推出Naftis，帮助用户更轻松</description>
+    </item>
     
     <item>
       <title>蚂蚁金服开源的 SOFAMesh 的通用协议扩展解析</title>

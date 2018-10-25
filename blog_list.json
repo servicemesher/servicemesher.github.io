@@ -1,5 +1,39 @@
 [
   {
+    "author": "小米",
+    "authorlink": "https://github.com.XiaoMi/naftis",
+    "banner": "https://ws3.sinaimg.cn/large/006tNbRwly1fwka1ifacwj31jk15o1kx.jpg",
+    "categories": [
+      "service mesh"
+    ],
+    "date": "2018-10-25T10:44:46+08:00",
+    "fuzzywordcount": 2400,
+    "keywords": [
+      "service mesh",
+      "服务网格"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-10-25T10:44:46+08:00",
+    "objectID": "0b50278b1fceec8ed24850a9e5f388f5",
+    "permalink": "http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/",
+    "publishdate": "2018-10-25T10:44:46+08:00",
+    "readingtime": 5,
+    "relpermalink": "/blog/naftis-istio-dashboard-xiaomi/",
+    "summary": "用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武研推出Naftis，帮助用户更轻松地管理Istio。",
+    "tags": [
+      "istio",
+      "xiaomi",
+      "naftis",
+      "dashboard",
+      "UI"
+    ],
+    "title": "小米正式开源Istio管理面板Naftis",
+    "translator": null,
+    "url": "/blog/naftis-istio-dashboard-xiaomi/",
+    "weight": 0,
+    "wordcount": 2361
+  },
+  {
     "author": "Venil Noronha",
     "authorlink": "https://venilnoronha.io",
     "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fwjcioecurj31jm15ottp.jpg",

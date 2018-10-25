@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>小米正式开源Istio管理面板Naftis</title>
+      <link>http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</link>
+      <pubDate>Thu, 25 Oct 2018 10:44:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</guid>
+      <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武汉研发中心推出Naftis，帮助用户更轻松</description>
+    </item>
+    
+    <item>
       <title>Istio1.1.0下的TCP流量控制</title>
       <link>http://www.servicemesher.com/blog/raw-tcp-traffic-shaping-with-istio/</link>
       <pubDate>Wed, 24 Oct 2018 11:45:02 +0800</pubDate>
