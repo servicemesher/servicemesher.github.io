@@ -1,5 +1,38 @@
 [
   {
+    "author": "高松",
+    "authorlink": "https://github.com/Yisaer",
+    "banner": "https://ws1.sinaimg.cn/large/00704eQkly1fwkswmoajyj30rs0kuabu.jpg",
+    "categories": [
+      "istio"
+    ],
+    "date": "2018-10-25T20:49:29+08:00",
+    "fuzzywordcount": 5700,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "istio",
+      "coohom"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-10-25T20:49:29+08:00",
+    "objectID": "63f4770fe6c18bce5601a1044c012eb0",
+    "permalink": "http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/",
+    "publishdate": "2018-10-25T20:49:29+08:00",
+    "readingtime": 12,
+    "relpermalink": "/blog/practice-for-coohom-using-istio-in-production/",
+    "summary": "本文是酷家乐的Coohom项目使用Istio服务网格的实践经验分享。",
+    "tags": [
+      "istio",
+      "coohom"
+    ],
+    "title": "云端设计平台Coohom在生产环境中使用istio的经验与实践",
+    "translator": null,
+    "url": "/blog/practice-for-coohom-using-istio-in-production/",
+    "weight": 0,
+    "wordcount": 5602
+  },
+  {
     "author": "小米",
     "authorlink": "https://github.com.XiaoMi/naftis",
     "banner": "https://ws3.sinaimg.cn/large/006tNbRwly1fwka1ifacwj31jk15o1kx.jpg",
@@ -288,7 +321,7 @@
     "translator": null,
     "url": "/blog/x-protocol-tcp-protocol-extension/",
     "weight": 0,
-    "wordcount": 2569
+    "wordcount": 2570
   },
   {
     "author": "Lori MacVittie",
@@ -865,7 +898,7 @@
     "objectID": "b785581d2b77e4537fd30ee0596ff836",
     "permalink": "http://www.servicemesher.com/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/",
     "publishdate": "2018-09-11T14:48:53+08:00",
-    "readingtime": 15,
+    "readingtime": 16,
     "relpermalink": "/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/",
     "summary": "以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的。",
     "tags": [
@@ -878,7 +911,7 @@
     "translator": null,
     "url": "/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/",
     "weight": 0,
-    "wordcount": 7507
+    "wordcount": 7572
   },
   {
     "author": "宋净超",

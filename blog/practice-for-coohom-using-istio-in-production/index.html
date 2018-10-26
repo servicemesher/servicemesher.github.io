@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>云端设计平台Coohom在生产环境中使用istio的经验与实践 · ServiceMesher|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格, istio, coohom">
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="云端设计平台Coohom在生产环境中使用istio的经验与实践" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/practice-for-coohom-using-istio-in-production//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文是酷家乐的Coohom项目使用Istio服务网格的实践经验分享。">
+  <meta property="og:description" content="本文是酷家乐的Coohom项目使用Istio服务网格的实践经验分享。">
+  <meta name="twitter:description" content="本文是酷家乐的Coohom项目使用Istio服务网格的实践经验分享。">
+  <meta property="og:description" content="本文是酷家乐的Coohom项目使用Istio服务网格的实践经验分享。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="云端设计平台Coohom在生产环境中使用istio的经验与实践 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="云端设计平台Coohom在生产环境中使用istio的经验与实践 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">云端设计平台Coohom在生产环境中使用istio的经验与实践 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>云端设计平台Coohom在生产环境中使用istio的经验与实践</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年10月25日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://github.com/Yisaer">高松</a>
+                            
+                            
+                            
+                            |
+                            5700字 | 阅读大约需要12分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            
+                            归档于 <a href="/categories/istio">istio</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/coohom/"><i>#coohom</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<h2 id="介绍">介绍</h2>
+
+<p>自从<a href="https://istio.io/">istio</a>-1.0.0在今年发布了正式版以后，<a href="https://www.coohom.com">Coohom</a>项目在生产环境中也开启了使用istio来作为服务网格。</p>
+
+<p>本文将会介绍与分享在Coohom项目在使用istio中的一些实践与经验。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/007pL7qRgy1fwjfpiwu3fj3050050mwx.jpg" alt="" /></p>
+
+<h2 id="coohom项目">Coohom项目</h2>
+
+<p>杭州群核信息技术有限公司成立于2011年，公司总部位于浙江杭州，占地面积超过5000平方米。<a href="https://www.kujiale.com/">酷家乐</a>是公司以分布式并行计算和多媒体数据挖掘为技术核心，推出的家居云设计平台，致力于云渲染、云设计、BIM、VR、AR、AI等技术的研发，实现“所见即所得”体验,5分钟生成装修方案，10秒生成效果图，一键生成VR方案，于2013年正式上线。作为“设计入口”，酷家乐致力于打造一个连接设计师、家居品牌商、装修公司以及业主的强生态平台。</p>
+
+<p>依托于酷家乐快速的云端渲染能力与先进的3D设计工具经验，<a href="https://www.coohom.com">Coohom</a>致力于打造一个让用户拥有自由编辑体验、极致可视化设计的云端设计平台。Coohom项目作为一个新兴的产品，在架构技术上没有历史包袱，同时Coohom自从项目开启时就一直部署运行在Kubernetes平台。作为Coohom项目的技术积累，我们决定使用服务网格来作为Coohom项目的服务治理。</p>
+
+<h2 id="为什么使用istio">为什么使用istio</h2>
+
+<p>由于istio是由Google所主导的产品，使用istio必须在Kubernetes平台上。所以对于Coohom项目而言，在生产环境使用istio之前，Coohom已经在Kubernetes平台上稳定运行了。我们先列一下istio提供的功能（服务发现与负载均衡这些Kubernetes就已经提供了）：</p>
+
+<ol>
+<li>流量管理: 控制服务之间的流量和API调用的流向、熔断、灰度发布、A/BTest都可以在这个功能下完成；</li>
+<li>可观察性: istio可以通过流量梳理出服务间依赖关系，并且进行无侵入的监控（Prometheus）和追踪（Zipkin）；</li>
+<li>策略执行: 这是Ops关心的点， 诸如Quota、限流乃至计费这些策略都可以通过网格来做，与应用代码完全解耦；</li>
+<li>服务身份和安全：为网格中的服务提供身份验证， 这点在小规模下毫无作用， 但在一个巨大的集群上是不可或缺的。</li>
+</ol>
+
+<p><strong>但是</strong>， 这些功能并不是决定使用istio的根本原因， 基于Dubbo或Spring-Cloud这两个国内最火的微服务框架不断进行定制开发，同样能够实现上面的功能，真正驱动我们尝试istio的原因是：</p>
+
+<ul>
+<li>第一：它使用了一种全新的模式（SideCar）进行微服务的管控治理，完全解耦了服务框架与应用代码。业务开发人员不需要对服务框架进行额外的学习，只需要专注于自己的业务。而istio这一层则由可以由专门的人或团队深入并管理，这将极大地降低&rdquo;做好&rdquo;微服务的成本。</li>
+<li>第二: istio来自GCP（Google Cloud Platform），是Kubernetes上的“官方”Service Mesh解决方案，在Kubernetes上一切功能都是开箱即用，不需要改造适配的，深入istio并跟进它的社区发展能够大大降低我们重复造轮子的成本。</li>
+</ul>
+
+<h2 id="coohom在istio的使用进度">Coohom在istio的使用进度</h2>
+
+<p>目前Coohom在多个地区的生产环境集群内都已经使用了istio作为服务网格，对于istio目前所提供的功能，Coohom项目的网络流量管理已经完全交给istio，并且已经通过istio进行灰度发布。对于从K8S集群内流出的流量，目前也已经通过istio进行管理。</p>
+
+<h2 id="从单一kubenertes切换为kubernetes-istio">从单一Kubenertes切换为Kubernetes+istio</h2>
+
+<p>在使用istio之前，Coohom项目就已经一直在Kubernetes平台稳定运行了。关于Coohom的架构，从技术栈的角度可以简单的分为：</p>
+
+<ul>
+<li>Node.js egg应用</li>
+<li>Java Springboot应用</li>
+</ul>
+
+<p>从网络流量管理的角度去分类，可以分为三类:</p>
+
+<ul>
+<li>只接受集群外部流量；</li>
+<li>只接受集群内部流量；</li>
+<li>既接受集群外部流量，也接受集群内部流量</li>
+</ul>
+
+<p>在我们的场景里，基本上所有的Node应用属于第一类，一部分Java应用属于第二类，一部分Java应用属于第三类。
+为了更清楚的表达，我们这里可以想象一个简单的场景:</p>
+
+<p><img src="https://ws1.sinaimg.cn/mw690/007pL7qRgy1fwji4ujvtzj30mn0hl3zb.jpg" alt="" /></p>
+
+<p>从上面的场景我们可以看到，我们有一个页面服务负责渲染并发页面内容到用户的浏览器，用户会从浏览器访问到页面服务和账户服务。
+账户服务负责记录用户名，用户密码等相关信息。账户服务同时还会在权限服务内查看用户是否具有相应的权限，并且页面服务同样也会请求账户服务的某些接口。
+所以按照我们上面的流量管理的分类法，页面服务属于第一类服务，权限服务属于第二类服务，账户服务则属于第三类服务。
+同时，账户服务和权限服务也接了外部的RDS作为存储，需要注意的是RDS并非在Kubernetes集群内部。</p>
+
+<p>那么在过去只用Kubenretes时，为了让用户能正确访问到对应的服务，我们需要编写Kubernetes Ingress:
+值得注意的是，由于只有账户服务和页面服务需要暴露给外部访问，所以Ingress中只编写了这两个服务的规则。</p>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  rules:
+  - host: www.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: page-service
+          servicePort: 80
+        path: /
+  - host: www.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: account-service
+          servicePort: 80
+        path: /api/account
+
+</code></pre>
+
+<p>在接入istio体系后，虽然这三个服务在所有POD都带有istio-proxy作为sidecar的情况下依旧可以沿用上面Kubernetes Ingress将流量导入到对应的服务。
+不过既然用了istio，我们希望充分利用istio的流量管理能力，所以我们先将流量导入到服务这一职责交给istio VirtualService去完成。所以在我一开始接入istio时，我们将上述Kubernetes方案改造成了通过下述方案:</p>
+
+<h3 id="入口ingress">入口Ingress</h3>
+
+<p>首先，我们在istio-system这个namespace下建立Ingress，将所有www.example.com这个host下的流量导入到istio-ingressgateway中。
+这样我们就从集群的流量入口开始将流量管理交付给istio来进行管理。</p>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: istio-ingress
+  namespace: istio-system
+spec:
+  rules:
+  - host: www.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: istio-ingressgateway
+          servicePort: 80
+        path: /
+</code></pre>
+
+<p>在交付给istio进行管理以后，我们需要将具体的路由-服务匹配规则告诉给istio，这一点可以通过Gateway+VirtualService实现。
+需要注意的是，下面的服务名都是用的简写，所以必须将这两个文件和对应的服务部署在同一个Kubernetes namespace下才行。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: example-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: example-http
+      protocol: HTTP
+    hosts:
+    - &quot;www.example.com&quot;
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: example-virtualservice
+spec:
+  hosts:
+  - &quot;www.example.com&quot;
+  gateways:
+  - example-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        port:
+          number: 80
+        host: page
+  - match:
+    - uri:
+        prefix: /api/account
+    route:
+    - destination:
+        port:
+          number: 80
+        host: account-service
+</code></pre>
+
+<h3 id="外部服务注册">外部服务注册</h3>
+
+<p>在经过上述的操作以后，重新启动服务实例并且自动注入istio-proxy后，我们会发现两个后端的Java应用并不能正常启动。经过查询启动日志后发现，无法启动的原因则是因为不能连接到外部RDS。这是因为我们的所有网络流量都经过istio的管控后，所有需要集群外部服务都需要先向istio进行注册以后才能被顺利的转发过去。一个非常常见的场景则是通过TCP连接的外部RDS。当然，外部的HTTP服务也是同理。</p>
+
+<p>以下是一个向istio注册外部RDS的例子。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: mysql-external
+  namespace: istio-system
+spec:
+  hosts:
+  - xxxxxxxxxxxx1.mysql.rds.xxxxxx.com
+  - xxxxxxxxxxxx2.mysql.rds.xxxxxx.com
+
+  addresses:
+  - xxx.xxx.xxx.xxx/24
+  ports:
+  - name: tcp
+    number: 3306
+    protocol: tcp
+  location: MESH_EXTERNAL
+</code></pre>
+
+<h3 id="支持灰度发布">支持灰度发布</h3>
+
+<p>上面istio-ingress+Gateway+VirtualService的方案可以替代我们之前只使用Kubernetes Ingress的方案，但如果只是停留在这一步的话那么对于istio给我们带来的好处可能就不能完全体现。值得一提的是，在上文的istio-ingress中我们将www.example.com的所有流量导入到了istio-ingressGateway，通过这一步我们可以在istio-ingressGateway的log当中查看到所有被转发过来的流量的网络情况，这一点在我们日常的debug中非常有用。然而在上述所说的方案中istio的能力还并未被完全利用，接下来我将介绍我是如何基于上述方案进行改造以后来进行Coohom日常的灰度发布。</p>
+
+<p>还是以上文为例，假设需要同时发布三个服务，并且三个服务都需要进行灰度发布，并且我们对灰度发布有着以下几个需求:</p>
+
+<ul>
+<li>最初的灰度发布希望只有内部开发者才能查看，外部用户无法进入灰度。</li>
+<li>当内部开发者验证完灰度以后，逐渐开发切换新老服务流量的比例。</li>
+<li>当某个外部用户进入新/老服务，我希望他背后的整个服务链路都是新/老服务</li>
+</ul>
+
+<p>为了支持以上灰度发布的需求，我们有如下工作需要完成:</p>
+
+<ol>
+<li>定义规则告诉istio，对于一个Kubernetes service而言，后续的Deployment实例哪些是新服务，哪些是老服务。</li>
+<li>重新设计VirtualService结构策略，使得整个路由管理满足上述第二第三点需求。</li>
+<li>需要设计一个合理的流程，使得当灰度发布完成以后，最终状态能恢复成与初始一致。</li>
+</ol>
+
+<h3 id="定义规则">定义规则</h3>
+
+<p>为了使得istio可以知道对于某个服务而言新老实例的规则，我们需要用到DestinationRule，以账户服务为例:</p>
+
+<p>从下文的例子我们可以看到，对于账户服务而言，所有Pod中带有type为normal的标签被分为了normal组，所有type为grey的标签则被分为了grey组，
+这是用来在后面帮助我们让istio知道新老服务的规则，即带有type:normal标签的POD为老实例，带有type:grey标签的POD为新实例。这里所有三个服务分类都可以套用该规则，就不再赘述。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: account-service-dest
+spec:
+  host: account-service
+  subsets:
+  - name: normal
+    labels:
+      type: normal
+  - name: grey
+    labels:
+      type: grey
+</code></pre>
+
+<h3 id="重构virtualservice">重构VirtualService</h3>
+
+<p>前文我们提到，我们在Kubernetes平台内将在网络流量所有服务分为三类。之所以这么分，就是因为在这里每一类服务的VirtualService的设计不同。
+我们先从第一类，只有外部连接的服务说起，即页面服务，下面是页面服务VirtualService的例子：</p>
+
+<p>从下文这个例子，我们可以看到对于页面服务而言，他定义了两种规则，对于headers带有<code>end-user:test</code>的请求，istio则会将该请求导入到上文我们所提到的
+grey分组，即特定请求进入灰度，而所有其他请求则像之前导入到normal分组，即老实例。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: page-service-external-vsc
+spec:
+  hosts:
+    - &quot;www.example.com&quot;
+  gateways:
+  - example-gateway
+  http:
+  - match:
+    - headers:
+        end-user:
+          exact: test
+      uri:
+        prefix: /
+    route:
+    - destination:
+        port:
+          number: 80
+        host: page-service
+        subset: grey
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        port:
+          number: 80
+        host: page-service
+        subset: normal
+</code></pre>
+
+<p>然后我们再看第二类服务，即权限服务，下面是权限服务的virtualService例子:</p>
+
+<p>从下面这个例子我们可以看到，首先在取名方面，上面的page-service的virtualService name为xxx-external-vsc，而这里权限服务则名为xxx-internal-service。这里的name对实际效果其实并没有影响，只是我个人对取名的习惯，用来提醒自己这条规则是适用于外部流量还是集群内部流量。
+在这里我们定义了一个内部服务的规则，即只有是带有type:grey的POD实例流过来的流量，才能进入grey分组。即满足了我们上述的第三个需求，整个服务链路要么是全部新实例，要么是全部老实例。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: auth-service-internal-vsc
+spec:
+  hosts:
+  - auth-service
+  http:
+  - match:
+    - sourceLabels:
+        type: grey
+    route:
+    - destination:
+        host: auth-service
+        subset: grey
+  - route:
+    - destination:
+        host: auth-service
+        subset: normal
+</code></pre>
+
+<p>对于我们的第三类服务，即既接收外部流量，同样也接受内部流量的账户服务来说，我们只需要将上文提到的两个virtualService结合起来即可:</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: account-service-external-vsc
+spec:
+  hosts:
+    - &quot;www.example.com&quot;
+  gateways:
+  - example-gateway
+  http:
+  - match:
+    - headers:
+        end-user:
+          exact: test
+      uri:
+        prefix: /api/account
+    route:
+    - destination:
+        port:
+          number: 80
+        host: account-service
+        subset: grey
+  - match:
+    - uri:
+        prefix: /api/account
+    route:
+    - destination:
+        port:
+          number: 80
+        host: account-service
+        subset: normal
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: account-service-internal-vsc
+spec:
+  hosts:
+  - &quot;account-service&quot;
+  http:
+  - match:
+    - sourceLabels:
+        type: grey
+    route:
+    - destination:
+        host: account-service
+        subset: grey
+  - route:
+    - destination:
+        host: account-service
+        subset: normal
+
+</code></pre>
+
+<p>至此，我们就已经完成了灰度发布准备的第一步，也是一大步。当新服务实例发布上去以后，我们在最初通过添加特定的header进入新服务，同时保证所有的外部服务只会进入老服务。当内部人员验证完新服务实例在生产环境的表现后，我们需要逐渐开放流量比例将外部的用户流量导入到新服务实例，这一块可以通过更改第一类和第三类服务的external-vsc来达到，下面给出一个例子:</p>
+
+<p>下面这个例子则是表现为对于外部流量而言，将会一半进入grey分组，一般进入normal分组。最终我们可以将grey分组的weigth变更为100，而normal分组的weight变更为0，即将所有流量导入到grey分组，灰度发布完成。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: page-service-external-vsc
+spec:
+  hosts:
+  - &quot;www.example.com&quot;
+  http:
+  - route:
+    - destination:
+        host: page-service
+        subset: grey
+      weight: 50
+    - destination:
+        host: page-service
+        subset: normal
+      weight: 50
+</code></pre>
+
+<h3 id="收尾工作">收尾工作</h3>
+
+<p>从上述的方案当中，我们将所有服务根据网络流量来源分为三类，并且通过istio实现了整个业务的灰度发布。然而整个灰度发布还并没有完全结束，我们还需要一点收尾工作。</p>
+
+<p>考虑整个业务刚开始的状态我们有3个Kubernetes service，3个Kubernetes Deployment，每个Deployment的POD都带有了type:normal的标签。
+然而现在经过上述方案以后，我们同样有3个Kubernetes service，3个Kubernetes Deployment，但是这里每个Deployment的POD却都带有了type:grey的标签。</p>
+
+<p>所以在经过上述灰度发布以后，我们还要状态恢复为初始值，这有利于我们下一次进行灰度发布。由于对于Coohom项目，在CICD上使用的是Gitlab-ci，所以我们的自动化灰度发布收尾工作深度绑定了Gitlab-ci的脚本，所以这里就不做介绍，各位读者可以根据自身情况量身定制。</p>
+
+<h2 id="结语">结语</h2>
+
+<p>以上就是目前Coohom在istio使用上关于灰度发布的一些实践和经验。对于Coohom项目而言，在生产环境中使用istio是从istio正式发布1.0.0版本以后才开始的。但是在这之前，我们在内网环境使用istio已经将近有半年的时间了，Coohom在内网中从istio0.7.1版本开始使用。内网环境在中长期时间内与生产环境环境架构不一致是反直觉的，一听就不靠谱。然而，恰恰istio 是对业务完全透明的， 它可以看作是基础设施的一部分，所以我们在生产环境使用istio之前，在内网环境下先上了istio，积累了不少经验。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/" data-toggle="tooltip" data-placement="top" title="小米正式开源Istio管理面板Naftis">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/istio-ui-tutorial/"><i class="fa fa-link"></i>istio-ui——一款开源的简易Istio UI的介绍和使用教程</a></li>
+         
+        <li><a href="/blog/istio-paas-integration/"><i class="fa fa-link"></i>Istio微服务平台集成实践</a></li>
+         
+        <li><a href="/blog/set-sail-a-production-ready-istio-adapter/"><i class="fa fa-link"></i>教程|构建生产就绪的Istio Adapter</a></li>
+         
+        <li><a href="/blog/istio-traffic-management-impl-intro/"><i class="fa fa-link"></i>Istio流量管理实现机制深度解析</a></li>
+         
+        <li><a href="/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/"><i class="fa fa-link"></i>理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (13)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (3)</a>
+            </li>
+            
+            <li><a href="/categories/news"><i class="fa fa-navicon"></i>news (1)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (1)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (17)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (4)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (64)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/practice-for-coohom-using-istio-in-production/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkly1fwkswmoajyj30rs0kuabu.jpg" class="img-responsive" alt="云端设计平台Coohom在生产环境中使用istio的经验与实践">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/practice-for-coohom-using-istio-in-production/">云端设计平台Coohom在生产环境中使用istio的经验与实践</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/naftis-istio-dashboard-xiaomi/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwka1ifacwj31jk15o1kx.jpg" class="img-responsive" alt="小米正式开源Istio管理面板Naftis">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/naftis-istio-dashboard-xiaomi/">小米正式开源Istio管理面板Naftis</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/raw-tcp-traffic-shaping-with-istio/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwjcioecurj31jm15ottp.jpg" class="img-responsive" alt="Istio1.1.0下的TCP流量控制">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/raw-tcp-traffic-shaping-with-istio/">Istio1.1.0下的TCP流量控制</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
