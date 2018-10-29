@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-architectures-inevitable/</link>
+      <pubDate>Mon, 29 Oct 2018 16:11:07 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-architectures-inevitable/</guid>
+      <description>当Istio 1.0在几个月前发布时，TechCrunch称它为“可能是目前最重要的开源项目之一”。它并不是完美的(在本系列的第2部分会有详细</description>
+    </item>
+    
+    <item>
       <title>云端设计平台Coohom在生产环境中使用istio的经验与实践</title>
       <link>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</link>
       <pubDate>Thu, 25 Oct 2018 20:49:29 +0800</pubDate>

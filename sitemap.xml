@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/service-mesh-architectures-inevitable/</loc>
+    <lastmod>2018-10-29T16:11:07+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</loc>
     <lastmod>2018-10-25T20:49:29+08:00</lastmod>
   </url>
@@ -971,7 +976,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-10-23T14:19:51+08:00</lastmod>
+    <lastmod>2018-10-29T16:11:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -983,7 +988,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-10-25T20:49:29+08:00</lastmod>
+    <lastmod>2018-10-29T16:11:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1055,7 +1060,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-10-24T11:45:02+08:00</lastmod>
+    <lastmod>2018-10-29T16:11:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   

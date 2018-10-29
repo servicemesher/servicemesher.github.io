@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 24 Oct 2018 11:45:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Oct 2018 16:11:07 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-architectures-inevitable/</link>
+      <pubDate>Mon, 29 Oct 2018 16:11:07 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-architectures-inevitable/</guid>
+      <description>当Istio 1.0在几个月前发布时，TechCrunch称它为“可能是目前最重要的开源项目之一”。它并不是完美的(在本系列的第2部分会有详细</description>
+    </item>
     
     <item>
       <title>Istio1.1.0下的TCP流量控制</title>

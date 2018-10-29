@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 25 Oct 2018 20:49:29 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Oct 2018 16:11:07 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-architectures-inevitable/</link>
+      <pubDate>Mon, 29 Oct 2018 16:11:07 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-architectures-inevitable/</guid>
+      <description>当Istio 1.0在几个月前发布时，TechCrunch称它为“可能是目前最重要的开源项目之一”。它并不是完美的(在本系列的第2部分会有详细</description>
+    </item>
     
     <item>
       <title>云端设计平台Coohom在生产环境中使用istio的经验与实践</title>
@@ -1043,7 +1052,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 甄中元 11 殷龙飞 11 宋净超 11 戴佳顺 5 崔秀龙 4 王帅俭 3 李昕阳 3 陈冬 3 马若飞 2 王全根 2 狄卫华 2 邵思华 1</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 甄中元 11 殷龙飞 11 宋净超 11 戴佳顺 5 崔秀龙 4 马若飞 3 王帅俭 3 李昕阳 3 陈冬 3 王全根 2 狄卫华 2 邵思华 1</description>
     </item>
     
   </channel>
