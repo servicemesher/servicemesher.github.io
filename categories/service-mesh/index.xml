@@ -21,15 +21,6 @@
     </item>
     
     <item>
-      <title>蚂蚁金服开源的 SOFAMesh 的通用协议扩展解析</title>
-      <link>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</link>
-      <pubDate>Fri, 31 Aug 2018 12:27:25 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</guid>
-      <description>本文作者：邵俊雄（熊啸），蚂蚁金服中间件团队高级技术专家，目前主要负责 SOFAMesh 的开发工作。 本文是基于作者在 Service Mesh Meetup #3 深圳的主题分享《SOFAMesh</description>
-    </item>
-    
-    <item>
       <title>企业级服务网格架构之路解读—Service Mesh在会话层解耦</title>
       <link>http://www.servicemesher.com/blog/the-enterprise-path-to-service-mesh-architectures/</link>
       <pubDate>Mon, 20 Aug 2018 11:38:59 +0800</pubDate>
@@ -84,15 +75,6 @@
     </item>
     
     <item>
-      <title>蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案</title>
-      <link>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</link>
-      <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</guid>
-      <description>4月，蚂蚁金服自主研发的分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA ）启动开源计划，并开放多个组件，（相关背景请点</description>
-    </item>
-    
-    <item>
       <title>Service Mesh深度学习系列part1—istio源码分析之pilot-agent模块分析</title>
       <link>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin/</link>
       <pubDate>Wed, 11 Jul 2018 14:24:24 +0800</pubDate>
@@ -111,30 +93,12 @@
     </item>
     
     <item>
-      <title>蚂蚁金服大规模微服务架构下的Service Mesh探索之路</title>
-      <link>http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/</link>
-      <pubDate>Wed, 04 Jul 2018 19:56:20 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/</guid>
-      <description>本文是根据蚂蚁金服 Service Mesh 布道师敖小剑在 Service Mesher社区进行的第一次 Meetup 上分享的《大规模微服务架构下的 Service Mesh 探索之路》现场演讲内容实录整理编辑而成</description>
-    </item>
-    
-    <item>
       <title>轻量Service Mesh在Ucloud的实践</title>
       <link>http://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</link>
       <pubDate>Thu, 14 Jun 2018 10:43:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</guid>
       <description>UCloud 作为一家To B的公有云服务商，我们的CTO莫显峰经常说：“研发团队最首要的任务是提供稳定的服务，然后才是提供符合客户需求的、易用和低成本的</description>
-    </item>
-    
-    <item>
-      <title>蚂蚁金服是如何实现经典服务化架构向Service Mesh方向演进的？</title>
-      <link>http://www.servicemesher.com/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</link>
-      <pubDate>Wed, 13 Jun 2018 18:58:33 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</guid>
-      <description>蚂蚁金服在服务化上面已经经过多年的沉淀，支撑了每年双十一的高峰峰值。Service Mesh 作为微服务的一个新方向，在最近两年成为领域的一个大热点，</description>
     </item>
     
     <item>
