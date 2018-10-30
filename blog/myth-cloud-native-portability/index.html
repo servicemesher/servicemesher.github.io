@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>云原生可移植性的神话 · ServiceMesher|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格, cloud native, 云原生, kubernetes">
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="云原生可移植性的神话" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/myth-cloud-native-portability//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文介绍了云原生的可移植性，告诫读者应该看重生态系统而不是某个具体平台。">
+  <meta property="og:description" content="本文介绍了云原生的可移植性，告诫读者应该看重生态系统而不是某个具体平台。">
+  <meta name="twitter:description" content="本文介绍了云原生的可移植性，告诫读者应该看重生态系统而不是某个具体平台。">
+  <meta property="og:description" content="本文介绍了云原生的可移植性，告诫读者应该看重生态系统而不是某个具体平台。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="云原生可移植性的神话 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="云原生可移植性的神话 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">云原生可移植性的神话 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>云原生可移植性的神话</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年10月30日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://thenewstack.io/author/bilgin-ibryam/">Bligin Ibryam</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/loverto">殷龙飞</a>
+                            
+                            
+                            | 审校者 <a href="https://jimmysong.io">宋净超</a>
+                            
+                            |
+                            3200字 | 阅读大约需要7分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://thenewstack.io/myth-cloud-native-portability/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/cloud-native/"><i>#cloud native</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/kubernetes/"><i>#kubernetes</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p><img src="https://ws1.sinaimg.cn/large/61411417ly1fwp5jrtwd4j20i20bwwfl.jpg" alt="" /></p>
+
+<blockquote>
+<p>本文最初发表于2017年5月24日。</p>
+</blockquote>
+
+<p>随着大量新平台和支持工具的出现，云原生势头正在增长。 这些新平台为开发人员提供了越来越多的功能 ，可以以自动化的方式快速开发，部署和管理大量<a href="https://thenewstack.io/category/microservices/">微服务</a>。</p>
+
+<p>但这种云原生的势头的增长同样会伴随着成本的增加，最好做好为此付出代价的准备。</p>
+
+<p>最近我写了一篇由Kubernetes等云原生平台提供的“<a href="http://www.ofbizian.com/2017/04/new-distributed-primitives-for.html">为开发者准备的新的分布式原语</a>”，以及这些原语如何与开发应用程序的编程原语相结合。 例如，下面看看开发人员必须了解和使用多少 <a href="https://thenewstack.io/category/kubernetes/">Kubernetes</a> 概念才能有效地运行单个容器化应用程序：</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/61411417ly1fwp5js00wxj20sg0m8wnm.jpg" alt="基于Kubernetes的微服务" /></p>
+
+<p>请记住，此图表不包含DevOps团队的Ops部门必须管理的支持Kubernetes的对象。在操作之前也不需要额外的应用程序支持工具（用于日志管理、监控、跟踪、服务网格等）。</p>
+
+<p>更有可能的是，开发人员必须编写与容器中的应用程序代码相同数量的YAML代码。 更重要的是，应用程序本身将依赖于比以往更多的平台。云原生应用程序期望平台执行运行状况检查、部署、放置、服务发现、运行定时任务（ <strong>cron</strong> 作业）或调度原子工作单元（作业）、自动扩展、配置管理等。</p>
+
+<p>因此，您的应用程序已放弃并将所有这些职责委托给平台，并期望以可靠的方式处理它们。 事实上，现在您的应用程序和相关团队在很多不同的级别上依赖于平台：代码、设计、体系结构、开发实践、部署和交付管道、支持过程、恢复方案，你能想到的一切。</p>
+
+<h2 id="在生态系统上下注而不是在平台上">在生态系统上下注而不是在平台上</h2>
+
+<p>上图显示了代码在Kubernetes微服务环境中的小巧程度。 但是，当我们谈论基于生产就绪的微服务系统时，这种情况远未完成。 任何规模庞大的系统都需要集中监控、度量收集、跟踪、服务网格、集成构建和部署工具、管道等工具。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/61411417ly1fwp5jsbrzrj20sg0ltk30.jpg" alt="微服务需求层次" /></p>
+
+<p><a href="https://thenewstack.io/introducing-microservices-hierarchy-needs/">微服务需求层次</a></p>
+
+<p>该平台只是冰山一角，为了在云原生世界取得成功，您需要成为完全集成的工具和公司生态系统的一部分。因此，赌注绝不是单一平台、项目、很酷的库或一家公司。它涉及整个协同工作的整个项目生态系统，以及在未来十年左右合作并致力于该事业的公司（供应商和客户）的整个生态系统。 我认为这两个方面同样重要：</p>
+
+<ul>
+<li><strong>技术</strong> ：考虑到向云原生过渡是一个多年的旅程，只有长期成功才能带来好处，重要的是打赌有可能在未来5到10年内发展的技术，而不是从过去5到10年的历史。</li>
+<li><strong>文化</strong> ：cloud-native是通过微服务、容器、持续交付和DevOps的组合实现的。而成为云原生需要的不仅仅是为您的应用程序添加少量依赖项/库（也不是在某些会议中如何推广它）。您可能不得不改变团队结构和固定流程、工作习惯和编码实践，并习惯于消耗仍然非常活跃的技术空间。如果您的公司文化在某种程度上更接近于开发或仅使用云原生平台和相关工具的公司的文化，那就更容易了。诸如提出拉取请求与提交错误报告，检查上游源代码以及为即将推出的新功能打开讨论之类的小事情。 文化一致性和人文因素与技术优势同等重要。</li>
+</ul>
+
+<p>以下内容并不代表完整的格局，但我将尝试将我想到的主要云原生生态系统分组：</p>
+
+<h3 id="mesosphere和apache-mesos">Mesosphere和Apache Mesos</h3>
+
+<p>作为Apache Software Foundations的一部分，<a href="http://mesos.apache.org/">Apache Mesos</a> 有优势（成熟的社区）也有缺点（进度缓慢）。 它诞生于2009年左右，是一个成熟的框架，它最近增加了对容器（我的意思是docker格式）和类似概念（如Pod/Task组）的支持。</p>
+
+<h3 id="cloud-foundry和spring-cloud">Cloud Foundry和Spring Cloud</h3>
+
+<p><a href="http://bit.ly/2quBaL4">Cloud Foundry</a>诞生于2009年左右，是云原生世界的先驱之一。当 <a href="http://cloud.spring.io/spring-cloud-cloudfoundry/">Spring Cloud与Cloud Foundry一起使用时，</a> 该平台与应用程序本身融为一体。 服务发现、负载平衡、配置管理、重试、超时等一系列功能在服务中执行（在本例中为JVM）。这是Kubernetes等平台所采取的相反方法，其中所有这些职责都委托给平台或其他支持容器（例如 [envoy](<a href="https://lyft.github.io/envoy/、[linkerd](https://linkerd.io/">https://lyft.github.io/envoy/、[linkerd](https://linkerd.io/</a>) 、<a href="https://traefik.io/">traefik</a> ）。 我在过去比较过<a href="http://www.ofbizian.com/2016/12/spring-cloud-compared-kubernetes.html">Kubernetes 和 Spring Cloud</a>（请注意，不是的Cloud Foundry） 。</p>
+
+<h3 id="aws-ecs和docker-swarm">AWS ECS和Docker Swarm</h3>
+
+<p>在Docker公司仍然需要<a href="https://thenewstack.io/focused-enterprise-docker-doesnt-fear-kubernetes/">搞清楚</a>它是要开发什么，卖什么，亚马逊创造了使用Docker技术作为一部分一个非常坚实的产品 <a href="https://aws.amazon.com/ecs/">ECS</a> 。带有<a href="https://blox.github.io/">Blox的</a> ECS（AWS的开源容器编排软件）本身可能不是什么大事，但当与所有其他AWS产品结合使用时，它是一个功能非常强大的集成平台。</p>
+
+<p>更不用说从虚拟机时代起成为AWS支持者的<a href="https://medium.com/netflix-techblog/the-evolution-of-container-usage-at-netflix-3abfc096781b">Netflix正在向容器领域过渡</a> ，并正在推动Amazon ECS的创新。</p>
+
+<h3 id="cncf和kubernetes">CNCF和Kubernetes</h3>
+
+<p>Kubernetes是此类别中最新的平台之一，但同时也是有史以来最活跃，发展最快的开源项目之一。 与整合的 <a href="https://www.cncf.io/projects/">云原生计算基金会项目</a> 和支持<a href="https://www.cncf.io/about/members/">公司相结合</a> ，使整个生态系统成为这一类别中非常有力的竞争者。</p>
+
+<p>作为一个后来者（2014年），Kuebernetes的优势在于从一开始就以容器为中心的架构发展。 而且它基于一个已有十年历史的Google Borg，这意味着原则（不是实施）是成熟的，并在最高级别测试。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/61411417ly1fwp5jrxbatj20sg0gejry.jpg" alt="Container Orchestrator调查结果" /></p>
+
+<p>Sysdig 2017年Docker使用报告中的容器编排</p>
+
+<p>正如您可以 从Sysdig 最近的 <a href="https://sysdig.com/blog/sysdig-docker-usage-report-2017/">报告中</a> 看到的结果 ，云原生用户似乎很欣赏这一切。</p>
+
+<h3 id="选择哪一个">选择哪一个？</h3>
+
+<p>也许您在想，只要您将应用程序打包到容器中，就可以轻松地跨不同的云原生平台移植。你错了。无论您是从Mesos、Cloud Foundry、Kubernetes、Docker Swarm还是ECS开始，您都必须投入大量资金来学习平台和支持工具，了解文化和工作方式，并与这个仍然快速变化的生态系统的技术和公司进行互动。</p>
+
+<p>本文的目的不是要比较这些生态系统，而是要显示它们之间的差异，并证明如果需要，它将需要大量的时间和金钱来输入，或转移到另一个生态系统。</p>
+
+<h2 id="kubernetes作为应用程序可移植层">Kubernetes作为应用程序可移植层</h2>
+
+<p>云原生态系统在技术、流程和文化方面非常独特。 但它们之间也有一些整合。许多由一个平台推广的概念也在向其他平台传播。 例如，部署单元（Pod in Kubernetes）的概念现在出现在Mesos中，它也作为任务组存在于Amazon ECS中。服务器端负载平衡（Kubernetes中的服务）和带有策略的调度/放置（Kubernetes Scheduler）的概念也存在于Docker Swarm、AWS ECS等中。但这是它走多远，从一个生态系统过渡到另外，需要付出很多努力。</p>
+
+<p>那么如何避免与单一供应商锁定？ 一种方法是坚持使用Kubernetes并接受它作为云和服务提供商之间的可移植性层。Kubernetes如此受欢迎的原因之一是它不是单一的公司玩具，而是由多家大型科技公司支持，如谷歌、红帽（ 现被 IBM 收购【译者注】）、Docker，Mesosphere、IBM、戴尔、思科等等。</p>
+
+<p>另一个原因是有许多云公司提供Kubernetes作为服务。 如果您使用Kubernetes，那么您可以通过第三方服务提供商以最小的努力在Google容器引擎，Microsoft Azure、IBM Bluemix容器服务等云提供商之间移动您的应用程序，甚至可以在AWS上移动您的应用程序。 这意味着Kubernetes API是云平台之间应用程序的可移植性层，而不仅仅是容器。一个容器本身就是云原生海洋中的一滴。</p>
+
+<h2 id="关于作者">关于作者</h2>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tSBxtly1fuwq6p5tm2j302d02sq2y.jpg" alt="" /></p>
+
+<p><strong>Bilgin Ibryam</strong>  （@bibryam）是 Red Hat 的首席架构师、提交者和 ASF 成员。 他是一名开源布道师，博客作者，《Camel Design Patterns》 和 《Kubernetes Patterns》 书籍的作者。 在他的日常工作中，Bilgin 喜欢指导编码和领导开发人员成功构建云原生解决方案。 他目前的工作重点是应用程序集成、分布式系统、消息传递、微服务、devops 和一般的云原生挑战。 你可以在  <a href="https://twitter.com/bibryam">Twitter</a>、<a href="https://uk.linkedin.com/in/bibryam">Linkedin</a>  或他的  <a href="http://www.ofbizian.com/">博客</a> 上找到他 。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/service-mesh-architectures-inevitable/" data-toggle="tooltip" data-placement="top" title="服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/"><i class="fa fa-link"></i>教程|使用Istio在Kubernetes集群中实现金丝雀部署</a></li>
+         
+        <li><a href="/blog/microservice-observability-with-istio/"><i class="fa fa-link"></i>Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性</a></li>
+         
+        <li><a href="/blog/hands-on-canary-deployments-with-istio-and-kubernetes/"><i class="fa fa-link"></i>教程|使用Istio实现一个Service Mesh以简化微服务间的通信模式</a></li>
+         
+        <li><a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/"><i class="fa fa-link"></i>基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</a></li>
+         
+        <li><a href="/blog/service-mesh-architectures-inevitable/"><i class="fa fa-link"></i>服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (13)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (3)</a>
+            </li>
+            
+            <li><a href="/categories/news"><i class="fa fa-navicon"></i>news (1)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (1)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (13)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (8)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (66)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/myth-cloud-native-portability/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwqdjdmoobj31jk15oe3x.jpg" class="img-responsive" alt="云原生可移植性的神话">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/myth-cloud-native-portability/">云原生可移植性的神话</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/service-mesh-architectures-inevitable/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwp6rmelcaj31jk15ox5m.jpg" class="img-responsive" alt="服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/service-mesh-architectures-inevitable/">服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/practice-for-coohom-using-istio-in-production/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkly1fwkswmoajyj30rs0kuabu.jpg" class="img-responsive" alt="云端设计平台Coohom在生产环境中使用istio的经验与实践">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/practice-for-coohom-using-istio-in-production/">云端设计平台Coohom在生产环境中使用istio的经验与实践</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

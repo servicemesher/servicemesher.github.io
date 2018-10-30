@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud Native on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/cloud-native/</link>
+    <description>Recent content in Cloud Native on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 30 Oct 2018 17:15:17 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/cloud-native/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>云原生可移植性的神话</title>
+      <link>http://www.servicemesher.com/blog/myth-cloud-native-portability/</link>
+      <pubDate>Tue, 30 Oct 2018 17:15:17 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/myth-cloud-native-portability/</guid>
+      <description>本文最初发表于2017年5月24日。 随着大量新平台和支持工具的出现，云原生势头正在增长。 这些新平台为开发人员提供了越来越多的功能 ，可以以自动</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>云原生可移植性的神话</title>
+      <link>http://www.servicemesher.com/blog/myth-cloud-native-portability/</link>
+      <pubDate>Tue, 30 Oct 2018 17:15:17 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/myth-cloud-native-portability/</guid>
+      <description>本文最初发表于2017年5月24日。 随着大量新平台和支持工具的出现，云原生势头正在增长。 这些新平台为开发人员提供了越来越多的功能 ，可以以自动</description>
+    </item>
+    
+    <item>
       <title>服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要</title>
       <link>http://www.servicemesher.com/blog/service-mesh-architectures-inevitable/</link>
       <pubDate>Mon, 29 Oct 2018 16:11:07 +0800</pubDate>

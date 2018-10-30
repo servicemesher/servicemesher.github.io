@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 29 Oct 2018 16:11:07 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Oct 2018 17:15:17 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>云原生可移植性的神话</title>
+      <link>http://www.servicemesher.com/blog/myth-cloud-native-portability/</link>
+      <pubDate>Tue, 30 Oct 2018 17:15:17 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/myth-cloud-native-portability/</guid>
+      <description>本文最初发表于2017年5月24日。 随着大量新平台和支持工具的出现，云原生势头正在增长。 这些新平台为开发人员提供了越来越多的功能 ，可以以自动</description>
+    </item>
     
     <item>
       <title>服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要</title>
@@ -1052,7 +1061,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 甄中元 11 殷龙飞 11 宋净超 11 戴佳顺 5 崔秀龙 4 马若飞 3 王帅俭 3 李昕阳 3 陈冬 3 王全根 2 狄卫华 2 邵思华 1</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 12 甄中元 11 宋净超 11 戴佳顺 5 崔秀龙 4 马若飞 3 王帅俭 3 李昕阳 3 陈冬 3 王全根 2 狄卫华 2 邵思华 1</description>
     </item>
     
   </channel>
