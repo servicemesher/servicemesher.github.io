@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/</loc>
+    <lastmod>2018-10-31T20:01:03+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/myth-cloud-native-portability/</loc>
     <lastmod>2018-10-30T17:15:17+08:00</lastmod>
   </url>
@@ -633,7 +638,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/cloud-native/</loc>
-    <lastmod>2018-10-30T17:15:17+08:00</lastmod>
+    <lastmod>2018-10-31T20:01:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -837,7 +842,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
-    <lastmod>2018-10-30T17:15:17+08:00</lastmod>
+    <lastmod>2018-10-31T20:01:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -999,7 +1004,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-10-30T17:15:17+08:00</lastmod>
+    <lastmod>2018-10-31T20:01:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1071,7 +1076,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-10-30T17:15:17+08:00</lastmod>
+    <lastmod>2018-10-31T20:01:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   

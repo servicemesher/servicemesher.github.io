@@ -6,10 +6,19 @@
     <description>Recent content in Cloud Native on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 30 Oct 2018 17:15:17 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 31 Oct 2018 20:01:03 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/cloud-native/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>如何将云原生工作负载映射到Kubernetes中的控制器</title>
+      <link>http://www.servicemesher.com/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/</link>
+      <pubDate>Wed, 31 Oct 2018 20:01:03 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/</guid>
+      <description>Kubernetes 不仅仅是一个容器管理工具。它是一个平台，旨在处理包装在任意数量的容器和组合中的各种工作负载。Kubernetes内置了多个控制器，可映射到</description>
+    </item>
     
     <item>
       <title>云原生可移植性的神话</title>
