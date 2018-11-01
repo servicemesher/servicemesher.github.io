@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 31 Oct 2018 20:01:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Nov 2018 20:10:14 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格的未来Part 2：Istio 1.0之后何去何从？</title>
+      <link>http://www.servicemesher.com/blog/the-future-of-service-mesh/</link>
+      <pubDate>Thu, 01 Nov 2018 20:10:14 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/the-future-of-service-mesh/</guid>
+      <description>在我们的服务网格系列的第一部分中，我们认为服务网格是微服务架构发展的必然结果。随着 Istio 1.0 的发布，服务网格经过了一个重要的里程碑，在这个时间节点</description>
+    </item>
     
     <item>
       <title>如何将云原生工作负载映射到Kubernetes中的控制器</title>
@@ -1070,7 +1079,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 13 甄中元 11 宋净超 11 戴佳顺 5 崔秀龙 4 马若飞 3 王帅俭 3 李昕阳 3 陈冬 3 王全根 2 狄卫华 2 邵思华 1</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 13 甄中元 11 宋净超 11 戴佳顺 5 崔秀龙 4 陈冬 4 马若飞 3 王帅俭 3 李昕阳 3 王全根 2 狄卫华 2 邵思华 1</description>
     </item>
     
   </channel>

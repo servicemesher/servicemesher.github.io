@@ -6,18 +6,18 @@
     <description>Recent content in Servcie Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 28 Jun 2018 15:09:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Nov 2018 20:10:14 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/servcie-mesh/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Istio不仅为微服务而生——使用Istio Service Mesh保护Kubernetes中的服务</title>
-      <link>http://www.servicemesher.com/blog/istio-is-not-just-for-microservices/</link>
-      <pubDate>Thu, 28 Jun 2018 15:09:03 +0800</pubDate>
+      <title>服务网格的未来Part 2：Istio 1.0之后何去何从？</title>
+      <link>http://www.servicemesher.com/blog/the-future-of-service-mesh/</link>
+      <pubDate>Thu, 01 Nov 2018 20:10:14 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-is-not-just-for-microservices/</guid>
-      <description>原文地址：https://github.com/todkap/istio-index-conf2018/blob/master/README</description>
+      <guid>http://www.servicemesher.com/blog/the-future-of-service-mesh/</guid>
+      <description>在我们的服务网格系列的第一部分中，我们认为服务网格是微服务架构发展的必然结果。随着 Istio 1.0 的发布，服务网格经过了一个重要的里程碑，在这个时间节点</description>
     </item>
     
   </channel>

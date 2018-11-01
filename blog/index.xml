@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>服务网格的未来Part 2：Istio 1.0之后何去何从？</title>
+      <link>http://www.servicemesher.com/blog/the-future-of-service-mesh/</link>
+      <pubDate>Thu, 01 Nov 2018 20:10:14 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/the-future-of-service-mesh/</guid>
+      <description>在我们的服务网格系列的第一部分中，我们认为服务网格是微服务架构发展的必然结果。随着 Istio 1.0 的发布，服务网格经过了一个重要的里程碑，在这个时间节点</description>
+    </item>
+    
+    <item>
       <title>如何将云原生工作负载映射到Kubernetes中的控制器</title>
       <link>http://www.servicemesher.com/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/</link>
       <pubDate>Wed, 31 Oct 2018 20:01:03 +0800</pubDate>

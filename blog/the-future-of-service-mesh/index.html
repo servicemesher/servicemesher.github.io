@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>容器编排无法解决微服务的所有问题，你还需要服务网格 · ServiceMesher|服务网格中文社区</title>
+  <title>服务网格的未来Part 2：Istio 1.0之后何去何从？ · ServiceMesher|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="容器编排无法解决微服务的所有问题，你还需要服务网格" />
+  <meta property="og:title" content="服务网格的未来Part 2：Istio 1.0之后何去何从？" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/going-beyond-container-orchestration//" />
+  <meta property="og:url" content="/blog/the-future-of-service-mesh//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用Service Mesh指标和现代架构去实现。">
-  <meta property="og:description" content="容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用Service Mesh指标和现代架构去实现。">
-  <meta name="twitter:description" content="容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用Service Mesh指标和现代架构去实现。">
-  <meta property="og:description" content="容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用Service Mesh指标和现代架构去实现。" />
+  <meta name="description" content="本文通过分析服务网格的优势，阐述了其未来的发展情况。">
+  <meta property="og:description" content="本文通过分析服务网格的优势，阐述了其未来的发展情况。">
+  <meta name="twitter:description" content="本文通过分析服务网格的优势，阐述了其未来的发展情况。">
+  <meta property="og:description" content="本文通过分析服务网格的优势，阐述了其未来的发展情况。" />
 
   
   
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="容器编排无法解决微服务的所有问题，你还需要服务网格 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="容器编排无法解决微服务的所有问题，你还需要服务网格 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">容器编排无法解决微服务的所有问题，你还需要服务网格 - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="服务网格的未来Part 2：Istio 1.0之后何去何从？ logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="服务网格的未来Part 2：Istio 1.0之后何去何从？ logo" class="visible-xs visible-sm">
+                    <span class="sr-only">服务网格的未来Part 2：Istio 1.0之后何去何从？ - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -232,7 +232,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>容器编排无法解决微服务的所有问题，你还需要服务网格</h1>
+                <h1>服务网格的未来Part 2：Istio 1.0之后何去何从？</h1>
             </div>
         </div>
     </div>
@@ -250,26 +250,26 @@ autocomplete('#aa-search-input',
                         <div class="well">
                             <div class="author-category">
                             <i class="fa fa-calendar-o">
-                            2018年10月11日
+                            2018年11月1日
                             </i>
                             |
                             
-                            作者 <a href="https://aspenmesh.io">Lori MacVittie</a>
+                            作者 <a href="https://blogs.vmware.com/opensource/author/opensourceteam/">Stephen McPolin &amp; Venil Noronha</a>
                             
                             
-                            | 译者 <a href="https://github.com/meua">甄中元</a>
+                            | 译者 <a href="https://github.com/shaobai">陈冬</a>
                             
                             
                             | 审校者 <a href="https://jimmysong.io">宋净超</a>
                             
                             |
-                            1600字 | 阅读大约需要4分钟
+                            1000字 | 阅读大约需要2分钟
                             </div>
                             
                             
                             <div class="author-category">
                             
-                            <a href="https://aspenmesh.io/2018/09/going-beyond-container-orchestration/">查看原文</a>
+                            <a href="https://blogs.vmware.com/opensource/2018/10/23/service-mesh-whats-next">查看原文</a>
                             |
                             
                             
@@ -281,44 +281,30 @@ autocomplete('#aa-search-input',
                             
                             标签
                             
-                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
+                            <a style="text-transform:capitalize" href="/tags/servcie-mesh/"><i>#servcie mesh</i></a>
                             
                             </div>
                             
                             
                         </div>
                         <div id="post-content">
-                          
+                          <p>在我们的服务网格系列的第一部分中，我们认为服务网格是微服务架构发展的必然结果。随着 Istio 1.0 的发布，服务网格经过了一个重要的里程碑，在这个时间节点上需要考虑下一步该如何进行。</p>
 
-<p>最近的几次关于容器使用情况的调研都得到了相似的结果，开发团队不仅采用而且开始拥抱容器技术。大多数人并没有像超大型组织那样大规模的使用容器。在一项思科赞助的调研中发现有超过8000家企业在生产环境中使用容器。这听起来令人印象深刻，但他们使用容器的规模有限。在戴尔EMC，英特尔和红帽委托的Forrester报告中，63％使用容器的企业运行的实例超过100个，82％预计到2019年会达到这一规模。这与超大型技术公司使用的数十万的规模相距甚远。</p>
+<p>当然，在 VMware中，我们相信非常值得花时间来支持开源的服务网格架构。我们已经成为 Istio 和 Envoy 的贡献成员。我们在改善网络方面投入了大量的精力，并在其他领域定期作出贡献。</p>
 
-<p>虽然采用率很高，这并不是说组织使用容器的道路就是一帆风顺的。采纳任何一样新技术都是存在挑战的。人们使用容器时最关心的是：网络和管理。其次才去关注安全性和不一致性。</p>
+<p>我们也考虑到事实上，几乎每个 Istio 的演示目前都是基于一个单一的示例。保加利亚的一位 VMware 同事目前正在构建一个全新的 Istio 演示示例，用于演示如何在封闭字幕等服务之间管理视频质量，并演示 Istio 在微服务环境中的动态路由的能力。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw4i0hfkbgj30s80koq5c.jpg" alt="" /></p>
+<p>因为我们认为服务网格是有价值的，它将长期发展，所以我们一直在寻求将 VMware 自己的世界级系统管理工具集成到服务网格框架中。我们最近创建了一个适配器，将 Istio metrics 导出到 VMware 的 Wavefront 监测和分析工具中。如果我们能够将微服务中的更多信息合并到我们的系统管理工具中，我们相信这些工具能够更好的管理系统。</p>
 
-<p>网络挑战是由于Kubernetes等流行的容器编排软件所带来的。Kubernetes构建的就是要支持微服务架构。这允许开发和运维人员将功能抽象成一组pod，并将其作为“service”暴露出来，并通过定义好的API进行访问。Kubernetes支持DNS和基于TCP的L4负载均衡。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwp4etrgwvj30sg0iz782.jpg" alt="" /></p>
 
-<p>基于TCP L4负载均衡的问题是它无法与L7（应用程序和API层）交互。对于任何L4负载均衡都是如此；它不是容器和Kubernetes独有的东西。L4负载均衡提供了对连接级别（TCP）协议和指标的可见性，但仅此而已。这使得很难（真的不可能）解决高阶问题，例如每秒请求数或事务等L7指标以及基于路径分割流量（路由请求）。这也意味着您无法在API层进行速率限制或支持重试和断路等关键功能。</p>
+<p>从我们的角度来看，这样的工作是为了扩大微服务生态系统。然而，服务网格平台本身还不够完善。例如，Istio 是一个复杂的软件，出问题时很难调试。当它运行正常时，可以帮助你管理微服务。当它不能正常工作时，又很难弄清楚它为什么不能工作。 这一点在社区中已经广受诟病，我们一直在花时间和精力思考如何克服这种复杂性，但目前我们还没有解决这个问题。</p>
 
-<p>因为缺乏这些功能，开发人员就不得不将它们编码到每个微服务中。这导致运维代码包含在业务逻辑中。这明显不太合适，因为它显然违反了微服务设计的原则。因为它为微服务增加了构建和技术债。</p>
+<p>服务网格平台也是刚开始处理多集群情况。如果你将软件部署在一个集群上，像 Istio 和 Envoy 这样的服务通常能够很好的管理它们。但是你希望将单集群扩展到多集群，并让服务在集群边界上进行通信（从安全的角度来看是一个好想法），那这可能是一个挑战。再次，Istio 社区理解这一点，我们正在逐步改进，进行多集群友好的设计。</p>
 
-<p>虽然Kubernetes特别擅长处理容器化应用程序的构建和部署，但是它缺乏在运行时监控基于微服务的应用程序所需的关键功能。Kubernetes只能提供基本的健康检查存活探针和就绪探针，不能为开发和运维人员提供在执行期间快速有效地诊断问题所需的度量和追溯微服务的调用。让开发人员使用微服务来生成一致的指标可能是一项重大挑战，尤其是当他们要在限定时间内完成客户所需功能时，这会给他们带来很大的压力。</p>
+<p>最后，我们正在关注一个新的倡议，来自 Google 的 Knative。从根本上说，这是基于 Kubernetes 和 Istio 在 Google 的“函数即服务”的概念中构建的。看起来在不久的将来，它将向 Istio 提出更多的要求，但是目前还不清楚这些要求从何而来。例如，“事件”对于 Istio 来说是一个完全陌生的概念，但是对于处理临时数据还是必要的。Knative 为此增加了一些工具，这将对 Istio 产生压力。</p>
 
-<p>而Service Mesh是解决kubernetes在网络和管理方面问题的完美解决方案。</p>
-
-<h2 id="service-mesh如何应对挑战">Service Mesh如何应对挑战</h2>
-
-<p>Service Mesh通过在Kubernetes的一些列pod中注入sidecar代理能够很好的解决这些问题。通过直接注入到容器环境，sidecar代理能够透明化网络和一致度量指标。由于所有流量都通过sidecar代理进行有效路由，因此它可以自动生成并将所需的指标提供给网格的其它部分。对于在容器环境中部署传统应用程序的组织而言，这非常有价值。传统应用程序不太可能适用于现代环境。使用Service Mesh及其sidecar代理基本使这些应用程序能够产生正确的指标，而无需或很少需要添加/修改代码。</p>
-
-<p>这也意味着您不必花时间协调由各种运行时代理生成的不同指标。您可以依靠服务网格在所有应用程序和微服务中生成一致的度量标准集合。</p>
-
-<p>这些指标包含提供给网格的更高阶数据点，并启用更高级的网络以确保对请求的最快可用响应。在Service Mesh中重试和断路器由sidecar代理处理，这减轻了开发人员将运维代码引入其微服务的负担。由于sidecar代理不受限于L4负载均衡（TCP），所以靠L7负载均衡（应用程序和API层）它支持更高级别的消息路由技术。</p>
-
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw4jtsdrhyj31df0lpdlt.jpg" alt="" /></p>
-
-<p>容器编排是一个很好的基础设施，但企业组织需要的不仅仅是一个良好的基础设施。他们需要能够与堆栈上层的服务进行交互的能力，这需要使用指标和现代架构去实现。</p>
-
-<p>服务网格可以很好的提供这两种服务。当您需要超越容器编排时，请使用服务网格。</p>
+<p>现在，我们正在关注Knative，推出大约一个半月了，并且还有很多问题没有解决，此时我们在决定如何应对之前正在寻找更新。因此，这两点都会受到持续关注。但是可以肯定的是，服务网格的脚步将更加坚实。</p>
 
                         </div>
                         
@@ -328,13 +314,9 @@ autocomplete('#aa-search-input',
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/x-protocol-rapid-decode-forward/" data-toggle="tooltip" data-placement="top" title="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/" data-toggle="tooltip" data-placement="top" title="如何将云原生工作负载映射到Kubernetes中的控制器">&larr; 更旧</a>
                         </li>
                          
-                        <li class="next">
-                        <a href="http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/" data-toggle="tooltip" data-placement="top" title="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展">更新 &rarr;</a>
-                        </li>
-                        
                         </ul>
 
                     </div>
@@ -356,15 +338,15 @@ autocomplete('#aa-search-input',
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/api-management-and-service-mesh/"><i class="fa fa-link"></i>API管理和服务网格——为什么说服务网格无法替代API管理</a></li>
+        <li><a href="/blog/myth-cloud-native-portability/"><i class="fa fa-link"></i>云原生可移植性的神话</a></li>
          
-        <li><a href="/blog/istio-on-openshift-technology-preview/"><i class="fa fa-link"></i>Red Hat OpenShift发布Istio预览版</a></li>
+        <li><a href="/blog/service-mesh-architectures-inevitable/"><i class="fa fa-link"></i>服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要</a></li>
          
-        <li><a href="/blog/linkerd-2-0-in-general-availability/"><i class="fa fa-link"></i>Linkerd 2.0 GA版本发布</a></li>
+        <li><a href="/blog/practice-for-coohom-using-istio-in-production/"><i class="fa fa-link"></i>云端设计平台Coohom在生产环境中使用istio的经验与实践</a></li>
          
-        <li><a href="/blog/istio-service-mesh-interview-redbear-brian-harrington/"><i class="fa fa-link"></i>Service Mesh的未来将与Knative和Apahce Whisk等技术和谐共存——采访RedHat的Istio产品经理</a></li>
+        <li><a href="/blog/naftis-istio-dashboard-xiaomi/"><i class="fa fa-link"></i>小米正式开源Istio管理面板Naftis</a></li>
          
-        <li><a href="/blog/the-importance-of-control-planes-with-service-mesh/"><i class="fa fa-link"></i>服务网格的控制平面和边缘代理的重要性</a></li>
+        <li><a href="/blog/raw-tcp-traffic-shaping-with-istio/"><i class="fa fa-link"></i>Istio1.1.0下的TCP流量控制</a></li>
          
      </ul>
     </div>
