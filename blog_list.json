@@ -7,7 +7,7 @@
       "translation"
     ],
     "date": "2018-11-01T20:10:14+08:00",
-    "fuzzywordcount": 1000,
+    "fuzzywordcount": 1200,
     "keywords": [
       "service mesh",
       "服务网格"
@@ -17,7 +17,7 @@
     "objectID": "07fffab0b6ee36949c55c8b2834ea89d",
     "permalink": "http://www.servicemesher.com/blog/the-future-of-service-mesh/",
     "publishdate": "2018-11-01T20:10:14+08:00",
-    "readingtime": 2,
+    "readingtime": 3,
     "relpermalink": "/blog/the-future-of-service-mesh/",
     "summary": "本文通过分析服务网格的优势，阐述了其未来的发展情况。",
     "tags": [
@@ -27,7 +27,7 @@
     "translator": "陈冬",
     "url": "/blog/the-future-of-service-mesh/",
     "weight": 0,
-    "wordcount": 978
+    "wordcount": 1119
   },
   {
     "author": "Janakiram MSV",
