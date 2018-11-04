@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持 · ServiceMesher|服务网格中文社区</title>
+  <title>SRE 弹性能力：使用 Envoy 对应用进行速率限制 · ServiceMesher|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh, istio, let&#39;s encrypt, tls, envoy">
+  <meta name="keywords" content="service mesh, 服务网格, envoy">
   
 
   <meta name="generator" content="Hugo 0.48" />
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持" />
+  <meta property="og:title" content="SRE 弹性能力：使用 Envoy 对应用进行速率限制" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/istio-envoy-cert-manager-lets-encrypt-for-tls//" />
+  <meta property="og:url" content="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="本文是使用Let&#39;s Encrypt为Isito（Envoy）Service Mesh添加TLS安全支持的教程。">
-  <meta property="og:description" content="本文是使用Let&#39;s Encrypt为Isito（Envoy）Service Mesh添加TLS安全支持的教程。">
-  <meta name="twitter:description" content="本文是使用Let&#39;s Encrypt为Isito（Envoy）Service Mesh添加TLS安全支持的教程。">
-  <meta property="og:description" content="本文是使用Let&#39;s Encrypt为Isito（Envoy）Service Mesh添加TLS安全支持的教程。" />
+  <meta name="description" content="本文详述了如何做速率限制服务来减轻客户端对 API 资源的消耗。">
+  <meta property="og:description" content="本文详述了如何做速率限制服务来减轻客户端对 API 资源的消耗。">
+  <meta name="twitter:description" content="本文详述了如何做速率限制服务来减轻客户端对 API 资源的消耗。">
+  <meta property="og:description" content="本文详述了如何做速率限制服务来减轻客户端对 API 资源的消耗。" />
 
   
   
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持 - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="SRE 弹性能力：使用 Envoy 对应用进行速率限制 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="SRE 弹性能力：使用 Envoy 对应用进行速率限制 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">SRE 弹性能力：使用 Envoy 对应用进行速率限制 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -232,7 +232,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持</h1>
+                <h1>SRE 弹性能力：使用 Envoy 对应用进行速率限制</h1>
             </div>
         </div>
     </div>
@@ -250,26 +250,26 @@ autocomplete('#aa-search-input',
                         <div class="well">
                             <div class="author-category">
                             <i class="fa fa-calendar-o">
-                            2018年6月25日
+                            2018年11月4日
                             </i>
                             |
                             
-                            作者 <a href="https://medium.com/@prune998/istio-envoy-cert-manager-lets-encrypt-for-tls-14b6a098f289">Prune</a>
+                            作者 <a href="https://stackoverflow.com/users/594589/dm03514">dm03514</a>
                             
                             
-                            | 译者 <a href="https://github.com/loverto">殷龙飞</a>
+                            | 译者 <a href="https://github.com/yangchuansheng">杨传胜</a>
                             
                             
                             | 审校者 <a href="https://jimmysong.io">宋净超</a>
                             
                             |
-                            4000字 | 阅读大约需要8分钟
+                            3300字 | 阅读大约需要7分钟
                             </div>
                             
                             
                             <div class="author-category">
                             
-                            <a href="https://medium.com/@prune998/istio-envoy-cert-manager-lets-encrypt-for-tls-14b6a098f289">查看原文</a>
+                            <a href="https://medium.com/dm03514-tech-blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar-5381bd4a1137">查看原文</a>
                             |
                             
                             
@@ -281,13 +281,11 @@ autocomplete('#aa-search-input',
                             
                             标签
                             
-                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
-                            
                             <a style="text-transform:capitalize" href="/tags/envoy/"><i>#envoy</i></a>
                             
-                            <a style="text-transform:capitalize" href="/tags/tls/"><i>#TLS</i></a>
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
                             
-                            <a style="text-transform:capitalize" href="/tags/lets-encrypt/"><i>#Let&#39;s Encrypt</i></a>
+                            <a style="text-transform:capitalize" href="/tags/rate-limiting/"><i>#rate limiting</i></a>
                             
                             </div>
                             
@@ -296,470 +294,344 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><strong>更新</strong></p>
+<p>速率限制是缓解级联故障和防止耗尽共享资源的一种简单有效的方法。<code>Envoy</code> 是一个功能丰富的代理，可以为任何服务轻松添加速率限制的功能。本文将介绍在不更改应用程序本身配置的前提下如何配置 <code>Envoy</code> 来强制对应用进行速率限制。</p>
 
-<p>感谢 Laurent Demailly 的评论，这里有一些更新。这篇文章已经得到了更新：</p>
+<h2 id="问题">问题</h2>
 
-<ul>
-<li>现在有一个 <a href="https://github.com/kubernetes/charts/tree/master/stable/cert-manager">Cert-Manager 官方 Helm chart</a></li>
-<li>Istio Ingress 也支持基于 HTTP/2 的 GRPC</li>
-</ul>
+<p>你是否遇到过资源被大量的请求淹没或耗尽的情况？你的客户端是否具有回退重试或速率限制的逻辑？在微服务架构中，不对其使用量进行限制的资源很容易被客户端发出的大量请求所淹没。当然可能存在一定数量的客户端，这些客户端本身就已经实现了各种重试/回退和速率限制的策略。不对访问量进行限制的客户端会耗尽服务端的资源，从而使其他客户端无法访问服务，甚至有些客户端会一直发起请求，直到使服务完全不可用。</p>
 
-<h3 id="istio">Istio</h3>
+<p>对 <code>API</code> 的使用进行约束的常用方法是启用速率限制。与基于 IP 的速率限制或者 web 框架提供的应用级别速率限制不同，Envoy 允许在 <code>HTTP</code> 层实现快速，高性能和可靠的全局速率限制。</p>
 
-<p><a href="https://istio.io/">Istio</a> 是管理微服务世界中数据流的一种新方式。事实上，这对我来说更是如此。人们不停的谈论微服务与单体应用，说微服务更好开发，易于维护，部署更快。。。呃，他们是对的，但微服务不应该仅仅是小应用程序之间互相通信。微服务应该考虑沉淀为你的基础设施的这种方式。考虑如何决定您的“简单”应用程序公开指标和日志的方式，考虑您如何跟踪状态，考虑如何控制服务之间的流程以及如何管理错误，这些问题应该是做微服务应该考虑的。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fwrjjnhj5rj30am0b1aa7.jpg" alt="" /></p>
 
-<p>那么 Istio 能够在这个微服务世界中增加什么？</p>
+<p>上图中左侧的 <code>Service Client</code> 代表使用率特别高的客户端。在运行期间，它可以使负载均衡后端的所有服务实例流量饱和，并使其他更高优先级的客户端丢弃其请求。</p>
 
-<p>Istio 是一个服务网格的实现！</p>
+<p>Envoy 能够对网络级别的任何服务进行速率限制，而无需对应用程序进行任何修改。此外，由于 Envoy 工作在 7 层，也就是应用程序级别，所以它可以检查 HTTP 速率信息并对其进行速率限制。</p>
 
-<blockquote>
-<p>什么？服务网格？我们已经有了 Kubernetes API，我们需要“网格”吗？</p>
-</blockquote>
-
-<p>那么，是的，你需要服务网格。我不会解释使用它的所有好处，你会在网上找到足够的文档。但是用一句话来说，服务网格就是将您所有的服务提供给其他服务的技术。事实上，它还强制执行所有“微服务”最佳实践，例如添加流量和错误指标，添加对 OpenTracing（ Zipkin 和Jaegger）的支持，允许控制重试，金丝雀部署。。。阅读 <a href="https://istio.io/docs/concepts/">Istio doc</a> ！</p>
-
-<p>所以，回到本话题&hellip;</p>
-
-<h3 id="必要条件">必要条件</h3>
-
-<ul>
-<li>建议运行在 Kubernetes1.7 及以上的集群版本</li>
-<li>一个或多个 DNS 域名</li>
-<li>让 Istio 利用Ingress Controller 在你的集群中工作</li>
-<li>将上面的 DNS 域名配置为指向 Istio Ingress IP</li>
-</ul>
-
-<h3 id="ssl">SSL</h3>
-
-<p><strong>SSL</strong> 是安全的（很好），但它通常是软件中实现的最后一件事。为什么？之前它实现起来是“很困难的”，但我现在看不出任何理由。<a href="https://letsencrypt.org/how-it-works/">Let&rsquo;s Encrypt</a> 创建一个新的范例，它的 DAMN 很容易使用 API 调用创建 Valide SSL 证书（协议被称为ACME &hellip;）。它为您提供 3 种验证您是域名所有者的方法。使用 DNS，使用 HTTP 或第三种解决方案的“秘密令牌”不再可用，因为它证明是不安全的。  因此，您可以使用 Let&rsquo;s Encrypt 提供给您的特殊 TXT 记录设置您的 DNS，或者将其放入 Web 根路径（如 <code>/.well-known/acme-challenge/xxx</code>）中，然后让我们的加密验证它。这真的很简单，但差不多只能这样。</p>
-
-<p>一些开发者决定直接在应用程序内部实现 ACME 协议。这是来自 <a href="https://traefik.io/">Traefik</a> 的人的决定。<a href="https://caddyserver.com/">Caddy</a> 也做了一些类似的“插件”。这很酷，因为您只需定义虚拟主机，应用程序负责收集和更新证书。</p>
-
-<p>可悲的是，Istio（和底层的Envoy代理）没有。这就是这篇博文的要点！</p>
-
-<h3 id="cert-manager">CERT-Manager</h3>
-
-<p>许多人认识到，如果不是所有软件都可以实现 ACME 协议，我们仍然需要一个工具来管理（如请求，更新，废弃）SSL 证书。这就是为什么 LEGO 成立的原因。然后 Kubernetes 的 Kube-LEGO ，然后&hellip;&hellip;并且最终，他们几乎都同意将所有内容放入 <a href="https://github.com/jetstack/cert-manager">Cert-Manager</a> ！</p>
-
-<p>Cert-Manager 附带 helm chart，所以很容易部署，只需按照文档执行命令即可，就像下面介绍的这样：</p>
-
-<p><strong>更新</strong></p>
-
-<p>现在有一个 <a href="https://github.com/kubernetes/charts/tree/master/stable/cert-manager">Cert-Manager</a> 的<a href="https://github.com/kubernetes/charts/tree/master/stable/cert-manager">官方 Helm 图表</a>，你不需要 <code>git clone</code> ，只需要做 <code>helm install</code> 。</p>
-
-<pre><code class="language-shell">git clone https://github.com/jetstack/cert-manager
-
-cd cert-manager
-
-# check out the latest release tag to ensure we use a supported version of cert-manager
-
-git checkout v0.2.3
-
-helm install \
---name cert-manager \
---namespace kube-system \
---set ingressShim.extraArgs='{--default-issuer-name=letsencrypt-prod,--default-issuer-kind=ClusterIssuer}' \
-contrib/charts/cert-manager
-</code></pre>
-
-<p>该命令将启动 kube-system 命名空间中的 Cert-Manager pod。</p>
-
-<p>我使用这一行配置<code>--default-issuer-kind=ClusterIssuer</code> 所以我只能创建一次我的 Issuer。</p>
+<p>在本教程中，<a href="https://github.com/tsenart/vegeta">vegata</a> 负载测试工具用于模拟上述示例中的批处理作业。下图显示了请求速率大约为 <code>500次/秒</code> 的稳定状态。</p>
 
 <blockquote>
-<p>什么是 issuer？</p>
+<p>译者注：首先克隆 <a href="https://github.com/dm03514/grokking-go">grokking-go</a> 项目，然后进入 <code>bolt-on-out-of-process-rate-limits</code> 目录</p>
 </blockquote>
 
-<p>以下是它的工作原理：</p>
+<pre><code class="language-bash">$ make load-test
+
+echo &quot;GET http://localhost:8080/slow&quot; | vegeta attack -rate=500 -duration=0 | tee results.bin | vegeta report
+</code></pre>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwrjy191ohj30lr07jq34.jpg" alt="" /></p>
+
+<p>在模拟后台作业期间，对 API 资源 <code>/slow</code> 的访问速率达到了每秒 <code>3500</code> 个请求，影响到了其他端点和客户端。</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwrk228etaj30nd07m74v.jpg" alt="" /></p>
+
+<p>为了解决这个问题，下面的解决方案将使用 Envoy 强制限制请求速率为 <code>500个请求/秒</code>。但首先&hellip;</p>
+
+<h2 id="envoy-是什么">Envoy 是什么？</h2>
+
+<p>Envoy 是一个轻量级代理服务器，能够处理任何 <code>TCP/IP/HTTP/GRPC/HTTP2</code> 等协议的连接。它具有高度可配置性，并支持许多不同的插件。它还使可观察性成为一等公民。</p>
+
+<p>在 Envoy 横空出世之前，应用程序级别的重试、延迟注入、速率限制和熔断都要通过应用程序本身的代码逻辑来实现。Envoy 将这些功能从应用程序中剥离出来，并让运维管理人员能够配置和启用这些功能，无需对应用程序本身作任何修改。</p>
+
+<p>Envoy 的 <a href="https://www.envoyproxy.io/">官方文档</a> 和 <code>Matt Klein</code> 的文章提供了一个比我更好的对 Envoy 的介绍：</p>
+
+<blockquote>
+<p>Envoy 是一款由 <code>Lyft</code> 开源的，使用 C++ 编写的高性能分布式代理，专为单体服务和应用而设计。它也被作为大型微服务框架 <a href="https://istio.io/">Istio</a> service mesh 的通信总线和通用数据平面。通过借鉴 NGINX、HAProxy、硬件负载均衡器和云负载均衡器等解决方案，Envoy 作为一个独立的进程与应用程序一起运行，并通过与平台无关的方式提供一些高级特性，从而形成一个对应用透明的通信网格。当基础设施中的所有服务流量通过 Envoy 网格流动时，通过一致的可观察性，调整整体性能和添加更多底层特性，一旦发生网络和应用程序故障，能够很容易定位出问题的根源。</p>
+</blockquote>
+
+<h2 id="解决方案">解决方案</h2>
+
+<p>所有代码和示例都可以在 <a href="https://github.com/dm03514/grokking-go/tree/master/bolt-on-out-of-process-rate-limits">GitHub</a> 上找到。</p>
+
+<p>下面给出具体的解决方案：</p>
 
 <ul>
-<li>你创建一个 Issuer 配置，它将告诉 Cert-Manager 如何使用 ACME API（你通常只有2个，staging 和 prod ）</li>
-<li>您创建一个证书定义，告诉哪些域需要 SSL</li>
-<li>Cert-Manager 为您申请证书</li>
+<li>将 Envoy 配置为 API 负载均衡器的前端代理；仍然允许所有流量通过。</li>
+<li>配置并运行全局速率限制服务。</li>
+<li>配置 Envoy 使用全局速率限制服务。</li>
 </ul>
 
-<p>所以，我们来创建 Issuer。在创建 ClusterIssuers 时，我不关心特定的命名空间:</p>
+<p>我们需要一种方法来限制同一时间发出的请求数量，以便将 API 负载均衡器与请求达到高峰的客户端隔离，并确保其他客户端在执行这些批处理作业（通过 <code>vegeta</code> 来模拟）期间可以继续访问 API。为了达到这个目的，我们将 Envoy 代理和批处理客户端 <code>vegeta</code> 部署在同一台机器上。</p>
 
-<pre><code class="language-yaml">apiVersion: certmanager.k8s.io/v1alpha1   
-kind: ClusterIssuer   
-metadata:   
- name: letsencrypt-prod   
- namespace: kube-system   
-spec:   
- acme: 
-     #The ACME server URL   
-     srver: https://acme-v01.api.letsencrypt.org/directory
-     #用于注册ACME的电子邮件地址  
-     email: me@domain.com
-     #用于存储ACME帐户私钥的秘密名称  
-     privateKeySecretRef:   
-       name: letsencrypt-prod   
-     #启用HTTP-01质询提供程序  
-     http01: {}   
----   
-apiVersion: certmanager.k8s.io/v1alpha1   
-kind: ClusterIssuer   
-metadata:   
- name: letsencrypt -staging   
- namespace: kube-system   
-spec:   
- acme : 
-     # ACME的服务器URL   
-     server: https://acme-staging.api.letsencrypt.org/directory
-     # 用于ACME注册的电子邮件地址  
-     email: staging + me@domain.com   
-     # 用于存储ACME帐户私钥的密钥的 名称  
-     privateKeySecretRef:   
-    name: letsencrypt-staging   
-     # 启用HTTP-01质询提供程序  
-     http01: {}
+<p>通过将 Envoy 作为 <code>Sidecar</code> 与批处理客户端一起运行，在请求达到负载均衡之前就可以对请求进行速率限制。使用 Envoy 是一个很明智的选择，因为它具有高度可配置性，高性能，并且可以很好地处理 HTTP 请求之间的平衡。</p>
+
+<h3 id="将-envoy-配置为-api-负载均衡器的前端代理">将 Envoy 配置为 API 负载均衡器的前端代理</h3>
+
+<p>第一步是将 Envoy 配置为处于批处理作业客户端和 API 负载均衡器之间，客户端向 API 发起的所有请求都会首先经过 Envoy 的处理。首先需要让 Envoy 知道如何连接 API，然后再更新批处理作业的配置，使该客户端向 Envoy 发出请起，而不是直接向 API 发出请求。配置完之后的最终状态如下图所示：</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwskywz0cqj30ct0dywf6.jpg" alt="" /></p>
+
+<p>此步骤仅通过 Envoy 来对 API 流量进行路由，尚未对应用进行速率限制。为了达到限速的目的，我们还需要做一些额外的配置：</p>
+
+<h4 id="cluster-https-www-envoyproxy-io-docs-envoy-latest-intro-arch-overview-cluster-manager"><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/cluster_manager">cluster</a></h4>
+
+<p><code>Cluster</code> 表示 Envoy 连接到的一组逻辑上相似的上游主机（在本示例中表示 API 负载均衡器）。Cluster 的配置非常简单：</p>
+
+<pre><code class="language-yaml">clusters:
+  - name: api
+    connect_timeout: 1s
+    type: strict_dns
+    lb_policy: round_robin
+    hosts:
+    - socket_address:
+        address: localhost
+        port_value: 8080
 </code></pre>
 
-<p>然后</p>
+<p>在本示例中，我们运行了一个监听在 <code>localhost:8080</code> 上的 fakapi 来模拟上图中的负载均衡器。通过 Envoy 向 API 发出的任何请求都会被发送到 <code>localhost:8080</code>。</p>
 
-<p><code>kubectl apply -f certificate-issuer.yml</code></p>
+<h4 id="virtual-host-https-www-envoyproxy-io-docs-envoy-latest-api-v1-route-config-vhost"><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v1/route_config/vhost">virtual_host</a></h4>
 
-<p>现在你应该有一个有效的 Cert-Manager 。您需要为您的域/服务创建配置，以便 Istio Ingress 可以选择正确的证书。</p>
+<p><code>virtual_host</code> 部分的配置用来确保所有请求都会路由到上面定义的 API 集群。</p>
 
-<h3 id="istio-ingress">Istio Ingress</h3>
+<pre><code class="language-yaml">- name: api
+  domains:
+  - &quot;*&quot;
+  routes:
+  - match:
+      prefix: &quot;/&quot;
+    route:
+      cluster: api
+</code></pre>
 
-<p>Ingress 是您公开服务的前端 Web 代理（这是你的优势&hellip;&hellip;我说 WEB 代理，因为它现在只支持 HTTP/HTTPS）。但让我们假设你知道关于 Ingress 的一切。</p>
+<p>其余的配置文件用来确定 Envoy 本身监听在哪个地址以及 Envoy 与其他服务之间的连接规则。</p>
 
-<p><strong>更新</strong></p>
+<pre><code class="language-yaml">static_resources:
+  listeners:
+  - name: listener_0
+    address:
+      socket_address: { address: 0.0.0.0, port_value: 10000}
+    filter_chains:
+    - filters:
+      - name: envoy.http_connection_manager
+        config:
+          stat_prefix: ingress_http
+          codec_type: AUTO
+          route_config:
+            name: remote_api
+            virtual_hosts:
+            - name: api
+              domains:
+              - &quot;*&quot;
+              routes:
+              - match:
+                  prefix: &quot;/&quot;
+                route:
+                  cluster: api
 
-<p>这不是一个真正的更新，而是一个更精确的描述，Ingress 也支持 GRPC，当然这是 HTTP/2。</p>
+          http_filters:
+          - name: envoy.router
 
-<p>Ingress 的神奇之处在于它在 Kubernetes API 中的实现。您创建一个 Ingress Manifest，并将您的所有流量引导至正确的 Pod！告诉你这种方式就是神奇的魔法（因为你并不知道它如何引导的流量） ！</p>
+  clusters:
+  - name: api
+    connect_timeout: 1s
+    type: strict_dns
+    lb_policy: round_robin
+    hosts:
+    - socket_address:
+        address: localhost
+        port_value: 8080
 
-<p>很好，在这种情况下，这就是令人神奇的黑魔法！</p>
+admin:
+  access_log_path: &quot;/dev/null&quot;
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 9901
+</code></pre>
 
-<p>例如，Traefik Ingress 绑定端口 80 和 443，管理证书，因此您为 <a href="http://www.mydomain.com">www.mydomain.com</a> 创建入口，并且它正常工作，因为它正在做所有事情。</p>
+<p>更新负载测试工具的参数，直接访问本地的 Envoy 代理，通过仪表板可以观察到 Envoy 正在接收流量。下图的 Envoy 仪表板来自 <a href="https://grafana.com/dashboards/7250">Grafana 官方仪表板仓库</a>（<a href="https://blog.envoyproxy.io/lyfts-envoy-dashboards-5c91738816b1">Lyft 也提供了一份 Envoy 仪表板</a>）。</p>
 
-<p>对于 Istio，当您使用 Cert-Manager 时，还有一些步骤。要快点，在这里他们（截至 2018/01，它可能很快就会改变）：</p>
+<pre><code class="language-bash">$ make load-test LOAD_TEST_TARGET=http://localhost:10000 LOAD_TEST_RATE=500
+
+echo &quot;GET http://localhost:10000/slow&quot; | vegeta attack -rate=500 -duration=0 | tee results.bin | vegeta report
+</code></pre>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwsmozv3daj30nr07lgm9.jpg" alt="" /></p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwsmprdwh2j30br07hq3b.jpg" alt="" /></p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwsmq2wanfj30nr07kgm6.jpg" alt="" /></p>
+
+<p>上图显示 Envoy 现在正在接收客户端发送给 API 的所有请求，并将它们发送到上游的负载均衡器！</p>
+
+<h3 id="配置并运行全局速率限制服务">配置并运行全局速率限制服务</h3>
+
+<p>此步骤将配置运行 Lyft 开源的全局 <a href="https://github.com/lyft/ratelimit">速率限制</a> 服务。运行该服务非常简单，只需要克隆它的代码仓库，修改一部分配置文件，然后通过 <code>docker-compose</code> 启动就行了。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fwsmxzrlsmj30hk0dyaav.jpg" alt="" /></p>
+
+<p>首先克隆 <a href="https://github.com/lyft/ratelimit">Ratelimit 代码仓库</a>并修改配置文件，更新 <code>domain</code> 字段以及 <code>descriptor</code> 字段的 <code>key</code> 和 <code>value</code>：</p>
+
+<pre><code class="language-bash">$ cat examples/ratelimit/config/config.yaml
+</code></pre>
+
+<pre><code class="language-yaml">---
+domain: apis
+descriptors:
+  - key: generic_key
+    value: default
+    rate_limit:
+      unit: second
+      requests_per_unit: 500
+</code></pre>
+
+<p>接下来使用docker-compose 的配置文件（<code>docker-compose.yml</code>）来启动全局速率限制服务（详细步骤请参考 <a href="https://github.com/lyft/ratelimit">README</a>）：</p>
+
+<pre><code class="language-bash">$ docker-compose down &amp;&amp; docker-compose up
+</code></pre>
+
+<h3 id="配置-envoy-使用全局速率限制服务">配置 Envoy 使用全局速率限制服务</h3>
+
+<p>最后一步是配置 Envoy 使用全局速率限制服务，以强制执行速率限制并降低对 API 的请求速率。配置生效后，Envoy 将会检查每个传入连接的速率限制，并根据上面的配置过滤掉一部分请求（限制最多 500 个请求/秒）。</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwsnt0oi5gj30hk0de3zb.jpg" alt="" /></p>
+
+<p>开启了速率限制的 Envoy 配置文件如下所示：</p>
+
+<pre><code class="language-yaml">static_resources:
+  listeners:
+  - name: listener_0
+    address:
+      socket_address: { address: 0.0.0.0, port_value: 10000}
+    filter_chains:
+    - filters:
+      - name: envoy.http_connection_manager
+        config:
+          use_remote_address: true
+          stat_prefix: ingress_http
+          codec_type: AUTO
+          route_config:
+            name: remote_api
+            virtual_hosts:
+            - name: api
+              domains:
+              - &quot;*&quot;
+              routes:
+              - match:
+                  prefix: &quot;/&quot;
+                route:
+                  cluster: api
+              rate_limits:
+                - stage: 0
+                  actions:
+                    - {generic_key: {descriptor_value: &quot;default&quot;}}
+
+          http_filters:
+          - name: envoy.rate_limit
+            config:
+              domain: apis
+              stage: 0
+
+          - name: envoy.router
+
+  clusters:
+  - name: api
+    connect_timeout: 1s
+    type: strict_dns
+    lb_policy: round_robin
+    hosts:
+    - socket_address:
+        address: localhost
+        port_value: 8080
+
+  - name: rate_limit_cluster
+    type: strict_dns
+    connect_timeout: 0.25s
+    lb_policy: round_robin
+    http2_protocol_options: {}
+    hosts:
+    - socket_address:
+        address: localhost
+        port_value: 8081
+
+rate_limit_service:
+    grpc_service:
+        envoy_grpc:
+            cluster_name: rate_limit_cluster
+        timeout: 0.25s
+
+admin:
+  access_log_path: &quot;/dev/null&quot;
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 9901
+</code></pre>
+
+<p>然后，我们以 <code>1000个请求/秒</code> 的速率（速率限制的2倍）运行负载测试工具：</p>
+
+<pre><code class="language-bash">$ make load-test LOAD_TEST_TARGET=http://localhost:10000 LOAD_TEST_RATE=1000
+
+echo &quot;GET http://localhost:10000/slow&quot; | vegeta attack -rate=1000 -duration=0 | tee results.bin | vegeta report
+</code></pre>
+
+<p>可以查看一下 ratelimiter 服务的日志，日志中显示了它接收的请求和它进行速率限制检查的过程：</p>
+
+<pre><code class="language-bash">msg=&quot;cache key: apis_generic_key_default_1540829538 current: 35&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;cache key: apis_generic_key_default_1540829538 current: 34&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;cache key: apis_generic_key_default_1540829538 current: 33&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;cache key: apis_generic_key_default_1540829538 current: 31&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;cache key: apis_generic_key_default_1540829538 current: 32&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;cache key: apis_generic_key_default_1540829538 current: 42&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;starting get limit lookup&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;cache key: apis_generic_key_default_1540829538 current: 46&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;looking up key: generic_key_default&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;looking up key: generic_key_default&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;looking up key: generic_key_default&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;looking up key: generic_key_default&quot;
+ratelimit_1        | time=&quot;2018-10-29T16:12:18Z&quot; level=debug msg=&quot;looking up key: generic_key_default&quot;
+</code></pre>
+
+<blockquote>
+<p>如果速率限制功能无法生效，可以参考该 <a href="https://github.com/envoyproxy/envoy/issues/3388">issue</a> 中的讨论。</p>
+</blockquote>
+
+<p>运行一段时间后，停止负载测试打印出测试报告，可以看到其中 <code>1/2</code> 的请求被 Envoy 限制了，被限制的请求的状态码为 <code>429</code> ！！！</p>
+
+<pre><code class="language-bash">$ make load-test LOAD_TEST_TARGET=http://localhost:10000 LOAD_TEST_RATE=1000
+
+echo &quot;GET http://localhost:10000/slow&quot; | vegeta attack -rate=1000 -duration=0 | tee results.bin | vegeta report
+Requests      [total, rate]            128093, 1000.02
+Duration      [total, attack, wait]    2m8.102168403s, 2m8.090470728s, 11.697675ms
+Latencies     [mean, 50, 95, 99, max]  10.294365ms, 11.553135ms, 33.428287ms, 52.678127ms, 177.709494ms
+Bytes In      [total, mean]            1207354, 9.43
+Bytes Out     [total, mean]            0, 0.00
+Success       [ratio]                  52.69%
+Status Codes  [code:count]             200:67494  429:60599
+Error Set:
+429 Too Many Requests
+</code></pre>
+
+<p>通过 Envoy 暴露的速率限制指标（<code>envoy_cluster_ratelimit_over_limit</code>）或（<code>4xx</code> 响应）的速率来绘制仪表板，可以看到相应的可视化图表：</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwsohfxmscj30m107iq3k.jpg" alt="" /></p>
+
+<p>通过可视化 API 服务实际看到的请求数量，可以证明请求速率在 <code>500个请求/秒</code> 上下波动，这正是我们所期望的！</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fwsongr2zhj30jw07ejrr.jpg" alt="" /></p>
+
+<p>再查看一下 Envoy 传出的 API 连接，可以看到传出请求速率也在 <code>500个请求/秒</code> 上下波动！</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwsopzl2uhj30l707ijry.jpg" alt="" /></p>
+
+<p>实验成功！</p>
+
+<h2 id="总结">总结</h2>
+
+<p>希望通过本文的讲解能让你明白配置 Envoy 以减轻贪婪客户端对 API 资源的消耗是多么简单。我发现这种模式非常有用，因为弹性能力是为应用开发更多功能的基础。在 Envoy 横空出世之前，应用程序级别的重试、延迟注入、速率限制和熔断都要通过应用程序本身的代码逻辑来实现。Envoy 将这些功能从应用程序中剥离出来，并让运维管理人员能够配置和启用这些功能，无需对应用程序本身作任何修改。Envoy 完全颠覆了我们对服务弹性能力的认知，希望你读这篇文章时能和我写这篇文章时一样兴奋！</p>
+
+<h2 id="参考资料">参考资料</h2>
 
 <ul>
-<li>为域 <a href="http://www.mydomain.com">www.mydomain.com</a> 创建证书请求</li>
-<li>Cert-Manager 将选择这个定义并创建一个 pod，它实际上是一个可以回答 ACME 问题的 Web 服务器（<a href="https://github.com/jetstack/cert-manager/blob/master/docs/user-guides/ingress-shim.md">Ingress-Shim</a>）  它还将创建一个服务和一个 HTTP Ingress，以便它可以通过 Lets Encrypt 服务器</li>
-<li>以前的观点不适用于您使用 Istio Ingress，因此您必须删除 <code>Service</code> 和<code>Ingress</code></li>
-<li>创建指向 Pod 的自己的服务</li>
-<li>创建您自己的 Istio Ingress，以便可以访问 pod</li>
+<li><a href="https://www.datawire.io/envoyproxy/getting-started-lyft-envoy-microservices-resilience/">https://www.datawire.io/envoyproxy/getting-started-lyft-envoy-microservices-resilience/</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/">https://www.envoyproxy.io/docs/envoy/latest/</a></li>
+<li><a href="https://blog.turbinelabs.io/deploying-envoy-as-a-front-proxy-5b7e0a453f65">https://blog.turbinelabs.io/deploying-envoy-as-a-front-proxy-5b7e0a453f65</a></li>
+<li><a href="http://blog.christianposta.com/microservices/00-microservices-patterns-with-envoy-proxy-series/">http://blog.christianposta.com/microservices/00-microservices-patterns-with-envoy-proxy-series/</a></li>
+<li><a href="https://blog.envoyproxy.io/introduction-to-modern-network-load-balancing-and-proxying-a57f6ff80236">https://blog.envoyproxy.io/introduction-to-modern-network-load-balancing-and-proxying-a57f6ff80236</a></li>
+<li><a href="https://eng.lyft.com/announcing-ratelimit-c2e8f3182555">https://eng.lyft.com/announcing-ratelimit-c2e8f3182555</a></li>
+<li><a href="https://github.com/dm03514/grokking-go/compare/blog/bolt-on-rate-limits?expand=1">https://github.com/dm03514/grokking-go/compare/blog/bolt-on-rate-limits?expand=1</a></li>
 </ul>
-
-<p>听起来很疯狂？  那么，现在呢。它甚至是恶梦：</p>
-
-<p>在 Istio 中使用 Cert-Manager 时，您只能拥有一个外部服务证书！所以你必须添加所有公共 DNS 名称到这个证书！</p>
-
-<p>所以我们来实现它&hellip;</p>
-
-<h4 id="证书">证书</h4>
-
-<p>把这个清单放在一个像 <em>certificate-istio.yml</em> 这样的文件中 ：</p>
-
-<pre><code class="language-yaml">apiVersion: certmanager.k8s.io/v1alpha1   
-kind: Certificate  
-meteadata:   
- name: istio-ingress-certs   
- namespace: istio-system   
-spec:   
- secretName: istio-ingress-certs   
- issuerRef:  
- 	name: letsencrypt-staging   
- 	kind: ClusterIssuer   
- commonName: www.mydomain.com   
- dnsNames:   
- - www.mydomain.com   
- - mobile.mydomain.com   
- acme:   
-   config:  
-   - http01:   
-        ingressClass: none
-     domains:  
-      - www.mydomain.com   
- 	  - mobile.mydomain.com
-</code></pre>
-
-<p>我们在这里看到的是：</p>
-
-<ul>
-<li>我们想要一个证书</li>
-<li>它将支持2个域名 <em>www.mydomain.com</em> 和 <em>mobile.mydomain.com</em></li>
-<li>此证书请求与 Istio Ingress（istio-system）位于同一个命名空间中，</li>
-<li>它将使用 HTTP-01 回答 ACME 的问题</li>
-<li>Istio Ingress（Envoy代理）期望该证书将被复制到一个名为 <em>istio-ingress-certs</em> 的  K8s  Secret 中（这是超级重要，最好不要修改这个名字）。</li>
-</ul>
-
-<p>然后 ：</p>
-
-<p><code>kubectl apply -f certificate-istio.yml</code></p>
-
-<p>完成之后，您通过 cert-manager pod 将可以看到 Istio Ingress 的日志情况，例如：</p>
-
-<pre><code class="language-bash">istio-ingress-7f8468bb7b-pxl94 istio-ingress [2018-01-23T21:01:53.341Z] &quot;GET /.well-known/acme-challenge/xxxxxxx HTTP/1.1&quot; 503 UH 0 19 0 - &quot;10.20.5.1&quot; &quot;Go-http-client/1.1&quot; &quot;xxx&quot; &quot;www.domain.com&quot; &quot;-&quot;
-istio-ingress-7f8468bb7b-pxl94 istio-ingress [2018-01-23T21:01:58.287Z] &quot;GET /.well-known/acme-challenge/xxxxxx HTTP/1.1&quot; 503 UH 0 19 0 - &quot;10.20.5.1&quot; &quot;Go-http-client/1.1&quot; &quot;xxxx&quot; &quot;mobile.domain.com&quot; &quot;-&quot;
-</code></pre>
-
-<p>这是因为 Let&rsquo;s Encrypt 服务器正在轮询验证令牌，并且您的设置尚未运行。截至目前你的设置看起来像这样：</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1fshj4soh0mj20m80j3mzg.jpg" alt="" /></p>
-
-<p>现在是删除由 Cert-Manager 创建的不需要的东西的时候了。使用您最擅长的 K8s 工具，如仪表板或 kubectl，并从 <em>istio-system</em> 命名空间中删除 Service 和 Ingress。它们将被命名为 <strong>cm-istio-ingress-certs-xxxx</strong>。  如果您的证书申请中有许多域名，你应该删除多余的域名。</p>
-
-<p>另外，不要删 pod ！（如果有错误，它们将被重新创建）</p>
-
-<p>（作为提醒：<code>kubectl -n istio-system delete cm-istio-ingress-certs-xxxx</code>）</p>
-
-<h4 id="服务">服务</h4>
-
-<p>既然您的设置很干净，您可以继续并重新创建所需的 Service 和 ingress 。</p>
-
-<p>您需要尽可能多的 Service ，因为您拥有不同的域名。在我们的例子中，2.这是清单：</p>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: cert-manager-ingress-www
-  namespace: istio-system
-  annotations:
-    auth.istio.io/8089: NONE
-spec:
-  ports:
-  - port: 8089
-    name: http-certingr
-  selector:
-    certmanager.k8s.io/domain: www.mydomain.com
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: cert-manager-ingress-mobile
-  namespace: istio-system
-  annotations:
-    auth.istio.io/8089: NONE
-spec:
-  ports:
-  - port: 8089
-    name: http-certingr
-  selector:
-    certmanager.k8s.io/domain: mobile.mydomain.com
-</code></pre>
-
-<p>然后</p>
-
-<p><code>kubectl apply -f certificate-services.yml</code></p>
-
-<p>然后你可以检查你的 Service。每个 Service 都应该有一个指定的目标 pod。</p>
-
-<p>请注意，Service 名称无关紧要。这取决于你给出一个特定的名称，所以你不会混淆你所有的域名。</p>
-
-<h4 id="ingress">Ingress</h4>
-
-<p>现在是创建 Ingress 的时候了，因此您的 “ ACME Token Pods ” 可以从外部访问。</p>
-
-<pre><code class="language-yaml">apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: istio
-    certmanager.k8s.io/acme-challenge-type: http01
-    certmanager.k8s.io/cluster-issuer: letsencrypt-staging
-  name: istio-ingress-certs-mgr
-  namespace: istio-system
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /.well-known/acme-challenge/.*
-        backend:
-          serviceName: cert-manager-ingress-www
-          servicePort: http-certingr
-    host: www.mydomain.com
-  - http:
-      paths:
-      - path: /.well-known/acme-challenge/.*
-        backend:
-          serviceName: cert-manager-ingress-mobile
-          servicePort: http-certingr
-    host: mobile.mydomain.com
-</code></pre>
-
-<p>再次，我们在这里需要注意一些事情：</p>
-
-<ul>
-<li><p>证书， Service 和 Ingress 需要在同一个命名空间中</p></li>
-
-<li><p>ingress class  是 *Istio*（显然）</p></li>
-
-<li><p>我们正在使用 <em>staging</em> Issuer（记住我们第一步创建的 Issuer ）。
-您必须根据创建的<code>Issuer</code>或<code>ClusterIssuer</code>使用正确的 annotation。文档位于 <a href="https://github.com/jetstack/cert-manager/blob/master/docs/user-guides/ingress-shim.md">Ingress-Shim</a> 项目中</p></li>
-
-<li><p>我们必须为每个域创建一个 HTTP 规则</p></li>
-
-<li><p>在 <em>backend/srvice</em> 必须我们在上一步中创建的服务，以及域名匹配，所以：</p></li>
-</ul>
-
-<p>用 <em>www.mydomain.com</em> →serviceName cert-manager-ingress-www→pod cm-istio-ingress-certs-xxx，其中label <em>certmanager.k8s.io/domain =</em> <em>www.mydomain.com</em></p>
-
-<p>再次：</p>
-
-<p><code>kubectl apply -f certificate-ingress.yml</code></p>
-
-<p>就是这样！</p>
-
-<p>检查 Istio-Ingress 日志，您应该看到几个<em>“GET /.well-known/acme-challenge/xxx HTTP / 1.1”200</em></p>
-
-<h3 id="示例应用程序">示例应用程序</h3>
-
-<p>我使用了一个示例应用程序来验证我的设置正在工作：</p>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Service
-metadata:
-  name: helloworld-v1
-  labels:
-    app: helloworld
-    version: v1
-spec:
-  ports:
-  - name: http
-    port: 8080
-  selector:
-    app: helloworld
-    version: v1
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: helloworld-v2
-  labels:
-    app: helloworld
-    version: v2
-spec:
-  ports:
-  - name: http
-    port: 8080
-  selector:
-    app: helloworld
-    version: v2
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: istio
-    kubernetes.io/ingress.allow-http: &quot;false&quot;
-  name: istio-ingress-https
-spec:
-  tls:
-    - secretName: istio-ingress-certs
-  rules:
-  - http:
-      paths:
-      - path: /.*
-        backend:
-          serviceName: helloworld-v1
-          servicePort: 8080
-    host: www.mydomain.com
-  - http:
-      paths:
-      - path: /.*
-        backend:
-          serviceName: helloworld-v2
-          servicePort: 8080
-    host: mobile.mydomain.com
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: istio
-  name: istio-ingress-http
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /.*
-        backend:
-          serviceName: helloworld-v1
-          servicePort: 8080
-    host: www.mydomain.com
-  - http:
-      paths:
-      - path: /.*
-        backend:
-          serviceName: helloworld-v2
-          servicePort: 8080
-    host: mobile.mydomain.com
----
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  labels:
-    app: helloworld
-    version: v1
-  name: helloworld-v1
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: helloworld
-        version: v1
-    spec:
-      containers:
-        - image: &quot;kelseyhightower/helloworld:v1&quot;
-          name: helloworld
-          ports:
-            - containerPort: 8080
-              name: http
----
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  labels:
-    app: helloworld
-    version: v2
-  name: helloworld-v2
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: helloworld
-        version: v2
-    spec:
-      containers:
-        - image: &quot;kelseyhightower/helloworld:v2&quot;
-          name: helloworld
-          ports:
-            - containerPort: 8080
-              name: http
-</code></pre>
-
-<p>我们必须再次感谢 Kelsey Hightower 是他提供的 HelloWorld 示例应用程序🙏</p>
-
-<p>然后：</p>
-
-<pre><code class="language-bash">kubectl -n default apply -f helloworld.yml
-</code></pre>
-
-<p>请注意，您需要为所有 HTTPS 域名使用一个 Ingress，而为 HTTP 使用一个 Ingress  &hellip;这里仅显示HTTPS：</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1fshj4vatnoj20m80j376n.jpg" alt="" /></p>
-
-<p>验证完成后，Cert-Manager 应该删除 istio-system 命名空间中的 Token-Exchange pod。是的，一旦 Cert-Manager 与Let&rsquo;s Encrypt 服务器达成一致，他们将交换用于续订的永久密钥。无需使用 pod ，甚至 Services 和 Ingress，至少如果你确定你不需要添加或改变证书中的某些东西。</p>
-
-<h3 id="更新证书">更新证书</h3>
-
-<p>在更新证书时，我建议先为其创建正确的 <code>Service</code>。然后更新 <code>Ingress</code> 以将流量发送到正确的服务。最后，更新您的 <code>Certificate</code> 定义并添加新的域名。</p>
-
-<p>证书管理器将创建一个新的 <code>ingress</code> 和 <code>service</code> 你将不得不删除。其他一切都将自行发生。等待几秒钟 <code>Istio-Ingress</code> 重新加载它的证书，你很好 <code>curl</code> ！</p>
-
-<h3 id="结论">结论</h3>
-
-<p>尽管我现在觉得它非常令人研发，但它最起码可以正常工作。如果您需要更新证书或添加新的域名，则必须更新证书定义，整个过程将要重新再来一遍。这实在是一种痛苦，当然比起与Traefik或Caddy完全整合更加困难。不过我相信这将会很快改变。</p>
-
-<p>我想感谢 <a href="https://github.com/ldemailly">Laurent Demailly</a> 在这方面的工作。有关更多详情和讨论，请参阅 Istio  <a href="https://github.com/istio/istio.github.io/issues/868">issue #868</a>。他正在使用 Istio + TLS 开发示例应用程序部署 Fortio，他是启发并帮助我完成所有工作的人。</p>
 
                         </div>
                         
@@ -769,13 +641,9 @@ spec:
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/" data-toggle="tooltip" data-placement="top" title="InfoQ访谈：使用服务网格的微服务通信与治理">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/the-future-of-service-mesh/" data-toggle="tooltip" data-placement="top" title="服务网格的未来Part 2：Istio 1.0之后何去何从？">&larr; 更旧</a>
                         </li>
                          
-                        <li class="next">
-                        <a href="http://www.servicemesher.com/blog/istio-is-not-just-for-microservices/" data-toggle="tooltip" data-placement="top" title="Istio不仅为微服务而生—使用Istio Service Mesh保护Kubernetes中的服务">更新 &rarr;</a>
-                        </li>
-                        
                         </ul>
 
                     </div>
@@ -797,15 +665,15 @@ spec:
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/deepin-service-mesh-tech-details/"><i class="fa fa-link"></i>深入解读Service Mesh背后的技术细节</a></li>
+        <li><a href="/blog/envoy-xds-protocol/"><i class="fa fa-link"></i>Envoy 中的 xDS REST 和 gRPC 协议详解</a></li>
+         
+        <li><a href="/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/"><i class="fa fa-link"></i>理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</a></li>
+         
+        <li><a href="/blog/the-importance-of-control-planes-with-service-mesh/"><i class="fa fa-link"></i>服务网格的控制平面和边缘代理的重要性</a></li>
          
         <li><a href="/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/"><i class="fa fa-link"></i>容器、服务网格和API网关：从边缘开始</a></li>
          
-        <li><a href="/blog/service-mesh-in-cookpad/"><i class="fa fa-link"></i>服务网格在Cookpad网站中的实践</a></li>
-         
-        <li><a href="/blog/soft-multitenancy-in-istio-service-mesh/"><i class="fa fa-link"></i>Istio的软性多租户支持</a></li>
-         
-        <li><a href="/blog/istio-service-mesh-pilot-xds-note/"><i class="fa fa-link"></i>服务网格Istio之pilot-xDS接口笔记</a></li>
+        <li><a href="/blog/the-universal-data-plane-api/"><i class="fa fa-link"></i>Service Mesh中的通用数据平面API设计</a></li>
          
      </ul>
     </div>

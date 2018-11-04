@@ -6,10 +6,19 @@
     <description>Recent content in Rate Limiting on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 11 Jul 2018 15:32:40 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 04 Nov 2018 12:00:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/rate-limiting/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SRE 弹性能力：使用 Envoy 对应用进行速率限制</title>
+      <link>http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</link>
+      <pubDate>Sun, 04 Nov 2018 12:00:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</guid>
+      <description>速率限制是缓解级联故障和防止耗尽共享资源的一种简单有效的方法。Envoy 是一个功能丰富的代理，可以为任何服务轻松添加速率限制的功能。本文将介</description>
+    </item>
     
     <item>
       <title>速率限制系列part4—为Ambassador API网关设计速率限制服务</title>

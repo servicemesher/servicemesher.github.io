@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 01 Nov 2018 20:10:14 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 04 Nov 2018 12:00:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SRE 弹性能力：使用 Envoy 对应用进行速率限制</title>
+      <link>http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</link>
+      <pubDate>Sun, 04 Nov 2018 12:00:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</guid>
+      <description>速率限制是缓解级联故障和防止耗尽共享资源的一种简单有效的方法。Envoy 是一个功能丰富的代理，可以为任何服务轻松添加速率限制的功能。本文将介</description>
+    </item>
     
     <item>
       <title>服务网格的未来Part 2：Istio 1.0之后何去何从？</title>
@@ -1079,7 +1088,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 13 甄中元 11 宋净超 11 戴佳顺 5 崔秀龙 4 陈冬 4 马若飞 3 王帅俭 3 李昕阳 3 王全根 2 狄卫华 2 邵思华 1</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 13 甄中元 11 宋净超 11 戴佳顺 5 崔秀龙 4 陈冬 4 马若飞 3 王帅俭 3 李昕阳 3 王全根 2 狄卫华 2 杨传胜 2</description>
     </item>
     
   </channel>

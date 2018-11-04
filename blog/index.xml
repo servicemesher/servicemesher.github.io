@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>SRE 弹性能力：使用 Envoy 对应用进行速率限制</title>
+      <link>http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</link>
+      <pubDate>Sun, 04 Nov 2018 12:00:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</guid>
+      <description>速率限制是缓解级联故障和防止耗尽共享资源的一种简单有效的方法。Envoy 是一个功能丰富的代理，可以为任何服务轻松添加速率限制的功能。本文将介</description>
+    </item>
+    
+    <item>
       <title>服务网格的未来Part 2：Istio 1.0之后何去何从？</title>
       <link>http://www.servicemesher.com/blog/the-future-of-service-mesh/</link>
       <pubDate>Thu, 01 Nov 2018 20:10:14 +0800</pubDate>
