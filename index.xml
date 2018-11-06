@@ -6,10 +6,28 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 04 Nov 2018 12:00:46 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Nov 2018 12:20:51 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展</title>
+      <link>http://www.servicemesher.com/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/</link>
+      <pubDate>Tue, 06 Nov 2018 12:20:51 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/</guid>
+      <description>Cilium 1.3：具有Cassandra和Memcached支持的Envoy Go语言扩展 我们很高兴地宣布Cilium 1.3发布了。这个版本加入了几个</description>
+    </item>
+    
+    <item>
+      <title>Istio Ingress Gateway中的Envoy配置解析</title>
+      <link>http://www.servicemesher.com/blog/summary-control-traffic-using-gateway-in-istio/</link>
+      <pubDate>Mon, 05 Nov 2018 02:08:37 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/summary-control-traffic-using-gateway-in-istio/</guid>
+      <description>gateway定义用于配置在mesh边缘，到mesh的tcp和http的负载均衡。 非TLS单主机环境 相关拓扑 使用azure aks环境。 ingress ga</description>
+    </item>
     
     <item>
       <title>SRE 弹性能力：使用 Envoy 对应用进行速率限制</title>
@@ -1061,7 +1079,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 敖小剑 9 宋净超 9 崔秀龙 3 丁轶群 3 郑伟 3 赵化冰 2 蚂蚁金服 1 陈有坤 1 邵俊雄 1 田晓亮 1 朵晓东 1 朱</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 敖小剑 9 宋净超 9 崔秀龙 3 丁轶群 3 郑伟 3 赵化冰 2 蚂蚁金服 1 陈有坤 1 邵俊雄 1 田晓亮 1 沈旭光 1 朵</description>
     </item>
     
     <item>
@@ -1088,7 +1106,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 13 甄中元 11 宋净超 11 戴佳顺 5 崔秀龙 4 陈冬 4 马若飞 3 王帅俭 3 李昕阳 3 王全根 2 狄卫华 2 杨传胜 2</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 13 甄中元 11 宋净超 11 戴佳顺 5 马若飞 4 崔秀龙 4 陈冬 4 王帅俭 3 李昕阳 3 王全根 2 狄卫华 2 杨传胜 2</description>
     </item>
     
   </channel>

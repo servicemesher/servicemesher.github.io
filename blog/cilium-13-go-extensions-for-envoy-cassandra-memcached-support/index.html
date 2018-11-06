@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展 · ServiceMesher|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格">
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文讲解了具备API感知的网络和安全性管理的开源软件Cilium1.3的新特性，并用示例演示新的Go扩展如何使用。">
+  <meta property="og:description" content="本文讲解了具备API感知的网络和安全性管理的开源软件Cilium1.3的新特性，并用示例演示新的Go扩展如何使用。">
+  <meta name="twitter:description" content="本文讲解了具备API感知的网络和安全性管理的开源软件Cilium1.3的新特性，并用示例演示新的Go扩展如何使用。">
+  <meta property="og:description" content="本文讲解了具备API感知的网络和安全性管理的开源软件Cilium1.3的新特性，并用示例演示新的Go扩展如何使用。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年11月6日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://cilium.io">Cilium team</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/malphi">马若飞</a>
+                            
+                            
+                            | 审校者 <a href="https://jimmysong.io">宋净超</a>
+                            
+                            |
+                            4800字 | 阅读大约需要10分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://cilium.io/blog/2018/10/23/cilium-13-envoy-go/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/cilium/"><i>#cilium</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/envoy/"><i>#envoy</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<h1 id="cilium-1-3-具有cassandra和memcached支持的envoy-go语言扩展">Cilium 1.3：具有Cassandra和Memcached支持的Envoy Go语言扩展</h1>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwqjul334zj30je07p0t1.jpg" alt="Cilium Kubernetes" /></p>
+
+<p>我们很高兴地宣布Cilium 1.3发布了。这个版本加入了几个新特性。主要的亮点是实现了Cassandra和带有策略执行能力的Memcached协议解析器，作为<a href="https://github.com/envoyproxy/envoy">Envoy</a>的Go语言扩展包。</p>
+
+<p>和往常一样，整个Cilium社区的开发者贡献巨大，他们在1.2到1.3版本的这段时间贡献了785个提交。</p>
+
+<h2 id="什么是envoy的go语言扩展">什么是Envoy的Go语言扩展？</h2>
+
+<p>从1.0版本开始，我们一直依赖<a href="https://github.com/envoyproxy/envoy">Envoy</a>处理所有的HTTP、gRPC以及HTTP的派生如Elasticsearch的请求。社区讨论如何扩大支持7层协议的范围，Envoy作为推动未来协议补充的首选平台是显而易见的。焦点迅速转移到寻找简化Envoy可扩展性的方法，并且允许重用现有的开源项目，如CNCF项目<a href="https://vitess.io/">Vitess</a>。于是实现Envoy的Go扩展的想法就诞生了。</p>
+
+<p>在Cilium 1.3中，我们引入了Envoy的Go扩展作为其Beta特性。</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwql07xp02j30lp0buaay.jpg" alt="Envoy Golang Extension Architecture" /></p>
+
+<ul>
+<li><strong>扩展的透明注入：</strong>在Cilium的帮助下，连接被透明地重定向到Envoy，而不需要修改应用程序或pod。重定向基于目标端口配置，可以根据labels、IPs、DNS以及ingress和egress连接的服务名称限定到源或目标服务，并通过扩展的名称将连接映射到扩展。重定向是通过CiliumNetworkPolicy CRD或REST API配置的。Envoy可以被配置为在每个pod中作为sidecar或作为每个node的独立代理运行。</li>
+<li><strong>完全分布式：</strong>Go扩展完全分布在每个Envoy节点或pod内部，不需要为一个数据处理的集中化控制面板。当然，go扩展本身可以调用任意的外部控制面板组件来报告遥测数据或验证请求。</li>
+<li><strong>动态扩展映射：</strong>Go扩展被设计为共享库提供给Envoy。Cilium可以根据设置好的重定向自动加载相应的Go扩展来配置Envoy，并在连接数据时调用它。未来的版本将支持在运行时更新和重新加载扩展，而无需重启Envoy并且也不会丢失连接状态。</li>
+<li><strong>通过CRD配置扩展：</strong>通过CRD或REST API使用通用键值对配置Go扩展。这允许传递如安全策略、安全令牌或其他的配置，而无需让Envoy知道。</li>
+<li><strong>通用访问日志：</strong>与配置类似，扩展可以返回通用键值对，这些键值对将提取的可见性传递到访问日志层。</li>
+<li><strong>沙盒化：</strong>沙盒确保任何解析器的不稳定性都不会破坏Envoy的核心。受Matt Klein发表的文章<a href="https://medium.com/@mattklein123/exceptional-go-1dd1488a6a47">Exceptional Go</a>启发，解析器被容许panic或抛出异常。当panic发生时，信息被记录到访问日志中，TCP连接与被关闭的请求关联。</li>
+</ul>
+
+<h2 id="cilium是什么">Cilium是什么？</h2>
+
+<p>Cilium是一个开源软件，可以透明地提供和保护部署在诸如Kubernetes、Docker和Mesos等Linux容器管理平台的应用程服务之间的网络和API连接。</p>
+
+<p>Cilium的基础是一种新的Linux内核技术BPF，它支持在Linux内部动态的注入安全、可见性和网络控制逻辑。除了提供传统的网络层安全，BPF的灵活性还让API和流程级别的安全，保护容器或pod间通信成为了可能。因为BPF在Linux内核中运行，Cilium的安全策略可以在不修改程序代码或容器配置的情况下使用和更新。</p>
+
+<p>有关Cilium更详细的介绍请参见<strong><a href="https://cilium.readthedocs.io/en/v1.3/intro/">Introduction to Cilium</a></strong></p>
+
+<h2 id="envoy是什么">Envoy是什么？</h2>
+
+<p>Envoy是一个7层代理和通信总线，被设计用于大型的面向服务的架构。这个项目诞生于以下理念：</p>
+
+<blockquote>
+<p>网络应该对应用程序透明。当网络和应用程序出现问题时，应该很容易确定问题的根源。</p>
+</blockquote>
+
+<p>你可以通过Envoy的文档 <a href="https://www.envoyproxy.io/docs/envoy/latest/intro/what_is_envoy">What is Envoy</a>了解更多关于Envoy的内容。</p>
+
+<h1 id="怎样编写envoy的go语言扩展">怎样编写Envoy的Go语言扩展</h1>
+
+<p>编写Envoy的Go扩展很简单。为说明这一点，我们将为R2-D2控制协议实现一个基本的协议解析器，并实现过滤逻辑用来排除任何包含字符串”C-3PO”的控制请求。</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwvz4inau1j30kg09waal.jpg" alt="Envoy Golang Extension Architecture" /></p>
+
+<p>要实现扩展的主要API是<code>OnData()</code>函数，当Envoy收到通过<code>CiliumNetworkPolicy</code>映射到扩展连接的数据时，就会调用这个函数。函数必须解析数据并返回下面的断言之一：</p>
+
+<ul>
+<li><strong>MORE</strong>：解析器需要更多的字节来继续解析。</li>
+<li><strong>PASS</strong>：传递*n*字节数据流。</li>
+<li><strong>DROP</strong>：删除*n*字节数据流。</li>
+<li><strong>INJECT</strong>：向指定的方向注入*n*字节的数据。</li>
+<li><strong>ERROR</strong>：发生了解析错误，连接必须关闭。</li>
+<li><strong>NOP</strong>：什么也没发生。</li>
+</ul>
+
+<p>为了注册扩展，需要创建一个必须实现<code>Create()</code>函数的解析器工厂。当Envoy建立了一个新的连接并使用解析器时就会调用该函数。</p>
+
+<pre><code class="language-go">import (
+        &quot;github.com/cilium/cilium/proxylib/proxylib&quot;
+)
+
+type parser struct{
+        connection *proxylib.Connection
+}
+
+func (p *parser) OnData(reply, endStream bool, dataArray [][]byte) (proxylib.OpType, int) {
+        data := string(bytes.Join(dataArray, []byte{}))
+        msgLen := strings.Index(data, &quot;\r\n&quot;)
+        if msgLen &lt; 0 {
+                return proxylib.MORE, 1 // No delimiter, request more data
+        }
+
+        msgStr := data[:msgLen]
+        msgLen += 2 // Inlcude the &quot;\r\n&quot; in the request
+
+        if reply {
+                return proxylib.PASS, msgLen // Pass responses without additional parsing
+        }
+
+        if strings.Contains(msgStr, &quot;C-3PO&quot;) {
+                return proxylib.DROP, msgLen
+        }
+
+        return proxylib.PASS, msgLen
+}
+
+type factory struct{}
+
+func (f *factory) Create(connection *proxylib.Connection) proxylib.Parser {
+        return &amp;parser{connection: connection}
+}
+
+func init() {
+        proxylib.RegisterParserFactory(&quot;r2d2&quot;, &amp;factory{})
+}
+</code></pre>
+
+<p>最后，将新的解析器导入到proxylib包中。<code>libcilium.so</code>将包含解析器并被Envoy加载。编辑文件<code>proxylib/proxylib.go</code>：</p>
+
+<pre><code class="language-go">import (
+        [...]
+        _ &quot;github.com/cilium/cilium/proxylib/r2d2&quot;
+)
+</code></pre>
+
+<p>上面的示例省略了扩展配置、集成到策略代码库以及访问日志等内容。学习如何编写Go扩展，请参阅指南<a href="https://cilium.readthedocs.io/en/v1.3/envoy/extensions/">Envoy Go Extensions</a>。</p>
+
+<h1 id="cassandra支持-beta">Cassandra支持（Beta）</h1>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwxc47hgkbj30io07edgp.jpg" alt="Cassandra Logo" /></p>
+
+<p><a href="https://github.com/apache/cassandra">Cassandra</a> 是一个流行的NoSQL数据库管理系统。它通常被多个服务大规模的访问并在团队间共享。Cilium 1.3引入了对Apache <a href="https://github.com/apache/cassandra">Cassandra</a> 协议的支持，并提供了可见性和策略执行能力。</p>
+
+<p>Cassandra的Go扩展能够在以下协议字段上提供可见性和执行能力：</p>
+
+<ul>
+<li><strong>query_action</strong>： 这个行为在数据库的<code>SELECT</code>， <code>INSERT</code>， <code>UPDATE</code>等操作上执行，字段总是精确匹配。</li>
+<li><strong>query_table</strong>： 查询执行的表，以正则表达式进行匹配。</li>
+</ul>
+
+<h3 id="例子-empire如何通过表限制cassandra访问">例子：Empire如何通过表限制Cassandra访问</h3>
+
+<p>下面的示例展示了Empire如何暴露有限的访问给运行在端口9042的Empire Cassandra集群。Outposts被标签<code>app=empire-outpost</code>标识，并具有以下权限：</p>
+
+<ul>
+<li><code>SELECT</code> 操作在表&rdquo;system.*”和”system_schema.*“上执行</li>
+<li><code>INSERT</code>操作在表&rdquo;attendance.daily_records&rdquo;上执行。注意outposts不能从这些表读取，因此不能从其他outposts读取每日记录。</li>
+</ul>
+
+<pre><code class="language-yaml">apiVersion: &quot;cilium.io/v2&quot;
+kind: CiliumNetworkPolicy
+description: &quot;Allow only permitted requests to empire Cassandra server&quot;
+metadata:
+name: &quot;secure-empire-cassandra&quot;
+specs:
+- endpointSelector:
+  matchLabels:
+    app: cass-server
+ingress:
+- fromEndpoints:
+  - matchLabels:
+      app: empire-outpost
+  toPorts:
+  - ports:
+    - port: &quot;9042&quot;
+      protocol: TCP
+    rules:
+      l7proto: cassandra
+      l7:
+      - query_action: &quot;select&quot;
+        query_table: &quot;system\\..*&quot;
+      - query_action: &quot;select&quot;
+        query_table: &quot;system_schema\\..*&quot;
+      - query_action: &quot;insert&quot;
+        query_table: &quot;attendance.daily_records&quot;
+</code></pre>
+
+<p>这是一个简单的例子，更多复杂示例请参阅 <a href="https://cilium.readthedocs.io/en/v1.3/gettingstarted/cassandra/">Cassandra getting started guide </a>。</p>
+
+<h1 id="memcached支持-beta">Memcached支持（Beta）</h1>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwxc9b9qp7j30g607gt97.jpg" alt="Memcached Logo" />
+Memcached是一种流行的基于内存的分布式缓存，通常用于缓存或在服务之间共享数据。随着memcached解析器的golang扩展加入Envoy，Cilium现在可以执行安全规则去限制memcached客户端的某些命令，比如读写，也可以根据key前缀进行限制。</p>
+
+<h2 id="例子-rebels如何保护共享的memcached服务">例子：Rebels如何保护共享的memcached服务</h2>
+
+<p>在下面的示例中，Rebels运行了一个标签为<code>app=memcached</code>的memcached服务，几个服务与memcached交互并应用不同的规则：</p>
+
+<ul>
+<li><code>function=fleet-maintenance</code> 标识的维护服务被授予对前缀为<code>alliance/fleet</code>的所有key的读写权限。禁止访问任何其他key。</li>
+<li><code>function=fleet-monitoring</code>标识的监控服务仅对前缀为<code>alliance/fleet</code>的key授予读权限。禁止对前缀中的key进行写入访问或访问前缀之外的任何key。</li>
+<li>所有Jedis被标签<code>role=jedi</code>标识，拥有完整的Memcached服务，可以访问所有的key。</li>
+</ul>
+
+<pre><code class="language-yaml">apiVersion: &quot;cilium.io/v2&quot;
+kind: CiliumNetworkPolicy
+description: &quot;Secure the Rebel memcached service&quot;
+metadata:
+  name: &quot;secure-rebel-alliance-memcache&quot;
+specs:
+  - endpointSelector:
+      matchLabels:
+        app: memcached
+    ingress:
+    - fromEndpoints:
+      - matchLabels:
+          function: fleet-maintanence
+      toPorts:
+      - ports:
+        - port: &quot;11211&quot;
+          protocol: TCP
+        rules:
+          l7proto: memcache
+          l7:
+          - command: &quot;writeGroup&quot;
+            keyPrefix: &quot;alliance/fleet/&quot;
+          - command: &quot;get&quot;
+            keyPrefix: &quot;alliance/fleet/&quot;
+    - fromEndpoints:
+      - matchLabels:
+          function: fleet-monitoring
+      toPorts:
+      - ports:
+        - port: &quot;11211&quot;
+          protocol: TCP
+        rules:
+          l7proto: memcache
+          l7:
+          - command: &quot;get&quot;
+            keyPrefix: &quot;alliance/fleet/&quot;
+    - fromEndpoints:
+      - matchLabels:
+          role: jedi
+      toPorts:
+      - ports:
+        - port: &quot;11211&quot;
+          protocol: TCP
+        rules:
+          l7proto: memcache
+          l7:
+          - command:
+</code></pre>
+
+<p>使用memcached的完整示例，请参阅 <a href="https://cilium.readthedocs.io/en/v1.3/gettingstarted/memcached/">Memcached getting started guide</a>。</p>
+
+<h1 id="社区">社区</h1>
+
+<h2 id="linux基金会-core-infrastructure-initiative-最佳实践">Linux基金会&rdquo;Core Infrastructure Initiative&rdquo;最佳实践</h2>
+
+<p>我们致力于在开放和最好的开源实践中开发Cilium，包括对安全的坚定承诺。我们很高兴地宣布，我们已经完成了所有工作，获得了Linux基金会 <a href="https://www.coreinfrastructure.org/">Core Infrastructure Initiative</a>的 <a href="https://bestpractices.coreinfrastructure.org/en">CII Best Practices</a>殊荣 。在 <a href="https://www.coreinfrastructure.org/programs/badge-program/">这里</a>了解更多关于奖章的信息。</p>
+
+<h2 id="特别兴趣组-sig-介绍">特别兴趣组（SIG）介绍</h2>
+
+<p>社区的关注点越来越多样化。为了确保项目的可伸缩性，我们正式引入了特殊兴趣组（SIGs）来帮助提供一些组织结构。已经创建了以下的SIGs：</p>
+
+<ul>
+<li><strong>Datapath</strong>： (#sig-datapath) 所有BPF和Linux内核相关的数据通路代码拥有者。</li>
+<li><strong>Documentation</strong>： (#sig-docs) 所有文档相关的讨论。</li>
+<li><strong>Envoy</strong>： (#sig-envoy) Envoy， Istio和所有7层协议解析器的维护。</li>
+<li><strong>Policy</strong>： (#sig-policy) 所有策略相关的主题。这个SIG负责所有与安全相关的API和实现逻辑。</li>
+<li><strong>Release Management</strong>： (#launchpad) 负责发布管理和向后移植的过程。</li>
+</ul>
+
+<p>任何人都可以建立额外的SIGs。这个过程很简单有<a href="https://cilium.readthedocs.io/en/v1.3/community/#how-to-create-a-sig">文档说明</a></p>
+
+<h1 id="1-3-版本新特性">1.3 版本新特性</h1>
+
+<ul>
+<li><strong>Envoy的Go语言扩展</strong>
+
+<ul>
+<li>令人兴奋的全新的Envoy Go扩展API，包括通用配置和访问日志API（Beta版本）</li>
+</ul></li>
+<li><strong>Cassandra和Memcached 协议支持</strong>
+
+<ul>
+<li>使用新的Envoy Go扩展实现了Cassandra和Memcached的新协议解析器。这两个解析器都使用精确匹配、前缀匹配和正则表达式为操作类型和键/表名提供可见性和强制安全策略。（Beta）</li>
+</ul></li>
+<li><strong>安全性</strong>
+
+<ul>
+<li>为DNS/FQDN策略规则提供TTLs支持。</li>
+<li>引入kube-dns、coredns和etcd操作符的标识。</li>
+<li>新的安全标识&rdquo;unmanaged&rdquo;代表没有被Cilium管理的pod。</li>
+<li>改进的安全实体“集群”，允许为集群中的所有pod定义策略（已管理、未管理和主机网络的）。</li>
+</ul></li>
+<li><strong>额外的遥测指标和监控</strong>
+
+<ul>
+<li>新的&rdquo;cilium metrics list&rdquo;命令通过CLI查看metrics列表。</li>
+<li>许多额外的metrics：连接跟踪垃圾回收，Kubernetes资源事件，IPAM， 再生节点，服务，错误和警告计数器。</li>
+<li>具有更高效的编解码协议的新监控接口。默认情况下用于较老的客户端。</li>
+</ul></li>
+<li><strong>网络改进</strong>
+
+<ul>
+<li>将连接跟踪表划分为TCP和非TCP，以更好地处理每个协议的长短连接的混合。</li>
+<li>通过ConfigMap描述连接表大小的能力。</li>
+<li>通过NodePort和HostPort更好的伪装流量行为，容许pods可以查看原始源IP。</li>
+</ul></li>
+<li><strong>全键值存储弹性</strong>
+
+<ul>
+<li>引入了在任何状态丢失后立即重新构造键值存储内容的能力。允许从备份中恢复etcd，或者在运行的集群中完全删除它，并影响最小。(Beta)</li>
+</ul></li>
+<li><strong>效率和扩展</strong>
+
+<ul>
+<li>在计算独立endpoint策略的成本方面有重大改进。关于这方面的工作还在继续。</li>
+<li>新的宽限期，通过工作负载更改身份最小化连接影响。</li>
+<li>更高效的安全身份分配算法。</li>
+<li>新的通用框架检测和忽略Kubernetes事件通知，Cilium不需要动作。</li>
+<li>在避免不必要的BPF编译方面的改进，以减少由此导致的CPU负载。初始化BPF模板以避免全编译。</li>
+</ul></li>
+<li><strong>Kubernetes</strong>
+
+<ul>
+<li>增加对Kubernetes 1.12的支持</li>
+<li>为CiliumEndpoints CRD自定义列 （需要Kubernetes 1.11支持）</li>
+<li>为ulibc的兼容性从cilium-cni移除cgo</li>
+<li>移除对Kubernetes 1.7的支持</li>
+</ul></li>
+<li><strong>文档</strong>
+
+<ul>
+<li>新的Ubuntu 18.04手册</li>
+<li>对最新的BPF运行时特性的覆盖，例如BTF（BPF Type Format）</li>
+<li>针对运行多主机网络的虚拟机/主机防火墙需求的文档</li>
+</ul></li>
+<li><strong>长期稳定版本(LTS)</strong>
+
+<ul>
+<li>1.3已经声明为LTS版本，在后续的6个月将作为向后移植的版本继续支持</li>
+</ul></li>
+</ul>
+
+<h2 id="更新指导">更新指导</h2>
+
+<p>请查阅<a href="https://cilium.readthedocs.io/en/v1.3/install/upgrade/#upgrading-minor-versions">upgrade guide</a>去更新你的Cilium部署，可以随时在<a href="http://cilium.io/slack">Slack</a>上联系我们。</p>
+
+<h2 id="发布">发布</h2>
+
+<ul>
+<li>发布记录和二进制文件 <a href="https://github.com/cilium/cilium/releases/tag/1.3.0">1.3.0</a></li>
+<li>容器镜像： <code>docker.io/cilium/cilium:v1.3.0</code></li>
+</ul>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/summary-control-traffic-using-gateway-in-istio/" data-toggle="tooltip" data-placement="top" title="Istio Ingress Gateway中的Envoy配置解析">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/"><i class="fa fa-link"></i>SRE 弹性能力：使用 Envoy 对应用进行速率限制</a></li>
+         
+        <li><a href="/blog/envoy-xds-protocol/"><i class="fa fa-link"></i>Envoy 中的 xDS REST 和 gRPC 协议详解</a></li>
+         
+        <li><a href="/blog/the-importance-of-control-planes-with-service-mesh/"><i class="fa fa-link"></i>服务网格的控制平面和边缘代理的重要性</a></li>
+         
+        <li><a href="/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/"><i class="fa fa-link"></i>理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</a></li>
+         
+        <li><a href="/blog/summary-control-traffic-using-gateway-in-istio/"><i class="fa fa-link"></i>Istio Ingress Gateway中的Envoy配置解析</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (14)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (3)</a>
+            </li>
+            
+            <li><a href="/categories/news"><i class="fa fa-navicon"></i>news (1)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (1)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (13)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (8)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (70)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwy88u4317j31jk15mqv5.jpg" class="img-responsive" alt="Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/">Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/summary-control-traffic-using-gateway-in-istio/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw867vtusqj30rs0kudth.jpg" class="img-responsive" alt="Istio Ingress Gateway中的Envoy配置解析">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/summary-control-traffic-using-gateway-in-istio/">Istio Ingress Gateway中的Envoy配置解析</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwvwhah9h9j31jk15m7wk.jpg" class="img-responsive" alt="SRE 弹性能力：使用 Envoy 对应用进行速率限制">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/">SRE 弹性能力：使用 Envoy 对应用进行速率限制</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Istio Ingress Gateway中的Envoy配置解析 · ServiceMesher|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格, ingress gateway">
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Istio Ingress Gateway中的Envoy配置解析" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/summary-control-traffic-using-gateway-in-istio//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文重点为分析Istio Gateway以及VirtualService定义如何生成Istio Ingress Gateway的Envoy相关配置。">
+  <meta property="og:description" content="本文重点为分析Istio Gateway以及VirtualService定义如何生成Istio Ingress Gateway的Envoy相关配置。">
+  <meta name="twitter:description" content="本文重点为分析Istio Gateway以及VirtualService定义如何生成Istio Ingress Gateway的Envoy相关配置。">
+  <meta property="og:description" content="本文重点为分析Istio Gateway以及VirtualService定义如何生成Istio Ingress Gateway的Envoy相关配置。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio Ingress Gateway中的Envoy配置解析 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio Ingress Gateway中的Envoy配置解析 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Istio Ingress Gateway中的Envoy配置解析 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Istio Ingress Gateway中的Envoy配置解析</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年11月5日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://github.com/shenxg13/istio-no-best-practice">沈旭光</a>
+                            
+                            
+                            
+                            |
+                            5600字 | 阅读大约需要12分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://github.com/shenxg13/istio-no-best-practice/blob/master/summary-control-traffic-using-gateway-in-istio.md">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/istio">istio</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/ingress-gateway/"><i>#Ingress-Gateway</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fw7vchevggj30xu0cwq5i.jpg" alt="" /></p>
+
+<ul>
+<li>gateway定义用于配置在mesh边缘，到mesh的tcp和http的负载均衡。</li>
+</ul>
+
+<h2 id="非tls单主机环境">非TLS单主机环境</h2>
+
+<h3 id="相关拓扑">相关拓扑</h3>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwvgzlp7z2j31g21lvwl8.jpg" alt="" /></p>
+
+<ul>
+<li>使用azure aks环境。</li>
+<li>ingress gateway的service类型为loadbalancer。</li>
+<li>ingress gateway的service enternal ip为104.211.54.62。</li>
+<li>通过该external ip对应的域名，访问ingress gateway svc。</li>
+</ul>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwvbny77fbj31kw24l4hn.jpg" alt="" /></p>
+
+<ul>
+<li>增加gateway定义。</li>
+<li>gateway定义中的selector会将该设置与相应的gateway pod绑定。</li>
+<li>gateway定义中的servers会在相应的pod中生成listener实例，该拓扑中的监听端口为80。</li>
+<li>需要将80端口注册到该gateway pod对应的服务中（默认已注册）。</li>
+<li>gateway定义中的hosts表示listener会向哪些特定的虚拟主机转发流量，在该示例中为httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io。</li>
+<li>增加virtualservice定义。</li>
+<li>virtualservice定义中的hosts与gateway中的hosts相对应，表示该服务可以注册到gateway的监听中，这个host写会更新到gateway pod路由表的虚拟主机条目中。</li>
+<li>virtualservice定义中的gateways将virtualservice与gateway关联起来。</li>
+<li>virtualservice定义中的http定义了路由规则，路由规则会写入到相应gateway pod的路由表中。</li>
+</ul>
+
+<h3 id="相关配置">相关配置</h3>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: httpbin-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http-httpbin
+      protocol: HTTP
+    hosts:
+    - &quot;httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io&quot;
+</code></pre>
+
+<ul>
+<li>gateway相关配置。</li>
+<li>该定义与包含istio: ingressgateway label的ingress gateway pod绑定。</li>
+<li>新建80端口监听。</li>
+<li>监听主机为httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io的请求。</li>
+</ul>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin-vs
+spec:
+  hosts:
+  - &quot;httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io&quot;
+  gateways:
+  - httpbin-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /status
+    - uri:
+        prefix: /delay
+    - uri:
+        prefix: /headers
+    route:
+    - destination:
+        port:
+          number: 8000
+        host: httpbin.default.svc.cluster.local
+</code></pre>
+
+<ul>
+<li>virtualservice相关配置。</li>
+<li>将该配置应用到名称为httpbin-gateway的实例中。</li>
+<li>定义路由规则和相关转发目的地。</li>
+</ul>
+
+<pre><code class="language-bash">[~/K8s/istio/istio-azure-1.0.2/samples/httpbin]$ http http://httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io/status/418
+HTTP/1.1 418 Unknown
+access-control-allow-credentials: true
+access-control-allow-origin: *
+content-length: 135
+date: Sat, 03 Nov 2018 16:20:59 GMT
+server: envoy
+x-envoy-upstream-service-time: 4
+x-more-info: http://tools.ietf.org/html/rfc2324
+
+    -=[ teapot ]=-
+
+       _...._
+     .'  _ _ `.
+    | .&quot;` ^ `&quot;. _,
+    \_;`&quot;---&quot;`|//
+      |       ;/
+      \_     _/
+        `&quot;&quot;&quot;`
+
+[~/K8s/istio/istio-azure-1.0.2/samples/httpbin]$
+</code></pre>
+
+<ul>
+<li>测试结果。</li>
+<li>通过主机httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io，可以正常访问httpbin pod。</li>
+</ul>
+
+<h2 id="tls单主机环境">TLS单主机环境</h2>
+
+<h3 id="相关拓扑-1">相关拓扑</h3>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwvh1kuhgpj31g21lv7az.jpg" alt="" /></p>
+
+<ul>
+<li>使用azure aks环境。</li>
+<li>ingress gateway的service类型为loadbalancer。</li>
+<li>ingress gateway的service enternal ip为104.211.54.62。</li>
+<li>通过该external ip对应的域名，访问ingress gateway svc。</li>
+<li>客户端使用tls方式访问主机。</li>
+<li>tls请求在ingress gateway处被卸载，并转化为http请求。</li>
+</ul>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwvh283d8ij31kw2cdtz8.jpg" alt="" /></p>
+
+<ul>
+<li>增加gateway定义。</li>
+<li>gateway定义中的监听端口包括80和443。</li>
+<li>在80中启用httpsredirect。</li>
+<li>在443中启用simple tls。</li>
+<li>指定443的key和cert。</li>
+<li>增加virtualservice定义，并定义相应路由规则。</li>
+</ul>
+
+<h3 id="相关配置-1">相关配置</h3>
+
+<pre><code class="language-bash">openssl req \
+-newkey rsa:4096 -nodes -sha256 -keyout ca.key \
+-x509 -days 3655 -out ca.crt
+
+openssl req \
+-newkey rsa:4096 -nodes -sha256 -keyout httpbin-tls.key \
+-out httpbin-tls.csr
+
+echo subjectAltName = DNS:httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io &gt; extfile-httpbin-tls.cnf
+
+openssl x509 \
+-req -days 3655 -in httpbin-tls.csr -CA ca.crt -CAkey ca.key \
+-CAcreateserial -extfile extfile-httpbin-tls.cnf -out httpbin-tls.crt
+
+kubectl create -n istio-system secret tls istio-ingressgateway-certs --key ./httpbin-tls.key --cert ./httpbin-tls.crt
+</code></pre>
+
+<ul>
+<li>自签名证书相关配置。</li>
+<li>k8s secret相关配置。</li>
+</ul>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: httpbin-tls-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http-httpbin
+      protocol: HTTP
+    hosts:
+    - &quot;httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io&quot;
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https-httpbin
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
+      privateKey: /etc/istio/ingressgateway-certs/tls.key
+    hosts:
+    - &quot;httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io&quot;
+</code></pre>
+
+<ul>
+<li>gateway相关配置。</li>
+<li>新建监听端口包括80和443。</li>
+<li>在80中启用httpsredirect。</li>
+<li>在443中启用simple tls。</li>
+<li>指定443的key和cert。</li>
+</ul>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin-tls-vs
+spec:
+  hosts:
+  - &quot;httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io&quot;
+  gateways:
+  - httpbin-tls-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /status
+    route:
+    - destination:
+        port:
+          number: 8000
+        host: httpbin.default.svc.cluster.local
+</code></pre>
+
+<ul>
+<li>virtualservice相关配置。</li>
+<li>配置相关路由。</li>
+</ul>
+
+<pre><code class="language-bash">[~/K8s/istio/istio-azure-1.0.2/samples/httpbin]$ http http://httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io/status/418 --verify no --follow -v
+GET /status/418 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io
+User-Agent: HTTPie/0.9.9
+
+HTTP/1.1 301 Moved Permanently
+content-length: 0
+date: Sat, 03 Nov 2018 19:25:25 GMT
+location: https://httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io/status/418
+server: envoy
+
+GET /status/418 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io
+User-Agent: HTTPie/0.9.9
+
+HTTP/1.1 418 Unknown
+access-control-allow-credentials: true
+access-control-allow-origin: *
+content-length: 135
+date: Sat, 03 Nov 2018 19:25:26 GMT
+server: envoy
+x-envoy-upstream-service-time: 6
+x-more-info: http://tools.ietf.org/html/rfc2324
+
+    -=[ teapot ]=-
+
+       _...._
+     .'  _ _ `.
+    | .&quot;` ^ `&quot;. _,
+    \_;`&quot;---&quot;`|//
+      |       ;/
+      \_     _/
+        `&quot;&quot;&quot;`
+
+[~/K8s/istio/istio-azure-1.0.2/samples/httpbin]$
+</code></pre>
+
+<ul>
+<li>httpsredirect测试结果。</li>
+<li>通过http方式访问httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io，可以正常访问httpbin pod。</li>
+</ul>
+
+<pre><code class="language-bash">[~/K8s/istio/istio-azure-1.0.2/samples/httpbin]$ http https://httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io/status/418 --verify no -v
+GET /status/418 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io
+User-Agent: HTTPie/0.9.9
+
+HTTP/1.1 418 Unknown
+access-control-allow-credentials: true
+access-control-allow-origin: *
+content-length: 135
+date: Sat, 03 Nov 2018 19:26:21 GMT
+server: envoy
+x-envoy-upstream-service-time: 5
+x-more-info: http://tools.ietf.org/html/rfc2324
+
+    -=[ teapot ]=-
+
+       _...._
+     .'  _ _ `.
+    | .&quot;` ^ `&quot;. _,
+    \_;`&quot;---&quot;`|//
+      |       ;/
+      \_     _/
+        `&quot;&quot;&quot;`
+
+[~/K8s/istio/istio-azure-1.0.2/samples/httpbin]$
+</code></pre>
+
+<ul>
+<li>https测试结果。</li>
+<li>通过https方式访问httpbin.7cb9a9b7b318440399a0.eastus.aksapp.io，可以正常访问httpbin pod。</li>
+</ul>
+
+<h2 id="mtls单主机环境">mTLS单主机环境</h2>
+
+<h3 id="相关拓扑-2">相关拓扑</h3>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwwfxwn47kj31g21lv459.jpg" alt="" /></p>
+
+<ul>
+<li>使用azure aks环境。</li>
+<li>ingress gateway的service类型为loadbalancer。</li>
+<li>ingress gateway的service enternal ip为104.211.54.62。</li>
+<li>通过该external ip对应的域名，访问ingress gateway svc。</li>
+<li>客户端使用mtls方式访问主机。</li>
+<li>mtls请求在ingress gateway处被卸载，并转化为http请求。</li>
+</ul>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwwfynfmf5j31kw22k1fp.jpg" alt="" /></p>
+
+<ul>
+<li>增加gateway定义。</li>
+<li>gateway定义中的监听端口443。</li>
+<li>在443中启用mtls。</li>
+<li>指定443的key和cert。</li>
+<li>指定443的ca cert。</li>
+<li>指定允许连接443的san。</li>
+<li>增加virtualservice定义，并定义相应路由规则。</li>
+</ul>
+
+<h3 id="相关配置-2">相关配置</h3>
+
+<pre><code class="language-bash">openssl req \
+-newkey rsa:4096 -nodes -sha256 -keyout ca.key \
+-x509 -days 3655 -out ca.crt
+
+openssl req \
+-newkey rsa:4096 -nodes -sha256 -keyout httpbin-mtls.key \
+-out httpbin-mtls.csr
+
+echo subjectAltName = DNS:httpbin.6491dea3ce6b4d17b109.eastus.aksapp.io &gt; extfile-httpbin-mtls.cnf
+
+openssl x509 \
+-req -days 3655 -in httpbin-mtls.csr -CA ca.crt -CAkey ca.key \
+-CAcreateserial -extfile extfile-httpbin-mtls.cnf -out httpbin-mtls.crt
+
+openssl req \
+-newkey rsa:4096 -nodes -sha256 -keyout client.key \
+-out client.csr
+
+echo subjectAltName = DNS:is5.istio.client &gt; client-extfile.cnf
+
+openssl x509 \
+-req -days 3655 -in client.csr -CA ca.crt -CAkey ca.key \
+-CAcreateserial -extfile client-extfile.cnf -out client.crt
+
+kubectl create -n istio-system secret tls istio-ingressgateway-certs --key ./httpbin-mtls.key --cert ./httpbin-mtls.crt
+kubectl create -n istio-system secret generic istio-ingressgateway-ca-certs --from-file ./ca.crt
+</code></pre>
+
+<ul>
+<li>server端自签名证书相关配置。</li>
+<li>client端自签名证书相关配置。</li>
+<li>k8s secret相关配置。</li>
+</ul>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: httpbin-mtls-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 443
+      name: https-httpbin
+      protocol: HTTPS
+    tls:
+      mode: MUTUAL
+      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
+      privateKey: /etc/istio/ingressgateway-certs/tls.key
+      caCertificates: /etc/istio/ingressgateway-ca-certs/ca.crt
+      subjectAltNames:
+      - is5.istio.client
+    hosts:
+    - &quot;httpbin.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+</code></pre>
+
+<ul>
+<li>gateway相关配置。</li>
+<li>新建监听端口443。</li>
+<li>在443中启用mtls。</li>
+<li>指定443的key和cert。</li>
+<li>指定443的ca cert。</li>
+<li>指定允许连接443的san。</li>
+</ul>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin-tls-vs
+spec:
+  hosts:
+  - &quot;httpbin.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+  gateways:
+  - httpbin-mtls-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /status
+    route:
+    - destination:
+        port:
+          number: 8000
+        host: httpbin.default.svc.cluster.local
+</code></pre>
+
+<ul>
+<li>virtualservice相关配置。</li>
+<li>配置相关路由。</li>
+</ul>
+
+<pre><code class="language-bash">[~/K8s/istio/istio-azure-1.0.2/samples/httpbin/ssl]$ http https://httpbin.6491dea3ce6b4d17b109.eastus.aksapp.io/status/418 --verify no --cert ./client.crt --cert-key ./client.key
+HTTP/1.1 418 Unknown
+access-control-allow-credentials: true
+access-control-allow-origin: *
+content-length: 135
+date: Sun, 04 Nov 2018 15:28:47 GMT
+server: envoy
+x-envoy-upstream-service-time: 6
+x-more-info: http://tools.ietf.org/html/rfc2324
+
+    -=[ teapot ]=-
+
+       _...._
+     .'  _ _ `.
+    | .&quot;` ^ `&quot;. _,
+    \_;`&quot;---&quot;`|//
+      |       ;/
+      \_     _/
+        `&quot;&quot;&quot;`
+
+[~/K8s/istio/istio-azure-1.0.2/samples/httpbin/ssl]
+</code></pre>
+
+<ul>
+<li>测试结果。</li>
+<li>通过https mtls方式访问httpbin.6491dea3ce6b4d17b109.eastus.aksapp.io，可以正常访问httpbin pod。</li>
+</ul>
+
+<h2 id="非tls多主机环境">非TLS多主机环境</h2>
+
+<h3 id="相关拓扑-3">相关拓扑</h3>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwwi9rvcrpj31g21j1n4s.jpg" alt="" /></p>
+
+<ul>
+<li>使用azure aks环境。</li>
+<li>ingress gateway的service类型为loadbalancer。</li>
+<li>ingress gateway的service enternal ip为104.211.54.62。</li>
+<li>通过该external ip对应的域名，访问ingress gateway svc。</li>
+<li>2个主机，分别为：httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io和httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io。</li>
+<li>客户端使用http方式访问主机。</li>
+</ul>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwwk8t9x7oj31kw1ogkgw.jpg" alt="" /></p>
+
+<ul>
+<li>为2个主机配置统一的gateway定义。</li>
+<li>为2个主机分别配置virtualservice定义。</li>
+<li>主机httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io被路由至pod httpbin-a的/status uri。</li>
+<li>主机httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io被路由至pod httpbin-b的/headers uri。</li>
+<li>在gateway的listnener中生成统一的监听0.0.0.0_80。</li>
+<li>在gateway的route中分别生成针对httpbin-a和httpbin-b的虚拟主机。</li>
+</ul>
+
+<h3 id="相关配置-3">相关配置</h3>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: httpbin-dual-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http-httpbin
+      protocol: HTTP
+    hosts:
+    - &quot;httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+    - &quot;httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: httpbin-dual-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http-httpbina
+      protocol: HTTP
+    hosts:
+    - &quot;httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+  - port:
+      number: 80
+      name: http-httpbinb
+      protocol: HTTP
+    hosts:
+    - &quot;httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+</code></pre>
+
+<ul>
+<li>gateway相关配置。</li>
+<li>这2个gateway的配置，生成的envoy配置是一致的。</li>
+<li>新建监听端口80。</li>
+<li>分别针对两个主机httpbin-a和httpbin-b进行监听。</li>
+</ul>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin-a-vs
+spec:
+  hosts:
+  - &quot;httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+  gateways:
+  - httpbin-dual-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /status
+    route:
+    - destination:
+        port:
+          number: 8000
+        host: httpbin-a.default.svc.cluster.local
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin-b-vs
+spec:
+  hosts:
+  - &quot;httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+  gateways:
+  - httpbin-dual-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /headers
+    route:
+    - destination:
+        port:
+          number: 8000
+        host: httpbin-b.default.svc.cluster.local
+</code></pre>
+
+<ul>
+<li>httpbin-a和httpbin-b的virtualservice相关配置。</li>
+<li>httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io的/status请求被路由至httpbin-a。</li>
+<li>httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io的/headers请求被路由至httpbin-b。</li>
+</ul>
+
+<pre><code class="language-bash">[~/K8s/istio/istio-azure-1.0.2/samples/httpbin/ssl]$ http http://httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io/status/418
+HTTP/1.1 418 Unknown
+access-control-allow-credentials: true
+access-control-allow-origin: *
+content-length: 135
+date: Sun, 04 Nov 2018 16:27:07 GMT
+server: envoy
+x-envoy-upstream-service-time: 10
+x-more-info: http://tools.ietf.org/html/rfc2324
+
+    -=[ teapot ]=-
+
+       _...._
+     .'  _ _ `.
+    | .&quot;` ^ `&quot;. _,
+    \_;`&quot;---&quot;`|//
+      |       ;/
+      \_     _/
+        `&quot;&quot;&quot;`
+
+[~/K8s/istio/istio-azure-1.0.2/samples/httpbin/ssl]$ http http://httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io/headers
+HTTP/1.1 200 OK
+access-control-allow-credentials: true
+access-control-allow-origin: *
+content-length: 412
+content-type: application/json
+date: Sun, 04 Nov 2018 16:27:25 GMT
+server: envoy
+x-envoy-upstream-service-time: 7
+
+{
+    &quot;headers&quot;: {
+        &quot;Accept&quot;: &quot;*/*&quot;,
+        &quot;Accept-Encoding&quot;: &quot;gzip, deflate&quot;,
+        &quot;Content-Length&quot;: &quot;0&quot;,
+        &quot;Host&quot;: &quot;httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;,
+        &quot;User-Agent&quot;: &quot;HTTPie/0.9.9&quot;,
+        &quot;X-B3-Sampled&quot;: &quot;1&quot;,
+        &quot;X-B3-Spanid&quot;: &quot;9b6889437bfe02c8&quot;,
+        &quot;X-B3-Traceid&quot;: &quot;9b6889437bfe02c8&quot;,
+        &quot;X-Envoy-Internal&quot;: &quot;true&quot;,
+        &quot;X-Request-Id&quot;: &quot;e43ae114-52dd-9ee4-930b-dbb0405c6fef&quot;
+    }
+}
+
+[~/K8s/istio/istio-azure-1.0.2/samples/httpbin/ssl]$
+</code></pre>
+
+<ul>
+<li>测试结果。</li>
+<li>请求httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io/status/418和httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io/headers均可以被正确路由。</li>
+</ul>
+
+<h2 id="tls多主机环境">TLS多主机环境</h2>
+
+<h3 id="相关拓扑-4">相关拓扑</h3>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwwkizdfefj31g21j1gt7.jpg" alt="" /></p>
+
+<ul>
+<li>使用azure aks环境。</li>
+<li>ingress gateway的service类型为loadbalancer。</li>
+<li>ingress gateway的service enternal ip为104.211.54.62。</li>
+<li>通过该external ip对应的域名，访问ingress gateway svc。</li>
+<li>2个主机，分别为：httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io和httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io。</li>
+<li>客户端使用tls方式访问主机。</li>
+</ul>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwwkjjhqctj31kw2257wh.jpg" alt="" /></p>
+
+<ul>
+<li>为2个主机分别配置gateway中的server定义。</li>
+<li>为2个主机的server定义中增加证书的定义，每个server使用不同的证书。</li>
+<li>为2个主机分别配置virtualservice定义。</li>
+<li>在gateway的listnener中生成统一的监听0.0.0.0_443。</li>
+<li>因为gateway中配置的2个server中有不相同的配置，所以在监听0.0.0.0_443中，会生成2个server，分别为httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io和httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io。</li>
+<li>因为监听中生成2个server，所以在路由中会生成2条不同的路由相对应，在gateway的路由中生成分别的虚拟主机https.443.https-httpbina和https.443.https-httpbinb。</li>
+<li>监听0.0.0.0_443所属的server httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io被关联至路由https.443.https-httpbina，server httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io被关联至路由https.443.https-httpbinb。</li>
+<li>主机httpbin-a被路由至pod httpbin-a的/status uri。</li>
+<li>主机httpbin-b被路由至pod httpbin-b的/headers uri。</li>
+</ul>
+
+<h3 id="相关配置-4">相关配置</h3>
+
+<pre><code class="language-bash">openssl req \
+-newkey rsa:4096 -nodes -sha256 -keyout ca.key \
+-x509 -days 3655 -out ca.crt
+
+openssl req \
+-newkey rsa:4096 -nodes -sha256 -keyout httpbin-a-tls.key \
+-out httpbin-a-tls.csr
+
+echo subjectAltName = DNS:httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io &gt; extfile-httpbin-a-tls.cnf
+
+openssl x509 \
+-req -days 3655 -in httpbin-a-tls.csr -CA ca.crt -CAkey ca.key \
+-CAcreateserial -extfile extfile-httpbin-a-tls.cnf -out httpbin-a-tls.crt
+
+openssl req \
+-newkey rsa:4096 -nodes -sha256 -keyout httpbin-b-tls.key \
+-out httpbin-b-tls.csr
+
+echo subjectAltName = DNS:httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io &gt; extfile-httpbin-b-tls.cnf
+
+openssl x509 \
+-req -days 3655 -in httpbin-b-tls.csr -CA ca.crt -CAkey ca.key \
+-CAcreateserial -extfile extfile-httpbin-b-tls.cnf -out httpbin-b-tls.crt
+
+kubectl create -n istio-system secret tls istio-ingressgateway-httpbin-a-certs --key ./httpbin-a-tls.key --cert ./httpbin-a-tls.crt
+kubectl create -n istio-system secret tls istio-ingressgateway-httpbin-b-certs --key ./httpbin-b-tls.key --cert ./httpbin-b-tls.crt
+</code></pre>
+
+<ul>
+<li>自签名证书相关配置。</li>
+<li>k8s secret相关配置。</li>
+</ul>
+
+<pre><code class="language-bash">helm template install/kubernetes/helm/istio/ --name istio-ingressgateway --namespace istio-system -x charts/gateways/templates/deployment.yaml --set gateways.istio-egressgateway.enabled=false \
+--set gateways.istio-ingressgateway.secretVolumes[0].name=ingressgateway-ca-certs \
+--set gateways.istio-ingressgateway.secretVolumes[0].secretName=istio-ingressgateway-ca-certs \
+--set gateways.istio-ingressgateway.secretVolumes[0].mountPath=/etc/istio/ingressgateway-ca-certs \
+--set gateways.istio-ingressgateway.secretVolumes[1].name=ingressgateway-httpbin-a-certs \
+--set gateways.istio-ingressgateway.secretVolumes[1].secretName=istio-ingressgateway-httpbin-a-certs \
+--set gateways.istio-ingressgateway.secretVolumes[1].mountPath=/etc/istio/ingressgateway-httpbin-a-certs \
+--set gateways.istio-ingressgateway.secretVolumes[2].name=ingressgateway-httpbin-b-certs \
+--set gateways.istio-ingressgateway.secretVolumes[2].secretName=istio-ingressgateway-httpbin-b-certs \
+--set gateways.istio-ingressgateway.secretVolumes[2].mountPath=/etc/istio/ingressgateway-httpbin-b-certs &gt; \
+./helm-ingressgateway-httpbin-dual-tls.yaml
+
+...
+          volumeMounts:
+          - name: istio-certs
+            mountPath: /etc/certs
+            readOnly: true
+          - name: ingressgateway-ca-certs
+            mountPath: &quot;/etc/istio/ingressgateway-ca-certs&quot;
+            readOnly: true
+          - name: ingressgateway-httpbin-a-certs
+            mountPath: &quot;/etc/istio/ingressgateway-httpbin-a-certs&quot;
+            readOnly: true
+          - name: ingressgateway-httpbin-b-certs
+            mountPath: &quot;/etc/istio/ingressgateway-httpbin-b-certs&quot;
+            readOnly: true
+      volumes:
+      - name: istio-certs
+        secret:
+          secretName: istio.istio-ingressgateway-service-account
+          optional: true
+      - name: ingressgateway-ca-certs
+        secret:
+          secretName: &quot;istio-ingressgateway-ca-certs&quot;
+          optional: true
+      - name: ingressgateway-httpbin-a-certs
+        secret:
+          secretName: &quot;istio-ingressgateway-httpbin-a-certs&quot;
+          optional: true
+      - name: ingressgateway-httpbin-b-certs
+        secret:
+          secretName: &quot;istio-ingressgateway-httpbin-b-certs&quot;
+          optional: true
+...
+</code></pre>
+
+<ul>
+<li>修改了ingress gateway deployment的配置，可以支持多个证书。</li>
+<li>分别包含域名为httpbin-a和httpbin-b的证书。</li>
+</ul>
+
+<p> </p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: httpbin-dual-tls-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 443
+      name: https-httpbina
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      serverCertificate: /etc/istio/ingressgateway-httpbin-a-certs/tls.crt
+      privateKey: /etc/istio/ingressgateway-httpbin-a-certs/tls.key
+    hosts:
+    - &quot;httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+  - port:
+      number: 443
+      name: https-httpbinb
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      serverCertificate: /etc/istio/ingressgateway-httpbin-b-certs/tls.crt
+      privateKey: /etc/istio/ingressgateway-httpbin-b-certs/tls.key
+    hosts:
+    - &quot;httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+</code></pre>
+
+<ul>
+<li>gateway相关配置。</li>
+<li>分别定义2个server，每个server配置不同的证书。</li>
+</ul>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin-a-vs
+spec:
+  hosts:
+  - &quot;httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+  gateways:
+  - httpbin-dual-tls-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /status
+    route:
+    - destination:
+        port:
+          number: 8000
+        host: httpbin-a.default.svc.cluster.local
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin-b-vs
+spec:
+  hosts:
+  - &quot;httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;
+  gateways:
+  - httpbin-dual-tls-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /headers
+    route:
+    - destination:
+        port:
+          number: 8000
+        host: httpbin-b.default.svc.cluster.local
+</code></pre>
+
+<ul>
+<li>httpbin-a和httpbin-b的virtualservice相关配置。</li>
+<li>httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io的/status请求被路由至httpbin-a。</li>
+<li>httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io的/headers请求被路由至httpbin-b。</li>
+</ul>
+
+<pre><code class="language-bash">[~/K8s/istio/istio-azure-1.0.2/samples/httpbin/ssl]$ http https://httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io/status/418 --verify no
+HTTP/1.1 418 Unknown
+access-control-allow-credentials: true
+access-control-allow-origin: *
+content-length: 135
+date: Sun, 04 Nov 2018 17:36:30 GMT
+server: envoy
+x-envoy-upstream-service-time: 6
+x-more-info: http://tools.ietf.org/html/rfc2324
+
+    -=[ teapot ]=-
+
+       _...._
+     .'  _ _ `.
+    | .&quot;` ^ `&quot;. _,
+    \_;`&quot;---&quot;`|//
+      |       ;/
+      \_     _/
+        `&quot;&quot;&quot;`
+
+[~/K8s/istio/istio-azure-1.0.2/samples/httpbin/ssl]$ http https://httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io/headers --verify no
+HTTP/1.1 200 OK
+access-control-allow-credentials: true
+access-control-allow-origin: *
+content-length: 412
+content-type: application/json
+date: Sun, 04 Nov 2018 17:36:33 GMT
+server: envoy
+x-envoy-upstream-service-time: 8
+
+{
+    &quot;headers&quot;: {
+        &quot;Accept&quot;: &quot;*/*&quot;,
+        &quot;Accept-Encoding&quot;: &quot;gzip, deflate&quot;,
+        &quot;Content-Length&quot;: &quot;0&quot;,
+        &quot;Host&quot;: &quot;httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io&quot;,
+        &quot;User-Agent&quot;: &quot;HTTPie/0.9.9&quot;,
+        &quot;X-B3-Sampled&quot;: &quot;1&quot;,
+        &quot;X-B3-Spanid&quot;: &quot;27a46e99214fe1e1&quot;,
+        &quot;X-B3-Traceid&quot;: &quot;27a46e99214fe1e1&quot;,
+        &quot;X-Envoy-Internal&quot;: &quot;true&quot;,
+        &quot;X-Request-Id&quot;: &quot;6c1ace56-7f57-9b0d-bb3d-2eb57519c4a2&quot;
+    }
+}
+
+[~/K8s/istio/istio-azure-1.0.2/samples/httpbin/ssl]$
+
+</code></pre>
+
+<ul>
+<li>测试结果。</li>
+<li>请求httpbin-a.6491dea3ce6b4d17b109.eastus.aksapp.io/status/418和httpbin-b.6491dea3ce6b4d17b109.eastus.aksapp.io/headers均可以被正确路由。</li>
+</ul>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/" data-toggle="tooltip" data-placement="top" title="SRE 弹性能力：使用 Envoy 对应用进行速率限制">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="http://www.servicemesher.com/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/" data-toggle="tooltip" data-placement="top" title="Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/"><i class="fa fa-link"></i>SRE 弹性能力：使用 Envoy 对应用进行速率限制</a></li>
+         
+        <li><a href="/blog/the-future-of-service-mesh/"><i class="fa fa-link"></i>服务网格的未来Part 2：Istio 1.0之后何去何从？</a></li>
+         
+        <li><a href="/blog/myth-cloud-native-portability/"><i class="fa fa-link"></i>云原生可移植性的神话</a></li>
+         
+        <li><a href="/blog/service-mesh-architectures-inevitable/"><i class="fa fa-link"></i>服务网格的未来Part 1：服务网格架构是必然趋势并愈加重要</a></li>
+         
+        <li><a href="/blog/practice-for-coohom-using-istio-in-production/"><i class="fa fa-link"></i>云端设计平台Coohom在生产环境中使用istio的经验与实践</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (14)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (3)</a>
+            </li>
+            
+            <li><a href="/categories/news"><i class="fa fa-navicon"></i>news (1)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (1)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (13)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (8)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (70)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwy88u4317j31jk15mqv5.jpg" class="img-responsive" alt="Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/">Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/summary-control-traffic-using-gateway-in-istio/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw867vtusqj30rs0kudth.jpg" class="img-responsive" alt="Istio Ingress Gateway中的Envoy配置解析">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/summary-control-traffic-using-gateway-in-istio/">Istio Ingress Gateway中的Envoy配置解析</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwvwhah9h9j31jk15m7wk.jpg" class="img-responsive" alt="SRE 弹性能力：使用 Envoy 对应用进行速率限制">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/">SRE 弹性能力：使用 Envoy 对应用进行速率限制</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
