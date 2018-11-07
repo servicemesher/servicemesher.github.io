@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 25 Oct 2018 10:44:46 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Nov 2018 14:14:01 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cilium——具备API感知的网络和安全性管理的开源软件</title>
+      <link>http://www.servicemesher.com/blog/cilium-intro/</link>
+      <pubDate>Wed, 07 Nov 2018 14:14:01 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cilium-intro/</guid>
+      <description>Cilium是一个纯开源软件，没有哪家公司提供商业化支持，也不是由某一公司开源，该软件用于透明地保护使用Linux容器管理平台（如Docke</description>
+    </item>
     
     <item>
       <title>小米正式开源Istio管理面板Naftis</title>

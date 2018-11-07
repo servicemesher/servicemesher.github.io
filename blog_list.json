@@ -1,5 +1,35 @@
 [
   {
+    "author": "宋净超",
+    "authorlink": "https://jimmysong.io",
+    "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fwzhcmlpqoj30rs0kuq9g.jpg",
+    "categories": [
+      "“service mesh\""
+    ],
+    "date": "2018-11-07T14:14:01+08:00",
+    "fuzzywordcount": 3100,
+    "keywords": [
+      "service mesh",
+      "服务网格"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-11-07T14:14:01+08:00",
+    "objectID": "fc9d37edf50a593039f128b11a1a65fc",
+    "permalink": "http://www.servicemesher.com/blog/cilium-intro/",
+    "publishdate": "2018-11-07T14:14:01+08:00",
+    "readingtime": 7,
+    "relpermalink": "/blog/cilium-intro/",
+    "summary": "Cilium是一个纯开源软件，没有哪家公司提供商业化支持，也不是由某一公司开源，该软件用于透明地保护使用Linux容器管理平台（如Docker和Kubernetes）部署的应用程序服务之间的网络连接。",
+    "tags": [
+      "cilium"
+    ],
+    "title": "Cilium——具备API感知的网络和安全性管理的开源软件",
+    "translator": null,
+    "url": "/blog/cilium-intro/",
+    "weight": 0,
+    "wordcount": 3050
+  },
+  {
     "author": "Cilium team",
     "authorlink": "https://cilium.io",
     "banner": "https://ws3.sinaimg.cn/large/006tNbRwly1fwy88u4317j31jk15mqv5.jpg",
