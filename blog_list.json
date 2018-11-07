@@ -4,13 +4,14 @@
     "authorlink": "https://jimmysong.io",
     "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fwzhcmlpqoj30rs0kuq9g.jpg",
     "categories": [
-      "“service mesh\""
+      "service mesh"
     ],
     "date": "2018-11-07T14:14:01+08:00",
     "fuzzywordcount": 3100,
     "keywords": [
       "service mesh",
-      "服务网格"
+      "服务网格",
+      "cilium"
     ],
     "lang": "zh",
     "lastmod": "2018-11-07T14:14:01+08:00",
