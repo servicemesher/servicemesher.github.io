@@ -6,10 +6,19 @@
     <description>Recent content in Serverless on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 16 Sep 2018 16:49:58 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Nov 2018 13:20:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/serverless/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes（K8s）的无服务器框架的评估</title>
+      <link>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</link>
+      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</guid>
+      <description>评估Kubernetes（K8s）的无服务器框架 Rancher 1.6和Rancher 2.0底层容器编排引擎的术语和概念略微有所不同。想要了解这些差异就需</description>
+    </item>
     
     <item>
       <title>Serverless vs Container——开发人员向左，DevOps向右</title>

@@ -6,10 +6,19 @@
     <description>Recent content in Kubernetes on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 31 Oct 2018 20:01:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Nov 2018 13:20:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes（K8s）的无服务器框架的评估</title>
+      <link>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</link>
+      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</guid>
+      <description>评估Kubernetes（K8s）的无服务器框架 Rancher 1.6和Rancher 2.0底层容器编排引擎的术语和概念略微有所不同。想要了解这些差异就需</description>
+    </item>
     
     <item>
       <title>如何将云原生工作负载映射到Kubernetes中的控制器</title>

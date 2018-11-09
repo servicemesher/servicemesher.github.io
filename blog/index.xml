@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Kubernetes（K8s）的无服务器框架的评估</title>
+      <link>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</link>
+      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</guid>
+      <description>评估Kubernetes（K8s）的无服务器框架 Rancher 1.6和Rancher 2.0底层容器编排引擎的术语和概念略微有所不同。想要了解这些差异就需</description>
+    </item>
+    
+    <item>
       <title>Cilium——具备API感知的网络和安全性管理的开源软件</title>
       <link>http://www.servicemesher.com/blog/cilium-intro/</link>
       <pubDate>Wed, 07 Nov 2018 14:14:01 +0800</pubDate>

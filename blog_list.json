@@ -1,5 +1,42 @@
 [
   {
+    "author": "Hisham Hasan",
+    "authorlink": "https://www.linkedin.com/in/hishamhasan/",
+    "banner": "https://ws3.sinaimg.cn/large/006tNbRwgy1fx10ec1uh7j30rs0kuwib.jpg",
+    "categories": [
+      "translation"
+    ],
+    "date": "2018-11-08T13:20:46+08:00",
+    "fuzzywordcount": 7400,
+    "keywords": [
+      "Serverless",
+      "无服务",
+      "Kubernetes",
+      "FaaS"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-11-08T13:20:46+08:00",
+    "objectID": "2d3c79db726c0030e4b4d648ed6f8b01",
+    "permalink": "http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/",
+    "publishdate": "2018-11-08T13:20:46+08:00",
+    "readingtime": 15,
+    "relpermalink": "/blog/evaluation-of-serverless-frameworks-for-kbe/",
+    "summary": "本文讲解了如何利用K8S的设计参数和服务编排功能，并将它们与无服务器框架和函数即服务（FaaS）结合起来。",
+    "tags": [
+      "Serverless",
+      "Kubernetes",
+      "FaaS",
+      "Fission",
+      "OpenFaaS",
+      "Kubeless"
+    ],
+    "title": "Kubernetes（K8s）的无服务器框架的评估",
+    "translator": "殷龙飞",
+    "url": "/blog/evaluation-of-serverless-frameworks-for-kbe/",
+    "weight": 0,
+    "wordcount": 7334
+  },
+  {
     "author": "宋净超",
     "authorlink": "https://jimmysong.io",
     "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fwzhcmlpqoj30rs0kuq9g.jpg",
@@ -3153,7 +3190,7 @@
     ],
     "lang": "zh",
     "lastmod": "2018-06-12T15:06:25+08:00",
-    "objectID": "112b6cbf35da76f462eecc50761b9724",
+    "objectID": "297d3b411634f6caf159ecf37fd1e99f",
     "permalink": "http://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/",
     "publishdate": "2018-06-12T15:06:25+08:00",
     "readingtime": 5,

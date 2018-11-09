@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</loc>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/cilium-intro/</loc>
     <lastmod>2018-11-07T14:14:01+08:00</lastmod>
   </url>
@@ -722,8 +727,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/faas/</loc>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/fintech/</loc>
     <lastmod>2018-08-08T22:12:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/fission/</loc>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -872,8 +889,14 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/kubeless/</loc>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
-    <lastmod>2018-10-31T20:01:03+08:00</lastmod>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -962,6 +985,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/openfaas/</loc>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/openshift/</loc>
     <lastmod>2018-09-25T16:22:22+08:00</lastmod>
     <priority>0</priority>
@@ -1017,7 +1046,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/serverless/</loc>
-    <lastmod>2018-09-16T16:49:58+08:00</lastmod>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1041,7 +1070,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-11-07T14:14:01+08:00</lastmod>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1113,7 +1142,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-11-06T12:20:51+08:00</lastmod>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   

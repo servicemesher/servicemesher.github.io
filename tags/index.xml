@@ -183,11 +183,29 @@
     </item>
     
     <item>
+      <title>Faas</title>
+      <link>http://www.servicemesher.com/tags/faas/</link>
+      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/faas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Fintech</title>
       <link>http://www.servicemesher.com/tags/fintech/</link>
       <pubDate>Wed, 08 Aug 2018 22:12:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/fintech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fission</title>
+      <link>http://www.servicemesher.com/tags/fission/</link>
+      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/fission/</guid>
       <description></description>
     </item>
     
@@ -381,9 +399,18 @@
     </item>
     
     <item>
+      <title>Kubeless</title>
+      <link>http://www.servicemesher.com/tags/kubeless/</link>
+      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/kubeless/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Kubernetes</title>
       <link>http://www.servicemesher.com/tags/kubernetes/</link>
-      <pubDate>Wed, 31 Oct 2018 20:01:03 +0800</pubDate>
+      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/kubernetes/</guid>
       <description></description>
@@ -498,6 +525,15 @@
     </item>
     
     <item>
+      <title>Openfaas</title>
+      <link>http://www.servicemesher.com/tags/openfaas/</link>
+      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/openfaas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Openshift</title>
       <link>http://www.servicemesher.com/tags/openshift/</link>
       <pubDate>Tue, 25 Sep 2018 16:22:22 +0800</pubDate>
@@ -572,7 +608,7 @@
     <item>
       <title>Serverless</title>
       <link>http://www.servicemesher.com/tags/serverless/</link>
-      <pubDate>Sun, 16 Sep 2018 16:49:58 +0800</pubDate>
+      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/serverless/</guid>
       <description></description>
