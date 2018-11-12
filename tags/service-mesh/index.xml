@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 04 Nov 2018 12:00:46 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Nov 2018 15:20:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>为什么要选择Service Mesh？</title>
+      <link>http://www.servicemesher.com/blog/why-is-service-mesh/</link>
+      <pubDate>Thu, 08 Nov 2018 15:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/why-is-service-mesh/</guid>
+      <description>除非你长期与世隔绝，否则你应该听说过Kubernetes，他已经称为高速发展的互联网公司的一条准则。最近又有一个热门话题&amp;ndash;Ser</description>
+    </item>
     
     <item>
       <title>SRE 弹性能力：使用 Envoy 对应用进行速率限制</title>
