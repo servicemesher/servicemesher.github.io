@@ -6,10 +6,19 @@
     <description>Recent content in Microservices on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 07 Sep 2018 12:33:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Nov 2018 15:20:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>为什么要选择Service Mesh？</title>
+      <link>http://www.servicemesher.com/blog/why-is-service-mesh/</link>
+      <pubDate>Thu, 08 Nov 2018 15:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/why-is-service-mesh/</guid>
+      <description>除非你长期与世隔绝，否则你应该听说过Kubernetes，他已经称为高速发展的互联网公司的一条准则。最近又有一个热门话题&amp;ndash;Ser</description>
+    </item>
     
     <item>
       <title>在Play with Kubernetes平台上以测试驱动的方式部署Istio</title>
