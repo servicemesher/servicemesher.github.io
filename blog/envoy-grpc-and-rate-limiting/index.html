@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Envoy、gRPC和速率限制 · ServiceMesher|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, envoy, grpc">
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Envoy、gRPC和速率限制" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/envoy-grpc-and-rate-limiting//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文使用C&#43;&#43;构建了客户端/服务端应用，通过Envoy代理和gPRC协议进行通信，然后使用Go语言实现了Envoy速率限制服务。">
+  <meta property="og:description" content="本文使用C&#43;&#43;构建了客户端/服务端应用，通过Envoy代理和gPRC协议进行通信，然后使用Go语言实现了Envoy速率限制服务。">
+  <meta name="twitter:description" content="本文使用C&#43;&#43;构建了客户端/服务端应用，通过Envoy代理和gPRC协议进行通信，然后使用Go语言实现了Envoy速率限制服务。">
+  <meta property="og:description" content="本文使用C&#43;&#43;构建了客户端/服务端应用，通过Envoy代理和gPRC协议进行通信，然后使用Go语言实现了Envoy速率限制服务。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Envoy、gRPC和速率限制 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Envoy、gRPC和速率限制 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Envoy、gRPC和速率限制 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Envoy、gRPC和速率限制</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年11月15日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://venilnoronha.io">Venil Noronha</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/roganw">王全根</a>
+                            
+                            
+                            | 审校者
+                            
+                            <a href="https://github.com/yangchuansheng"><i>杨传胜</i></a>
+                            
+                            <a href="https://github.com/yiduwangkai"><i>王凯</i></a>
+                            
+                            
+                            |
+                            2500字 | 阅读大约需要5分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://venilnoronha.io/envoy-grpc-and-rate-limiting">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/envoy/"><i>#envoy</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/grcp/"><i>#grcp</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/rate-limiting/"><i>#rate-limiting</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p><a href="https://www.envoyproxy.io/">Envoy</a>是专为Cloud Native应用设计的轻量级服务代理，也是为数不多的支持<a href="https://grpc.io/">gRPC</a>的代理之一。gRPC是一个基于<a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2</a>的高性能RPC（<a href="https://en.wikipedia.org/wiki/Remote_procedure_call">远程过程调用</a>）框架，支持多种语言。</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fx4iq37avnj31kw0j1ju5.jpg" alt="Envoy" /></p>
+
+<p>在这篇文章中，我们将使用gRPC和<a href="https://developers.google.com/protocol-buffers/">Protocol Buffers</a>构建C++语言版本的<a href="https://grpc.io/docs/quickstart/cpp.html">Greeter应用</a>，使用<a href="https://golang.org/">Go</a>语言构建另一个gRPC应用，实现Envoy的<a href="https://github.com/envoyproxy/envoy/blob/71152b710e3543732464fca57c8f07b7395de68d/api/envoy/service/ratelimit/v2/rls.proto#L11-L15">RateLimitService</a>接口。最后，将Envoy部署为Greeter应用的代理，使用我们的速率限制服务实现<a href="https://www.learnenvoy.io/articles/backpressure.html">反压机制</a>（backpressure）。</p>
+
+<h2 id="grpc-greeter应用">gRPC Greeter应用</h2>
+
+<p>我们首先安装<a href="https://grpc.io/docs/quickstart/cpp.html#install-grpc">gRPC</a>和<a href="https://grpc.io/docs/quickstart/cpp.html#install-protocol-buffers-v3">Protobuf</a>，然后<a href="https://grpc.io/docs/quickstart/cpp.html#build-the-example">构建C++语言版本的Greeter应用</a>。您还可以通过选择<a href="https://grpc.io/docs/quickstart/">文档中列出的其他语言</a>来构建此应用程序; 但是，我将在本文中使用C++。</p>
+
+<p>以下是Greeter应用的示意图。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fx4knp84toj30ex03p0sx.jpg" alt="Greeter" /></p>
+
+<p>运行Greeter应用时，终端中会有以下输出：</p>
+
+<pre><code class="language-bash">$ ./greeter_server
+Server listening on 0.0.0.0:50051
+</code></pre>
+
+<pre><code class="language-bash">$ ./greeter_client
+Greeter received: Hello world
+</code></pre>
+
+<h2 id="升级grpc-greeter应用">升级gRPC Greeter应用</h2>
+
+<p>现在，我们通过使用带有请求计数前缀的返回值替代静态的“Hello”前缀，来增强Greeter应用。只需更新<code>greeter_server.cc</code>文件，如下所示。</p>
+
+<pre><code class="language-diff"> // Logic and data behind the server's behavior.
+ class GreeterServiceImpl final : public Greeter::Service {
++  int counter = 0;
+   Status SayHello(ServerContext* context, const HelloRequest* request,
+                   HelloReply* reply) override {
+-    std::string prefix(&quot;Hello &quot;);
++    std::string prefix(std::to_string(++counter) + &quot; &quot;);
+     reply-&gt;set_message(prefix + request-&gt;name());
+     return Status::OK;
+   }
+</code></pre>
+
+<p>然后重新构建和运行<code>greeter_server</code>，通过<code>greeter_client</code>发送请求时你就能看到如下输出。</p>
+
+<pre><code class="language-bash">$ for i in {1..3}; do ./greeter_client; sleep 1; done
+Greeter received: 1 world
+Greeter received: 2 world
+Greeter received: 3 world
+</code></pre>
+
+<h2 id="简单速率限制服务">简单速率限制服务</h2>
+
+<p>接下来，我们通过扩展Envoy的<a href="https://github.com/envoyproxy/envoy/blob/71152b710e3543732464fca57c8f07b7395de68d/api/envoy/service/ratelimit/v2/rls.proto#L11-L15">RateLimitService</a>原型接口，用Go语言实现一个简单的速率限制服务。为此，我们创建一个名为<code>rate-limit-service</code>的Go项目，并引入Envoy的<a href="https://github.com/envoyproxy/go-control-plane">go-control-plane</a>和其它相关依赖。<code>go-control-plane</code>项目为Envoy原型提供了Go语言绑定。为了后续实现速率限制服务，我们还需创建<code>cmd/server/main.go</code>和<code>cmd/client/main.go</code>两个文件。</p>
+
+<pre><code class="language-bash">$ mkdir -p $GOPATH/src/github.com/venilnoronha/rate-limit-service/
+$ cd $GOPATH/src/github.com/venilnoronha/rate-limit-service/
+$ mkdir -p cmd/server/ &amp;&amp; touch cmd/server/main.go
+$ mkdir cmd/client/ &amp;&amp; touch cmd/client/main.go
+</code></pre>
+
+<p>引入了所有依赖之后，你将获得一个如下所示的项目结构。注意我只突出列出了这个实验相关的包。</p>
+
+<pre><code>── rate-limit-service
+   ├── cmd
+   │   ├── client
+   │   │   └── main.go
+   │   └── server
+   │       └── main.go
+   └── vendor
+       ├── github.com
+       │   ├── envoyproxy
+       │   │   ├── data-plane-api
+       │   │   └── go-control-plane
+       │   ├── gogo
+       │   │   ├── googleapis
+       │   │   └── protobuf
+       │   └── lyft
+       │       └── protoc-gen-validate
+       └── google.golang.org
+           ├── genproto
+           └── grpc
+</code></pre>
+
+<h3 id="速率限制服务端">速率限制服务端</h3>
+
+<p>现在，我们创建一个简单的gRPC速率限制服务，来限制每秒的请求数（译者注：例子实现是交替限制请求）。</p>
+
+<pre><code class="language-go">package main
+
+import (
+    &quot;log&quot;
+    &quot;net&quot;
+    &quot;golang.org/x/net/context&quot;
+    &quot;google.golang.org/grpc&quot;
+    &quot;google.golang.org/grpc/reflection&quot;
+    rls &quot;github.com/envoyproxy/go-control-plane/envoy/service/ratelimit/v2&quot;
+)
+
+// server is used to implement rls.RateLimitService
+type server struct{
+	// limit specifies if the next request is to be rate limited
+	limit bool
+}
+
+func (s *server) ShouldRateLimit(ctx context.Context,
+		request *rls.RateLimitRequest) (*rls.RateLimitResponse, error) {
+	log.Printf(&quot;request: %v\n&quot;, request)
+
+	// logic to rate limit every second request
+	var overallCode rls.RateLimitResponse_Code
+	if s.limit {
+		overallCode = rls.RateLimitResponse_OVER_LIMIT
+		s.limit = false
+	} else {
+		overallCode = rls.RateLimitResponse_OK
+		s.limit = true
+	}
+
+	response := &amp;rls.RateLimitResponse{OverallCode: overallCode}
+	log.Printf(&quot;response: %v\n&quot;, response)
+        return response, nil
+}
+
+func main() {
+	// create a TCP listener on port 50052
+        lis, err := net.Listen(&quot;tcp&quot;, &quot;:50052&quot;)
+        if err != nil {
+                log.Fatalf(&quot;failed to listen: %v&quot;, err)
+        }
+	log.Printf(&quot;listening on %s&quot;, lis.Addr())
+
+	// create a gRPC server and register the RateLimitService server
+        s := grpc.NewServer()
+	rls.RegisterRateLimitServiceServer(s, &amp;server{limit: false})
+        reflection.Register(s)
+        if err := s.Serve(lis); err != nil {
+                log.Fatalf(&quot;failed to serve: %v&quot;, err)
+        }
+}
+</code></pre>
+
+<p>启动<code>RateLimitService</code>服务之后，终端输出如下。</p>
+
+<pre><code class="language-bash">$ go run cmd/server/main.go
+2018/10/27 00:35:28 listening on [::]:50052
+</code></pre>
+
+<h3 id="速率限制客户端">速率限制客户端</h3>
+
+<p>我们同样创建一个<code>RateLimitService</code>的客户端来验证服务端的行为。</p>
+
+<pre><code class="language-go">package main
+
+import (
+        &quot;log&quot;
+	&quot;time&quot;
+        &quot;golang.org/x/net/context&quot;
+        &quot;google.golang.org/grpc&quot;
+	rls &quot;github.com/envoyproxy/go-control-plane/envoy/service/ratelimit/v2&quot;
+)
+
+func main() {
+        // Set up a connection to the server
+        conn, err := grpc.Dial(&quot;localhost:50052&quot;, grpc.WithInsecure())
+        if err != nil {
+                log.Fatalf(&quot;could not connect: %v&quot;, err)
+        }
+        defer conn.Close()
+        c := rls.NewRateLimitServiceClient(conn)
+
+        // Send a request to the server
+        ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+        defer cancel()
+	r, err := c.ShouldRateLimit(ctx, &amp;rls.RateLimitRequest{Domain: &quot;envoy&quot;})
+        if err != nil {
+                log.Fatalf(&quot;could not call service: %v&quot;, err)
+        }
+        log.Printf(&quot;response: %v&quot;, r)
+}
+</code></pre>
+
+<p>现在让我们通过启动客户端来测试服务端/客户端的交互。</p>
+
+<pre><code class="language-bash">$ for i in {1..4}; do go run cmd/client/main.go; sleep 1; done
+2018/10/27 17:32:23 response: overall_code:OK
+2018/10/27 17:32:25 response: overall_code:OVER_LIMIT
+2018/10/27 17:32:26 response: overall_code:OK
+2018/10/27 17:32:28 response: overall_code:OVER_LIMIT
+</code></pre>
+
+<p>服务端的相关日志。</p>
+
+<pre><code class="language-bash">2018/10/27 17:32:23 request: domain:&quot;envoy&quot;
+2018/10/27 17:32:23 response: overall_code:OK
+2018/10/27 17:32:25 request: domain:&quot;envoy&quot;
+2018/10/27 17:32:25 response: overall_code:OVER_LIMIT
+2018/10/27 17:32:26 request: domain:&quot;envoy&quot;
+2018/10/27 17:32:26 response: overall_code:OK
+2018/10/27 17:32:28 request: domain:&quot;envoy&quot;
+2018/10/27 17:32:28 response: overall_code:OVER_LIMIT
+</code></pre>
+
+<h2 id="envoy代理">Envoy代理</h2>
+
+<p>现在我们引入Envoy代理，它将来自Greeter客户端的请求路由到Greeter服务端，同时使用我们的速率限制服务检查速率。下图描述了我们最终的部署结构。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fx4mz6gav7j30m008zmy0.jpg" alt="envoy proxy" /></p>
+
+<h3 id="代理配置">代理配置</h3>
+
+<p>我们使用如下Envoy配置来注册Greeter和RateLimitService服务并启用限速检查。注意，由于我们是将Envoy部署在<a href="https://docs.docker.com/docker-for-mac/">Docker for Mac</a>上，本地部署的服务是通过<code>docker.for.mac.localhost</code>地址引用的。</p>
+
+<pre><code class="language-yaml">static_resources:
+  listeners:
+  - address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 9211 # expose proxy on port 9211
+    filter_chains:
+    - filters:
+      - name: envoy.http_connection_manager
+        config:
+          codec_type: auto
+          stat_prefix: ingress_http
+          access_log: # configure logging
+            name: envoy.file_access_log
+            config:
+              path: /dev/stdout
+          route_config:
+            name: greeter_route # configure the greeter service routes
+            virtual_hosts:
+            - name: service
+              domains:
+              - &quot;*&quot;
+              routes:
+              - match:
+                  prefix: &quot;/&quot;
+                  grpc: {}
+                route:
+                  cluster: greeter_service
+              rate_limits: # enable rate limit checks for the greeter service
+                actions:
+                - destination_cluster: {}
+          http_filters:
+          - name: envoy.rate_limit # enable the Rate Limit filter
+            config:
+              domain: envoy
+          - name: envoy.router # enable the Router filter
+            config: {}
+  clusters:
+  - name: greeter_service # register the Greeter server
+    connect_timeout: 1s
+    type: strict_dns
+    lb_policy: round_robin
+    http2_protocol_options: {} # enable H2 protocol
+    hosts:
+    - socket_address:
+        address: docker.for.mac.localhost
+        port_value: 50051
+  - name: rate_limit_service # register the RateLimitService server
+    connect_timeout: 1s
+    type: strict_dns
+    lb_policy: round_robin
+    http2_protocol_options: {} # enable H2 protocol
+    hosts:
+    - socket_address:
+        address: docker.for.mac.localhost
+        port_value: 50052
+rate_limit_service: # define the global rate limit service
+  use_data_plane_proto: true
+  grpc_service:
+    envoy_grpc:
+      cluster_name: rate_limit_service
+</code></pre>
+
+<h3 id="部署envoy代理">部署Envoy代理</h3>
+
+<p>为了部署Envoy代理，我们将上述配置拷贝到<code>envoy.yaml</code>文件。然后我们使用如下的<code>Dockerfile</code>构建Docker镜像。</p>
+
+<pre><code class="language-dockerfile">FROM envoyproxy/envoy:latest
+COPY envoy.yaml /etc/envoy/envoy.yaml
+</code></pre>
+
+<p>使用如下命令构建镜像：</p>
+
+<pre><code class="language-bash">$ docker build -t envoy:grpc .
+Sending build context to Docker daemon  74.75kB
+Step 1/2 : FROM envoyproxy/envoy:latest
+ ---&gt; 51fc619e4dc5
+Step 2/2 : COPY envoy.yaml /etc/envoy/envoy.yaml
+ ---&gt; c766ba3d7d09
+Successfully built c766ba3d7d09
+Successfully tagged envoy:grpc
+</code></pre>
+
+<p>然后运行代理：</p>
+
+<pre><code class="language-bash">$ docker run -p 9211:9211 envoy:grpc
+...
+[2018-10-28 02:59:20.469][000008][info][main] [source/server/server.cc:456] starting main dispatch loop
+[2018-10-28 02:59:20.553][000008][info][upstream] [source/common/upstream/cluster_manager_impl.cc:135] cm init: all clusters initialized
+[2018-10-28 02:59:20.554][000008][info][main] [source/server/server.cc:425] all clusters initialized. initializing init manager
+[2018-10-28 02:59:20.554][000008][info][config] [source/server/listener_manager_impl.cc:908] all dependencies initialized. starting workers
+</code></pre>
+
+<h3 id="更新greeter客户端">更新Greeter客户端</h3>
+
+<p>由于要使用Envoy路由Greeter客户端的请求，我们将客户端代码中的服务端端口从<code>50051</code>改为<code>9211</code>，并重新build。</p>
+
+<pre><code class="language-diff">   GreeterClient greeter(grpc::CreateChannel(
+-      &quot;localhost:50051&quot;, grpc::InsecureChannelCredentials()));
++      &quot;localhost:9211&quot;, grpc::InsecureChannelCredentials()));
+   std::string user(&quot;world&quot;);
+   std::string reply = greeter.SayHello(user);
+</code></pre>
+
+<h2 id="最终测试">最终测试</h2>
+
+<p>此时，我们已经有了Greeter服务端、RateLimitService服务和一个Envoy代理，是时候验证整个部署了。为此，我们使用更新后的Greeter客户端发送几个如下所示的请求（译者注：前面Greeter服务端没有停，counter已经到了3）。</p>
+
+<pre><code class="language-bash">$ for i in {1..10}; do ./greeter_client; sleep 1; done
+Greeter received: 4 world
+14:
+Greeter received: RPC failed
+Greeter received: 5 world
+14:
+Greeter received: RPC failed
+Greeter received: 6 world
+14:
+Greeter received: RPC failed
+Greeter received: 7 world
+14:
+Greeter received: RPC failed
+Greeter received: 8 world
+14:
+Greeter received: RPC failed
+</code></pre>
+
+<p>如你所见，10个请求中的5个是成功的，交替出现gRPC状态码为<code>14</code>的<code>RPC failed</code>失败请求。这表明速率限制服务按照设计限制了请求，Envoy正确地终止了之后的请求。</p>
+
+<h2 id="结论">结论</h2>
+
+<p>这篇文章让你对如何使用Envoy作为应用代理有了一个高层次的认识，也能帮助你理解Envoy的限速过滤器如何跟gRPC协议协同工作。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/why-is-service-mesh/" data-toggle="tooltip" data-placement="top" title="为什么要选择Service Mesh？">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/"><i class="fa fa-link"></i>SRE 弹性能力：使用 Envoy 对应用进行速率限制</a></li>
+         
+        <li><a href="/blog/envoy-xds-protocol/"><i class="fa fa-link"></i>Envoy 中的 xDS REST 和 gRPC 协议详解</a></li>
+         
+        <li><a href="/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/"><i class="fa fa-link"></i>理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</a></li>
+         
+        <li><a href="/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/"><i class="fa fa-link"></i>利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持</a></li>
+         
+        <li><a href="/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/"><i class="fa fa-link"></i>容器、服务网格和API网关：从边缘开始</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (14)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (3)</a>
+            </li>
+            
+            <li><a href="/categories/news"><i class="fa fa-navicon"></i>news (1)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (1)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (14)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (8)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (73)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/dokcer"><i class="fa fa-tags"></i> dokcer</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grcp"><i class="fa fa-tags"></i> grcp</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/envoy-grpc-and-rate-limiting/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fx95cim7ilj313z0u0qus.jpg" class="img-responsive" alt="Envoy、gRPC和速率限制">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/envoy-grpc-and-rate-limiting/">Envoy、gRPC和速率限制</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/why-is-service-mesh/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fx5dtjdrmbj31ji15mqva.jpg" class="img-responsive" alt="为什么要选择Service Mesh？">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/why-is-service-mesh/">为什么要选择Service Mesh？</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/evaluation-of-serverless-frameworks-for-kbe/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fx10ec1uh7j30rs0kuwib.jpg" class="img-responsive" alt="Kubernetes（K8s）的无服务器框架的评估">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/evaluation-of-serverless-frameworks-for-kbe/">Kubernetes（K8s）的无服务器框架的评估</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

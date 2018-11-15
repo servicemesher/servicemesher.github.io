@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 08 Nov 2018 15:20:46 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Nov 2018 22:53:40 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Envoy、gRPC和速率限制</title>
+      <link>http://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</link>
+      <pubDate>Thu, 15 Nov 2018 22:53:40 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</guid>
+      <description>Envoy是专为Cloud Native应用设计的轻量级服务代理，也是为数不多的支持gRPC的代理之一。gRPC是一个基于HTTP/2的高性能</description>
+    </item>
     
     <item>
       <title>为什么要选择Service Mesh？</title>
@@ -1133,7 +1142,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 戴佳顺 5 马若飞 4 陈冬 4 崔秀龙 4 王帅俭 3 李昕阳 3 王全根 2 狄卫华 2 杨传胜 2</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 戴佳顺 5 马若飞 4 陈冬 4 崔秀龙 4 王帅俭 3 王全根 3 李昕阳 3 狄卫华 2 杨传胜 2</description>
     </item>
     
   </channel>
