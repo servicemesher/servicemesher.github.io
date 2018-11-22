@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>在Istio中跟踪gRPC · ServiceMesher|服务网格中文社区</title>
+  <title>使用Envoy将gRPC转码为HTTP/JSON · ServiceMesher|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh, istio, grpc, tracing">
+  <meta name="keywords" content="service mesh, 服务网格">
   
 
   <meta name="generator" content="Hugo 0.48" />
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="在Istio中跟踪gRPC" />
+  <meta property="og:title" content="使用Envoy将gRPC转码为HTTP/JSON" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/tracing-grpc-with-istio//" />
+  <meta property="og:url" content="/blog/transcoding-grpc-to-http-json-using-envoy//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="本文介绍的是如何在Istio中使用grpc并设置跟踪（tracing）与header传播，包括gRPC到grpc请求传播header、gRPC到HTTP请求传播header、使用grpc-gateway时传播header等">
-  <meta property="og:description" content="本文介绍的是如何在Istio中使用grpc并设置跟踪（tracing）与header传播，包括gRPC到grpc请求传播header、gRPC到HTTP请求传播header、使用grpc-gateway时传播header等">
-  <meta name="twitter:description" content="本文介绍的是如何在Istio中使用grpc并设置跟踪（tracing）与header传播，包括gRPC到grpc请求传播header、gRPC到HTTP请求传播header、使用grpc-gateway时传播header等">
-  <meta property="og:description" content="本文介绍的是如何在Istio中使用grpc并设置跟踪（tracing）与header传播，包括gRPC到grpc请求传播header、gRPC到HTTP请求传播header、使用grpc-gateway时传播header等" />
+  <meta name="description" content="本文用实例讲解了如何利用Envoy将gRPC转码为HTTP/JSON。">
+  <meta property="og:description" content="本文用实例讲解了如何利用Envoy将gRPC转码为HTTP/JSON。">
+  <meta name="twitter:description" content="本文用实例讲解了如何利用Envoy将gRPC转码为HTTP/JSON。">
+  <meta property="og:description" content="本文用实例讲解了如何利用Envoy将gRPC转码为HTTP/JSON。" />
 
   
   
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="在Istio中跟踪gRPC logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="在Istio中跟踪gRPC logo" class="visible-xs visible-sm">
-                    <span class="sr-only">在Istio中跟踪gRPC - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="使用Envoy将gRPC转码为HTTP/JSON logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="使用Envoy将gRPC转码为HTTP/JSON logo" class="visible-xs visible-sm">
+                    <span class="sr-only">使用Envoy将gRPC转码为HTTP/JSON - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -232,7 +232,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>在Istio中跟踪gRPC</h1>
+                <h1>使用Envoy将gRPC转码为HTTP/JSON</h1>
             </div>
         </div>
     </div>
@@ -250,24 +250,29 @@ autocomplete('#aa-search-input',
                         <div class="well">
                             <div class="author-category">
                             <i class="fa fa-calendar-o">
-                            2018年6月8日
+                            2018年11月22日
                             </i>
                             |
                             
-                            作者 <a href="https://aspenmesh.io">Aspen Mesh</a>
+                            作者 <a href="https://blog.jdriven.com/author/christophe-hesters/">Christophe Hesters</a>
                             
                             
-                            | 译者 <a href="https://jimmysong.io">宋净超</a>
+                            | 译者 <a href="https://github.com/malphi">马若飞</a>
+                            
+                            
+                            | 审校者
+                            
+                            <a href="https://jimmysong.io"><i>宋净超</i></a>
                             
                             
                             |
-                            2700字 | 阅读大约需要6分钟
+                            5800字 | 阅读大约需要12分钟
                             </div>
                             
                             
                             <div class="author-category">
                             
-                            <a href="https://blog.aspenmesh.io/blog/2018/04/tracing-grpc-with-istio/">查看原文</a>
+                            <a href="https://blog.jdriven.com/2018/11/transcoding-grpc-to-http-json-using-envoy/">查看原文</a>
                             |
                             
                             
@@ -279,11 +284,9 @@ autocomplete('#aa-search-input',
                             
                             标签
                             
-                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
-                            
                             <a style="text-transform:capitalize" href="/tags/grpc/"><i>#grpc</i></a>
                             
-                            <a style="text-transform:capitalize" href="/tags/tracing/"><i>#tracing</i></a>
+                            <a style="text-transform:capitalize" href="/tags/envoy/"><i>#envoy</i></a>
                             
                             </div>
                             
@@ -292,156 +295,464 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p>Aspen Mesh很喜欢用<a href="https://grpc.io/docs/">gRPC</a>。Apen Mesh面向公众的API和许多内部API大多都是使用gRPC构建的。如果您还没有听说过 gRPC（熟练掌握gRPC真的很难），那么我先为您简单的介绍下，它是一种新型、高效和优化的远程过程调用（RPC）框架。gRPC 基于<a href="https://developers.google.com/protocol-buffers/">protocol buffer</a>序列化格式和<a href="https://http2.github.io/">HTTP/2</a>网络协议。</p>
+<p>试用gRPC构建服务时要在.proto文件中定义消息（message）和服务（service）。gRPC支持多种语言自动生成客户端、服务端和DTO实现。在读完这篇文章后，你将了解到使用Envoy作为转码代理，使gRPC API也可以通过HTTP/JSON的方式访问。你可以通过github代码库中的Java代码来测试它。有关gRPC的介绍请参阅<a href="https://blog.jdriven.com/2018/10/grpc-as-an-alternative-to-rest/">blog.jdriven.com/2018/10/grpc-as-an-alternative-to-rest/</a>。</p>
 
-<p>使用HTTP/2协议，gRPC应用程序可以利用多路复用请求显著提高连接利用率，而且比起如HTTP/1.1等<a href="https://http2.github.io/faq/">其他协议</a>具有更多增强功能。此外，protocal buffer是以二进制方式对结构化数据进行序列化，这比起基于文本的序列化方式更简单且可扩展，还可以显着提高性能。将这两个结果组合在一个低延迟和高度可扩展的RPC框架中，这实质上就是gRPC。此外，不断增长的gRPC生态支持使用多种语言编写应用程序，例如（C ++、Java、Go等），还包括大量第三方<a href="https://github.com/grpc-ecosystem">库</a>。</p>
+<h2 id="为什么要对grpc服务进行转码"><strong>为什么要对gRPC服务进行转码？</strong></h2>
 
-<p>除了上面列出的好处之外，gRPC让我最喜欢的一点是可以让我以简单直观的方式指定RPC（使用protobuf IDL）以及客户端调用服务器端的方法，就好像是调用本地函数一样。很多代码（服务描述和处理程序、客户端方法等）都可以自动生成，这使得gRPC非常好用。</p>
+<p>一旦有了一个可用的gRPC服务，可以通过向服务添加一些额外的注解（annotation）将其作为HTTP/JSON API发布。你需要一个代理来转换HTTP/JSON调用并将其传递给gRPC服务。我们称这个过程为转码。然后你的服务就可以通过gRPC和HTTP/JSON访问。大多数时候我更倾向使用gRPC，因为使用遵循“契约”生成的类型安全的代码更方便、更安全，但有时转码也很有用：</p>
 
-<p>现在我已经介绍了gRPC的一些背景知识，我们再把注意力转回到博客的主题。在这里，我将介绍如何在基于gRPC的应用程序中添加跟踪，特别是如果您使用Istio或Aspen Mesh。</p>
+<ol>
+<li>web应用程序可以通过HTTP/JSON调用与gRPC服务通信。<a href="https://github.com/grpc/grpc-web">github.com/grpc/grpc-web</a>是一个可以在浏览器中使用的JavaScript的gRPC实现。这个项目很有前途，但还不成熟。</li>
+<li>因为gRPC在网络通信上使用二进制格式，所以很难看到实际发送和接收的内容。将其作为HTTP/JSON API发布，可以使用cURL或postman等工具更容易地检查服务。</li>
+<li>如果你使用的语言gRPC不支持，你可以通过HTTP/JSON访问它。</li>
+<li>它为在项目中更平稳地采用gRPC铺平了道路，允许其他团队逐步过渡。</li>
+</ol>
 
-<p>跟踪（Tracing）非常适合于调试和理解应用程序的行为。理解所有跟踪数据的关键是能够关联来自与单个客户端请求相关的多个不同微服务的跨度（span）。</p>
+<h2 id="创建一个grpc服务-reservationservice"><strong>创建一个gRPC服务：ReservationService</strong></h2>
 
-<p>为了实现这一点，应用程序中的所有微服务应该传播跟踪header。如果您使用的是像Istio或Aspen Mesh这样的服务网格，ingress和sidecar代理会自动添加适当的跟踪header，并将这些span报告给跟踪收集器后端，如Jaeger或Zipkin。应用程序唯一要做的就是将传入请求（sidecar或ingress代理添加的）的跟踪header传播到其对其他微服务的所有传出请求。</p>
+<p>让我们创建一个简单的gRPC服务作为示例。在gRPC中，定义包含远程过程调用（rpc）的类型和服务。你可以随意设计自己的服务，但是谷歌建议使用面向资源的设计（源代码：<a href="https://cloud.google.com/apis/design/resources">cloud.google.com/apis/design/resources</a>），因为用户无需知道每个方法是做什么的就可以容易地理解API。如果你创建了许多不固定格式的rpc，用户必须理解每种方法的作用，从而使你的API更难学习。面向资源的设计还可以更好地转换为HTTP/JSON API。</p>
 
-<h4 id="grpc到grpc请求传播header">gRPC到grpc请求传播header</h4>
+<p>在本例中，我们将创建一个会议预订服务。该服务称为ReservationService，由创建、获取、获取列表和删除预订4个操作组成。服务定义如下：</p>
 
-<p>使用gRPC，跟踪header传播的最简单方法是使用<a href="https://github.com/grpc-ecosystem/go-grpc-middleware/tree/master/tracing/opentracing">grpc opentracing middleware</a>库的客户端拦截器。如果您的gRPC应用程序在收到传入请求时发出新的出站gRPC请求，则可以使用此功能。以下是将传入的跟踪header正确传播到传出的gRPC请求的示例代码：</p>
+<pre><code class="language-protobuf">//reservation_service.proto
 
-<pre><code class="language-go">  import (
-    &quot;golang.org/x/net/context&quot;
-    &quot;github.com/grpc-ecosystem/go-grpc-middleware/tracing/opentracing&quot;
-    &quot;ot &quot;github.com/opentracing/opentracing-go&quot;
-  )
+syntax = &quot;proto3&quot;;
 
-  // ctx is the incoming gRPC request's context
-  // addr is the address for the new outbound request
-  func createGRPCConn(ctx context.Context, addr string) (*grpc.ClientConn, error) {
-  	var opts []grpc.DialOption
-  	opts = append(opts, grpc.WithStreamInterceptor(
-  		grpc_opentracing.StreamClientInterceptor(
-  			grpc_opentracing.WithTracer(ot.GlobalTracer()))))
-  	opts = append(opts, grpc.WithUnaryInterceptor(
-  		grpc_opentracing.UnaryClientInterceptor(
-  			grpc_opentracing.WithTracer(ot.GlobalTracer()))))
-  	conn, err := grpc.DialContext(ctx, addr, opts...)
-  	if err != nil {
-  		glog.Error(&quot;Failed to connect to application addr: &quot;, err)
-  		return nil, err
-  	}
-  	return conn, nil
-  }
-</code></pre>
+package reservations.v1;
+option java_multiple_files = true;
+option java_outer_classname = &quot;ReservationServiceProto&quot;;
+option java_package = &quot;nl.toefel.reservations.v1&quot;;
 
-<p>很简单对吧？</p>
+import &quot;google/protobuf/empty.proto&quot;;
 
-<p>添加opentracing客户端拦截器可确保在客户端连接上创建任何新的一元（unary）或流式gRPC请求注入正确的跟踪header。如果传递的上下文中存在跟踪header（如使用Aspen Mesh或Istio传入入站gRPC请求上下文），则新创建的span将作为传递的上下文中已存在的span的子span。另外，如果上下文中没有跟踪信息，则会为出站gRPC请求创建新的根span。</p>
+service ReservationService {
 
-<h4 id="grpc到http请求传播header">gRPC到HTTP请求传播header</h4>
+    rpc CreateReservation(CreateReservationRequest) returns (Reservation) {  }
+    rpc GetReservation(GetReservationRequest) returns (Reservation) {  }
+    rpc ListReservations(ListReservationsRequest) returns (stream Reservation) {  }
+    rpc DeleteReservation(DeleteReservationRequest) returns (google.protobuf.Empty) {  }
 
-<p>我们再来看下这个场景，如果您的应用程序在收到一个新传入的gRPC请求时发出一个出站HTTP/1.1请求。以下是在此情况下完成header传播的示例代码：</p>
+}
 
-<pre><code class="language-go">  import (
-    &quot;net/http&quot;
-    &quot;golang.org/x/net/context&quot;
-    &quot;golang.org/x/net/context/ctxhttp&quot;
-    &quot;ot &quot;github.com/opentracing/opentracing-go&quot;
-  )
+message Reservation {
+    string id = 1;
+    string title = 2;
+    string venue = 3;
+    string room = 4;
+    string timestamp = 5;
+    repeated Person attendees = 6;
+}
 
-  // ctx is the incoming gRPC request's context
-  // addr is the address of the application being requested
-  func makeNewRequest(ctx context.Context, addr string) {
-    if span := ot.SpanFromContext(ctx); span != nil {
-      req, _ := http.NewRequest(&quot;GET&quot;, addr, nil)
+message Person {
+    string ssn = 1;
+    string firstName = 2;
+    string lastName = 3;
+}
 
-      ot.GlobalTracer().Inject(
-        span.Context(),
-        ot.HTTPHeaders,
-        ot.HTTPHeadersCarrier(req.Header))
+message CreateReservationRequest {
+    Reservation reservation = 2;
+}
 
-      resp, err := ctxhttp.Do(ctx, nil, req)
-      // Do something with resp
+message CreateReservationResponse {
+    Reservation reservation = 1;
+}
+
+message GetReservationRequest {
+    string id = 1;
+}
+
+message ListReservationsRequest {
+    string venue = 1;
+    string timestamp = 2;
+    string room = 3;
+
+    Attendees attendees = 4;
+
+    message Attendees {
+        repeated string lastName = 1;
     }
-  }
+}
+
+message DeleteReservationRequest {
+    string id = 1;
+}
 </code></pre>
 
-<p>这是序列化传入请求（HTTP或gRPC）上下文中跟踪header的标准方式。</p>
+<p>通常的做法是将操作的入参封装在请求对象中。这会在以后的操作中添加额外的字段或选项时更加容易。ListReservations操作返回一个Reservations列表。在Java中，这意味着你将得到Reservations对象的一个迭代（Iterator）。客户端甚至可以在服务器发送完响应之前就开始处理它们，非常棒。</p>
 
-<p>很好，至此我们已经能够使用库或标准实用程序代码来实现我们想要的功能。</p>
+<p>如果你想知道这个gRPC服务在Java中是如何被使用的，请查看 <a href="https://github.com/toefel18/transcoding-grpc-to-http-json/blob/master/src/main/java/nl/toefel/server/ServerMain.java">ServerMain.java</a> 和 <a href="https://github.com/toefel18/transcoding-grpc-to-http-json/blob/master/src/main/java/nl/toefel/client/ClientMain.java">ClientMain.java</a>实现。</p>
 
-<h4 id="使用grpc-gateway时传播header">使用grpc-gateway时传播header</h4>
+<h2 id="使用http选项标注服务进行转码"><strong>使用HTTP选项标注服务进行转码</strong></h2>
 
-<p>gRPC应用程序中有一个常用的库<a href="https://github.com/grpc-ecosystem/grpc-gateway">grpc-gateway</a>，可以将gRPC服务作为RESTful JSON API暴露出来。当您想要了解gRPC或维护RESTful架构，使用curl、web浏览器等客户端时，这非常有用。有关如何使用<code>grpc-gateway</code>从gRPC中暴露RESTful API的更多细节请参考<a href="https://coreos.com/blog/grpc-protobufs-swagger.html">这个博客</a>。如果您对此架构不熟悉，我强烈建议您阅读。</p>
+<p>在每个rpc操作的花括号中可以添加选项。Google定义了一个java option，允许你指定如何将操作转换到HTTP请求（endpoint）。在*reservation_service.proto*中引入 ‘<strong>google/api/annotations.proto’</strong>即可使用该选项。默认情况下这个import是不可用的，但是你可以通过向*build.gradle*添加以下编译依赖来实现它：</p>
 
-<p>当您开始使用<code>grpc-gateway</code>并想传播跟踪header时，有一些值得一提的非常有趣的交互。 <code>grpc-gateway</code> <a href="https://github.com/grpc-ecosystem/grpc-gateway#mapping-grpc-to-http">文档</a>指出，作为gRPC请求header，所有IANA（互联网号码分配局）永久HTTP header都以<code>grpcgateway-</code>作为前缀并添加。这很好，但是像<code>x-b3-traceid</code>、<code>x-b3-spanid</code>等跟踪header不是IANA认可的永久HTTP header，当<code>grpc-gateway</code>代理HTTP请求时，它们不会被复制到gRPC请求中。这意味着只要将<code>grpc-gateway</code>添加到您的应用程序中，header传播逻辑就会停止工作。</p>
-
-<p>这是个特例吗？添加一个东西打断了当前的工作。不用担心，我为您解决问题！</p>
-
-<p>这是一种确保使用<code>grpc-gateway</code>在HTTP和gRPC之间进行代理时不会丢失跟踪信息的方法：</p>
-
-<pre><code class="language-go">  import (
-    &quot;net/http&quot;
-    &quot;golang.org/x/net/context&quot;
-    &quot;google.golang.org/grpc/metadata&quot;
-    &quot;github.com/grpc-ecosystem/grpc-gateway/runtime&quot;
-  )
-
-  const (
-  	prefixTracerState  = &quot;x-b3-&quot;
-  	zipkinTraceID      = prefixTracerState + &quot;traceid&quot;
-  	zipkinSpanID       = prefixTracerState + &quot;spanid&quot;
-  	zipkinParentSpanID = prefixTracerState + &quot;parentspanid&quot;
-  	zipkinSampled      = prefixTracerState + &quot;sampled&quot;
-  	zipkinFlags        = prefixTracerState + &quot;flags&quot;
-  )
-
-  var otHeaders = []string{
-  	zipkinTraceID,
-  	zipkinSpanID,
-  	zipkinParentSpanID,
-  	zipkinSampled,
-  	zipkinFlags}
-
-  func injectHeadersIntoMetadata(ctx context.Context, req *http.Request) metadata.MD {
-  	pairs := []string{}
-  	for _, h := range otHeaders {
-  		if v := req.Header.Get(h); len(v) &gt; 0 {
-  			pairs = append(pairs, h, v)
-  		}
-  	}
-  	return metadata.Pairs(pairs...)
-  }
-
-  type annotator func(context.Context, *http.Request) metadata.MD
-
-  func chainGrpcAnnotators(annotators ...annotator) annotator {
-  	return func(c context.Context, r *http.Request) metadata.MD {
-  		mds := []metadata.MD{}
-  		for _, a := range annotators {
-  			mds = append(mds, a(c, r))
-  		}
-  		return metadata.Join(mds...)
-  	}
-  }
-
-  // Main function of your application. Insert tracing headers into gRPC
-  // metadata using annotators
-  func run() {
-    ...
-	  annotators := []annotator{injectHeadersIntoMetadata}
-
-	  gwmux := runtime.NewServeMux(
-		  runtime.WithMetadata(chainGrpcAnnotators(annotators...)),
-	  )
-    ...
-  }
+<pre><code class="language-shell">compile &quot;com.google.api.grpc:proto-google-common-protos:1.13.0-pre2&quot;
 </code></pre>
 
-<p>在上面的代码中，我使用了<code>grpc-gateway</code>库中的<a href="https://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/mux.go#L88"><code>runtime.WithMetadata</code></a>。该API从HTTP请求中读取属性并将其添加到gRPC元数据中，这一点非常有用，这正是我们想要的！虽然多了一步，但仍然使用库提供的API。</p>
+<p>这个依赖将由protobuf解压并生成几个.proto文件放入构建目录中。现在可以把<strong>google/api/annotations.proto</strong>引入你的.proto文件中并开始说明如何转换API。</p>
 
-<p><code>injectHeadersIntoMetadata</code>注解器在HTTP请求中查找跟踪header并将其附加到gRPC元数据中，从而确保跟踪header可以使用前面部分中提到的技术从gRPC进一步传播到出站请求。</p>
+<h2 id="转码getreservation操作为get方法"><strong>转码GetReservation操作为GET方法</strong></h2>
 
-<p>您可能观察到的另一个有趣的事情是<code>chainGrpcAnnotators</code>包装函数。<code>runtime.WithMetadata</code> API只允许添加一个注释器，这可能不足以满足所有场景。在我们的例子中，我们有一个跟踪注释器（如上面的一个示例）和一个认证注释器，它将来自HTTP请求的认证数据附加到gRPC元数据。使用<code>chainGrpcAnnotators</code>允许您添加多个注释器，并且包装函数将来自各种注释器的元数据加入到gRPC请求的单个元数据中。</p>
+<p>让我们从GetReservation操作开始，我已经添加了GetReservationRequest到代码示例中：</p>
+
+<pre><code class="language-protobuf">  message GetReservationRequest {
+       string id = 1;
+   }
+
+   rpc GetReservation(GetReservationRequest) returns (Reservation) {
+       option (google.api.http) = {
+           get: &quot;/v1/reservations/{id}&quot;
+       };
+   }
+</code></pre>
+
+<p>在选项定义中有一个名为“get”的字段，设置为“/v1/reservation /{id}”。字段名对应于HTTP客户端应该使用的HTTP请求方法。get的值对应于请求URL。在URL中有一个名为id的路径变量，这个变量会自动映射到输入操作中同名的字段。在本例中，它将是GetReservationRequest.id。</p>
+
+<p>发送 <strong>GET /v1/reservations/1234</strong> 到代理将转码到下面的伪代码：</p>
+
+<pre><code class="language-java">var request = GetReservationRequest.builder().setId(“1234”).build()
+var reservation = reservationServiceClient.GetReservation(request)
+return toJson(reservation)
+</code></pre>
+
+<p>HTTP响应体（response body）将返回预订的所有非空字段的JSON形式。</p>
+
+<p><strong>记住：转码不是由gRPC服务完成的。单独运行这个示例不会将其发布为HTTP JSON API。前端的代理负责转码。我们稍后将对此进行配置。</strong></p>
+
+<h2 id="转码createreservation操作为post方法">转码CreateReservation操作为POST方法</h2>
+
+<p>现在来考虑CreateReservation操作。</p>
+
+<pre><code class="language-protobuf">message CreateReservationRequest {
+   Reservation reservation = 2;
+}
+
+rpc CreateReservation(CreateReservationRequest) returns (Reservation) {
+   option(google.api.http) = {
+      post: &quot;/v1/reservations&quot;
+      body: &quot;reservation&quot;
+   };
+}
+</code></pre>
+
+<p>这个操作被转为POST请求*/v1/reservation*。选项中的body字段告诉转码器将请求体转成CreateReservationRequest中的字段。这意味着我们可以使用以下curl调用：</p>
+
+<pre><code class="language-shell">curl -X POST \
+    http://localhost:51051/v1/reservations \
+    -H 'Content-Type: application/json' \
+    -d '{
+    &quot;title&quot;: &quot;Lunchmeeting&quot;,
+    &quot;venue&quot;: &quot;JDriven Coltbaan 3&quot;,
+    &quot;room&quot;: &quot;atrium&quot;,
+    &quot;timestamp&quot;: &quot;2018-10-10T11:12:13&quot;,
+    &quot;attendees&quot;: [
+       {
+           &quot;ssn&quot;: &quot;1234567890&quot;,
+           &quot;firstName&quot;: &quot;Jimmy&quot;,
+           &quot;lastName&quot;: &quot;Jones&quot;
+       },
+       {
+           &quot;ssn&quot;: &quot;9999999999&quot;,
+           &quot;firstName&quot;: &quot;Dennis&quot;,
+           &quot;lastName&quot;: &quot;Richie&quot;
+       }
+    ]
+}'
+</code></pre>
+
+<p>响应包含同样的对象，只不过多了一个生成的id字段。</p>
+
+<h2 id="转码带查询参数过滤的listreservations"><strong>转码带查询参数过滤的ListReservations</strong></h2>
+
+<p>查询集合资源的一种常见方法是提供查询参数作为过滤器。ListReservations的gRPC服务就有此功能。它接收到一个包含可选字段的ListReservationRequest，用于过滤预订集合。</p>
+
+<pre><code class="language-protobuf">message ListReservationsRequest {
+    string venue = 1;
+    string timestamp = 2;
+    string room = 3;
+
+    Attendees attendees = 4;
+
+    message Attendees {
+        repeated string lastName = 1;
+    }
+}
+
+rpc ListReservations(ListReservationsRequest) returns (stream Reservation) {
+   option (google.api.http) = {
+       get: &quot;/v1/reservations&quot;
+   };
+}
+</code></pre>
+
+<p>在这里，转码器将自动创建ListReservationsRequest，并将查询参数映射到ListReservationRequest的内部字段。没有指定的字段都取默认值，对于字符串来说是&rdquo;&ldquo;。例如:</p>
+
+<pre><code class="language-shell">curl http://localhost:51051/v1/reservations?room=atrium
+</code></pre>
+
+<p>字段room设置为atrium并映射到ListReservationRequest里，其余字段设置为默认值。还可以提供以下子消息字段：</p>
+
+<pre><code class="language-shell">curl &quot;http://localhost:51051/v1/reservations?attendees.lastName=Richie&quot;
+</code></pre>
+
+<p>attendees.lastName是一个repeated的字段，可以被设置多次：</p>
+
+<pre><code class="language-shell">curl  &quot;http://localhost:51051/v1/reservations?attendees.lastName=Richie&amp;attendees.lastName=Kruger&quot;
+</code></pre>
+
+<p>gRPC服务将会知道ListReservationRequest.attendees.lastName是一个有两个元素的列表：Richie和Kruger. Supernice。</p>
+
+<h2 id="运行转码器"><strong>运行转码器</strong></h2>
+
+<p>是时候让这些运行起来了。Google cloud支持转码，即使运行在Kubernetes (incl GKE) 或计算引擎中。更多信息请参看<a href="https://cloud.google.com/endpoints/docs/grpc/tutorials">cloud.google.com/endpoints/docs/grpc/tutorials</a>。</p>
+
+<p>如果你不在Google cloud中运行，或者是在本地运行，那么可以使用Envoy。它是一个由Lyft创建的非常灵活的代理。它也是<a href="https://istio.io/">istio.io</a>中的主要组件。在这个例子中我们将使用它。</p>
+
+<p>为了转码我们需要：</p>
+
+<ol>
+<li>一个gRPC服务的项目，在.proto文件中包含转码选项。</li>
+<li>从.proto文件中生成的.pd文件包含gRPC服务描述。</li>
+<li>使用该定义，配置Envoy作为gRPC服务的HTTP请求代理。</li>
+<li>使用docker运行Envoy。</li>
+</ol>
+
+<h3 id="步骤-1"><strong>步骤 1</strong></h3>
+
+<p>我已经创建了如上描述的项目并发布在github上。你可以从这里clone： <a href="https://github.com/toefel18/transcoding-grpc-to-http-json">github.com/toefel18/transcoding-grpc-to-http-json</a>。然后构建它：</p>
+
+<pre><code class="language-shell"># Script will download gradle if it’s not installed, no need to install it :)
+./gradlew.sh clean build    # windows: ./gradlew.bat clean build
+</code></pre>
+
+<p><strong>提示：我创建了脚本自动执行步骤2到4，脚本在项目<a href="github.com/toefel18/transcoding-grpc-to-http-json">github.com/toefel18/transcoding-grpc-to-http-json</a>的根目录下。这将节省你的开发时间。步骤2到4详细的解释了它是如何工作的。</strong></p>
+
+<pre><code class="language-shell">./start-envoy.sh
+</code></pre>
+
+<h3 id="步骤-2"><strong>步骤 2</strong></h3>
+
+<p>然后我们需要创建.pb文件。我们需要先下载预编译的protoc可执行文件：<a href="https://github.com/protocolbuffers/protobuf/releases/latest">github.com/protocolbuffers/protobuf/releases/latest</a>（为你的平台选择正确的版本，例如针对Mac的*protoc-3.6.1-osx-x86_64.zip*），然后解压到你的路径，很简单。</p>
+
+<p>在<a href="https://github.com/toefel18/transcoding-grpc-to-http-json">transcoding-grpc-to-http-json</a>目录下运行下面的命令生成Envoy可以理解的文件 <em>reservation_service_definition.pb</em> （别忘了先构建项目并导入 *reservation_service.proto*需要的.proto文件）。</p>
+
+<pre><code class="language-shell">protoc -I. -Ibuild/extracted-include-protos/main --include_imports \
+               --include_source_info \
+               --descriptor_set_out=reservation_service_definition.pb \
+               src/main/proto/reservation_service.proto
+</code></pre>
+
+<p>这个命令可能看起来很复杂，但实际上非常简单。-I代表include，protoc寻找.proto文件的目录。*–descriptor_set_out*表示包含定义的输出文件，最后一个参数是我们要处理的原始文件。</p>
+
+<h3 id="步骤-3"><strong>步骤 3</strong></h3>
+
+<p>我们快要完成了，在运行Envoy之前，最后一件事是创建配置文件。Envoy的配置文件以yaml描述。你可以使用Envoy做很多事情，但是现在让我们专注于转码我们的服务。我从<a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/grpc_json_transcoder_filter#config-http-filters-grpc-json- transcocoder">Envoy的网站</a>中获取了一个基本的配置示例，并使用#标记了感兴趣的部分。</p>
+
+<pre><code class="language-yaml">admin:
+  access_log_path: /tmp/admin_access.log
+  address:
+    socket_address: { address: 0.0.0.0, port_value: 9901 }         #1
+
+static_resources:
+  listeners:
+  - name: main-listener
+    address:
+      socket_address: { address: 0.0.0.0, port_value: 51051 }      #2
+    filter_chains:
+    - filters:
+      - name: envoy.http_connection_manager
+        config:
+          stat_prefix: grpc_json
+          codec_type: AUTO
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: local_service
+              domains: [&quot;*&quot;]
+              routes:
+              - match: { prefix: &quot;/&quot;, grpc: {} }
+                #3 see next line!
+                route: { cluster: grpc-backend-services, timeout: { seconds: 60 } }
+          http_filters:
+          - name: envoy.grpc_json_transcoder
+            config:
+              proto_descriptor: &quot;/data/reservation_service_definition.pb&quot; #4
+              services: [&quot;reservations.v1.ReservationService&quot;]            #5
+              print_options:
+                add_whitespace: true
+                always_print_primitive_fields: true
+                always_print_enums_as_ints: false
+                preserve_proto_field_names: false                        #6
+          - name: envoy.router
+
+  clusters:
+  - name: grpc-backend-services                  #7
+    connect_timeout: 1.25s
+    type: logical_dns
+    lb_policy: round_robin
+    dns_lookup_family: V4_ONLY
+    http2_protocol_options: {}
+    hosts:
+    - socket_address:
+        address: 127.0.0.1                       #8
+        port_value: 53000
+</code></pre>
+
+<p>我已经在配置文件中添加了一些标记来强调我们感兴趣的部分：</p>
+
+<ul>
+<li>#1 admin接口的地址。你也可以在这里获取prometheus的测量数据去查询服务是怎样执行的。</li>
+<li>#2 HTTP API的可用地址。</li>
+<li>#3 将请求路由到后端服务的名称。步骤 #7 定义这个名字。</li>
+<li>#4 我们之前生成的.pb描述符文件的路径。</li>
+<li>#5 转码的服务。</li>
+<li>#6 Protobuf字段名通常包含下划线。设置该选项为false会将字段名转换为驼峰式。</li>
+<li>#7 集群定义了上游服务（在步骤#3中Envoy代理的服务）。</li>
+<li>#8 可连接后端服务的地址和端口。我使用了127.0.0.1/localhost。</li>
+</ul>
+
+<h3 id="步骤-4"><strong>步骤 4</strong></h3>
+
+<p>我们现在准备运行Envoy。最简单的方式是通过Docker镜像。这需要先安装Docker。如果你还没有，请先<a href="https://docs.docker.com/install/">安装docker</a> 。</p>
+
+<p>有两个Envoy需要的资源，配置文件和.pb描述文件。我们可以先把文件导入容器以便Envoy启动时找到他们。运行下面github代码库根目录的命令：</p>
+
+<pre><code class="language-shell">sudo docker run -it --rm --name envoy --network=&quot;host&quot; \
+  -v &quot;$(pwd)/reservation_service_definition.pb:/data/reservation_service_definition.pb:ro&quot; \
+  -v &quot;$(pwd)/envoy-config.yml:/etc/envoy/envoy.yaml:ro&quot; \
+  envoyproxy/envoy
+</code></pre>
+
+<p>如果Envoy成功启动将会看到下面的日志：</p>
+
+<pre><code>[2018-11-10 14:55:02.058][000009][info][main] [source/server/server.cc:454] starting main dispatch loop
+</code></pre>
+
+<p>注意，我在docker run命令中将-network设置为“host”。这意味着在本地可以访问正在运行的容器，而不需要额外的网络配置。根据页面 <a href="https://docs.docker.com/docker-for-mac/networking/#i-want-to-connect-from-a-container-to-a-service-on-the-host">docs.docker.com/docker-for-mac/networking/</a>的建议，应该更改步骤#8中Envoy配置的IP地址为host.docker.internal 或 gateway.docker.internal。</p>
+
+<h2 id="通过http访问服务"><strong>通过HTTP访问服务</strong></h2>
+
+<p>如果一切顺利，你现在可以使用curl命令来访问服务。Linux下你可以直接连接localhost，但是在windows或者Mac下你可能需要通过虚拟机或docker容器的IP地址连接。有很多方法可以配置docker，这里使用localhost。</p>
+
+<h4 id="通过http创建预订">通过HTTP创建预订</h4>
+
+<pre><code class="language-shell">curl -X POST http://localhost:51051/v1/reservations \
+          -H 'Content-Type: application/json' \
+          -d '{
+            &quot;title&quot;: &quot;Lunchmeeting2&quot;,
+            &quot;venue&quot;: &quot;JDriven Coltbaan 3&quot;,
+            &quot;room&quot;: &quot;atrium&quot;,
+            &quot;timestamp&quot;: &quot;2018-10-10T11:12:13&quot;,
+            &quot;attendees&quot;: [
+                {
+                    &quot;ssn&quot;: &quot;1234567890&quot;,
+                    &quot;firstName&quot;: &quot;Jimmy&quot;,
+                    &quot;lastName&quot;: &quot;Jones&quot;
+                },
+                {
+                    &quot;ssn&quot;: &quot;9999999999&quot;,
+                    &quot;firstName&quot;: &quot;Dennis&quot;,
+                    &quot;lastName&quot;: &quot;Richie&quot;
+                }
+            ]
+        }'
+</code></pre>
+
+<p>输出：</p>
+
+<pre><code class="language-json"> {
+        &quot;id&quot;: &quot;2cec91a7-d2d6-4600-8cc3-4ebf5417ac4b&quot;,
+        &quot;title&quot;: &quot;Lunchmeeting2&quot;,
+        &quot;venue&quot;: &quot;JDriven Coltbaan 3&quot;,
+...
+</code></pre>
+
+<h4 id="通过http获取预订">通过HTTP获取预订</h4>
+
+<p>使用上面创建的ID：</p>
+
+<pre><code class="language-shell">curl http://localhost:51051/v1/reservations/ENTER-ID-HERE!
+</code></pre>
+
+<p>输出应该和创建结果一致。</p>
+
+<h4 id="通过http获取预订列表">通过HTTP获取预订列表</h4>
+
+<p>对于这个例子可能需要以不同的字段多次执行CreateReservation来验证过滤器的行为。</p>
+
+<pre><code class="language-shell">curl &quot;http://localhost:51051/v1/reservations&quot;
+</code></pre>
+
+<pre><code class="language-shell">curl &quot;http://localhost:51051/v1/reservations?room=atrium&quot;
+</code></pre>
+
+<pre><code class="language-shell">curl &quot;http://localhost:51051/v1/reservations?room=atrium&amp;attendees.lastName=Jones&quot;
+</code></pre>
+
+<p>响应结果是Reservations的数组。</p>
+
+<h4 id="删除预订">删除预订</h4>
+
+<pre><code class="language-shell">curl -X DELETE http://localhost:51051/v1/reservations/ENTER-ID-HERE!
+</code></pre>
+
+<h2 id="返回头">返回头</h2>
+
+<p>gRPC会返回一些HTTP头。有些可以在调试的时候帮到你：</p>
+
+<ul>
+<li>grpc-status：这个值是io.grpc.Status.Code的序数，它能帮助查看gRPC的返回状态。</li>
+<li>grpc-message：一旦出现问题返回的错误信息。</li>
+</ul>
+
+<p>更多信息请查看<a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md">github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md</a></p>
+
+<h2 id="缺陷"><strong>缺陷</strong></h2>
+
+<h4 id="1-如果路径不存在响应很奇怪">1. 如果路径不存在响应很奇怪</h4>
+
+<p>Envoy工作的很好，但在我看来有时候会返回不正确的状态码。比如当我获取一个合法的预订：</p>
+
+<pre><code class="language-shell">curl http://localhost:51051/v1/reservations/ENTER-ID-HERE!
+</code></pre>
+
+<p>返回状态码200，没错，但如果我这样做：</p>
+
+<pre><code class="language-shell">curl http://localhost:51051/v1/reservations/ENTER-ID-HERE!/blabla
+</code></pre>
+
+<p>Envoy会返回：</p>
+
+<pre><code>415 Unsupported Media Type
+Content-Type is missing from the request
+</code></pre>
+
+<p>我期望返回404而不是上面解释的错误信息。这有一个相关的问题：<a href="https://github.com/envoyproxy/envoy/issues/5010">github.com/envoyproxy/envoy/issues/5010</a></p>
+
+<p><strong>解决</strong>: Envoy将所有请求路由到gRPC服务，如果服务中不存在该路径，gRPC服务本身就会响应该错误。解决方案是在Envoy的配置中添加&rsquo; gRPC:{} &lsquo;，使其仅转发在gRPC服务中实现了的请求：</p>
+
+<pre><code class="language-yaml"> name: local_route
+            virtual_hosts:
+            - name: local_service
+              domains: [&quot;*&quot;]
+              routes:
+              - match: { prefix: &quot;/&quot; , grpc: {}}  # &lt;--- this fixes it
+                route: { cluster: grpc-backend-services, timeout: { seconds: 60 } }
+</code></pre>
+
+<h4 id="2-有时候在查询集合时-即使服务器有错误响应-依然会返回空资源">2. 有时候在查询集合时，即使服务器有错误响应，依然会返回空资源‘[]’</h4>
+
+<p>我提交了这一问题给Envoy开发者： <a href="https://github.com/envoyproxy/envoy/issues/5011">github.com/envoyproxy/envoy/issues/5011</a></p>
+
+<p><strong>部分解决方案：</strong> 其中一部分是已知的转码限制，因为状态和头是先发送的。在一个响应中转换器首先发送一个200状态码，然后对流进行转码。</p>
+
+<h2 id="即将到来的特性">即将到来的特性</h2>
+
+<p>将来还可以在响应体中返回响应消息的子字段，以便你不想返回完整的响应体。这可以通过HTTP选项中的“response_body”字段完成。如果你想在HTTP API中裁剪包装的对象这是非常合适的。</p>
+
+<h2 id="结语">结语</h2>
+
+<p>我希望这篇文章对将gRPC API转码HTTP/JSON提供了一个很好的概述。</p>
 
                         </div>
                         
@@ -451,13 +762,9 @@ autocomplete('#aa-search-input',
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/service-mesh-security-addressing-attack-vectors-with-istio/" data-toggle="tooltip" data-placement="top" title="Service Mesh安全：用Istio应对攻击">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/" data-toggle="tooltip" data-placement="top" title="Envoy service mesh、Prometheus和Grafana下的微服务监控">&larr; 更旧</a>
                         </li>
                          
-                        <li class="next">
-                        <a href="http://www.servicemesher.com/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/" data-toggle="tooltip" data-placement="top" title="在Istio中使用OpenTracing Baggage进行传播和路由">更新 &rarr;</a>
-                        </li>
-                        
                         </ul>
 
                     </div>
@@ -479,15 +786,15 @@ autocomplete('#aa-search-input',
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/service-mesh-security-addressing-attack-vectors-with-istio/"><i class="fa fa-link"></i>Service Mesh安全：用Istio应对攻击</a></li>
+        <li><a href="/blog/envoy-xds-protocol/"><i class="fa fa-link"></i>Envoy 中的 xDS REST 和 gRPC 协议详解</a></li>
          
-        <li><a href="/blog/istio-mixer-cache-part2-principle/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part2－工作原理</a></li>
+        <li><a href="/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/"><i class="fa fa-link"></i>Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展</a></li>
          
-        <li><a href="/blog/istio-mixer-cache-part1-concepts/"><i class="fa fa-link"></i>Istio Mixer Cache工作原理与源码分析part1－基本概念</a></li>
+        <li><a href="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/"><i class="fa fa-link"></i>SRE 弹性能力：使用 Envoy 对应用进行速率限制</a></li>
          
-        <li><a href="/blog/deepin-service-mesh-tech-details/"><i class="fa fa-link"></i>深入解读Service Mesh背后的技术细节</a></li>
+        <li><a href="/blog/the-importance-of-control-planes-with-service-mesh/"><i class="fa fa-link"></i>服务网格的控制平面和边缘代理的重要性</a></li>
          
-        <li><a href="/blog/istio-service-mesh-tutorial/"><i class="fa fa-link"></i>Istio Service Mesh教程</a></li>
+        <li><a href="/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/"><i class="fa fa-link"></i>理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</a></li>
          
      </ul>
     </div>
