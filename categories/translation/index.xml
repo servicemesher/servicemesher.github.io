@@ -6,15 +6,24 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 15 Nov 2018 22:53:40 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 20 Nov 2018 11:40:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Envoy、gRPC和速率限制</title>
+      <title>Envoy service mesh、Prometheus和Grafana下的微服务监控</title>
+      <link>http://www.servicemesher.com/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/</link>
+      <pubDate>Tue, 20 Nov 2018 11:40:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/</guid>
+      <description>如果你刚接触“Service Mesh“和“Envoy”，我这里有一篇文章可以帮你入门。 这是Envoy service mesh下的可观测性系列的第二篇文章，</description>
+    </item>
+    
+    <item>
+      <title>Envoy，gRPC和速率限制</title>
       <link>http://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</link>
-      <pubDate>Thu, 15 Nov 2018 22:53:40 +0800</pubDate>
+      <pubDate>Thu, 15 Nov 2018 13:20:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</guid>
       <description>Envoy是专为Cloud Native应用设计的轻量级服务代理，也是为数不多的支持gRPC的代理之一。gRPC是一个基于HTTP/2的高性能</description>

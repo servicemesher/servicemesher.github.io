@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Envoy、gRPC和速率限制 · ServiceMesher|服务网格中文社区</title>
+  <title>Envoy，gRPC和速率限制 · ServiceMesher|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="service mesh, envoy, grpc">
+  <meta name="keywords" content="Envoy, gRPC, Rate-Limiting">
   
 
   <meta name="generator" content="Hugo 0.48" />
@@ -52,7 +52,7 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="Envoy、gRPC和速率限制" />
+  <meta property="og:title" content="Envoy，gRPC和速率限制" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/envoy-grpc-and-rate-limiting//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Envoy、gRPC和速率限制 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Envoy、gRPC和速率限制 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Envoy、gRPC和速率限制 - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Envoy，gRPC和速率限制 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Envoy，gRPC和速率限制 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Envoy，gRPC和速率限制 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -232,7 +232,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Envoy、gRPC和速率限制</h1>
+                <h1>Envoy，gRPC和速率限制</h1>
             </div>
         </div>
     </div>
@@ -254,7 +254,7 @@ autocomplete('#aa-search-input',
                             </i>
                             |
                             
-                            作者 <a href="https://venilnoronha.io">Venil Noronha</a>
+                            作者 <a href="https://venilnoronha.io/about/">Venil Noronha</a>
                             
                             
                             | 译者 <a href="https://github.com/roganw">王全根</a>
@@ -262,9 +262,9 @@ autocomplete('#aa-search-input',
                             
                             | 审校者
                             
-                            <a href="https://github.com/yangchuansheng"><i>杨传胜</i></a>
+                            <a href="https://www.yangcs.net"><i>杨传胜</i></a>
                             
-                            <a href="https://github.com/yiduwangkai"><i>王凯</i></a>
+                            <a href="https://www.github.com/yiduwangkai"><i>王凯</i></a>
                             
                             
                             |
@@ -286,11 +286,11 @@ autocomplete('#aa-search-input',
                             
                             标签
                             
-                            <a style="text-transform:capitalize" href="/tags/envoy/"><i>#envoy</i></a>
+                            <a style="text-transform:capitalize" href="/tags/envoy/"><i>#Envoy</i></a>
                             
-                            <a style="text-transform:capitalize" href="/tags/grcp/"><i>#grcp</i></a>
+                            <a style="text-transform:capitalize" href="/tags/grpc/"><i>#gRPC</i></a>
                             
-                            <a style="text-transform:capitalize" href="/tags/rate-limiting/"><i>#rate-limiting</i></a>
+                            <a style="text-transform:capitalize" href="/tags/rate-limiting/"><i>#Rate-Limiting</i></a>
                             
                             </div>
                             
@@ -652,6 +652,10 @@ Greeter received: RPC failed
                         <a href="http://www.servicemesher.com/blog/why-is-service-mesh/" data-toggle="tooltip" data-placement="top" title="为什么要选择Service Mesh？">&larr; 更旧</a>
                         </li>
                          
+                        <li class="next">
+                        <a href="http://www.servicemesher.com/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/" data-toggle="tooltip" data-placement="top" title="Envoy service mesh、Prometheus和Grafana下的微服务监控">更新 &rarr;</a>
+                        </li>
+                        
                         </ul>
 
                     </div>
@@ -666,25 +670,6 @@ Greeter received: RPC failed
                         
 
                         <div class="panel panel-default sidebar-menu">
-     
-    <div class="panel-heading">
-     <h3 class="panel-title">相关文章</h3>
-    </div>
-    <div class="panel-body">
-     <ul class="nav nav-pills nav-stacked">
-        
-        <li><a href="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/"><i class="fa fa-link"></i>SRE 弹性能力：使用 Envoy 对应用进行速率限制</a></li>
-         
-        <li><a href="/blog/envoy-xds-protocol/"><i class="fa fa-link"></i>Envoy 中的 xDS REST 和 gRPC 协议详解</a></li>
-         
-        <li><a href="/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/"><i class="fa fa-link"></i>理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</a></li>
-         
-        <li><a href="/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/"><i class="fa fa-link"></i>利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持</a></li>
-         
-        <li><a href="/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/"><i class="fa fa-link"></i>容器、服务网格和API网关：从边缘开始</a></li>
-         
-     </ul>
-    </div>
      
 </div>
 
@@ -728,7 +713,7 @@ Greeter received: RPC failed
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (8)</a>
             </li>
             
-            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (73)</a>
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (74)</a>
             </li>
             
             <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
@@ -801,7 +786,7 @@ Greeter received: RPC failed
             <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
             </li>
             
-            <li><a href="/tags/dokcer"><i class="fa fa-tags"></i> dokcer</a>
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
             </li>
             
             <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
@@ -840,7 +825,7 @@ Greeter received: RPC failed
             <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
             </li>
             
-            <li><a href="/tags/grcp"><i class="fa fa-tags"></i> grcp</a>
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
             </li>
             
             <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
@@ -918,6 +903,9 @@ Greeter received: RPC failed
             <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
             </li>
             
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
             <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
             </li>
             
@@ -943,6 +931,9 @@ Greeter received: RPC failed
             </li>
             
             <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
@@ -1069,14 +1060,27 @@ Greeter received: RPC failed
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="/blog/envoy-grpc-and-rate-limiting/">
+                        <a href="/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fx95cim7ilj313z0u0qus.jpg" class="img-responsive" alt="Envoy、gRPC和速率限制">
+                          <img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fxehsn0hocj313z0u0ao1.jpg" class="img-responsive" alt="Envoy service mesh、Prometheus和Grafana下的微服务监控">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="/blog/envoy-grpc-and-rate-limiting/">Envoy、gRPC和速率限制</a></h5>
+                        <h5><a href="/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/">Envoy service mesh、Prometheus和Grafana下的微服务监控</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/envoy-grpc-and-rate-limiting/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fx95cim7ilj313z0u0qus.jpg" class="img-responsive" alt="Envoy，gRPC和速率限制">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/envoy-grpc-and-rate-limiting/">Envoy，gRPC和速率限制</a></h5>
                     </div>
                 </div>
                 
@@ -1090,19 +1094,6 @@ Greeter received: RPC failed
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="/blog/why-is-service-mesh/">为什么要选择Service Mesh？</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/evaluation-of-serverless-frameworks-for-kbe/">
-                          
-                          <img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fx10ec1uh7j30rs0kuwib.jpg" class="img-responsive" alt="Kubernetes（K8s）的无服务器框架的评估">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/evaluation-of-serverless-frameworks-for-kbe/">Kubernetes（K8s）的无服务器框架的评估</a></h5>
                     </div>
                 </div>
                 
@@ -1183,6 +1174,8 @@ Greeter received: RPC failed
 
 <script src="/js/algoliasearch.min.js"></script>
 <script src="/js/autocomplete.min.js"></script>
+
+<script src="/js/love.js"></script>
 
 
   </body>
