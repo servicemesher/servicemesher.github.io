@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 22 Nov 2018 22:07:15 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 23 Nov 2018 14:27:26 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用 Envoy 搭建 Service Mesh</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-with-envoy-101/</link>
+      <pubDate>Fri, 23 Nov 2018 14:27:26 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-with-envoy-101/</guid>
+      <description>本文将简单的讨论下我们经常听到的 “Service Mesh” 是什么，以及如何使用 “Envoy” 构建服务网格(Service Mesh)。 什么是 Service</description>
+    </item>
     
     <item>
       <title>Istio控制平面故障后会发生什么？</title>
@@ -1178,7 +1187,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 马若飞 5 戴佳顺 5 陈冬 4 崔秀龙 4 王帅俭 3 王全根 3 李昕阳 3 狄卫华 2 杨传胜 2</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 马若飞 5 戴佳顺 5 陈冬 4 崔秀龙 4 王帅俭 3 王全根 3 李昕阳 3 詹叶 2 狄卫华 2 杨</description>
     </item>
     
   </channel>

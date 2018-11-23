@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/service-mesh-with-envoy-101/</loc>
+    <lastmod>2018-11-23T14:27:26+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-what-happens-when-control-plane-is-down/</loc>
     <lastmod>2018-11-22T22:07:15+08:00</lastmod>
   </url>
@@ -752,7 +757,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/envoy/</loc>
-    <lastmod>2018-11-22T15:16:06+08:00</lastmod>
+    <lastmod>2018-11-23T14:27:26+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1118,7 +1123,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-11-20T11:40:46+08:00</lastmod>
+    <lastmod>2018-11-23T14:27:26+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1130,7 +1135,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-11-22T22:07:15+08:00</lastmod>
+    <lastmod>2018-11-23T14:27:26+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1202,7 +1207,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-11-22T22:07:15+08:00</lastmod>
+    <lastmod>2018-11-23T14:27:26+08:00</lastmod>
     <priority>0</priority>
   </url>
   
