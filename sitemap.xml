@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/istio-what-happens-when-control-plane-is-down/</loc>
+    <lastmod>2018-11-22T22:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/istio-is-it-a-bird-microgateway-blog-series-part-4/</loc>
+    <lastmod>2018-11-22T21:56:14+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/transcoding-grpc-to-http-json-using-envoy/</loc>
     <lastmod>2018-11-22T15:16:06+08:00</lastmod>
   </url>
@@ -868,7 +878,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2018-10-25T20:49:29+08:00</lastmod>
+    <lastmod>2018-11-22T22:07:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -971,6 +981,12 @@
   <url>
     <loc>http://www.servicemesher.com/categories/meetup/</loc>
     <lastmod>2018-08-27T11:40:45+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/microgateway/</loc>
+    <lastmod>2018-11-22T21:56:14+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1114,7 +1130,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-11-22T15:16:06+08:00</lastmod>
+    <lastmod>2018-11-22T22:07:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1186,7 +1202,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-11-22T15:16:06+08:00</lastmod>
+    <lastmod>2018-11-22T22:07:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
