@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>F5公司Aspen Mesh 1.0发布，基于Istio 1.0</title>
+      <link>http://www.servicemesher.com/blog/aspen-mesh-released/</link>
+      <pubDate>Mon, 10 Sep 2018 15:18:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/aspen-mesh-released/</guid>
+      <description>Aspen Mesh这家公司隶属于F5，Aspen Mesh基于Istio 1.0开发，这个周末刚发布了1.0版本，可以申请免费试用。 Aspen Mesh对比Ist</description>
+    </item>
+    
+    <item>
       <title>企业级服务网格架构之路解读—Service Mesh在会话层解耦</title>
       <link>http://www.servicemesher.com/blog/the-enterprise-path-to-service-mesh-architectures/</link>
       <pubDate>Mon, 20 Aug 2018 11:38:59 +0800</pubDate>

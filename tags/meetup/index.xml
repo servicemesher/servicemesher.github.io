@@ -6,10 +6,19 @@
     <description>Recent content in Meetup on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 27 Aug 2018 11:40:45 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Nov 2018 10:53:29 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/meetup/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>第四届Service Mesh Meetup上海站回顾</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-meetup-shanghai-20181125/</link>
+      <pubDate>Mon, 26 Nov 2018 10:53:29 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-meetup-shanghai-20181125/</guid>
+      <description>Observability and Istio telemetry 吴晟 Apache SkyWalking创始人、Apache Sharding-Sphere原型作者、比特大陆资深技术专家、CNCF OpenTrac</description>
+    </item>
     
     <item>
       <title>第三届Service Mesh Meetup深圳站回顾</title>

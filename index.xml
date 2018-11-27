@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 23 Nov 2018 14:27:26 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Nov 2018 10:53:29 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>第四届Service Mesh Meetup上海站回顾</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-meetup-shanghai-20181125/</link>
+      <pubDate>Mon, 26 Nov 2018 10:53:29 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-meetup-shanghai-20181125/</guid>
+      <description>Observability and Istio telemetry 吴晟 Apache SkyWalking创始人、Apache Sharding-Sphere原型作者、比特大陆资深技术专家、CNCF OpenTrac</description>
+    </item>
     
     <item>
       <title>使用 Envoy 搭建 Service Mesh</title>
@@ -1160,7 +1169,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 10 敖小剑 9 郑伟 3 崔秀龙 3 丁轶群 3 赵化冰 2 黄挺 1 高松 1 陈有坤 1 邵俊雄 1 蚂蚁金服 1 田晓亮</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 11 敖小剑 9 郑伟 3 崔秀龙 3 丁轶群 3 赵化冰 2 黄挺 1 高松 1 陈有坤 1 邵俊雄 1 蚂蚁金服 1 田晓亮</description>
     </item>
     
     <item>

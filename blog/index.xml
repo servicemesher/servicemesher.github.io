@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>第四届Service Mesh Meetup上海站回顾</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-meetup-shanghai-20181125/</link>
+      <pubDate>Mon, 26 Nov 2018 10:53:29 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-meetup-shanghai-20181125/</guid>
+      <description>Observability and Istio telemetry 吴晟 Apache SkyWalking创始人、Apache Sharding-Sphere原型作者、比特大陆资深技术专家、CNCF OpenTrac</description>
+    </item>
+    
+    <item>
       <title>使用 Envoy 搭建 Service Mesh</title>
       <link>http://www.servicemesher.com/blog/service-mesh-with-envoy-101/</link>
       <pubDate>Fri, 23 Nov 2018 14:27:26 +0800</pubDate>

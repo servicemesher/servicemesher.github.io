@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/service-mesh-meetup-shanghai-20181125/</loc>
+    <lastmod>2018-11-26T10:53:29+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/service-mesh-with-envoy-101/</loc>
     <lastmod>2018-11-23T14:27:26+08:00</lastmod>
   </url>
@@ -979,13 +984,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/meetup/</loc>
-    <lastmod>2018-08-27T11:40:45+08:00</lastmod>
+    <lastmod>2018-11-26T10:53:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/meetup/</loc>
-    <lastmod>2018-08-27T11:40:45+08:00</lastmod>
+    <lastmod>2018-11-26T10:53:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1028,12 +1033,6 @@
   <url>
     <loc>http://www.servicemesher.com/tags/naftis/</loc>
     <lastmod>2018-10-25T10:44:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/news/</loc>
-    <lastmod>2018-09-10T15:18:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1135,7 +1134,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-11-23T14:27:26+08:00</lastmod>
+    <lastmod>2018-11-26T10:53:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   

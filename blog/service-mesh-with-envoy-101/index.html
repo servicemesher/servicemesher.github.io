@@ -142,6 +142,8 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
                         <li><a href="/authors/">作者投稿</a></li>
                       
                         <li><a href="/translators/">译者投稿</a></li>
@@ -299,7 +301,7 @@ autocomplete('#aa-search-input',
 
 <h3 id="什么是-service-mesh">什么是 Service Mesh?</h3>
 
-<p>Service Mesh 可以比作是微服务结构中的通信层。每个服务之间来往的所有请求都将通过网格。每个服务都有自己的代理服务，所有这些代理服务共同组成了“服务网格”(Service Mesh)。所以加入一个服务想要和另一个服务通信，他不是直接和这个目标服务通信的，他会先把请求路由给自己本地的代理，再由代理把请求路由到目标服务。从本质上讲，每个服务实例都只知道自己本地的代理，并不知道外面世界是什么样的。</p>
+<p>Service Mesh 可以比作是微服务结构中的通信层。每个服务之间来往的所有请求都将通过网格。每个服务都有自己的代理服务，所有这些代理服务共同组成了“服务网格”(Service Mesh)。所以假如一个服务想要和另一个服务通信，他不是直接和这个目标服务通信的，他会先把请求路由给自己本地的代理，再由代理把请求路由到目标服务。从本质上讲，每个服务实例都只知道自己本地的代理，并不知道外面世界是什么样的。</p>
 
 <p><img src="http://ww1.sinaimg.cn/large/7267315bgy1fx9svk4k4kj20dd059wef.jpg" alt="" /></p>
 
@@ -761,7 +763,7 @@ spec:
 
 <h3 id="service">Service</h3>
 
-<p>Kubernetes 的 services 负载维护可以路由流量到达的Pod端点的列表。而且通常 kube-proxy 作为这些 pod 端点的负载均衡。但在我们的示例中，我们做的是客户端的负载均衡，所以我们不想使用 kube-proxy 来做负载均衡，我们想获取 Pod 端点列表并自己做负载均衡。因此我们使用headless Service，只用来返回端点列表。</p>
+<p>Kubernetes 的 services 负责维护可以路由流量到达的Pod端点的列表。而且通常 kube-proxy 作为这些 pod 端点的负载均衡。但在我们的示例中，我们做的是客户端的负载均衡，所以我们不想使用 kube-proxy 来做负载均衡，我们想获取 Pod 端点列表并自己做负载均衡。因此我们使用headless Service，只用来返回端点列表。</p>
 
 <pre><code class="language-yaml">kind: Service
 apiVersion: v1
@@ -798,6 +800,10 @@ spec:
                         <a href="http://www.servicemesher.com/blog/istio-what-happens-when-control-plane-is-down/" data-toggle="tooltip" data-placement="top" title="Istio控制平面故障后会发生什么？">&larr; 更旧</a>
                         </li>
                          
+                        <li class="next">
+                        <a href="http://www.servicemesher.com/blog/service-mesh-meetup-shanghai-20181125/" data-toggle="tooltip" data-placement="top" title="第四届Service Mesh Meetup上海站回顾">更新 &rarr;</a>
+                        </li>
+                        
                         </ul>
 
                     </div>
@@ -856,10 +862,7 @@ spec:
             <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
             </li>
             
-            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (3)</a>
-            </li>
-            
-            <li><a href="/categories/news"><i class="fa fa-navicon"></i>news (1)</a>
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (4)</a>
             </li>
             
             <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
@@ -868,7 +871,7 @@ spec:
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (1)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (14)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (15)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (8)</a>
@@ -1224,6 +1227,19 @@ spec:
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="/blog/service-mesh-meetup-shanghai-20181125/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxlj27xa1gj31400u0u0y.jpg" class="img-responsive" alt="第四届Service Mesh Meetup上海站回顾">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/service-mesh-meetup-shanghai-20181125/">第四届Service Mesh Meetup上海站回顾</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="/blog/service-mesh-with-envoy-101/">
                           
                           <img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fxhzfu4w8vj31400u0naq.jpg" class="img-responsive" alt="使用 Envoy 搭建 Service Mesh">
@@ -1245,19 +1261,6 @@ spec:
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="/blog/istio-what-happens-when-control-plane-is-down/">Istio控制平面故障后会发生什么？</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/istio-is-it-a-bird-microgateway-blog-series-part-4/">
-                          
-                          <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxh6ql2q9wj31400u01l1.jpg" class="img-responsive" alt="Istio像鸟一样轻盈？微网关博客系列（4）">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/istio-is-it-a-bird-microgateway-blog-series-part-4/">Istio像鸟一样轻盈？微网关博客系列（4）</a></h5>
                     </div>
                 </div>
                 

@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>使用Minikube-in-a-Container和Jenkins构建Istio · ServiceMesher|服务网格中文社区</title>
+  <title>第四届Service Mesh Meetup上海站回顾 · ServiceMesher|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="minikube, 容器, Jenkis, Istio, CI/CD, Jenkinsfile">
+  <meta name="keywords" content="service mesh, meetup">
   
 
   <meta name="generator" content="Hugo 0.48" />
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="使用Minikube-in-a-Container和Jenkins构建Istio" />
+  <meta property="og:title" content="第四届Service Mesh Meetup上海站回顾" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/building-istio-with-minikube-in-a-container-and-jenkins//" />
+  <meta property="og:url" content="/blog/service-mesh-meetup-shanghai-20181125//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="本文讲述如何制作一个新的 Minikube-in-a-Container 容器和使用 Jenkins Pipeline 来构建和测试 Istio 的流程脚本。">
-  <meta property="og:description" content="本文讲述如何制作一个新的 Minikube-in-a-Container 容器和使用 Jenkins Pipeline 来构建和测试 Istio 的流程脚本。">
-  <meta name="twitter:description" content="本文讲述如何制作一个新的 Minikube-in-a-Container 容器和使用 Jenkins Pipeline 来构建和测试 Istio 的流程脚本。">
-  <meta property="og:description" content="本文讲述如何制作一个新的 Minikube-in-a-Container 容器和使用 Jenkins Pipeline 来构建和测试 Istio 的流程脚本。" />
+  <meta name="description" content="ServiceMesher社区和蚂蚁金服联合主办、SOFAStack社区协办的第四届Service Mesh Meetup上海站收官，Apache Skywalking 创始人吴晟、蚂蚁金服敖小剑、阿里巴巴 UC 张瑜标(龙轼)、谢云科技徐运元、七牛云的冯玮给大家带来分享。">
+  <meta property="og:description" content="ServiceMesher社区和蚂蚁金服联合主办、SOFAStack社区协办的第四届Service Mesh Meetup上海站收官，Apache Skywalking 创始人吴晟、蚂蚁金服敖小剑、阿里巴巴 UC 张瑜标(龙轼)、谢云科技徐运元、七牛云的冯玮给大家带来分享。">
+  <meta name="twitter:description" content="ServiceMesher社区和蚂蚁金服联合主办、SOFAStack社区协办的第四届Service Mesh Meetup上海站收官，Apache Skywalking 创始人吴晟、蚂蚁金服敖小剑、阿里巴巴 UC 张瑜标(龙轼)、谢云科技徐运元、七牛云的冯玮给大家带来分享。">
+  <meta property="og:description" content="ServiceMesher社区和蚂蚁金服联合主办、SOFAStack社区协办的第四届Service Mesh Meetup上海站收官，Apache Skywalking 创始人吴晟、蚂蚁金服敖小剑、阿里巴巴 UC 张瑜标(龙轼)、谢云科技徐运元、七牛云的冯玮给大家带来分享。" />
 
   
   
@@ -92,9 +92,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="使用Minikube-in-a-Container和Jenkins构建Istio logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="使用Minikube-in-a-Container和Jenkins构建Istio logo" class="visible-xs visible-sm">
-                    <span class="sr-only">使用Minikube-in-a-Container和Jenkins构建Istio - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="第四届Service Mesh Meetup上海站回顾 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="第四届Service Mesh Meetup上海站回顾 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">第四届Service Mesh Meetup上海站回顾 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -234,7 +234,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>使用Minikube-in-a-Container和Jenkins构建Istio</h1>
+                <h1>第四届Service Mesh Meetup上海站回顾</h1>
             </div>
         </div>
     </div>
@@ -252,33 +252,23 @@ autocomplete('#aa-search-input',
                         <div class="well">
                             <div class="author-category">
                             <i class="fa fa-calendar-o">
-                            2018年6月4日
+                            2018年11月26日
                             </i>
                             |
                             
-                            作者 <a href="https://blog.aspenmesh.io/blog/2018/01/building-istio-with-minikube-in-a-container-and-jenkins/">Andrew Jenkins</a>
+                            作者 <a href="https://jimmysong.io">宋净超</a>
                             
-                            
-                            | 译者 <a href="https://github.com/edwin19861218">戴佳顺</a>
-                            
-                            
-                            | 审校者
-                            
-                            <a href="https://jimmysong.io"><i>宋净超</i></a>
                             
                             
                             |
-                            3300字 | 阅读大约需要7分钟
+                            500字 | 阅读大约需要1分钟
                             </div>
                             
                             
                             <div class="author-category">
                             
-                            <a href="https://blog.aspenmesh.io/blog/2018/01/building-istio-with-minikube-in-a-container-and-jenkins/">查看原文</a>
-                            |
                             
-                            
-                            归档于 <a href="/categories/translation">translation</a>
+                            归档于 <a href="/categories/meetup">meetup</a>
                             
                             |
                             
@@ -286,9 +276,7 @@ autocomplete('#aa-search-input',
                             
                             标签
                             
-                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
-                            
-                            <a style="text-transform:capitalize" href="/tags/jenkins/"><i>#jenkins</i></a>
+                            <a style="text-transform:capitalize" href="/tags/meetup/"><i>#meetup</i></a>
                             
                             </div>
                             
@@ -297,260 +285,64 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p>AspenMesh提供一种Istio的分布式架构支持，这意味着即使与上游Istio项目无关，我们也需要能够测试和修复Bug。为此我们已开发构建了我们自己的打包和测试基础架构方案。如果你对Istio的CI（持续集成）也感兴趣，请参考我们已经投入使用，可能有用但还没有提交给Circle CI或GKE的组件。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxlakbx6s5j318w0u0k9k.jpg" alt="" /></p>
 
-<p>这篇文章描述的是我们如何制作一个新的<code>Minikube-in-a-Container</code>容器和使用<code>Jenkins Pipeline</code>来构建和测试Istio的流程脚本。如果你觉得有必要，你可以通过<code>docker run</code>上运行minikube容器，然后在容器中部署功能性的kubernetes集群，不需要使用时可随时删除。Jenkins bits现在可帮助你构建Istio，也可以作为初始环境，以便在容器内构建容器。</p>
+<h4 id="observability-and-istio-telemetry">Observability and Istio telemetry</h4>
 
-<h2 id="minikube-in-a-container">Minikube-in-a-container</h2>
+<p>吴晟 Apache SkyWalking创始人、Apache Sharding-Sphere原型作者、比特大陆资深技术专家、CNCF OpenTracing标准化委员会成员</p>
 
-<p>这部分描述了我们如何构建一个可以在构建过程中用来运行Istio冒烟测试的Minikube-in-a-container镜像。我们最初不是这么想的，我们最初使用本地localkube环境。我们不能让它在特定环境外工作，我们认为这是由于localkube和minikube之间有一点差异导致的。所以这是一个作为我们修复它使它能正常工作的记录。我们还添加了一些额外选项和工具，以便在生成的容器中使用Istio。这没有什么太多花样，但如果你要做类似的事情，我们希望它给你启发。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxladzp7j7j318w0u0tke.jpg" alt="" /></p>
 
-<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1frx72gvbeqj20az0960t7.jpg" alt="minikube" /></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxlaiwry6mj318w0u0h2w.jpg" alt="" /></p>
 
-<p><a href="https://github.com/kubernetes/minikube">Minikube</a>可能对你来说是一个可以在随身携带的笔记本上通过虚机运行自己kubernetes集群的非常熟悉的项目。这种方法非常方便，但在某些情况下（比如不提供嵌套虚拟化的云提供商），你就不能或者不希望基于虚机来完成了。由于docker现在可以运行在docker内部，我们决定尝试在docker容器内制作我们自己的kubernetes集群。一个非持久性的kubernetes容器很容易启动，也可进行一些测试，并在完成后进行删除。同时这也非常适合持续集成。</p>
+<h4 id="蚂蚁金服-service-mesh-渐进式迁移方案">蚂蚁金服 Service Mesh 渐进式迁移方案</h4>
 
-<p>在我们的模型方案中，Kubernetes集群创建子docker容器（而不是Jérôme Petazzoni所<a href="http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/">提到</a>的兄弟容器方案）。我们是故意这样做的，宁愿隔离子容器，而不是共享Docker构建的缓存。但是你应该在将你应用改造为DinD（docker in docker）之前阅读Jérôme的文章，也许DooD（在docker out of docker）是对你而言更好的方案。这篇文章供你参考。我们避免架构“变得更坏”的同时，对看起来“坏”和“丑”部分也应进行避免。</p>
+<p>敖小剑 蚂蚁金服高级技术专家，十六年软件开发经验，微服务专家，Service Mesh布道师，Servicemesher社区联合创始人</p>
 
-<p>当你启动docker容器时，会要求docker在OS内核中创建和设置一些命名空间（namespaces），然后在通过这些命名空间启动你的容器。命名空间像一个沙箱：当你在命名空间中（即通过命名空间隔离），通常只能看到命名空间内的东西。chroot命令，不仅影响文件系统，还影响PID，网络接口等。如果你通过 <code>--privileged</code> 参数启动了一个docker容器，那么所涉及的命名空间隔离将获得额外的权限，比如创建更多子命名空间隔离的能力。这是完成docker-in-docker（即在docker中运行docker）的核心技巧。有关更多细节，Jérôme是这方面的专家，请在<a href="https://blog.docker.com/2013/09/docker-can-now-run-within-docker/">这里</a>关注他的详细说明。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxlaj62fh3j318w0u0qmj.jpg" alt="" /></p>
 
-<p>总之，这就是大致步骤：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxlak1mt4ej30lk12ejxr.jpg" alt="" /></p>
 
-<ol>
-<li><p>构建一个容器环境，完成docker，minikube，kubectl和依赖项的安装。</p></li>
+<p>张瑜标 阿里巴巴技术专家、前京东Hadoop负责人、Hadoop代码贡献者、现负责UC 基于Kubernetes自研的PaaS平台整体的稳定性</p>
 
-<li><p>添加一个假的systemctl shim来欺骗Minikube在没有真正安装systemd的环境中运行。</p></li>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxlajb5i8hj318w0u0wxt.jpg" alt="" /></p>
 
-<li><p>使用 <code>--privileged</code> 参数启动容器</p></li>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fxlaly84ydj318w0u0n9w.jpg" alt="" /></p>
 
-<li><p>让容器启动它自己内部的dockerd，这就是DinD的一部分。</p></li>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxlajjihjyj318w0u0nc4.jpg" alt="" /></p>
 
-<li><p>让容器通过参数 <code>minikube --vm-driver = none</code> 启动minikube，以便在容器中的minikube可以与与之一起运行的dockerd连接。</p></li>
-</ol>
+<h4 id="探讨和实践基于isito的微服务治理事件监控">探讨和实践基于Isito的微服务治理事件监控</h4>
 
-<p>所有你需要做的就是通过 <code>docker run --privileged</code> 运行容器，接着你就可以去使用kubectl了。这时如果你愿意，你可以在容器内运行kubectl，并得到一个真正的用完可随时删除的环境。</p>
+<p>徐运元 谐云科技云平台架构师，致力于容器 PaaS 平台、企业级容器云平台的方案设计和技术落地</p>
 
-<p>你现在可以试试它：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxlakih9eyj318w0u0du1.jpg" alt="" /></p>
 
-<pre><code class="language-bash">docker run --privileged --rm -it quay.io/aspenmesh/minikube-dind
-docker exec -it &lt;container&gt; /bin/bash
-# kubectl get nodes
-&lt;....&gt;
-# kubectl create -f https://k8s.io/docs/tasks/debug-application-cluster/shell-demo.yaml
-# kubectl exec -it shell-demo -- /bin/bash
-</code></pre>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxlakrposjj318w0u07el.jpg" alt="" /></p>
 
-<p>当你退出时，启动时 <code>--rm</code> 参数使docker容器实例会被卸载并完全删除。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxlaky0yv0j318w0u0wtj.jpg" alt="" /></p>
 
-<p>对于比较重量级的使用方案，你可能需要通过<code>docker cp</code>命令将kubeconfig文件存放到主机上，并通过8443端口暴露的kube API与容器内的kubernetes进行通信。</p>
+<h4 id="envoy-contour与kubernetes实践">Envoy、Contour与Kubernetes实践</h4>
 
-<p>下面是可以使用的Dockerfile（你可以复制它，其中的相关支持脚本在<a href="https://gist.github.com/andrewjjenkins/798f5c736a187d616d256095662c0a76">这里</a>）：</p>
+<p>冯玮 七牛容器云平台产品架构师，曾在百度和华为从事公有云领域高性能分布式计算和存储平台的架构设计和产品研发</p>
 
-<pre><code class="language-bash"># Portions Copyright 2016 The Kubernetes Authors All rights reserved.
-# Portions Copyright 2018 AspenMesh
-#
-# Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# Based on:
-# https://github.com/kubernetes/minikube/tree/master/deploy/docker/localkube-dind
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxlal5j8ypj318w0u048i.jpg" alt="" /></p>
 
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxlal93jmhj318w0u04ce.jpg" alt="" /></p>
 
-FROM debian:jessie
+<h2 id="视频回放与资料下载">视频回放与资料下载</h2>
 
-# Install minikube dependencies
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -y &amp;&amp; \
-  DEBIAN_FRONTEND=noninteractive apt-get -yy -q --no-install-recommends install \
-  iptables \
-  ebtables \
-  ethtool \
-  ca-certificates \
-  conntrack \
-  socat \
-  git \
-  nfs-common \
-  glusterfs-client \
-  cifs-utils \
-  apt-transport-https \
-  ca-certificates \
-  curl \
-  gnupg2 \
-  software-properties-common \
-  bridge-utils \
-  ipcalc \
-  aufs-tools \
-  sudo \
-  &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get clean &amp;&amp; \
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+<p>地址：<a href="https://tech.antfin.com/activities/2">https://tech.antfin.com/activities/2</a></p>
 
-# Install docker
-RUN \
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - &amp;&amp; \
-  apt-key export &quot;9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88&quot; | gpg - &amp;&amp; \
-  echo &quot;deb [arch=amd64] https://download.docker.com/linux/debian jessie stable&quot; &gt;&gt; \
-    /etc/apt/sources.list.d/docker.list &amp;&amp; \
-  DEBIAN_FRONTEND=noninteractive apt-get update &amp;&amp; \
-  DEBIAN_FRONTEND=noninteractive apt-get -yy -q --no-install-recommends install \
-    docker-ce \
-  &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get clean &amp;&amp; \
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-VOLUME /var/lib/docker
-EXPOSE 2375
+<h2 id="致谢">致谢</h2>
 
-# Install minikube
-RUN curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.24.1/minikube-linux-amd64 &amp;&amp; chmod +x minikube
-ENV MINIKUBE_WANTUPDATENOTIFICATION=false
-ENV MINIKUBE_WANTREPORTERRORPROMPT=false
-ENV CHANGE_MINIKUBE_NONE_USER=true
-# minikube --vm-driver=none checks systemctl before starting.  Instead of
-# setting up a real systemd environment, install this shim to tell minikube
-# what it wants to know: localkube isn't started yet.
-COPY fake-systemctl.sh /usr/local/bin/systemctl
-EXPOSE 8443
+<p>感谢以下单位的大力支持</p>
 
-# Install kubectl
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.9.1/bin/linux/amd64/kubectl &amp;&amp; \
-  chmod a+x kubectl &amp;&amp; \
-  mv kubectl /usr/local/bin
-
-# Copy local start.sh
-COPY start.sh /start.sh
-RUN chmod a+x /start.sh
-
-# If nothing else specified, start up docker and kubernetes.
-CMD /start.sh &amp; sleep 4 &amp;&amp; tail -F /var/log/docker.log /var/log/dind.log /var/log/minikube-start.log
-</code></pre>
-
-<h2 id="istio整合jenkins">Istio整合Jenkins</h2>
-
-<p>现在我们已经构建了Kubernetes-in-a-container环境，我们可以将它用于我们的Istio版本。将构建系统Docker化非常有好处，因为开发人员可以快速创建用于CI构建的真实可用实例。以下是我们用于Istio构建的CI大致架构：</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1frx9by15u1j20b20bhdgg.jpg" alt="" /></p>
-
-<ol>
-<li><p><strong>Jenkins工作节点</strong>： 这是一个让Jenkins运行构建作业的虚拟机。它可能在同一时间被多个不同的构建作业共享。我们在工作节点上安装的任何工具对每个构建作业而言都是本地范围内（因此它不会影响其他构建），同时工作节点生命周期是临时短暂的（我们为了节省成本自动弹性缩放Jenkins工作节点），这一点很重要。</p></li>
-
-<li><p><strong>Minikube容器</strong>： 我们所做的第一件事就是构建并进入到我们上文所谈到的Minikube容器。构建作业的其余部分在此容器（或其子容器）内进行。Jenkins打包的工作区挂载到这里。Jenkins的docker插件负责在成功或失败后卸载删除这个我们需要清理的，涉及正在运行的Kubernetes和Istio相关组件的容器。</p></li>
-
-<li><p><strong>构建作业的容器</strong>：这是一个包含安装golang相关及其他构建工具的容器。这是我们编译Istio并构建其容器的地方。我们在minikube容器中测试这些组件，如果测试通过，则认为构建成功并将容器推送到我们的容器仓库中。</p></li>
-</ol>
-
-<p>Jenkinsfile的大部分内容都是关于如何设置这些部分。接着，我们运行相同的步骤来构建Istio，以便在你的笔记本上进行 <code>make depend</code>、<code>make build</code>、<code>make test</code> 。</p>
-
-<p>在这里查看Jenkinsfile：</p>
-
-<pre><code class="language-lua">node('docker') {
-  properties([disableConcurrentBuilds()])
-
-  wkdir = &quot;src/istio.io/istio&quot;
-
-  stage('Checkout') {
-    checkout scm
-  }
-
-  // withRegistry writes to /home/ubuntu/.dockercfg outside of the container
-  // (even if you run it inside the docker plugin) which won't be visible
-  // inside the builder container, so copy them somewhere that will be
-  // visible.  We will symlink to .dockercfg only when needed to reduce
-  // the chance of accidentally using the credentials outside of push
-  docker.withRegistry('https://quay.io', 'name-of-your-credentials-in-jenkins') {
-    stage('Load Push Credentials') {
-      sh &quot;cp ~/.dockercfg ${pwd()}/.dockercfg-quay-creds&quot;
-    }
-  }
-
-  k8sImage = docker.build(
-    &quot;k8s-${env.BUILD_TAG}&quot;,
-    &quot;-f $wkdir/.jenkins/Dockerfile.minikube &quot; +
-    &quot;$wkdir/.jenkins/&quot;
-  )
-  k8sImage.withRun('--privileged') { k8s -&gt;
-    stage('Get kubeconfig') {
-      sh &quot;docker exec ${k8s.id} /bin/bash -c \&quot;while ! [ -e /kubeconfig ]; do echo waiting for kubeconfig; sleep 3; done\&quot;&quot;
-      sh &quot;rm -f ${pwd()}/kubeconfig &amp;&amp; docker cp ${k8s.id}:/kubeconfig ${pwd()}/kubeconfig&quot;
-
-      // Replace &quot;127.0.0.1&quot; with the path that peer containers can use to
-      // get to minikube.
-      // minikube will bake certs including the subject &quot;kubernetes&quot; so
-      // the kube-api server needs to be reachable from the client's concept
-      // of &quot;https://kubernetes:8443&quot; or kubectl will refuse to connect. 
-      sh &quot;sed -i'' -e 's;server: https://127.0.0.1:8443;server: https://kubernetes:8443;' kubeconfig&quot;
-    }
-
-    builder = docker.build(
-      &quot;istio-builder-${env.BUILD_TAG}&quot;,
-      &quot;-f $wkdir/.jenkins/Dockerfile.jenkins-build &quot; +
-        &quot;--build-arg UID=`id -u` --build-arg GID=`id -g` &quot; +
-        &quot;$wkdir/.jenkins&quot;,
-    )
-
-    builder.inside(
-      &quot;-e GOPATH=${pwd()} &quot; +
-      &quot;-e HOME=${pwd()} &quot; +
-      &quot;-e PATH=${pwd()}/bin:\$PATH &quot; +
-      &quot;-e KUBECONFIG=${pwd()}/kubeconfig &quot; +
-      &quot;-e DOCKER_HOST=\&quot;tcp://kubernetes:2375\&quot; &quot; +
-      &quot;--link ${k8s.id}:kubernetes&quot;
-    ) {
-      stage('Check') {
-        sh &quot;ls -al&quot;
-
-        // If there are old credentials from a previous build, destroy them -
-        // we will only load them when needed in the push stage
-        sh &quot;rm -f ~/.dockercfg&quot;
-
-        sh &quot;cd $wkdir &amp;&amp; go get -u github.com/golang/lint/golint&quot;
-        sh &quot;cd $wkdir &amp;&amp; make check&quot;
-      }
-
-      stage('Build') {
-        sh &quot;cd $wkdir &amp;&amp; make depend&quot;
-        sh &quot;cd $wkdir &amp;&amp; make build&quot;
-      }
-
-      stage('Test') {
-        sh &quot;cp kubeconfig $wkdir/pilot/platform/kube/config&quot;
-        sh &quot;&quot;&quot;PROXYVERSION=\$(grep envoy-debug $wkdir/pilot/docker/Dockerfile.proxy_debug  |cut -d: -f2) &amp;&amp;
-          PROXY=debug-\$PROXYVERSION &amp;&amp;
-          curl -Lo - https://storage.googleapis.com/istio-build/proxy/envoy-\$PROXY.tar.gz | tar xz &amp;&amp;
-          mv usr/local/bin/envoy ${pwd()}/bin/envoy &amp;&amp;
-          rm -r usr/&quot;&quot;&quot;
-        sh &quot;cd $wkdir &amp;&amp; make test&quot;
-      }
-
-      stage('Push') {
-        sh &quot;cd &amp;&amp; ln -sf .dockercfg-quay-creds .dockercfg&quot;
-        sh &quot;cd $wkdir &amp;&amp; &quot; +
-          &quot;make HUB=yourhub TAG=$BUILD_TAG push&quot;
-        gitTag = getTag(wkdir)
-        if (gitTag) {
-          sh &quot;cd $wkdir &amp;&amp; &quot; +
-            &quot;make HUB=yourhub TAG=$gitTag push&quot;
-        }
-        sh &quot;cd &amp;&amp; rm .dockercfg&quot;
-      }
-    }
-  }
-}
-
-String getTag(String wkdir) {
-  return sh(
-    script: &quot;cd $wkdir &amp;&amp; &quot; +
-      &quot;git describe --exact-match --tags \$GIT_COMMIT || true&quot;,
-    returnStdout: true
-  ).trim()
-}
-</code></pre>
-
-<p>如果你想获取本文中的文件和支持脚本，你可以点击<a href="https://gist.github.com/andrewjjenkins/798f5c736a187d616d256095662c0a76">这里</a>。</p>
+<ul>
+<li>联合主办方<a href="https://tech.antfin.com/activities/2">蚂蚁金服金融科技</a></li>
+<li><a href="https://www.phei.com.cn/">电子工业出版社</a>赠书</li>
+<li><a href="http://www.innospaceplus.com.cn/">INNOSPACE+</a>提供场地</li>
+<li><a href="http://harmonycloud.cn/">谢云科技</a>提供茶歇</li>
+</ul>
 
                         </div>
                         
@@ -560,13 +352,9 @@ String getTag(String wkdir) {
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/istio-0.8-release-note/" data-toggle="tooltip" data-placement="top" title="Istio 0.8发布了！">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/service-mesh-with-envoy-101/" data-toggle="tooltip" data-placement="top" title="使用 Envoy 搭建 Service Mesh">&larr; 更旧</a>
                         </li>
                          
-                        <li class="next">
-                        <a href="http://www.servicemesher.com/blog/the-path-to-service-mesh/" data-toggle="tooltip" data-placement="top" title="服务网格之路">更新 &rarr;</a>
-                        </li>
-                        
                         </ul>
 
                     </div>
@@ -588,13 +376,15 @@ String getTag(String wkdir) {
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/gitops-for-istio-manage-istio-config-like-code/"><i class="fa fa-link"></i>Istio的GitOps—像代码一样管理Istio配置</a></li>
+        <li><a href="/blog/service-mesh-meetup-shenzhen-20180825/"><i class="fa fa-link"></i>第三届Service Mesh Meetup深圳站回顾</a></li>
          
-        <li><a href="/blog/istio-0.8-release-note/"><i class="fa fa-link"></i>Istio 0.8发布了！</a></li>
+        <li><a href="/blog/beijing-meetup-20180729/"><i class="fa fa-link"></i>第二届Service Mesh Meetup北京站回顾</a></li>
          
-        <li><a href="/blog/deepin-service-mesh-tech-details/"><i class="fa fa-link"></i>深入解读Service Mesh背后的技术细节</a></li>
+        <li><a href="/blog/hangzhou-meetup-20180630/"><i class="fa fa-link"></i>第一届Service Mesh Meetup杭州站回顾</a></li>
          
-        <li><a href="/blog/istio-service-mesh-tutorial/"><i class="fa fa-link"></i>Istio Service Mesh教程</a></li>
+        <li><a href="/activity/"><i class="fa fa-link"></i>活动</a></li>
+         
+        <li><a href="/blog/service-mesh-with-envoy-101/"><i class="fa fa-link"></i>使用 Envoy 搭建 Service Mesh</a></li>
          
      </ul>
     </div>
