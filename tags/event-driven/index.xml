@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Event Driven on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/event-driven/</link>
+    <description>Recent content in Event Driven on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 27 Nov 2018 19:22:12 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/event-driven/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>当 Service Mesh 遇见 Event Mesh: Event-Driven 型企业新的架构层</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-meet-event-mesh/</link>
+      <pubDate>Tue, 27 Nov 2018 19:22:12 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-meet-event-mesh/</guid>
+      <description>Service Mesh被用作微服务的基础设施层，使通信变得更加灵活，可靠和快速。 它得到了谷歌、微软、IBM、红帽和 Pivotal 等行业巨头的推动，并且正在推出 Kub</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>微服务通信的设计模式 · ServiceMesher|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格, 微服务">
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="微服务通信的设计模式" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/design-patterns-for-microservice-communication//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文详细的介绍了同步和异步模式下微服务间的通信模式。">
+  <meta property="og:description" content="本文详细的介绍了同步和异步模式下微服务间的通信模式。">
+  <meta name="twitter:description" content="本文详细的介绍了同步和异步模式下微服务间的通信模式。">
+  <meta property="og:description" content="本文详细的介绍了同步和异步模式下微服务间的通信模式。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="微服务通信的设计模式 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="微服务通信的设计模式 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">微服务通信的设计模式 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>微服务通信的设计模式</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年11月27日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://dzone.com/users/468979/rajesh.bhojwani.html">Rajesh Bhojwani</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/malphi">马若飞</a>
+                            
+                            
+                            | 审校者
+                            
+                            <a href="https://jimmysong.io"><i>宋净超</i></a>
+                            
+                            
+                            |
+                            2900字 | 阅读大约需要6分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://dzone.com/articles/design-patterns-for-microservice-communication">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/microservice/"><i>#microservice</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p>在我的上一篇博客中，我谈到了<a href="https://dzone.com/articles/design-patterns-for-microservices">微服务的设计模式</a>。现在我想更深入地探讨微服务架构中最重要的模式：微服务之间的相互通信。我仍然记得我们过去开发单一应用时通讯是一项艰巨的任务。在那时我们必须小心的设计数据库表和对象模型映射之间的关系。而现在在微服务中，我们已经将它们分解为独立的服务，并创建网格来彼此通信。让我们来谈谈迄今为止为解决这个问题而发展起来的所有通信方式和模式。</p>
+
+<p>许多架构师已经将微服务之间的通信划分为同步和异步两种模式。让我们一个一个来介绍。</p>
+
+<h2 id="同步模式">同步模式</h2>
+
+<p>当我们说到同步时，意思是客户端向服务端发出请求并等待其响应。线程将被阻塞，直到它接收到返回。实现同步通信最主要的协议是HTTP。HTTP可以通过REST或SOAP实现。现在REST在微服务方面发展迅速并超越了SOAP。对我而言两者都很好用。</p>
+
+<p>现在让我们讨论同步模式中的不同的工作流、用例，我们面临的问题以及如何去解决。</p>
+
+<ol>
+<li>先从一个简单的例子开始。你需要一个服务A来调用服务B并等待实时数据的响应。这是实现同步的一个很好的选择，因为不会涉及到下游服务。如果使用多个实例，除了负载均衡之外，你不需要为这个用例实现任何复杂的设计模式。</li>
+</ol>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxlg5e91x1j30fc04yt8l.jpg" alt="sync flow" /></p>
+
+<ol>
+<li>现在让我们把它变得更复杂一点。服务A为实时数据调用多个下游服务，如服务B、服务C和服务D。</li>
+</ol>
+
+<ul>
+<li><p>服务B、服务C和服务D都必须按顺序调用——当服务相互依赖以检索数据，或者是有一个事件序列的功能需要被执行，就会出现这种情况。</p></li>
+
+<li><p>服务B、服务C和服务D可以并行调用——这种场景被使用在服务彼此独立或服务A可能扮演协调者（Orchestrator）角色时。</p></li>
+</ul>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxlgbk5vfbj30g609rwei.jpg" alt="sync flow2" /></p>
+
+<p>这会为通信带来复杂性。让我们一个一个地讨论。</p>
+
+<h3 id="紧密耦合">紧密耦合</h3>
+
+<p>服务A将与服务B、C和D耦合。它必须知道每个服务的端点（endpoint）和凭据（credentials）。</p>
+
+<p><strong>解决方案</strong>： <a href="https://www.rajeshbhojwani.co.in/2018/11/design-patterns-for-microservices.html">服务发现模式</a> 就是用来解决这类问题的。它通过提供查询功能来帮助分离消费者和生产者应用。服务B、C和D可以将它们自己注册为服务。服务发现可以在服务端也可以在客户端实现。对于服务端，有AWS ALB和NGINX，它们接受来自客户端的请求，发现服务并将请求路由到指定位置。</p>
+
+<p>对于客户端，有Spring Eureka发现服务。使用Eureka的真正好处是它在客户端缓存了可用的服务信息，所以即使Eureka服务器宕机了一段时间，它也不会成为单点故障。除了Eureka，etcd和consul等其他服务发现工具也得到了广泛的应用。</p>
+
+<h3 id="分布式系统">分布式系统</h3>
+
+<p>如果服务B，C，D有多个实例，它们需要知道如何负载均衡。</p>
+
+<p><strong>解决方案</strong>：负载均衡通常与服务发现携手出现。对于服务器负载平衡，可以使用AWS ALB，对于客户端可以使用Ribbon或Eureka。</p>
+
+<h3 id="验证-过滤-处理协议">验证/过滤/处理协议</h3>
+
+<p>如果服务B、C和D需要被保护并验证身份，我们只需要过滤这些服务的某些请求，如果服务A和其他服务使用不同的协议。</p>
+
+<p><strong>解决方案</strong>：<a href="http://www.rajeshbhojwani.co.in/2018/11/design-patterns-for-microservices.html">API 网关模式（gateway）</a> 有助于解决这些问题。它可以处理身份验证、过滤和将协议从AMQP转换为HTTP或其他协议。它还可以查看分布式日志、监控和分布式跟踪等可观测的指标（metrics）。Apigee、Zuul和Kong就是一些这样的工具。请注意，如果服务B、C和D是可管理的API的一部分，我建议使用这种模式，否则使用API网关就太重了。下面将要读到的服务网格是它的替代解决方案。</p>
+
+<h3 id="处理失败">处理失败</h3>
+
+<p>如果服务B、C或D宕机，服务A仍然有某些功能来响应客户端请求，就必须相应地对其进行设计。另一个问题是：假设服务B宕机，所有请求仍然在调用服务B，并且由于它没有响应而耗尽了资源，这会使整个系统宕机，服务A也无法向C和D发送请求了。</p>
+
+<p><strong>解决方案</strong>：<a href="http://www.rajeshbhojwani.co.in/2018/11/design-patterns-for-microservices.html">熔断器（Circuit Breaker）</a> 和 <a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/bulkhead">隔板（bulkhead） </a>模式有助于解决这些问题。熔断器识别下游服务是否停机了一段时间，并断开开关以避免向其发送调用请求。它将在定义的时间段之后再次尝试检查，如果服务已经恢复则关闭开关以继续对其进行调用。这确实有助于避免网络阻塞和耗尽资源。隔板模式有助于隔离用于服务的资源，并避免级联故障。Spring Cloud Hystrix就是做这样的工作，它适用于断路器和隔板模式。</p>
+
+<h3 id="微服务间网络通信">微服务间网络通信</h3>
+
+<p><a href="http://www.rajeshbhojwani.co.in/2018/11/design-patterns-for-microservices.html">API 网关</a> 通常用于管理API，它处理来自ui或其他消费者的请求，并对多个微服务进行下游调用并作出响应。但是，当一个微服务想要调用同组中的另一个微服务时，API网关就没有必要了，它并不是为了这个目的而设计的。最终，独立的微服务将负责进行网络通信、安全验证、处理超时、处理故障、负载平衡、服务发现、监控和日志记录。对于微服务来说开销太大。</p>
+
+<p><strong>解决方案</strong>：服务网格模式有助于处理此类NFRs。它可以卸载我们前面讨论的所有网络功能。这样，微服务就不会直接调用其他微服务，而是通过服务网格，它将处理所有的通信。这种模式的美妙之处在于，你可以专注于用任何语言（如Java、NodeJS或Python）编写业务逻辑，而不必担心这些语言是否支持所有的网络功能。Istio和Linkerd解决了这些需求。我唯一不喜欢Istio的地方是它目前仅限于Kubernetes。</p>
+
+<h2 id="异步模式">异步模式</h2>
+
+<p>当我们谈到异步通信时，它意味着客户端调用服务器，接收到请求的确认，然后忘记它。服务器将处理请求并完成。</p>
+
+<p>现在让我们讨论一下什么时候需要异步。如果你的应用读操作很多，那么同步可能非常适合，尤其是在需要实时数据时。但是，当你处理大量写操作而又不能丢失数据记录时，你可能希望选择异步操作，因为如果下游系统宕机，你继续向其发送同步的调用，你将丢失请求和业务交易。经验法则是永远不要对实时数据读取使用异步，也永远不要对关键的业务交易写操作使用同步，除非你在写后立即需要数据。你需要在数据可用性和数据的强一致性之间进行选择。</p>
+
+<p>有几种不同的方式可以实现异步：</p>
+
+<h3 id="消息">消息</h3>
+
+<p>在这种方式中，生产者将消息发送到消息代理，而消费者可以监听代理来接收消息并相应地处理它。在消息处理中有两种模式：一对一和一对多。我们讨论了同步带来的一些复杂性，但是在消息传递中，默认情况下就会消除一些复杂性。例如，服务发现变得无关紧要，因为消费者和生产者都只与消息代理对话。负载均衡是通过扩展消息系统来处理的。失败处理是内建的，主要由message broker负责。RabbitMQ、ActiveMQ和Kafka是云平台中最流行的消息传递解决方案。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxlhh1zzvuj30kj0coaa7.jpg" alt="msg flow" /></p>
+
+<h3 id="事件驱动">事件驱动</h3>
+
+<p>事件驱动方式看起来类似于消息传递，但它的用途不同。它不会发送消息，而是将事件细节连同负载（payload）一起发送到消息代理。消费者将确定事件是什么，以及如何对此作出响应。这会更加松散的耦合。有下面几种类型的负载可以被传递：</p>
+
+<ul>
+<li>全负载 —— 这将包含与消费者采取进一步行动所需的事件相关的所有数据。然而，这使得它的耦合更加紧密。</li>
+<li>资源 URL —— 这是一个指向代表事件的资源的URL。</li>
+<li>仅事件 —— 不会发送负载，消费者将基于事件名称知道如何从其他源（如数据库或队列）检索相关数据。</li>
+</ul>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxlhpapghaj30ll0a8mx7.jpg" alt="event flow" /></p>
+
+<p>还有其他一些方式，比如编排（choreography），但我个人并不喜欢。它太复杂几乎无法实现，只能通过同步方式来完成。</p>
+
+<p>以上就是本博客的全部内容。请让我知道你在微服务通信方面的经验。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/service-mesh-meet-event-mesh/" data-toggle="tooltip" data-placement="top" title="当 Service Mesh 遇见 Event Mesh: Event-Driven 型企业新的架构层">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/8-ways-a-service-mesh-eases-microservices-deployment/"><i class="fa fa-link"></i>服务网格：8种方式简化微服务部署</a></li>
+         
+        <li><a href="/blog/service-mesh-rebuild-microservice-market/"><i class="fa fa-link"></i>Service Mesh：重塑微服务市场</a></li>
+         
+        <li><a href="/blog/service-mesh-meet-event-mesh/"><i class="fa fa-link"></i>当 Service Mesh 遇见 Event Mesh: Event-Driven 型企业新的架构层</a></li>
+         
+        <li><a href="/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/"><i class="fa fa-link"></i>使用Istio和Envoy实践服务网格gRPC度量</a></li>
+         
+        <li><a href="/blog/istio-routing-basics/"><i class="fa fa-link"></i>Istio路由基础</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (14)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (4)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (1)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (15)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (8)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (82)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/design-patterns-for-microservice-communication/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxmupzfpxaj31420u07wl.jpg" class="img-responsive" alt="微服务通信的设计模式">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/design-patterns-for-microservice-communication/">微服务通信的设计模式</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/service-mesh-meet-event-mesh/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxmudwrubtj31400u07wl.jpg" class="img-responsive" alt="当 Service Mesh 遇见 Event Mesh: Event-Driven 型企业新的架构层">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/service-mesh-meet-event-mesh/">当 Service Mesh 遇见 Event Mesh: Event-Driven 型企业新的架构层</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxmu28be7lj31420u0hdw.jpg" class="img-responsive" alt="使用Istio和Envoy实践服务网格gRPC度量">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/">使用Istio和Envoy实践服务网格gRPC度量</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script src="/js/love.js"></script>
+
+
+  </body>
+</html>

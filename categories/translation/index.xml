@@ -6,10 +6,46 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 23 Nov 2018 14:27:26 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 27 Nov 2018 19:29:05 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>微服务通信的设计模式</title>
+      <link>http://www.servicemesher.com/blog/design-patterns-for-microservice-communication/</link>
+      <pubDate>Tue, 27 Nov 2018 19:29:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/design-patterns-for-microservice-communication/</guid>
+      <description>在我的上一篇博客中，我谈到了微服务的设计模式。现在我想更深入地探讨微服务架构中最重要的模式：微服务之间的相互通信。我仍然记得我们过去开发单一</description>
+    </item>
+    
+    <item>
+      <title>当 Service Mesh 遇见 Event Mesh: Event-Driven 型企业新的架构层</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-meet-event-mesh/</link>
+      <pubDate>Tue, 27 Nov 2018 19:22:12 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-meet-event-mesh/</guid>
+      <description>Service Mesh被用作微服务的基础设施层，使通信变得更加灵活，可靠和快速。 它得到了谷歌、微软、IBM、红帽和 Pivotal 等行业巨头的推动，并且正在推出 Kub</description>
+    </item>
+    
+    <item>
+      <title>使用Istio和Envoy实践服务网格gRPC度量</title>
+      <link>http://www.servicemesher.com/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/</link>
+      <pubDate>Tue, 27 Nov 2018 19:09:15 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/</guid>
+      <description>在这个令人惊奇的时代，我们可以不需要编写一行代码，便可以很智能的集成应用程序，收集应用程序指标。 在这篇文章中，我将演示使用 helm 安装 Istio mtls 环境、必</description>
+    </item>
+    
+    <item>
+      <title>Istio路由基础</title>
+      <link>http://www.servicemesher.com/blog/istio-routing-basics/</link>
+      <pubDate>Tue, 27 Nov 2018 18:51:24 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-routing-basics/</guid>
+      <description>当学习像Istio这样的新技术时，我推荐看一看项目自带的示例。Istio包含了一些示例程序，但都有各种各样的不足。比如说BookInfo就是</description>
+    </item>
     
     <item>
       <title>使用 Envoy 搭建 Service Mesh</title>
