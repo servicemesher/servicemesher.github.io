@@ -1,5 +1,37 @@
 [
   {
+    "author": "崔秀龙",
+    "authorlink": "https://blog.fleeto.us",
+    "banner": "https://ws3.sinaimg.cn/large/006tNbRwly1fxnmaerjasj31400u017d.jpg",
+    "categories": [
+      "culture"
+    ],
+    "date": "2018-11-28T11:25:53+08:00",
+    "fuzzywordcount": 2800,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "istio"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-11-28T11:25:53+08:00",
+    "objectID": "0a11acc6c528977c3c46b5117a92350a",
+    "permalink": "http://www.servicemesher.com/blog/invisible-men-in-the-world-of-cloudnative/",
+    "publishdate": "2018-11-28T11:25:53+08:00",
+    "readingtime": 6,
+    "relpermalink": "/blog/invisible-men-in-the-world-of-cloudnative/",
+    "summary": "一直想给我所从事的企业服务行业写点啥，又千头万绪不知从何说起。此次 KubeCon 上海一行，眼见 CNCF 高起朱楼大宴宾客，深受触动。企业服务这个巨大的“角落”，似乎已被遗忘。本文尝试给云原生时代的同学们讲讲这个似乎有点蒙昧的角落。也希望能给奋斗在企业服务项目中的朋友们一点启发。",
+    "tags": [
+      "service mesh",
+      "istio"
+    ],
+    "title": "云原生世界中的隐形人如何拥抱 Istio",
+    "translator": null,
+    "url": "/blog/invisible-men-in-the-world-of-cloudnative/",
+    "weight": 0,
+    "wordcount": 2716
+  },
+  {
     "author": "Rajesh Bhojwani",
     "authorlink": "https://dzone.com/users/468979/rajesh.bhojwani.html",
     "banner": "https://ws2.sinaimg.cn/large/006tNbRwly1fxmupzfpxaj31420u07wl.jpg",

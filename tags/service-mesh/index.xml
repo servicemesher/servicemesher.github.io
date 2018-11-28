@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 27 Nov 2018 19:22:12 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 28 Nov 2018 11:25:53 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>云原生世界中的隐形人如何拥抱 Istio</title>
+      <link>http://www.servicemesher.com/blog/invisible-men-in-the-world-of-cloudnative/</link>
+      <pubDate>Wed, 28 Nov 2018 11:25:53 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/invisible-men-in-the-world-of-cloudnative/</guid>
+      <description>一直想给我所从事的企业服务行业写点啥，又千头万绪不知从何说起。此次 KubeCon 上海一行，眼见 CNCF 高起朱楼大宴宾客，深受触动。企业服务这个巨大的“角落”，</description>
+    </item>
     
     <item>
       <title>当 Service Mesh 遇见 Event Mesh: Event-Driven 型企业新的架构层</title>
