@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/ant-financial-service-mesh-adoption-plan/</loc>
+    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/invisible-men-in-the-world-of-cloudnative/</loc>
     <lastmod>2018-11-28T11:25:53+08:00</lastmod>
   </url>
@@ -686,7 +691,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/ant-financial/</loc>
-    <lastmod>2018-09-11T19:06:22+08:00</lastmod>
+    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -758,6 +763,12 @@
   <url>
     <loc>http://www.servicemesher.com/tags/coohom/</loc>
     <lastmod>2018-10-25T20:49:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/coredns/</loc>
+    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1171,7 +1182,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-11-28T11:25:53+08:00</lastmod>
+    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1183,7 +1194,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-11-28T11:25:53+08:00</lastmod>
+    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1201,19 +1212,19 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/sofamesh/</loc>
-    <lastmod>2018-10-14T14:53:04+08:00</lastmod>
+    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/sofamesh/</loc>
-    <lastmod>2018-10-14T14:53:04+08:00</lastmod>
+    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/tags/sofamosn/</loc>
-    <lastmod>2018-08-31T12:27:25+08:00</lastmod>
+    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   

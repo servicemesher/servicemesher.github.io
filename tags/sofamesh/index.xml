@@ -6,10 +6,19 @@
     <description>Recent content in Sofamesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 14 Oct 2018 14:53:04 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 29 Nov 2018 14:51:19 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/sofamesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>蚂蚁金服Service Mesh渐进式迁移方案</title>
+      <link>http://www.servicemesher.com/blog/ant-financial-service-mesh-adoption-plan/</link>
+      <pubDate>Thu, 29 Nov 2018 14:51:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/ant-financial-service-mesh-adoption-plan/</guid>
+      <description>大家好，今天给大家带来的演讲主题是“蚂蚁金服Service Mesh渐进式迁移方案”，给大家介绍一下我们蚂蚁金服主站的Service Mesh迁</description>
+    </item>
     
     <item>
       <title>SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展</title>
