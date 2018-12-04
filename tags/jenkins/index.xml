@@ -6,10 +6,19 @@
     <description>Recent content in Jenkins on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 04 Jun 2018 11:33:16 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Dec 2018 14:47:13 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Serverless Jenkins 和 Jenkins X</title>
+      <link>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</link>
+      <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
+      <description>Jenkins服务来源于创建自2004年的Hudson。在软件行业中，Jenkins已经是家喻户晓的明星产品，并且已经是CI和CD的领头羊。</description>
+    </item>
     
     <item>
       <title>使用Minikube-in-a-Container和Jenkins构建Istio</title>

@@ -1,5 +1,39 @@
 [
   {
+    "author": "James Rawlings",
+    "authorlink": "https://medium.com/@jdrawlings",
+    "banner": "https://ws3.sinaimg.cn/large/006tNbRwly1fxupujmp0sj30rs0ku0tw.jpg",
+    "categories": [
+      "translation"
+    ],
+    "date": "2018-12-04T14:47:13+08:00",
+    "fuzzywordcount": 5200,
+    "keywords": [
+      "jenkins",
+      "serverless",
+      "knative"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-12-04T14:47:13+08:00",
+    "objectID": "2e87c0afe2093aa804dfed126ac39c16",
+    "permalink": "http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/",
+    "publishdate": "2018-12-04T14:47:13+08:00",
+    "readingtime": 11,
+    "relpermalink": "/blog/serverless-jenkins-with-jenkins-x/",
+    "summary": "本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。",
+    "tags": [
+      "jenkins",
+      "knative",
+      "ci-cd",
+      "serverless"
+    ],
+    "title": "Serverless Jenkins 和 Jenkins X",
+    "translator": "王凯",
+    "url": "/blog/serverless-jenkins-with-jenkins-x/",
+    "weight": 0,
+    "wordcount": 5197
+  },
+  {
     "author": "敖小剑&龙轼",
     "authorlink": "https://tech.antfin.com/activities/2/review",
     "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fxozxiskekj31400u07bb.jpg",

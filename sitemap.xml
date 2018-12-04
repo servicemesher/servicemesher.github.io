@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</loc>
+    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/ant-financial-service-mesh-adoption-plan/</loc>
     <lastmod>2018-11-29T14:51:19+08:00</lastmod>
   </url>
@@ -725,6 +730,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/ci-cd/</loc>
+    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/cilium/</loc>
     <lastmod>2018-11-07T14:14:01+08:00</lastmod>
     <priority>0</priority>
@@ -966,7 +977,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/jenkins/</loc>
-    <lastmod>2018-06-04T11:33:16+08:00</lastmod>
+    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -978,7 +989,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/knative/</loc>
-    <lastmod>2018-08-07T22:20:49+08:00</lastmod>
+    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1170,7 +1181,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/serverless/</loc>
-    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
+    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1194,7 +1205,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
+    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1266,7 +1277,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-11-27T19:29:05+08:00</lastmod>
+    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   

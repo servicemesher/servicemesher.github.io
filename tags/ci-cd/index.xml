@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ci Cd on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/ci-cd/</link>
+    <description>Recent content in Ci Cd on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 04 Dec 2018 14:47:13 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/ci-cd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Serverless Jenkins 和 Jenkins X</title>
+      <link>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</link>
+      <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
+      <description>Jenkins服务来源于创建自2004年的Hudson。在软件行业中，Jenkins已经是家喻户晓的明星产品，并且已经是CI和CD的领头羊。</description>
+    </item>
+    
+  </channel>
+</rss>

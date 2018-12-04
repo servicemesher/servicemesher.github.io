@@ -75,6 +75,15 @@
     </item>
     
     <item>
+      <title>Ci Cd</title>
+      <link>http://www.servicemesher.com/tags/ci-cd/</link>
+      <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/ci-cd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cilium</title>
       <link>http://www.servicemesher.com/tags/cilium/</link>
       <pubDate>Wed, 07 Nov 2018 14:14:01 +0800</pubDate>
@@ -401,7 +410,7 @@
     <item>
       <title>Jenkins</title>
       <link>http://www.servicemesher.com/tags/jenkins/</link>
-      <pubDate>Mon, 04 Jun 2018 11:33:16 +0800</pubDate>
+      <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/jenkins/</guid>
       <description></description>
@@ -419,7 +428,7 @@
     <item>
       <title>Knative</title>
       <link>http://www.servicemesher.com/tags/knative/</link>
-      <pubDate>Tue, 07 Aug 2018 22:20:49 +0800</pubDate>
+      <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/knative/</guid>
       <description></description>
@@ -689,7 +698,7 @@
     <item>
       <title>Serverless</title>
       <link>http://www.servicemesher.com/tags/serverless/</link>
-      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
+      <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/serverless/</guid>
       <description></description>
