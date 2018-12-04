@@ -6,10 +6,19 @@
     <description>Recent content in Sofamesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 29 Nov 2018 14:51:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Dec 2018 17:32:44 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/sofamesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>蚂蚁金服Service Mesh新型网络代理的思考与实践</title>
+      <link>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</link>
+      <pubDate>Tue, 04 Dec 2018 17:32:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</guid>
+      <description>朵晓东，花名奕杉，蚂蚁金服高级技术专家。专注企业云计算技术及产品，蚂蚁金融云 PaaS 创始团队核心成员，Antstack 网络产品负责人。开源爱好者，</description>
+    </item>
     
     <item>
       <title>蚂蚁金服Service Mesh渐进式迁移方案</title>

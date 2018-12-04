@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>蚂蚁金服Service Mesh新型网络代理的思考与实践</title>
+      <link>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</link>
+      <pubDate>Tue, 04 Dec 2018 17:32:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</guid>
+      <description>朵晓东，花名奕杉，蚂蚁金服高级技术专家。专注企业云计算技术及产品，蚂蚁金融云 PaaS 创始团队核心成员，Antstack 网络产品负责人。开源爱好者，</description>
+    </item>
+    
+    <item>
       <title>Serverless Jenkins 和 Jenkins X</title>
       <link>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</link>
       <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
