@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 04 Dec 2018 17:32:44 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 07 Dec 2018 12:52:58 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Envoy中的数据统计</title>
+      <link>http://www.servicemesher.com/blog/envoy-stats/</link>
+      <pubDate>Fri, 07 Dec 2018 12:52:58 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-stats/</guid>
+      <description>这是我在Envoy架构系列中的第3篇文章。这篇文章基于以前关于Envoy的线程模型和热重启功能的帖子。如果您还没有阅读这些帖子，请先阅读。 需</description>
+    </item>
     
     <item>
       <title>蚂蚁金服Service Mesh新型网络代理的思考与实践</title>
@@ -1268,7 +1277,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 马若飞 6 陈冬 5 戴佳顺 5 崔秀龙 4 王帅俭 3 王全根 3 李昕阳 3 詹叶 2 狄卫华 2 杨</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 马若飞 6 陈冬 5 戴佳顺 5 王帅俭 4 崔秀龙 4 王全根 3 李昕阳 3 詹叶 2 狄卫华 2 杨</description>
     </item>
     
   </channel>

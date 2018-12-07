@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 04 Dec 2018 14:47:13 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 07 Dec 2018 12:52:58 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Envoy中的数据统计</title>
+      <link>http://www.servicemesher.com/blog/envoy-stats/</link>
+      <pubDate>Fri, 07 Dec 2018 12:52:58 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-stats/</guid>
+      <description>这是我在Envoy架构系列中的第3篇文章。这篇文章基于以前关于Envoy的线程模型和热重启功能的帖子。如果您还没有阅读这些帖子，请先阅读。 需</description>
+    </item>
     
     <item>
       <title>Serverless Jenkins 和 Jenkins X</title>

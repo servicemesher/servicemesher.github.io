@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Envoy中的数据统计</title>
+      <link>http://www.servicemesher.com/blog/envoy-stats/</link>
+      <pubDate>Fri, 07 Dec 2018 12:52:58 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-stats/</guid>
+      <description>这是我在Envoy架构系列中的第3篇文章。这篇文章基于以前关于Envoy的线程模型和热重启功能的帖子。如果您还没有阅读这些帖子，请先阅读。 需</description>
+    </item>
+    
+    <item>
       <title>蚂蚁金服Service Mesh新型网络代理的思考与实践</title>
       <link>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</link>
       <pubDate>Tue, 04 Dec 2018 17:32:44 +0800</pubDate>
