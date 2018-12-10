@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 07 Dec 2018 12:52:58 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Dec 2018 21:50:05 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>构建无缝集成的gRPC-Web和Istio的云原生应用教程</title>
+      <link>http://www.servicemesher.com/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/</link>
+      <pubDate>Mon, 10 Dec 2018 21:50:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/</guid>
+      <description>gRPC-Web使Web应用能够通过类似于Envoy的代理访问gRPC后端。Envoy是Istio的默认代理，因此，我们可以利用Istio的</description>
+    </item>
     
     <item>
       <title>Envoy中的数据统计</title>
@@ -1277,7 +1286,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 马若飞 6 陈冬 5 戴佳顺 5 王帅俭 4 崔秀龙 4 王全根 3 李昕阳 3 詹叶 2 狄卫华 2 杨</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 马若飞 6 陈冬 5 戴佳顺 5 王帅俭 4 王全根 4 崔秀龙 4 李昕阳 3 詹叶 2 狄卫华 2 杨</description>
     </item>
     
   </channel>

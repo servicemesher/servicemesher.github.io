@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 28 Nov 2018 11:25:53 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Dec 2018 21:50:05 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>构建无缝集成的gRPC-Web和Istio的云原生应用教程</title>
+      <link>http://www.servicemesher.com/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/</link>
+      <pubDate>Mon, 10 Dec 2018 21:50:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/</guid>
+      <description>gRPC-Web使Web应用能够通过类似于Envoy的代理访问gRPC后端。Envoy是Istio的默认代理，因此，我们可以利用Istio的</description>
+    </item>
     
     <item>
       <title>云原生世界中的隐形人如何拥抱 Istio</title>
