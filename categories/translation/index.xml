@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 10 Dec 2018 21:50:05 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 11 Dec 2018 14:24:23 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Envoy和Jaeger实现分布式追踪</title>
+      <link>http://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</link>
+      <pubDate>Tue, 11 Dec 2018 14:24:23 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</guid>
+      <description>如果你是初次接触服务网格和Envoy，我这里有一篇文章可以帮助你入门。 在微服务架构中，可观测性变得越加重要。我认为这是选择微服务这条路的必要</description>
+    </item>
     
     <item>
       <title>构建无缝集成的gRPC-Web和Istio的云原生应用教程</title>
