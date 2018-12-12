@@ -1,5 +1,36 @@
 [
   {
+    "author": "宋欣建",
+    "authorlink": "https://github.com/songxinjianqwe",
+    "banner": "https://ws4.sinaimg.cn/large/006tNbRwly1fy3tna8klcj31400u0e84.jpg",
+    "categories": [
+      "kubernetes"
+    ],
+    "date": "2018-12-12T11:39:01+08:00",
+    "fuzzywordcount": 9400,
+    "keywords": [
+      "kubernetes",
+      "CRD"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-12-12T11:39:01+08:00",
+    "objectID": "54afeaef7ce467a7496b079de412d39b",
+    "permalink": "http://www.servicemesher.com/blog/kubernetes-crd-quick-start/",
+    "publishdate": "2018-12-12T11:39:01+08:00",
+    "readingtime": 19,
+    "relpermalink": "/blog/kubernetes-crd-quick-start/",
+    "summary": "本文首先向你简单介绍了 Kubernetes，然后教你从零开始构建一个 Kubernetes CRD。",
+    "tags": [
+      "kubernetes",
+      "CRD"
+    ],
+    "title": "如何从零开始编写一个Kubernetes CRD",
+    "translator": null,
+    "url": "/blog/kubernetes-crd-quick-start/",
+    "weight": 0,
+    "wordcount": 9392
+  },
+  {
     "author": "Arvind Thangamani",
     "authorlink": "https://hackernoon.com/@dnivra26",
     "banner": "https://ws4.sinaimg.cn/large/006tNbRwly1fy2sj83h8jj313z0u0u10.jpg",

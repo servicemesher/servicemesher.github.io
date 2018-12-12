@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>如何从零开始编写一个Kubernetes CRD · ServiceMesher|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="kubernetes, CRD">
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="如何从零开始编写一个Kubernetes CRD" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/kubernetes-crd-quick-start//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文首先向你简单介绍了 Kubernetes，然后教你从零开始构建一个 Kubernetes CRD。">
+  <meta property="og:description" content="本文首先向你简单介绍了 Kubernetes，然后教你从零开始构建一个 Kubernetes CRD。">
+  <meta name="twitter:description" content="本文首先向你简单介绍了 Kubernetes，然后教你从零开始构建一个 Kubernetes CRD。">
+  <meta property="og:description" content="本文首先向你简单介绍了 Kubernetes，然后教你从零开始构建一个 Kubernetes CRD。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="如何从零开始编写一个Kubernetes CRD logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="如何从零开始编写一个Kubernetes CRD logo" class="visible-xs visible-sm">
+                    <span class="sr-only">如何从零开始编写一个Kubernetes CRD - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>如何从零开始编写一个Kubernetes CRD</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年12月12日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://github.com/songxinjianqwe">宋欣建</a>
+                            
+                            
+                            
+                            |
+                            9400字 | 阅读大约需要19分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            
+                            归档于 <a href="/categories/kubernetes">kubernetes</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/kubernetes/"><i>#kubernetes</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/crd/"><i>#CRD</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p>本文首先向你简单介绍了 Kubernetes，然后教你从零开始构建一个 Kubernetes CRD。如果你已经对 Kubernetes 十分了解的话可以跳过本文前半部分的 Kubernetes 介绍，直接从 Controller 部分开始阅读。</p>
+
+<h2 id="快速入门kubernetes">快速入门Kubernetes</h2>
+
+<p>Kubernetes是一个容器管理系统。</p>
+
+<p>具体功能：</p>
+
+<ul>
+<li>基于容器的应用部署、维护和滚动升级</li>
+<li>负载均衡和服务发现</li>
+<li>跨机器和跨地区的集群调度</li>
+<li>自动伸缩</li>
+<li>无状态服务和有状态服务</li>
+<li>广泛的 Volume 支持</li>
+<li>插件机制保证扩展性</li>
+</ul>
+
+<p>通过阅读<a href="https://kubernetes.feisky.xyz/">Kubernetes指南</a>和<a href="https://jimmysong.io/kubernetes-handbook/">Kubernetes HandBook</a>以及<a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/">官方文档</a> 或者 阅读<a href="https://book.douban.com/subject/27112874/"> Kubernetes权威指南</a>可以获得更好的学习体验。</p>
+
+<p>在开始安装Kubernetes之前，我们需要知道：</p>
+
+<h3 id="1-docker与kubernetes">1、Docker与Kubernetes</h3>
+
+<p>Docker是一个容器运行时的实现，Kubernetes依赖于某种容器运行时的实现。</p>
+
+<h3 id="2-pod">2、Pod</h3>
+
+<p>Kubernetes中最基本的调度单位是Pod，Pod从属于Node（物理机或虚拟机），Pod中可以运行多个Docker容器，会共享 PID、IPC、Network 和 UTS namespace。Pod在创建时会被分配一个IP地址，Pod间的容器可以互相通信。</p>
+
+<h3 id="3-yaml">3、Yaml</h3>
+
+<p>Kubernetes中有着很多概念，它们都算做是一种对象，如Pod、Deployment、Service等，都可以通过一个yaml文件来进行描述，并可以对这些对象进行CRUD操作（对应REST中的各种HTTP方法）。</p>
+
+<p>下面一个Pod的yaml文件示例：</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx-app
+  labels:
+    app: my-nginx-app
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.7.9
+    ports:
+    - containerPort: 80
+</code></pre>
+
+<p>kind：对象的类别</p>
+
+<p>metadata：元数据，如Pod的名称，以及标签Label【用于识别一系列关联的Pod，可以使用 Label Selector 来选择一组相同 label 的对象】</p>
+
+<p>spec：希望Pod能达到的状态，在此体现了Kubernetes的声明式的思想，我们只需要定义出期望达到的状态，而不需要关心如何达到这个状态，这部分工作由Kubernetes来完成。这里我们定义了Pod中运行的容器列表，包括一个nginx容器，该容器对外暴露了80端口。</p>
+
+<h3 id="4-node">4、Node</h3>
+
+<p>Node 是 Pod 真正运行的主机，可以是物理机，也可以是虚拟机。为了管理 Pod，每个 Node 节点上至少要运行 container runtime、<code>kubelet</code> 和 <code>kube-proxy</code> 服务。</p>
+
+<h3 id="5-deployment">5、Deployment</h3>
+
+<p>Deployment用于管理一个无状态应用，对应一个Pod的集群，每个Pod的地位是对等的，对Deployment来说只是用于维护一定数量的Pod，这些Pod有着相同的Pod模板。</p>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-nginx-app
+  template:
+    metadata:
+      labels:
+        app: my-nginx-app
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+</code></pre>
+
+<p>可以对Deployment进行部署、升级、扩缩容等操作。</p>
+
+<h3 id="6-service">6、Service</h3>
+
+<p>Service用于将一组Pod暴露为一个服务。</p>
+
+<p>在 kubernetes 中，Pod 的 IP 地址会随着 Pod 的重启而变化，并不建议直接拿 Pod 的 IP 来交互。那如何来访问这些 Pod 提供的服务呢？使用 Service。Service 为一组 Pod（通过 labels 来选择）提供一个统一的入口，并为它们提供负载均衡和自动服务发现。</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: my-nginx-app
+  labels:
+    name: my-nginx-app
+spec:
+  type: NodePort      #这里代表是NodePort类型的
+  ports:
+  - port: 80          # 这里的端口和clusterIP(10.97.114.36)对应，即10.97.114.36:80,供内部访问。
+    targetPort: 80    # 端口一定要和container暴露出来的端口对应
+    protocol: TCP
+    nodePort: 32143   # 每个Node会开启，此端口供外部调用。
+  selector:
+    app: my-nginx-app
+</code></pre>
+
+<h3 id="7-kubernetes组件">7、Kubernetes组件</h3>
+
+<ul>
+<li>etcd 保存了整个集群的状态；</li>
+<li>apiserver 提供了资源操作的唯一入口，并提供认证、授权、访问控制、API 注册和发现等机制；</li>
+<li>controller manager 负责维护集群的状态，比如故障检测、自动扩展、滚动更新等；</li>
+<li>scheduler 负责资源的调度，按照预定的调度策略将 Pod 调度到相应的机器上；</li>
+<li>kubelet 负责维护容器的生命周期，同时也负责 Volume（CVI）和网络（CNI）的管理；</li>
+<li>Container runtime 负责镜像管理以及 Pod 和容器的真正运行（CRI）；</li>
+<li>kube-proxy 负责为 Service 提供 cluster 内部的服务发现和负载均衡</li>
+</ul>
+
+<h2 id="安装kubernetes-minikube">安装Kubernetes【Minikube】</h2>
+
+<p>minikube为开发或者测试在本地启动一个节点的kubernetes集群，minikube打包了和配置一个linux虚拟机、docker与kubernetes组件。</p>
+
+<p>Kubernetes集群是由Master和Node组成的，Master用于进行集群管理，Node用于运行Pod等workload。而minikube是一个Kubernetes集群的最小集。</p>
+
+<h3 id="1-安装virtualbox">1、安装virtualbox</h3>
+
+<p><a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></p>
+
+<h3 id="2-安装minikube">2、安装minikube</h3>
+
+<pre><code class="language-bash">curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 &amp;&amp; chmod +x minikube &amp;&amp; sudo mv minikube /usr/local/bin/
+</code></pre>
+
+<h3 id="3-启用dashboard-web-console-可选">3、启用dashboard（web console）【可选】</h3>
+
+<pre><code class="language-bash">minikube addons enable dashboard
+</code></pre>
+
+<p>开启dashboard</p>
+
+<h3 id="4-启动minikube">4、启动minikube</h3>
+
+<p>minikube start</p>
+
+<p>start之后可以通过minikube status来查看状态，如果minikube和cluster都是Running，则说明启动成功。</p>
+
+<h3 id="5-查看启动状态">5、查看启动状态</h3>
+
+<p>kubectl get pods</p>
+
+<h2 id="kubectl体验-以一个deployment为例">kubectl体验【以一个Deployment为例】</h2>
+
+<p>kubectl是一个命令行工具，用于向API Server发送指令。</p>
+
+<p>我们以部署、升级、扩缩容一个Deployment、发布一个Service为例体验一下Kubernetes。</p>
+
+<p>命令的通常格式为：</p>
+
+<p>kubectl $operation $object_type(单数or复数) $object_name other params</p>
+
+<ul>
+<li>operation如get,replace,create,expose,delete等。</li>
+<li>object_type是操作的对象类型，如pods,deployments,services</li>
+<li>object_name是对象的name</li>
+<li>后面可以加一些其他参数</li>
+</ul>
+
+<p>kubectl命令表：</p>
+
+<p><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands</a></p>
+
+<p><a href="http://docs.kubernetes.org.cn/490.html">http://docs.kubernetes.org.cn/490.html</a></p>
+
+<p>Deployment的文档：</p>
+
+<p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">https://kubernetes.io/docs/concepts/workloads/controllers/deployment/</a></p>
+
+<p><a href="https://kubernetes.feisky.xyz/he-xin-yuan-li/index-2/deployment">https://kubernetes.feisky.xyz/he-xin-yuan-li/index-2/deployment</a></p>
+
+<h3 id="1-创建一个deployment">1、创建一个Deployment</h3>
+
+<p>可以使用kubectl run来运行，也可以基于现有的yaml文件来create。</p>
+
+<p>kubectl run &ndash;image=nginx:1.7.9 nginx-app &ndash;port=80</p>
+
+<p>或者</p>
+
+<p>kubectl create -f my-nginx-deployment.yaml</p>
+
+<p>my-nginx-deployment是下面这个yaml文件的名称</p>
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-nginx-app
+  template:
+    metadata:
+      labels:
+        app: my-nginx-app
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+</code></pre>
+
+<p>然后可以通过kubectl get pods 来查看创建好了的3个Pod。</p>
+
+<p>Pod的名称是以所属Deployment名称为前缀，后面加上唯一标识。</p>
+
+<p><img src="https://cdn.nlark.com/lark/0/2018/png/115178/1544518231685-e9c0845a-8dad-408e-9c6f-57800a66df01.png" alt="img" /></p>
+
+<p>再通过kubectl get deployments来查看创建好了的deployment。</p>
+
+<p><img src="https://cdn.nlark.com/lark/0/2018/png/115178/1544518292310-4471b767-bc93-4af7-b81c-2382903a7127.png" alt="img" /></p>
+
+<p>这里有4列，分别是：</p>
+
+<ul>
+<li>DESIRED：Pod副本数量的期望值，即Deployment里面定义的replicas</li>
+<li>CURRENT：当前Replicas的值</li>
+<li>UP-TO-DATE：最新版本的Pod的副本梳理，用于指示在滚动升级的过程中，有多少个Pod副本已经成功升级</li>
+<li>AVAILABLE：集群中当前存活的Pod数量</li>
+</ul>
+
+<h3 id="2-删除掉任意一个pod">2、删除掉任意一个Pod</h3>
+
+<p>Deployment自身拥有副本保持机制，会始终将其所管理的Pod数量保持为spec中定义的replicas数量。</p>
+
+<p>kubectl delete pods $pod_name</p>
+
+<p><img src="https://cdn.nlark.com/lark/0/2018/png/115178/1544519374539-04b1078a-0639-49e1-bc25-7a21fb154221.png" alt="img" /></p>
+
+<p>可以看出被删掉的Pod的关闭与代替它的Pod的启动过程。</p>
+
+<h3 id="3-缩扩容">3、缩扩容</h3>
+
+<p>缩扩容有两种实现方式，一种是修改yaml文件，将replicas修改为新的值，然后kubectl replace -f my-nginx-deployment.yaml；</p>
+
+<p>另一种是使用scale命令：kubectl scale deployment $deployment_name &ndash;replicas=5</p>
+
+<p><img src="https://cdn.nlark.com/lark/0/2018/png/115178/1544519680442-8e70970a-0a83-4bdf-b936-61004a0866b2.png" alt="img" /></p>
+
+<h3 id="4-更新">4、更新</h3>
+
+<p>更新也是有两种实现方式，Kubernetes的升级可以实现无缝升级，即不需要进行停机。</p>
+
+<p>一种是rolling-update方式，重建Pod，edit/replace/set image等均可以实现。比如说我们可以修改yaml文件，然后kubectl replace -f my-nginx-deployment.yaml，也可以kubectl set image $resource_type/$resource_name $container_name=nginx:1.9.1</p>
+
+<p>另一种是patch方式，patch不会去重建Pod，Pod的IP可以保持。</p>
+
+<p><img src="https://cdn.nlark.com/lark/0/2018/png/115178/1544520068001-1586cdc2-4327-466b-b25c-fa9ccbd03cb2.png" alt="img" /></p>
+
+<p>kubectl get pods -o yaml可以以yaml的格式来查看Pod</p>
+
+<p><img src="https://cdn.nlark.com/lark/0/2018/png/115178/1544520388837-726a9f6c-6f5d-4c74-906d-dbd2ad68c622.png" alt="img" /></p>
+
+<p>这里可以看出容器的版本已经被更新到了1.9.1。</p>
+
+<h3 id="5-暴露服务">5、暴露服务</h3>
+
+<p>暴露服务也有两种实现方式，一种是通过kubectl create -f my-nginx-service.yaml可以创建一个服务：</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: my-nginx-app
+  labels:
+    name: my-nginx-app
+spec:
+  type: NodePort      #这里代表是NodePort类型的
+  ports:
+  - port: 80          # 这里的端口和clusterIP(10.97.114.36)对应，即10.97.114.36:80,供内部访问。
+    targetPort: 80    # 端口一定要和container暴露出来的端口对应
+    protocol: TCP
+    nodePort: 32143   # 每个Node会开启，此端口供外部调用。
+  selector:
+    app: my-nginx-app
+</code></pre>
+
+<p>ports中有三个端口，第一个port是Pod供内部访问暴露的端口，第二个targetPort是Pod的Container中配置的containerPort，第三个nodePort是供外部调用的端口。</p>
+
+<p>另一种是通过kubectl expose命令实现。</p>
+
+<p>minikube ip返回的就是minikube所管理的Kubernetes集群所在的虚拟机ip。</p>
+
+<p>minikube service my-nginx-app &ndash;url也可以返回指定service的访问URL。</p>
+
+<p><img src="https://cdn.nlark.com/lark/0/2018/png/115178/1544521261245-863cc212-ad6d-4b46-ab6d-ea9f4baa9b93.png" alt="img" /></p>
+
+<h2 id="crd-customresourcedefinition">CRD【CustomResourceDefinition】</h2>
+
+<p>CRD是Kubernetes为提高可扩展性，让开发者去自定义资源（如Deployment，StatefulSet等）的一种方法。</p>
+
+<p>Operator=CRD+Controller。</p>
+
+<p>CRD仅仅是资源的定义，而Controller可以去监听CRD的CRUD事件来添加自定义业务逻辑。</p>
+
+<p>关于CRD有一些链接先贴出来：</p>
+
+<ul>
+<li>官方文档：<a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/">https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/</a></li>
+<li>CRD Yaml的Schema：<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#customresourcedefinition-v1beta1-apiextensions-k8s-io">https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#customresourcedefinition-v1beta1-apiextensions-k8s-io</a></li>
+<li><a href="https://kubernetes.feisky.xyz/cha-jian-kuo-zhan/api/customresourcedefinition">https://kubernetes.feisky.xyz/cha-jian-kuo-zhan/api/customresourcedefinition</a></li>
+<li><a href="https://sq.163yun.com/blog/article/174980128954048512">https://sq.163yun.com/blog/article/174980128954048512</a></li>
+<li><a href="https://book.kubebuilder.io/">https://book.kubebuilder.io/</a></li>
+</ul>
+
+<p>如果说只是对CRD实例进行CRUD的话，不需要Controller也是可以实现的，只是只有数据，没有针对数据的操作。</p>
+
+<p>一个CRD的yaml文件示例：</p>
+
+<pre><code class="language-yaml">apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  # name must match the spec fields below, and be in the form: &lt;plural&gt;.&lt;group&gt;
+  name: crontabs.stable.example.com
+spec:
+  # group name to use for REST API: /apis/&lt;group&gt;/&lt;version&gt;
+  group: stable.example.com
+  # list of versions supported by this CustomResourceDefinition
+  version: v1beta1
+  # either Namespaced or Cluster
+  scope: Namespaced
+  names:
+    # plural name to be used in the URL: /apis/&lt;group&gt;/&lt;version&gt;/&lt;plural&gt;
+    plural: crontabs
+    # singular name to be used as an alias on the CLI and for display
+    singular: crontab
+    # kind is normally the CamelCased singular type. Your resource manifests use this.
+    kind: CronTab
+    # shortNames allow shorter string to match your resource on the CLI
+    shortNames:
+    - ct
+</code></pre>
+
+<p>通过kubectl create -f crd.yaml可以创建一个CRD。</p>
+
+<p>kubectl get CustomResourceDeinitions可以获取创建的所有CRD。</p>
+
+<p><img src="https://cdn.nlark.com/lark/0/2018/png/115178/1544523122252-4e86b6d5-679d-4aa9-8846-007b52869184.png" alt="img" /></p>
+
+<p>然后可以通过kubectl create -f my-crontab.yaml可以创建一个CRD的实例：</p>
+
+<pre><code class="language-yaml">apiVersion: &quot;stable.example.com/v1beta1&quot;
+kind: CronTab
+metadata:
+  name: my-new-cron-object
+spec:
+  cronSpec: &quot;* * * * */5&quot;
+  image: my-awesome-cron-image
+</code></pre>
+
+<p><img src="https://cdn.nlark.com/lark/0/2018/png/115178/1544523365960-63cb2113-af95-462b-a0ec-8be2cc4e8b80.png" alt="img" /></p>
+
+<h2 id="controller-fabric8">Controller【Fabric8】</h2>
+
+<p>如何去实现一个Controller呢？</p>
+
+<p>可以使用Go来实现，并且不论是参考资料还是开源支持都非常好，推荐有Go语言基础的优先考虑用<a href="https://github.com/kubernetes/client-go">client-go</a>来作为Kubernetes的客户端，用<a href="https://github.com/kubernetes-sigs/kubebuilder">KubeBuilder</a>来生成骨架代码。一个官方的Controller示例项目是<a href="https://github.com/kubernetes/sample-controller">sample-controller</a>。</p>
+
+<p>对于Java来说，目前Kubernetes的JavaClient有两个，一个是Jasery，另一个是<a href="https://github.com/fabric8io/kubernetes-client">Fabric8</a>。后者要更好用一些，因为对Pod、Deployment都有DSL定义，而且构建对象是以Builder模式做的，写起来比较舒服。</p>
+
+<p>Fabric8的资料目前只有<a href="https://github.com/fabric8io/kubernetes-client">https://github.com/fabric8io/kubernetes-client</a>，注意看目录下的examples。</p>
+
+<p>这些客户端本质上都是通过REST接口来与Kubernetes API Server通信的。</p>
+
+<p>Controller的逻辑其实是很简单的：监听CRD实例（以及关联的资源）的CRUD事件，然后执行相应的业务逻辑</p>
+
+<h2 id="mydeployment">MyDeployment</h2>
+
+<p>基于Fabric8来开发一个较为完整的Controller的示例目前我在网络上是找不到的，下面MyController的实现也是一步步摸索出来的，难免会有各种问题=.=，欢迎大佬们捉虫。</p>
+
+<h3 id="用例">用例</h3>
+
+<p>代码在<a href="http://gitlab.alipay-inc.com/xinjian.sxj/deployment-controller">http://gitlab.alipay-inc.com/xinjian.sxj/deployment-controller</a>。</p>
+
+<p>MyDeployment是用来模拟Kubernetes提供的Deployment的简化版实现，目前可以做到以下功能：</p>
+
+<ul>
+<li>启动后自动创建出一个MyDeployment的CRD
+
+<ul>
+<li>【触发】启动应用</li>
+<li>【期望】可以看到创建出来的CRD</li>
+<li>【测试】kubectl get CustomResourceDefinition -o yaml</li>
+</ul></li>
+<li>创建一个MyDeployment: Nginx实例
+
+<ul>
+<li>【触发】kubectl create -f my-deployment-instance.yaml</li>
+<li>【期望】可以看到级联创建出来的3个pod</li>
+<li>【测试】kubectl get pods</li>
+</ul></li>
+<li>手工删掉一个pod
+
+<ul>
+<li>【触发】kubectl delete pods $pod_name</li>
+<li>【期望】pod被重建</li>
+<li>【测试】kubectl get pods -w</li>
+</ul></li>
+<li>暴露一个服务
+
+<ul>
+<li>【触发】kubectl create -f my-deployment-service.yaml</li>
+<li>【期望】可以通过curl来访问nginx服务</li>
+<li>【测试】minikube service my-nginx-app &ndash;url 然后 curl</li>
+</ul></li>
+<li>更新镜像
+
+<ul>
+<li>【触发】kubectl replace -f my-deployment-instance-update-image-1.9.1.yaml</li>
+<li>【期望】pod的nginx版本被更新为1.9.1</li>
+<li>【测试】kubectl get pods -o yaml</li>
+</ul></li>
+<li>扩容
+
+<ul>
+<li>【触发】kubectl replace -f my-deployment-instance-update-scaleup-1.9.1.yaml</li>
+<li>【期望】pod被扩容到5个</li>
+<li>【测试】kubectl get pods</li>
+</ul></li>
+<li>缩容
+
+<ul>
+<li>【触发】kubectl replace -f my-deployment-instance-update-scaledown-1.9.1.yaml</li>
+<li>【期望】pod被缩容到2个</li>
+<li>【测试】kubectl get pods</li>
+</ul></li>
+<li>扩容并更新镜像
+
+<ul>
+<li>【触发】kubectl replace -f my-deployment-instance-update-image-and-scaleup-1.14.yaml</li>
+<li>【期望】pod被扩容5个，且nginx版本被更新为1.14</li>
+<li>【测试】kubectl get pods 然后 kubectl get pods -o yaml</li>
+</ul></li>
+<li>删除一个MyDeployment
+
+<ul>
+<li>【触发】kubectl delete mydeployments my-nginx-app</li>
+<li>【期望】MyDeployment被删掉，并且关联的pod也被级联删掉</li>
+<li>【测试】kubectl get mydeployments 然后 kubectl get pods</li>
+</ul></li>
+</ul>
+
+<p>此外还有一些功能尚未开发，其中状态是非常重要的，很可惜时间不够没有开发完成：</p>
+
+<ul>
+<li>查看状态(TODO)</li>
+<li>回滚(TODO)</li>
+<li>状态更新【current，update-to-date，available】(TODO)</li>
+<li>describe EVENTS(TODO)</li>
+</ul>
+
+<h3 id="运行">运行</h3>
+
+<p>1、搭建好上面的minikube环境后</p>
+
+<p>2、拉下deployment-controller的代码，是一个SpringBoot工程。</p>
+
+<p>3、启动kube-proxy</p>
+
+<p>kubectl proxy &ndash;port=12000</p>
+
+<p>这一步是为了绕开Kubernetes API Server的权限认证。开启proxy之后就可以通过localhost:12000来连接Kubernetes了。</p>
+
+<p>4、运行DeploymentControllerApplication的main方法即可。</p>
+
+<p>5、此时可以根据上述用例来进行测试。</p>
+
+<h2 id="mydeployment实现">MyDeployment实现</h2>
+
+<h3 id="项目工程结构">项目工程结构</h3>
+
+<p><img src="https://cdn.nlark.com/lark/0/2018/png/115178/1544529272311-c8aa028d-52ac-4cd9-800e-c6dcb5e5331e.png" alt="img" /></p>
+
+<h3 id="crd定义">CRD定义</h3>
+
+<p>按照Fabric8的逻辑，定义一个CRD需要至少定义以下内容：</p>
+
+<ul>
+<li>CustomResourceDefinition，需要继承CustomResource，CRD资源定义</li>
+<li>CustomResourceDefinitionList，需要继承CustomResourceList，CRD资源列表</li>
+<li>CustomResourceDefinitionSpec，需要实现KubernetesResource接口，CRD资源的Spec</li>
+<li>DoneableCustomResourceDefinition，需要继承CustomResourceDoneable，CRD资源的修改Builder</li>
+<li>【可选】CustomResourceDefinitionStatus（需要说明一点的是，CRD支持使用SubResource，包括scale和status，在1.11+之后可以直接使用，在1.10中需要修改API Server的启动参数来启用；minikube的最新版本是可以支持到Kubernetes的1.10的）</li>
+</ul>
+
+<p>在CRD定义中通常是需要持有一个Spec的【注意，上面提到的所有类定义持有的成员变量最好都加一个@JsonProperty注解，不加的话在get资源时对JSON反序列化时用到的名字就是属性名了】</p>
+
+<p>下面是基于Fabric8的API构建出了一个CRD，之后可以调用API将其创建到Kubernetes，效果和kubectl create -f 是一样的。</p>
+
+<p>但Controller需要做到的是启动时自动创建一个CRD出来，所以用kubectl创建不够自动化。</p>
+
+<pre><code class="language-go">public static final String CRD_GROUP = &quot;cloud.alipay.com&quot;;
+public static final String CRD_SINGULAR_NAME = &quot;mydeployment&quot;;
+public static final String CRD_PLURAL_NAME = &quot;mydeployments&quot;;
+public static final String CRD_NAME = CRD_PLURAL_NAME + &quot;.&quot; + CRD_GROUP;
+public static final String CRD_KIND = &quot;MyDeployment&quot;;
+public static final String CRD_SCOPE = &quot;Namespaced&quot;;
+public static final String CRD_SHORT_NAME = &quot;md&quot;;
+public static final String CRD_VERSION = &quot;v1beta1&quot;;
+public static final String CRD_API_VERSION = &quot;apiextensions.k8s.io/&quot; + CRD_VERSION;    
+
+public static CustomResourceDefinition MY_DEPLOYMENT_CRD = new CustomResourceDefinitionBuilder()
+            .withApiVersion(CRD_API_VERSION)
+            .withNewMetadata()
+            .withName(CRD_NAME)
+            .endMetadata()
+
+            .withNewSpec()
+            .withGroup(CRD_GROUP)
+            .withVersion(CRD_VERSION)
+            .withScope(CRD_SCOPE)
+            .withNewNames()
+            .withKind(CRD_KIND)
+            .withShortNames(CRD_SHORT_NAME)
+            .withSingular(CRD_SINGULAR_NAME)
+            .withPlural(CRD_PLURAL_NAME)
+            .endNames()
+            .endSpec()
+
+            .withNewStatus()
+            .withNewAcceptedNames()
+            .addToShortNames(new String[]{&quot;availableReplicas&quot;, &quot;replicas&quot;, &quot;updatedReplicas&quot;})
+            .endAcceptedNames()
+            .endStatus()
+            .build();
+</code></pre>
+
+<h3 id="controller">Controller</h3>
+
+<p>入口处需要去为我们的CRD注册一个反序列化器。</p>
+
+<p>入口处</p>
+
+<pre><code class="language-go">static {
+    KubernetesDeserializer.registerCustomKind(MyDeployment.CRD_GROUP + &quot;/&quot; + MyDeployment.CRD_VERSION, MyDeployment.CRD_KIND, MyDeployment.class);
+}
+
+/**
+ * 入口
+ */
+public void run() {
+    // 创建CRD
+    CustomResourceDefinition myDeploymentCrd = createCrdIfNotExists();
+    // 监听Pod的事件
+    watchPod();
+    // 监听MyDeployment的事件
+    watchMyDeployment(myDeploymentCrd);
+}
+</code></pre>
+
+<p>watchPod是监听MyDeployment所管理的Pod的CRUD事件。</p>
+
+<pre><code class="language-go">private void watchPod() {
+    delegate.client().pods().watch(new Watcher&lt;Pod&gt;() {
+        @Override
+        public void eventReceived(Action action, Pod pod) {
+            // 如果是被MyDeployment管理的Pod
+            if(pod.getMetadata().getOwnerReferences().stream().anyMatch(ownerReference -&gt; ownerReference.getKind().equals(MyDeployment.CRD_KIND))) {
+                unifiedPodWatcher.eventReceived(action, pod);
+            }
+        }
+
+        @Override
+        public void onClose(KubernetesClientException e) {
+            log.error(&quot;watching pod {} caught an exception {}&quot;, e);
+        }
+    });
+}
+</code></pre>
+
+<p>UnifiedPodWatcher是处理了所有Pod的事件，然后在收到事件时去通知Pod事件的订阅者，这里用到了一个观察者模式。</p>
+
+<pre><code class="language-go">@Component
+public class UnifiedPodWatcher {
+    @Autowired
+    private List&lt;PodAddedWatcher&gt; podAddedWatchers;
+    @Autowired
+    private List&lt;PodModifiedWatcher&gt; podModifiedWatchers;
+    @Autowired
+    private List&lt;PodDeletedWatcher&gt; podDeletedWatchers;
+
+    /**
+     * 将Pod事件统一收到此处
+     * @param action
+     * @param pod
+     */
+    public void eventReceived(Watcher.Action action, Pod pod) {
+        log.info(&quot;Thread {}: PodWatcher: {} =&gt;  {}, {}&quot;, Thread.currentThread().getId(), action, pod.getMetadata().getName(), pod);
+        switch (action) {
+            case ADDED:
+                podAddedWatchers.forEach(watcher -&gt; watcher.onPodAdded(pod));
+                break;
+            case MODIFIED:
+                podModifiedWatchers.forEach(watcher -&gt; watcher.onPodModified(pod));
+                break;
+            case DELETED:
+                podDeletedWatchers.forEach(watcher -&gt; watcher.onPodDeleted(pod));
+                break;
+            default:
+                break;
+        }
+    }
+}
+</code></pre>
+
+<p>Fabric8的watcher是在代码层面不会限制在多个地方去监听同一个对象的，但经粗略测试，多处监听只有在第一个地方会收到回调；从可维护性角度来说，散落在各个地方的watcher代码也是不够优雅的。所以将watcher统一收口到一个地方，然后在这个地方下发事件。</p>
+
+<p>然后MyDeployment的监听也是比较类似的：</p>
+
+<pre><code class="language-go">private void watchMyDeployment(CustomResourceDefinition myDeploymentCrd) {
+    MixedOperation&lt;MyDeployment, MyDeploymentList, DoneableMyDeployment, Resource&lt;MyDeployment, DoneableMyDeployment&gt;&gt; myDeploymentClient = delegate.client().customResources(myDeploymentCrd, MyDeployment.class, MyDeploymentList.class, DoneableMyDeployment.class);
+    myDeploymentClient.watch(new Watcher&lt;MyDeployment&gt;() {
+        @Override
+        public void eventReceived(Action action, MyDeployment myDeployment) {
+            log.info(&quot;myDeployment: {} =&gt; {}&quot; , action , myDeployment);
+            if(myDeploymentHandlers.containsKey(MyDeploymentActionHandler.RESOURCE_NAME + action.name())) {
+                myDeploymentHandlers.get(MyDeploymentActionHandler.RESOURCE_NAME + action.name()).handle(myDeployment);
+            }
+        }
+
+        @Override
+        public void onClose(KubernetesClientException e) {
+            log.error(&quot;watching myDeployment {} caught an exception {}&quot;, e);
+        }
+    });
+}
+</code></pre>
+
+<h3 id="创建mydeployment的实现逻辑">创建MyDeployment的实现逻辑</h3>
+
+<p>创建MyDeployment时会创建出replicas个Pod出来。此处逻辑在MyDeploymentAddedHandler实现。</p>
+
+<pre><code class="language-go">@Component(value = MyDeploymentActionHandler.RESOURCE_NAME + CrdAction.ADDED)
+@Slf4j
+public class MyDeploymentAddedHandler implements MyDeploymentActionHandler {
+    @Autowired
+    private KubeClientDelegate delegate;
+
+    @Override
+    public void handle(MyDeployment myDeployment) {
+        log.info(&quot;{} added&quot;, myDeployment.getMetadata().getName());
+        // TODO 当第一次启动项目时，现存的MyDeployment会回调一次Added事件，这里会导致重复创建pod【可通过status解决】,目前解法是去查一下现存的pod[不可靠]
+        // 有可能pod的状态还没来得及置为not ready
+        int existedReadyPodNumber = delegate.client().pods().inNamespace(myDeployment.getMetadata().getNamespace()).withLabelSelector(myDeployment.getSpec().getLabelSelector()).list().getItems()
+                .stream().filter(UnifiedPodWatcher::isPodReady).collect(Collectors.toList()).size();
+        Integer replicas = myDeployment.getSpec().getReplicas();
+        for (int i = 0; i &lt; replicas - existedReadyPodNumber; i++) {
+            Pod pod = myDeployment.createPod();
+            log.info(&quot;Thread {}:creating pod[{}]: {} , {}&quot;, Thread.currentThread().getId(), i, pod.getMetadata().getName(), pod);
+            delegate.client().pods().create(pod);
+       }
+    }
+}
+</code></pre>
+
+<p>这里需要解释一下为什么创建pod的数量需要减去existedReadyPodNumber。经观察发现，如果现存有CRD实例，然后启动Controller，会立即收到CRD的added事件，即使Pod都是健康的，这会导致创建出双倍的Pod。所以这里需要判断一下现存的Pod数量，如果够了，就不去创建了。</p>
+
+<p>但是这又会引入一个问题，假如我将MyDeployment删掉了，此时会级联删除关联的Pod，在没来得及删掉之前，又去创建一个新的MyDeployment，这时候会发现现存的Pod数量并非为0，所以新建的Pod数量就不能达到replicas。解决办法是去判断一下Pod的状态，如果是NotReady，那么就不算是正常的Pod。</p>
+
+<p>但这种解决思路还是有问题，在删掉MyDeployment之后不会立即将Pod状态置为NotReady，需要一定时间，在这段时间内如果创建MyDeployment，那么还是有可能会出现少创建Pod的情况。</p>
+
+<p>目前还没有什么无BUG的思路。</p>
+
+<p>创建一个Pod的实现，将这段代码放到了MyDeployment中，以表示从属关系（代码也好写一些）。</p>
+
+<p>如果Pod是从属于某个MyDeployment，那么我们应该将OwnerReference传入；</p>
+
+<p>Pod的name必须以MyDeployment的name为前缀，后面加上唯一ID；</p>
+
+<p>Pod的spec必须与MyDeployment的spec中的pod template一致；</p>
+
+<p>Pod的labels中包含MyDeployment的label，并且要加上一个pod-template哈希值，以在更新资源时判断pod template是否改变，如果没有变化，则不触发modified事件。</p>
+
+<blockquote>
+<p><strong>Note:</strong> A Deployment’s rollout is triggered if and only if the Deployment’s pod template (that is, <code>.spec.template</code>) is changed, for example if the labels or container images of the template are updated. Other updates, such as scaling the Deployment, do not trigger a rollout.</p>
+</blockquote>
+
+<pre><code class="language-go">public Pod createPod() {
+    int hashCode = this.getSpec().getPodTemplateSpec().hashCode();
+    Pod pod = new PodBuilder()
+            .withNewMetadata()
+            .withLabels(this.getSpec().getLabelSelector().getMatchLabels())
+            .addToLabels(&quot;pod-template-hash&quot;, String.valueOf(hashCode &gt; 0 ? hashCode : -hashCode))
+            .withName(this.getMetadata().getName()
+                    .concat(&quot;-&quot;)
+                    .concat(UUID.randomUUID().toString()))
+            .withNamespace(this.getMetadata().getNamespace())
+            .withOwnerReferences(
+                    new OwnerReferenceBuilder()
+                            .withApiVersion(this.getApiVersion())
+                            .withController(Boolean.TRUE)
+                            .withBlockOwnerDeletion(Boolean.TRUE)
+                            .withKind(this.getKind())
+                            .withName(this.getMetadata().getName())
+                            .withUid(this.getMetadata().getUid())
+                            .build()
+            )
+            .withUid(UUID.randomUUID().toString())
+            .endMetadata()
+            .withSpec(this.getSpec().getPodTemplateSpec().getSpec())
+            .build();
+    return pod;
+}
+</code></pre>
+
+<h3 id="更新mydeployment的实现逻辑">更新MyDeployment的实现逻辑</h3>
+
+<p>更新时主要考虑了两种情况：缩扩容和更新镜像。</p>
+
+<p>通过判断目前Pod数量和MyDeployment中spec的replicas中是否相同来判断是否需要缩扩容。</p>
+
+<p>通过判断是否存在Pod与MyDeployment的container列表是否相同来判断是否需要更新镜像。</p>
+
+<p>如果仅需要更新镜像，则进行rolling-update；</p>
+
+<p>如果仅需要缩扩容，则进行scale；</p>
+
+<p>如果都需要，则先对剩余Pod进行rolling-update，再对缩扩容的Pod进行缩扩容。</p>
+
+<p>rolling-update是滚动升级，一种简单的实现是先扩容一个Pod（新的镜像），再缩容一个Pod（老的镜像），如此反复，直到全部都是新的镜像为止。</p>
+
+<pre><code class="language-go">public void handle(MyDeployment myDeployment) {
+        log.info(&quot;{} modified&quot;, myDeployment.getMetadata().getName());
+        PodList pods = delegate.client().pods().inNamespace(myDeployment.getMetadata().getNamespace()).withLabelSelector(myDeployment.getSpec().getLabelSelector()).list();
+        int podSize = pods.getItems().size();
+        int replicas = myDeployment.getSpec().getReplicas();
+        boolean needScale = podSize != replicas;
+        boolean needUpdate = pods.getItems().stream().anyMatch(pod -&gt; {
+            return myDeployment.isPodTemplateChanged(pod);
+        });
+        log.info(&quot;needScale: {}&quot;, needScale);
+        log.info(&quot;needUpdate: {}&quot;, needUpdate);
+        // 仅更新podTemplate
+        if (!needScale) {
+            syncRollingUpdate(myDeployment, pods.getItems());
+        } else if (!needUpdate) {
+            // 仅扩缩容
+            int diff = replicas - podSize;
+            if (diff &gt; 0) {
+                scaleUp(myDeployment, diff);
+            } else {
+                // 把列表前面的缩容，后面的不动
+                scaleDown(pods.getItems().subList(0, -diff));
+            }
+        } else {
+            // 同时scale&amp;update
+            // 对剩余部分做rolling-update，然后对diff进行缩扩容
+            syncRollingUpdate(myDeployment, pods.getItems().subList(0, Math.min(podSize, replicas)));
+            int diff = replicas - podSize;
+            if (diff &gt; 0) {
+                scaleUp(myDeployment, diff);
+            } else {
+                scaleDown(pods.getItems().subList(replicas, podSize));
+            }
+        }
+    }
+</code></pre>
+
+<p>值得注意的一点是，所有CRUD的APi均为REST调用，是Kubernetes API Server将对象的期望状态写入到ETCD中，然后由kubelet监听事件，去执行变更。</p>
+
+<p>这一点在rolling-update过程中要格外注意，”先扩容，后缩容“中后缩容的前提是扩容成功，即新的Pod创建成功，且状态变为Ready。所以仅仅调用一下create接口是不够的，需要等待直至Ready；删除同理。</p>
+
+<pre><code class="language-go">private void syncRollingUpdate(MyDeployment myDeployment, List&lt;Pod&gt; pods) {
+    pods.forEach(oldPod -&gt; {
+        Pod newPod = myDeployment.createPod();
+        log.info(&quot;Thread {}: pod {} is creating&quot;, Thread.currentThread().getId(), newPod.getMetadata().getName());
+        delegate.createPodAndWait(newPod, myDeployment);
+        log.info(&quot;Thread {}: pod {} is deleting&quot;, Thread.currentThread().getId(), oldPod.getMetadata().getName());
+        delegate.deletePodAndWait(oldPod);
+    });
+}
+</code></pre>
+
+<pre><code class="language-go">public void createPodAndWait(Pod pod, MyDeployment myDeployment) {
+    client.pods().create(pod);
+    CountDownLatch latch = new CountDownLatch(1);
+    modifiedPodLatchMap.put(pod.getMetadata().getUid(), latch);
+    try {
+        latch.await(TIME_OUT, TimeUnit.SECONDS);
+    } catch (InterruptedException e) {
+       log.error(&quot;{}&quot;, e);
+    }
+    log.info(&quot;createPodAndWait wait finished successfully!&quot;);
+}
+</code></pre>
+
+<p>这里是await阻塞等待，当前类也实现了PodModifiedWatcher接口，countDown是在Pod状态变更时触发。</p>
+
+<p>当Pod被创建后，往往会触发两个事件，第一个是Added，状态是NotReady，第二个是Modified，状态是Ready。这里我们检测到新增的Pod正常运行后，去唤醒执行rolling-update的线程，以实现createPodAndwait的效果。</p>
+
+<pre><code class="language-go">@Override
+public void onPodModified(Pod pod) {
+    if (UnifiedPodWatcher.isPodReady(pod)) {
+        CountDownLatch latch = modifiedPodLatchMap.remove(pod.getMetadata().getUid());
+        if(latch != null) {
+            latch.countDown();
+        }
+    }
+}
+</code></pre>
+
+<p>缩扩容的逻辑比较简单，不需要做等待。</p>
+
+<pre><code class="language-go">/**
+ * @param myDeployment
+ * @param count        扩容的pod数量
+ */
+private void scaleUp(MyDeployment myDeployment, int count) {
+    for (int i = 0; i &lt; count; i++) {
+        Pod pod = myDeployment.createPod();
+        log.info(&quot;scale up pod[{}]: {} , {}&quot;, i, pod.getMetadata().getName(), pod);
+        delegate.client().pods().create(pod);
+    }
+}
+
+/**
+ * @param pods 待删掉的pod列表
+ */
+private void scaleDown(List&lt;Pod&gt; pods) {
+    for (int i = 0; i &lt; pods.size(); i++) {
+        Pod pod = pods.get(i);
+        log.info(&quot;scale down pod[{}]: {} , {}&quot;, i, pod.getMetadata().getName(), pod);
+        delegate.client().pods().delete(pod);
+    }
+}
+</code></pre>
+
+<h3 id="删除mydeployment的实现逻辑">删除MyDeployment的实现逻辑</h3>
+
+<p>其实就是没有逻辑=.=</p>
+
+<p>Kubernetes的逻辑是删掉了一个资源时，如果其他资源的Metadata中的ownerReference中引用该资源，那么这些资源会被级联删除，这个行为是可以配置的，并且默认为true。</p>
+
+<p>所以我们不需要在此处做任何事情。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/" data-toggle="tooltip" data-placement="top" title="使用Envoy和Jaeger实现分布式追踪">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/"><i class="fa fa-link"></i>如何将云原生工作负载映射到Kubernetes中的控制器</a></li>
+         
+        <li><a href="/blog/myth-cloud-native-portability/"><i class="fa fa-link"></i>云原生可移植性的神话</a></li>
+         
+        <li><a href="/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/"><i class="fa fa-link"></i>教程|使用Istio在Kubernetes集群中实现金丝雀部署</a></li>
+         
+        <li><a href="/blog/hands-on-canary-deployments-with-istio-and-kubernetes/"><i class="fa fa-link"></i>教程|使用Istio实现一个Service Mesh以简化微服务间的通信模式</a></li>
+         
+        <li><a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/"><i class="fa fa-link"></i>基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (14)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (1)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (4)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (1)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (15)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (10)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (86)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/kubernetes-crd-quick-start/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fy3tna8klcj31400u0e84.jpg" class="img-responsive" alt="如何从零开始编写一个Kubernetes CRD">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/kubernetes-crd-quick-start/">如何从零开始编写一个Kubernetes CRD</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/distributed-tracing-with-envoy-service-mesh-jaeger/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fy2sj83h8jj313z0u0u10.jpg" class="img-responsive" alt="使用Envoy和Jaeger实现分布式追踪">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/distributed-tracing-with-envoy-service-mesh-jaeger/">使用Envoy和Jaeger实现分布式追踪</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fy1zsehjgtj313z0u04qs.jpg" class="img-responsive" alt="构建无缝集成的gRPC-Web和Istio的云原生应用教程">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/">构建无缝集成的gRPC-Web和Istio的云原生应用教程</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
