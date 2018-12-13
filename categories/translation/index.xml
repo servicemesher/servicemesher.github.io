@@ -269,7 +269,7 @@
       <pubDate>Fri, 28 Sep 2018 19:07:20 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-xds-protocol/</guid>
-      <description>Envoy 通过查询文件或管理服务器来动态发现资源。概括地讲，对应的发现服务及其相应的 API 被称作 _xDS_。Envoy 通过订阅（_subscriptio</description>
+      <description>Envoy 通过查询文件或管理服务器来动态发现资源。概括地讲，对应的发现服务及其相应的 API 被称作 xDS 。Envoy 通过订阅（ subscription ）方式来获取资源，如监控指定路</description>
     </item>
     
     <item>

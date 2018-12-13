@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Service Mesh深度学习系列part1—istio源码分析之pilot-agent模块分析 · ServiceMesher|服务网格中文社区</title>
+  <title>Service Mesh深度学习系列part1—istio源码分析之pilot-agent模块分析 · Service Mesh|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
@@ -487,7 +487,7 @@ Router type is used for standalone proxies acting as L7/L4 routers</li>
 
 <h3 id="证书文件">证书文件</h3>
 
-<p>agent会监控chainfile，keyfile和rootcert三个证书文件的变化，如果是Ingress工作模式，则还会加入ingresscert,ingress key这2个证书文件</p>
+<p>agent会监控chainfile，keyfile和rootcert三个证书文件的变化，如果是Ingress工作模式，则还会加入ingresscert、ingress key这两个证书文件。</p>
 
 <h2 id="pilot-agent主要功能分析之二-envoy监控与管理">pilot-agent主要功能分析之二：envoy监控与管理</h2>
 
@@ -560,7 +560,7 @@ terminate方法比较简单，向所有的envoy进程的abortCh发出errAbort消
 <p>代码注释原文：Hot restarts are performed by launching a new proxy process with a strictly incremented restart epoch. It is up to the proxy to ensure that older epochs gracefully shutdown and carry over all the necessary state to the latest epoch.  The agent does not terminate older epochs.</p>
 </blockquote>
 
-<p>而为了触发这种hot restart的机制，让新envoy进程替换之前所有的envoy进程，新启动的envoy进程的epoch序列号必须比之前所有envoy进程的最大epoch序列号大1</p>
+<p>而为了触发这种hot restart的机制，让新envoy进程替换之前所有的envoy进程，新启动的envoy进程的epoch序列号必须比之前所有envoy进程的最大epoch序列号大1。</p>
 
 <blockquote>
 <p>代码注释原文：The restart protocol matches Envoy semantics for restart epochs: to successfully launch a new Envoy process that will replace the running Envoy processes, the restart epoch of the new process must be exactly 1 greater than the highest restart epoch of the currently running Envoy processes.</p>
@@ -1026,7 +1026,7 @@ terminate方法比较简单，向所有的envoy进程的abortCh发出errAbort消
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、加强行业内部交流、促进开源文化构建、推动Service Mesh在企业落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">

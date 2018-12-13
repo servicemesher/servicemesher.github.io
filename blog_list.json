@@ -1434,7 +1434,7 @@
       "translation"
     ],
     "date": "2018-09-28T19:07:20+08:00",
-    "fuzzywordcount": 4500,
+    "fuzzywordcount": 4400,
     "keywords": [
       "service mesh",
       "服务网格",
@@ -1458,7 +1458,7 @@
     "translator": "狄卫华",
     "url": "/blog/envoy-xds-protocol/",
     "weight": 0,
-    "wordcount": 4409
+    "wordcount": 4392
   },
   {
     "author": "Eric Lee & Ian Morgan",
@@ -2661,7 +2661,7 @@
     "translator": null,
     "url": "/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/",
     "weight": 0,
-    "wordcount": 10975
+    "wordcount": 10988
   },
   {
     "author": "Zach Jory",
@@ -2991,7 +2991,7 @@
     "translator": null,
     "url": "/blog/istio-service-mesh-source-code-pilot-agent-deepin/",
     "weight": 0,
-    "wordcount": 9155
+    "wordcount": 9157
   },
   {
     "author": "Jasmine Jaksic",
