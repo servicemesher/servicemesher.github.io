@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>从百家争鸣的微服务生态到服务网格</title>
+      <link>http://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</link>
+      <pubDate>Thu, 13 Dec 2018 19:23:09 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</guid>
+      <description>在过去几年中，我们注意到应用程序架构正在迅速转变为分布式微服务架构——单体和庞大的应用程序被分解为更小的单个服务，其可被独立修改、构建、部署</description>
+    </item>
+    
+    <item>
       <title>如何从零开始编写一个Kubernetes CRD</title>
       <link>http://www.servicemesher.com/blog/kubernetes-crd-quick-start/</link>
       <pubDate>Wed, 12 Dec 2018 11:39:01 +0800</pubDate>

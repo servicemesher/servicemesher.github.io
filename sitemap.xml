@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</loc>
+    <lastmod>2018-12-13T19:23:09+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/kubernetes-crd-quick-start/</loc>
     <lastmod>2018-12-12T11:39:01+08:00</lastmod>
   </url>
@@ -1116,7 +1121,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/microservices/</loc>
-    <lastmod>2018-11-08T15:20:46+08:00</lastmod>
+    <lastmod>2018-12-13T19:23:09+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1236,7 +1241,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2018-12-04T17:32:44+08:00</lastmod>
+    <lastmod>2018-12-13T19:23:09+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1248,7 +1253,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-12-12T11:39:01+08:00</lastmod>
+    <lastmod>2018-12-13T19:23:09+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1320,7 +1325,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-12-11T14:24:23+08:00</lastmod>
+    <lastmod>2018-12-13T19:23:09+08:00</lastmod>
     <priority>0</priority>
   </url>
   

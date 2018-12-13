@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 12 Dec 2018 11:39:01 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Dec 2018 19:23:09 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>从百家争鸣的微服务生态到服务网格</title>
+      <link>http://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</link>
+      <pubDate>Thu, 13 Dec 2018 19:23:09 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</guid>
+      <description>在过去几年中，我们注意到应用程序架构正在迅速转变为分布式微服务架构——单体和庞大的应用程序被分解为更小的单个服务，其可被独立修改、构建、部署</description>
+    </item>
     
     <item>
       <title>如何从零开始编写一个Kubernetes CRD</title>
@@ -1304,7 +1313,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 马若飞 7 陈冬 5 戴佳顺 5 王帅俭 4 王全根 4 崔秀龙 4 李昕阳 3 詹叶 2 狄卫华 2 杨</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 马若飞 7 陈冬 5 戴佳顺 5 王帅俭 4 王全根 4 崔秀龙 4 狄卫华 3 李昕阳 3 詹叶 2 杨</description>
     </item>
     
   </channel>
