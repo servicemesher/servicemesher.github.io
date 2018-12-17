@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>蚂蚁金服开源的Service Mesh Sidecar代理SOFAMosn发布0.4.0版本</title>
+      <link>http://www.servicemesher.com/blog/sofa-mosn-0.4.0-changelog/</link>
+      <pubDate>Mon, 17 Dec 2018 11:07:07 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/sofa-mosn-0.4.0-changelog/</guid>
+      <description>SOFAMosn几个月前由蚂蚁金服开源，使用Go语言实现，遵循Envoy xDS协议，既可以单独作为网络代理使用，也可以作为Istio/SOF</description>
+    </item>
+    
+    <item>
       <title>微服务生态从百家争鸣阶段演化到服务网格</title>
       <link>http://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</link>
       <pubDate>Thu, 13 Dec 2018 19:23:09 +0800</pubDate>
