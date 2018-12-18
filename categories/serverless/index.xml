@@ -6,10 +6,19 @@
     <description>Recent content in Serverless on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 07 Aug 2018 22:20:49 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 18 Dec 2018 19:43:14 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/serverless/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Serverless 平台 knative 简介</title>
+      <link>http://www.servicemesher.com/blog/knative-serverless-platform/</link>
+      <pubDate>Tue, 18 Dec 2018 19:43:14 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/knative-serverless-platform/</guid>
+      <description>本文作者：吴伟，蚂蚁金服系统部技术专家，本文转载自其博客。 knative 是谷歌开源的 serverless 架构方案，旨在提供一套简单易用的 serverless 方案，把 serverless 标准化。目前参与的公司</description>
+    </item>
     
     <item>
       <title>基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</title>

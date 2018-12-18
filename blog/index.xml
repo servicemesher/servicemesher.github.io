@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>Istio中的服务和流量的抽象模型</title>
+      <link>http://www.servicemesher.com/blog/istio-service-and-traffic-model/</link>
+      <pubDate>Tue, 18 Dec 2018 19:49:56 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-service-and-traffic-model/</guid>
+      <description>本文转载自宋净超的博客。 本文介绍了 Istio 和 Kubernetes 中的一些服务和流量的抽象模型。虽然 Istio 一开始确定的抽象模型与对接的底层平台无关，但目前来看基本绑定 Ku</description>
+    </item>
+    
+    <item>
+      <title>Serverless 平台 knative 简介</title>
+      <link>http://www.servicemesher.com/blog/knative-serverless-platform/</link>
+      <pubDate>Tue, 18 Dec 2018 19:43:14 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/knative-serverless-platform/</guid>
+      <description>本文作者：吴伟，蚂蚁金服系统部技术专家，本文转载自其博客。 knative 是谷歌开源的 serverless 架构方案，旨在提供一套简单易用的 serverless 方案，把 serverless 标准化。目前参与的公司</description>
+    </item>
+    
+    <item>
       <title>蚂蚁金服开源的Service Mesh Sidecar代理SOFAMosn发布0.4.0版本</title>
       <link>http://www.servicemesher.com/blog/sofa-mosn-0.4.0-changelog/</link>
       <pubDate>Mon, 17 Dec 2018 11:07:07 +0800</pubDate>

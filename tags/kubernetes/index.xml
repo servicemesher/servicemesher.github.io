@@ -6,10 +6,19 @@
     <description>Recent content in Kubernetes on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 12 Dec 2018 11:39:01 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 18 Dec 2018 19:49:56 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio中的服务和流量的抽象模型</title>
+      <link>http://www.servicemesher.com/blog/istio-service-and-traffic-model/</link>
+      <pubDate>Tue, 18 Dec 2018 19:49:56 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-service-and-traffic-model/</guid>
+      <description>本文转载自宋净超的博客。 本文介绍了 Istio 和 Kubernetes 中的一些服务和流量的抽象模型。虽然 Istio 一开始确定的抽象模型与对接的底层平台无关，但目前来看基本绑定 Ku</description>
+    </item>
     
     <item>
       <title>如何从零开始编写一个Kubernetes CRD</title>

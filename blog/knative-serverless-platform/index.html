@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Serverless 平台 knative 简介 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格, serverless, knative">
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Serverless 平台 knative 简介" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/knative-serverless-platform//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文是对 Google 开源的 serverless 计算平台 knative 的介绍。">
+  <meta property="og:description" content="本文是对 Google 开源的 serverless 计算平台 knative 的介绍。">
+  <meta name="twitter:description" content="本文是对 Google 开源的 serverless 计算平台 knative 的介绍。">
+  <meta property="og:description" content="本文是对 Google 开源的 serverless 计算平台 knative 的介绍。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Serverless 平台 knative 简介 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Serverless 平台 knative 简介 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Serverless 平台 knative 简介 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Serverless 平台 knative 简介</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2018年12月18日
+                            </i>
+                            |
+                            
+                            作者 <a href="http://cizixs.com/2018/08/25/knative-serverless-platform/">吴伟</a>
+                            
+                            
+                            
+                            |
+                            5800字 | 阅读大约需要12分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            
+                            归档于 <a href="/categories/serverless">serverless</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/knative/"><i>#knative</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/serverless/"><i>#serverless</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<blockquote>
+<p>本文作者：吴伟，蚂蚁金服系统部技术专家，本文转载自其<a href="http://cizixs.com/2018/08/25/knative-serverless-platform/">博客</a>。</p>
+</blockquote>
+
+<p><a href="https://github.com/knative">knative</a> 是谷歌开源的 serverless 架构方案，旨在提供一套简单易用的 serverless 方案，把 serverless 标准化。目前参与的公司主要是 Google、Pivotal、IBM、Red Hat，2018年7月24日才刚刚对外发布，当前还处于快速发展的阶段。</p>
+
+<p>这是 Google Cloud Platform 宣布 knative 时给出的介绍：</p>
+
+<blockquote>
+<p>Developed in close partnership with Pivotal, IBM, Red Hat, and SAP, Knative pushes Kubernetes-based computing forward by providing the building blocks you need to build and deploy modern, container-based serverless applications.</p>
+</blockquote>
+
+<p>可以看出，knative 是为了解决容器为核心的 serverless 应用的构建、部署和运行的问题。</p>
+
+<p>serverless 的概念已经出现蛮久了，为了理解 serverless, 可以从应用开发者的角度来看，使用 serverless 框架之后，应用开发者的整个操作流程就变成了：</p>
+
+<pre><code class="language-bash">~ # 编写 code 和 configuration 文件
+
+~ # faascli build
+~ # faascli deploy
+~ # curl http://myapp.com/hello
+hello, world from Awesome FaaS App!
+</code></pre>
+
+<p>可以看到用户只需要编写代码（或者函数），以及配置文件（如何 build、运行以及访问等声明式信息），然后运行 build 和 deploy 就能把应用自动部署到集群（可以是公有云，也可以是私有的集群）。</p>
+
+<p>其他事情都是 serverless 平台（比如这里的 knative）自动处理的，这些事情包括：</p>
+
+<ul>
+<li>自动完成代码到容器的构建</li>
+<li>把应用（或者函数）和特定的事件进行绑定：当事件发生时，自动触发应用（或者函数）</li>
+<li>网络的路由和流量控制</li>
+<li>应用的自动伸缩</li>
+</ul>
+
+<p>和标准化的 FaaS 不同（只运行特定标准的 Function 代码），knative 期望能够运行所有的 workload : traditional application、function、container。</p>
+
+<p>knative 建立在 kubernetes 和 istio 平台之上，使用 kubernetes 提供的容器管理能力（deployment、replicaset、和 pods等），以及 istio 提供的网络管理功能（ingress、LB、dynamic route等）。</p>
+
+<p><img src="https://i.loli.net/2018/08/25/5b811d40e22bb.png" alt="knative with istio and kubernetes" /></p>
+
+<h2 id="knative-核心概念和原理">knative 核心概念和原理</h2>
+
+<p>为了实现 serverless 应用的管理，knative 把整个系统分成了三个部分：</p>
+
+<ul>
+<li>Build：构建系统，把用户定义的函数和应用 build 成容器镜像</li>
+<li>Serving：服务系统，用来配置应用的路由、升级策略、自动扩缩容等功能</li>
+<li>Eventing：事件系统，用来自动完成事件的绑定和触发</li>
+</ul>
+
+<h3 id="build-构建系统">Build 构建系统</h3>
+
+<p>build 的功能是把用户的代码自动化构建成容器镜像，初次听起来很奇怪，有了 docker 之后有一个 Dockerfile 不就能构建容器了吗？为什么还需要一个新的 Build 系统？</p>
+
+<p>Knative 的特别之处在于两点：一是它的构建完全是在 kubernetes 中进行的，和整个 kubernetes 生态结合更紧密；另外，它旨在提供一个通用的标准化的构建组件，可以作为其他更大系统中的一部分。</p>
+
+<p>正如官方文档中的说的那样，是为了定义标准化、可移植、可重用、性能高效的构建方法：</p>
+
+<blockquote>
+<p>The goal of a Knative build is to provide a standard, portable, reusable, and performance optimized method for defining and running on-cluster container image builds.</p>
+</blockquote>
+
+<p>Knative 提供了 <code>Build</code> CRD 对象，让用户可以通过 yaml 文件定义构建过程。一个典型的 <code>Build</code> 配置文件如下：</p>
+
+<pre><code class="language-yaml">apiVersion: build.knative.dev/v1alpha1
+kind: Build
+metadata:
+  name: example-build
+spec:
+  serviceAccountName: build-auth-example
+  source:
+    git:
+      url: https://github.com/example/build-example.git
+      revision: master
+  steps:
+  - name: ubuntu-example
+    image: ubuntu
+    args: [&quot;ubuntu-build-example&quot;, &quot;SECRETS-example.md&quot;]
+  steps:
+  - image: gcr.io/example-builders/build-example
+    args: ['echo', 'hello-example', 'build']
+</code></pre>
+
+<p>其中，<code>serviceAccountName</code> 是构建过程中需要用到的密码和认证信息（比如连接到 git repo 的 SSH keys、push 镜像到 registry 的用户名和密码等）；
+<code>source</code> 是代码信息，比如这里的 git 地址和分支；<code>steps</code> 是真正运行过程中的各个步骤。
+这个示例中的步骤只是作为 demo，真正的构建过程一般是 pull 代码、 build 镜像和 push镜像到 registry 等逻辑。</p>
+
+<p>因为大部分的构建过程都是一致的，因此 knative 还提供了 <code>Build template</code> 的概念，
+Build template 封装了预先定义好的构建过程（就是封装了上面的 <code>steps</code> 过程），并提供了非常简单的配置参数来使用。</p>
+
+<p>使用 build template 构建容器镜像就更简单了，只需要提供代码的地址和镜像名字即可，比如下面是使用 Google kaniko 模板构建 github 源码的 yaml 文件（需要在代码根目录存在 Dockerfile 文件）：</p>
+
+<pre><code class="language-yaml">apiVersion: build.knative.dev/v1alpha1
+kind: Build
+metadata:
+  name: kaniko-build
+spec:
+  serviceAccountName: build-bot
+  source:
+    git:
+      url: https://github.com/my-user/my-repo
+      revision: master
+  template:
+    name: kaniko
+    arguments:
+    - name: IMAGE
+      value: us.gcr.io/my-project/my-app
+</code></pre>
+
+<h3 id="serving-服务系统">Serving：服务系统</h3>
+
+<p>serving 的核心功能是让应用运行起来提供服务。</p>
+
+<p>虽然听起来很简单，但这里包括了很多的事情：</p>
+
+<ul>
+<li>自动化启动和销毁容器</li>
+<li>根据名字生成网络访问相关的 service、ingress 等对象</li>
+<li>监控应用的请求，并自动扩缩容</li>
+<li>支持蓝绿发布、回滚功能，方便应用发布流程</li>
+</ul>
+
+<p>knative serving 功能是基于 kubernetes 和 istio 开发的，它使用 kubernetes 来管理容器（deployment、pod），istio 来管理网络路由（VirtualService、DestinationRule）。</p>
+
+<p>因为 kubernetes 和 istio 本身的概念非常多，理解和管理起来比较困难，knative 在此之上提供了更高一层的抽象（这些对应是基于 kubernetes 的 CRD 实现的）。这些抽象出来的概念对应的关系如下图：</p>
+
+<p><img src="https://i.loli.net/2018/08/25/5b81211da0309.png" alt="knative serving terminology" /></p>
+
+<ul>
+<li>Configuration：应用的最新配置，也就是应用目前期望的状态，对应了 kubernetes 的容器管理（deployment）。每次应用升级都会更新 configuration，而 knative 也会保留历史版本的记录（图中的 revision），结合流量管理，knative 可以让多个不同的版本共同提供服务，方便蓝绿发布和滚动升级</li>
+<li>Route：应用的路由规则，也就是进来的流量如何访问应用，对应了 istio 的流量管理（VirtualService）</li>
+<li>Service：注意这里不是 kubernetes 中提供服务发现的那个 service，而是 knative 自定义的 CRD，它的全称目前是 <code>services.serving.knative.dev</code> 。单独控制 route 和 configuration 就能实现 serving 的所有功能，但knative 更推荐使用 Service 来管理，因为它会自动帮你管理 route 和 configuration</li>
+</ul>
+
+<p>一个 hello world 的 serving 配置如下所示：</p>
+
+<pre><code class="language-yaml">apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: helloworld-go
+  namespace: default
+spec:
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          container:
+            image: docker.io/{username}/helloworld-go
+            env:
+            - name: TARGET
+              value: &quot;Go Sample v1&quot;
+</code></pre>
+
+<p>看起来和 kubernetes 的 pod 定义非常类似，但是它会帮你管理 deployment、ingress、service discovery、auto scaling……从这个角度来看，可以认为 knative 提供了更高的抽象，自动帮你封装掉了 kubernetes 和 istio 的实现细节。</p>
+
+<p>下面这张图介绍了 knative serving 各组件之间的关系：</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fum2swzqebj31j00to41f.jpg" alt="knative serving architecture" /></p>
+
+<ul>
+<li>可以看到，每个 revision 对应了一组 deployment 管理的 pod</li>
+<li>pod 会自动汇报 metrics 数据到 autoscaler，autoscaler 会根据请求量和资源使用情况修改 deployment 的 replicas 数量，从而实现自动扩缩容。serverless 一个重要的特定是它会 scale to 0 的，也就是当应用没有流量访问时，它会自动销毁所有的 pod</li>
+<li>activator 比较有趣，它是为了处理 scale to 0 而出现的。当某个 revision 后面的 pod 缩容到 0 时，route 的流量会指向 activator，activator 接收到请求之后会自动拉起 pod，然后把流量转发过去</li>
+<li>route 对象对应了 istio 的 DestinationRoute 和 VirtualService，决定了访问应用的流量如何路由</li>
+</ul>
+
+<h3 id="eventing-事件系统">Eventing：事件系统</h3>
+
+<p>serving 系统实现的功能是让应用/函数能够运行起来，并且自动伸缩，那什么时候才会调用应用呢？除了我们熟悉的正常应用调用之外，serverless 最重要的是基于事件的触发机制，也就是说当某件事发生时，就触发某个特定的函数。</p>
+
+<p>事件概念的出现，让函数和具体的调用方能够解耦。函数部署出来不用关心谁会调用它，而事件源触发也不用关心谁会处理它。</p>
+
+<p>Note：目前 serverless 的产品和平台很多，每个地方支持的事件来源以及对事件的定义都是不同的（比如 AWS Lambda 支持很多自己产品的事件源）。Knative 自然也会定义自己的事件类型，除此之外，knative 还联合 CNCF 在做事件标准化的工作，目前的产出是 CloudEvents 这个项目。</p>
+
+<p>为了让整个事件系统更有扩展性和通用性，knative 定义了很多事件相关的概念。我们先来介绍一下：</p>
+
+<ul>
+<li>EventSource：事件源，能够产生事件的外部系统</li>
+<li>Feed：把某种类型的 EventType 和 EventSource 和对应的 Channel 绑定到一起</li>
+<li>Channel：对消息实现的一层抽象，后端可以使用 kafka、RabbitMQ、Google PubSub 作为具体的实现。channel name 类似于消息集群中的 topic，可以用来解耦事件源和函数。事件发生后 sink 到某个 channel 中，然后 channel 中的数据会被后端的函数消费</li>
+<li>Subscription：把 channel 和后端的函数绑定的一起，一个 channel 可以绑定到多个knative service</li>
+</ul>
+
+<p>它们之间的关系流程图如下：</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fum30a10ynj31jm0v2dkq.jpg" alt="knative eventing architecture" /></p>
+
+<p>Bus 是 knative 内部的事件存储层，用户可以选择自己感兴趣的实现，目前支持的方式有：Stub（在内存中实现的简单消息系统）、Kafka、Google PubSub。如果想要事件能够正常运行，必须在 knative 集群中安装其中一个 bus 实现方式。</p>
+
+<p>有了 bus 之后，我们就可以监听外部的事件了。目前支持的事件源有三个：github（比如 merge 事件，push 事件等），kubernetes（events），Google PubSub（消息系统），后面还会不断接入更多的事件源。</p>
+
+<p>如果要想监听对应的事件源，需要在 knative 中部署一个 source adaptor 的 pod，它负责从外部的系统中读取事件。</p>
+
+<p>读取后的事件，会根据用户配置的 Feed 对象（里面包括了事件源和 channel 的对应关系），找到对应的 channel，然后把消息发送到这个 channel 中（channel 的消息最终是存储在后端的 bus 系统里的）。</p>
+
+<p>然后，knative 会根据 subscription 的配置，不断从 channel 中读取事件，然后把事件作为参数调用对应的函数，从而完成了整个事件的流程。</p>
+
+<h2 id="knative-目前的状态">Knative 目前的状态</h2>
+
+<p>knative 是 2018 年 7月才刚刚对外开放，虽然内部已经开发一段时间，但是目前还处于非常早前的阶段（从支持的事件源和 bus就能看出来）。目前代码还不稳定，很多实现都是 hard-coded。</p>
+
+<p>knative 也是脱产于 google 和 CNCF，因此整个社区运行方式和目标与之前的 kubernetes 以及 istio 非常相似。社区根据组件分成多个 Working Group，每个 Group 独立负责自己的功能，所有的开源活动（文档、视频、代码）都是开放的。另外，CloudEvents 作为 knative 依赖的标准，目标也是成为 CRI、CNI、CSI 这种类似的标准。</p>
+
+<p>knative 社区目前非常活跃，以 <code>github.com/knative/serving</code> 项目为例，一个月已经有 600+ star，目前有 60+ contributor，900+ commits，而且入门的文档和教程都已经非常全面。</p>
+
+<h2 id="knative-应用场景和思考">Knative 应用场景和思考</h2>
+
+<p>knative 基于 kubernetes 和 istio 的 serverless 开源实现，目标是提供更高层次的抽象，让开发者无需关注基础设施（虚拟机或者容器，网络配置，容量规划），而专注于业务代码即可。更多关于 knative 的使用场景可以参考 AWS Lambda 或者其他相关的文档，这里不再赘述，主要讲讲 knative 目前的局限性或者问题：</p>
+
+<h3 id="1-性能问题">1. 性能问题</h3>
+
+<p>性能问题一直是 serverless 被人诟病的一点，也是目前它不能广泛用于应用服务上的决定性原因。互联网的应用大多数有高并发、高性能的要求，serverless 整个网络链路很长，容器启停需要额外的时间，还无法满足互联网应用的要求。</p>
+
+<p>针对这一点，很多 serverless 框架也在不断地做改进，比如不断精简容器的启动时间、容器启动之后会做缓存等，比如 nuclio 就宣称自己的平台比 AWS Lambda 要快 10 倍以上。</p>
+
+<p>相信随着 serverless 的不断演进，性能问题会不断优化，至于能不能达到互联网应用的要求，还要时间给我们答案。</p>
+
+<h3 id="2-是否需要-istio-这一层">2. 是否需要 istio 这一层？</h3>
+
+<p>基于 kubernetes 的 serverless 组件非常多，比如 kubeless。但是基于 kubernetes 同时又基于 istio，目前 knative 还是第一个这么做的。</p>
+
+<p>有些人的疑问在于，knative 真的有必要基于 istio 来做吗？对于这个问题，我个人的看法是必要的。</p>
+
+<p>虽然 istio 才刚刚release 1.0 版本，但是它作为集群基础设施通用网络层的地位已经开始显露，相信在未来的发展中接受度会越来越大，并逐渐巩固自己的地位。虽然现阶段来说，很多人并不非常熟悉 istio 的情况，但是从长远角度来看，这一点将是 knative 的一个优势所在。</p>
+
+<p>另外，基于 istio 构建自己的 serverless 服务，也符合目前软件行业不要重复造轮子的思路。istio 在集群的网络管理方面非常优秀（智能路由、负载均衡、蓝绿发布等），基于 istio 来做可以让 knative 不用重复工作就能直接使用 istio 提供的网络通用功能。</p>
+
+<h3 id="3-系统复杂度">3. 系统复杂度</h3>
+
+<p>这一点和上面类似，knative 下面已经有两个非常复杂的平台：kubernetes 和 istio。这两个平台的理解、构建、运维本身就很复杂，如今又加上 knative 整个平台，需要了解的概念都要几十个，更不要提落地过程中会遇到的各种问题。</p>
+
+<p>对于公有云来说，kubernetes 和 istio 这些底层平台可以交给云供应商来维护（比如 google Function），但是对于内部构建来说，这无疑提高了整个技术门槛，对系统管理人员的要求更高。</p>
+
+<p>如何安装部署整个集群？如何对集群做升级？出现问题怎么调试和追踪？怎么更好地和内部的系统对接？这些系统的最佳实践是什么？怎么做性能优化？所有这些问题都需要集群管理人员思考并落实。</p>
+
+<h3 id="4-函数的可运维性">4. 函数的可运维性？</h3>
+
+<p>相对于编写微服务来说，单个函数的复杂度已经非常低，但是当非常多的函数需要共同工作的时候，如何管理这些函数就成了一个必须解决的问题。</p>
+
+<ul>
+<li>如何快速找到某个函数？</li>
+<li>如何知道一个函数的功能是什么？接受的参数是什么？</li>
+<li>怎么保证函数的升级不会破坏原有的功能？升级之后如何回滚？怎么记录函数的历史版本方面追溯？</li>
+<li>当有多个函数需要同时工作的时候，怎么定义它们之间的关系？</li>
+<li>函数出现问题的时候如何调试？</li>
+</ul>
+
+<p>对于函数的运维，一般的 serverless 平台（包括 knative）都提供了 logging、metrics、tracing 三个方面的功能。默认情况下，knative 使用 EFK（Elasticsearch、Fluent、Kibana）来收集、查找和分析日志；使用 prometheus + grafana 来收集和索引、展示 metrics 数据；使用 jaeger 来进行调用关系的 tracing。</p>
+
+<p>针对 serverless 衍生出来的运维工具和平台还不够多，如何调试线上问题还没有看到非常好的解决方案。</p>
+
+<h3 id="5-knative-成熟度">5. knative 成熟度</h3>
+
+<p>最后一点是关于 knative 成熟度的，前面已经提到，knative 目前刚出现不久。虽然整个框架和设计都已经搭好了，但是很多实现都比较初级。这里提几点来说：</p>
+
+<ul>
+<li>为了实现 autoscaling，knative 在每个 pod 中添加一个叫做 queue proxy 的代理，它会自动把请求的 metrics 发送给 autoscaler 组件作为参考。这样一来，整个网络链路上又多了一层，对整个性能势必会有影响，未来的打算是直接使用 envoy sidecar 来替换掉 queue proxy</li>
+<li>支持的事件源和消息系统还很有限，外部事件只支持 github、kubernetes 和 Google PubSub。 这个问题可以慢慢扩展，knative 本身会实现很常用的事件类型，自定义的事件源用户可以自己实现</li>
+<li>目前还没有函数的 pipeline 管理（类似 AWS Lambda Step Functions），多个函数如何协作并没有自己处理。虽然没有在官方文档中看到这方面的 roadmap，但是以后一定会有这方面的功能（不管是 knative 本身来做，还是社区作为工具补充来实现）</li>
+</ul>
+
+<p>这方面的问题都不是大事情，随着 knative 版本的迭代，在很快的时间都能够解决。</p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ul>
+<li>Google Cloud Platform 宣布 Knative 发布的博客文章： <a href="https://cloudplatform.googleblog.com/2018/07/bringing-the-best-of-serverless-to-you.html">Google Cloud Platform Blog: Bringing the best of serverless to you</a></li>
+<li>the Newstack 上非常好的科普文章： <a href="https://thenewstack.io/knative-enables-portable-serverless-platforms-on-kubernetes-for-any-cloud/">Knative Enables Portable Serverless Platforms on Kubernetes, for Any Cloud - The New Stack</a></li>
+<li>Serving 的设计理念：<a href="https://docs.google.com/presentation/d/1CbwVC7W2JaSxRyltU8CS1bIsrIXu1RrZqvnlMlDaaJE/edit#slide=id.g32c674a9d1_0_5">https://docs.google.com/presentation/d/1CbwVC7W2JaSxRyltU8CS1bIsrIXu1RrZqvnlMlDaaJE/edit#slide=id.g32c674a9d1_0_5</a></li>
+<li>knative 官方文档：<a href="https://github.com/knative/docs">GitHub - knative/docs: Documentation for users of Knative components</a></li>
+<li>Google Cloud Next 2018 大会上宣布 knative 的视频 presentation： <a href="https://www.youtube.com/watch?v=LtELzpw1l1M&amp;t=1s&amp;list=PLBgogxgQVM9v0xG0QTFQ5PTbNrj8uGSS-&amp;index=105">Kubernetes, Serverless, and You (Cloud Next ’18) - YouTube</a></li>
+<li><a href="https://cloud.google.com/knative/">Google Cloud Knative 产品页面，目前只有最简单的介绍和文档链接</a></li>
+</ul>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/sofa-mosn-0.4.0-changelog/" data-toggle="tooltip" data-placement="top" title="蚂蚁金服开源的Service Mesh Sidecar代理SOFAMosn发布0.4.0版本">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="http://www.servicemesher.com/blog/istio-service-and-traffic-model/" data-toggle="tooltip" data-placement="top" title="Istio中的服务和流量的抽象模型">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/"><i class="fa fa-link"></i>基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</a></li>
+         
+        <li><a href="/blog/serverless-jenkins-with-jenkins-x/"><i class="fa fa-link"></i>Serverless Jenkins 和 Jenkins X</a></li>
+         
+        <li><a href="/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/"><i class="fa fa-link"></i>使用Istio控制Serverless架构Fn Project中的函数间流量路由</a></li>
+         
+        <li><a href="/blog/sofa-mosn-0.4.0-changelog/"><i class="fa fa-link"></i>蚂蚁金服开源的Service Mesh Sidecar代理SOFAMosn发布0.4.0版本</a></li>
+         
+        <li><a href="/blog/from-fragmented-microservices-ecosystem-to-service-mesh/"><i class="fa fa-link"></i>微服务生态从百家争鸣阶段演化到服务网格</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (15)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (1)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (4)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (2)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (15)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (87)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/istio-service-and-traffic-model/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fyb57k3zhyj31400u0hdw.jpg" class="img-responsive" alt="Istio中的服务和流量的抽象模型">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/istio-service-and-traffic-model/">Istio中的服务和流量的抽象模型</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/knative-serverless-platform/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fyb51imvdpj31420u0hdt.jpg" class="img-responsive" alt="Serverless 平台 knative 简介">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/knative-serverless-platform/">Serverless 平台 knative 简介</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/sofa-mosn-0.4.0-changelog/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fy9khjjni1j313z0u04qq.jpg" class="img-responsive" alt="蚂蚁金服开源的Service Mesh Sidecar代理SOFAMosn发布0.4.0版本">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/sofa-mosn-0.4.0-changelog/">蚂蚁金服开源的Service Mesh Sidecar代理SOFAMosn发布0.4.0版本</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
