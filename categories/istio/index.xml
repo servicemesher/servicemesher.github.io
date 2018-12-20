@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 18 Dec 2018 19:49:56 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 19 Dec 2018 17:55:08 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>拥抱NFV，Istio 1.1 将支持多网络平面</title>
+      <link>http://www.servicemesher.com/blog/multi-network-interfaces-for-istio/</link>
+      <pubDate>Wed, 19 Dec 2018 17:55:08 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/multi-network-interfaces-for-istio/</guid>
+      <description>本文转载自赵化冰的博客。 Istio 1.0版本只支持在单个网络，即Mesh中的服务只能连接在一个网络上。虽然在架构设计上是开放的，但从目前的代码来看，</description>
+    </item>
     
     <item>
       <title>Istio中的服务和流量的抽象模型</title>

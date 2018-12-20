@@ -1,5 +1,68 @@
 [
   {
+    "author": "吴伟",
+    "authorlink": "https://cizixs.com",
+    "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fyd9djbbf5j313z0u0u0z.jpg",
+    "categories": [
+      "kubernetes"
+    ],
+    "date": "2018-12-20T15:14:54+08:00",
+    "fuzzywordcount": 11300,
+    "keywords": [
+      "kubernetes"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-12-20T15:14:54+08:00",
+    "objectID": "f59f5cea28e52679aeb32fe03def365c",
+    "permalink": "http://www.servicemesher.com/blog/kubernetes-resource-management/",
+    "publishdate": "2018-12-20T15:14:54+08:00",
+    "readingtime": 23,
+    "relpermalink": "/blog/kubernetes-resource-management/",
+    "summary": "本文是关于 Kubernetes 中资源管理的概述。",
+    "tags": [
+      "kubernetes"
+    ],
+    "title": "Kubernetes资源管理概述",
+    "translator": null,
+    "url": "/blog/kubernetes-resource-management/",
+    "weight": 0,
+    "wordcount": 11250
+  },
+  {
+    "author": "赵化冰",
+    "authorlink": "https://zhaohuabing.com",
+    "banner": "https://ws4.sinaimg.cn/large/006tNbRwly1fyc9vljbxej31400u0u0z.jpg",
+    "categories": [
+      "istio"
+    ],
+    "date": "2018-12-19T17:55:08+08:00",
+    "fuzzywordcount": 2700,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "NFV",
+      "knitter",
+      "中兴通讯"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-12-19T17:55:08+08:00",
+    "objectID": "238da14576db564149981c83b85c2cb7",
+    "permalink": "http://www.servicemesher.com/blog/multi-network-interfaces-for-istio/",
+    "publishdate": "2018-12-19T17:55:08+08:00",
+    "readingtime": 6,
+    "relpermalink": "/blog/multi-network-interfaces-for-istio/",
+    "summary": "随着Kubernetes在NFV（网络功能虚拟化）领域中的逐渐应用，已经出现多个Kubernetes的多网络平面解决方案，Istio也需要考虑支持多网络平面，以为5G的微服务化架构提供服务通讯和管控的基础设施。",
+    "tags": [
+      "istio",
+      "NFV"
+    ],
+    "title": "拥抱NFV，Istio 1.1 将支持多网络平面",
+    "translator": null,
+    "url": "/blog/multi-network-interfaces-for-istio/",
+    "weight": 0,
+    "wordcount": 2650
+  },
+  {
     "author": "宋净超",
     "authorlink": "https://jimmysong.io",
     "banner": "https://ws3.sinaimg.cn/large/006tNbRwly1fyb57k3zhyj31400u0hdw.jpg",
