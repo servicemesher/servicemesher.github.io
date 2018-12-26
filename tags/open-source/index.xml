@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Open Source on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/open-source/</link>
+    <description>Recent content in Open Source on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 26 Dec 2018 16:35:38 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Github中式开源志异</title>
+      <link>http://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</link>
+      <pubDate>Wed, 26 Dec 2018 16:35:38 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</guid>
+      <description>本篇主要通过对中国开发者在开源社区中的活动的观察，总结了一些有待提升或者存在弊病的现象。这些现象的背后原因可能是开发者的利益诉求，也可能是公</description>
+    </item>
+    
+  </channel>
+</rss>

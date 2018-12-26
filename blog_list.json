@@ -1,5 +1,35 @@
 [
   {
+    "author": "我把玲玲打一顿",
+    "authorlink": "/",
+    "banner": "https://ws2.sinaimg.cn/large/006tNbRwly1fyk8jr9w7fj31400u0e84.jpg",
+    "categories": [
+      "culture"
+    ],
+    "date": "2018-12-26T16:35:38+08:00",
+    "fuzzywordcount": 4600,
+    "keywords": [
+      "开源",
+      "GitHub"
+    ],
+    "lang": "zh",
+    "lastmod": "2018-12-26T16:35:38+08:00",
+    "objectID": "8ee9151c756bf59cc3a8cfa3f0eb86db",
+    "permalink": "http://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/",
+    "publishdate": "2018-12-26T16:35:38+08:00",
+    "readingtime": 10,
+    "relpermalink": "/blog/strange-stories-from-chinese-github-participants/",
+    "summary": "本文谈论了一些 GitHub 上中式开源的怪象，希望从事开源的读者引以为戒。",
+    "tags": [
+      "open source"
+    ],
+    "title": "Github中式开源志异",
+    "translator": null,
+    "url": "/blog/strange-stories-from-chinese-github-participants/",
+    "weight": 0,
+    "wordcount": 4526
+  },
+  {
     "author": "吴伟",
     "authorlink": "https://cizixs.com",
     "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fyd9djbbf5j313z0u0u0z.jpg",
