@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/knative-redefine-serverless/</loc>
+    <lastmod>2019-01-02T11:35:38+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/</loc>
     <lastmod>2018-12-27T11:46:42+08:00</lastmod>
   </url>
@@ -1071,7 +1076,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/knative/</loc>
-    <lastmod>2018-12-18T19:43:14+08:00</lastmod>
+    <lastmod>2019-01-02T11:35:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1281,13 +1286,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/serverless/</loc>
-    <lastmod>2018-12-18T19:43:14+08:00</lastmod>
+    <lastmod>2019-01-02T11:35:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/serverless/</loc>
-    <lastmod>2018-12-18T19:43:14+08:00</lastmod>
+    <lastmod>2019-01-02T11:35:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1305,7 +1310,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2018-12-27T11:46:42+08:00</lastmod>
+    <lastmod>2019-01-02T11:35:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   

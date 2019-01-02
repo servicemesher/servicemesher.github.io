@@ -1,5 +1,36 @@
 [
   {
+    "author": "敖小剑",
+    "authorlink": "https://skyao.io",
+    "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fys37woppyj313z0u01ky.jpg",
+    "categories": [
+      "serverless"
+    ],
+    "date": "2019-01-02T11:35:38+08:00",
+    "fuzzywordcount": 3800,
+    "keywords": [
+      "knative",
+      "serverless"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-01-02T11:35:38+08:00",
+    "objectID": "6136c5ed9174a0b727a9bcd1d2f0f910",
+    "permalink": "http://www.servicemesher.com/blog/knative-redefine-serverless/",
+    "publishdate": "2019-01-02T11:35:38+08:00",
+    "readingtime": 8,
+    "relpermalink": "/blog/knative-redefine-serverless/",
+    "summary": "本文整理自敖小剑在2018年GIAC上海站的分享。",
+    "tags": [
+      "knative",
+      "serverless"
+    ],
+    "title": "Knative：重新定义 serverless",
+    "translator": null,
+    "url": "/blog/knative-redefine-serverless/",
+    "weight": 0,
+    "wordcount": 3779
+  },
+  {
     "author": "宋净超",
     "authorlink": "https://jimmysong.io",
     "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fyl5sf298uj313z0u0b2b.jpg",
