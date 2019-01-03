@@ -1,5 +1,40 @@
 [
   {
+    "author": "宋净超",
+    "authorlink": "https://jimmysong.io",
+    "banner": "https://ws4.sinaimg.cn/large/006tNc79ly1fytg6wotwyj313z0u0u11.jpg",
+    "categories": [
+      "service mesh"
+    ],
+    "date": "2019-01-03T15:49:46+08:00",
+    "fuzzywordcount": 1300,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "supergloo",
+      "cloud native",
+      "云原生",
+      "solo.io"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-01-03T15:49:46+08:00",
+    "objectID": "e863f0fabd6b35c9a673e8632580d982",
+    "permalink": "http://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/",
+    "publishdate": "2019-01-03T15:49:46+08:00",
+    "readingtime": 3,
+    "relpermalink": "/blog/supergloo-a-service-mesh-orchestrator/",
+    "summary": "作为服务网格的编排器，它为用户自由组合任何服务网格开启了方便之门，SuperGloo 也承载着 Solo 这家公司的愿景，混合云环境的云原生应用管理平台。",
+    "tags": [
+      "service mesh",
+      "supergloo"
+    ],
+    "title": "SuperGloo—服务网格编排平台",
+    "translator": null,
+    "url": "/blog/supergloo-a-service-mesh-orchestrator/",
+    "weight": 0,
+    "wordcount": 1274
+  },
+  {
     "author": "敖小剑",
     "authorlink": "https://skyao.io",
     "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fys37woppyj313z0u01ky.jpg",

@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 02 Jan 2019 11:35:38 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jan 2019 15:49:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SuperGloo—服务网格编排平台</title>
+      <link>http://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/</link>
+      <pubDate>Thu, 03 Jan 2019 15:49:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/</guid>
+      <description>笔者2017年就曾注意到 solo.io 这家公司，它的创始人 Idit 曾在 KubeCon 上分享过 Squash，去年11月推出了 SuperGloo 服务网格编排器再起吸引了我的注意，但最重要的一</description>
+    </item>
     
     <item>
       <title>Knative：重新定义 serverless</title>
@@ -1367,7 +1376,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 14 敖小剑 10 崔秀龙 4 郑伟 3 赵化冰 3 丁轶群 3 朵晓东 2 吴伟 2 黄挺 1 高松 1 陈有坤 1 邵俊雄 1 蚂</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 15 敖小剑 10 崔秀龙 4 郑伟 3 赵化冰 3 丁轶群 3 朵晓东 2 吴伟 2 黄挺 1 高松 1 陈有坤 1 邵俊雄 1 蚂</description>
     </item>
     
     <item>

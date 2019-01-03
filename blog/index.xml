@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>SuperGloo—服务网格编排平台</title>
+      <link>http://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/</link>
+      <pubDate>Thu, 03 Jan 2019 15:49:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/</guid>
+      <description>笔者2017年就曾注意到 solo.io 这家公司，它的创始人 Idit 曾在 KubeCon 上分享过 Squash，去年11月推出了 SuperGloo 服务网格编排器再起吸引了我的注意，但最重要的一</description>
+    </item>
+    
+    <item>
       <title>Knative：重新定义 serverless</title>
       <link>http://www.servicemesher.com/blog/knative-redefine-serverless/</link>
       <pubDate>Wed, 02 Jan 2019 11:35:38 +0800</pubDate>

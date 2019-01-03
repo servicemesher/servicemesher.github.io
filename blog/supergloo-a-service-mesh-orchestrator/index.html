@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SuperGloo—服务网格编排平台 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格, supergloo, cloud native, 云原生, solo.io">
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="SuperGloo—服务网格编排平台" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/supergloo-a-service-mesh-orchestrator//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="作为服务网格的编排器，它为用户自由组合任何服务网格开启了方便之门，SuperGloo 也承载着 Solo 这家公司的愿景，混合云环境的云原生应用管理平台。">
+  <meta property="og:description" content="作为服务网格的编排器，它为用户自由组合任何服务网格开启了方便之门，SuperGloo 也承载着 Solo 这家公司的愿景，混合云环境的云原生应用管理平台。">
+  <meta name="twitter:description" content="作为服务网格的编排器，它为用户自由组合任何服务网格开启了方便之门，SuperGloo 也承载着 Solo 这家公司的愿景，混合云环境的云原生应用管理平台。">
+  <meta property="og:description" content="作为服务网格的编排器，它为用户自由组合任何服务网格开启了方便之门，SuperGloo 也承载着 Solo 这家公司的愿景，混合云环境的云原生应用管理平台。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="SuperGloo—服务网格编排平台 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="SuperGloo—服务网格编排平台 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">SuperGloo—服务网格编排平台 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>SuperGloo—服务网格编排平台</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年1月3日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://jimmysong.io">宋净超</a>
+                            
+                            
+                            
+                            |
+                            1300字 | 阅读大约需要3分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            
+                            归档于 <a href="/categories/service-mesh">service mesh</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/supergloo/"><i>#supergloo</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p>笔者2017年就曾注意到 <a href="https://solo.io">solo.io</a> 这家公司，它的创始人 Idit 曾在 KubeCon 上分享过 Squash，去年11月推出了 SuperGloo 服务网格编排器再起吸引了我的注意，但最重要的一件事是，Christian Posta 于2018年1月3号宣布加盟 solo.io，这让我很惊讶，我原以为他会加入 T 公司。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fytdun4dmuj30b40b4mxz.jpg" alt="Idit Levine" /></p>
+
+<p><a href="https://twitter.com/Idit_Levine">Idit Levine</a> 现为 <a href="https://solo.io">solo.io</a> 的创始人，这是一个很小的 base 在马塞诸塞州剑桥市的创业公司，这家公司致力于云原生的混合云解决方案。曾是 EMC 云管理部门的 CTO，也是其全球 CTO 办公室的成员，她专注于整个堆栈，微服务，云原生应用和 PaaS 的管理和协调（M＆O）。当她加入 DynamicOps（vCAC，现在是 VMware 的一部分）作为其首批员工之一时，Idit 对云产生了浓厚的兴趣。 随后，她参与了 Verizon Terremark 的下一代公有云的开发，并担任 Intigua 的代理 CTO，Intigua 是一家专注于容器和管理技术的创业公司。</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fytdu4jr8mj30b40b40ta.jpg" alt="Christian Posta" /></p>
+
+<p><a href="https://twitter.com/christianposta">Christian Posta</a>，前 Red Hat 架构师今年年初刚刚加入 <a href="https://solo.io">solo.io</a>，成为 solo.io 的 Filed CTO（负责售前、售后与布道的首席架构师），详见 <a href="http://blog.christianposta.com/career/new-adventure-starts-at-solo-io/">New Adventure Starts at solo.io</a>。</p>
+
+<p>2018年11月22日，Idit Levine 宣布可用于管理和编排大规模服务网格的 SuperGloo 开源。无论是在本地、云上还是在任何拓扑上使用（或计划使用）单个网格或多个网格技术，SuperGloo 都是一个良好的抽象层，它可以简化服务网格的安装、管理和操作。</p>
+
+<p>Solo.io 这家公司有一系列项目，其中有三个都以 Gloo 命名，这些都是与 Service Mesh 相关的。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fytdw9zmrgj31je0fadlr.jpg" alt="Gloos" /></p>
+
+<ul>
+<li><a href="https://github.com/solo-io/gloo">Gloo</a>：混合云上的 API Gateway，可作为 Kubernetes Ingress controller</li>
+<li>GlooE：Gloo 的商业化版本</li>
+<li><a href="https://github.com/solo-io/supergloo">SuperGloo</a>：服务网格编排器</li>
+</ul>
+
+<p>还有一些列开发者工具。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fyte4gfpmbj31je0futey.jpg" alt="" /></p>
+
+<ul>
+<li><a href="https://github.com/solo-io/sqoop">Sqoop</a>：Gloo 支持的 GraphQL 引擎</li>
+<li><a href="https://github.com/solo-io/unik">unik</a>：Unikernel 和 microVM 编译和管理</li>
+<li><a href="https://github.com/solo-io/squash">Squash</a>：微服务和 Kubernetes 调试器</li>
+</ul>
+
+<p>关于 Solo 的开源项目请查看 <a href="https://github.com/solo-io">https://github.com/solo-io</a>。</p>
+
+<h2 id="服务网格是云原生应用的未来">服务网格是云原生应用的未来</h2>
+
+<p>服务网格是处理服务间通信的基础设施层，使应用程序无需了解复杂的通信网络。服务网格提供的高级功能有加密、身份验证和授权、路由、监控和跟踪等。</p>
+
+<p>云原生态系统中服务网格的采用正在迅速增长，有几个令人兴奋的产品。领先的服务网络包括 <a href="https://istio.io/zh">Istio</a>，由 Google、IBM 和 Lyft 支持；Linkerd 和 Linkerd2（前身为 Conduit），CNCF 项目；以 及 Hashicorp Consul 新的 Connect 功能。每种服务网格技术都有自己的特点和优势。</p>
+
+<h2 id="supergloo-的特点">SuperGloo 的特点</h2>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fyte9m3qdhj318g0rtq8f.jpg" alt="" /></p>
+
+<p><em>图片来自 <a href="https://medium.com/solo-io/https-medium-com-solo-io-supergloo-ff2aae1fb96f">medium</a></em></p>
+
+<p>根据 Idit 的描述，SuperGloo 可以让你最大化服务网格的优势同时还可以减少其复杂性。</p>
+
+<p>SuperGloo 有以下特点：</p>
+
+<ul>
+<li>帮助用户快速获得服务网格的经验</li>
+<li>接管服务网格中的一些关键功能</li>
+<li>统一了 Ingress 流量（南北向）和网格流量（东西向）的管理</li>
+<li>为自由组合任何服务网格和 Ingress 打开了大门</li>
+</ul>
+
+<h2 id="supergloo-的愿景">SuperGloo 的愿景</h2>
+
+<p>作为服务网格的编排器，它为用户自由组合任何服务网格开启了方便之门，SuperGloo 也承载着 Solo 这家公司的愿景：</p>
+
+<ul>
+<li>使用户可以在不同的服务网格间迁移</li>
+<li>统一的用户体验，是用户可以使用同样的工具管理不同的网格</li>
+<li>不同服务网格之间的粘结剂，让它们可以自由与其他网格连接在一起</li>
+</ul>
+
+<p>以上内容部分引用自 Idit Lavine 的博客 <a href="https://medium.com/solo-io/https-medium-com-solo-io-supergloo-ff2aae1fb96f">Introducing SuperGloo: The Service Mesh Orchestration Platform</a>，关于 SuperGloo 的更多信息请访问 <a href="https://github.com/solo-io/supergloo">https://github.com/solo-io/supergloo</a>。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/knative-redefine-serverless/" data-toggle="tooltip" data-placement="top" title="Knative：重新定义 serverless">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/myth-cloud-native-portability/"><i class="fa fa-link"></i>云原生可移植性的神话</a></li>
+         
+        <li><a href="/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/"><i class="fa fa-link"></i>理解 Istio Service Mesh 中 Envoy Sidecar 代理的路由转发</a></li>
+         
+        <li><a href="/blog/from-fragmented-microservices-ecosystem-to-service-mesh/"><i class="fa fa-link"></i>微服务生态从百家争鸣阶段演化到服务网格</a></li>
+         
+        <li><a href="/blog/microservice-with-service-mesh-at-ant-financial/"><i class="fa fa-link"></i>蚂蚁金服Service Mesh新型网络代理的思考与实践</a></li>
+         
+        <li><a href="/blog/ant-financial-service-mesh-adoption-plan/"><i class="fa fa-link"></i>蚂蚁金服Service Mesh渐进式迁移方案</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (2)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (17)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (3)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (4)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (16)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (87)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/nfv"><i class="fa fa-tags"></i> nfv</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/open-source"><i class="fa fa-tags"></i> open-source</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/supergloo"><i class="fa fa-tags"></i> supergloo</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/supergloo-a-service-mesh-orchestrator/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fytg6wotwyj313z0u0u11.jpg" class="img-responsive" alt="SuperGloo—服务网格编排平台">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/supergloo-a-service-mesh-orchestrator/">SuperGloo—服务网格编排平台</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/knative-redefine-serverless/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fys37woppyj313z0u01ky.jpg" class="img-responsive" alt="Knative：重新定义 serverless">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/knative-redefine-serverless/">Knative：重新定义 serverless</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fyl5sf298uj313z0u0b2b.jpg" class="img-responsive" alt="理解 Istio Service Mesh 中 Envoy Sidecar 代理的路由转发">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/">理解 Istio Service Mesh 中 Envoy Sidecar 代理的路由转发</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
