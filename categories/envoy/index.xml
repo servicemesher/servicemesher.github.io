@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Envoy on ServiceMesher</title>
+    <link>http://www.servicemesher.com/categories/envoy/</link>
+    <description>Recent content in Envoy on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 07 Jan 2019 17:48:01 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/categories/envoy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Istio 的数据平面 Envoy Proxy 配置详解</title>
+      <link>http://www.servicemesher.com/blog/envoy-proxy-config-deep-dive/</link>
+      <pubDate>Mon, 07 Jan 2019 17:48:01 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-proxy-config-deep-dive/</guid>
+      <description>Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下</description>
+    </item>
+    
+  </channel>
+</rss>

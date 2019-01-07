@@ -2,6 +2,38 @@
   {
     "author": "宋净超",
     "authorlink": "https://jimmysong.io",
+    "banner": "https://ws1.sinaimg.cn/large/006tNc79ly1fyy63n2ue6j314k0ts43z.jpg",
+    "categories": [
+      "envoy"
+    ],
+    "date": "2019-01-07T17:48:01+08:00",
+    "fuzzywordcount": 5200,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "envoy"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-01-07T17:48:01+08:00",
+    "objectID": "6abd2a18e1c64490f0f3882b1247b9e0",
+    "permalink": "http://www.servicemesher.com/blog/envoy-proxy-config-deep-dive/",
+    "publishdate": "2019-01-07T17:48:01+08:00",
+    "readingtime": 11,
+    "relpermalink": "/blog/envoy-proxy-config-deep-dive/",
+    "summary": "本文介绍了 Envoy proxy 的概念，对应的 xDS 的版本以及配置的详细解析。",
+    "tags": [
+      "envoy",
+      "xds"
+    ],
+    "title": "Istio 的数据平面 Envoy Proxy 配置详解",
+    "translator": null,
+    "url": "/blog/envoy-proxy-config-deep-dive/",
+    "weight": 0,
+    "wordcount": 5166
+  },
+  {
+    "author": "宋净超",
+    "authorlink": "https://jimmysong.io",
     "banner": "https://ws4.sinaimg.cn/large/006tNc79ly1fytg6wotwyj313z0u0u11.jpg",
     "categories": [
       "service mesh"
