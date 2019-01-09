@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>全手动部署prometheus-operator监控Kubernetes集群遇到的坑 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="kubernetes, prometheus, operator">
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="全手动部署prometheus-operator监控Kubernetes集群遇到的坑" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/prometheus-operator-manual//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="Prometheus所有的监控的agent底层最终都是查询的/proc和/sys里的信息推送，本文分享了当收集宿主机信息的agent跑在pod中时会遇到的问题。">
+  <meta property="og:description" content="Prometheus所有的监控的agent底层最终都是查询的/proc和/sys里的信息推送，本文分享了当收集宿主机信息的agent跑在pod中时会遇到的问题。">
+  <meta name="twitter:description" content="Prometheus所有的监控的agent底层最终都是查询的/proc和/sys里的信息推送，本文分享了当收集宿主机信息的agent跑在pod中时会遇到的问题。">
+  <meta property="og:description" content="Prometheus所有的监控的agent底层最终都是查询的/proc和/sys里的信息推送，本文分享了当收集宿主机信息的agent跑在pod中时会遇到的问题。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="全手动部署prometheus-operator监控Kubernetes集群遇到的坑 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="全手动部署prometheus-operator监控Kubernetes集群遇到的坑 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">全手动部署prometheus-operator监控Kubernetes集群遇到的坑 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>全手动部署prometheus-operator监控Kubernetes集群遇到的坑</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年1月8日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://zhuangguanzhang.github.io">张馆长</a>
+                            
+                            
+                            
+                            |
+                            12000字 | 阅读大约需要24分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://zhangguanzhang.github.io/2018/10/12/prometheus-operator/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/kubernetes">Kubernetes</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/kubernetes/"><i>#kubernetes</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/prometheus/"><i>#prometheus</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/operator/"><i>#operator</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<h2 id="写这篇文章原因">写这篇文章原因</h2>
+
+<p>所有监控的agent底层最终都是查询的/proc和/sys里的信息推送(如果错了轻喷)，因为在Kubernetes中收集宿主机信息方面也想用pod跑，会面临到问题。</p>
+
+<p>常见的zabbix_agent默认读取fs的/proc和/sys，容器跑agent会导致读取的不是宿主机的/proc和/sys。</p>
+
+<p>而prometheus的<code>node-exporter</code>有选项<code>--path.procfs</code>和<code>--path.sysfs</code>来指定从这俩选项的值的proc和sys读取，容器跑<code>node-exporter</code>只需要挂载宿主机的/proc和/sys到容器fs的某个路径挂载属性设置为readonly后用这两个选项指定即可，zabbix4.0看了文档和容器都找不到类似选项应该不支持。</p>
+
+<p>虽说上prometheus但是Kubernetes监控这方面，经常看到如下问题:</p>
+
+<ul>
+<li>如何部署</li>
+<li>用prometheus的话pod ip会变咋整之类的</li>
+<li>我的target怎么是0/0</li>
+<li>官方yaml怎么用</li>
+<li>operator和传统的prometheus有啥差异</li>
+<li>operator相对手动部署的prometheus有啥优秀之处</li>
+<li>&hellip;..</li>
+</ul>
+
+<p>上面问题里大多都是对prometheus-operator不了解的，也就是说大多不看官方文档的，这里我几个例子加介绍说说怎样部署<code>prometheus-operator</code>，和一些常见的坑。
+另外网上大多是helm部署的以及管理组件是二进制下有几个target是0/0发现不了的解决办法。</p>
+
+<p>需要看懂本文要具备一下知识点：</p>
+
+<ul>
+<li>svc实现原理和会应用以及svc和endpoint关系</li>
+<li>了解prometheus(不是operator的)工作机制</li>
+<li>知道什么是metrics(不过有了prometheus-operator似乎不是必须)</li>
+</ul>
+
+<h2 id="速补基础">速补基础</h2>
+
+<h3 id="什么是metrics">什么是metrics</h3>
+
+<p>前面知识点第一条都考虑到Kubernetes集群监控了想必都会了，第二条因为有operator的存在不太关心底层可能不太急需可以后面去稍微学学，第三条无论etcd还是k8s的管理组件基本都有metrics端口。</p>
+
+<p>这里来介绍啥什么是metrics：</p>
+
+<p>例如我们要查看etcd的metrics，先查看etcd的运行参数找到相关的值，这里我是所有参数写在一个yml文件里，非yml自行查看systemd文件或者运行参数找到相关参数和值即可。</p>
+
+<pre><code class="language-bash">[root@k8s-m1 ~]# ps aux | grep -P '/etc[d] '
+root      13531  2.8  0.8 10631072 140788 ?     Ssl   2018 472:58 /usr/local/bin/etcd --config-file=/etc/etcd/etcd.config.yml
+[root@k8s-m1 ~]# cat /etc/etcd/etcd.config.yml
+...
+listen-client-urls: 'https://172.16.0.2:2379'
+...
+client-transport-security:
+  ca-file: '/etc/etcd/ssl/etcd-ca.pem'
+  cert-file: '/etc/etcd/ssl/etcd.pem'
+  key-file: '/etc/etcd/ssl/etcd-key.pem'
+...
+</code></pre>
+
+<p>我们需要两部分信息：</p>
+
+<ul>
+<li>listen-client-urls的httpsurl，我这里是<code>https://172.16.0.2:2379</code></li>
+<li>允许客户端证书信息</li>
+</ul>
+
+<p>然后使用下面的curl，带上各自证书路径访问https的url执行</p>
+
+<pre><code class="language-bash">curl --cacert /etc/etcd/ssl/etcd-ca.pem --cert /etc/etcd/ssl/etcd.pem --key /etc/etcd/ssl/etcd-key.pem https://172.16.0.2:2379/metrics
+</code></pre>
+
+<p>也可以etcd用选项和值<code>--listen-metrics-urls http://interface_IP:port</code>设置成非https的metrics端口可以不用证书即可访问，我们会看到etcd的metrics输出信息如下：</p>
+
+<pre><code class="language-bash">....
+grpc_server_started_total{grpc_method=&quot;RoleList&quot;，grpc_service=&quot;etcdserverpb.Auth&quot;，grpc_type=&quot;unary&quot;} 0
+grpc_server_started_total{grpc_method=&quot;RoleRevokePermission&quot;，grpc_service=&quot;etcdserverpb.Auth&quot;，grpc_type=&quot;unary&quot;} 0
+grpc_server_started_total{grpc_method=&quot;Snapshot&quot;，grpc_service=&quot;etcdserverpb.Maintenance&quot;，grpc_type=&quot;server_stream&quot;} 0
+grpc_server_started_total{grpc_method=&quot;Status&quot;，grpc_service=&quot;etcdserverpb.Maintenance&quot;，grpc_type=&quot;unary&quot;} 0
+grpc_server_started_total{grpc_method=&quot;Txn&quot;，grpc_service=&quot;etcdserverpb.KV&quot;，grpc_type=&quot;unary&quot;} 259160
+grpc_server_started_total{grpc_method=&quot;UserAdd&quot;，grpc_service=&quot;etcdserverpb.Auth&quot;，grpc_type=&quot;unary&quot;} 0
+grpc_server_started_total{grpc_method=&quot;UserChangePassword&quot;，grpc_service=&quot;etcdserverpb.Auth&quot;，grpc_type=&quot;unary&quot;} 0
+grpc_server_started_total{grpc_method=&quot;UserDelete&quot;，grpc_service=&quot;etcdserverpb.Auth&quot;，grpc_type=&quot;unary&quot;} 0
+grpc_server_started_total{grpc_method=&quot;UserGet&quot;，grpc_service=&quot;etcdserverpb.Auth&quot;，grpc_type=&quot;unary&quot;} 0
+grpc_server_started_total{grpc_method=&quot;UserGrantRole&quot;，grpc_service=&quot;etcdserverpb.Auth&quot;，grpc_type=&quot;unary&quot;} 0
+grpc_server_started_total{grpc_method=&quot;UserList&quot;，grpc_service=&quot;etcdserverpb.Auth&quot;，grpc_type=&quot;unary&quot;} 0
+grpc_server_started_total{grpc_method=&quot;UserRevokeRole&quot;，grpc_service=&quot;etcdserverpb.Auth&quot;，grpc_type=&quot;unary&quot;} 0
+grpc_server_started_total{grpc_method=&quot;Watch&quot;，grpc_service=&quot;etcdserverpb.Watch&quot;，grpc_type=&quot;bidi_stream&quot;} 86
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 28145.45
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 65536
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 121
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 1.46509824e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.54557786888e+09
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.0886217728e+10
+</code></pre>
+
+<p>同理kube-apiserver也有metrics信息</p>
+
+<pre><code class="language-bash">$ kubectl get --raw /metrics
+...
+rest_client_request_latency_seconds_bucket{url=&quot;https://[::1]:6443/apis?timeout=32s&quot;，verb=&quot;GET&quot;，le=&quot;0.512&quot;} 39423
+rest_client_request_latency_seconds_bucket{url=&quot;https://[::1]:6443/apis?timeout=32s&quot;，verb=&quot;GET&quot;，le=&quot;+Inf&quot;} 39423
+rest_client_request_latency_seconds_sum{url=&quot;https://[::1]:6443/apis?timeout=32s&quot;，verb=&quot;GET&quot;} 24.781942557999795
+rest_client_request_latency_seconds_count{url=&quot;https://[::1]:6443/apis?timeout=32s&quot;，verb=&quot;GET&quot;} 39423
+# HELP rest_client_requests_total Number of HTTP requests， partitioned by status code， method， and host.
+# TYPE rest_client_requests_total counter
+rest_client_requests_total{code=&quot;200&quot;，host=&quot;[::1]:6443&quot;，method=&quot;GET&quot;} 2.032031e+06
+rest_client_requests_total{code=&quot;200&quot;，host=&quot;[::1]:6443&quot;，method=&quot;PUT&quot;} 1.106921e+06
+rest_client_requests_total{code=&quot;201&quot;，host=&quot;[::1]:6443&quot;，method=&quot;POST&quot;} 38
+rest_client_requests_total{code=&quot;401&quot;，host=&quot;[::1]:6443&quot;，method=&quot;GET&quot;} 17378
+rest_client_requests_total{code=&quot;404&quot;，host=&quot;[::1]:6443&quot;，method=&quot;GET&quot;} 3.546509e+06
+rest_client_requests_total{code=&quot;409&quot;，host=&quot;[::1]:6443&quot;，method=&quot;POST&quot;} 29
+rest_client_requests_total{code=&quot;409&quot;，host=&quot;[::1]:6443&quot;，method=&quot;PUT&quot;} 20
+rest_client_requests_total{code=&quot;422&quot;，host=&quot;[::1]:6443&quot;，method=&quot;POST&quot;} 1
+rest_client_requests_total{code=&quot;503&quot;，host=&quot;[::1]:6443&quot;，method=&quot;GET&quot;} 5
+# HELP ssh_tunnel_open_count Counter of ssh tunnel total open attempts
+# TYPE ssh_tunnel_open_count counter
+ssh_tunnel_open_count 0
+# HELP ssh_tunnel_open_fail_count Counter of ssh tunnel failed open attempts
+# TYPE ssh_tunnel_open_fail_count counter
+ssh_tunnel_open_fail_count 0
+</code></pre>
+
+<p>这种就是prometheus的定义的metrics格式规范，缺省是在http(s)的url的/metrics输出。
+而metrics要么程序定义输出(模块或者自定义开发)，要么用官方的各种exporter(node-exporter，mysqld-exporter，memcached_exporter&hellip;)采集要监控的信息占用一个web端口然后输出成metrics格式的信息，prometheus server去收集各个target的metrics存储起来(tsdb)。
+用户可以在prometheus的http页面上用promQL(prometheus的查询语言)或者(grafana数据来源就是用)api去查询一些信息，也可以利用pushgateway去统一采集然后prometheus从pushgateway采集(所以pushgateway类似于zabbix的proxy)，prometheus的工作架构如下图：</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fyzbj3vh0vj30ms0db406.jpg" alt="" /></p>
+
+<h3 id="为什么需要prometheus-operator">为什么需要prometheus-operator</h3>
+
+<p>因为是prometheus主动去拉取的，所以在k8s里pod因为调度的原因导致pod的ip会发生变化，人工不可能去维持，自动发现有基于DNS的，但是新增还是有点麻烦。</p>
+
+<p>Prometheus-operator的本职就是一组用户自定义的CRD资源以及Controller的实现，Prometheus Operator这个controller有BRAC权限下去负责监听这些自定义资源的变化，并且根据这些资源的定义自动化的完成如Prometheus Server自身以及配置的自动化管理工作。</p>
+
+<p>在Kubernetes中我们使用Deployment、DamenSet、StatefulSet来管理应用Workload，使用Service、Ingress来管理应用的访问方式，使用ConfigMap和Secret来管理应用配置。我们在集群中对这些资源的创建，更新，删除的动作都会被转换为事件(Event)，Kubernetes的Controller Manager负责监听这些事件并触发相应的任务来满足用户的期望。这种方式我们成为声明式，用户只需要关心应用程序的最终状态，其它的都通过Kubernetes来帮助我们完成，通过这种方式可以大大简化应用的配置管理复杂度。</p>
+
+<p>而除了这些原生的Resource资源以外，Kubernetes还允许用户添加自己的自定义资源(Custom Resource)。并且通过实现自定义Controller来实现对Kubernetes的扩展，不需要用户去二开k8s也能达到给k8s添加功能和对象。</p>
+
+<p>因为svc的负载均衡，所以在K8S里监控metrics基本最小单位都是一个svc背后的pod为target，所以prometheus-operator创建了对应的CRD: <code>kind: ServiceMonitor</code> ，创建的<code>ServiceMonitor</code>里声明需要监控选中的svc的label以及metrics的url路径的和namespaces即可。</p>
+
+<p>工作架构如下图所示。</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fyzbjl4ql8j31dw0t2djs.jpg" alt="" /></p>
+
+<h2 id="demo部署学习">Demo部署学习</h2>
+
+<h3 id="获取相关文件">获取相关文件</h3>
+
+<p>先获取相关文件后面跟着文件来讲，直接用git客户端拉取即可，不过文件大概30多M，没梯子基本拉不下来。</p>
+
+<pre><code class="language-bash">git clone https://github.com/coreos/prometheus-operator.git
+</code></pre>
+
+<p>拉取不下来可以在<a href="https://www.katacoda.com/courses/kubernetes">katacoda的网页</a>上随便一个课程的机器都有docker客户端，可以git clone下来后把文件构建进一个alpine镜像然后推到dockerhub上，再在自己的机器docker run这个镜像的时候docker cp到宿主机上。</p>
+
+<p>Prometheus Operator引入的自定义资源包括：</p>
+
+<ul>
+<li>Prometheus</li>
+<li>ServiceMonitor</li>
+<li>Alertmanager</li>
+</ul>
+
+<p>用户创建了prometheus-operator(也就是上面监听三个CRD的各种事件的controller)后，用户可以利用<code>kind: Prometheus</code>这种声明式创建对应的资源。
+下面我们部署简单的例子学习prometheus-operator</p>
+
+<h3 id="创建prometheus-operator的pod">创建prometheus-operator的pod</h3>
+
+<p>拉取到文件后我们先创建prometheus-operator：</p>
+
+<pre><code class="language-bash">$ cd prometheus-operator
+$ kubectl apply -f bundle.yaml
+clusterrolebinding.rbac.authorization.k8s.io/prometheus-operator created
+clusterrole.rbac.authorization.k8s.io/prometheus-operator created
+deployment.apps/prometheus-operator created
+serviceaccount/prometheus-operator created
+</code></pre>
+
+<p>确认pod运行，以及我们可以发现operator的pod在有RBAC下创建了一个APIService：</p>
+
+<pre><code class="language-bash">$ kubectl get pod
+NAME                                   READY     STATUS    RESTARTS   AGE
+prometheus-operator-6db8dbb7dd-djj6s   1/1       Running   0          1m
+$ kubectl get APIService | grep monitor
+v1.monitoring.coreos.com               2018-10-09T10:49:47Z
+</code></pre>
+
+<p>查看这个APISerivce</p>
+
+<pre><code class="language-bash">$ kubectl get --raw /apis/monitoring.coreos.com/v1
+{
+  &quot;kind&quot;: &quot;APIResourceList&quot;，
+  &quot;apiVersion&quot;: &quot;v1&quot;，
+  &quot;groupVersion&quot;: &quot;monitoring.coreos.com/v1&quot;，
+  &quot;resources&quot;: [
+    {
+      &quot;name&quot;: &quot;alertmanagers&quot;，
+      &quot;singularName&quot;: &quot;alertmanager&quot;，
+      &quot;namespaced&quot;: true，
+      &quot;kind&quot;: &quot;Alertmanager&quot;，
+      &quot;verbs&quot;: [
+        &quot;delete&quot;，
+        &quot;deletecollection&quot;，
+        &quot;get&quot;，
+        &quot;list&quot;，
+        &quot;patch&quot;，
+        &quot;create&quot;，
+        &quot;update&quot;，
+        &quot;watch&quot;
+      ]
+    }，
+    {
+      &quot;name&quot;: &quot;prometheuses&quot;，
+      &quot;singularName&quot;: &quot;prometheus&quot;，
+      &quot;namespaced&quot;: true，
+      &quot;kind&quot;: &quot;Prometheus&quot;，
+      &quot;verbs&quot;: [
+        &quot;delete&quot;，
+        &quot;deletecollection&quot;，
+        &quot;get&quot;，
+        &quot;list&quot;，
+        &quot;patch&quot;，
+        &quot;create&quot;，
+        &quot;update&quot;，
+        &quot;watch&quot;
+      ]
+    }，
+    {
+      &quot;name&quot;: &quot;servicemonitors&quot;，
+      &quot;singularName&quot;: &quot;servicemonitor&quot;，
+      &quot;namespaced&quot;: true，
+      &quot;kind&quot;: &quot;ServiceMonitor&quot;，
+      &quot;verbs&quot;: [
+        &quot;delete&quot;，
+        &quot;deletecollection&quot;，
+        &quot;get&quot;，
+        &quot;list&quot;，
+        &quot;patch&quot;，
+        &quot;create&quot;，
+        &quot;update&quot;，
+        &quot;watch&quot;
+      ]
+    }，
+    {
+      &quot;name&quot;: &quot;prometheusrules&quot;，
+      &quot;singularName&quot;: &quot;prometheusrule&quot;，
+      &quot;namespaced&quot;: true，
+      &quot;kind&quot;: &quot;PrometheusRule&quot;，
+      &quot;verbs&quot;: [
+        &quot;delete&quot;，
+        &quot;deletecollection&quot;，
+        &quot;get&quot;，
+        &quot;list&quot;，
+        &quot;patch&quot;，
+        &quot;create&quot;，
+        &quot;update&quot;，
+        &quot;watch&quot;
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<p>这个是因为bundle.yml里有如下的<code>CLusterRole</code>和对应的<code>ClusterRoleBinding</code>来让prometheus-operator有权限对<code>monitoring.coreos.com</code>这个apiGroup里的这些CRD进行所有操作</p>
+
+<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: prometheus-operator
+rules:
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - '*'
+- apiGroups:
+  - monitoring.coreos.com
+  resources:
+  - alertmanagers
+  - prometheuses
+  - prometheuses/finalizers
+  - alertmanagers/finalizers
+  - servicemonitors
+  - prometheusrules
+  verbs:
+  - '*'
+</code></pre>
+
+<p>同时我们查看到pod里的log发现operator也在集群里创建了对应的CRD</p>
+
+<pre><code class="language-bash">$ kubectl logs prometheus-operator-6db8dbb7dd-dkhxc
+ts=2018-10-09T11:21:09.389340424Z caller=main.go:165 msg=&quot;Starting Prometheus Operator version '0.26.0'.&quot;
+level=info ts=2018-10-09T11:21:09.491464524Z caller=operator.go:377 component=prometheusoperator msg=&quot;connection established&quot; cluster-version=v1.11.3
+level=info ts=2018-10-09T11:21:09.492679498Z caller=operator.go:209 component=alertmanageroperator msg=&quot;connection established&quot; cluster-version=v1.11.3
+level=info ts=2018-10-09T11:21:12.085147219Z caller=operator.go:624 component=alertmanageroperator msg=&quot;CRD created&quot; crd=Alertmanager
+level=info ts=2018-10-09T11:21:12.085265548Z caller=operator.go:1420 component=prometheusoperator msg=&quot;CRD created&quot; crd=Prometheus
+level=info ts=2018-10-09T11:21:12.099210714Z caller=operator.go:1420 component=prometheusoperator msg=&quot;CRD created&quot; crd=ServiceMonitor
+level=info ts=2018-10-09T11:21:12.118721976Z caller=operator.go:1420 component=prometheusoperator msg=&quot;CRD created&quot; crd=PrometheusRule
+level=info ts=2018-10-09T11:21:15.182780757Z caller=operator.go:225 component=alertmanageroperator msg=&quot;CRD API endpoints ready&quot;
+level=info ts=2018-10-09T11:21:15.383456425Z caller=operator.go:180 component=alertmanageroperator msg=&quot;successfully synced all caches&quot;
+$ kubectl get crd
+NAME                                    CREATED AT
+alertmanagers.monitoring.coreos.com     2018-10-09T11:21:11Z
+prometheuses.monitoring.coreos.com      2018-10-09T11:21:11Z
+prometheusrules.monitoring.coreos.com   2018-10-09T11:21:12Z
+servicemonitors.monitoring.coreos.com   2018-10-09T11:21:12Z
+</code></pre>
+
+<h3 id="相关crd介绍">相关CRD介绍</h3>
+
+<p>这四个CRD作用如下</p>
+
+<ul>
+<li><span style="font-size: 1.2em;color: #333;font-weight:bold">Prometheus</span>: 由 Operator 依据一个自定义资源<code>kind: Prometheus</code>类型中，所描述的内容而部署的 Prometheus Server 集群，可以将这个自定义资源看作是一种特别用来管理Prometheus Server的StatefulSets资源。</li>
+<li><span style="font-size: 1.2em;color: #333;font-weight:bold">ServiceMonitor</span>: 一个Kubernetes自定义资源(和<code>kind: Prometheus</code>一样是CRD)，该资源描述了Prometheus Server的Target列表，Operator 会监听这个资源的变化来动态的更新Prometheus Server的Scrape targets并让prometheus server去reload配置(prometheus有对应reload的http接口<code>/-/reload</code>)。而该资源主要通过Selector来依据 Labels 选取对应的Service的endpoints，并让 Prometheus Server 通过 Service 进行拉取（拉）指标资料(也就是metrics信息)，metrics信息要在http的url输出符合metrics格式的信息，ServiceMonitor也可以定义目标的metrics的url。</li>
+<li><span style="font-size: 1.2em;color: #333;font-weight:bold">Alertmanager</span>：Prometheus Operator 不只是提供 Prometheus Server 管理与部署，也包含了 AlertManager，并且一样通过一个 <code>kind: Alertmanager</code> 自定义资源来描述信息，再由 Operator 依据描述内容部署 Alertmanager 集群。</li>
+<li><span style="font-size: 1.2em;color: #333;font-weight:bold">PrometheusRule</span>:对于Prometheus而言，在原生的管理方式上，我们需要手动创建Prometheus的告警文件，并且通过在Prometheus配置中声明式的加载。而在Prometheus Operator模式中，告警规则也编程一个通过Kubernetes API 声明式创建的一个资源.告警规则创建成功后，通过在Prometheus中使用想servicemonitor那样用<code>ruleSelector</code>通过label匹配选择需要关联的PrometheusRule即可。</li>
+</ul>
+
+<h3 id="部署kind-prometheus">部署kind: Prometheus</h3>
+
+<p>现在我们有了prometheus这个CRD，我们部署一个prometheus server只需要如下声明即可。</p>
+
+<pre><code class="language-bash">$ cat&lt;&lt;EOF | kubectl apply -f -
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus
+spec:
+  serviceMonitorSelector:
+    matchLabels:
+      team: frontend
+  serviceAccountName: prometheus
+  resources:
+    requests:
+      memory: 400Mi
+EOF
+</code></pre>
+
+<p>因为负载均衡，一个svc下的一组pod是监控的最小单位，要监控一个svc的metrics就声明创建一个<code>servicemonitors</code>即可。</p>
+
+<h3 id="部署一组pod及其svc">部署一组pod及其svc</h3>
+
+<p>首先，我们部署一个带metrics输出的简单程序的deploy，该镜像里的主进程会在8080端口上输出metrics信息。</p>
+
+<pre><code class="language-bash">$ cat&lt;&lt;EOF | kubectl apply -f -
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: example-app
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+      - name: example-app
+        image: zhangguanzhang/instrumented_app
+        ports:
+        - name: web
+          containerPort: 8080
+EOF
+</code></pre>
+
+<p>创建对应的svc。</p>
+
+<pre><code class="language-bash">$ cat&lt;&lt;EOF | kubectl apply -f -
+kind: Service
+apiVersion: v1
+metadata:
+  name: example-app
+  labels:
+    app: example-app
+spec:
+  selector:
+    app: example-app
+  ports:
+  - name: web
+    port: 8080
+EOF
+</code></pre>
+
+<h3 id="部署kind-servicemonitor">部署kind: ServiceMonitor</h3>
+
+<p>现在创建一个<code>ServiceMonitor</code>来告诉prometheus server需要监控带有label <code>app: example-app</code>的svc背后的一组pod的metrics。</p>
+
+<pre><code class="language-bash">$ cat&lt;&lt;EOF | kubectl apply -f -
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: example-app
+  labels:
+    team: frontend
+spec:
+  selector:
+    matchLabels:
+      app: example-app
+  endpoints:
+  - port: web
+EOF
+</code></pre>
+
+<p>默认情况下<code>ServiceMonitor</code>和监控对象必须是在相同Namespace下的，如果要关联非同ns下需要下面这样设置值。</p>
+
+<pre><code class="language-yaml">spec:
+  namespaceSelector:
+    matchNames:
+    - target_ns_name
+</code></pre>
+
+<p>如果希望ServiceMonitor可以关联任意命名空间下的标签，则通过以下方式定义：</p>
+
+<pre><code class="language-yaml">spec:
+  namespaceSelector:
+    any: true
+</code></pre>
+
+<p>如果需要监控的Target对象启用了BasicAuth认证，那在定义ServiceMonitor对象时，可以使用endpoints配置中定义basicAuth如下所示basicAuth中的<code>password</code>和<code>username</code>值来源于同ns下的一个名为<code>basic-auth</code>的Secret。</p>
+
+<pre><code class="language-yaml">spec
+  endpoints:
+  - basicAuth:
+      password:
+        name: basic-auth
+        key: password
+      username:
+        name: basic-auth
+        key: user
+    port: web
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: basic-auth
+type: Opaque
+data:
+  user: dXNlcgo= # base64编码后的用户名
+  password: cGFzc3dkCg== # base64编码后的密码
+</code></pre>
+
+<p>上面要注意的是我创建prometheus server的时候有如下值。</p>
+
+<pre><code class="language-yaml">  serviceMonitorSelector:
+    matchLabels:
+      team: frontend
+</code></pre>
+
+<p>该值字面意思可以知道就是指定prometheus server去选择哪些<code>ServiceMonitor</code>，这个概念和svc去选择pod一样，可能一个集群跑很多prometheus server来监控各自选中的<code>ServiceMonitor</code>，如果想一个prometheus server监控所有的则<code>spec.serviceMonitorSelector: {}</code>为空即可，而namespaces的范围同样的设置<code>spec.serviceMonitorSelector: {}</code>，后面官方的prometheus实例里我们可以看到设置了这两个值。</p>
+
+<p>给prometheus server设置相关的RBAC权限。</p>
+
+<pre><code class="language-bash">$ cat&lt;&lt;EOF | kubectl apply -f -
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: prometheus
+rules:
+- apiGroups: [&quot;&quot;]
+  resources:
+  - nodes
+  - services
+  - endpoints
+  - pods
+  verbs: [&quot;get&quot;， &quot;list&quot;， &quot;watch&quot;]
+- apiGroups: [&quot;&quot;]
+  resources:
+  - configmaps
+  verbs: [&quot;get&quot;]
+- nonResourceURLs: [&quot;/metrics&quot;]
+  verbs: [&quot;get&quot;]
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus
+subjects:
+- kind: ServiceAccount
+  name: prometheus
+  namespace: default
+EOF
+</code></pre>
+
+<p>创建svc使用<code>NodePort</code>方便我们访问prometheus的web页面，生产环境不建议使用<code>NodePort</code>。</p>
+
+<pre><code class="language-bash">$ cat&lt;&lt;EOF | kubectl apply -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+spec:
+  type: NodePort
+  ports:
+  - name: web
+    nodePort: 30900
+    port: 9090
+    protocol: TCP
+    targetPort: web
+  selector:
+    prometheus: prometheus
+EOF
+</code></pre>
+
+<p>打开浏览器访问<code>ip:30900</code>进入target发现已经监听起来了，对应的config里也有配置生成和导入。</p>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fyzbkz9djqj314c0fv41z.jpg" alt="" /></p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fyzblkgpcnj30r80q8juf.jpg" alt="" /></p>
+
+<p>先清理掉上面的，然后我们使用官方提供的全套yaml正式部署<code>prometheus-operator</code>。</p>
+
+<pre><code class="language-bash">kubectl delete svc prometheus example-app
+kubectl delete ClusterRoleBinding prometheus 
+kubectl delete ClusterRole prometheus
+kubectl delete ServiceMonitor example-app
+kubectl delete deploy example-app
+kubectl delete  sa prometheus
+kubectl delete prometheus prometheus
+kubectl delete -f bundle.yaml
+</code></pre>
+
+<h2 id="部署官方的prometheus-operator">部署官方的prometheus-operator</h2>
+
+<h3 id="分类文件">分类文件</h3>
+
+<p>官方把所有文件都放在一起，这里我分类下。</p>
+
+<pre><code class="language-bash">cd contrib/kube-prometheus/manifests/
+mkdir -p operator node-exporter alertmanager grafana kube-state-metrics prometheus serviceMonitor adapter
+mv *-serviceMonitor* serviceMonitor/
+mv 0prometheus-operator* operator/
+mv grafana-* grafana/
+mv kube-state-metrics-* kube-state-metrics/
+mv alertmanager-* alertmanager/
+mv node-exporter-* node-exporter/
+mv prometheus-adapter* adapter/
+mv prometheus-* prometheus/
+$ ll
+total 40
+drwxr-xr-x 9 root root 4096 Jan  6 14:19 ./
+drwxr-xr-x 9 root root 4096 Jan  6 14:15 ../
+-rw-r--r-- 1 root root   60 Jan  6 14:15 00namespace-namespace.yaml
+drwxr-xr-x 3 root root 4096 Jan  6 14:19 adapter/
+drwxr-xr-x 3 root root 4096 Jan  6 14:19 alertmanager/
+drwxr-xr-x 2 root root 4096 Jan  6 14:17 grafana/
+drwxr-xr-x 2 root root 4096 Jan  6 14:17 kube-state-metrics/
+drwxr-xr-x 2 root root 4096 Jan  6 14:18 node-exporter/
+drwxr-xr-x 2 root root 4096 Jan  6 14:17 operator/
+drwxr-xr-x 2 root root 4096 Jan  6 14:19 prometheus/
+drwxr-xr-x 2 root root 4096 Jan  6 14:17 serviceMonitor/
+</code></pre>
+
+<h3 id="部署operator">部署operator</h3>
+
+<p>先创建ns和operator，quay.io仓库拉取慢，可以使用我脚本拉取，其他镜像也可以这样去拉，不过在apply之前才能拉，一旦被docker接手拉取就只能漫长等。</p>
+
+<pre><code class="language-bash">kubectl apply -f .
+curl -s https://zhangguanzhang.github.io/bash/pull.sh | bash -s -- quay.io/coreos/prometheus-operator:v0.26.0
+kubectl apply -f operator/
+</code></pre>
+
+<p>确认状态运行正常再往后执行，这里镜像是quay.io仓库的可能会很慢耐心等待或者自行修改成能拉取到的。</p>
+
+<pre><code class="language-bash">$ kubectl -n monitoring get pod
+NAME                                   READY     STATUS    RESTARTS   AGE
+prometheus-operator-56954c76b5-qm9ww   1/1       Running   0          24s
+</code></pre>
+
+<h3 id="部署整套crd">部署整套CRD</h3>
+
+<p>创建相关的CRD，这里镜像可能也要很久。</p>
+
+<pre><code class="language-bash">kubectl apply -f adapter/
+kubectl apply -f alertmanager/
+kubectl apply -f node-exporter/
+kubectl apply -f kube-state-metrics/
+kubectl apply -f grafana/
+kubectl apply -f prometheus/
+kubectl apply -f serviceMonitor/
+</code></pre>
+
+<p>可以通过get查看整体状态，这里镜像原因会等待很久，我们可以先往后看几个坑的地方。</p>
+
+<pre><code class="language-bash">kubectl -n monitoring get all
+</code></pre>
+
+<h3 id="常见坑的说明和解决方法">常见坑的说明和解决方法</h3>
+
+<h4 id="坑一">坑一</h4>
+
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fyzbmiknc2j30vc07n0u2.jpg" alt="" />
+这里要注意有一个坑，二进制部署k8s管理组件和新版本kubeadm部署的都会发现在prometheus server的页面上发现<code>kube-controller</code>和<code>kube-schedule</code>的target为0/0也就是上图所示。这是因为serviceMonitor是根据label去选取svc的，我们可以看到对应的<code>serviceMonitor</code>是选取的ns范围是<code>kube-system</code>。</p>
+
+<pre><code class="language-bash">$ grep -2 selector serviceMonitor/prometheus-serviceMonitorKube*
+serviceMonitor/prometheus-serviceMonitorKubeControllerManager.yaml-    matchNames:
+serviceMonitor/prometheus-serviceMonitorKubeControllerManager.yaml-    - kube-system
+serviceMonitor/prometheus-serviceMonitorKubeControllerManager.yaml:  selector:
+serviceMonitor/prometheus-serviceMonitorKubeControllerManager.yaml-    matchLabels:
+serviceMonitor/prometheus-serviceMonitorKubeControllerManager.yaml-      k8s-app: kube-controller-manager
+--
+serviceMonitor/prometheus-serviceMonitorKubelet.yaml-    matchNames:
+serviceMonitor/prometheus-serviceMonitorKubelet.yaml-    - kube-system
+serviceMonitor/prometheus-serviceMonitorKubelet.yaml:  selector:
+serviceMonitor/prometheus-serviceMonitorKubelet.yaml-    matchLabels:
+serviceMonitor/prometheus-serviceMonitorKubelet.yaml-      k8s-app: kubelet
+--
+serviceMonitor/prometheus-serviceMonitorKubeScheduler.yaml-    matchNames:
+serviceMonitor/prometheus-serviceMonitorKubeScheduler.yaml-    - kube-system
+serviceMonitor/prometheus-serviceMonitorKubeScheduler.yaml:  selector:
+serviceMonitor/prometheus-serviceMonitorKubeScheduler.yaml-    matchLabels:
+serviceMonitor/prometheus-serviceMonitorKubeScheduler.yaml-      k8s-app: kube-scheduler
+</code></pre>
+
+<p>而kube-system里默认只有这俩svc，且没有符合上面的label。</p>
+
+<pre><code class="language-bash">$ kubectl -n kube-system get svc
+NAME                      TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)         AGE
+kube-dns                  ClusterIP   10.96.0.10   &lt;none&gt;        53/UDP，53/TCP   139m
+kubelet                   ClusterIP   None         &lt;none&gt;        10250/TCP       103m
+</code></pre>
+
+<p>但是却有对应的ep(没有带任何label)被创建，这点想不通官方什么鬼操作，另外这里没有kubelet的ep，我博客部署的二进制的话会有。</p>
+
+<pre><code class="language-bash">$ kubectl get ep -n kube-system
+NAME                      ENDPOINTS                                                AGE
+kube-controller-manager   &lt;none&gt;                                                   139m
+kube-dns                  10.244.1.2:53，10.244.8.10:53，10.244.1.2:53 + 1 more...   139m
+kube-scheduler            &lt;none&gt;                                                   139m
+</code></pre>
+
+<h4 id="解决办法">解决办法</h4>
+
+<p>所以这里我们创建两个管理组建的svc，名字无所谓，关键是svc的label要能被servicemonitor选中，svc的选择器的label是因为kubeadm的staticPod的label是这样，如果是二进制部署的这俩svc的selector部分不能要。</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  namespace: kube-system
+  name: kube-controller-manager
+  labels:
+    k8s-app: kube-controller-manager
+spec:
+  selector:
+    component: kube-controller-manager
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - name: http-metrics
+    port: 10252
+    targetPort: 10252
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: kube-system
+  name: kube-scheduler
+  labels:
+    k8s-app: kube-scheduler
+spec:
+  selector:
+    component: kube-scheduler
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - name: http-metrics
+    port: 10251
+    targetPort: 10251
+    protocol: TCP
+</code></pre>
+
+<p>二进制的话需要我们手动填入svc对应的ep的属性，我集群是HA的，所有有三个，仅供参考，别傻傻得照抄，另外这个ep的名字得和上面的svc的名字和属性对应上：</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Endpoints
+metadata:
+  labels:
+    k8s-app: kube-controller-manager
+  name: kube-controller-manager
+  namespace: kube-system
+subsets:
+- addresses:
+  - ip: 172.16.0.2
+  - ip: 172.16.0.7
+  - ip: 172.16.0.8
+  ports:
+  - name: http-metrics
+    port: 10252
+    protocol: TCP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  labels:
+    k8s-app: kube-scheduler
+  name: kube-scheduler
+  namespace: kube-system
+subsets:
+- addresses:
+  - ip: 172.16.0.2
+  - ip: 172.16.0.7
+  - ip: 172.16.0.8
+  ports:
+  - name: http-metrics
+    port: 10251
+    protocol: TCP
+</code></pre>
+
+<p>这里不知道为啥kubeadm部署的没有kubelet这个ep，我博客二进制部署后是会有kubelet这个ep的(好像metrics server创建的)，下面仅供参考，IP根据实际写。另外kubeadm部署下kubelet的readonly的metrics端口(默认是10255)不会开放可以删掉ep的那部分port：</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Endpoints
+metadata:
+  labels:
+    k8s-app: kubelet
+  name: kubelet
+  namespace: kube-system
+subsets:
+- addresses:
+  - ip: 172.16.0.14
+    targetRef:
+      kind: Node
+      name: k8s-n2
+  - ip: 172.16.0.18
+    targetRef:
+      kind: Node
+      name: k8s-n3
+  - ip: 172.16.0.2
+    targetRef:
+      kind: Node
+      name: k8s-m1
+  - ip: 172.16.0.20
+    targetRef:
+      kind: Node
+      name: k8s-n4
+  - ip: 172.16.0.21
+    targetRef:
+      kind: Node
+      name: k8s-n5
+  ports:
+  - name: http-metrics
+    port: 10255
+    protocol: TCP
+  - name: cadvisor
+    port: 4194
+    protocol: TCP
+  - name: https-metrics
+    port: 10250
+    protocol: TCP
+</code></pre>
+
+<p>至于prometheus server的服务访问，别再用效率不行的<code>NodePort</code>了，上ingress controller吧，怎么部署参照我博客<a href="https://zhangguanzhang.github.io/2018/10/06/IngressController/">IngressController</a>。</p>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus-ing
+  namespace: monitoring
+spec:
+  rules:
+  - host: prometheus.monitoring.k8s.local
+    http:
+      paths:
+      - backend:
+          serviceName: prometheus-k8s
+          servicePort: 9090
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: grafana-ing
+  namespace: monitoring
+spec:
+  rules:
+  - host: grafana.monitoring.k8s.local
+    http:
+      paths:
+      - backend:
+          serviceName: grafana
+          servicePort: 3000
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: alertmanager-ing
+  namespace: monitoring
+spec:
+  rules:
+  - host: alertmanager.monitoring.k8s.local
+    http:
+      paths:
+      - backend:
+          serviceName: alertmanager-main
+          servicePort: 9093
+</code></pre>
+
+<h4 id="坑二">坑二</h4>
+
+<p>访问prometheus server的web页面我们发现即使创建了svc和注入对应ep的信息在target页面发现prometheus server请求被拒绝。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fyzbmvpd9bj31g80jndlf.jpg" alt="" /></p>
+
+<p>在宿主机上我们发现127.0.0.1才能访问，网卡ip不能访问(这里是另一个环境找的，所以ip是192不是前面的172)</p>
+
+<pre><code class="language-bash">$ hostname -i
+192.168.15.223
+$ curl -I http://192.168.15.223:10251/metrics
+curl: (7) Failed connect to 192.168.15.223:10251; Connection refused
+$ curl -I http://127.0.0.1:10251/metrics
+HTTP/1.1 200 OK
+Content-Length: 30349
+Content-Type: text/plain; version=0.0.4
+Date: Mon， 07 Jan 2019 13:33:50 GMT
+</code></pre>
+
+<h4 id="解决办法-1">解决办法</h4>
+
+<p>修改管理组件bind的ip。</p>
+
+<p>如果使用kubeadm启动的集群，初始化时的config.yml里可以加入如下参数</p>
+
+<pre><code class="language-yaml">controllerManagerExtraArgs:
+  address: 0.0.0.0
+schedulerExtraArgs:
+  address: 0.0.0.0
+</code></pre>
+
+<p>已经启动后的使用下面命令更改就会滚动更新</p>
+
+<pre><code class="language-bash">sed -ri '/--address/s#=.+#=0.0.0.0#' /etc/kubernetes/manifests/kube-*
+</code></pre>
+
+<p>二进制的话查看是不是bind的0.0.0.0如果不是就修改成0.0.0.0，多块网卡如果只想bind一个网卡就写对应的主机上的网卡ip，写0.0.0.0就会监听所有网卡的对应端口。</p>
+
+<h3 id="访问相关页面">访问相关页面</h3>
+
+<p>通过浏览器查看<code>prometheus.monitoring.k8s.local</code>与<code>grafana.monitoring.k8s.local</code>是否正常，若沒问题就可以看到下图结果，grafana初始用股名和密码是admin。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fyzbnfx054j31l40u0qaw.jpg" alt="" /></p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fyzbnrpze3j31hc0q2dke.jpg" alt="" /></p>
+
+<h2 id="最后">最后</h2>
+
+<p>可以多看看官方写的yaml，里面有更多的字段没介绍可以看yaml来了解。</p>
+
+<h2 id="参考文档">参考文档</h2>
+
+<ul>
+<li><a href="https://github.com/coreos/prometheus-operator/tree/master/Documentation">https://github.com/coreos/prometheus-operator/tree/master/Documentation</a></li>
+<li><a href="https://github.com/coreos/prometheus-operator/tree/master/contrib/kube-prometheus">https://github.com/coreos/prometheus-operator/tree/master/contrib/kube-prometheus</a></li>
+<li><a href="https://coreos.com/operators/prometheus/docs/latest/user-guides/getting-started.html">https://coreos.com/operators/prometheus/docs/latest/user-guides/getting-started.html</a></li>
+</ul>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/service-mesh-meetup-guangzhou-20190106/" data-toggle="tooltip" data-placement="top" title="第五届Service Mesh Meetup广州站回顾">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/kubernetes-resource-management/"><i class="fa fa-link"></i>Kubernetes资源管理概述</a></li>
+         
+        <li><a href="/blog/istio-service-and-traffic-model/"><i class="fa fa-link"></i>Istio中的服务和流量的抽象模型</a></li>
+         
+        <li><a href="/blog/kubernetes-crd-quick-start/"><i class="fa fa-link"></i>如何从零开始编写一个Kubernetes CRD</a></li>
+         
+        <li><a href="/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/"><i class="fa fa-link"></i>Envoy service mesh、Prometheus和Grafana下的微服务监控</a></li>
+         
+        <li><a href="/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/"><i class="fa fa-link"></i>如何将云原生工作负载映射到Kubernetes中的控制器</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (2)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (17)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (4)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (16)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (87)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/nfv"><i class="fa fa-tags"></i> nfv</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/open-source"><i class="fa fa-tags"></i> open-source</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/operator"><i class="fa fa-tags"></i> operator</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/supergloo"><i class="fa fa-tags"></i> supergloo</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/prometheus-operator-manual/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz04oiegb1j313z0u04qq.jpg" class="img-responsive" alt="全手动部署prometheus-operator监控Kubernetes集群遇到的坑">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/prometheus-operator-manual/">全手动部署prometheus-operator监控Kubernetes集群遇到的坑</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/service-mesh-meetup-guangzhou-20190106/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNc79ly1fyyzcxasgvj31400u01l1.jpg" class="img-responsive" alt="第五届Service Mesh Meetup广州站回顾">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/service-mesh-meetup-guangzhou-20190106/">第五届Service Mesh Meetup广州站回顾</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/envoy-proxy-config-deep-dive/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1fyy63n2ue6j314k0ts43z.jpg" class="img-responsive" alt="Istio 的数据平面 Envoy Proxy 配置详解">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/envoy-proxy-config-deep-dive/">Istio 的数据平面 Envoy Proxy 配置详解</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
