@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>在网格的边缘试探——企业服务行业如何试水 Istio</title>
+      <link>http://www.servicemesher.com/blog/explore-at-the-edge-of-istio-service-mesh/</link>
+      <pubDate>Fri, 11 Jan 2019 11:10:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/explore-at-the-edge-of-istio-service-mesh/</guid>
+      <description>崔秀龙，HPE 软件分析师，Kubernetes 权威指南作者之一，Kubernetes、Istio 项目成员。 本文根据崔秀龙在 2019 广州 Service Mesh Meetup#5 分享整</description>
+    </item>
+    
+    <item>
       <title>全手动部署prometheus-operator监控Kubernetes集群遇到的坑</title>
       <link>http://www.servicemesher.com/blog/prometheus-operator-manual/</link>
       <pubDate>Tue, 08 Jan 2019 17:40:30 +0800</pubDate>
