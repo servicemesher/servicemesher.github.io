@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Service Mesh——后 Kubernetes 时代的微服务 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格">
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Service Mesh——后 Kubernetes 时代的微服务" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/service-mesh-the-microservices-in-post-kubernetes-era//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文假定您已经对 Kubernetes 有比较全面的了解，同时还使用过 Istio service mesh，但是对于 Kubernetes、Envoy 及 Istio 之间的关系不甚了解，及 Istio 如何使用 xDS 协议控制所有的 Sidecar 有浓厚的兴趣，那么推荐您继续阅读。">
+  <meta property="og:description" content="本文假定您已经对 Kubernetes 有比较全面的了解，同时还使用过 Istio service mesh，但是对于 Kubernetes、Envoy 及 Istio 之间的关系不甚了解，及 Istio 如何使用 xDS 协议控制所有的 Sidecar 有浓厚的兴趣，那么推荐您继续阅读。">
+  <meta name="twitter:description" content="本文假定您已经对 Kubernetes 有比较全面的了解，同时还使用过 Istio service mesh，但是对于 Kubernetes、Envoy 及 Istio 之间的关系不甚了解，及 Istio 如何使用 xDS 协议控制所有的 Sidecar 有浓厚的兴趣，那么推荐您继续阅读。">
+  <meta property="og:description" content="本文假定您已经对 Kubernetes 有比较全面的了解，同时还使用过 Istio service mesh，但是对于 Kubernetes、Envoy 及 Istio 之间的关系不甚了解，及 Istio 如何使用 xDS 协议控制所有的 Sidecar 有浓厚的兴趣，那么推荐您继续阅读。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Service Mesh——后 Kubernetes 时代的微服务 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Service Mesh——后 Kubernetes 时代的微服务 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Service Mesh——后 Kubernetes 时代的微服务 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Service Mesh——后 Kubernetes 时代的微服务</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年1月17日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://jimmysong.io">宋净超</a>
+                            
+                            
+                            
+                            |
+                            6100字 | 阅读大约需要13分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://jimmysong.io/posts/service-mesh-the-microservices-in-post-kubernetes-era/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/service-mesh">service mesh</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/envoy/"><i>#envoy</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/xds/"><i>#xds</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p>这不是一篇教程，本文试图带您梳理清楚 Kubernetes、Envoy（xDS 协议）以及 Istio Service Mesh 之间的关系及内在联系。本文介绍了 Kubernetes 中的负载均衡方式，Envoy 的 xDS 协议对于 Service Mesh 的意义以及为什么说有了 Kubernetes 还需要 Istio。</p>
+
+<p>Envoy 对于 Service Mesh 或者说  Cloud Native 最大的贡献就是定义了 xDS，Envoy 虽然本质上是一个 proxy，但是它的配置协议被众多开源软件所支持，如 <a href="https://github.com/istio/istio">Istio</a>、<a href="https://linkerd.io">Linkerd</a>、<a href="https://aws.amazon.com/app-mesh/">AWS App Mesh</a>、<a href="https://github.com/alipay/sofa-mesh">SOFAMesh</a> 等。</p>
+
+<p><strong>关于本文标题</strong></p>
+
+<p>2018年9月1日，<a href="https://twitter.com/bibryam">Bilgin Ibryam</a> 在 InfoQ 发表了一篇文章 <a href="https://www.infoq.com/articles/microservices-post-kubernetes">Microservices in a Post-Kubernetes Era</a>，中文版见<a href="https://www.infoq.cn/article/microservices-post-kubernetes">后 Kubernetes 时代的微服务</a>（译文有些错误，仅供参考）。本文标题中虽然没有明确指明”后 Kubernetes 时代的微服务“是什么，但是从文中可以看出作者的观点是：在后 Kubernetes 时代，服务网格（Service Mesh）技术已完全取代了使用软件库实现网络运维（例如 Hystrix 断路器）的方式。本文索性就借用该标题。</p>
+
+<p><strong>本文中包含以下内容</strong></p>
+
+<ul>
+<li>说明 kube-proxy 的作用。</li>
+<li>Kubernetes 在微服务管理上的局限性。</li>
+<li>介绍下 Istio Service Mesh 的功能。</li>
+<li>介绍下 xDS 包含哪些内容。</li>
+<li>比较了 Kubernetes、Envoy 和 Istio Service Mesh 中的一些概念。</li>
+</ul>
+
+<h2 id="本文观点">本文观点</h2>
+
+<p>如果你没有精力阅读下文的所有内容，那么可以先阅读看下下面列出的本文中的一些主要观点：</p>
+
+<ul>
+<li>Kubernetes 的本质是应用的生命周期管理，具体说是部署和管理（扩缩容、自动恢复、发布）。</li>
+<li>Kubernetes 为微服务提供了可扩展、高弹性的部署和管理平台。</li>
+<li>Service Mesh 的基础是透明代理，通过 sidecar proxy 拦截到微服务间流量后再通过控制平面配置管理微服务的行为。</li>
+<li>Service Mesh 将流量管理从 Kubernetes 中解耦，Service Mesh 内部的流量无需 <code>kube-proxy</code> 组件的支持，通过为更接近微服务应用层的抽象，管理服务间的流量、安全性和可观察性。</li>
+<li>Envoy xDS 定义了 Service Mesh 配置的协议标准。</li>
+<li>Service Mesh 是对 Kubernetes 中的 service 更上层的抽象，它的下一步是 serverless。</li>
+</ul>
+
+<h2 id="适用人群">适用人群</h2>
+
+<p>本文假定您已经对 <a href="https://kubernetes.io">Kubernetes</a> 有比较全面的了解，同时还使用过 <a href="https://istio.io/zh">Istio</a> service mesh，但是对于 Kubernetes、Envoy 及 Istio 之间的关系不甚了解，及 Istio 如何使用 xDS 协议控制所有的 Sidecar 有浓厚的兴趣，那么推荐您继续阅读。</p>
+
+<h2 id="阅读本文之前">阅读本文之前</h2>
+
+<p>推荐大家在阅读本文之前希望您对微服务、容器和 Kubernetes 有一定认识，如果您已经阅读过以下几篇文章将对您理解本文更有帮助，本文中也引用过了下面文章中的部分观点。</p>
+
+<ul>
+<li><a href="https://www.cnblogs.com/163yun/p/8962278.html">深入解读 Service Mesh 背后的技术细节 by 刘超</a></li>
+<li><a href="https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/">Istio流量管理实现机制深度解析 by 赵化冰</a></li>
+<li><a href="https://skyao.io/post/201804-servicemesh-architecture-introspection/">Service Mesh架构反思：数据平面和控制平面的界线该如何划定？by 敖小剑</a></li>
+<li><a href="https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/">理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持 by 宋净超</a></li>
+<li><a href="http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin">Service Mesh 深度学习系列——Istio源码分析之pilot-agent模块分析 by 丁轶群</a></li>
+</ul>
+
+<h2 id="为什么走到这一步">为什么走到这一步</h2>
+
+<p>使用 Service Mesh 并不是说与 Kubernetes 决裂，而是水到渠成的事情。Kubernetes 的本质是通过声明式配置对应用进行生命周期管理，而 Service Mesh 的本质是应用间的流量和安全性管理。假如你已经使用 Kubernetes 构建了稳定的微服务平台，那么如何设置服务间调用的负载均衡和流量控制？</p>
+
+<h2 id="在阅读本文前先问自己几个问题">在阅读本文前先问自己几个问题</h2>
+
+<p>我想听说过 Service Mesh 并试用过 <a href="https://istio.io/zh">Istio</a> 的人可能都会有以下几个疑问：</p>
+
+<ol>
+<li>为什么 Istio 一定要绑定 Kubernetes 呢？</li>
+<li>Kubernetes 和 Service Mesh 分别在云原生中扮演什么角色？</li>
+<li>Istio 扩展了 Kubernetes 的哪些方面？解决了哪些问题？</li>
+<li>Kubernetes、Envoy（xDS 协议）与 Istio 之间又是什么关系？</li>
+<li>到底该不该上 Service Mesh？</li>
+</ol>
+
+<h2 id="为什么写这篇文章">为什么写这篇文章</h2>
+
+<p>从 <a href="http://www.servicemesher.com">ServiceMesher 社区</a>的反馈来看，很多初次接触 Istio 和 Service Mesh 的同学，跟着那个 <a href="https://istio.io">Istio 官方文档</a>可以迅速的搭建和试用 Istio 的各种功能，了解 Service Mesh 能为你做什么，但用户所有的操作都仅是在控制平面完成的，至于 Istio 如何操作数据平面，即每个 Sidecar proxy 的呢？</p>
+
+<p><a href="https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-1.13-changelog.html">Kubernetes 1.13</a> 如期发布了，Kubernetes 依然按照四个月一个版本的速度迭代着，但是我们能看到的重大革新越来越少了，已经过了技术采纳的初级阶段，正在大规模落地，关于 Kubernetes 的书籍、演讲已经扎堆，我不会过多得讲到 Kubernetes。本文不一定能够回答以上所有问题，本文仅为我个人理解，抛砖引玉。</p>
+
+<p><strong>注意：这篇文章中涉及大量的数据平面的细节。</strong></p>
+
+<h2 id="kubernetes-vs-service-mesh">Kubernetes vs Service Mesh</h2>
+
+<p>下图展示的是 Kubernetes 与 Service Mesh 中的的服务访问关系，本文仅针对 sidecar per-pod 模式，详情请参考<a href="https://jimmysong.io/istio-handbook/concepts/service-mesh-patterns.html">服务网格的实现模式</a>。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz6c7pj4sqj31hk0rejuz.jpg" alt="kubernetes vs service mesh" /></p>
+
+<p>Kubernetes 集群的每个节点都部署了一个 <code>kube-proxy</code> 组件，该组件会与 Kubernetes API Server 通信，获取集群中的 <a href="https://jimmysong.io/kubernetes-handbook/concepts/service.html">service</a> 信息，然后设置 iptables 规则，直接将对某个 service 的请求发送到对应的 Endpoint（属于同一组 service 的 pod）上。</p>
+
+<p>Istio Service Mesh 中沿用了 Kubernetes 中的 service 做服务注册，通过 Control Plane 来生成数据平面的配置（使用 CRD 声明，保存在 etcd 中），数据平面的<strong>透明代理</strong>（transparent proxy）以 sidecar 容器的形式部署在每个应用服务的 pod 中，这些 proxy 都需要请求 Control Plane 来同步代理配置，之所以说是透明代理，是因为应用程序容器完全无感知代理的存在，该过程 kube-proxy 组件一样需要拦截流量，只不过 <code>kube-proxy</code> 拦截的是进出 Kubernetes 节点的流量，而 sidecar proxy 拦截的是进出该 Pod 的流量，详见<a href="https://jimmysong.io/posts/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/">理解 Istio Service Mesh 中 Envoy Sidecar 代理的路由转发</a>。</p>
+
+<p><strong>Service Mesh 的劣势</strong></p>
+
+<p>因为 Kubernetes 每个节点上都会运行众多的 Pod，将原先 <code>kube-proxy</code> 方式的路由转发功能置于每个 pod 中，这将导致大量的配置分发、同步和最终一致性问题。为了细粒度的机型流量管理，必将代理一系列新的抽象，增加了用户的心智负担，但随着技术的普及慢慢将得到缓解。</p>
+
+<p><strong>Service Mesh 的优势</strong></p>
+
+<p><code>kube-proxy</code> 的设置都是全局生效的，无法对每个服务做细粒度的控制，而 Service Mesh 通过 sidecar proxy 的方式将 Kubernetes 中对流量的控制从 service 一层抽离出来，可以做更多的扩展。</p>
+
+<h2 id="kube-proxy-组件">kube-proxy 组件</h2>
+
+<p>在 Kubernetes 集群中，每个 Node 运行一个 <code>kube-proxy</code> 进程。<code>kube-proxy</code> 负责为 <code>Service</code> 实现了一种 VIP（虚拟 IP）的形式。 在 Kubernetes v1.0 版本，代理完全在 userspace 实现。Kubernetes v1.1 版本新增了 <a href="https://jimmysong.io/kubernetes-handbook/concepts/service.html#iptables-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F">iptables 代理模式</a>，但并不是默认的运行模式。从 Kubernetes v1.2 起，默认使用 iptables 代理。在 Kubernetes v1.8.0-beta.0 中，添加了 <a href="https://jimmysong.io/kubernetes-handbook/concepts/service.html#ipvs-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F">ipvs 代理模式</a>。关于 kube-proxy 组件的更多介绍请参考 <a href="https://cizixs.com/2017/03/30/kubernetes-introduction-service-and-kube-proxy/">kubernetes 简介：service 和 kube-proxy 原理</a> 和 <a href="https://jishu.io/kubernetes/ipvs-loadbalancer-for-kubernetes/">使用 IPVS 实现 Kubernetes 入口流量负载均衡</a>。</p>
+
+<h3 id="kube-proxy-的缺陷">kube-proxy 的缺陷</h3>
+
+<p>在上面的链接中作者指出了 <a href="https://cizixs.com/2017/03/30/kubernetes-introduction-service-and-kube-proxy/">kube-proxy 的不足之处</a>：</p>
+
+<blockquote>
+<p>首先，如果转发的 pod 不能正常提供服务，它不会自动尝试另一个 pod，当然这个可以通过 <a href="https://jimmysong.io/kubernetes-handbook/guide/configure-liveness-readiness-probes.html"><code>liveness probes</code></a> 来解决。每个 pod 都有一个健康检查的机制，当有 pod 健康状况有问题时，kube-proxy 会删除对应的转发规则。另外，<code>nodePort</code> 类型的服务也无法添加 TLS 或者更复杂的报文路由机制。</p>
+</blockquote>
+
+<p>Kube-proxy 实现了流量在 Kubernetes service 多个 pod 实例间的负载均衡，但是如何对这些 service 间的流量做细粒度的控制，比如按照百分比划分流量到不同的应用版本（这些应用都属于同一个  service，但位于不同的 deployment 上），做金丝雀发布（灰度发布）和蓝绿发布？Kubernetes 社区给出了 <a href="https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/#canary-deployments">使用 Deployment 做金丝雀发布的方法</a>，该方法本质上就是通过修改 pod 的 <a href="https://jimmysong.io/kubernetes-handbook/concepts/label.html">label</a> 来将不同的 pod 划归到 Deployment 的 Service 上。</p>
+
+<h2 id="kubernetes-ingress-vs-istio-gateway">Kubernetes Ingress vs Istio Gateway</h2>
+
+<p>Kubernetes 中的 Ingress 资源对象跟 Istio Service Mesh 中的 Gateway 的功能类似，都是负责集群南北流量（从集群外部进入集群内部的流量）。</p>
+
+<p><code>kube-proxy</code> 只能路由 Kubernetes 集群内部的流量，而我们知道 Kubernetes 集群的 Pod 位于 <a href="https://jimmysong.io/kubernetes-handbook/concepts/cni.html">CNI</a> 创建的外网络中，集群外部是无法直接与其通信的，因此 Kubernetes 中创建了 <a href="https://jimmysong.io/kubernetes-handbook/concepts/ingress.html">ingress</a> 这个资源对象，它由位于 Kubernetes <a href="https://jimmysong.io/kubernetes-handbook/practice/edge-node-configuration.html">边缘节点</a>（这样的节点可以是很多个也可以是一组）的 Ingress controller 驱动，负责管理<strong>南北向流量</strong>（从集群外部进入 Kubernetes 集群的流量），Ingress 必须对接各种个 Ingress Controller 才能使用，比如 <a href="https://github.com/kubernetes/ingress-nginx">nginx ingress controller</a>、<a href="https://traefik.io/">traefik</a>。Ingress 只适用于 HTTP 流量，使用方式也很简单，只能对 service、port、HTTP 路径等有限字段匹配来路由流量，这导致它无法路由如 MySQL、redis 和各种私有 RPC 等 TCP 流量。要想直接路由南北向的流量，只能使用 Service 的 LoadBalancer 或 NodePort，前者需要云厂商支持而且可能需要付费，后者需要进行额外的端口管理。有些 Ingress controller 支持暴露 TCP 和 UDP 服务，但是只能使用 Service 来暴露，Ingress 本身是不支持的，例如 <a href="https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/">nginx ingress controller</a>，服务的暴露的端口是通过创建 ConfigMap 的方式来配置的。</p>
+
+<p>Istio <code>Gateway</code> 描述的负载均衡器用于承载进出网格边缘的连接。该规范中描述了一系列开放端口和这些端口所使用的协议、负载均衡的 SNI 配置等内容。Gateway 是一种 <a href="https://jimmysong.io/kubernetes-handbook/concepts/crd.html">CRD 扩展</a>，它同时复用了 Envoy proxy 的能力，详细配置请参考 <a href="https://istio.io/zh/docs/reference/config/istio.networking.v1alpha3/#gateway">Istio 官网</a>。</p>
+
+<h2 id="xds-协议">xDS 协议</h2>
+
+<p>下面这张图大家在了解 Service Mesh 的时候可能都看到过，每个方块代表一个服务的示例，例如 Kubernetes 中的一个 Pod（其中包含了 sidecar proxy），xDS 协议控制了 Istio Service Mesh 中所有流量的具体行为，即将下图中的方块链接到了一起。</p>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fz73xstibij30b409cmyh.jpg" alt="Service Mesh 示意图" /></p>
+
+<p>xDS 协议是由 <a href="https://envoyproxy.io">Envoy</a> 提出的，在 Envoy v2 版本 API 中最原始的 xDS 协议只指 CDS、EDS、LDS 和 RDS。</p>
+
+<p>下面我们以两个 service，每个 service 都有两个实例的例子来看下 Envoy 的 xDS 协议。</p>
+
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fz7auvvrjnj30s80j8gn6.jpg" alt="Envoy xDS 协议" /></p>
+
+<p>上图中的箭头不是流量在进入 Enovy Proxy 后的路径或路由，而是想象的一种 Envoy 中 xDS 接口处理的顺序并非实际顺序，其实 xDS 之间也是有交叉引用的。</p>
+
+<p>Envoy 通过查询文件或管理服务器来动态发现资源。概括地讲，对应的发现服务及其相应的 API 被称作 *xDS*。Envoy 通过<strong>订阅（*subscription*）</strong>方式来获取资源，订阅方式有以下三种：</p>
+
+<ul>
+<li><strong>文件订阅</strong>：监控指定路径下的文件，发现动态资源的最简单方式就是将其保存于文件，并将路径配置在 <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/core/config_source.proto#core-configsource">ConfigSource</a> 中的 <code>path</code> 参数中。</li>
+<li><strong>gRPC 流式订阅</strong>：每个 xDS API 可以单独配置 <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/core/config_source.proto#core-apiconfigsource"><code>ApiConfigSource</code></a>，指向对应的上游管理服务器的集群地址。</li>
+<li><strong>轮询 REST-JSON 轮询订阅</strong>：单个 xDS API 可对 REST 端点进行的同步（长）轮询。</li>
+</ul>
+
+<p>以上的 xDS 订阅方式详情请参考 <a href="https://jimmysong.io/istio-handbook/concepts/envoy-xds-protocol.html">xDS 协议解析</a>。Istio  使用的 gRPC 流式订阅的方式配置所有的数据平面的 sidecar proxy。</p>
+
+<p>关于 xDS 协议的详细分解请参考丁轶群博士的这几篇文章：</p>
+
+<ul>
+<li><a href="http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin">Service Mesh深度学习系列part1—istio源码分析之pilot-agent模块分析</a></li>
+<li><a href="http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin">Service Mesh深度学习系列part2—istio源码分析之pilot-discovery模块分析</a></li>
+<li><a href="http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2">Service Mesh深度学习系列part3—istio源码分析之pilot-discovery模块分析（续）</a></li>
+</ul>
+
+<p>文章中介绍了 Istio pilot 的总体架构、Envoy 配置的生成、pilot-discovery 模块的功能，以及 xDS 协议中的 CDS、EDS 及 ADS，关于 ADS 详情请参考 <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/v2_overview#aggregated-discovery-service">Enovy 官方文档</a>。</p>
+
+<h3 id="xds-协议要点">xDS 协议要点</h3>
+
+<p>最后总结下关于 xDS 协议的要点：</p>
+
+<ul>
+<li>CDS、EDS、LDS、RDS 是最基础的 xDS 协议，它们可以分别独立更新的。</li>
+<li>所有的发现服务（Discovery Service）可以连接不同的 Management Server，也就是说管理 xDS 的服务器可以是多个。</li>
+<li>Envoy 在原始 xDS 协议的基础上进行了一些列扩充，增加了 SDS（秘钥发现服务）、ADS（聚合发现服务）、HDS（健康发现服务）、MS（Metric 服务）、RLS（速率限制服务）等 API。</li>
+<li>为了保证数据一致性，若直接使用 xDS 原始 API 的话，需要保证这样的顺序更新：CDS &ndash;&gt; EDS &ndash;&gt; LDS &ndash;&gt; RDS，这是遵循电子工程中的<strong>先合后断</strong>（Make-Before-Break）原则，即在断开原来的连接之前先建立好新的连接，应用在路由里就是为了防止设置了新的路由规则的时候却无法发现上游集群而导致流量被丢弃的情况，类似于电路里的断路。</li>
+<li>CDS 设置 Service Mesh 中有哪些服务。</li>
+<li>EDS 设置哪些实例（Endpoint）属于这些服务（Cluster）。</li>
+<li>LDS 设置实例上监听的端口以配置路由。</li>
+<li>RDS 最终服务间的路由关系，应该保证最后更新 RDS。</li>
+</ul>
+
+<h2 id="envoy">Envoy</h2>
+
+<p>Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下面列举了 Envoy 里的基本术语及其数据结构解析，关于 Envoy 的详细介绍请参考 <a href="http://www.servicemesher.com/envoy/">Envoy 官方文档</a>，至于 Envoy 在 Service Mesh（不仅限于 Istio） 中是如何作为转发代理工作的请参考网易云刘超的这篇<a href="https://www.cnblogs.com/163yun/p/8962278.html">深入解读 Service Mesh 背后的技术细节 </a>以及<a href="https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/">理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</a>，本文引用其中的一些观点，详细内容不再赘述。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz69bsaqk7j314k0tsq90.jpg" alt="Envoy proxy 架构图" /></p>
+
+<h3 id="基本术语">基本术语</h3>
+
+<p>下面是您应该了解的 Enovy 里的基本术语：</p>
+
+<ul>
+<li><strong>Downstream（下游）</strong>：下游主机连接到 Envoy，发送请求并接收响应，即发送请求的主机。</li>
+<li><strong>Upstream（上游）</strong>：上游主机接收来自 Envoy 的连接和请求，并返回响应，即接受请求的主机。</li>
+<li><strong>Listener（监听器）</strong>：监听器是命名网地址（例如，端口、unix domain socket 等)，下游客户端可以连接这些监听器。Envoy 暴露一个或者多个监听器给下游主机连接。</li>
+<li><strong>Cluster（集群）</strong>：集群是指 Envoy 连接的一组逻辑相同的上游主机。Envoy 通过<a href="http://www.servicemesher.com/envoy/intro/arch_overview/service_discovery.html#arch-overview-service-discovery">服务发现</a>来发现集群的成员。可以选择通过<a href="http://www.servicemesher.com/envoy/intro/arch_overview/health_checking.html#arch-overview-health-checking">主动健康检查</a>来确定集群成员的健康状态。Envoy 通过<a href="http://www.servicemesher.com/envoy/intro/arch_overview/load_balancing.html#arch-overview-load-balancing">负载均衡策略</a>决定将请求路由到集群的哪个成员。</li>
+</ul>
+
+<p>Envoy 中可以设置多个 Listener，每个 Listener 中又可以设置 filter chain（过滤器链表），而且过滤器是可扩展的，这样就可以更方便我们操作流量的行为，例如设置加密、私有 RPC 等。</p>
+
+<p>xDS 协议是由 Envoy 提出的，现在是 Istio 中默认的 sidecar proxy，但只要实现 xDS 协议理论上都是可以作为 Istio 中的 sidecar proxy 的，例如蚂蚁金服开源的 <a href="https://github.com/alipay/sofa-mosn">SOFAMosn</a> 和 nginx 开源的 <a href="https://github.com/nginxinc/nginmesh">nginmesh</a>。</p>
+
+<h2 id="istio-service-mesh">Istio Service Mesh</h2>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz73sprcdlj31580u046j.jpg" alt="Istio service mesh 架构图" /></p>
+
+<p>Istio 是一个功能十分丰富的 Service Mesh，它包括如下功能：</p>
+
+<ul>
+<li>流量管理：这是 Istio 的最基本的功能。</li>
+<li>策略控制：通过 Mixer 组件和各种适配器来实现，实现访问控制系统、遥测捕获、配额管理和计费等。</li>
+<li>可观测性：通过 Mixer 来实现。</li>
+<li>安全认证：Citadel 组件做密钥和证书管理。</li>
+</ul>
+
+<h3 id="istio-中的流量管理">Istio 中的流量管理</h3>
+
+<p>Istio 中定义了如下的 <a href="https://jimmysong.io/kubernetes-handbook/concepts/custom-resource.html">CRD</a> 来帮助用户进行流量管理：</p>
+
+<ul>
+<li><strong>Gateway</strong>：Gateway 描述了在网络边缘运行的负载均衡器，用于接收传入或传出的HTTP / TCP连接。</li>
+<li><strong>VirtualService</strong>：<a href="https://istio.io/zh/docs/reference/config/istio.networking.v1alpha3/#virtualservice">VirtualService</a> 实际上将 Kubernetes 服务连接到 Istio Gateway。它还可以执行更多操作，例如定义一组流量路由规则，以便在主机被寻址时应用。</li>
+<li><strong>DestinationRule</strong>：<code>DestinationRule</code> 所定义的策略，决定了经过路由处理之后的流量的访问策略。简单的说就是定义流量如何路由。这些策略中可以定义负载均衡配置、连接池尺寸以及外部检测（用于在负载均衡池中对不健康主机进行识别和驱逐）配置。</li>
+<li><strong>EnvoyFilter</strong>：<code>EnvoyFilter</code> 对象描述了针对代理服务的过滤器，这些过滤器可以定制由 Istio Pilot 生成的代理配置。这个配置初级用户一般很少用到。</li>
+<li><strong>ServiceEntry</strong>：默认情况下 Istio Service Mesh 中的服务是无法发现 Mesh 外的服务的，<code>ServiceEntry</code> 能够在 Istio 内部的服务注册表中加入额外的条目，从而让网格中自动发现的服务能够访问和路由到这些手工加入的服务。</li>
+</ul>
+
+<h2 id="kubernetes-vs-envoy-xds-vs-istio">Kubernetes vs Envoy xDS vs Istio</h2>
+
+<p>在阅读完上文对 Kubernetes 的 <code>kube-proxy</code> 组件、Envoy xDS 和 Istio 中流量管理的抽象概念之后，下面将带您仅就流量管理方面比较下三者对应的组件/协议（注意，三者不可以完全等同）。</p>
+
+<table>
+<thead>
+<tr>
+<th>Kubernetes</th>
+<th>Envoy xDS</th>
+<th>Istio Service Mesh</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td>Endpoint</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Route</td>
+<td>VirtualService</td>
+</tr>
+
+<tr>
+<td>kube-proxy</td>
+<td>Route</td>
+<td>DestinationRule</td>
+</tr>
+
+<tr>
+<td>kube-proxy</td>
+<td>Listener</td>
+<td>EnvoyFilter</td>
+</tr>
+
+<tr>
+<td>Ingress</td>
+<td>Listener</td>
+<td>Gateway</td>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Cluster</td>
+<td>ServiceEntry</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="总结">总结</h2>
+
+<p>如果说 Kubernetes 管理的对象是 Pod，那么 Service Mesh 中管理的对象就是一个个 Service，所以说使用 Kubernetes 管理微服务后再应用 Service Mesh 就是水到渠成了，如果连 Service 你也不像管了，那就用如 <a href="https://github.com/knative/">knative</a> 这样的 serverless 平台，这就是后话了。</p>
+
+<p>Envoy 的功能也不只是做流量转发，以上概念只不过是 Istio 在 Kubernetes 之上新增一层抽象层中的冰山一角，但因为流量管理是服务网格最基础也是最重要的功能，所以本文从这里开始，以后将给大家介绍更多关于服务网格的细节，请关注我的博客 <a href="https://jimmysong.io">jimmysong.io</a> 和 <a href="https://jimmysong.io/istio-handbook/">istio-handbook</a>。</p>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+<li><a href="https://jimmysong.io/posts/istio-traffic-management-basic-concepts/">Istio 流量管理的基本概念详解 - jimmysong.io</a></li>
+<li><a href="https://jimmysong.io/kubernetes-handbook/concepts/service.html#iptables-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F">Kubernetes  kube-proxy 中的 iptables 代理模式 - jimmysong.io</a></li>
+<li><a href="https://jimmysong.io/kubernetes-handbook/concepts/service.html#ipvs-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F">Kubernetes kube-proxy 中的 ipvs 代理模式 - jimmysong.io</a></li>
+<li><a href="http://www.servicemesher.com/envoy/configuration/overview/v2_overview.html">Envoy v2 API 概览 - servicemesher.com</a></li>
+<li><a href="http://www.servicemesher.com/envoy/configuration/listeners/lds.html">监听器发现服务（LDS）- servicemesher.com</a></li>
+<li><a href="http://www.servicemesher.com/envoy/configuration/http_conn_man/rds.html">路由发现服务（RDS）- servicemesher.com</a></li>
+<li><a href="http://www.servicemesher.com/envoy/configuration/cluster_manager/cds.html">集群发现服务（CDS）- servicemesher.com</a></li>
+<li><a href="https://jimmysong.io/kubernetes-handbook/concepts/service.html">Kubernetes service - jimmysong.io</a></li>
+<li><a href="https://jimmysong.io/istio-handbook/concepts/envoy-xds-protocol.html">xDS 协议解析 - jimmysong.io</a></li>
+<li><a href="https://www.cnblogs.com/163yun/p/8962278.html">深入解读 Service Mesh 背后的技术细节 - cnblogs.com</a></li>
+<li><a href="https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/">理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持 - jimmysong.io</a></li>
+<li><a href="https://cizixs.com/2017/03/30/kubernetes-introduction-service-and-kube-proxy/">kubernetes 简介：service 和 kube-proxy 原理 - cizixs.com</a></li>
+<li><a href="https://jishu.io/kubernetes/ipvs-loadbalancer-for-kubernetes/">使用 IPVS 实现 Kubernetes 入口流量负载均衡 - jishu.io</a></li>
+<li><a href="https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/">Istio 流量管理实现机制深度解析 - zhaohuabing.com</a></li>
+<li><a href="https://jimmysong.io/posts/the-enterprise-path-to-service-mesh-architectures/">企业级服务网格架构之路解读 - jimmysong.io</a></li>
+<li><a href="https://preliminary.istio.io/zh/help/ops/traffic-management/proxy-cmd/">调试 Envoy 和 Pilot - istio.io</a></li>
+</ul>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/explore-at-the-edge-of-istio-service-mesh/" data-toggle="tooltip" data-placement="top" title="在网格的边缘试探——企业服务行业如何试水 Istio">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/"><i class="fa fa-link"></i>理解 Istio Service Mesh 中 Envoy Sidecar 代理的路由转发</a></li>
+         
+        <li><a href="/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/"><i class="fa fa-link"></i>使用Istio和Envoy实践服务网格gRPC度量</a></li>
+         
+        <li><a href="/blog/envoy-proxy-config-deep-dive/"><i class="fa fa-link"></i>Istio 的数据平面 Envoy Proxy 配置详解</a></li>
+         
+        <li><a href="/blog/istio-service-and-traffic-model/"><i class="fa fa-link"></i>Istio中的服务和流量的抽象模型</a></li>
+         
+        <li><a href="/blog/invisible-men-in-the-world-of-cloudnative/"><i class="fa fa-link"></i>云原生世界中的隐形人如何拥抱 Istio</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (3)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (17)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (4)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (17)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (87)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/nfv"><i class="fa fa-tags"></i> nfv</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/open-source"><i class="fa fa-tags"></i> open-source</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/operator"><i class="fa fa-tags"></i> operator</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/supergloo"><i class="fa fa-tags"></i> supergloo</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/service-mesh-the-microservices-in-post-kubernetes-era/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz9uk12n64j313z0u0u11.jpg" class="img-responsive" alt="Service Mesh——后 Kubernetes 时代的微服务">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/service-mesh-the-microservices-in-post-kubernetes-era/">Service Mesh——后 Kubernetes 时代的微服务</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/explore-at-the-edge-of-istio-service-mesh/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz2hapwdfoj31400u0qv9.jpg" class="img-responsive" alt="在网格的边缘试探——企业服务行业如何试水 Istio">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/explore-at-the-edge-of-istio-service-mesh/">在网格的边缘试探——企业服务行业如何试水 Istio</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/prometheus-operator-manual/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz04oiegb1j313z0u04qq.jpg" class="img-responsive" alt="全手动部署prometheus-operator监控Kubernetes集群遇到的坑">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/prometheus-operator-manual/">全手动部署prometheus-operator监控Kubernetes集群遇到的坑</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
