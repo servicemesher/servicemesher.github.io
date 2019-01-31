@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>REST的替代者：Envoy&#43;gRPC-Web</title>
+      <link>http://www.servicemesher.com/blog/envoy-and-grpc-web-a-fresh-new-alternative-to-rest/</link>
+      <pubDate>Mon, 28 Jan 2019 14:20:33 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-and-grpc-web-a-fresh-new-alternative-to-rest/</guid>
+      <description>gRPC-Web作为gRPC的JavaScript客户端库，使Web应用可以不用自定义HTTP服务器为中介，直接通过Envoy与gRPC服务</description>
+    </item>
+    
+    <item>
       <title>Service Mesh——后 Kubernetes 时代的微服务</title>
       <link>http://www.servicemesher.com/blog/service-mesh-the-microservices-in-post-kubernetes-era/</link>
       <pubDate>Thu, 17 Jan 2019 20:16:18 +0800</pubDate>

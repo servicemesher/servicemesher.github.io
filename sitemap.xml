@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/envoy-and-grpc-web-a-fresh-new-alternative-to-rest/</loc>
+    <lastmod>2019-01-28T14:20:33+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/service-mesh-the-microservices-in-post-kubernetes-era/</loc>
     <lastmod>2019-01-17T20:16:18+08:00</lastmod>
   </url>
@@ -926,7 +931,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/envoy/</loc>
-    <lastmod>2019-01-17T20:16:18+08:00</lastmod>
+    <lastmod>2019-01-28T14:20:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1017,6 +1022,12 @@
   <url>
     <loc>http://www.servicemesher.com/tags/grpc/</loc>
     <lastmod>2018-12-10T21:50:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/grpc-web/</loc>
+    <lastmod>2019-01-28T14:20:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1352,7 +1363,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-01-17T20:16:18+08:00</lastmod>
+    <lastmod>2019-01-28T14:20:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1436,7 +1447,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2018-12-13T19:23:09+08:00</lastmod>
+    <lastmod>2019-01-28T14:20:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
