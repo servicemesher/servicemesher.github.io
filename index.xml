@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 28 Jan 2019 14:20:33 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 Feb 2019 15:21:28 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>腾讯云容器团队内部Istio专题分享</title>
+      <link>http://www.servicemesher.com/blog/istio-the-king-of-service-mesh/</link>
+      <pubDate>Sat, 02 Feb 2019 15:21:28 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-the-king-of-service-mesh/</guid>
+      <description>作者：钟华，腾讯云容器团队高级工程师，热衷于容器、微服务、service mesh、istio 等领域。 今天分享的内容主要包括以下4个话题: 1 Service</description>
+    </item>
     
     <item>
       <title>REST的替代者：Envoy&#43;gRPC-Web</title>
@@ -1430,7 +1439,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 投递原创文章请访问 https://github.com/servicemesher/trans</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 18 敖小剑 10 崔秀龙 5 郑伟 3 赵化冰 3 丁轶群 3 朵晓东 2 张馆长 2 吴伟 2 黄挺 1 高松 1 陈有坤 1 钟</description>
     </item>
     
     <item>
@@ -1457,7 +1466,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 提交文章线索或译文请访问 https://github.com/servicemesher/trans</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 14 甄中元 11 宋净超 11 马若飞 7 陈冬 5 戴佳顺 5 王帅俭 4 王全根 4 崔秀龙 4 狄卫华 3 李昕阳 3 詹叶 2 杨</description>
     </item>
     
   </channel>

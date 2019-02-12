@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/istio-the-king-of-service-mesh/</loc>
+    <lastmod>2019-02-02T15:21:28+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/envoy-and-grpc-web-a-fresh-new-alternative-to-rest/</loc>
     <lastmod>2019-01-28T14:20:33+08:00</lastmod>
   </url>
@@ -1081,13 +1086,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-01-17T20:16:18+08:00</lastmod>
+    <lastmod>2019-02-02T15:21:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/istio/</loc>
-    <lastmod>2018-12-27T11:46:42+08:00</lastmod>
+    <lastmod>2019-02-02T15:21:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1351,7 +1356,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2019-01-17T20:16:18+08:00</lastmod>
+    <lastmod>2019-02-02T15:21:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1363,7 +1368,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-01-28T14:20:33+08:00</lastmod>
+    <lastmod>2019-02-02T15:21:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   

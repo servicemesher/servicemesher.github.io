@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>腾讯云容器团队内部Istio专题分享</title>
+      <link>http://www.servicemesher.com/blog/istio-the-king-of-service-mesh/</link>
+      <pubDate>Sat, 02 Feb 2019 15:21:28 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-the-king-of-service-mesh/</guid>
+      <description>作者：钟华，腾讯云容器团队高级工程师，热衷于容器、微服务、service mesh、istio 等领域。 今天分享的内容主要包括以下4个话题: 1 Service</description>
+    </item>
+    
+    <item>
       <title>REST的替代者：Envoy&#43;gRPC-Web</title>
       <link>http://www.servicemesher.com/blog/envoy-and-grpc-web-a-fresh-new-alternative-to-rest/</link>
       <pubDate>Mon, 28 Jan 2019 14:20:33 +0800</pubDate>

@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 17 Jan 2019 20:16:18 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 Feb 2019 15:21:28 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>腾讯云容器团队内部Istio专题分享</title>
+      <link>http://www.servicemesher.com/blog/istio-the-king-of-service-mesh/</link>
+      <pubDate>Sat, 02 Feb 2019 15:21:28 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-the-king-of-service-mesh/</guid>
+      <description>作者：钟华，腾讯云容器团队高级工程师，热衷于容器、微服务、service mesh、istio 等领域。 今天分享的内容主要包括以下4个话题: 1 Service</description>
+    </item>
     
     <item>
       <title>Service Mesh——后 Kubernetes 时代的微服务</title>
