@@ -6,10 +6,28 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 02 Feb 2019 15:21:28 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 15 Feb 2019 10:41:22 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CNCF年度报告解读（2018年）</title>
+      <link>http://www.servicemesher.com/blog/cncf-annual-report-2018-review/</link>
+      <pubDate>Fri, 15 Feb 2019 10:41:22 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cncf-annual-report-2018-review/</guid>
+      <description>2019年2月初，CNCF 发布了2018年的年度报告，这是 CNCF 继2017年度报告之后，第二次发布年度报告，2017年度的报告只有区区14页，今</description>
+    </item>
+    
+    <item>
+      <title>Kong mesh深度分析报告</title>
+      <link>http://www.servicemesher.com/blog/kong-mesh-analyse-report/</link>
+      <pubDate>Fri, 15 Feb 2019 10:35:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/kong-mesh-analyse-report/</guid>
+      <description>Kong是一个基于OpenResty (Nginx) 封装的微服务中间件产品，在微服务架构体系中，作为API网关以及API中间件（kubernetes ing</description>
+    </item>
     
     <item>
       <title>腾讯云容器团队内部Istio专题分享</title>
@@ -1439,7 +1457,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 18 敖小剑 10 崔秀龙 5 郑伟 3 赵化冰 3 丁轶群 3 朵晓东 2 张馆长 2 吴伟 2 黄挺 1 高松 1 陈有坤 1 钟</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 19 敖小剑 10 崔秀龙 5 郑伟 3 赵化冰 3 丁轶群 3 朵晓东 2 张馆长 2 吴伟 2 黄挺 1 高松 1 陈有坤 1 钟</description>
     </item>
     
     <item>

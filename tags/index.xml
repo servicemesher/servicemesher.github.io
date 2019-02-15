@@ -104,9 +104,18 @@
     <item>
       <title>Cloud Native</title>
       <link>http://www.servicemesher.com/tags/cloud-native/</link>
-      <pubDate>Wed, 31 Oct 2018 20:01:03 +0800</pubDate>
+      <pubDate>Fri, 15 Feb 2019 10:41:22 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/cloud-native/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cncf</title>
+      <link>http://www.servicemesher.com/tags/cncf/</link>
+      <pubDate>Fri, 15 Feb 2019 10:41:22 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/cncf/</guid>
       <description></description>
     </item>
     
@@ -464,7 +473,7 @@
     <item>
       <title>Kong</title>
       <link>http://www.servicemesher.com/tags/kong/</link>
-      <pubDate>Thu, 20 Sep 2018 11:35:02 +0800</pubDate>
+      <pubDate>Fri, 15 Feb 2019 10:35:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/kong/</guid>
       <description></description>
@@ -761,7 +770,7 @@
     <item>
       <title>Service Mesh</title>
       <link>http://www.servicemesher.com/tags/service-mesh/</link>
-      <pubDate>Sat, 02 Feb 2019 15:21:28 +0800</pubDate>
+      <pubDate>Fri, 15 Feb 2019 10:35:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/service-mesh/</guid>
       <description></description>

@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>CNCF年度报告解读（2018年）</title>
+      <link>http://www.servicemesher.com/blog/cncf-annual-report-2018-review/</link>
+      <pubDate>Fri, 15 Feb 2019 10:41:22 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cncf-annual-report-2018-review/</guid>
+      <description>2019年2月初，CNCF 发布了2018年的年度报告，这是 CNCF 继2017年度报告之后，第二次发布年度报告，2017年度的报告只有区区14页，今</description>
+    </item>
+    
+    <item>
+      <title>Kong mesh深度分析报告</title>
+      <link>http://www.servicemesher.com/blog/kong-mesh-analyse-report/</link>
+      <pubDate>Fri, 15 Feb 2019 10:35:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/kong-mesh-analyse-report/</guid>
+      <description>Kong是一个基于OpenResty (Nginx) 封装的微服务中间件产品，在微服务架构体系中，作为API网关以及API中间件（kubernetes ing</description>
+    </item>
+    
+    <item>
       <title>腾讯云容器团队内部Istio专题分享</title>
       <link>http://www.servicemesher.com/blog/istio-the-king-of-service-mesh/</link>
       <pubDate>Sat, 02 Feb 2019 15:21:28 +0800</pubDate>

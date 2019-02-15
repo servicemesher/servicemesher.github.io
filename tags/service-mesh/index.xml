@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 02 Feb 2019 15:21:28 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 15 Feb 2019 10:35:59 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kong mesh深度分析报告</title>
+      <link>http://www.servicemesher.com/blog/kong-mesh-analyse-report/</link>
+      <pubDate>Fri, 15 Feb 2019 10:35:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/kong-mesh-analyse-report/</guid>
+      <description>Kong是一个基于OpenResty (Nginx) 封装的微服务中间件产品，在微服务架构体系中，作为API网关以及API中间件（kubernetes ing</description>
+    </item>
     
     <item>
       <title>腾讯云容器团队内部Istio专题分享</title>
