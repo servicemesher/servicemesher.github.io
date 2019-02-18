@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 15 Feb 2019 10:35:59 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 18 Feb 2019 10:16:59 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁</title>
+      <link>http://www.servicemesher.com/blog/using-istio-mixer-adapter-to-check-jwt/</link>
+      <pubDate>Mon, 18 Feb 2019 10:16:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/using-istio-mixer-adapter-to-check-jwt/</guid>
+      <description>互联网服务离不开用户认证。JSON Web Token(后简称JWT)是一个轻巧，分布式的用户授权鉴权规范。和过去的session数据持久化的方案相</description>
+    </item>
     
     <item>
       <title>Kong mesh深度分析报告</title>

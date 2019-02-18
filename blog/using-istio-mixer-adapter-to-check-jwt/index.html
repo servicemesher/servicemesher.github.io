@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格, istio">
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/using-istio-mixer-adapter-to-check-jwt//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文介绍了作者如何通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁的原理与步骤。">
+  <meta property="og:description" content="本文介绍了作者如何通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁的原理与步骤。">
+  <meta name="twitter:description" content="本文介绍了作者如何通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁的原理与步骤。">
+  <meta property="og:description" content="本文介绍了作者如何通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁的原理与步骤。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年2月18日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://yisaer.github.io">高松</a>
+                            
+                            
+                            
+                            |
+                            4400字 | 阅读大约需要9分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://yisaer.github.io/2019/02/16/istio-mixer-check/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/istio">istio</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p>互联网服务离不开用户认证。JSON Web Token(后简称JWT)是一个轻巧，分布式的用户授权鉴权规范。和过去的session数据持久化的方案相比，JWT有着分布式鉴权的特点，避免了session用户认证时单点失败引起所有服务都无法正常使用的窘境，从而在微服务架构设计下越来越受欢迎。然而JWT单点授权，分布鉴权的特点也给我们带来了一个问题，即服务端无法主动回收或者BAN出相应的Token，使得即使某个服务主动封禁了一个用户时，这个用户同样可以使用之前的JWT来从其他服务获取资源。本文我们将阐述利用Istio Mixer Adapter的能力，来将所有请求在服务网格的入口边缘层进行JWT检查的例子，从而实现用户封禁与主动逐出JWT等功能。</p>
+
+<h2 id="背景">背景</h2>
+
+<p>在我之前的<a href="http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/">投稿</a>中，描绘了一个非常简单的基于K8S平台的业务场景，在这里我们将会基于这个场景来进行讨论。
+对于一个简单的微服务场景，我们有着三个服务在Istio服务网格中管理。同时集群外的请求将会通过nginx-ingress转发给istio-ingressgateway以后，通过Istio VirtualService的HTTPRoute的能力转发给对应的服务，这里不再赘述。</p>
+
+<p>从下图的架构模式中，我们可以看到所有的请求在进入网格时，都会通过istio-ingressgateway这个边缘节点，从而涌现出了一个非常显而易见的想法，即如果我们在所有的请求进入服务网格边缘时，进行特定的检查与策略，那么我们就能将某些不符合某种规则的请求拒绝的网格之外，比如那些携带被主动封禁JWT的HTTP请求。</p>
+
+<p><img src="http://ww1.sinaimg.cn/mw690/007pL7qRgy1g07dm5m93jj30wa0k2wg9.jpg" alt="" /></p>
+
+<h2 id="了解istio-mixer">了解Istio Mixer</h2>
+
+<p>为了达到我们上述的目的，我们首先需要了解一下<a href="https://istio.io/docs/concepts/policies-and-telemetry/">Istio Mixer</a>这个网格控制层的组件。
+Istio Mixer 提供了一个适配器模型，它允许我们通过为Mixer创建用于外部基础设施后端接口的处理器来开发适配器。Mixer还提供了一组模版,每个模板都为适配器提供了不同的元数据集。在我们的场景下，我们将使用<a href="https://istio.io/docs/reference/config/policy-and-telemetry/templates/authorization/">Auhtorization</a>模板来获取我们每个请求中的元数据，然后通过Mixer check的模式来将在HTTP请求通过istio-ingressgateway进入服务网格前，通过Mixer Adapter来进行检查。</p>
+
+<p>在Istio Mixer的<a href="https://istio.io/docs/concepts/policies-and-telemetry/#reliability-and-latency">描述</a>中，我们可以发现每个请求在到达数据层时，都会向Mixer做一次check操作，而当请求结束后则会向Mixer做一次report操作。在我们的场景中，我们将会在请求到达istio-ingressgateway时检查这个请求中的JWT鉴权，通过JWT的Payload中的信息来决定是否要将请求放行进入网格内部。</p>
+
+<p>得益于Mixer强大的扩展能力，我们将通过经典的Handler-Instances-Rule适配模型来一步步展开，同时也意味着我们将要编写一个自定义的Istio Mixer Adapter。</p>
+
+<h2 id="mixer适配模型">Mixer适配模型</h2>
+
+<p>那么怎么通俗易懂的理解Handler-Instances-Rule这三者的关系呢？在我的理解下，当每个请求在服务网格的数据层中游走时，都会在开始与结束时带上各种元信息向Mixer组件通信。而Mixer组件则会根据Rule来将<strong>特定的请求</strong>中的<strong>特定的数据</strong>交给<strong>特定的处理器</strong>去检查或者是记录。那么对于<strong>特定的请求</strong>，则是通过Rule去决定；对于<strong>特定的数据</strong>，则是通过Instances去决定；对于<strong>特定的处理器</strong>，则是通过Handler去决定。最终Rule还把自己与Instances和Handler绑定在一起，从而让Mixer理解了将哪些请求用哪些数据做哪些处理。
+在这里我们可以通过<a href="https://istio.io/docs/tasks/policy-enforcement/">Istio Policies Task</a>中的<a href="https://istio.io/docs/tasks/policy-enforcement/denial-and-list/">黑白名单机制</a>来理解一下这个模型。</p>
+
+<p>在这里<strong>appversion.listentry</strong>作为Instances，通过将<strong>list entry</strong>作为模版，获取了每个请求中的source.labels[&ldquo;version&rdquo;]的值，即<strong>特定的数据</strong>。<strong>whitelist.listchecker</strong>作为handler，则是告诉了背后的处理器作为白名单模式只通过数据是v1与v2的请求，即<strong>特定的处理器</strong>。最后<strong>checkversion.rule</strong>作为rule，将<strong>appversion.listentry</strong>和<strong>whitelist.listchecker</strong>两者绑定在一起，并通过match字段指明哪些请求会经过这些处理流程，即<strong>特定的请求</strong>。</p>
+
+<pre><code class="language-yaml">## instances
+apiVersion: config.istio.io/v1alpha2
+kind: listentry
+metadata:
+  name: appversion
+spec:
+  value: source.labels[&quot;version&quot;]
+---
+## handler
+apiVersion: config.istio.io/v1alpha2
+kind: listchecker
+metadata:
+  name: whitelist
+spec:
+  # providerUrl: ordinarily black and white lists are maintained
+  # externally and fetched asynchronously using the providerUrl.
+  overrides: [&quot;v1&quot;, &quot;v2&quot;]  # overrides provide a static list
+  blacklist: false
+---
+## rule
+apiVersion: config.istio.io/v1alpha2
+kind: rule
+metadata:
+  name: checkversion
+spec:
+  match: destination.labels[&quot;app&quot;] == &quot;ratings&quot;
+  actions:
+  - handler: whitelist.listchecker
+    instances:
+    - appversion.listentry
+</code></pre>
+
+<h2 id="jwt-check-的架构设计">JWT Check 的架构设计</h2>
+
+<p>当我们理解了以上的Mixer扩展模型以后，那么对于我们在文章开头中的JWT封禁需求的Handler-Instances-Rule的模型就非常显而易见了。在我们的场景下，我们需要将所有带有JWT并且从istio-ingressgateway准备进入网格边缘的请求作为我们<strong>特定的请求</strong>，然后从每个请求中，我们都要获取request.Header[&ldquo;Authorization&rdquo;]这个值来作为我们<strong>特定的数据</strong>，最后我们通过<strong>特定的处理器</strong>来解析这个数据，并在处理器中通过自定义的策略来决定这个请求是否通过。</p>
+
+<p>当我们搞清楚了这么一个模型以后，那么之后的问题就一下子迎刃而解了。在我们的设计中，我们将要自定义一个JWTAdapter服务来作为<strong>特定的处理器</strong>，JWTAdapter将会通过HTTP通信把数据转交给Adapter-Service来让Adapter-Service来判断这个请求是否合法，而Adapter-Service的凭证则是通过与业务服务的通信所决定。</p>
+
+<p>在我们的场景中，假设每个请求所携带的JWT的Payload中有一个email属性来作为用户的唯一标识，当业务领域中的账户服务决定封禁某个用户时，他将会通知Adapter-Service，后者将会把这个信息存于某个数据持久服务中，比如Redis服务。当JWT-Adapter服务向Adapter-Service服务询问这个请求是否合法时，Adapter-Service将会通过Payload中Email属性在Redis中查询，如果查询到对应的数据，则代表这个用户被封禁，即这个请求不予通过，反之亦然。</p>
+
+<p><img src="http://ww1.sinaimg.cn/mw690/007pL7qRgy1g07jnrkcu5j30qm0awgm5.jpg" alt="" /></p>
+
+<h2 id="如何自定义编写一个adapter">如何自定义编写一个Adapter？</h2>
+
+<p>说实话，自定义编写Adapter是一个上手门槛较为陡峭的一件事情。我在这里因为篇幅原因不能完全一步步细说自定义Adapter的步骤。在这里我推荐对自定义编写Adapter有兴趣的人可以根据官网的<a href="https://github.com/istio/istio/wiki/Mixer-Out-Of-Process-Adapter-Dev-Guide">自定义Mixer Adapter开发指南</a>和<a href="https://github.com/istio/istio/wiki/Mixer-Out-Of-Process-Adapter-Walkthrough">自定义Mixer Adapter详细步骤</a>来进行学习和尝试。在这里我给出在我的JWT-Adapter中的关键函数来进行描述。</p>
+
+<pre><code class="language-go">func (s *JwtAdapter) HandleAuthorization(ctx context.Context, r *authorization.HandleAuthorizationRequest) (*v1beta1.CheckResult, error) {
+  
+  log.Infof(&quot;received request %v\n&quot;, *r)
+  
+	props := decodeValueMap(r.Instance.Subject.Properties)
+	var Authorization interface{}
+	if len(props[&quot;custom_token_auth&quot;].(string)) &gt; 0 {
+		Authorization = props[&quot;custom_token_auth&quot;]
+	} else {
+    // 没有获取到JWT,直接将请求放行
+		return &amp;v1beta1.CheckResult{
+			Status: status.OK,
+		}, nil
+	}
+	cookie := props[&quot;custom_request_cookie&quot;]
+	host := props[&quot;custom_request_host&quot;]
+	if host == &quot;www.example.com&quot; {
+		url := userService + &quot;/check&quot;
+		request, err := http.NewRequest(&quot;GET&quot;, url, nil)
+		if err != nil {
+      //出现异常时，直接将请求放行
+			return &amp;v1beta1.CheckResult{
+				Status: status.OK,
+			}, nil
+		}
+		request.Header.Add(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
+		request.Header.Add(&quot;cookie&quot;, cookie.(string))
+    request.Header.Add(&quot;Authorization&quot;, Authorization.(string))
+    // 发送请求给Adapter-Service
+		response, _ := client.Do(request)
+		if response != nil &amp;&amp; response.StatusCode == http.StatusOK {
+			body, err := ioutil.ReadAll(response.Body)
+			if err != nil { //如果有异常
+        log.Infof(err) //记录异常即刻
+			} else {
+        log.Infof(&quot;success to get response from adapter-service&quot;)
+				var value map[string]interface{}
+				json.Unmarshal(body, &amp;value)
+				if value[&quot;pass&quot;] == false {
+					//当用户确实返回处于封禁状态中时，才返回封禁结果
+					return &amp;v1beta1.CheckResult{
+						Status: status.WithPermissionDenied(&quot;Banned&quot;),
+					}, nil
+				}
+			}
+		}
+	}
+	log.Infof(&quot;jwtadapter don't have enough reason to reject this request&quot;)
+	return &amp;v1beta1.CheckResult{
+		Status: status.OK,
+	}, nil
+
+}
+
+</code></pre>
+
+<p>通过以上描述可以发现的是，在我们的场景下，我们当且仅当从Adapter-Service中确实得到了不允许通过的结果才将这个请求进行拒绝处理，而对其他情况一律进行了放行处理，即使发生了某些错误与异常。由于我们的错误处理会直接影响到这些请求能否在网格中通行，所在做Istio Mixer Check时需要时刻记住的到底是放行特定的请求，还是拒绝特定的请求，在这一点处理上需要十分谨慎与小心。</p>
+
+<h2 id="handler-instances-rule">Handler-Instances-Rule</h2>
+
+<p>当我们将自己的Adapter上线以后，我们只要通过声明我们得的Mixer扩展模型让Mixer识别这个Adapter并且正确处理我们想要的请求即可。这里我们再回顾一下我们之前所提到的<strong>特定的请求</strong>，<strong>特定的数据</strong>，<strong>特定的处理器</strong>。
+对于特定的请求，我们需要将网格边缘的请求筛选出来，所以我们可以通过host是www.example.com并且携带了JWT作为条件将请求筛选出来。对于特定的数据，我们选用authorization作为模版，取出header中的JWT数据，最后通过<strong>特定的处理器</strong>，将这个check请求交给jwt-adapter。至此，我们通过Istio Mixer Aadapter来进行JWT封禁的需求场景算是基本完成了。</p>
+
+<pre><code class="language-yaml"># handler adapter
+apiVersion: &quot;config.istio.io/v1alpha2&quot;
+kind: handler
+metadata:
+ name: h1
+ namespace: istio-system
+spec:
+ adapter: jwtadapter
+ connection:
+   address: &quot;[::]:44225&quot;
+---
+## instances
+apiVersion: &quot;config.istio.io/v1alpha2&quot;
+kind: instance
+metadata:
+ name: icheck
+ namespace: istio-system
+spec:
+ template: authorization
+ params:
+   subject:
+     properties:
+       custom_token_auth:  request.headers[&quot;Authorization&quot;]
+---
+# rule to dispatch to handler h1
+apiVersion: &quot;config.istio.io/v1alpha2&quot;
+kind: rule
+metadata:
+ name: r1
+ namespace: istio-system
+spec:
+ match: ( match(request.headers[&quot;Authorization&quot;],&quot;Bearer*&quot;) == true ) &amp;&amp; ( match(request.host,&quot;*.com&quot;) == true )
+ actions:
+ - handler: h1.istio-system
+   instances:
+   - icheck
+---
+</code></pre>
+
+<h2 id="扩展阅读">扩展阅读</h2>
+
+<h3 id="网格边缘层验证jwt的可行性">网格边缘层验证JWT的可行性？</h3>
+
+<p>既然在网格边缘层能对JWT进行检查，那么能否可以做成在网格边缘层同时也进行JWT的验证？</p>
+
+<p>答： 在我最初做Mixer Check时确实想到过这件事情，并且无独有偶，在<a href="https://medium.com/plangrid-technology/custom-user-authentication-in-istio-67c90458b093">PlanGrid在Istio中的用户鉴权实践</a>这篇文章中，PlanGrid通过EnvoyFilter实现了在网格边缘层进行JWT以及其他鉴权协议的鉴权。但对此我的看法是，对于JWT鉴权的场景，我并不推荐这么做。因为微服务场景中，我们使用JWT的初衷就是为了分布式鉴权来分散某个服务的单点故障所带来的鉴权层的风险。当我们将用户鉴权再一次集中在网格边缘时，我们等于再一次将风险集中在了网格边缘这个单点。一旦istio-ingressgateway挂了，那么背后所有暴露的API服务将毫无防备，所以鉴权必须放在每个微服务内。另一方面，在我的<a href="https://yisaer.github.io/2019/02/01/read-istio/">《深入浅出istio》读后感</a>中提到，对于生产环境使用Istio，必须拥有一套备用的不使用Istio的环境方案，这意味着当Istio出现故障时，可以立即通过切换不使用Istio的备用环境来继续提供服务。这同时意味着Istio所提供的能力与服务不应该与业务服务所强绑定在一起，这也是为什么我在上文中将Jwt-Adapter与后面的Adapter-Service成为插件服务的原因。JWT封禁用户这个能力对我们就像一个插件一样，即装即用。即使当我们切换为备用环境时无法使用Istio，暂时失去用户封禁这个能力在我们的产品层面也完全可以接受，但对于用户鉴权则不可能。所以这意味着当我们使用Istio的能力时，一定要时刻想清楚当我们失去Istio时我们该如何应对。</p>
+
+<h2 id="关于作者">关于作者</h2>
+
+<p>高松，从去年毕业以后一直对服务网格与CloudNative领域充满兴趣，在工作中使用Istio在生产环境中也将近有了半年多的时间，写作分享则是平时的业余爱好之一。如果你对服务网格或者是CloudNative领域有兴趣，或者是对我的技术文章写作有想法与建议的话，欢迎联系我交流。</p>
+
+<p><a href="https://github.com/Yisaer">Github</a> <a href="https://yisaer.github.io/atom.xml">博客RSS订阅</a></p>
+
+<p><img src="http://ww1.sinaimg.cn/mw690/007pL7qRgy1g07ln0lyk5j307e07974r.jpg" alt="" /></p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/cncf-annual-report-2018-review/" data-toggle="tooltip" data-placement="top" title="CNCF年度报告解读（2018年）">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/istio-the-king-of-service-mesh/"><i class="fa fa-link"></i>腾讯云容器团队内部Istio专题分享</a></li>
+         
+        <li><a href="/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/"><i class="fa fa-link"></i>理解 Istio Service Mesh 中 Envoy Sidecar 代理的路由转发</a></li>
+         
+        <li><a href="/blog/invisible-men-in-the-world-of-cloudnative/"><i class="fa fa-link"></i>云原生世界中的隐形人如何拥抱 Istio</a></li>
+         
+        <li><a href="/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/"><i class="fa fa-link"></i>使用Istio和Envoy实践服务网格gRPC度量</a></li>
+         
+        <li><a href="/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/"><i class="fa fa-link"></i>构建无缝集成的gRPC-Web和Istio的云原生应用教程</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (4)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (19)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (4)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (18)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (88)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/cncf"><i class="fa fa-tags"></i> cncf</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/grpc-web"><i class="fa fa-tags"></i> grpc-web</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/nfv"><i class="fa fa-tags"></i> nfv</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/open-source"><i class="fa fa-tags"></i> open-source</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/operator"><i class="fa fa-tags"></i> operator</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/supergloo"><i class="fa fa-tags"></i> supergloo</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/using-istio-mixer-adapter-to-check-jwt/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0ad68k4a7j31420u07wl.jpg" class="img-responsive" alt="通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/using-istio-mixer-adapter-to-check-jwt/">通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/cncf-annual-report-2018-review/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/006tKfTcly1g06wxmbeeej31420u0kjm.jpg" class="img-responsive" alt="CNCF年度报告解读（2018年）">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/cncf-annual-report-2018-review/">CNCF年度报告解读（2018年）</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/kong-mesh-analyse-report/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tKfTcly1g06wqm3njuj313z0u0kjo.jpg" class="img-responsive" alt="Kong mesh深度分析报告">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/kong-mesh-analyse-report/">Kong mesh深度分析报告</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

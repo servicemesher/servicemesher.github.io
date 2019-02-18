@@ -1,5 +1,37 @@
 [
   {
+    "author": "高松",
+    "authorlink": "https://yisaer.github.io",
+    "banner": "https://ws4.sinaimg.cn/large/006tKfTcly1g0ad68k4a7j31420u07wl.jpg",
+    "categories": [
+      "istio"
+    ],
+    "date": "2019-02-18T10:16:59+08:00",
+    "fuzzywordcount": 4400,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "istio"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-02-18T10:16:59+08:00",
+    "objectID": "e585f56de7bd5b05975be538318a959a",
+    "permalink": "http://www.servicemesher.com/blog/using-istio-mixer-adapter-to-check-jwt/",
+    "publishdate": "2019-02-18T10:16:59+08:00",
+    "readingtime": 9,
+    "relpermalink": "/blog/using-istio-mixer-adapter-to-check-jwt/",
+    "summary": "本文介绍了作者如何通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁的原理与步骤。",
+    "tags": [
+      "service mesh",
+      "istio"
+    ],
+    "title": "通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁",
+    "translator": null,
+    "url": "/blog/using-istio-mixer-adapter-to-check-jwt/",
+    "weight": 0,
+    "wordcount": 4389
+  },
+  {
     "author": "宋净超",
     "authorlink": "https://jimmysong.io",
     "banner": "https://ws4.sinaimg.cn/large/006tKfTcly1g06wxmbeeej31420u0kjm.jpg",
