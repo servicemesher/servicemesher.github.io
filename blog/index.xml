@@ -12,6 +12,33 @@
     
     
     <item>
+      <title>《深入浅出 Istio》读后感</title>
+      <link>http://www.servicemesher.com/blog/reading-istio-service-mesh-book/</link>
+      <pubDate>Tue, 19 Feb 2019 12:08:33 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/reading-istio-service-mesh-book/</guid>
+      <description>《深入浅出Istio》这本书这两天开始卖了，我也第一时间入手了以后到现在已经基本上全部翻完了。在这里记录一下看完这本书的读后感。 总体来说，这</description>
+    </item>
+    
+    <item>
+      <title>Service Mesh的2018年度总结</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-summary-2018/</link>
+      <pubDate>Mon, 18 Feb 2019 22:49:28 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-summary-2018/</guid>
+      <description>前言 在2017年年底，在Service Mesh刚刚兴起之时，应InfoQ的邀请撰写过一篇名为 &amp;ldquo;Service Mesh年度总结：群雄逐鹿烽烟起&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title>Cilium 1.4 发布了，新功能一览</title>
+      <link>http://www.servicemesher.com/blog/cilium-1.4/</link>
+      <pubDate>Mon, 18 Feb 2019 17:59:29 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cilium-1.4/</guid>
+      <description>我们很高兴地宣布Cilium 1.4版本。 该版本引入了几项新功能以及优化和可扩展性工作。 重点包括增加全局服务，提供跨多个集群的Kubernet</description>
+    </item>
+    
+    <item>
       <title>通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁</title>
       <link>http://www.servicemesher.com/blog/using-istio-mixer-adapter-to-check-jwt/</link>
       <pubDate>Mon, 18 Feb 2019 10:16:59 +0800</pubDate>

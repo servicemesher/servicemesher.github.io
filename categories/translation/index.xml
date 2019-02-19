@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 28 Jan 2019 14:20:33 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 18 Feb 2019 17:59:29 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cilium 1.4 发布了，新功能一览</title>
+      <link>http://www.servicemesher.com/blog/cilium-1.4/</link>
+      <pubDate>Mon, 18 Feb 2019 17:59:29 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cilium-1.4/</guid>
+      <description>我们很高兴地宣布Cilium 1.4版本。 该版本引入了几项新功能以及优化和可扩展性工作。 重点包括增加全局服务，提供跨多个集群的Kubernet</description>
+    </item>
     
     <item>
       <title>REST的替代者：Envoy&#43;gRPC-Web</title>

@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 15 Feb 2019 10:35:59 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 18 Feb 2019 22:49:28 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Service Mesh的2018年度总结</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-summary-2018/</link>
+      <pubDate>Mon, 18 Feb 2019 22:49:28 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-summary-2018/</guid>
+      <description>前言 在2017年年底，在Service Mesh刚刚兴起之时，应InfoQ的邀请撰写过一篇名为 &amp;ldquo;Service Mesh年度总结：群雄逐鹿烽烟起&amp;rdquo;</description>
+    </item>
     
     <item>
       <title>Kong mesh深度分析报告</title>

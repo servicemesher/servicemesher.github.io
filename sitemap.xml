@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/reading-istio-service-mesh-book/</loc>
+    <lastmod>2019-02-19T12:08:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/service-mesh-summary-2018/</loc>
+    <lastmod>2019-02-18T22:49:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/cilium-1.4/</loc>
+    <lastmod>2019-02-18T17:59:29+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/using-istio-mixer-adapter-to-check-jwt/</loc>
     <lastmod>2019-02-18T10:16:59+08:00</lastmod>
   </url>
@@ -927,7 +942,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/culture/</loc>
-    <lastmod>2019-02-15T10:41:22+08:00</lastmod>
+    <lastmod>2019-02-19T12:08:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1107,7 +1122,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-02-18T10:16:59+08:00</lastmod>
+    <lastmod>2019-02-19T12:08:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1377,19 +1392,19 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2019-02-18T10:16:59+08:00</lastmod>
+    <lastmod>2019-02-19T12:08:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2019-02-15T10:35:59+08:00</lastmod>
+    <lastmod>2019-02-18T22:49:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-02-18T10:16:59+08:00</lastmod>
+    <lastmod>2019-02-19T12:08:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1473,7 +1488,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2019-01-28T14:20:33+08:00</lastmod>
+    <lastmod>2019-02-18T17:59:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   
