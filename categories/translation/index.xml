@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 18 Feb 2019 17:59:29 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Feb 2019 11:44:49 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio——企业级微服务解决方案</title>
+      <link>http://www.servicemesher.com/blog/istio-kubernetes-service-mesh/</link>
+      <pubDate>Wed, 20 Feb 2019 11:44:49 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-kubernetes-service-mesh/</guid>
+      <description>2017年5月，谷歌面向大规模容器化应用管理的开源项目Istio正式发布了。此后经过快速的发展，于2018年7月发布了里程碑式的1.0版本。</description>
+    </item>
     
     <item>
       <title>Cilium 1.4 发布了，新功能一览</title>
