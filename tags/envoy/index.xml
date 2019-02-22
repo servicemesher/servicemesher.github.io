@@ -6,10 +6,19 @@
     <description>Recent content in Envoy on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 28 Jan 2019 14:20:33 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Feb 2019 20:17:12 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/envoy/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Envoy架构师Matt Klein对Envoy线程模型的简介</title>
+      <link>http://www.servicemesher.com/blog/envoy-threading-model/</link>
+      <pubDate>Wed, 20 Feb 2019 20:17:12 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-threading-model/</guid>
+      <description>编者注：原文于2017年7月30日发布于 Envoy 博客上。 关于Envoy代码库的底层技术文档目前相当稀少。 为了纠正这个问题，我打算做一系列关于各种子</description>
+    </item>
     
     <item>
       <title>REST的替代者：Envoy&#43;gRPC-Web</title>

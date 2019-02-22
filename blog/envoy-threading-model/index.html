@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Envoy架构师Matt Klein对Envoy线程模型的简介 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格, envoy">
+  
+
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Envoy架构师Matt Klein对Envoy线程模型的简介" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/envoy-threading-model//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="Envoy的架构师Matt Klein对Envoy中多线程模型的简单介绍。">
+  <meta property="og:description" content="Envoy的架构师Matt Klein对Envoy中多线程模型的简单介绍。">
+  <meta name="twitter:description" content="Envoy的架构师Matt Klein对Envoy中多线程模型的简单介绍。">
+  <meta property="og:description" content="Envoy的架构师Matt Klein对Envoy中多线程模型的简单介绍。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Envoy架构师Matt Klein对Envoy线程模型的简介 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Envoy架构师Matt Klein对Envoy线程模型的简介 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Envoy架构师Matt Klein对Envoy线程模型的简介 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Awesome</a></li>
+                      
+                        <li><a href="/envoy/">Envoy</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio</a></li>
+                      
+                        <li><a href="/categories/sofamesh">SOFAMesh</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Envoy架构师Matt Klein对Envoy线程模型的简介</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年2月20日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://blog.envoyproxy.io/">Matt Klein</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/yiduwangkai">王凯</a>
+                            
+                            
+                            | 审校者
+                            
+                            <a href="https://jimmysong.io"><i>宋净超</i></a>
+                            
+                            
+                            |
+                            4000字 | 阅读大约需要8分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/envoy/"><i>#envoy</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<blockquote>
+<p>编者注：原文于2017年7月30日发布于 Envoy 博客上。</p>
+</blockquote>
+
+<p>关于Envoy代码库的底层技术文档目前相当稀少。 为了纠正这个问题，我打算做一系列关于各种子系统的博客文章。 由于这是第一篇文章，请让我知道您的想法以及您希望了解的其他主题。</p>
+
+<p>我经常看到的关于Envoy的最常见技术问题之一就是要求从底层描述Envoy使用的线程模型。这篇文章将介绍Envoy如何将连接映射到线程，以及内部使用的线程本地存储（TLS）系统的描述，以使代码极其并行且性能更高。</p>
+
+<h3 id="线程模型概览">线程模型概览</h3>
+
+<p><img src="http://ww1.sinaimg.cn/large/5f3e3349gy1g0c5di41ayj218g10ewm0.jpg" alt="" /></p>
+
+<p>Envoy使用三种不同类型的线程，如上图所示。</p>
+
+<ul>
+<li>Main：此线程负责服务器启动和关闭，所有<a href="https://lyft.github.io/envoy/docs/intro/arch_overview/dynamic_configuration.html">xDS API</a>处理（包括<a href="https://lyft.github.io/envoy/docs/intro/arch_overview/service_discovery.html">DNS</a>，<a href="https://lyft.github.io/envoy/docs/intro/arch_overview/health_checking.html">运行状况检查</a>和常规<a href="https://lyft.github.io/envoy/docs/intro/arch_overview/cluster_manager.html">集群管理</a>），<a href="https://lyft.github.io/envoy/docs/intro/arch_overview/runtime.html">运行时</a>，统计刷新，管理和一般进程管理（信号，<a href="https://lyft.github.io/envoy/docs/intro/arch_overview/hot_restart.html">热启动</a>等）。 在此线程上发生的所有事情都是异步的并且是“非阻塞的”。通常，主线程协调所有不需要大量CPU来完成的关键过程功能。 这允许将大多数管理代码编写为单线程编写。</li>
+<li>Worker：默认情况下，Envoy为系统中的每个硬件线程生成一个工作线程。（这可以通过<a href="https://lyft.github.io/envoy/docs/operations/cli.html">&ndash;concurrency</a> <a href="https://lyft.github.io/envoy/docs/operations/cli.html">选项</a>控制）。 每个工作线程运行一个“非阻塞”事件循环，负责监听每个监听器（当前没有监听器分片），接受新连接，为连接实例化过滤器堆栈，以及处理所有IO的生命周期。 连接。 同样，这允许将大多数连接处理代码写成好像是单线程的。</li>
+<li>文件刷新器：Envoy写入的每个文件（主要是访问日志）当前都有一个独立的阻塞刷新线程。 这是因为即使使用O_NONBLOCK写入文件系统缓存文件有时也会阻塞（哎）。 当工作线程需要写入文件时，数据实际上被移入内存缓冲区，最终通过文件刷新线程刷新。 这是代码的一个区域，技术上所有worker都可以阻止同一个锁尝试填充内存缓冲区。 还有一些其他的将在下面进一步讨论。</li>
+</ul>
+
+<h3 id="连接处理">连接处理</h3>
+
+<p>如上所述，所有工作线程都会在没有任何分片的情况下监听所有监听器。 因此，内核用于智能地将接受的套接字分派给工作线程。 现代内核一般都很擅长这个; 他们使用诸如IO优先级提升之类的功能来尝试填充线程的工作，然后开始使用同时监听同一套接字的其他线程，以及不使用单个自旋锁来处理每个接受。</p>
+
+<p>一旦连接被worker接受，它就永远不会离开那个worker。 所有进一步的连接处理都在工作线程内完全处理，包括任何转发行为。这有一些重要的含义：</p>
+
+<ul>
+<li>Envoy中的所有连接池都是每个工作线程。 因此，尽管HTTP / 2连接池一次只与每个上游主机建立一个连接，但如果有四个工作站，则每个上游主机在稳定状态下将有四个HTTP/2连接。</li>
+<li>Envoy以这种方式工作的原因是因为通过将所有代码保存在单个工作线程中，几乎所有代码都可以在没有锁的情况下编写，就像它是单线程一样。 这种设计使得大多数代码更易于编写，并且可以非常好地扩展到几乎无限数量的worker。</li>
+<li>然而，一个主要的问题是，从内存和连接池效率的角度来看，调整并发选项实际上非常重要。 拥有比所需更多的worker将浪费内存，创建更多空闲连接，并导致更低的连接池命中率。 在Lyft，我们的 sidecar Envoy以非常低的并发性运行，因此性能大致与他们旁边的服务相匹配。 我们只以最大并发性运行我们的边缘Envoy。</li>
+</ul>
+
+<h3 id="什么是非阻塞">什么是非阻塞</h3>
+
+<p>到目前为止，在讨论主线程和工作线程如何操作时，已经多次使用术语“非阻塞”。 所有代码都是在假设没有任何阻塞的情况下编写的。 然而，这并不完全正确（完全是这样的吗？）。 Envoy 确实采用了一些进程宽锁：</p>
+
+<ul>
+<li>如前所述，如果正在写入访问日志，则所有工作程序在填充内存访问日志缓冲区之前都会获取相同的锁。 锁定保持时间应该非常低，但是这种锁可以在高并发性和高吞吐量下竞争。</li>
+<li>Envoy采用了一个非常复杂的系统来处理线程本地的统计数据。 这将是一个单独的帖子的主题。 但是，我将简要提一下，作为线程本地统计处理的一部分，有时需要获取对中央“stat store”的锁定。这种锁定不应该高度争用。</li>
+<li>主线程需要定期与所有工作线程协调。 这是通过从主线程“发布”到工作线程（有时从工作线程返回到主线程）来完成的。 发布需要锁定，以便将发布的消息放入队列中以便以后发送。 这些锁永远不应该高度争用，但它们仍然可以在技术上阻止。</li>
+<li>当Envoy将自己记录到标准错误时，它会获取进程范围的锁定。 一般来说，Envoy本地记录被认为是表现糟糕的，所以没有多少考虑改善这一点。</li>
+<li>还有一些其他随机锁，但它们都不在性能关键路径中，永远不应该争用。</li>
+</ul>
+
+<h3 id="线程本地存储">线程本地存储</h3>
+
+<p>由于Envoy将主线程职责与工作线程职责分开，因此需要在主线程上完成复杂处理，然后以高度并发的方式使每个工作线程可用。 本节介绍了Envoy的高级线程本地存储（TLS）系统。 在下一节中，我将描述如何使用它来处理集群管理。</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/5f3e3349gy1g0c5bd3l63j218g0n1wjh.jpg" alt="" /></p>
+
+<p>如已经描述的那样，主线程基本上处理Envoy过程中的所有管理/控制平面功能。 （控制平面在这里有点过载但是当在Envoy进程中考虑并与工人做的转发进行比较时，似乎是合适的）。 主线程进程执行某些工作是一种常见模式，然后需要使用该工作的结果更新每个工作线程，并且工作线程不需要在每次访问时获取锁定。</p>
+
+<p>Envoy的TLS系统的工作原理如下：</p>
+
+<ul>
+<li>在主线程上运行的代码可以分配进程范围的TLS槽。 虽然是抽象的，但实际上，这是一个允许O（1）访问的向量索引。</li>
+<li>主线程可以将任意数据设置到其槽中。 完成此操作后，数据将作为正常事件循环事件发布到每个工作程序中。</li>
+<li>工作线程可以从其TLS槽读取，并将检索那里可用的任何线程本地数据。</li>
+</ul>
+
+<p>虽然非常简单，但这是一个非常强大的范例，与RCU锁定概念非常相似。 （实质上，工作线程在工作时从不会看到TLS插槽中的数据发生任何变化。更改只发生在工作事件之间的静止期间）。 Envoy以两种不同的方式使用它：</p>
+
+<ul>
+<li>通过在没有任何锁定的情况下访问每个工作人员存储不同的数据</li>
+<li>通过将共享指针存储到每个worker的只读全局数据。 因此，每个工作者都具有对在工作时不能递减的数据的引用计数。 只有当所有工作人员都已停顿并加载新的共享数据时，旧数据才会被销毁。 这与RCU相同。</li>
+</ul>
+
+<h3 id="集群线程更新">集群线程更新</h3>
+
+<p>在本节中，我将描述TLS如何用于集群管理。 集群管理包括xDS API处理和/或DNS以及运行状况检查。</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/5f3e3349gy1g0c5dx3j34j20ir0agwgn.jpg" alt="" /></p>
+
+<p>图3显示了涉及以下组件和步骤的总体流程：</p>
+
+<ol>
+<li>集群管理器是Envoy内部的组件，用于管理所有已知的上游集群，CDS API，SDS / EDS API，DNS和活动（带外）运行状况检查。 它负责创建每个上游集群的最终一致视图，其中包括已发现的主机以及运行状况。</li>
+<li>运行状况检查程序执行活动运行状况检查，并将运行状况更改报告回集群管理器。</li>
+<li>执行CDS / SDS / EDS / DNS以确定集群成员资格。 状态更改将报告回集群管理器。</li>
+<li>每个工作线程都在不断运行事件循环。</li>
+<li>当集群管理器确定集群的状态已更改时，它会创建集群状态的新只读快照，并将其发布到每个工作线程。</li>
+<li>在下一个静止期间，工作线程将更新分配的TLS插槽中的快照。</li>
+<li>在需要确定要负载均衡的主机的IO事件期间，负载均衡器将在TLS插槽中查询主机信息。 没有获得锁定来执行此操作。 （另请注意，TLS还可以在更新时触发事件，以便负载平衡器和其他组件可以重新计算高速缓存，数据结构等。这超出了本文的范围，但在代码中的各个位置使用）。</li>
+</ol>
+
+<p>通过使用先前描述的过程，Envoy能够处理每个请求而不需要任何锁定（除了之前描述的那些）。 除了TLS代码本身的复杂性之外，大多数代码都不需要理解线程如何工作，并且可以编写为单线程。 这使得大多数代码更容易编写，并产生出色的性能。</p>
+
+<h3 id="其他使用tls的子系统">其他使用TLS的子系统</h3>
+
+<p>TLS和RCU在Envoy中广泛使用。 其他一些例子包括：</p>
+
+<ul>
+<li>运行时（功能标志）覆盖查找：在主线程上计算当前功能标志覆盖映射。 然后使用RCU语义为每个工作程序提供只读快照。</li>
+<li>路由表交换：对于RDS提供的路由表，路由表在主线程上实例化。 然后使用RCU语义为每个工作程序提供只读快照。 这使得路由表交换有效地原子化。</li>
+<li>HTTP日期标头缓存：事实证明，在每个请求上计算HTTP日期标头（当每个核心执行~25K + RPS时）非常昂贵。 Envoy大约每半秒计算一次日期标题，并通过TLS和RCU将其提供给每个工作人员。</li>
+</ul>
+
+<p>还有其他情况，但前面的例子应该提供TLS所用事物的良好品味。</p>
+
+<h3 id="已知的性能陷阱">已知的性能陷阱</h3>
+
+<p>虽然Envoy整体表现相当不错，但是当它以非常高的并发性和吞吐量使用时，有一些已知领域需要注意：</p>
+
+<ul>
+<li>正如本文中已经描述的那样，当前所有工作者在写入访问日志的内存缓冲区时都会获得锁定。 在高并发性和高吞吐量的情况下，当写入最终文件时，将需要以按顺序交付为代价对每个工作人员批量访问日志进行批处理。 或者，访问日志可以成为每个工作线程。</li>
+<li>尽管统计信息已经过非常优化，但在非常高的并发性和吞吐量下，个别统计信息可能存在原子争用。 对此的解决方案是每个工人计数器，定期冲洗到中央计数器。 这将在后续文章中讨论。</li>
+<li>如果Envoy部署在几乎没有需要大量资源来处理的连接的场景中，现有架构将无法正常运行。 这是因为无法保证连接在工作人员之间均匀分布。 这可以通过实现工作者连接平衡来解决，其中工作人员能够将连接转发给另一个工作人员进行处理。</li>
+</ul>
+
+<h3 id="结论">结论</h3>
+
+<p>Envoy的线程模型旨在支持编程的简单性和大规模并行性，但如果调整不当可能会浪费内存和连接使用。 该模型允许它在非常高的worker数量和吞吐量下表现良好。</p>
+
+<p>正如我在<a href="https://twitter.com/mattklein123/status/872291252695293952">Twitter</a>上简要提到的那样，该设计也适合在DPDK之类的完整用户模式网络堆栈上运行，这可能导致商用服务器在执行完整的L7处理时每秒处理数百万个请求。看看未来几年建成什么会非常有趣。</p>
+
+<p>最后一个快速评论：我多次被问到为什么我们为Envoy选择C++。 原因仍然是它仍然是唯一广泛部署的生产级语言，使用该语言中可以构建本文中描述的架构。 C++当然不适合所有项目，甚至许多项目，但对于某些用例，它仍然是完成工作的唯一工具。</p>
+
+<h3 id="代码链接">代码链接</h3>
+
+<p>本文中讨论的一些接口和实现头的一些链接：</p>
+
+<ul>
+<li><a href="https://github.com/lyft/envoy/blob/master/include/envoy/thread_local/thread_local.h">https://github.com/lyft/envoy/blob/master/include/envoy/thread_local/thread_local.h</a></li>
+<li><a href="https://github.com/lyft/envoy/blob/master/source/common/thread_local/thread_local_impl.h">https://github.com/lyft/envoy/blob/master/source/common/thread_local/thread_local_impl.h</a></li>
+<li><a href="https://github.com/lyft/envoy/blob/master/include/envoy/upstream/cluster_manager.h">https://github.com/lyft/envoy/blob/master/include/envoy/upstream/cluster_manager.h</a></li>
+<li><a href="https://github.com/lyft/envoy/blob/master/source/common/upstream/cluster_manager_impl.h">https://github.com/lyft/envoy/blob/master/source/common/upstream/cluster_manager_impl.h</a></li>
+</ul>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/the-data-center-os-kubernetes/" data-toggle="tooltip" data-placement="top" title="面向 Kubernetes 编程：Kubernetes 是下一代操作系统">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/envoy-and-grpc-web-a-fresh-new-alternative-to-rest/"><i class="fa fa-link"></i>REST的替代者：Envoy&#43;gRPC-Web</a></li>
+         
+        <li><a href="/blog/envoy-proxy-config-deep-dive/"><i class="fa fa-link"></i>Istio 的数据平面 Envoy Proxy 配置详解</a></li>
+         
+        <li><a href="/blog/istio-service-and-traffic-model/"><i class="fa fa-link"></i>Istio中的服务和流量的抽象模型</a></li>
+         
+        <li><a href="/blog/distributed-tracing-with-envoy-service-mesh-jaeger/"><i class="fa fa-link"></i>使用Envoy和Jaeger实现分布式追踪</a></li>
+         
+        <li><a href="/blog/envoy-stats/"><i class="fa fa-link"></i>Envoy中的数据统计</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (5)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (19)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (5)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (19)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (91)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/cncf"><i class="fa fa-tags"></i> cncf</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/grpc-web"><i class="fa fa-tags"></i> grpc-web</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/nfv"><i class="fa fa-tags"></i> nfv</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/open-source"><i class="fa fa-tags"></i> open-source</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/operator"><i class="fa fa-tags"></i> operator</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/supergloo"><i class="fa fa-tags"></i> supergloo</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/envoy-threading-model/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0d5qblqxgj31400u04qs.jpg" class="img-responsive" alt="Envoy架构师Matt Klein对Envoy线程模型的简介">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/envoy-threading-model/">Envoy架构师Matt Klein对Envoy线程模型的简介</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/the-data-center-os-kubernetes/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tKfTcly1g0d0qfcwpfj31400u0u11.jpg" class="img-responsive" alt="面向 Kubernetes 编程：Kubernetes 是下一代操作系统">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/the-data-center-os-kubernetes/">面向 Kubernetes 编程：Kubernetes 是下一代操作系统</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/istio-kubernetes-service-mesh/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0crj27wpij31400u0hdu.jpg" class="img-responsive" alt="Istio——企业级微服务解决方案">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/istio-kubernetes-service-mesh/">Istio——企业级微服务解决方案</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
