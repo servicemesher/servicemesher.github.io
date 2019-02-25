@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Istio知识图谱 v0.1 发布及社区图书孵化</title>
+      <link>http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/</link>
+      <pubDate>Mon, 25 Feb 2019 15:47:49 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/</guid>
+      <description>2019年2月15日晚，我在朋友圈里发起了 Istio 知识图谱项目。 而后获得 ServiceMesher 社区成员的热烈响应，在此后的一周内陆续有151参与进来。 经过10天的孵化</description>
+    </item>
+    
+    <item>
       <title>Knative Eventing in-memory-channel实现原理解析</title>
       <link>http://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</link>
       <pubDate>Fri, 22 Feb 2019 14:08:59 +0800</pubDate>

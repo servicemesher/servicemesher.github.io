@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 22 Feb 2019 14:08:59 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 Feb 2019 15:47:49 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio知识图谱 v0.1 发布及社区图书孵化</title>
+      <link>http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/</link>
+      <pubDate>Mon, 25 Feb 2019 15:47:49 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/</guid>
+      <description>2019年2月15日晚，我在朋友圈里发起了 Istio 知识图谱项目。 而后获得 ServiceMesher 社区成员的热烈响应，在此后的一周内陆续有151参与进来。 经过10天的孵化</description>
+    </item>
     
     <item>
       <title>Knative Eventing in-memory-channel实现原理解析</title>
@@ -1529,7 +1538,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 19 敖小剑 10 崔秀龙 5 高松 3 郑伟 3 赵化冰 3 丁轶群 3 朵晓东 2 张馆长 2 吴伟 2 黄挺 1 陈有坤 1 陈</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 20 敖小剑 10 崔秀龙 5 高松 3 郑伟 3 赵化冰 3 丁轶群 3 朵晓东 2 张馆长 2 吴伟 2 黄挺 1 陈有坤 1 陈</description>
     </item>
     
     <item>

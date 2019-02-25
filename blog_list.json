@@ -1,5 +1,37 @@
 [
   {
+    "author": "宋净超",
+    "authorlink": "“https://jimmysong.io",
+    "banner": "https://ws1.sinaimg.cn/large/006tKfTcly1g0iqlnacxsj31400u01kz.jpg",
+    "categories": [
+      "istio"
+    ],
+    "date": "2019-02-25T15:47:49+08:00",
+    "fuzzywordcount": 800,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "istio",
+      "知识图谱"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-02-25T15:47:49+08:00",
+    "objectID": "3bb5d2fd569a724f7286ef97c1f7f460",
+    "permalink": "http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/",
+    "publishdate": "2019-02-25T15:47:49+08:00",
+    "readingtime": 2,
+    "relpermalink": "/blog/istio-knowledge-map-v0.1-release/",
+    "summary": "Istio知识图谱 v0.1版本发布及 Istio handbook 联署签名征集。",
+    "tags": [
+      "istio"
+    ],
+    "title": "Istio知识图谱 v0.1 发布及社区图书孵化",
+    "translator": null,
+    "url": "/blog/istio-knowledge-map-v0.1-release/",
+    "weight": 0,
+    "wordcount": 716
+  },
+  {
     "author": "牛秋霖",
     "authorlink": "http://www.servicemesher.com",
     "banner": "https://ws1.sinaimg.cn/large/006tKfTcly1g0f6h0c0xoj31400u0npe.jpg",
