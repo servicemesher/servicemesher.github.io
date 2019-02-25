@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 20 Feb 2019 20:17:12 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 22 Feb 2019 14:08:59 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Knative Eventing in-memory-channel实现原理解析</title>
+      <link>http://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</link>
+      <pubDate>Fri, 22 Feb 2019 14:08:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</guid>
+      <description>关于 Knative eventing 的基本概念可以参考: https://github.com/knative/docs/blob/master/eventing/README.md https://thenewstack.io/knative-enables-portable-serverless-platforms-on-kubernetes-for-any-cloud/ 本文不对基本概念做介绍，本文主要是基于 Kubernetes Event Source example 为例分析 in-memory-channel 的实现原理。 在运行 Kubernetes Event Source example 之前要保证已经安装了 in-memory-channel , 下</description>
+    </item>
     
     <item>
       <title>Envoy架构师Matt Klein对Envoy线程模型的简介</title>

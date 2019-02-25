@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</loc>
+    <lastmod>2019-02-22T14:08:59+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/envoy-threading-model/</loc>
     <lastmod>2019-02-20T20:17:12+08:00</lastmod>
   </url>
@@ -1179,7 +1184,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/knative/</loc>
-    <lastmod>2019-01-02T11:35:38+08:00</lastmod>
+    <lastmod>2019-02-22T14:08:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/knative/</loc>
+    <lastmod>2019-02-22T14:08:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1395,7 +1406,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/serverless/</loc>
-    <lastmod>2019-01-02T11:35:38+08:00</lastmod>
+    <lastmod>2019-02-22T14:08:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1419,7 +1430,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-02-20T20:17:12+08:00</lastmod>
+    <lastmod>2019-02-22T14:08:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
