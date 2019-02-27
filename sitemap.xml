@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/back-to-microservices-with-istio-p1/</loc>
+    <lastmod>2019-02-27T11:35:38+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/</loc>
     <lastmod>2019-02-25T15:47:49+08:00</lastmod>
   </url>
@@ -1147,7 +1152,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-02-25T15:47:49+08:00</lastmod>
+    <lastmod>2019-02-27T11:35:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1435,7 +1440,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-02-25T15:47:49+08:00</lastmod>
+    <lastmod>2019-02-27T11:35:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1519,7 +1524,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2019-02-20T20:17:12+08:00</lastmod>
+    <lastmod>2019-02-27T11:35:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
