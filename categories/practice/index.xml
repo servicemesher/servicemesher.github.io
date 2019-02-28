@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Practice on ServiceMesher</title>
+    <link>http://www.servicemesher.com/categories/practice/</link>
+    <description>Recent content in Practice on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 11 Jan 2019 11:10:19 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/categories/practice/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在网格的边缘试探——企业服务行业如何试水 Istio</title>
+      <link>http://www.servicemesher.com/blog/explore-at-the-edge-of-istio-service-mesh/</link>
+      <pubDate>Fri, 11 Jan 2019 11:10:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/explore-at-the-edge-of-istio-service-mesh/</guid>
+      <description>崔秀龙，HPE 软件分析师，Kubernetes 权威指南作者之一，Kubernetes、Istio 项目成员。 本文根据崔秀龙在 2019 广州 Service Mesh Meetup#5 分享整</description>
+    </item>
+    
+    <item>
+      <title>全手动部署prometheus-operator监控Kubernetes集群遇到的坑</title>
+      <link>http://www.servicemesher.com/blog/prometheus-operator-manual/</link>
+      <pubDate>Tue, 08 Jan 2019 17:40:30 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/prometheus-operator-manual/</guid>
+      <description>写这篇文章原因 所有监控的agent底层最终都是查询的/proc和/sys里的信息推送(如果错了轻喷)，因为在Kubernetes中收集宿主机</description>
+    </item>
+    
+    <item>
+      <title>蚂蚁金服Service Mesh新型网络代理的思考与实践</title>
+      <link>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</link>
+      <pubDate>Tue, 04 Dec 2018 17:32:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</guid>
+      <description>朵晓东，花名奕杉，蚂蚁金服高级技术专家。专注企业云计算技术及产品，蚂蚁金融云 PaaS 创始团队核心成员，Antstack 网络产品负责人。开源爱好者，</description>
+    </item>
+    
+    <item>
+      <title>使用Istio和Envoy实践服务网格gRPC度量</title>
+      <link>http://www.servicemesher.com/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/</link>
+      <pubDate>Tue, 27 Nov 2018 19:09:15 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/</guid>
+      <description>在这个令人惊奇的时代，我们可以不需要编写一行代码，便可以很智能的集成应用程序，收集应用程序指标。 在这篇文章中，我将演示使用 helm 安装 Istio mtls 环境、必</description>
+    </item>
+    
+    <item>
+      <title>云端设计平台Coohom在生产环境中使用istio的经验与实践</title>
+      <link>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</link>
+      <pubDate>Thu, 25 Oct 2018 20:49:29 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</guid>
+      <description>介绍 自从istio-1.0.0在今年发布了正式版以后，Coohom项目在生产环境中也开启了使用istio来作为服务网格。 本文将会介绍与分享在</description>
+    </item>
+    
+    <item>
+      <title>Istio微服务平台集成实践</title>
+      <link>http://www.servicemesher.com/blog/istio-paas-integration/</link>
+      <pubDate>Fri, 19 Oct 2018 10:24:23 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-paas-integration/</guid>
+      <description>本文转载自赵化冰的博客。 Istio发布1.0版本后，其服务发现和路由规则功能已基本具备production能力，我们也开始了Istio和公司</description>
+    </item>
+    
+    <item>
+      <title>Envoy服务网格在Lyft的实践及未来路线图</title>
+      <link>http://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</link>
+      <pubDate>Sun, 02 Sep 2018 13:48:47 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</guid>
+      <description>关键要点 在过去的四年中，Lyft 已从单体架构转变为数百个微服务。随着微服务数量的增加，由于级联故障或意外内部拒绝服务导致的中断次数也在增加。</description>
+    </item>
+    
+    <item>
+      <title>蚂蚁金服开源的 SOFAMesh 的通用协议扩展解析</title>
+      <link>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</link>
+      <pubDate>Fri, 31 Aug 2018 12:27:25 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</guid>
+      <description>本文作者：邵俊雄（熊啸），蚂蚁金服中间件团队高级技术专家，目前主要负责 SOFAMesh 的开发工作。 本文是基于作者在 Service Mesh Meetup #3 深圳的主题分享《SOFAMesh</description>
+    </item>
+    
+    <item>
+      <title>Circonus Istio Mixer适配器</title>
+      <link>http://www.servicemesher.com/blog/the-circonus-istio-mixer-adapter/</link>
+      <pubDate>Tue, 17 Jul 2018 20:12:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/the-circonus-istio-mixer-adapter/</guid>
+      <description>本文英文原文最初发表时间：2017年12月6日 Circonus 参与开源软件有着悠久的传统。因此，当看到 Istio 提供了一个精心设计的接口，通过适配器连接 syndicate 服务遥测</description>
+    </item>
+    
+    <item>
+      <title>使用Istio 0.8对Kubernetes进行A/B测试</title>
+      <link>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0.8/</link>
+      <pubDate>Fri, 13 Jul 2018 12:38:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0.8/</guid>
+      <description>这是我们正在发布的系列文章中的第二篇，描述了我们在 Kubernetes 上采用 Istio 进行流量路由的经验。有关我们试图通过Vamp实现的更多详情以及我们选择 Istio 的原因，</description>
+    </item>
+    
+    <item>
+      <title>蚂蚁金服大规模微服务架构下的Service Mesh探索之路</title>
+      <link>http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/</link>
+      <pubDate>Wed, 04 Jul 2018 19:56:20 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/</guid>
+      <description>本文是根据蚂蚁金服 Service Mesh 布道师敖小剑在 Service Mesher社区进行的第一次 Meetup 上分享的《大规模微服务架构下的 Service Mesh 探索之路》现场演讲内容实录整理编辑而成</description>
+    </item>
+    
+    <item>
+      <title>服务网格在Cookpad网站中的实践</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-in-cookpad/</link>
+      <pubDate>Tue, 19 Jun 2018 15:54:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-in-cookpad/</guid>
+      <description>这个原文是 5 月初发表的日文原文的翻译。补充一下这篇文章的背景，Cookpad 是一家拥有 200 多种产品开发的中型科技公司，拥有 10 多支团队，每月平均</description>
+    </item>
+    
+    <item>
+      <title>WePay如何使用Linkerd作为服务网格代理</title>
+      <link>http://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</link>
+      <pubDate>Tue, 19 Jun 2018 11:42:58 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</guid>
+      <description>在接下来的几个月中，我们将撰写一系列文章来记录从传统负载均衡器到谷歌Kubernetes引擎（GKE）之上服务网格的WePay工程化之路。 在</description>
+    </item>
+    
+    <item>
+      <title>轻量Service Mesh在Ucloud的实践</title>
+      <link>http://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</link>
+      <pubDate>Thu, 14 Jun 2018 10:43:16 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</guid>
+      <description>UCloud 作为一家To B的公有云服务商，我们的CTO莫显峰经常说：“研发团队最首要的任务是提供稳定的服务，然后才是提供符合客户需求的、易用和低成本的</description>
+    </item>
+    
+    <item>
+      <title>蚂蚁金服是如何实现经典服务化架构向Service Mesh方向演进的？</title>
+      <link>http://www.servicemesher.com/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</link>
+      <pubDate>Wed, 13 Jun 2018 18:58:33 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/migrating-from-classical-soa-to-service-mesh-in-ant-financial/</guid>
+      <description>蚂蚁金服在服务化上面已经经过多年的沉淀，支撑了每年双十一的高峰峰值。Service Mesh 作为微服务的一个新方向，在最近两年成为领域的一个大热点，</description>
+    </item>
+    
+    <item>
+      <title>Istio的GitOps—像代码一样管理Istio配置</title>
+      <link>http://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</link>
+      <pubDate>Thu, 31 May 2018 21:12:03 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</guid>
+      <description>在今年的哥本哈根 Kubecon 大会上，Weaveworks 的 CEO Alexis Richardson 与 Varun Talwar（来自一家隐形创业公司）谈到了 GitOps 工作流程和 Istio。会后 Weaveworks 的 Stefan Prodan 进行</description>
+    </item>
+    
+  </channel>
+</rss>

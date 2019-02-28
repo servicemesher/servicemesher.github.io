@@ -75,15 +75,6 @@
     </item>
     
     <item>
-      <title>云端设计平台Coohom在生产环境中使用istio的经验与实践</title>
-      <link>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</link>
-      <pubDate>Thu, 25 Oct 2018 20:49:29 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</guid>
-      <description>介绍 自从istio-1.0.0在今年发布了正式版以后，Coohom项目在生产环境中也开启了使用istio来作为服务网格。 本文将会介绍与分享在</description>
-    </item>
-    
-    <item>
       <title>istio-ui——一款开源的简易Istio UI的介绍和使用教程</title>
       <link>http://www.servicemesher.com/blog/istio-ui-tutorial/</link>
       <pubDate>Mon, 22 Oct 2018 19:33:39 +0800</pubDate>
@@ -99,15 +90,6 @@
       
       <guid>http://www.servicemesher.com/blog/kiali-the-istio-service-mesh-observability-tool/</guid>
       <description>Istio 中有个 issue #9066 要求将 Istio 中默认使用的 Service Graph 替换成 Kiali。Kiali 最初是由 Red Hat 开源的，用于解决 Service Mesh 中可观察性即微服务的可视性问题。目前已获得 Istio</description>
-    </item>
-    
-    <item>
-      <title>Istio微服务平台集成实践</title>
-      <link>http://www.servicemesher.com/blog/istio-paas-integration/</link>
-      <pubDate>Fri, 19 Oct 2018 10:24:23 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/blog/istio-paas-integration/</guid>
-      <description>本文转载自赵化冰的博客。 Istio发布1.0版本后，其服务发现和路由规则功能已基本具备production能力，我们也开始了Istio和公司</description>
     </item>
     
     <item>
