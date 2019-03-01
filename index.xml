@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 27 Feb 2019 11:35:38 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 10:40:18 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Knative：精简代码之道</title>
+      <link>http://www.servicemesher.com/blog/knative-whittling-down-the-code/</link>
+      <pubDate>Fri, 01 Mar 2019 10:40:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/knative-whittling-down-the-code/</guid>
+      <description>[编者案] Knative 作为 Google 发起开源的 serverless 项目，给我们提供了一套简单易用的 serverless 开源解决方案。本文作者直观地向我们展示了如何使用Knative来一步一步逐渐</description>
+    </item>
     
     <item>
       <title>使用Istio打造微服务（第1部分）</title>
