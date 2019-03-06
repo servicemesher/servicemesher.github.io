@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/application-metrics-in-istio/</loc>
+    <lastmod>2019-03-06T14:00:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-to-manage-envoy-proxy-at-the-edge-as-a-gateway-or-in-a-mesh/</loc>
+    <lastmod>2019-03-06T12:17:02+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/knative-whittling-down-the-code/</loc>
     <lastmod>2019-03-01T10:40:18+08:00</lastmod>
   </url>
@@ -1007,7 +1017,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/envoy/</loc>
-    <lastmod>2019-02-20T20:17:12+08:00</lastmod>
+    <lastmod>2019-03-06T12:17:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1157,7 +1167,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-02-27T11:35:38+08:00</lastmod>
+    <lastmod>2019-03-06T14:00:26+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1439,7 +1449,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2019-02-20T16:33:31+08:00</lastmod>
+    <lastmod>2019-03-06T12:17:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1451,7 +1461,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-03-01T10:40:18+08:00</lastmod>
+    <lastmod>2019-03-06T14:00:26+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1535,7 +1545,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2019-03-01T10:40:18+08:00</lastmod>
+    <lastmod>2019-03-06T14:00:26+08:00</lastmod>
     <priority>0</priority>
   </url>
   
