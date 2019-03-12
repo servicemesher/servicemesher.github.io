@@ -12,6 +12,42 @@
     
     
     <item>
+      <title>Knative 入门系列2：serving 介绍</title>
+      <link>http://www.servicemesher.com/blog/knative-serving/</link>
+      <pubDate>Tue, 12 Mar 2019 11:17:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/knative-serving/</guid>
+      <description>译者：杨铁党、孙海洲、邱世达、宋净超、徐鹏 Knative 是一个基于 Kubernetes 的，用于构建、部署和管理现代 serverless 应用的平台。Getting Started with Knative 是一本由 Pivotal 公司赞助 O’</description>
+    </item>
+    
+    <item>
+      <title>Knative 入门系列1：knative 概述</title>
+      <link>http://www.servicemesher.com/blog/knative-overview/</link>
+      <pubDate>Mon, 11 Mar 2019 12:23:31 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/knative-overview/</guid>
+      <description>译者：陈佳栋、宋净超、孙海洲、徐鹏、邱世达 Knative 是一个基于 Kubernetes 的，用于构建、部署和管理现代 serverless 应用的平台。Getting Started with Knative 是一本由 Pivotal 公司赞助 O’</description>
+    </item>
+    
+    <item>
+      <title>微服务断路器模式实现：Istio vs Hystrix</title>
+      <link>http://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/</link>
+      <pubDate>Fri, 08 Mar 2019 15:12:41 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/</guid>
+      <description>编者按 本文作者由浅及深，从核心问题的引入到具体模式的代码实现，阐述了微服务两种断路器模式的实现原理、优缺点以及二者的比较。 前言 不可否认的是，</description>
+    </item>
+    
+    <item>
+      <title>自定义Istio Mixer Adapter示例教程（附源码）</title>
+      <link>http://www.servicemesher.com/blog/custom-istio-mixer-adapter/</link>
+      <pubDate>Wed, 06 Mar 2019 15:21:50 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/custom-istio-mixer-adapter/</guid>
+      <description>快速开始：https://micro-mesh/examples/adapter/auth源码传送门。 研究Istio下构建简洁的微服务架构，</description>
+    </item>
+    
+    <item>
       <title>Istio中的应用程序指标度量</title>
       <link>http://www.servicemesher.com/blog/application-metrics-in-istio/</link>
       <pubDate>Wed, 06 Mar 2019 14:00:26 +0800</pubDate>

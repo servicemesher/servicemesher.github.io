@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 25 Feb 2019 15:47:49 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 Mar 2019 15:21:50 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>自定义Istio Mixer Adapter示例教程（附源码）</title>
+      <link>http://www.servicemesher.com/blog/custom-istio-mixer-adapter/</link>
+      <pubDate>Wed, 06 Mar 2019 15:21:50 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/custom-istio-mixer-adapter/</guid>
+      <description>快速开始：https://micro-mesh/examples/adapter/auth源码传送门。 研究Istio下构建简洁的微服务架构，</description>
+    </item>
     
     <item>
       <title>Istio知识图谱 v0.1 发布及社区图书孵化</title>

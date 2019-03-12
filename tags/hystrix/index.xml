@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hystrix on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/hystrix/</link>
+    <description>Recent content in Hystrix on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 08 Mar 2019 15:12:41 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/hystrix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>微服务断路器模式实现：Istio vs Hystrix</title>
+      <link>http://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/</link>
+      <pubDate>Fri, 08 Mar 2019 15:12:41 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/</guid>
+      <description>编者按 本文作者由浅及深，从核心问题的引入到具体模式的代码实现，阐述了微服务两种断路器模式的实现原理、优缺点以及二者的比较。 前言 不可否认的是，</description>
+    </item>
+    
+  </channel>
+</rss>
