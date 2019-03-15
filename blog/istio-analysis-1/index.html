@@ -6,11 +6,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Serverless Jenkins 和 Jenkins X · Service Mesh|服务网格中文社区</title>
+  <title>Istio 庖丁解牛一：组件概览 · Service Mesh|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
-  <meta name="keywords" content="jenkins, serverless, knative">
+  <meta name="keywords" content="service mesh, 服务网格, istio">
   
 
   <meta name="generator" content="Hugo 0.51" />
@@ -52,17 +52,17 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="Serverless Jenkins 和 Jenkins X" />
+  <meta property="og:title" content="Istio 庖丁解牛一：组件概览" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/serverless-jenkins-with-jenkins-x//" />
+  <meta property="og:url" content="/blog/istio-analysis-1//" />
   <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
-  <meta name="description" content="本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。">
-  <meta property="og:description" content="本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。">
-  <meta name="twitter:description" content="本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。">
-  <meta property="og:description" content="本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。" />
+  <meta name="description" content="Istio 作为 Service Mesh 领域的集大成者, 提供了流控, 安全, 遥测等模型, 其功能复杂, 模块众多, 有较高的学习和使用门槛, 本文会对istio 1.1 的各组件进行分析, 希望能帮助读者了解istio各组件的职责、以及相互的协作关系。">
+  <meta property="og:description" content="Istio 作为 Service Mesh 领域的集大成者, 提供了流控, 安全, 遥测等模型, 其功能复杂, 模块众多, 有较高的学习和使用门槛, 本文会对istio 1.1 的各组件进行分析, 希望能帮助读者了解istio各组件的职责、以及相互的协作关系。">
+  <meta name="twitter:description" content="Istio 作为 Service Mesh 领域的集大成者, 提供了流控, 安全, 遥测等模型, 其功能复杂, 模块众多, 有较高的学习和使用门槛, 本文会对istio 1.1 的各组件进行分析, 希望能帮助读者了解istio各组件的职责、以及相互的协作关系。">
+  <meta property="og:description" content="Istio 作为 Service Mesh 领域的集大成者, 提供了流控, 安全, 遥测等模型, 其功能复杂, 模块众多, 有较高的学习和使用门槛, 本文会对istio 1.1 的各组件进行分析, 希望能帮助读者了解istio各组件的职责、以及相互的协作关系。" />
 
   
   
@@ -96,9 +96,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Serverless Jenkins 和 Jenkins X logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Serverless Jenkins 和 Jenkins X logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Serverless Jenkins 和 Jenkins X - 跳到主页</span>
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio 庖丁解牛一：组件概览 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio 庖丁解牛一：组件概览 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Istio 庖丁解牛一：组件概览 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -244,7 +244,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Serverless Jenkins 和 Jenkins X</h1>
+                <h1>Istio 庖丁解牛一：组件概览</h1>
             </div>
         </div>
     </div>
@@ -262,33 +262,26 @@ autocomplete('#aa-search-input',
                         <div class="well">
                             <div class="author-category">
                             <i class="fa fa-calendar-o">
-                            2018年12月4日
+                            2019年3月12日
                             </i>
                             |
                             
-                            作者 <a href="https://medium.com/@jdrawlings">James Rawlings</a>
+                            作者 <a href="https://imfox.me">钟华</a>
                             
-                            
-                            | 译者 <a href="https://github.com/yiduwangkai">王凯</a>
-                            
-                            
-                            | 审校者
-                            
-                            <a href="https://jimmysong.io"><i>宋净超</i></a>
                             
                             
                             |
-                            5200字 | 阅读大约需要11分钟
+                            2200字 | 阅读大约需要5分钟
                             </div>
                             
                             
                             <div class="author-category">
                             
-                            <a href="https://medium.com/@jdrawlings/serverless-jenkins-with-jenkins-x-9134cbfe6870">查看原文</a>
+                            <a href="https://imfox.me/2019/03/11/istio-analysis-1/">查看原文</a>
                             |
                             
                             
-                            归档于 <a href="/categories/translation">translation</a>
+                            归档于 <a href="/categories/istio">istio</a>
                             
                             |
                             
@@ -296,13 +289,7 @@ autocomplete('#aa-search-input',
                             
                             标签
                             
-                            <a style="text-transform:capitalize" href="/tags/jenkins/"><i>#jenkins</i></a>
-                            
-                            <a style="text-transform:capitalize" href="/tags/knative/"><i>#knative</i></a>
-                            
-                            <a style="text-transform:capitalize" href="/tags/ci-cd/"><i>#ci-cd</i></a>
-                            
-                            <a style="text-transform:capitalize" href="/tags/serverless/"><i>#serverless</i></a>
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
                             
                             </div>
                             
@@ -311,138 +298,284 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxupra5gsfj30bx0epgn0.jpg" alt="Jenkins x" /></p>
+<p>作者: 钟华，腾讯云容器团队高级工程师，热衷于容器、微服务、service mesh、istio、devops 等领域技术。</p>
 
-<p>Jenkins服务来源于创建自2004年的Hudson。在软件行业中，Jenkins已经是家喻户晓的明星产品，并且已经是CI和CD的领头羊。到目前为止有超过2050万的Jenkins任务，以及将近20万的Jenkins服务在运行中。这真的是非常惊人的增长速度。</p>
+<p>Istio 作为 Service Mesh 领域的集大成者, 提供了流控, 安全, 遥测等模型, 其功能复杂, 模块众多, 有较高的学习和使用门槛, 本文会对istio 1.1 的各组件进行分析, 希望能帮助读者了解istio各组件的职责、以及相互的协作关系.</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/5f3e3349gy1fxsw5vx2ooj20jk0c6gmj.jpg" alt="jenkins的增长变化图" /></p>
+<h2 id="1-istio-组件构成">1. istio 组件构成</h2>
 
-<p>上面的增长图说明在技术领域已经有很大的进步，列如云计算和容器，这些变化说明Jenkins在很多方面已经起到了很好的作用，我们应该很好的利用这些影响力。如今，很多公司都开始进行容器化改造，我们希望jenkins能跟上时代的步伐，开始自己的云原生之路。Jenkins应当继续成长，提供更多大家需要的自动化，可靠性，以及更好的开发体验。</p>
+<p>以下是istio 1.1 官方架构图:</p>
 
-<p>Jenkins在取得巨大成功的同时，也产生了一些问题。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g1084dxf7rj30w90u0tdg.jpg" alt="" /></p>
 
-<p>下面让我们来简要描述一些我们了解到的比较重要的问题。</p>
+<p>虽然Istio 支持多个平台, 但将其与 Kubernetes 结合使用，其优势会更大, Istio 对Kubernetes 平台支持也是最完善的, 本文将基于Istio + Kubernetes 进行展开.</p>
 
-<ol>
-<li>Jenkins服务的单点问题。特别是在服务维护期间，git webhook的操作都会被丢失.</li>
-<li>Jenkins服务经常将磁盘跑满，需要脚本或者人工清理之后，才能继续运行.</li>
-<li>在服务升级之后，plugin的版本会匹配不上.</li>
-<li>多分支扫描，经常导致GitHub的速率被限制.</li>
-<li>在没有任何任务执行时，也需要占用巨大的内存，从基于使用情况来看，这是一种巨大的浪费.</li>
-</ol>
+<p>如果安装了grafana, prometheus, kiali, jaeger等组件的情况下, 一个完整的控制面组件包括以下pod:</p>
 
-<p>未来的改进：</p>
-
-<ol>
-<li>降低云计算开销，只在有任务需要被构建时才执行jenkins服务.</li>
-<li>尽量使用上一次的临时构建通道，避免磁盘被耗尽.</li>
-<li>通过持续集成进行插件的安装和插件的升级更新.</li>
-<li>提供高可用性和可伸缩性的webhook操作，来解决spof问题.</li>
-<li>避免由于GitHub的API扫描导致的速度风险.</li>
-<li>提供灾难恢复策略，用来恢复存储在git上的所有配置信息.</li>
-</ol>
-
-<p>Jenkins x项目在今年早些时候对外宣布为基于kubernetes的pull请求和gitops自动升级提供了CI和CD（Testing&ndash;&gt;Staging&ndash;&gt;Production）。Jenkins X同样继承了kubernetes的CRD特性(<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/" title="custom resource definitions">custom resource definitions</a>)，并为你的Jenkins服务和作业提供了编排功能。</p>
-
-<p>Jenkins x和Jenkins激动的宣布无服务的Jenkins。Jenkins x既能编排无服务的jenkins，一个静态的jenkins master，也能为每一个team提供Knative构建；因此现在开源的Jenkins云拥有完整的Knative构建支持。</p>
-
-<p>无服务Jenkins使用成功的并且创新开源项目来解决和上述静态Jenkins master的问题。Kubernetes现在是事实的云实现，因此现在让我们专注在那些不太有名的，却能使得无服务的Jenkins成为可能的项目：Prow and Knative build。</p>
-
-<p>在这篇博客的底部，有一个链接到未经编辑的Youtube，它演示了这系列的操作。</p>
-
-<h2 id="prow是什么">Prow是什么？</h2>
-
-<p>Prow来源于google的电子商务系统。被一帮纠结于是否需要使用Jenkins来构建那些基于kubernetes的GitHub repos的优秀群体所创建。Kubernetes是GitHub上最成功的项目之一。Prow被用于<a href="https://github.com/istio" title="Istio">Istio</a>和<a href="https://github.com/jetstack/" title="Jetstack">Jetstack</a>的同时，还被140个项目使用。有许多不同的职责的微服务组成的基于事件的解决方案——为云原生提供了理想的松散耦合架构。对于merge到master上请求，有了更加有力的方式（不管是在构建请求之前，还是之后），可以使用ChatOps和构建系统进行交互。</p>
-
-<p>Prow提供了可伸缩的，高可用的webhook事件处理器，可以将ProwJobs的CRDs请求写入到kubernetes,以至于像正在运行中的持续集成或者发布服务等其它微服务收到响应，并执行操作（kubernetes controller对于ProwJob 事件进行了监听）。Git 事件可以是新的 PR、issue、评论、merge、push等操作都会触发git event，因此我们能对更多的事件请求响应。</p>
-
-<p>对于一些已经提供了一组配置规则的目录，我们提供了自动merge pull request功能。对于Prow组件和描述参考如下链接<a href="https://github.com/kubernetes/test-infra/tree/master/prow">https://github.com/kubernetes/test-infra/tree/master/prow</a>。</p>
-
-<p>Prow同样也将它的配置信息存储在git上，这样在出现问题时可以进行恢复。Jenkins X项目在向用户发布前已经进行了广泛的测试和验证。你能在如下地址上看到Jenkins X项目对于CI/CD提供了很多基于yaml的Prow配置<a href="https://github.com/jenkins-x/prow-config">https://github.com/jenkins-x/prow-config</a>。</p>
-
-<h2 id="knative-build">Knative Build</h2>
-
-<p><a href="https://github.com/knative/build" title="Knative Build">Knative Build</a>是一个继承自Kubernetes项目的云原生解决方案。让用户可以直接从源码进行构建。Knative Build最大的特色就是可以将一些简单的操作在同一个pod中的串联起来的执行，还可以在容器间进行状态的共享。这个特性通过<a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/" title="Kubernetes init containers">Kubernetes init containers</a>进行初始化。</p>
-
-<p><a href="https://github.com/knative/build-templates" title="Build Templates">Build Templates</a>是可以通过Kubernetes pod来直接运行你构建的项目。这个允许你在构建项目时，事先指定要需要运行的docker image，构建时需要用到的环境变量、service accounts、secret以及需要mount的存储卷。build template是kubernetes CRD的集合。可以使用Jenkins x进行自动升级。通过build template创建或者引入一个应用时，可以使用jenkins x产生Prow配置。在Jenkins x项目中有一个列子是在<a href="https://github.com/jenkins-x-charts/jx-build-templates/blob/81fd333/jx-build-templates/templates/jenkins-go-buildtemplate.yaml#L4" title="BuildTemplate">BuildTemplate</a>中配置<a href="https://github.com/jenkins-x/prow-config/blob/7dcda43/prow/config.yaml#L138-L139" title="prow config pointing">prow config pointing</a>。</p>
-
-<h2 id="什么是无服务jenkins">什么是无服务Jenkins</h2>
-
-<p>现在您已经了解了我们正在做的事情的背景，我们可以看看无服务Jenkins。云原生Jenkins正在努力帮助开发人员、团队和组织迁移到云，并确保Jenkins不仅与云相关，还允许我们利用云和Jenkins最擅长的东西。</p>
-
-<p>详情：</p>
-
-<p><img src="http://ww1.sinaimg.cn/large/5f3e3349gy1fxsw5gepi2j20id0jrt9z.jpg" alt="Credit: thanks to Gareth Evans for the diagram" title="Credit: thanks to Gareth Evans for the diagram" /></p>
-
-<p>使用基于Kubernetes的Jenkins X将会帮你自动安装和配置Prow和Knative，下面我们开始准备进行安装。当创建项目或者引入项目时，jx cli生成了所有需要的配置，并且更新git repo webhook endpoint。</p>
-
-<p>现在，每个pull请求或合并到master的请求都会触发使用Knative在Kubernetes中产生一个临时的Jenkins操作，checkout git revision，配置所需的凭证，并使用Jenkinsfile运行应用程序构建管道。一旦构建完成，它将丢弃Jenkinsfile运行程序pod。</p>
-
-<p>多亏了<a href="https://github.com/jenkinsci/custom-war-packager" title="War Packager">War Packager</a>（CWP）， Jenkins X发布过程构建了不同风格的Jenkins服务器，其中包含必要的构建工具。语言检测确保使用正确的风格。我们还使用<a href="https://github.com/jenkinsci/configuration-as-code-plugin" title="Configuration as Code plugin">Configuration as Code plugin</a>（CasC）在构建时添加必要的Jenkins配置。CWP很棒的特性之一是它提取Jenkins插件再构建serverless Jenkins（而不是当serverless Jenkins），所以在基于Jenkins image的容器和JVM中启动Jenkins X耗时5秒——相比之下，要花几分钟启动基于Kubernetes的Jenkins server。</p>
-
-<p>每当我们发布Jenkins X时，我们有一个<a href="https://github.com/jenkins-x/jenkins-x-serverless" title="monorepo">monorepo</a>，它用于自动构建和发布这些程序指定的Jenkins image。</p>
-
-<p>这也意味着，因为插件是在<a href="https://github.com/jenkins-x/jenkins-x-serverless/blob/master/packager-config.yml#L29-L170" title="yaml">yaml</a>中定义的，并存储在git中，所以我们可以为CI和CD工具提供CI和CD。当我们想要升级一个插件时，我们发出一个pull请求，它会触发CI并构建一个预览Jenkins image，确保没有插件冲突，我们甚至可以运行模拟作业作为自动化测试（尽管我们还没有完成这一部分）。每个人都可以采用完全相同的方法，构建定制的Serverless Jenkins images，以相同的方式在管道中使用。</p>
-
-<p>突出的一件事是,当你切换到Serverless Jenkins，进行构建是没有状态存储（这意味着为每个Job构建的编号总是1）。在Jenkins X中，我们为了PipelineActivity创建的CRD，所以这就允许我们在单个Jenkins构建完成之后想象先前的构建管道可以生成下一个构建编号和存储信息。</p>
-
-<p>当Prow收到webhook事件时，它将在Kubernetes中创建一个Knative构建资源。接下来，监视构建的Knative构建控制器将创建一个Kubernetes pod，并自动添加一个克隆PR或发布分支源代码的init容器。接下来，利用<a href="https://github.com/jenkinsci/jenkinsfile-runner" title="Jenkinsfile runner">Jenkinsfile runner</a>，在一个单独的步骤中启动Jenkins可以访问Knative克隆的源代码并处理应用程序Jenkinsfile。</p>
-
-<h2 id="如何开始尝试">如何开始尝试？</h2>
-
-<p>今天，含有Prow的Jenkins X在使用terraform via在GKE上创建集群时开箱即用</p>
-
-<pre><code class="language-bash">jx create terraform
+<pre><code class="language-bash">% kubectl -n istio-system get pod
+NAME                                          READY     STATUS 
+grafana-5f54556df5-s4xr4                      1/1       Running
+istio-citadel-775c6cfd6b-8h5gt                1/1       Running
+istio-galley-675d75c954-kjcsg                 1/1       Running
+istio-ingressgateway-6f7b477cdd-d8zpv         1/1       Running
+istio-pilot-7dfdb48fd8-92xgt                  2/2       Running
+istio-policy-544967d75b-p6qkk                 2/2       Running
+istio-sidecar-injector-5f7894f54f-w7f9v       1/1       Running
+istio-telemetry-777876dc5d-msclx              2/2       Running
+istio-tracing-5fbc94c494-558fp                1/1       Running
+kiali-7c6f4c9874-vzb4t                        1/1       Running
+prometheus-66b7689b97-w9glt                   1/1       Running
 </code></pre>
 
-<p>或者在其他创建集群或安装命令上使用功能标志时，即：</p>
+<p>将istio系统组件细化到进程级别, 大概是这个样子:</p>
 
-<pre><code class="language-bash">jx create cluster gke --prow 
-jx install — prow
-</code></pre>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g1084pamt2j318d0u04qp.jpg" alt="" /></p>
 
-<h2 id="faq">FAQ</h2>
+<p><a href="https://ws1.sinaimg.cn/large/006tKfTcgy1g0z3wp5comj315m0u0kjr.jpg">查看高清原图</a></p>
 
-<p><strong>如果没有运行中的Jenkins服务，如何访问UI？</strong></p>
+<p>Service Mesh 的Sidecar 模式要求对数据面的用户Pod进行代理的注入, 注入的代理容器会去处理服务治理领域的各种「脏活累活」, 使得用户容器可以专心处理业务逻辑.</p>
 
-<p>有一个非常重要的问题是Serveless Jenkins没有开源的Jenkins UI。下面我们来解释一下，Jenkins X具有可以使Jenkins X开发人员感到友好的IDE和CLI工具，但UI已经消失了。Prow有一个名为Deck的开源UI，Jenkins X安装了OOTB。CloudBees可能很快也将提供免费增值UI，但有关详细信息，请自行查找。</p>
+<p>从上图可以看出, Istio 控制面本身就是一个复杂的微服务系统, 该系统包含多个组件Pod, 每个组件 各司其职, 既有单容器Pod, 也有多容器Pod, 既有单进程容器, 也有多进程容器, 每个组件会调用不同的命令, 各组件之间会通过RPC进行写作, 共同完成对数据面用户服务的管控.</p>
 
-<p><strong>从哪里可以看到构建的日志</strong></p>
+<hr />
 
-<p>目前Jenkinsfile runner将构建日志发送到标准输出，但是一个允许我们利用Kubernetes集群集中日志记录的更好的解决方案将被开发，如Stackdriver，CloudWatch。 我们还提供<code>jx logs -k</code>（在构建运行时可用）和<code>jx get build log</code>（可用几个小时）</p>
+<h2 id="2-istio-源码-镜像和命令">2. Istio 源码, 镜像和命令</h2>
 
-<p><strong>我是否需要更改依赖于特定Jenkins multibranch插件环境变量（如<code>$ JOB_NAME</code>）的Jenkinsfile？</strong></p>
+<p>Isito 项目代码主要由以下2个git 仓库组成:</p>
 
-<p>不，我们已经尝试确保所有与MBP相关的环境变量仍然以相同的格式添加。 如果还有什么没有被添加的。请让我们知道。</p>
+<table>
+<thead>
+<tr>
+<th>仓库地址</th>
+<th>语言</th>
+<th>模块</th>
+</tr>
+</thead>
 
-<h2 id="如何将jenkinsfiles迁移到serveless-jenkins">如何将Jenkinsfiles迁移到Serveless Jenkins？</h2>
+<tbody>
+<tr>
+<td><a href="https://github.com/istio/istio">https://github.com/istio/istio</a></td>
+<td>Go</td>
+<td>包含istio控制面的大部分组件: pilot, mixer, citadel, galley, sidecar-injector等,</td>
+</tr>
 
-<p>Jenkins X项目本身已经从使用静态（永远在线）Jenkins服务器迁移到Serveless Jenkins。是的，我们将Jenkins服务器缩小到0并将我们所有的Git存储转移到Prow和Serverless Jenkins。您可以在<a href="https://github.com/jenkins-x/">https://github.com/jenkins-x/</a>组织上查看任何拉取请求，以查看它的实际运行情况。 我们使用的是<a href="https://github.com/jenkins-x/draft-packs/blob/prow/packs/javascript/Jenkinsfile">declarative style Jenkinsfile</a>（这是我们在将新项目导入Jenkins X时添加的），这意味着迁移到Serverless Jenkins只需要对Jenkins文件进行一些调整：</p>
+<tr>
+<td><a href="https://github.com/istio/proxy">https://github.com/istio/proxy</a></td>
+<td>C++</td>
+<td>包含 istio 使用的边车代理, 这个边车代理包含envoy和mixer client两块功能</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="2-1-istio-istio">2.1 istio/istio</h3>
+
+<p><a href="https://github.com/istio/istio">https://github.com/istio/istio</a> 包含的主要的镜像和命令:</p>
+
+<table>
+<thead>
+<tr>
+<th>容器名</th>
+<th>镜像名</th>
+<th>启动命令</th>
+<th>源码入口</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Istio_init</td>
+<td>istio/proxy_init</td>
+<td>istio-iptables.sh</td>
+<td>istio/tools/deb/istio-iptables.sh</td>
+</tr>
+
+<tr>
+<td>istio-proxy</td>
+<td>istio/proxyv2</td>
+<td>pilot-agent</td>
+<td>istio/pilot/cmd/pilot-agent</td>
+</tr>
+
+<tr>
+<td>sidecar-injector-webhook</td>
+<td>istio/sidecar_injector</td>
+<td>sidecar-injector</td>
+<td>istio/pilot/cmd/sidecar-injector</td>
+</tr>
+
+<tr>
+<td>discovery</td>
+<td>istio/pilot</td>
+<td>pilot-discovery</td>
+<td>istio/pilot/cmd/pilot-discovery</td>
+</tr>
+
+<tr>
+<td>galley</td>
+<td>istio/galley</td>
+<td>galley</td>
+<td>istio/galley/cmd/galley</td>
+</tr>
+
+<tr>
+<td>mixer</td>
+<td>istio/mixer</td>
+<td>mixs</td>
+<td>istio/mixer/cmd/mixs</td>
+</tr>
+
+<tr>
+<td>citadel</td>
+<td>istio/citadel</td>
+<td>istio_ca</td>
+<td>istio/security/cmd/istio_ca</td>
+</tr>
+</tbody>
+</table>
+
+<p>另外还有2个命令不在上图中使用:</p>
+
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>源码入口</th>
+<th>作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>mixc</td>
+<td>istio/mixer/cmd/mixc</td>
+<td>用于和Mixer server 交互的客户端</td>
+</tr>
+
+<tr>
+<td>node_agent</td>
+<td>istio/security/cmd/node_agent</td>
+<td>用于node上安装安全代理, 这在Mesh Expansion特性中会用到, 即k8s和vm打通.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="2-2-istio-proxy">2.2 istio/proxy</h3>
+
+<p><a href="https://github.com/istio/proxy">https://github.com/istio/proxy</a> 该项目本身不会产出镜像, 它可以编译出一个<code>name = &quot;Envoy&quot;</code>的二进制程序, 该二进制程序会被ADD到istio的边车容器镜像<code>istio/proxyv2</code>中.</p>
+
+<p>istio proxy 项目使用的编译方式是Google出品的bazel, bazel可以直接在编译中引入第三方库，加载第三方源码.</p>
+
+<p>这个项目包含了对Envoy源码的引用，还在此基础上进行了扩展，这些扩展是通过Envoy filter（过滤器）的形式来提供，这样做的目的是让边车代理将策略执行决策委托给Mixer，因此可以理解istio proxy 这个项目有2大功能模块:</p>
 
 <ol>
-<li>将代理类型更改为“any”，以便在一个临时的单独的Jenkins上执行管道</li>
-<li>现在删除所有Jenkinsfile容器块，假设所有步骤都在一个单独的Jenkins管道引擎中执行。</li>
-<li>对于任何发布分支管道都应该有一个标记（它们都应该创建一个git标签！），然后我们必须进行从checkout scm 到 git&rsquo;github / foo.git&rsquo;的切换，因为重新使用来自Knative和Jenkinsfile runner的克隆repo有问题，好像是因为将repo添加到Jenkins工作区时使用的是符号链接。 我们希望解决这个问题。</li>
+<li>Envoy: 使用到Envoy的全部功能</li>
+<li>mixer client: 测量和遥测相关的客户端实现, 基于Envoy做扩展，通过RPC和Mixer server 进行交互, 实现策略管控和遥测</li>
 </ol>
 
-<p><a href="https://github.com/jenkins-x/jenkins-x-platform/commit/ca9e0a58a76519193a2c7a0d8cf277dfc11babe4" title="这里">这里</a>可以看到上述变化的一个例子。要启用prow的ChatOps <code>/approve</code>注释，您还需要一个类似的OWNERS文件到该链接，该文件使用批准者GitHub ID。</p>
+<p>后续我将对以上各个模块、命令以及它们之间的协作进行探究.</p>
 
-<h2 id="当前的限制">当前的限制</h2>
+<hr />
+
+<h2 id="3-istio-pod-概述">3. Istio Pod 概述</h2>
+
+<h3 id="3-1-数据面用户pod">3.1 数据面用户Pod</h3>
+
+<p>数据面用户Pod注入的内容包括:</p>
+
+<ol>
+<li><p>initContainer <code>istio-init</code>: 通过配置iptables来劫持Pod中的流量, 转发给envoy</p></li>
+
+<li><p>sidecar container <code>istio-proxy</code>: 包含2个进程, 父进程pliot-agent 初始化并管控envoy, 子进程envoy除了包含原生envoy的功能外, 还加入了mixer client的逻辑.</p></li>
+</ol>
+
+<p>主要端口:</p>
 
 <ul>
-<li>目前只有GitHub，我们将为多个git提供者提供支持</li>
-<li>Jenkins X使用了另一个分支，但是在接下来的几周内它将被切换回使用上游的prow repo</li>
-<li>默认情况下，Jenkins X会创建一个声明性管道Jenkinsfiles，这尚未在脚本和共享库Jenkinsfile管道上进行测试，但如果按预期工作，我们很想收到反馈。</li>
-<li>Kubernetes Plugin PodTemplates尚不支持。 我们不确定这是否是一个好主意。 这意味着如果要迁移具有多个不同容器{&hellip;}块的现有Jenkinsfiles，则需要将每个容器的构建工具添加到上面由CWP创建的单个一次性Jenkins中。</li>
+<li><code>--statusPort</code> status server 端口, 默认为0, 表示不启动, istio启动时通常传递为15020</li>
+<li><code>--proxyAdminPort</code> 代理管理端口, 默认 15000</li>
 </ul>
 
-<p>还有工作要做，所以如果你想参与其中，请在<a href="https://jenkins-x.io/community/">Jenkins X Kubernetes slack rooms</a>打个招呼来帮助解决问题，或先试试，让我们知道你是怎么做到的。</p>
+<p>注意以上参数虽然是启动时传递给父进程<code>pliot-agent</code>, 但实际上监听以上端口的进程是子进程envoy.</p>
 
-<p>现在和我们一起参加<a href="https://www.cloudbees.com/devops-world/nice" title=" Jenkins World Nice"> Jenkins World Nice</a>并不会太晚，我们将在现场演示中展示这个以及其他精彩的演讲！</p>
+<h3 id="3-2-istio-sidecar-injector">3.2 istio-sidecar-injector</h3>
 
-<h2 id="总结">总结</h2>
+<p>包含一个单容器, <code>sidecar-injector-webhook</code>: 启动一个http server, 接受kube api server 的Admission Webhook 请求, 对用户pod进行sidecar注入.</p>
 
-<p>Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。</p>
+<p>进程为<code>sidecar-injector</code>, 主要监听端口:</p>
+
+<ul>
+<li><code>--port</code> Webhook服务端口, 默认443, 通过k8s service<code>istio-sidecar-injector</code> 对外提供服务。</li>
+</ul>
+
+<h3 id="3-3-istio-galley">3.3 istio-galley</h3>
+
+<p>包含一个单容器 <code>galley</code>: 提供 istio 中的配置管理服务, 验证Istio的CRD 资源的合法性.</p>
+
+<p>进程为<code>galley server ......</code>, 主要监听端口:</p>
+
+<ul>
+<li><code>--server-address</code> galley gRPC 地址, 默认是tcp://0.0.0.0:9901</li>
+<li><code>--validation-port</code> https端口, 提供验证crd合法性服务的端口, 默认443.</li>
+<li><code>--monitoringPort</code> http 端口, self-monitoring 端口, 默认 15014</li>
+</ul>
+
+<p>以上端口通过k8s service<code>istio-galley</code>对外提供服务。</p>
+
+<h3 id="3-4-istio-pilot">3.4 istio-pilot</h3>
+
+<p>pilot组件核心Pod, 对接平台适配层, 抽象服务注册信息、流量控制模型等, 封装统一的 API，供 Envoy 调用获取.</p>
+
+<p>包含以下容器:</p>
+
+<ol>
+<li><p>sidecar container <code>istio-proxy</code></p></li>
+
+<li><p>container <code>discovery</code>: 进程为<code>pilot-discovery discovery ......</code></p></li>
+</ol>
+
+<p>主要监听端口:</p>
+
+<ul>
+<li>15010: 通过grpc 提供的 xds 获取接口</li>
+<li>15011: 通过https 提供的 xds 获取接口</li>
+<li>8080: 通过http 提供的 xds 获取接口, 兼容v1版本, 另外 http readiness 探针 <code>/ready</code>也在该端口</li>
+<li><code>--monitoringPort</code> http self-monitoring 端口, 默认 15014</li>
+</ul>
+
+<p>以上端口通过k8s service<code>istio-pilot</code>对外提供服务</p>
+
+<h3 id="3-5-istio-telemetry-和istio-policy">3.5 istio-telemetry 和istio-policy</h3>
+
+<p>mixer 组件包含2个pod, istio-telemetry 和 istio-policy, istio-telemetry负责遥测功能, istio-policy 负责策略控制, 它们分别包含2个容器:</p>
+
+<ol>
+<li><p>sidecar container<code>istio-proxy</code></p></li>
+
+<li><p><code>mixer</code>: 进程为 <code>mixs server ……</code></p></li>
+</ol>
+
+<p>主要监听端口:</p>
+
+<ul>
+<li>9091: grpc-mixer</li>
+<li>15004: grpc-mixer-mtls</li>
+<li><code>--monitoring-port</code>: http self-monitoring 端口, 默认 15014, liveness 探针<code>/version</code></li>
+</ul>
+
+<h3 id="3-7-istio-citadel">3.7 istio-citadel</h3>
+
+<p>负责安全和证书管理的Pod, 包含一个单容器 <code>citadel</code></p>
+
+<p>启动命令<code>/usr/local/bin/istio_ca --self-signed-ca ......</code> 主要监听端口:</p>
+
+<ul>
+<li><code>--grpc-port</code> citadel grpc 端口, 默认8060</li>
+<li><code>--monitoring-port</code>: http self-monitoring 端口, 默认 15014, liveness 探针<code>/version</code></li>
+</ul>
+
+<p>以上端口通过k8s service<code>istio-citadel</code>对外提供服务。</p>
+
+<p>后续将对各组件逐一进行分析。</p>
 
                         </div>
                         
@@ -452,13 +585,9 @@ jx install — prow
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/ant-financial-service-mesh-adoption-plan/" data-toggle="tooltip" data-placement="top" title="蚂蚁金服Service Mesh渐进式迁移方案">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/knative-serving/" data-toggle="tooltip" data-placement="top" title="Knative 入门系列2：serving 介绍">&larr; 更旧</a>
                         </li>
                          
-                        <li class="next">
-                        <a href="http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/" data-toggle="tooltip" data-placement="top" title="蚂蚁金服Service Mesh新型网络代理的思考与实践">更新 &rarr;</a>
-                        </li>
-                        
                         </ul>
 
                     </div>
@@ -480,15 +609,15 @@ jx install — prow
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/"><i class="fa fa-link"></i>基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</a></li>
+        <li><a href="/blog/istio-vs-hystrix-circuit-breaker/"><i class="fa fa-link"></i>微服务断路器模式实现：Istio vs Hystrix</a></li>
          
-        <li><a href="/blog/serverless-vs-containers/"><i class="fa fa-link"></i>Serverless vs Container——开发人员向左，DevOps向右</a></li>
+        <li><a href="/blog/custom-istio-mixer-adapter/"><i class="fa fa-link"></i>自定义Istio Mixer Adapter示例教程（附源码）</a></li>
          
-        <li><a href="/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/"><i class="fa fa-link"></i>使用Istio控制Serverless架构Fn Project中的函数间流量路由</a></li>
+        <li><a href="/blog/application-metrics-in-istio/"><i class="fa fa-link"></i>Istio中的应用程序指标度量</a></li>
          
-        <li><a href="/blog/google-istio-bigger-kubernetes-serverless/"><i class="fa fa-link"></i>Google加持Istio—这可能比Kubernetes和Serverless产生更大影响力</a></li>
+        <li><a href="/blog/back-to-microservices-with-istio-p1/"><i class="fa fa-link"></i>使用Istio打造微服务（第1部分）</a></li>
          
-        <li><a href="/blog/building-istio-with-minikube-in-a-container-and-jenkins/"><i class="fa fa-link"></i>使用Minikube-in-a-Container和Jenkins构建Istio</a></li>
+        <li><a href="/blog/istio-knowledge-map-v0.1-release/"><i class="fa fa-link"></i>Istio知识图谱 v0.1 发布及社区图书孵化</a></li>
          
      </ul>
     </div>
