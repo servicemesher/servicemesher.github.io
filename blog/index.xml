@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>手工打造像Istio中一样的Sidecar代理</title>
+      <link>http://www.servicemesher.com/blog/hand-crafting-a-sidecar-proxy-like-istio/</link>
+      <pubDate>Mon, 18 Mar 2019 11:23:11 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/hand-crafting-a-sidecar-proxy-like-istio/</guid>
+      <description>sidecar代理模式是一个重要的概念，它允许Istio为服务网格中运行的服务提供路由、度量、安全和其他功能。在这篇文章中，我将解释为Ist</description>
+    </item>
+    
+    <item>
       <title>Istio 庖丁解牛一：组件概览</title>
       <link>http://www.servicemesher.com/blog/istio-analysis-1/</link>
       <pubDate>Tue, 12 Mar 2019 19:10:41 +0800</pubDate>
