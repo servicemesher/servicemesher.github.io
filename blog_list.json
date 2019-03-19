@@ -7,7 +7,7 @@
       "istio"
     ],
     "date": "2019-03-20T07:29:54+08:00",
-    "fuzzywordcount": 1400,
+    "fuzzywordcount": 1500,
     "keywords": [
       "service mesh",
       "服务网格",
@@ -28,7 +28,7 @@
     "translator": null,
     "url": "/blog/istio-11/",
     "weight": 0,
-    "wordcount": 1331
+    "wordcount": 1488
   },
   {
     "author": "敖小剑",
