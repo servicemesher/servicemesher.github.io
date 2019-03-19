@@ -6,10 +6,37 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 19 Mar 2019 10:23:41 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Mar 2019 07:29:54 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio 1.1发布，中文文档同时释出</title>
+      <link>http://www.servicemesher.com/blog/istio-11/</link>
+      <pubDate>Wed, 20 Mar 2019 07:29:54 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-11/</guid>
+      <description>下面这段是发布说明，来自 Istio 官方博客 https://istio.io/zh/blog/2019/announcing-1.1/，译者宋净超。 Istio</description>
+    </item>
+    
+    <item>
+      <title>Istio1.1新特性之限制服务可见性</title>
+      <link>http://www.servicemesher.com/blog/istio-service-visibility/</link>
+      <pubDate>Tue, 19 Mar 2019 12:27:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-service-visibility/</guid>
+      <description>背景 对于服务的可见性，在 Istio 设计之初，是没有特别考虑的，或者说，Istio 一开始的假定，就是建立在如下这个前提下的： Istio中的每个服务都可</description>
+    </item>
+    
+    <item>
+      <title>Istio 庖丁解牛二：sidecar injector</title>
+      <link>http://www.servicemesher.com/blog/istio-analysis-2/</link>
+      <pubDate>Tue, 19 Mar 2019 12:21:02 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-analysis-2/</guid>
+      <description>作者: 钟华，腾讯云容器团队高级工程师，热衷于容器、微服务、service mesh、istio、devops 等领域技术 今天我们分析下 istio-sidecar-injector 组件: 查</description>
+    </item>
     
     <item>
       <title>Istio 服务注册插件机制代码解析</title>
