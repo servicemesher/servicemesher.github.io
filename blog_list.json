@@ -1,5 +1,36 @@
 [
   {
+    "author": "赵化冰",
+    "authorlink": "https://zhaohuabing.com",
+    "banner": "https://ws3.sinaimg.cn/large/006tKfTcly1g17wfaklnhj31400u04qq.jpg",
+    "categories": [
+      "istio"
+    ],
+    "date": "2019-03-19T10:23:41+08:00",
+    "fuzzywordcount": 4000,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "istio"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-03-19T10:23:41+08:00",
+    "objectID": "e35a1d9a731d38af081191ca7d8f7b79",
+    "permalink": "http://www.servicemesher.com/blog/istio-pilot-service-registry-code-analysis/",
+    "publishdate": "2019-03-19T10:23:41+08:00",
+    "readingtime": 8,
+    "relpermalink": "/blog/istio-pilot-service-registry-code-analysis/",
+    "summary": "本文将从代码出发，对Istio Pilot的服务注册插件机制进行分析。",
+    "tags": [
+      "istio"
+    ],
+    "title": "Istio 服务注册插件机制代码解析",
+    "translator": null,
+    "url": "/blog/istio-pilot-service-registry-code-analysis/",
+    "weight": 0,
+    "wordcount": 3902
+  },
+  {
     "author": "Venil Noronha",
     "authorlink": "https://venilnoronha.io/",
     "banner": "https://ws2.sinaimg.cn/large/006tKfTcly1g16sdv0suej31400u04qs.jpg",

@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 18 Mar 2019 11:23:11 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Mar 2019 10:23:41 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio 服务注册插件机制代码解析</title>
+      <link>http://www.servicemesher.com/blog/istio-pilot-service-registry-code-analysis/</link>
+      <pubDate>Tue, 19 Mar 2019 10:23:41 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-pilot-service-registry-code-analysis/</guid>
+      <description>本文转载自赵化冰的博客。 在Istio架构中，Pilot组件负责维护网格中的标准服务模型，该标准服务模型独立于各种底层平台，Pilot通过适配</description>
+    </item>
     
     <item>
       <title>手工打造像Istio中一样的Sidecar代理</title>

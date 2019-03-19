@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 18 Mar 2019 11:23:11 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Mar 2019 10:23:41 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio 服务注册插件机制代码解析</title>
+      <link>http://www.servicemesher.com/blog/istio-pilot-service-registry-code-analysis/</link>
+      <pubDate>Tue, 19 Mar 2019 10:23:41 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-pilot-service-registry-code-analysis/</guid>
+      <description>本文转载自赵化冰的博客。 在Istio架构中，Pilot组件负责维护网格中的标准服务模型，该标准服务模型独立于各种底层平台，Pilot通过适配</description>
+    </item>
     
     <item>
       <title>手工打造像Istio中一样的Sidecar代理</title>
@@ -1628,7 +1637,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 20 敖小剑 10 崔秀龙 5 高松 3 郑伟 3 赵化冰 3 丁轶群 3 钟华 2 朵晓东 2 张馆长 2 吴伟 2 黄挺 1 陈洪</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 20 敖小剑 10 崔秀龙 5 赵化冰 4 高松 3 郑伟 3 丁轶群 3 钟华 2 朵晓东 2 张馆长 2 吴伟 2 黄挺 1 陈洪</description>
     </item>
     
     <item>
