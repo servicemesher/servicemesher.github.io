@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gloo on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/gloo/</link>
+    <description>Recent content in Gloo on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 25 Mar 2019 21:02:19 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/gloo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>为 Envoy 赋能——如何基于 Envoy 构建一个多用途控制平面</title>
+      <link>http://www.servicemesher.com/blog/building-a-control-plane-for-envoy/</link>
+      <pubDate>Mon, 25 Mar 2019 21:02:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/building-a-control-plane-for-envoy/</guid>
+      <description>[编者案] Idit Levine 作为 solo.io 创始人兼首席执行官，在本系列博客中介绍了她们的产品 Gloo。这篇博客是系列中的其中一篇，这一篇的主要内容是，如果要基于 Envoy</description>
+    </item>
+    
+  </channel>
+</rss>

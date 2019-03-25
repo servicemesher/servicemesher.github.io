@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/building-a-control-plane-for-envoy/</loc>
+    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/istio-rbac-quick-start/</loc>
+    <lastmod>2019-03-25T11:04:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/back-to-microservices-with-istio-part-2-authentication-authorization/</loc>
+    <lastmod>2019-03-25T10:58:41+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-11/</loc>
     <lastmod>2019-03-20T07:29:54+08:00</lastmod>
   </url>
@@ -1072,7 +1087,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/envoy/</loc>
-    <lastmod>2019-03-06T12:17:02+08:00</lastmod>
+    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1139,6 +1154,12 @@
   <url>
     <loc>http://www.servicemesher.com/tags/gitops/</loc>
     <lastmod>2018-05-31T21:12:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/gloo/</loc>
+    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1228,13 +1249,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-03-20T07:29:54+08:00</lastmod>
+    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/istio/</loc>
-    <lastmod>2019-03-20T07:29:54+08:00</lastmod>
+    <lastmod>2019-03-25T11:04:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1522,7 +1543,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-03-20T07:29:54+08:00</lastmod>
+    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1606,7 +1627,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2019-03-18T11:23:11+08:00</lastmod>
+    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   

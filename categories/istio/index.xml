@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 20 Mar 2019 07:29:54 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 Mar 2019 11:04:02 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio安全之服务间访问控制RBAC</title>
+      <link>http://www.servicemesher.com/blog/istio-rbac-quick-start/</link>
+      <pubDate>Mon, 25 Mar 2019 11:04:02 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-rbac-quick-start/</guid>
+      <description>Istio提供了非常易用的安全解决方案，包括服务间身份验证mTLS，服务间访问控制RBAC，以及终端用户身份验证JWT等，本文主要介绍如何使</description>
+    </item>
     
     <item>
       <title>Istio 1.1发布，中文文档同时释出</title>

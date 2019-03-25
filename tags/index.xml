@@ -212,7 +212,7 @@
     <item>
       <title>Envoy</title>
       <link>http://www.servicemesher.com/tags/envoy/</link>
-      <pubDate>Wed, 06 Mar 2019 12:17:02 +0800</pubDate>
+      <pubDate>Mon, 25 Mar 2019 21:02:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/envoy/</guid>
       <description></description>
@@ -305,6 +305,15 @@
       <pubDate>Thu, 31 May 2018 21:12:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/gitops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gloo</title>
+      <link>http://www.servicemesher.com/tags/gloo/</link>
+      <pubDate>Mon, 25 Mar 2019 21:02:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/gloo/</guid>
       <description></description>
     </item>
     
@@ -437,7 +446,7 @@
     <item>
       <title>Istio</title>
       <link>http://www.servicemesher.com/tags/istio/</link>
-      <pubDate>Wed, 20 Mar 2019 07:29:54 +0800</pubDate>
+      <pubDate>Mon, 25 Mar 2019 21:02:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/istio/</guid>
       <description></description>
