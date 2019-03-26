@@ -6,10 +6,37 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 25 Mar 2019 21:02:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2019 11:12:00 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Prometheus监控Kubernetes系列1——监控框架</title>
+      <link>http://www.servicemesher.com/blog/prometheus-monitor-k8s-1/</link>
+      <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/prometheus-monitor-k8s-1/</guid>
+      <description>背景 由于容器化和微服务的大力发展，Kubernetes基本已经统一了容器管理方案，当我们使用Kubernetes来进行容器化管理的时候，全面</description>
+    </item>
+    
+    <item>
+      <title>Prometheus监控Kubernetes系列2——监控部署</title>
+      <link>http://www.servicemesher.com/blog/prometheus-monitor-k8s-2/</link>
+      <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/prometheus-monitor-k8s-2/</guid>
+      <description>背景 由于容器化和微服务的大力发展，Kubernetes基本已经统一了容器管理方案，当我们使用Kubernetes来进行容器化管理的时候，全面</description>
+    </item>
+    
+    <item>
+      <title>Prometheus监控Kubernetes系列3——业务指标采集</title>
+      <link>http://www.servicemesher.com/blog/prometheus-monitor-k8s-3/</link>
+      <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/prometheus-monitor-k8s-3/</guid>
+      <description>背景 由于容器化和微服务的大力发展，Kubernetes基本已经统一了容器管理方案，当我们使用Kubernetes来进行容器化管理的时候，全面</description>
+    </item>
     
     <item>
       <title>为 Envoy 赋能——如何基于 Envoy 构建一个多用途控制平面</title>
@@ -1700,7 +1727,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 11 崔秀龙 6 赵化冰 4 高松 3 钟华 3 郑伟 3 丁轶群 3 陈洪波 2 朵晓东 2 张馆长 2 吴伟 2 黄</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 11 崔秀龙 6 赵化冰 4 高松 3 钟华 3 郑伟 3 罗佳豪 3 丁轶群 3 陈洪波 2 朵晓东 2 张馆长 2</description>
     </item>
     
     <item>

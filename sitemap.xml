@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/prometheus-monitor-k8s-1/</loc>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/prometheus-monitor-k8s-2/</loc>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/prometheus-monitor-k8s-3/</loc>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/building-a-control-plane-for-envoy/</loc>
     <lastmod>2019-03-25T21:02:19+08:00</lastmod>
   </url>
@@ -1321,7 +1336,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
-    <lastmod>2019-01-08T17:40:30+08:00</lastmod>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1410,6 +1425,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/categories/monitoring/</loc>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/mosn/</loc>
     <lastmod>2018-08-02T14:31:43+08:00</lastmod>
     <priority>0</priority>
@@ -1483,7 +1504,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/prometheus/</loc>
-    <lastmod>2019-01-08T17:40:30+08:00</lastmod>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1543,7 +1564,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
