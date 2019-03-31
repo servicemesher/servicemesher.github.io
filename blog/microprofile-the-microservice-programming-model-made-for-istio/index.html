@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MicroProfile——为Istio创建的微服务编程模型 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格, istio, microprofile">
+  
+
+  <meta name="generator" content="Hugo 0.54.0" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="MicroProfile——为Istio创建的微服务编程模型" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/microprofile-the-microservice-programming-model-made-for-istio//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文探讨了如何结合eclipse/microprofile与流行的服务网格Istio安全地部署微服务。">
+  <meta property="og:description" content="本文探讨了如何结合eclipse/microprofile与流行的服务网格Istio安全地部署微服务。">
+  <meta name="twitter:description" content="本文探讨了如何结合eclipse/microprofile与流行的服务网格Istio安全地部署微服务。">
+  <meta property="og:description" content="本文探讨了如何结合eclipse/microprofile与流行的服务网格Istio安全地部署微服务。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+  
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="MicroProfile——为Istio创建的微服务编程模型 logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="MicroProfile——为Istio创建的微服务编程模型 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">MicroProfile——为Istio创建的微服务编程模型 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Service Mesh列表</a></li>
+                      
+                        <li><a href="/envoy/">Envoy官方文档中文版</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio中文官网</a></li>
+                      
+                        <li><a href="/categories/practice/">实践汇总</a></li>
+                      
+                        <li><a href="/istio-handbook/">Istio Handbook</a></li>
+                      
+                        <li><a href="/getting-started-with-knative/">Knative入门</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                        <li><a href="https://github.com/servicemesher/istio-knowledge-map">Istio知识图谱</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>MicroProfile——为Istio创建的微服务编程模型</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年3月31日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://jaxenter.com/microprofile-microservices-istio-151156.html">Emily Jiang</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/GuangmingLuo">罗广明</a>
+                            
+                            
+                            | 审校者
+                            
+                            <a href="https://github.com/haiker2011"><i>孙海洲</i></a>
+                            
+                            
+                            |
+                            7900字 | 阅读大约需要16分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://jaxenter.com/microprofile-microservices-istio-151156.html">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/microprofile/"><i>#microprofile</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<h2 id="编者按">编者按</h2>
+
+<p>如果说Spring Cloud是以SpingBoot为核心和基础的微服务架构，那么MicroProfile则是将传统JavaEE轻量化以适应微服务时代的一个体系。作者Emily Jiang，开源项目<a href="https://github.com/eclipse/microprofile">eclipse/microprofile</a>的contributor之一，在本文中探讨了如何结合MicroProfile与流行的服务网格Istio安全地部署微服务，比较了二者的不同之处，并且阐述了二者共存的生态系统的现状及未来。</p>
+
+<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g0yo4fnavmj209q063jrd.jpg" alt="shutterstock.jpg" /></p>
+
+<h2 id="microprofile-in-a-nutshell">MicroProfile in a nutshell</h2>
+
+<p>MicroProfile是一个快速发展的开源社区。它是一个热情友好的平台，可以让开发人员聚在一起为云原生微服务开发编程模型。自2016年6月成立以来，不到两年的时间里，它已经发布了6个总体版本和16个单独的规范版本。
+<a href="https://wiki.eclipse.org/MicroProfile/Implementation# eclipse_microprofile_versions">此页</a>显示了哪个应用服务器支持哪个版本的MicroProfile。<a href="https://openliberty.io/">Open Liberty</a>被视为MicroProfile的主要实现之一，并决心快速实现MicroProfile的最新版本。</p>
+
+<p>以下是每种规格的最新状态:</p>
+
+<ul>
+<li><a href="https://github.com/eclipse/microprofile-config/">MicroProfile Config 1.3  </a></li>
+<li><a href="https://github.com/eclipse/microprofile-fault-tolerance/">MicroProfile Fault Tolerance 1.1 </a></li>
+<li><a href="https://github.com/eclipse/microprofile-health/">MicroProfile Health Check 1.0</a></li>
+<li><a href="https://github.com/eclipse/microprofile-metrics/">MicroProfile Metrics 1.1</a></li>
+<li><a href="https://github.com/eclipse/microprofile-open-api/">MicroProfile Open API 1.0</a></li>
+<li><a href="https://github.com/eclipse/microprofile-opentracing">MicroProfile Open Tracing 1.1</a></li>
+<li><a href="https://github.com/eclipse/microprofile-jwt-auth">MicroProfile JWT 1.1</a></li>
+<li><a href="https://github.com/eclipse/microprofile-rest-client/">MicroProfile Rest Client</a></li>
+</ul>
+
+<p>以下几种规格正在进行中:</p>
+
+<ul>
+<li><a href="https://github.com/eclipse/microprofile-reactive-streams/">MicroProfile Reactive Streams Operators</a></li>
+<li><a href="https://github.com/eclipse/microprofile-reactive-messaging">MicroProfile Reactive Messaging</a></li>
+<li><a href="https://github.com/eclipse/microprofile-lra">MicroProfile LRA (Long Running Action)</a></li>
+<li><a href="https://github.com/eclipse/microprofile-concurrency">MicroProfile Concurrency</a></li>
+</ul>
+
+<p>使用MicroProfile创建的cloud-native微服务可以自由部署在任何地方，包括服务网格架构，例如Istio。在本文中，我们将探讨如何在Istio平台上使用MicroProfile实现微服务。让我们简单地看一下Istio。</p>
+
+<h2 id="istio-in-a-nutshell">Istio in a nutshell</h2>
+
+<p>云原生微服务非常适合部署到云基础设施上。当有许多微服务时，需要协调微服务之间的通信。业务流程由所谓的服务网格(service mesh)管理，它是一个专用的基础设施层，使服务到服务的通信快速、安全、可靠。它还提供了服务发现、负载均衡、故障恢复、度量和监视。它还可能包括A/B测试、金丝雀发布等等。</p>
+
+<p><a href="https://istio.io/"><strong>Istio</strong></a> 是最流行的服务网格，旨在连接、管理和安全化微服务。它是一个开源项目，拥有活跃的社区，由IBM、Google和Lyft启动。Istio 1.0于2018年7月底发布。</p>
+
+<p>Istio提供了以下核心功能:</p>
+
+<ul>
+<li>流量管理:
+
+<ul>
+<li>HTTP, gRPC, WebSocket和TCP流量的自动负载均衡。</li>
+<li>使用丰富的路由规则、重试、故障转移和故障注入对流量行为进行细粒度控制。</li>
+<li>支持访问控制、速率限制和配额的可插入策略层和API配置。</li>
+</ul></li>
+<li>监控
+
+<ul>
+<li>集群内所有流量的自动度量、日志和跟踪，包括集群的入口和出口。</li>
+</ul></li>
+<li>安全
+
+<ul>
+<li>在具有强大的身份验证和授权的集群中实现安全的服务间通信。</li>
+</ul></li>
+</ul>
+
+<p>Istio是独立于平台的，设计用于在各种环境中运行，比如Kubernetes、Mesos等。本文主要研究Kubernetes下的Istio。</p>
+
+<p>Istio由一个数据平面和一个控制平面组成 (Istio架构见下图，取自<a href="https://istio.io/">Istio .io</a>)。</p>
+
+<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g0yt2h4ed1j20lc0g976a.jpg" alt="microprofile-istio-1.png" /></p>
+
+<h2 id="microprofile-meets-istio">MicroProfile meets Istio</h2>
+
+<p>如上一节所述，MicroProfile提供</p>
+
+<ul>
+<li>Config</li>
+<li>Fault Tolerance: Retry, Circuit Breaker, Bulkhead, Timeout, Fallback</li>
+<li>Health Check</li>
+<li>Metrics</li>
+<li>Open API</li>
+<li>Open Tracing</li>
+<li>Rest Client</li>
+<li>JWT</li>
+</ul>
+
+<p>Istio能够做到:</p>
+
+<ul>
+<li>Fault Tolerance: Retry, Circuit Breaker, Limits on concurrent connections or requests, Timeouts</li>
+<li>Metrics</li>
+<li>Open Tracing</li>
+<li>Fault Injection</li>
+</ul>
+
+<p>乍一看，有一些重叠。接下来，让我们看看每个单独的MicroProfile规范，并研究如何在Istio中使用它们。</p>
+
+<h3 id="microprofile-config-in-istio">MicroProfile config in Istio</h3>
+
+<p>MicroProfile Config提供了一个外部化配置的解决方案。默认配置源包括路径上的环境变量、系统属性和<code>microprofile-config.properties</code>文件。</p>
+
+<p>Kubernetes配置映射中定义的属性可以通过envFrom功能转换为环境变量，如下所示。</p>
+
+<pre><code class="language-yaml">kind: ConfigMap
+apiVersion: v1
+metadata:
+name: example-config
+namespace: default
+data:
+EXAMPLE_PROPERTY_1: hello
+EXAMPLE_PROPERTY_2: world
+# Use envFrom to load ConfigMaps into environment variables
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+name: mydeployment
+labels:
+app: servicea
+spec:
+replicas: ``1
+selector:
+matchLabels:
+app: servicea
+template:
+metadata:
+labels:
+app: servicea
+spec:
+containers:
+- name: app
+image: microprofile/servicea/latest
+imagePullPolicy: Always
+ports:
+- containerPort: ``80
+envFrom:
+- configMapRef:
+name: example-config
+</code></pre>
+
+<p>配置映射中指定的配置属性可以通过MicroProfile配置api自动注入到微服务中。</p>
+
+<pre><code class="language-java">@ApplicationScoped
+public class Demo {
+    @Inject
+    @ConfigProperty``(name=``&quot;example.property.1&quot;``) 
+    String myProp1;
+    @Inject
+    @ConfigProperty``(name=``&quot;example.property.2&quot;``) 
+    String myProp2;
+    public` `void` `echo() {
+    	System.out.println(myProp1 + myProp2);
+    }
+}
+</code></pre>
+
+<p><strong>注意:</strong>  您可能已经注意到，在上面的Istio配置规则中，configmap定义了属性<code>EXAMPLE_PROPERTY_1</code> <code>EXAMPLE_PROPERTY_2</code> 然而, 上面的代码片段寻找属性 <code>example.property.1</code> 和<code>example.property.2</code>。为什么呢？这是怎样工作的呢？</p>
+
+<p>在IEEE Std 1003.1-2001的Shell和实用程序卷中，实用程序使用的环境变量名仅由大写字母、数字和可移植字符集中定义的字符中的“_”(下划线)组成，不以数字开头。实现可以允许其他字符；应用程序应容许这些名称的存在。有些shell可能只支持字母、数字和下划线，比如Ubuntu。</p>
+
+<p>MicroProfile Config 1.3 以后直接映射任何非字母数字字符 (e.g. “.”, 在某些操作系统中是无效的环境变量) 到 <code>_</code>。 在这个例子中，在<code>configmap</code>里，属性名是 <code>EXAMPLE_PROPERTY_1 EXAMPLE_PROPERTY_2</code>，而这正是 <code>example.property.1</code>和<code>example.property.2</code>的映射名。</p>
+
+<h2 id="microprofile-health-check-in-istio">MicroProfile health check in Istio</h2>
+
+<p>在服务网格体系结构中，Kubernetes集群中的每个pod都有一个生命周期。Kubernetes需要知道何时杀死pod, Istio需要知道何时将请求路由到pod。总之，了解每个pod的健康状况是必要的。pod的健康状况是通过活性(Liveness )和准备度(Readiness)来测量的。</p>
+
+<h3 id="liveness">Liveness</h3>
+
+<p>许多微服务运行很长时间，最终可能会过渡到中断状态。因此，除非重新启动，否则无法恢复。这就是生命周期。</p>
+
+<h3 id="readiness">Readiness</h3>
+
+<p>有时，微服务暂时无法对外提供服务。例如，微服务可能需要在启动期间加载大型数据或配置文件。</p>
+
+<p>MicroProfile 的健康检查表示微服务是live或者ready。它对外暴露了一个端点 <code>/health</code>. 调用这个端点会返回 UP (healthy)或DOWN (unhealthy)。</p>
+
+<h3 id="health-check-of-microservices-in-istio">Health Check of microservices in Istio</h3>
+
+<p>服务网格(如Istio)可以利用下层组件(如Kubernetes)的就绪状态和活动状态。Kubernetes提供活性探针或准备探针来检测和纠正这种情况。Kubernetes可以经常检查pods。如果被检查的pod不是存活的，它将摧毁这个pod并创建一个新的。如果应用程序还没有准备好，Kubernetes不想杀死它，但也不会给它发送请求。</p>
+
+<p>Istio中的微服务可以利用MicroProfile Health公开的端点作为其活性探针，从而使Kubernetes能够控制是否摧毁pod。下面是活性探针的配置。任何大于或等于200且小于400的返回代码都表示成功。任何其他代码都表示失败，而失败将导致pod被销毁。</p>
+
+<pre><code class="language-yaml">livenessProbe:
+exec:
+command:
+- curl
+- -f
+- http: //localhost:8080/health
+initialDelaySeconds: 10
+periodSeconds: 10
+</code></pre>
+
+<h2 id="microprofile-metrics-in-istio">MicroProfile metrics in Istio</h2>
+
+<p>MicroProfile Metrics提供了一种将遥测技术导出到管理代理和api的统一方法，微服务开发人员可以使用这些代理和api添加遥测数据。例如，下面的指标将保存库存中的系统数量。</p>
+
+<pre><code class="language-java">@Gauge(unit = MetricUnits.NONE, name = &quot;inventorySizeGuage&quot;, absolute = true, description = &quot;Number of systems in the inventory&quot;)
+public int getTotal() {
+	return invList.getSystems().size();
+}
+</code></pre>
+
+<p>MicroProfile metrics将能够提供特定于应用程序的指标，而不仅仅是Istio能够获得的指标。它是对遥测技术的补充。</p>
+
+<h2 id="microprofile-open-api-in-istio">MicroProfile Open API in Istio</h2>
+
+<p>在服务网格中，重要的是查看每个服务的功能，以便发现该服务。MicroProfile OpenAPI的目的是提供一组Java接口和编程模型，允许Java开发人员为他们的JAX-RS应用程序原生地生成OpenAPI v3文档。</p>
+
+<pre><code class="language-java">@GET
+@Path(&quot;/{hostname}&quot;)
+@Produces(MediaType.APPLICATION_JSON)
+@APIResponses( value = 
+{ 
+    @APIResponse( responseCode = &quot;404&quot;, description = &quot;Missing description&quot;, content = @Content(mediaType = &quot;text/plain&quot;)),
+    @APIResponse( responseCode = &quot;200&quot;, description = &quot;JVM system properties of a particular host.&quot;, content = @Content(mediaType = &quot;application/json&quot;, schema = @Schema(implementation = Properties.class))) 
+})
+@Operation( summary = &quot;Get JVM system properties for particular host&quot;,
+description = &quot;Retrieves and returns the JVM system properties from the system &quot; + &quot;service running on the particular host.&quot;)
+public Response getPropertiesForHost(
+@Parameter( description = &quot;The host for whom to retrieve the JVM system properties for.&quot;, required = true, example = &quot;foo&quot;, schema = @Schema(type = SchemaType.STRING)) @PathParam(&quot;hostname&quot;) String hostname) {
+    // Get properties for host
+    Properties props = manager.get(hostname);
+    if (props == null) {
+        return Response.status(Response.Status.NOT_FOUND)
+        .entity(&quot;ERROR: Unknown hostname or the system service may &quot;
+        + &quot;not be running on &quot; + hostname)
+        .build();
+	}
+    //Add to inventory to host
+    manager.add(hostname, props);
+    return Response.ok(props).build();
+}
+</code></pre>
+
+<p>这些API可以通过这个端点查看 <code>/openapi/ui</code></p>
+
+<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g102sxzpyfj20lc0l5wjh.jpg" alt="microprofile-istio-2.png" /></p>
+
+<p>这个规范为Istio提供了一个很好的补充，因为DevOps可以使用它来查找每个JAX-RS端点的详细信息。</p>
+
+<h2 id="microprofile-open-tracing-in-istio">MicroProfile Open Tracing in Istio</h2>
+
+<p>在服务网格体系结构中，一个基本的需求是追踪服务调用。从客户端到最终服务的完整请求链将有助于可视化服务调用跳转。如果出了问题，这可以用来识别和定位出错的服务。</p>
+
+<p>MicroProfile Open Tracing 有助于实现这一目标。该规范定义了用于访问JAX-RS微服务中遵循OpenTracing的跟踪器对象的行为和API。所有传入和传出的请求都将自动创建OpenTracing span。它与跟踪器实现(Zipkin或Jaeger)一起工作。Istio提供Jaeger，也可以与Zipkin协作。</p>
+
+<p>Istio要求微服务传播以下7个头文件，这7个头文件由MicroProfile Open Tracing自动传播，从而避免了微服务开发人员编写样板代码。</p>
+
+<ul>
+<li><code>x-request-id</code></li>
+<li><code>x-b3-traceid</code></li>
+<li><code>x-b3-spanid</code></li>
+<li><code>x-b3-parentspanid</code></li>
+<li><code>x-b3-sampled</code></li>
+<li><code>x-b3-flags</code></li>
+<li><code>x-ot-span-context</code></li>
+</ul>
+
+<h2 id="microprofile-jwt-in-istio">MicroProfile JWT in Istio</h2>
+
+<p>保证服务到服务通信的安全是服务网格体系结构中的基本要求。MicroProfile JWT定义了一种保护服务到服务通信的方法，与RESTful安全性密切相关。将安全状态从客户端传播到服务端、从服务端传播到服务端的主要策略之一包含使用安全令牌。该令牌使用了基于<a href="http://openid.net/connect/">OpenID Connect</a> 的<a href="https://tools.ietf.org/html/rfc7519">JSON Web Tokens (JWT)</a> 来对微服务端点进行基于角色的访问控制(RBAC)。MicroProfile JWT令牌用于对JSR-250中定义的@RolesAllowed、@PermitAll、@DenyAll上的用户角色进行身份验证和授权。</p>
+
+<pre><code class="language-java">// The JWT of the current caller. Since this is a request scoped resource, the
+// JWT will be injected for each JAX-RS request.
+@Inject
+private JsonWebToken jwtPrincipal;
+
+@GET
+@RolesAllowed({ &quot;admin&quot;, &quot;user&quot; })
+@Path(&quot;/username&quot;)
+public Response getJwtUsername() {
+	return Response.ok(this.jwtPrincipal.getName()).build();
+}
+</code></pre>
+
+<p><a href="https://istio.io/docs/concepts/security/">Istio security</a>提供两种类型的认证:</p>
+
+<ul>
+<li>传输身份验证 (service-to-service authentication): 验证使用<a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual TLS</a>作为传输身份验证的完整堆栈解决方案进行连接的直接客户机。这可以在不更改任何微服务代码的情况下使用。</li>
+<li>源认证 (end-user authentication): 验证作为最终用户或设备发出请求的原始客户端。它只支持JWT源身份验证。Istio可以通过MicroProfile JWT身份验证添加额外的身份验证和拦截。如果微服务没有嵌入安全性，则可以使用原始身份验证。</li>
+</ul>
+
+<h2 id="microprofile-rest-client-in-istio">MicroProfile Rest Client in Istio</h2>
+
+<p>在Istio中，服务到服务的通信通常通过JAX-RS进行。JAX-RS的一个问题是缺乏类型安全客户端。为了解决这个问题，MicroProfile Rest客户端定义了一个类型安全的客户端编程模型，并为配置错误的JAX-RS客户端提供了更好的验证。</p>
+
+<pre><code class="language-java">@Dependent
+@RegisterRestClient
+@Path(&quot;/properties&quot;)
+public interface SystemClient {
+end::annotations[]
+
+@GET
+@Produces (MediaType.APPLICATION_JSON)
+public Properties getProperties() throws UnknownUrlException, ProcessingException;
+}
+</code></pre>
+
+<p>上面的代码片段根据<code>SystemClient</code>接口中定义的内容自动构建和生成客户端的实例，该接口自动设置客户端实例并与远程服务连接。</p>
+
+<p>当调用getProperties()方法时，SystemClient实例向<code>/properties</code>端点发送一个GET请求。</p>
+
+<pre><code class="language-java">@ApplicationScoped
+public class InventoryManager {
+    @Inject
+    @RestClient
+    private SystemClient defaultRestClient;
+
+    public Properties get(String hostname) {
+        try {
+        	return defaultRestClient.getProperties();
+        } catch (UnknownUrlException e) {
+        	System.err.println(&quot;The given URL is unreachable.&quot;);
+        } catch (ProcessingException ex) {
+        	handleProcessingException(ex);
+        }
+        return null;
+    }
+}
+</code></pre>
+
+<p>注解<code>@Inject</code>和<code>@RestClient</code>将一个名为<code>defaultRestClient</code>的<code>SystemClient</code>实例注入到<code>InventoryManager</code>类中，这是一个类型安全的客户端。</p>
+
+<p>该规范被微服务使用，并且不涉及任何其他内容。因此，它与Istio没有直接的交互作用，也没有冲突。</p>
+
+<h2 id="microprofile-fault-tolerance-in-istio">MicroProfile Fault Tolerance in Istio</h2>
+
+<p>构建弹性微服务是微服务设计的关键。<a href="https://github.com/eclipse/microprofile-fault-tolerance">Eclipse MicroProfile Fault Tolerance</a>提供了一个简单灵活的解决方案来构建容错微服务，且易于使用和配置。它提供了以下容错策略:</p>
+
+<ol>
+<li><strong>Timeout:</strong> 定义超时的时长。</li>
+<li><strong>Retry:</strong> 定义何时重试的标准。</li>
+<li><strong>Bulkhead:</strong> 隔离部分系统出现的故障，而系统的其余部分仍能正常工作。</li>
+<li><strong>CircuitBreaker:</strong> 提供一种fail fast的方法，自动执行失败策略，以防止系统过载和客户端不停的等待或超时。</li>
+<li><strong>Fallback:</strong> 为失败的执行提供替代解决方案。</li>
+</ol>
+
+<p>设计主要的目标是将执行逻辑从执行中分离出来。可以用容错策略来配置执行。</p>
+
+<p>Istio也定义了一组opt-in故障恢复特性，包括:</p>
+
+<ol>
+<li>超时</li>
+<li>有界重试超时预算和重试之间的变量抖动</li>
+<li>限制对上游服务的并发连接和请求的数量</li>
+<li>细粒度断路器(被动健康检查) — 应用于负载均衡池中的每个实例</li>
+</ol>
+
+<p>Istio的故障恢复是通过Envoy代理来协调出站流量，例如复制请求等。但是，它不能操作任何安全调用，例如https请求。</p>
+
+<p>让我们将MicroProfile Fault Tolerance与Istio的故障处理进行比较。</p>
+
+<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g1030s8iccj20k3099glq.jpg" alt="microprofile-istio-3.png" /></p>
+
+<p><em>MicroProfile Fault Tolerance Circuit Breaker</em> 为客户端所有，客户端之间不共享；Istio断路器为后端服务所有，这意味着多个连接可以构成一个Circuit Breaker。</p>
+
+<p>让我们通过研究每个策略来更详细地比较二者的故障处理。</p>
+
+<h3 id="timeout">Timeout</h3>
+
+<p>对于超时，MicroProfile Fault Tolerance使用@Timeout注释指定超时时间。</p>
+
+<pre><code class="language-java">@Timeout(400) // timeout is 400ms
+public void callService() {
+//calling ratings
+}
+</code></pre>
+
+<p>Istio使用以下配置规则来指定超时时间。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+name: ratings
+spec:
+hosts:
+- ratings
+http:
+- route:
+- destination:
+host: ratings
+subset: v1
+timeout: 10s
+</code></pre>
+
+<p>如果同时指定了Istio超时和MicroProfile容错超时，那么当发生故障时，将触发这两种超时中最严格的超时设置。</p>
+
+<h3 id="retry">Retry</h3>
+
+<p>如何处理不稳定的服务？重试是增加成功几率的显而易见的选择。MicroProfile使用@Retry指定重试。</p>
+
+<pre><code class="language-java">/**
+* The configured the max retries is 90 but the max duration is 1000ms.
+* Once the duration is reached, no more retries should be performed,
+* even through it has not reached the max retries.
+*/
+@Retry(maxRetries = 90, maxDuration= 1000)
+public void callService() {
+//calling rating;
+}
+/**
+* There should be 0-800ms (jitter is -400ms - 400ms) delays
+* between each invocation.
+* there should be at least 4 retries but no more than 10 retries.
+*/
+@Retry(delay = 400, maxDuration= 3200, jitter= 400, maxRetries = 10)
+public Connection serviceA() {
+	return connectionService();
+}
+/**
+* Sets retry condition, which means Retry will be performed on
+* IOException.
+*/
+@Timeout(400)
+@Retry(retryOn = {IOException.class})
+public void callRating() {
+//call ratings;
+}
+</code></pre>
+
+<p>Istio使用下面的配置规则来指定重试。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+name: ratings
+spec:
+hosts:
+- ratings
+http:
+- route:
+- destination:
+host: ratings
+subset: v1
+retries:
+attempts: 3
+perTryTimeout: 2s
+</code></pre>
+
+<p>上面的配置规则可以简单地通过<code>@Retry(maxRetries=3</code>, <code>delay=2</code>, <code>delayUnit=ChronoUnit.SECONDS)</code>映射到MicroProfile Fault Tolerance Retry</p>
+
+<p>当同时指定MicroProfile容错重试和Istio重试时，微服务将最终将重试次数相乘。 例如，如果MicroProfile Fault Tolerance指定了3次重试，而Istio指定了3次重试，那么最大重试将是9次(3×3)。 不要恐慌。继续读下去。MicroProfile Fault Tolerance已经提出了一种解决方案。</p>
+
+<h3 id="bulkhead">Bulkhead</h3>
+
+<p>MicroProfile Bulkhead提供两种不同类型的bulkhead:</p>
+
+<ul>
+<li>线程隔离
+
+<ul>
+<li>通过注释<code>Asynchronous</code>和<code>Bulkhead</code>，使用有固定数量线程和等待队列的线程池。</li>
+</ul></li>
+</ul>
+
+<pre><code class="language-java">// maximum 5 concurrent requests allowed, maximum 8 requests allowed in the waiting queue
+@Asynchronous
+@Bulkhead(value = 5, waitingTaskQueue = 8)
+public Future &lt;Connection&gt; serviceA() {
+    Connection conn = null;
+    conn = connectionService();
+    return CompletableFuture.completedFuture(conn);
+}
+</code></pre>
+
+<ul>
+<li>信号隔离
+
+<ul>
+<li>限制并发请求的数量</li>
+</ul></li>
+</ul>
+
+<pre><code class="language-java">@Bulkhead(5) // maximum 5 concurrent requests allowed
+public Connection serviceA() {
+Connection conn = null;
+conn = connectionService();
+return conn;
+}
+</code></pre>
+
+<p>Istio可以使用断路器配置规则来配置连接池，从而限制并发请求的数量。下面的规则表明，如果您同时触发超过一个连接和请求，那么当isti -proxy打开电路以接收更多的请求和连接时，您应该会看到报错信息。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+name: httpbin
+spec:
+host: httpbin
+trafficPolicy:
+connectionPool:
+tcp:
+maxConnections: 1
+http:
+http1MaxPendingRequests: 1
+maxRequestsPerConnection: 1
+</code></pre>
+
+<h3 id="circuit-breaker">Circuit breaker</h3>
+
+<p>断路器(Circuit Breaker)是创建弹性微服务的重要模式。它可以通过立即拒绝请求来防止重复超时。 MicroProfile Fault Tolerance使用@CircuitBreaker来控制客户端调用。</p>
+
+<pre><code class="language-java">@CircuitBreaker(successThreshold = 10, requestVolumeThreshold = 4, failureRatio= 0.75, delay = 1000)
+public` `Connection serviceA() {
+    Connection conn = ``null``;
+    conn = connectionService();
+    return` `conn;
+}
+</code></pre>
+
+<p>上面的代码片段表示方法serviceA应用<strong>断路策略</strong>。对于最后4次调用，如果75%失败(即4次调用中有3次失败)，则打开电路。电路将保持打开状态1000毫秒，然后回到半打开状态。连续成功调用10次后，电路将再次关闭。当电路打开时，将抛出一个<strong>CircuitBreakerOpenException</strong>，而不是实际调用该方法。</p>
+
+<p>Istio使用断路器规则来限制故障、延迟峰值和其它网络问题带来的的不良影响。</p>
+
+<p>下面的规则设置连接池大小为100个连接和1000个并发HTTP2请求，与“reviews”服务的连接不超过10个请求/连接。此外，它将上游主机配置为每5分钟扫描一次，这样任何连续7次失败的主机都将被弹出15分钟。</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+name: reviews-cb-policy
+spec:
+host: reviews.prod.svc.cluster.local
+trafficPolicy:
+connectionPool:
+tcp:
+maxConnections: 100
+http:
+http2MaxRequests: 1000
+maxRequestsPerConnection: 10
+outlierDetection:
+consecutiveErrors: 7
+interval: 5m
+baseEjectionTime: 15m
+</code></pre>
+
+<p>如你所见，Istio CircuitBreaker同时覆盖了bulkhead和circuit breaker的部分功能。上述配置可以转换为以下MicroProfile Fault Tolerance。</p>
+
+<pre><code class="language-bash">@Bulkhead(1000) @CircuitBreaker(requestVolumeThreshold=7, failureRatio=1.0, delay=15, delayUnit=ChronoUnit.MINUTES)
+</code></pre>
+
+<p>MicroProfile和Istio的断路器(Circuit Breaker)是不同的。在MicroProfile Fault Tolerance中，策略被放置在客户机上，因为策略控制出站请求。Istio将策略放置在目的地上，因此多个客户端可以对同一个断路器做出贡献。</p>
+
+<h3 id="fallback">Fallback</h3>
+
+<p>MicroProfile Fault Tolerance或Istio Fault Tolerance是在这里增加成功的机会。然而，在现实中，他们不能保证100%的成功率。你还需要想出一个应急计划。请求失败了怎么办？ MicroProfile Fault Tolerance的Fallback这时候就能力挽狂澜了。</p>
+
+<p>Istio Fault Tolerance不提供任何fallback功能。这是有意义的，因为只有程序开发人员可以决定应急计划，这需要业务背景知识。</p>
+
+<p>MicroProfile Fault Tolerance通过@Fallback注释提供了强大的fallback功能。</p>
+
+<p>在下面的代码片段中，当方法失败并重试达到最大重试时，将执行回退操作。在本例中，它只返回一个字符串。您可以选择调用不同的备份服务。</p>
+
+<pre><code class="language-java">@Retry(maxRetries = 2)
+@Fallback(fallbackMethod= &quot;fallbackForServiceB&quot;)
+public String serviceB() {
+    counterForInvokingServiceB++;
+    return nameService();
+}
+private String fallbackForServiceB() {
+	return &quot;myFallback&quot;;
+}
+</code></pre>
+
+<h3 id="当前生态系统">当前生态系统</h3>
+
+<p>当你读到这里，你可能会想：</p>
+
+<p><strong>Q: 我可以同时使用MicroProfile Fault Tolerance fallback和Istio故障处理吗?</strong>
+A: 是的，您可以只使用@Fallback注释。
+这是一个简单的生态系统。让我们走得更远。</p>
+
+<p><strong>Q: 如果我想在开发和测试中使用MicroProfile容错，但是当它被部署到Istio时，我想使用Istio错误处理怎么办？</strong>
+A: 由于MicroProfile Fault Tolerance提供的配置MP_Fault_Tolerance_NonFallback_Enabled，您可以在configmap中以false的值配置此属性，这将禁用MicroProfile容错功能(Fallback除外)。</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+name: servicea-config
+data:
+MP_Fault_Tolerance_NonFallback_Enabled: &quot;false&quot;
+</code></pre>
+
+<p>这个生态系统仍然是基本的，因为它直接禁用了MicroProfile Fault Tolerance(Fallback除外)。微服务开发人员错误处理知识完全被抛弃。DevOps必须从头开始创建Istio配置规则。</p>
+
+<h3 id="未来生态系统之我见">未来生态系统之我见</h3>
+
+<p>生成正确的Istio配置规则可能会令人望而生畏。如果我们可以使用MicroProfile容错注释作为Istio错误处理规则创建的输入，就可以生成相应的Istio配置规则。这样，开发人员关于超时或重试的知识将反映在configure规则中。</p>
+
+<p>然而，对于https请求，Istio不能拦截请求以添加错误处理功能。仍然可以生成相应的Istio配置规则，但不会禁用MicroProfile容错性。DevOps可以修改规则中的参数，这将自动在微服务中生效，因为所有微概要容错注释参数都是可配置的。这个生态系统可以在下表中总结。</p>
+
+<p>如前所述，对于https请求，如果要使用Istio错误处理，则可以通过以下配置禁用MicroProfile容错(回退除外)。可以在configmap中设置相应的属性，如上一节所述，这将禁用相关的容错功能。</p>
+
+<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g103drpcf7j20ne0cnq3h.jpg" alt="microprofile-istio-4.png" /></p>
+
+<p>对于Https请求，MicroProfile容错将处理容错功能，因为Istio不能注入错误处理。</p>
+
+<p>该计划是生成Istio配置规则，然后禁用MicroProfile容错，如果Istio可以处理这种情况。</p>
+
+<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g103fet880j20lc0gqgmn.jpg" alt="microprofile-istio-5.png" /></p>
+
+<p>这部分是我的想法，我希望能从公众那里得到更多的反馈。</p>
+
+<h2 id="microprofile-and-istio-ecosystem-in-action">MicroProfile and Istio ecosystem in action</h2>
+
+<p>The two microservices will demonstrate all MicroProfile specifications.  If you are interested in this exercise, please join in the <a href="https://gitter.im/eclipse/microprofile-service-mesh">gitter room</a> and join the weekly call, where the details can be found the <a href="https://calendar.google.com/calendar/embed?src=gbnbc373ga40n0tvbl88nkc3r4%40group.calendar.google.com&amp;ctz=GMT">MicroProfile Calendar</a>.</p>
+
+<p>MicroProfile设置一个示例github <a href="https://github.com/eclipse/microprofile-servicesmesh/">repository</a>来探索生态系统，特别关注MicroProfile的容错能力。还有两个微服务用于演示生态系统，<a href="https://github.com/eclipse/microprofile-service-mesh-service-a/">servicea</a>和<a href="https://github.com/eclipse/microprofile-service-mesh-service-b">serviceb</a>。这两个微服务将演示所有MicroProfile规范。如果您对这个练习感兴趣，请加入<a href="https://gitter.im/eclipse/microprofile-service-mesh">gitter room</a>，并加入每周的电话会议，其中的详细信息可以在<a href="https://calendar.google.com/calendar/embed?src=gbnbc373ga40n0tvbl88nkc3r4%40group.calendar.google.com&amp;ctz=GMT">MicroProfile Calendar</a>中找到。</p>
+
+<p>总之，MicroProfile被看作是为Istio服务网格开发微服务的编程模型。</p>
+
+<h2 id="参考">参考</h2>
+
+<ol>
+<li><a href="http://microprofile.io/">MicroProfile website</a></li>
+<li><a href="https://istio.io/">Istio</a></li>
+<li><a href="https://github.com/eclipse/microprofile-service-mesh">MicroProfile service mesh repo</a></li>
+<li>MicroProfile service mesh samples <a href="https://github.com/eclipse/microprofile-service-mesh-service-a/">A</a> and <a href="https://github.com/eclipse/microprofile-service-mesh-service-b/">B</a></li>
+<li><a href="https://openliberty.io/guides/">Open Liberty guides on MicroProfile</a></li>
+<li><a href="https://www.eclipse.org/community/eclipse_newsletter/2017/september/article4.php">MicroProfile Fault Tolerance article</a></li>
+<li><a href="https://medium.com/@pilhuhn/working-on-microprofile-service-mesh-istio-and-kiali-26d6c01b45cc">MicroProfile service mesh experience</a></li>
+</ol>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/circuit-breaking-and-outlier-detection-in-istio/" data-toggle="tooltip" data-placement="top" title="熔断与异常检测在 Istio 中的应用">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/circuit-breaking-and-outlier-detection-in-istio/"><i class="fa fa-link"></i>熔断与异常检测在 Istio 中的应用</a></li>
+         
+        <li><a href="/blog/building-a-control-plane-for-envoy/"><i class="fa fa-link"></i>为 Envoy 赋能——如何基于 Envoy 构建一个多用途控制平面</a></li>
+         
+        <li><a href="/blog/istio-rbac-quick-start/"><i class="fa fa-link"></i>Istio安全之服务间访问控制RBAC</a></li>
+         
+        <li><a href="/blog/back-to-microservices-with-istio-part-2-authentication-authorization/"><i class="fa fa-link"></i>使用Istio打造微服务（第2部分）——认证和授权</a></li>
+         
+        <li><a href="/blog/istio-11/"><i class="fa fa-link"></i>Istio 1.1发布，中文文档同时释出</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (5)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (26)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (1)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (4)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/monitoring"><i class="fa fa-navicon"></i>monitoring (3)</a>
+            </li>
+            
+            <li><a href="/categories/practice"><i class="fa fa-navicon"></i>practice (16)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (19)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (102)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/cncf"><i class="fa fa-tags"></i> cncf</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/gloo"><i class="fa fa-tags"></i> gloo</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/grpc-web"><i class="fa fa-tags"></i> grpc-web</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/hystrix"><i class="fa fa-tags"></i> hystrix</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microprofile"><i class="fa fa-tags"></i> microprofile</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/nfv"><i class="fa fa-tags"></i> nfv</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/open-source"><i class="fa fa-tags"></i> open-source</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/operator"><i class="fa fa-tags"></i> operator</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/supergloo"><i class="fa fa-tags"></i> supergloo</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/microprofile-the-microservice-programming-model-made-for-istio/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkly1g1lt8lhx6rj31jk15m7wm.jpg" class="img-responsive" alt="MicroProfile——为Istio创建的微服务编程模型">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/microprofile-the-microservice-programming-model-made-for-istio/">MicroProfile——为Istio创建的微服务编程模型</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/circuit-breaking-and-outlier-detection-in-istio/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/00704eQkly1g1lt3hrm92j31jk15mwse.jpg" class="img-responsive" alt="熔断与异常检测在 Istio 中的应用">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/circuit-breaking-and-outlier-detection-in-istio/">熔断与异常检测在 Istio 中的应用</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/prometheus-monitor-k8s-1/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tKfTcly1g1g1b6paewj30rr0ku7oo.jpg" class="img-responsive" alt="Prometheus监控Kubernetes系列1——监控框架">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/prometheus-monitor-k8s-1/">Prometheus监控Kubernetes系列1——监控框架</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/microprofile-the-microservice-programming-model-made-for-istio/</loc>
+    <lastmod>2019-03-31T11:17:45+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/circuit-breaking-and-outlier-detection-in-istio/</loc>
+    <lastmod>2019-03-31T11:12:07+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/prometheus-monitor-k8s-1/</loc>
     <lastmod>2019-03-26T11:12:00+08:00</lastmod>
   </url>
@@ -1264,13 +1274,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
+    <lastmod>2019-03-31T11:17:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/istio/</loc>
-    <lastmod>2019-03-25T11:04:02+08:00</lastmod>
+    <lastmod>2019-03-31T11:12:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1391,6 +1401,12 @@
   <url>
     <loc>http://www.servicemesher.com/tags/microgateway/</loc>
     <lastmod>2018-11-22T21:56:14+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/microprofile/</loc>
+    <lastmod>2019-03-31T11:17:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1564,7 +1580,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+    <lastmod>2019-03-31T11:17:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1648,7 +1664,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
+    <lastmod>2019-03-31T11:17:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>MicroProfile——为Istio创建的微服务编程模型</title>
+      <link>http://www.servicemesher.com/blog/microprofile-the-microservice-programming-model-made-for-istio/</link>
+      <pubDate>Sun, 31 Mar 2019 11:17:45 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/microprofile-the-microservice-programming-model-made-for-istio/</guid>
+      <description>编者按 如果说Spring Cloud是以SpingBoot为核心和基础的微服务架构，那么MicroProfile则是将传统JavaEE轻量化以</description>
+    </item>
+    
+    <item>
+      <title>熔断与异常检测在 Istio 中的应用</title>
+      <link>http://www.servicemesher.com/blog/circuit-breaking-and-outlier-detection-in-istio/</link>
+      <pubDate>Sun, 31 Mar 2019 11:12:07 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/circuit-breaking-and-outlier-detection-in-istio/</guid>
+      <description>在微服务领域，各个服务需要在网络上执行大量的调用。而网络是很脆弱的，如果某个服务繁忙或者无法响应请求，将有可能引发集群的大规模级联故障，从而</description>
+    </item>
+    
+    <item>
       <title>Prometheus监控Kubernetes系列1——监控框架</title>
       <link>http://www.servicemesher.com/blog/prometheus-monitor-k8s-1/</link>
       <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
