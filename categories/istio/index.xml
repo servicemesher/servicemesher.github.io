@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 31 Mar 2019 11:12:07 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Apr 2019 22:24:01 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio 庖丁解牛三：galley</title>
+      <link>http://www.servicemesher.com/blog/istio-analysis-3/</link>
+      <pubDate>Mon, 01 Apr 2019 22:24:01 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-analysis-3/</guid>
+      <description>作者: 钟华，腾讯云容器产品中心高级工程师，热衷于容器、微服务、service mesh、istio、devops 等领域技术。 今天我们来解析is</description>
+    </item>
     
     <item>
       <title>熔断与异常检测在 Istio 中的应用</title>

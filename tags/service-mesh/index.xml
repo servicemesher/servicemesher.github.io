@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 06 Mar 2019 12:17:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Apr 2019 11:39:27 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>你真的需要服务网格吗？</title>
+      <link>http://www.servicemesher.com/blog/do-i-need-a-service-mesh/</link>
+      <pubDate>Mon, 01 Apr 2019 11:39:27 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/do-i-need-a-service-mesh/</guid>
+      <description>“服务网格”是一个热点话题。似乎去年每一个与容器相关的大会都包含了一个“服务网格”议题，世界各地有影响力的业内人士都在谈论这项革命性的技术带</description>
+    </item>
     
     <item>
       <title>Envoy Proxy构建控制平面指南</title>
