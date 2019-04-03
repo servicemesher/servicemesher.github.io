@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>用AWS App Mesh重新定义应用通讯</title>
+      <link>http://www.servicemesher.com/blog/redefining-application-communications-with-aws-app-mesh/</link>
+      <pubDate>Wed, 03 Apr 2019 20:14:43 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/redefining-application-communications-with-aws-app-mesh/</guid>
+      <description>原文发表于2019年3月27日。 在 re:Invent 2018，AWS宣布了AWS App Mesh 的公开预览版，App Mesh是一个服务网格，可以轻松监视和控制跨应用的通</description>
+    </item>
+    
+    <item>
       <title>Istio 庖丁解牛三：galley</title>
       <link>http://www.servicemesher.com/blog/istio-analysis-3/</link>
       <pubDate>Mon, 01 Apr 2019 22:24:01 +0800</pubDate>

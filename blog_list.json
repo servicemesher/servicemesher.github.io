@@ -1,5 +1,39 @@
 [
   {
+    "author": "Werner Vogels",
+    "authorlink": "https://www.allthingsdistributed.com/2019/03/redefining-application-communications-with-aws-app-mesh.html",
+    "banner": "https://ws1.sinaimg.cn/large/006tKfTcly1g1pps3n0b3j30rr0kuh9c.jpg",
+    "categories": [
+      "translation"
+    ],
+    "date": "2019-04-03T20:14:43+08:00",
+    "fuzzywordcount": 3000,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "aws",
+      "appmesh"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-04-03T20:14:43+08:00",
+    "objectID": "602827496724df1bf605374c68a83ecc",
+    "permalink": "http://www.servicemesher.com/blog/redefining-application-communications-with-aws-app-mesh/",
+    "publishdate": "2019-04-03T20:14:43+08:00",
+    "readingtime": 6,
+    "relpermalink": "/blog/redefining-application-communications-with-aws-app-mesh/",
+    "summary": "在 re:Invent 2018，AWS宣布了AWS App Mesh 的公开预览版，App Mesh是一个服务网格，可以轻松监视和控制跨应用的通信。今天，我很高兴地宣布App Mesh 已经可以为用户提供使用了（GA）。",
+    "tags": [
+      "service mesh",
+      "app mesh",
+      "aws"
+    ],
+    "title": "用AWS App Mesh重新定义应用通讯",
+    "translator": "敖小剑",
+    "url": "/blog/redefining-application-communications-with-aws-app-mesh/",
+    "weight": 0,
+    "wordcount": 2945
+  },
+  {
     "author": "钟华",
     "authorlink": "https://imfox.io",
     "banner": "https://ws3.sinaimg.cn/large/006tKfTcly1g1o2g4k3ofj31420u0hdw.jpg",

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/redefining-application-communications-with-aws-app-mesh/</loc>
+    <lastmod>2019-04-03T20:14:43+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-analysis-3/</loc>
     <lastmod>2019-04-01T22:24:01+08:00</lastmod>
   </url>
@@ -1002,8 +1007,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/app-mesh/</loc>
+    <lastmod>2019-04-03T20:14:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/aspen-mesh/</loc>
     <lastmod>2018-09-10T15:18:18+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/aws/</loc>
+    <lastmod>2019-04-03T20:14:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1578,7 +1595,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2019-04-01T11:39:27+08:00</lastmod>
+    <lastmod>2019-04-03T20:14:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1590,7 +1607,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-04-01T22:24:01+08:00</lastmod>
+    <lastmod>2019-04-03T20:14:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1674,7 +1691,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2019-04-01T11:39:27+08:00</lastmod>
+    <lastmod>2019-04-03T20:14:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   

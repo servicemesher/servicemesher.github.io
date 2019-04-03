@@ -6,10 +6,19 @@
     <description>Recent content in Translation on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 01 Apr 2019 11:39:27 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 03 Apr 2019 20:14:43 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/translation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>用AWS App Mesh重新定义应用通讯</title>
+      <link>http://www.servicemesher.com/blog/redefining-application-communications-with-aws-app-mesh/</link>
+      <pubDate>Wed, 03 Apr 2019 20:14:43 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/redefining-application-communications-with-aws-app-mesh/</guid>
+      <description>原文发表于2019年3月27日。 在 re:Invent 2018，AWS宣布了AWS App Mesh 的公开预览版，App Mesh是一个服务网格，可以轻松监视和控制跨应用的通</description>
+    </item>
     
     <item>
       <title>你真的需要服务网格吗？</title>
