@@ -6,10 +6,28 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 03 Apr 2019 20:14:43 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Apr 2019 21:33:03 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio Sidecar 注入过程解密</title>
+      <link>http://www.servicemesher.com/blog/data-plane-setup/</link>
+      <pubDate>Mon, 08 Apr 2019 21:33:03 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/data-plane-setup/</guid>
+      <description>Istio 服务网格架构的概述，通常都是从对数据面和控制面的叙述开始的。 来自 Istio 的文档： Istio 服务网格逻辑上分为数据平面和控制平面。 数据平面由一组以 sidecar 方式部</description>
+    </item>
+    
+    <item>
+      <title>为 Envoy 构建控制平面指南第3部分：领域特定配置</title>
+      <link>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/</link>
+      <pubDate>Thu, 04 Apr 2019 18:00:43 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/</guid>
+      <description>这是探索为 Envoy 代理构建控制平面系列文章的第3部分。 在本系列博客中，我们将关注以下领域: 采用一种机制来动态更新 Envoy 的路由、服务发现和其他配置 确定控</description>
+    </item>
     
     <item>
       <title>用AWS App Mesh重新定义应用通讯</title>
@@ -1799,7 +1817,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 18 甄中元 11 宋净超 11 马若飞 8 陈冬 5 戴佳顺 5 王帅俭 4 王全根 4 崔秀龙 4 狄卫华 3 李昕阳 3 邱世达 2</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 18 甄中元 11 宋净超 11 马若飞 8 陈冬 5 戴佳顺 5 崔秀龙 5 王帅俭 4 王全根 4 狄卫华 3 李昕阳 3 孙海洲 3</description>
     </item>
     
   </channel>

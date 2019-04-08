@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 03 Apr 2019 20:14:43 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 04 Apr 2019 18:00:43 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>为 Envoy 构建控制平面指南第3部分：领域特定配置</title>
+      <link>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/</link>
+      <pubDate>Thu, 04 Apr 2019 18:00:43 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/</guid>
+      <description>这是探索为 Envoy 代理构建控制平面系列文章的第3部分。 在本系列博客中，我们将关注以下领域: 采用一种机制来动态更新 Envoy 的路由、服务发现和其他配置 确定控</description>
+    </item>
     
     <item>
       <title>用AWS App Mesh重新定义应用通讯</title>
