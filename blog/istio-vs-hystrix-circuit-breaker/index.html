@@ -269,7 +269,7 @@ autocomplete('#aa-search-input',
                             作者 <a href="https://www.exoscale.com/syslog/istio-vs-hystrix-circuit-breaker/">Nicolas Frankel</a>
                             
                             
-                            | 译者 <a href="https://github.com/GuangmingLuo">罗光明</a>
+                            | 译者 <a href="https://github.com/GuangmingLuo">罗广明</a>
                             
                             
                             | 审校者
@@ -432,7 +432,7 @@ autocomplete('#aa-search-input',
 
 <ol>
 <li>没有半开放的状态。然而，断路器持续打开的时间取决于被调用服务之前失败的次数。持续的故障服务将导致断路器的开路时间越来越长。</li>
-<li>在基本模式中，只有一个被调用的应用程序(<em>后端</em>)。在更实际的生产环境中，负载均衡器后面可能部署同一个应用程序的多个实例。某些情况下可能会失败，而有些人可能会工作，因为Istio也是负载平衡器的作用，能够跟踪失败的，把他们从负载均衡池，在一定程度上: <code>maxEjectionPercent</code>属性的作用是保持一小部分的实例池。</li>
+<li>在基本模式中，只有一个被调用的应用程序(<em>后端</em>)。在更实际的生产环境中，负载均衡器后面可能部署同一个应用程序的多个实例。某些情况下有些实例可能会失败，而有些实例可能会工作。因为Istio也有负载均衡器的功能，能够追踪失败的实例，并把它们从负载均衡池中移除，在一定程度上: ‘maxEjectionPercent’属性的作用是保持一小部分的实例池。</li>
 </ol>
 
 <p>Istio实现断路器的方法是一种黑盒方法。它的视角很高，只有出了问题才能打开电路。另一方面，它的设置非常简单，不需要任何底层代码的知识，并且可以作为事后配置。</p>

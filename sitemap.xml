@@ -1148,14 +1148,14 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/envoy/</loc>
-    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
+    <loc>http://www.servicemesher.com/categories/envoy/</loc>
+    <lastmod>2019-01-07T17:48:01+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/envoy/</loc>
-    <lastmod>2019-01-07T17:48:01+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/envoy/</loc>
+    <lastmod>2019-03-25T21:02:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1310,14 +1310,14 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-04-08T21:33:03+08:00</lastmod>
+    <loc>http://www.servicemesher.com/categories/istio/</loc>
+    <lastmod>2019-04-01T22:24:01+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/istio/</loc>
-    <lastmod>2019-04-01T22:24:01+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/istio/</loc>
+    <lastmod>2019-04-08T21:33:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1352,14 +1352,14 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/knative/</loc>
-    <lastmod>2019-03-12T11:17:13+08:00</lastmod>
+    <loc>http://www.servicemesher.com/categories/knative/</loc>
+    <lastmod>2019-02-22T14:08:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/knative/</loc>
-    <lastmod>2019-02-22T14:08:59+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/knative/</loc>
+    <lastmod>2019-03-12T11:17:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1382,14 +1382,14 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
-    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+    <loc>http://www.servicemesher.com/categories/kubernetes/</loc>
+    <lastmod>2019-02-20T16:33:31+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/kubernetes/</loc>
-    <lastmod>2019-02-20T16:33:31+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1424,13 +1424,13 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/meetup/</loc>
+    <loc>http://www.servicemesher.com/categories/meetup/</loc>
     <lastmod>2019-01-08T10:41:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/meetup/</loc>
+    <loc>http://www.servicemesher.com/tags/meetup/</loc>
     <lastmod>2019-01-08T10:41:54+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1472,14 +1472,14 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/monitoring/</loc>
-    <lastmod>2018-11-08T15:20:46+08:00</lastmod>
+    <loc>http://www.servicemesher.com/categories/monitoring/</loc>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/monitoring/</loc>
-    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/monitoring/</loc>
+    <lastmod>2018-11-08T15:20:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1562,14 +1562,14 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/rate-limiting/</loc>
-    <lastmod>2018-11-15T13:20:46+08:00</lastmod>
+    <loc>http://www.servicemesher.com/categories/rate-limiting/</loc>
+    <lastmod>2018-07-11T15:32:40+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/rate-limiting/</loc>
-    <lastmod>2018-07-11T15:32:40+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/rate-limiting/</loc>
+    <lastmod>2018-11-15T13:20:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1592,26 +1592,26 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/serverless/</loc>
-    <lastmod>2019-03-12T11:17:13+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.servicemesher.com/categories/serverless/</loc>
     <lastmod>2019-01-02T11:35:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2019-04-04T18:00:43+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/serverless/</loc>
+    <lastmod>2019-03-12T11:17:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
     <lastmod>2019-03-19T10:41:25+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
+    <lastmod>2019-04-04T18:00:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1634,25 +1634,25 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/sofamesh/</loc>
-    <lastmod>2018-12-04T17:32:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.servicemesher.com/categories/sofamesh/</loc>
     <lastmod>2018-11-29T14:51:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/sofamosn/</loc>
-    <lastmod>2018-12-17T11:07:07+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/sofamesh/</loc>
+    <lastmod>2018-12-04T17:32:44+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/sofamosn/</loc>
+    <lastmod>2018-12-17T11:07:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/sofamosn/</loc>
     <lastmod>2018-12-17T11:07:07+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1712,13 +1712,13 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/tutorial/</loc>
+    <loc>http://www.servicemesher.com/categories/tutorial/</loc>
     <lastmod>2018-12-10T21:50:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/tutorial/</loc>
+    <loc>http://www.servicemesher.com/tags/tutorial/</loc>
     <lastmod>2018-12-10T21:50:05+08:00</lastmod>
     <priority>0</priority>
   </url>

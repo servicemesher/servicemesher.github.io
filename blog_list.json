@@ -730,10 +730,10 @@
       "hystrix"
     ],
     "title": "微服务断路器模式实现：Istio vs Hystrix",
-    "translator": "罗光明",
+    "translator": "罗广明",
     "url": "/blog/istio-vs-hystrix-circuit-breaker/",
     "weight": 0,
-    "wordcount": 4301
+    "wordcount": 4314
   },
   {
     "author": "陈洪波",
