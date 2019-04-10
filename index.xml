@@ -6,10 +6,46 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 08 Apr 2019 21:33:03 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 10 Apr 2019 10:08:11 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格时代：Istio在混合云未来扮演的角色</title>
+      <link>http://www.servicemesher.com/blog/the-service-mesh-era-istios-role-in-the-future-of-hybrid-cloud/</link>
+      <pubDate>Wed, 10 Apr 2019 10:08:11 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/the-service-mesh-era-istios-role-in-the-future-of-hybrid-cloud/</guid>
+      <description>欢迎回到我们关于Service Mesh和Istio的博客文章系列。 在之前的帖子中，我们讨论了Istio服务网格是什么，以及它为什么如此重要。</description>
+    </item>
+    
+    <item>
+      <title>Istio 学习笔记：Istio CNI 插件</title>
+      <link>http://www.servicemesher.com/blog/istio-cni-note/</link>
+      <pubDate>Tue, 09 Apr 2019 22:54:09 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-cni-note/</guid>
+      <description>设计目标 当前实现将用户 pod 流量转发到 proxy 的默认方式是使用 privileged 权限的 istio-init 这个 init container 来做的（运行脚本写入 iptables），Istio CNI 插件的主要设计目标</description>
+    </item>
+    
+    <item>
+      <title>选择FaaS还是微服务？</title>
+      <link>http://www.servicemesher.com/blog/faas-vs-microservices/</link>
+      <pubDate>Tue, 09 Apr 2019 22:42:29 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/faas-vs-microservices/</guid>
+      <description>在做项目的云原生改造时我们可以采用微服务架构。DevOps和自动化构建两方面的成功经验对微服务的实践很有帮助。经过一段时间的实践，你可能会有</description>
+    </item>
+    
+    <item>
+      <title>基于Flagger和Istio实现自动化金丝雀部署</title>
+      <link>http://www.servicemesher.com/blog/automated-canary-deployments-with-flagger-and-istio/</link>
+      <pubDate>Tue, 09 Apr 2019 20:38:30 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/automated-canary-deployments-with-flagger-and-istio/</guid>
+      <description>持续部署（Continuous delivery）符合企业软件实践，它是完善持续集成（continuous integration）原则的自然演</description>
+    </item>
     
     <item>
       <title>Istio Sidecar 注入过程解密</title>
@@ -1817,7 +1853,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 18 甄中元 11 宋净超 11 马若飞 8 陈冬 5 戴佳顺 5 崔秀龙 5 王帅俭 4 王全根 4 狄卫华 3 李昕阳 3 孙海洲 3</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 18 甄中元 11 宋净超 11 马若飞 8 陈冬 5 戴佳顺 5 崔秀龙 5 王帅俭 4 王全根 4 狄卫华 3 李琪 3 李昕阳 3 孙</description>
     </item>
     
   </channel>

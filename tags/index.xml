@@ -266,7 +266,7 @@
     <item>
       <title>Faas</title>
       <link>http://www.servicemesher.com/tags/faas/</link>
-      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
+      <pubDate>Tue, 09 Apr 2019 22:42:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/faas/</guid>
       <description></description>
@@ -287,6 +287,15 @@
       <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/fission/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flagger</title>
+      <link>http://www.servicemesher.com/tags/flagger/</link>
+      <pubDate>Tue, 09 Apr 2019 20:38:30 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/flagger/</guid>
       <description></description>
     </item>
     
@@ -464,7 +473,7 @@
     <item>
       <title>Istio</title>
       <link>http://www.servicemesher.com/tags/istio/</link>
-      <pubDate>Mon, 08 Apr 2019 21:33:03 +0800</pubDate>
+      <pubDate>Wed, 10 Apr 2019 10:08:11 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/istio/</guid>
       <description></description>
@@ -626,7 +635,7 @@
     <item>
       <title>Microservices</title>
       <link>http://www.servicemesher.com/tags/microservices/</link>
-      <pubDate>Wed, 20 Feb 2019 11:44:49 +0800</pubDate>
+      <pubDate>Tue, 09 Apr 2019 22:42:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/microservices/</guid>
       <description></description>
@@ -806,7 +815,7 @@
     <item>
       <title>Serverless</title>
       <link>http://www.servicemesher.com/tags/serverless/</link>
-      <pubDate>Tue, 12 Mar 2019 11:17:13 +0800</pubDate>
+      <pubDate>Tue, 09 Apr 2019 22:42:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/serverless/</guid>
       <description></description>

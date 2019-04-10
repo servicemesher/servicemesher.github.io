@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>选择FaaS还是微服务？ · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格">
+  
+
+  <meta name="generator" content="Hugo 0.54.0" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="选择FaaS还是微服务？" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/faas-vs-microservices//" />
+  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文主要向读者介绍FaaS和微服务架构之间的区别以及如何根据自身情况选择正确的架构方案。">
+  <meta property="og:description" content="本文主要向读者介绍FaaS和微服务架构之间的区别以及如何根据自身情况选择正确的架构方案。">
+  <meta name="twitter:description" content="本文主要向读者介绍FaaS和微服务架构之间的区别以及如何根据自身情况选择正确的架构方案。">
+  <meta property="og:description" content="本文主要向读者介绍FaaS和微服务架构之间的区别以及如何根据自身情况选择正确的架构方案。" />
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+  
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="选择FaaS还是微服务？ logo" class="hidden-xs hidden-sm">
+                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="选择FaaS还是微服务？ logo" class="visible-xs visible-sm">
+                    <span class="sr-only">选择FaaS还是微服务？ - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Service Mesh列表</a></li>
+                      
+                        <li><a href="/envoy/">Envoy官方文档中文版</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio中文官网</a></li>
+                      
+                        <li><a href="/categories/practice/">实践汇总</a></li>
+                      
+                        <li><a href="/istio-handbook/">Istio Handbook</a></li>
+                      
+                        <li><a href="/getting-started-with-knative/">Knative入门</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                        <li><a href="https://github.com/servicemesher/istio-knowledge-map">Istio知识图谱</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>选择FaaS还是微服务？</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年4月9日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://blog.christianpota.com">Christian Posta</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/saberuster">李琪</a>
+                            
+                            
+                            | 审校者
+                            
+                            <a href="https://github.com/haiker2011"><i>孙海洲</i></a>
+                            
+                            <a href="https://www.wujunze.com/"><i>吴钧泽</i></a>
+                            
+                            
+                            |
+                            2200字 | 阅读大约需要5分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/faas/"><i>#faas</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/microservices/"><i>#microservices</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/serverless/"><i>#serverless</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          <p>在做项目的云原生改造时我们可以采用微服务架构。DevOps和自动化构建两方面的成功经验对微服务的实践很有帮助。经过一段时间的实践，你可能会有将微服务架构推广到其他部门的想法。而你担心微服务本身的复杂性和分布式系统的高维护成本会让其他部门难以接受它。可能在我们想方设法解决微服务带来的问题时，总会有些人觉得这样做毫无意义。因为现在技术发展如此之快，总会出现更好的技术方案，你能保证自己在微服务领域所做的工作最后没有白费吗？</p>
+
+<p>我认为不会白费！</p>
+
+<p>现在“serverless”和“functions-as-a-service”（FAAS）还处于早期的炒作阶段。有些人觉得serverless就是下一代的微服务，所以我们应该跳过当前的微服务模式而直接采用serverless。其实这种说法是有点夸大其词。作为架构师或开发者，我们通过学习新技术来提升自身能力让自己变得更&rdquo;值钱&rdquo;并没有错。但我们也要以务实态度来判断是否应该采用新技术。虽然持续跟进最新技术是我们作为架构师的职责所在，但掌握在之前的产品和IT部门引用新技术的时机也很重要。我们可以通过下面的模块来理解微服务架构和serverless，从而让它们可以更好的融入我们的技术栈。</p>
+
+<p>首先，我们需要知道为什么我们需要微服务。选用微服务架构的主要原因就是避免项目的体量阻碍产品的迭代，所有微服务其他的优势都是基于这点。更快的迭代速度意味着可以更快的为客户交付新功能/修改，从而更快的验证这些改动能够带来的效果。我们需要快速的知道自己所做的努力是否能够带来好的效果，如果不能就要马上调整方向。快速迭代就是微服务架构的核心优势。</p>
+
+<p>对于大多数的团队而言，至少有一部分应用能从微服务的迭代过程中获益。因此作为架构师或开发者，我们不要因为采用微服务有门槛就对其失去信心。实践微服务的重要步骤就是确定和测量改进指标。改进指标一般可以为每天迭代应用的次数、保证迭代应用稳定性的方法等。</p>
+
+<p>另一方面，不是所有的应用都需要用这种松散而复杂的方式来保证服务的迭代速度。如果只想简单做个应用来验证自己创意的商业价值，那你完全可以选择更加适合的架构。这时采用MVP测试（最小可行性测试）就是个很好的方案。如果你因为商业价值很低而打算放弃的话，那也只是放弃了一个MVP应用。你可以非常快的迭代它并从潜在的用户中获得反馈。在这种情况下，你可能需要根据反馈反复修改API、功能边界、组件等。所以过早就将组件功能做成分布式的服务也会拖慢产品的发布速度。你想修改分布式组件和它的api就必须在各个团队间进行协调。</p>
+
+<p>上述观点能够反映出微服务架构和单体架构适用不同的场景。而事实上并没有所谓&rdquo;一招鲜吃遍天“的方案。当我们在微服务架构和单体架构之间纠结时，还需要考虑到所需服务是否已经存在以及它提供服务的方式（第三方服务/公司内部服务）。我们完全可以充分利用当前已有服务来构建我们的应用，不必重新购买硬件、安装和修补操作系统，以及优化服务从而达到最高吞吐量，而这也正是云及其服务存在的意义。云供应商和他们的合作伙伴能提供数据库、消息队列、缓存、CDN和其他更高级的功能： 例如语言翻译、地图/地理空间地图、天气等。我们可以组合各种按量付费的服务来构建自己的应用。如果在使用某个服务的时候无需关心安装、参数和容量等问题，其实我们就已经在采用serverless架构了。serverless架构的特点就是可以重用已经存在的service，而无需关心运行服务需要消耗些什么。</p>
+
+<p>函数即服务和serverless具有某种联系，因为它利用了缩小到单个应用程序函数的范围的计算模型，而这有助于将各种服务组合在一起构建应用。在这种模型下，功能按需分解，你只需为使用的功能付费。它特别适合对我们使用的服务进行按需计费和按量付费。这样一来我们能够构建弹性应用，而不需要考虑复杂的技术问题。将这些复杂的技术问题外包给别人可以让你更专注于为客户提供商业价值。</p>
+
+<p>但是将这部分能力外包不总是可行的。如果选择云服务，我们就丧失了对程序运行时、具体功能、bug修复和接受监管的控制力。这也是需要考虑的一部分。</p>
+
+<p>serverless不一定是完整的“公有云或无云”方案。如果以单个组织的角度来看，&rdquo;serverless&rdquo;可能只是代表整个体系的其他部分。例如：零售业务可以为组织内部其他服务或第三方提供“购买“服务以支持诸如分析、推荐以及其他使用“购买”服务的应用。利用定义良好的API和订阅并消费API的工作负载，你可以在自己的基础设施为微服务应用或单体应用提供serverless能力。在很多时候这其实就是服务向SOA架构进化的方向。但它们之间最大的不同就是在你将组织看作一个整体时，自己给自己的其他部分提供服务并不算serverless。因为此时还是需要自己手动的去安装、管理和更新应用。</p>
+
+<p>最终采用哪种方案其实取决于很多因素，例如：业务、商业目标、软件部门对该技术的熟练度和历史遗留问题等。如果你觉得应该采用微服务架构，那就不要因为其他新技术而分心。我们可以持续跟进最新技术，从而保证适时的采用它们。总的来讲，不管是微服务架构、单体架构还是serverless架构，它们都有自己的应用场景。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/automated-canary-deployments-with-flagger-and-istio/" data-toggle="tooltip" data-placement="top" title="基于Flagger和Istio实现自动化金丝雀部署">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="http://www.servicemesher.com/blog/istio-cni-note/" data-toggle="tooltip" data-placement="top" title="Istio 学习笔记：Istio CNI 插件">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/knative-serving/"><i class="fa fa-link"></i>Knative 入门系列2：serving 介绍</a></li>
+         
+        <li><a href="/blog/knative-overview/"><i class="fa fa-link"></i>Knative 入门系列1：knative 概述</a></li>
+         
+        <li><a href="/blog/knative-whittling-down-the-code/"><i class="fa fa-link"></i>Knative：精简代码之道</a></li>
+         
+        <li><a href="/blog/knative-eventing-in-memory-channel-deep-dive/"><i class="fa fa-link"></i>Knative Eventing in-memory-channel实现原理解析</a></li>
+         
+        <li><a href="/blog/istio-kubernetes-service-mesh/"><i class="fa fa-link"></i>Istio——企业级微服务解决方案</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (5)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (28)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (1)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (4)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/monitoring"><i class="fa fa-navicon"></i>monitoring (3)</a>
+            </li>
+            
+            <li><a href="/categories/practice"><i class="fa fa-navicon"></i>practice (16)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (19)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (109)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/app-mesh"><i class="fa fa-tags"></i> app-mesh</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/aws"><i class="fa fa-tags"></i> aws</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/cncf"><i class="fa fa-tags"></i> cncf</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/flagger"><i class="fa fa-tags"></i> flagger</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/gloo"><i class="fa fa-tags"></i> gloo</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/grpc-web"><i class="fa fa-tags"></i> grpc-web</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/hystrix"><i class="fa fa-tags"></i> hystrix</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microprofile"><i class="fa fa-tags"></i> microprofile</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/nfv"><i class="fa fa-tags"></i> nfv</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/open-source"><i class="fa fa-tags"></i> open-source</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/operator"><i class="fa fa-tags"></i> operator</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/supergloo"><i class="fa fa-tags"></i> supergloo</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/the-service-mesh-era-istios-role-in-the-future-of-hybrid-cloud/">
+                          
+                          <img src="https://ws3.sinaimg.cn/large/006tNc79ly1g1xbjjjjygj31400u0qv7.jpg" class="img-responsive" alt="服务网格时代：Istio在混合云未来扮演的角色">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/the-service-mesh-era-istios-role-in-the-future-of-hybrid-cloud/">服务网格时代：Istio在混合云未来扮演的角色</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/istio-cni-note/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g1wrwnznblj31400u0x6p.jpg" class="img-responsive" alt="Istio 学习笔记：Istio CNI 插件">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/istio-cni-note/">Istio 学习笔记：Istio CNI 插件</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/faas-vs-microservices/">
+                          
+                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g1wrp8d29yj31400u0kjm.jpg" class="img-responsive" alt="选择FaaS还是微服务？">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/faas-vs-microservices/">选择FaaS还是微服务？</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1ft002et2e2j303k03k3yk.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

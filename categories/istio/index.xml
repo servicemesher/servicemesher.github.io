@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 01 Apr 2019 22:24:01 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Apr 2019 22:54:09 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio 学习笔记：Istio CNI 插件</title>
+      <link>http://www.servicemesher.com/blog/istio-cni-note/</link>
+      <pubDate>Tue, 09 Apr 2019 22:54:09 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-cni-note/</guid>
+      <description>设计目标 当前实现将用户 pod 流量转发到 proxy 的默认方式是使用 privileged 权限的 istio-init 这个 init container 来做的（运行脚本写入 iptables），Istio CNI 插件的主要设计目标</description>
+    </item>
     
     <item>
       <title>Istio 庖丁解牛三：galley</title>
