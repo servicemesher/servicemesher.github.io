@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/from-sidecar-to-servicemesh/</loc>
+    <lastmod>2019-04-11T16:56:23+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/the-service-mesh-era-istios-role-in-the-future-of-hybrid-cloud/</loc>
     <lastmod>2019-04-10T10:08:11+08:00</lastmod>
   </url>
@@ -1631,25 +1636,25 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2019-04-04T18:00:43+08:00</lastmod>
+    <lastmod>2019-04-11T16:56:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2019-03-19T10:41:25+08:00</lastmod>
+    <lastmod>2019-04-11T16:56:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-04-10T10:08:11+08:00</lastmod>
+    <lastmod>2019-04-11T16:56:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/tags/sidecar/</loc>
-    <lastmod>2019-03-18T11:23:11+08:00</lastmod>
+    <lastmod>2019-04-11T16:56:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   

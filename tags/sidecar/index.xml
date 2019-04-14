@@ -6,10 +6,19 @@
     <description>Recent content in Sidecar on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 18 Mar 2019 11:23:11 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 11 Apr 2019 16:56:23 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/sidecar/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>从边车模式到 Service Mesh</title>
+      <link>http://www.servicemesher.com/blog/from-sidecar-to-servicemesh/</link>
+      <pubDate>Thu, 11 Apr 2019 16:56:23 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/from-sidecar-to-servicemesh/</guid>
+      <description>所谓边车模式（ Sidecar pattern ），也译作挎斗模式，是分布式架构中云设计模式的一种。因为其非常类似于生活中的边三轮摩托车而得名。该设计模式通过给应用程序加</description>
+    </item>
     
     <item>
       <title>手工打造像Istio中一样的Sidecar代理</title>
