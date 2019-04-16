@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Cloud Native Weekly第一期</title>
+      <link>http://www.servicemesher.com/blog/cloud-native-weekly-01/</link>
+      <pubDate>Tue, 16 Apr 2019 19:35:39 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cloud-native-weekly-01/</guid>
+      <description>本周作者：张磊 临石 禅鸣 至简 宋净超 编辑：木环 这是 Cloud Native 周报第一期。 业界要闻 在上周于旧金山举办的 Google Cloud Next 2019 大会上，Google Cloud正式发布了：</description>
+    </item>
+    
+    <item>
       <title>从边车模式到 Service Mesh</title>
       <link>http://www.servicemesher.com/blog/from-sidecar-to-servicemesh/</link>
       <pubDate>Thu, 11 Apr 2019 16:56:23 +0800</pubDate>

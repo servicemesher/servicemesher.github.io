@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud Native Weekly on ServiceMesher</title>
+    <link>http://www.servicemesher.com/categories/cloud-native-weekly/</link>
+    <description>Recent content in Cloud Native Weekly on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 16 Apr 2019 19:35:39 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/categories/cloud-native-weekly/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cloud Native Weekly第一期</title>
+      <link>http://www.servicemesher.com/blog/cloud-native-weekly-01/</link>
+      <pubDate>Tue, 16 Apr 2019 19:35:39 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cloud-native-weekly-01/</guid>
+      <description>本周作者：张磊 临石 禅鸣 至简 宋净超 编辑：木环 这是 Cloud Native 周报第一期。 业界要闻 在上周于旧金山举办的 Google Cloud Next 2019 大会上，Google Cloud正式发布了：</description>
+    </item>
+    
+  </channel>
+</rss>

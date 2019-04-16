@@ -6,10 +6,19 @@
     <description>Recent content in Cloud Native on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 15 Feb 2019 10:41:22 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Apr 2019 19:35:39 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/cloud-native/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cloud Native Weekly第一期</title>
+      <link>http://www.servicemesher.com/blog/cloud-native-weekly-01/</link>
+      <pubDate>Tue, 16 Apr 2019 19:35:39 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cloud-native-weekly-01/</guid>
+      <description>本周作者：张磊 临石 禅鸣 至简 宋净超 编辑：木环 这是 Cloud Native 周报第一期。 业界要闻 在上周于旧金山举办的 Google Cloud Next 2019 大会上，Google Cloud正式发布了：</description>
+    </item>
     
     <item>
       <title>CNCF年度报告解读（2018年）</title>

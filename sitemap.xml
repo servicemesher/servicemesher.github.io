@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/cloud-native-weekly-01/</loc>
+    <lastmod>2019-04-16T19:35:39+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/from-sidecar-to-servicemesh/</loc>
     <lastmod>2019-04-11T16:56:23+08:00</lastmod>
   </url>
@@ -1096,7 +1101,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/cloud-native/</loc>
-    <lastmod>2019-02-15T10:41:22+08:00</lastmod>
+    <lastmod>2019-04-16T19:35:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/cloud-native-weekly/</loc>
+    <lastmod>2019-04-16T19:35:39+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1648,7 +1659,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-04-11T16:56:23+08:00</lastmod>
+    <lastmod>2019-04-16T19:35:39+08:00</lastmod>
     <priority>0</priority>
   </url>
   
