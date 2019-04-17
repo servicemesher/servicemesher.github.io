@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</loc>
+    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/general-kubernetes-dashboard/</loc>
+    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/cloud-native-weekly-01/</loc>
     <lastmod>2019-04-16T19:35:39+08:00</lastmod>
   </url>
@@ -275,11 +285,6 @@
   <url>
     <loc>http://www.servicemesher.com/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/</loc>
     <lastmod>2018-12-27T11:46:42+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</loc>
-    <lastmod>2018-12-27T11:23:34+08:00</lastmod>
   </url>
   
   <url>
@@ -1161,7 +1166,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/dashboard/</loc>
-    <lastmod>2018-10-25T10:44:46+08:00</lastmod>
+    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1335,7 +1340,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/ingress/</loc>
-    <lastmod>2018-12-27T11:23:34+08:00</lastmod>
+    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1425,13 +1430,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
-    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/kubernetes/</loc>
-    <lastmod>2019-02-20T16:33:31+08:00</lastmod>
+    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1659,7 +1664,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-04-16T19:35:39+08:00</lastmod>
+    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
     <priority>0</priority>
   </url>
   

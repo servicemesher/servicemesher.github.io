@@ -1,5 +1,66 @@
 [
   {
+    "author": "张馆长",
+    "authorlink": "https://zhangguanzhang.github.io",
+    "banner": "https://ws4.sinaimg.cn/large/006tNc79ly1g25nhjs0bhj30rs0ku4qp.jpg",
+    "categories": [
+      "kubernetes"
+    ],
+    "date": "2019-04-17T11:23:34+08:00",
+    "fuzzywordcount": 4200,
+    "keywords": [
+      "Kubernetes"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-04-17T11:23:34+08:00",
+    "objectID": "b0606f39842e1f6fc0bbd17277194662",
+    "permalink": "http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/",
+    "publishdate": "2019-04-17T11:23:34+08:00",
+    "readingtime": 9,
+    "relpermalink": "/blog/kubernetes-ingress-controller-deployment-and-ha/",
+    "summary": "本文是对 Kubernetes 的 Ingress controller 的介绍、部署及高可用说明。",
+    "tags": [
+      "kubernetes",
+      "ingress"
+    ],
+    "title": "Kubernetes Ingress Controller的使用介绍及高可用落地",
+    "translator": null,
+    "url": "/blog/kubernetes-ingress-controller-deployment-and-ha/",
+    "weight": 0,
+    "wordcount": 4104
+  },
+  {
+    "author": "张馆长",
+    "authorlink": "https://zhangguanzhang.github.io",
+    "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fyl57bnk4uj31400u0npf.jpg",
+    "categories": [
+      "kubernetes"
+    ],
+    "date": "2019-04-17T11:23:34+08:00",
+    "fuzzywordcount": 4900,
+    "keywords": [
+      "Kubernetes",
+      "dashboard"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-04-17T11:23:34+08:00",
+    "objectID": "273ee58439c6423143a1f0f3dbba3e39",
+    "permalink": "http://www.servicemesher.com/blog/general-kubernetes-dashboard/",
+    "publishdate": "2019-04-17T11:23:34+08:00",
+    "readingtime": 10,
+    "relpermalink": "/blog/general-kubernetes-dashboard/",
+    "summary": "本文是对 Kubernetes 的 dashboard有关ssl下各个场景的相关说明。",
+    "tags": [
+      "kubernetes",
+      "dashboard"
+    ],
+    "title": "kubernetes dashboard在ssl的各种场景下的手动部署",
+    "translator": null,
+    "url": "/blog/general-kubernetes-dashboard/",
+    "weight": 0,
+    "wordcount": 4810
+  },
+  {
     "author": "张磊 临石 禅鸣 至简 宋净超",
     "authorlink": "/",
     "banner": "https://ws3.sinaimg.cn/large/006tNc79ly1g24pvm761jj30rs0ku4e2.jpg",
@@ -1759,36 +1820,6 @@
     "url": "/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/",
     "weight": 0,
     "wordcount": 3213
-  },
-  {
-    "author": "张馆长",
-    "authorlink": "https://zhangguanzhang.github.io",
-    "banner": "https://ws1.sinaimg.cn/large/006tNbRwly1fyl57bnk4uj31400u0npf.jpg",
-    "categories": [
-      "kubernetes"
-    ],
-    "date": "2018-12-27T11:23:34+08:00",
-    "fuzzywordcount": 4000,
-    "keywords": [
-      "Kubernetes"
-    ],
-    "lang": "zh",
-    "lastmod": "2018-12-27T11:23:34+08:00",
-    "objectID": "b0606f39842e1f6fc0bbd17277194662",
-    "permalink": "http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/",
-    "publishdate": "2018-12-27T11:23:34+08:00",
-    "readingtime": 8,
-    "relpermalink": "/blog/kubernetes-ingress-controller-deployment-and-ha/",
-    "summary": "本文是对 Kubernetes 的 Ingress controller 的介绍、部署及高可用说明。",
-    "tags": [
-      "kubernetes",
-      "ingress"
-    ],
-    "title": "Kubernetes Ingress Controller的使用介绍及高可用落地",
-    "translator": null,
-    "url": "/blog/kubernetes-ingress-controller-deployment-and-ha/",
-    "weight": 0,
-    "wordcount": 3904
   },
   {
     "author": "我把玲玲打一顿",

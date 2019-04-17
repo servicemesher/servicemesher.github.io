@@ -6,10 +6,28 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 16 Apr 2019 19:35:39 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Apr 2019 11:23:34 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes Ingress Controller的使用介绍及高可用落地</title>
+      <link>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</link>
+      <pubDate>Wed, 17 Apr 2019 11:23:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</guid>
+      <description>本文转载自zhangguanzhang的博客。 从之前对ingress controller到现在了解架构和一些经验总结下，顺带给人科普少走弯路</description>
+    </item>
+    
+    <item>
+      <title>kubernetes dashboard在ssl的各种场景下的手动部署</title>
+      <link>http://www.servicemesher.com/blog/general-kubernetes-dashboard/</link>
+      <pubDate>Wed, 17 Apr 2019 11:23:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/general-kubernetes-dashboard/</guid>
+      <description>本文转载自zhangguanzhang的博客。 旨在面向新手讲解手动部署过程，本文dashboard的暴露不会用nodePort（不喜欢使用它</description>
+    </item>
     
     <item>
       <title>Cloud Native Weekly第一期</title>
@@ -504,15 +522,6 @@
       
       <guid>http://www.servicemesher.com/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/</guid>
       <description>本文以 Istio 官方的 bookinfo 示例来讲解在进入 Pod 的流量被 iptables 转交给 Envoy sidecar 后，Envoy 是如何做路由转发的，详述了 Inbound 和 Outbound 处理过程。关于流量拦截的详细分析请参考理</description>
-    </item>
-    
-    <item>
-      <title>Kubernetes Ingress Controller的使用介绍及高可用落地</title>
-      <link>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</link>
-      <pubDate>Thu, 27 Dec 2018 11:23:34 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</guid>
-      <description>本文转载自zhangguanzhang的博客。 从之前对ingress controller到现在了解架构和一些经验总结下，顺带给人科普少走弯路</description>
     </item>
     
     <item>
@@ -1844,7 +1853,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 11 崔秀龙 6 钟华 4 赵化冰 4 高松 3 郑伟 3 罗佳豪 3 丁轶群 3 陈洪波 2 朵晓东 2 张馆长 2</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 11 崔秀龙 6 钟华 4 赵化冰 4 高松 3 郑伟 3 罗佳豪 3 张馆长 3 丁轶群 3 陈洪波 2 朵晓东 2</description>
     </item>
     
     <item>

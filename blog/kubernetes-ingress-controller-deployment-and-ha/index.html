@@ -262,7 +262,7 @@ autocomplete('#aa-search-input',
                         <div class="well">
                             <div class="author-category">
                             <i class="fa fa-calendar-o">
-                            2018年12月27日
+                            2019年4月17日
                             </i>
                             |
                             
@@ -271,7 +271,7 @@ autocomplete('#aa-search-input',
                             
                             
                             |
-                            4000字 | 阅读大约需要8分钟
+                            4200字 | 阅读大约需要9分钟
                             </div>
                             
                             
@@ -310,8 +310,8 @@ autocomplete('#aa-search-input',
 <ul>
 <li>Service实现原理和会应用</li>
 <li>知道反向代理原理，了解nginx和apache的vhost概念</li>
-<li>了解service的几种类型(Nodeport、clusterip、LB)</li>
-<li>四层和七层区别(不明白就这样去理解，七层最常见就是应用层的http，也就是url，四层是传输层，为tcp/udp端口)</li>
+<li>了解service的几种类型（Nodeport、clusterip、LB）</li>
+<li>四层和七层区别（不明白就这样去理解，七层最常见就是应用层的http，也就是url，四层是传输层，为tcp/udp端口）</li>
 <li>域名解析，/etc/hosts等基础知识</li>
 </ul>
 
@@ -333,19 +333,21 @@ autocomplete('#aa-search-input',
 
 <p>我们部署在集群里的服务的svc想暴露出来的时候，从长久眼光看和易于管理维护都是用的<code>Ingress Controller</code>来处理，clusterip非集群主机无法访问，Nodeport不方便长久管理和效率，LB服务多了不方便因为需要花费额外的钱，externalIPS不好用（后面有空写文章会说它）。</p>
 
-<p>我们跑的大多服务都是应用层http(s)，Ingress Controller使用service或者pod的网络将它暴露在集群外，然后它反向代理集群内的七层服务，通过vhost子域名那样路由到后端的服务，<code>Ingress Controller</code>工作架构如下，借用traefik官方的图。</p>
+<p>我们跑的大多服务都是应用层http（s），Ingress Controller使用service或者pod的网络将它暴露在集群外，然后它反向代理集群内的七层服务，通过vhost子域名那样路由到后端的服务，<code>Ingress Controller</code>工作架构如下，借用traefik官方的图。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fyl4kdlseyj30mg0dc405.jpg" alt="" /></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fyl4kdlseyj30mg0dc405.jpg" alt="traefik" /></p>
 
 <p>你可以将<code>api.domain.com</code>进来的流量路由到集群里api的pod，你可以将<code>backoffice.domain.com</code>流量路由到backoffice的一组pod上，虽说我们可以自己搭建一个nginx来代替掉<code>Ingress Controller</code>，但是要增加代理的service长期来看维护很不方便，在使用上<code>Ingress Controller</code>后可以用一种抽象的对象告诉controller添加对应的代理，也就是<code>kind: Ingress</code>。它里面描述了从Ingress Controller访问进来的ServerName和web的url要代理到集群里哪个service（以及service的port）等等具体信息。</p>
 
 <p>而官方的<code>Ingress Nginx</code>可以视为一个魔改的nginx，拥有集群赋予的RBAC权限后，能够有监听集群Ingress相关的变化能力，用户创建了<code>kind: Ingress</code>，
-例如上面trafik图里的Ingress大致就是下面这样。</p>
+例如上面trafik图里的Ingress大致就是下面这样：</p>
 
 <pre><code class="language-yaml">apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: my-ingress
+  annotations: 
+    nginx.ingress.kubernetes.io/use-regex: &quot;true&quot;
 spec:
   rules:
   - host: api.mydomain.com
@@ -404,7 +406,7 @@ spec:
 
 <h3 id="测试http-7层负载">测试http 7层负载</h3>
 
-<p>部署了官方的ingress nginx后，我部署了一个nginx的pod，为它创建了一个名为nginx的service。</p>
+<p>部署了官方的ingress nginx后，我部署了一个nginx的pod，为它创建了一个名为nginx的service：</p>
 
 <pre><code class="language-yaml">apiVersion: extensions/v1beta1
 kind: Deployment
@@ -435,7 +437,7 @@ spec:
       targetPort: 80
 </code></pre>
 
-<p>然后创建对应的一个ingress对象来暴露集群里这个nginx的http服务。</p>
+<p>然后创建对应的一个ingress对象来暴露集群里这个nginx的http服务：</p>
 
 <pre><code class="language-yaml">apiVersion: extensions/v1beta1
 kind: Ingress
@@ -451,7 +453,7 @@ spec:
           servicePort: 80
 </code></pre>
 
-<p>找到ingress nginx的pod名字后通过命令查看里面nginx配置文件能找到有对应的配置段生成。</p>
+<p>找到ingress nginx的pod名字后通过命令查看里面nginx配置文件能找到有对应的配置段生成：</p>
 
 <pre><code class="language-yaml">$ kubectl -n ingress-nginx exec nginx-ingress-controller-6cdcfd8ff9-t5sxl -- cat /etc/nginx/nginx.conf
 ...
@@ -475,13 +477,13 @@ spec:
 ...
 </code></pre>
 
-<p>找一台非集群的Windows机器(也可以mac，主要是有图形界面且非集群内机器)，设置hosts文件把域名<code>nginx.testdomain.com</code>设置到对service的那个externalIPs的ip上，打开浏览器访问<code>nginx.testdomain.com</code>即可发现集群内的nginx已经暴露在集群外</p>
+<p>找一台非集群的Windows机器（也可以mac，主要是有图形界面且非集群内机器），设置hosts文件把域名<code>nginx.testdomain.com</code>设置到对service的那个externalIPs的ip上，打开浏览器访问<code>nginx.testdomain.com</code>即可发现集群内的nginx已经暴露在集群外。</p>
 
-<p><strong>注意</strong>：Ingress Controller虽然调用的是service，看起来按照nginx来理解转发是client–nginx–svc–pod; 实际上转发是client–nginx–pod，因为已经魔改了不能按照nginx的来理解，是直接负载到svc的endpoint上面的</p>
+<p><strong>注意</strong>：Ingress Controller虽然调用的是service，看起来按照nginx来理解转发是client–nginx–svc–pod; 实际上转发是client–nginx–pod，因为已经魔改了不能按照nginx的来理解，是直接负载到svc的endpoint上面的。</p>
 
 <p>另外低版本的ingress nginx的args参数<code>--default-backend-service=$(POD_NAMESPACE)/default-http-backend</code>，该参数指定ingress nginx的同namespace下名为<code>default-http-backend</code>的service作为默认访问的时候页面，通常那个时候是创建一个404页面的的pod和对应service，如果ingress nginx启动的时候没找到这个service会无法启动，新版本不是必须了，好像也自带404页面了。</p>
 
-<p>另外ingress也能多路径，如下。</p>
+<p>另外ingress也能多路径，如下：</p>
 
 <pre><code class="language-yaml">spec:
   rules:
@@ -500,14 +502,14 @@ spec:
 
 <h3 id="如何来4层负载">如何来4层负载</h3>
 
-<p>我们可以看到ingress nginx的args里有这两行。</p>
+<p>我们可以看到ingress nginx的args里有这两行：</p>
 
-<pre><code>- --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services
+<pre><code class="language-yaml">- --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services
 - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
 </code></pre>
 
-<p>从选项和值可以猜测出，要想代理四层(tcp/udp)，得写同namespace里一个名为<code>tcp-service</code>和<code>udp-service</code>的两个configmap的数据
-四层的话这边我们创建一个mysql的pod，来代理3306端口到集群外面，则需要写tcp-services这个configmap。</p>
+<p>从选项和值可以猜测出，要想代理四层（tcp/udp），得写同namespace里一个名为<code>tcp-service</code>和<code>udp-service</code>的两个configmap的数据
+四层的话这边我们创建一个mysql的pod，来代理3306端口到集群外面，则需要写tcp-services这个configmap：</p>
 
 <pre><code class="language-yaml">kind: ConfigMap
 apiVersion: v1
@@ -533,9 +535,9 @@ data:
 <ul>
 <li>type为<code>LoadBalancer</code>的时候手写<code>externalIPs</code>很鸡肋，后面会再写文章去讲它</li>
 <li>type为<code>LoadBalancer</code>的时候只有云厂商支持分配公网ip来负载均衡，LoadBalancer 公开的每项服务都将获得自己的 IP 地址，但是需要收费，且自己建立集群无法使用</li>
-<li>不创建service，pod直接用hostport，效率等同于<code>hostnetwork</code>，如果不代理四层端口还好，代理了需要修改pod的template来滚动更新来让nginx bind的四层端口能映射到宿主机上</li>
+<li>不创建service，pod直接用hostport，效率等同于<code>hostNetwork</code>，如果不代理四层端口还好，代理了需要修改pod的template来滚动更新来让nginx bind的四层端口能映射到宿主机上</li>
 <li><code>Nodeport</code>，端口不是web端口（但是可以修改Nodeport的范围改成web端口），如果进来流量负载到Nodeport上可能某个流量路线到某个node上的时候因为<code>Ingress Controller</code>的pod不在这个node上，会走这个node的kube-proxy转发到Ingress Controller的pod上，多走一趟路</li>
-<li>不创建service，效率最高，也能四层负载的时候不修改pod的template，唯一要注意的是hostnetwork下pod会继承宿主机的网络协议，也就是使用了主机的dns，会导致svc的请求直接走宿主机的上到公网的dns服务器而非集群里的dns server，需要设置pod的<code>dnsPolicy: ClusterFirstWithHostNet</code>即可解决</li>
+<li>不创建service，效率最高，也能四层负载的时候不修改pod的template，唯一要注意的是<code>hostNetwork</code>下pod会继承宿主机的网络协议，也就是使用了主机的dns，会导致svc的请求直接走宿主机的上到公网的dns服务器而非集群里的dns server，需要设置pod的<code>dnsPolicy: ClusterFirstWithHostNet</code>即可解决</li>
 </ul>
 
 <h2 id="写在最后">写在最后</h2>
@@ -548,6 +550,42 @@ data:
 <li>所以可以一个vip飘在拥有存活的controller的宿主机上，云上的话就用slb来负载代替vip</li>
 <li>最后说说域名请求指向它，如果部署在内网或者办公室啥的，内网有dns server的话把ing的域名全部解析到ingress controller的宿主机ip上，否则要有人访问每个人设置/etc/hosts才能把域名解析来贼麻烦，如果没有dns server可以跑一个external-dns，它的上游dns是公网的dns服务器，办公网内机器的dns server指向它即可，云上的话把域名请求解析到对应ip即可</li>
 <li>traefik和ingress nginx类似，不过它用go实现的</li>
+<li>在一些老版本的ingress nginx的log里会一直刷找不到ingress-nginx的svc，不处理的话会狂刷log导致机器load过高,创建一个同名的svc即可解决,例如创建一个不带选择器clusterip为null的即可。非要创建port的svc的话参照下面:</li>
+</ul>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-nginx
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  - name: https
+    port: 443
+    targetPort: 443
+    protocol: TCP
+  - name: metrics
+    port: 10254
+    targetPort: 10254
+    protocol: TCP
+  selector:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+</code></pre>
+
+<h2 id="参考">参考:</h2>
+
+<ul>
+<li><a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/deploy/index.md">ingress-nginx deploy - github.com</a></li>
+<li><a href="https://kubernetes.github.io/ingress-nginx/deploy/baremetal/">ingress-nginx deploy - kubernetes.github.io</a></li>
 </ul>
 
                         </div>
@@ -558,13 +596,9 @@ data:
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/" data-toggle="tooltip" data-placement="top" title="Github中式开源志异">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/general-kubernetes-dashboard/" data-toggle="tooltip" data-placement="top" title="kubernetes dashboard在ssl的各种场景下的手动部署">&larr; 更旧</a>
                         </li>
                          
-                        <li class="next">
-                        <a href="http://www.servicemesher.com/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/" data-toggle="tooltip" data-placement="top" title="理解 Istio Service Mesh 中 Envoy Sidecar 代理的路由转发">更新 &rarr;</a>
-                        </li>
-                        
                         </ul>
 
                     </div>
@@ -586,15 +620,15 @@ data:
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
+        <li><a href="/blog/general-kubernetes-dashboard/"><i class="fa fa-link"></i>kubernetes dashboard在ssl的各种场景下的手动部署</a></li>
+         
         <li><a href="/blog/evaluation-of-serverless-frameworks-for-kbe/"><i class="fa fa-link"></i>Kubernetes（K8s）的无服务器框架的评估</a></li>
          
-        <li><a href="/blog/kubernetes-resource-management/"><i class="fa fa-link"></i>Kubernetes资源管理概述</a></li>
+        <li><a href="/blog/prometheus-monitor-k8s-1/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列1——监控框架</a></li>
          
-        <li><a href="/blog/istio-service-and-traffic-model/"><i class="fa fa-link"></i>Istio中的服务和流量的抽象模型</a></li>
+        <li><a href="/blog/prometheus-monitor-k8s-3/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列3——业务指标采集</a></li>
          
-        <li><a href="/blog/kubernetes-crd-quick-start/"><i class="fa fa-link"></i>如何从零开始编写一个Kubernetes CRD</a></li>
-         
-        <li><a href="/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/"><i class="fa fa-link"></i>如何将云原生工作负载映射到Kubernetes中的控制器</a></li>
+        <li><a href="/blog/prometheus-monitor-k8s-2/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列2——监控部署</a></li>
          
      </ul>
     </div>
@@ -635,7 +669,7 @@ data:
             <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (1)</a>
             </li>
             
-            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (4)</a>
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (5)</a>
             </li>
             
             <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
@@ -1069,6 +1103,32 @@ data:
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="/blog/kubernetes-ingress-controller-deployment-and-ha/">
+                          
+                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g25nhjs0bhj30rs0ku4qp.jpg" class="img-responsive" alt="Kubernetes Ingress Controller的使用介绍及高可用落地">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/kubernetes-ingress-controller-deployment-and-ha/">Kubernetes Ingress Controller的使用介绍及高可用落地</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/general-kubernetes-dashboard/">
+                          
+                          <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fyl57bnk4uj31400u0npf.jpg" class="img-responsive" alt="kubernetes dashboard在ssl的各种场景下的手动部署">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/general-kubernetes-dashboard/">kubernetes dashboard在ssl的各种场景下的手动部署</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-01/">
                           
                           <img src="https://ws3.sinaimg.cn/large/006tNc79ly1g24pvm761jj30rs0ku4e2.jpg" class="img-responsive" alt="Cloud Native Weekly第一期">
@@ -1077,32 +1137,6 @@ data:
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="/blog/cloud-native-weekly-01/">Cloud Native Weekly第一期</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/from-sidecar-to-servicemesh/">
-                          
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g22idd0clrj31400u0nph.jpg" class="img-responsive" alt="从边车模式到 Service Mesh">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/from-sidecar-to-servicemesh/">从边车模式到 Service Mesh</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/the-service-mesh-era-istios-role-in-the-future-of-hybrid-cloud/">
-                          
-                          <img src="https://ws3.sinaimg.cn/large/006tNc79ly1g1xbjjjjygj31400u0qv7.jpg" class="img-responsive" alt="服务网格时代：Istio在混合云未来扮演的角色">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/the-service-mesh-era-istios-role-in-the-future-of-hybrid-cloud/">服务网格时代：Istio在混合云未来扮演的角色</a></h5>
                     </div>
                 </div>
                 
