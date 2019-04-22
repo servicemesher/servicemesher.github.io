@@ -6,10 +6,19 @@
     <description>Recent content in Microservices on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 09 Apr 2019 22:42:29 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 22 Apr 2019 13:54:05 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>导致云原生微服务系统开发灾难性的8件事</title>
+      <link>http://www.servicemesher.com/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/</link>
+      <pubDate>Mon, 22 Apr 2019 13:54:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/</guid>
+      <description>编者按 作者以较为嘲讽的口吻列举了在开发云原生微服务系统时可能出现的8个错误，告诫开发人员要注意避免这些问题。其观点集中在业务划分、解耦合、重</description>
+    </item>
     
     <item>
       <title>选择FaaS还是微服务？</title>

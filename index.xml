@@ -6,10 +6,37 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 17 Apr 2019 11:23:34 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 22 Apr 2019 13:54:05 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>导致云原生微服务系统开发灾难性的8件事</title>
+      <link>http://www.servicemesher.com/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/</link>
+      <pubDate>Mon, 22 Apr 2019 13:54:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/</guid>
+      <description>编者按 作者以较为嘲讽的口吻列举了在开发云原生微服务系统时可能出现的8个错误，告诫开发人员要注意避免这些问题。其观点集中在业务划分、解耦合、重</description>
+    </item>
+    
+    <item>
+      <title>为 Envoy 构建控制面指南第4部分：构建的可扩展性</title>
+      <link>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/</link>
+      <pubDate>Mon, 22 Apr 2019 10:41:16 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/</guid>
+      <description>编者按 本文介绍如何为 Envoy 构建控制面指南的第4部分：构建的可扩展性。Gloo团队建议将重点放在控制平面的简单核心上，然后通过插件和微服务控制器的</description>
+    </item>
+    
+    <item>
+      <title>Istio 监控详解</title>
+      <link>http://www.servicemesher.com/blog/istio-monitoring-explained/</link>
+      <pubDate>Fri, 19 Apr 2019 18:15:10 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-monitoring-explained/</guid>
+      <description>编者按 本文先后阐述服务网格中监控的重要性和Istio相关名词概念，再由一个实例切入，详解在Istio中部署和实现监控的全过程。（注：阅读本文</description>
+    </item>
     
     <item>
       <title>Kubernetes Ingress Controller的使用介绍及高可用落地</title>
@@ -1880,7 +1907,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 18 甄中元 11 宋净超 11 马若飞 8 陈冬 5 戴佳顺 5 崔秀龙 5 王帅俭 4 王全根 4 狄卫华 3 李琪 3 李昕阳 3 孙</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 18 甄中元 11 宋净超 11 马若飞 9 陈冬 5 戴佳顺 5 崔秀龙 5 王帅俭 4 王全根 4 孙海洲 4 罗广明 3 狄卫华 3</description>
     </item>
     
   </channel>

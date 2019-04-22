@@ -6,10 +6,19 @@
     <description>Recent content in Istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 10 Apr 2019 10:08:11 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 19 Apr 2019 18:15:10 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio 监控详解</title>
+      <link>http://www.servicemesher.com/blog/istio-monitoring-explained/</link>
+      <pubDate>Fri, 19 Apr 2019 18:15:10 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-monitoring-explained/</guid>
+      <description>编者按 本文先后阐述服务网格中监控的重要性和Istio相关名词概念，再由一个实例切入，详解在Istio中部署和实现监控的全过程。（注：阅读本文</description>
+    </item>
     
     <item>
       <title>服务网格时代：Istio在混合云未来扮演的角色</title>
