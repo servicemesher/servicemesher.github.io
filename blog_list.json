@@ -1,5 +1,37 @@
 [
   {
+    "author": "云原生编辑部",
+    "authorlink": "/",
+    "banner": "https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg",
+    "categories": [
+      "cloud native weekly"
+    ],
+    "date": "2019-04-23T10:44:45+08:00",
+    "fuzzywordcount": 3300,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "云原生",
+      "cloud native"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-04-23T10:44:45+08:00",
+    "objectID": "ecfd39c688d06275bdeda00e4e3d1b13",
+    "permalink": "http://www.servicemesher.com/blog/cloud-native-weekly-02/",
+    "publishdate": "2019-04-23T10:44:45+08:00",
+    "readingtime": 7,
+    "relpermalink": "/blog/cloud-native-weekly-02/",
+    "summary": "这是 Cloud Native 周报第2期。",
+    "tags": [
+      "cloud native"
+    ],
+    "title": "云原生生态周报（Cloud Native Weekly）第2期",
+    "translator": null,
+    "url": "/blog/cloud-native-weekly-02/",
+    "weight": 0,
+    "wordcount": 3281
+  },
+  {
     "author": "CHRISTINA の J老闆",
     "authorlink": "http://wei-meilin.blogspot.com",
     "banner": "https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg",
@@ -156,7 +188,7 @@
     "wordcount": 4847
   },
   {
-    "author": "张磊 临石 禅鸣 至简 宋净超",
+    "author": "云原生编辑部",
     "authorlink": "/",
     "banner": "https://ws3.sinaimg.cn/large/006tNc79ly1g24pvm761jj30rs0ku4e2.jpg",
     "categories": [
@@ -181,7 +213,7 @@
     "tags": [
       "cloud native"
     ],
-    "title": "Cloud Native Weekly第一期",
+    "title": "云原生生态周报（Cloud Native Weekly）第1期",
     "translator": null,
     "url": "/blog/cloud-native-weekly-01/",
     "weight": 0,

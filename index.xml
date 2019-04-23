@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 22 Apr 2019 13:54:05 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Apr 2019 10:44:45 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>云原生生态周报（Cloud Native Weekly）第2期</title>
+      <link>http://www.servicemesher.com/blog/cloud-native-weekly-02/</link>
+      <pubDate>Tue, 23 Apr 2019 10:44:45 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cloud-native-weekly-02/</guid>
+      <description>本周报由阿里巴巴容器平台联合蚂蚁金服共同发布 本周作者：傅伟，敖小剑，张磊，临石，南异，心贵，王夕宁，长虑 责任编辑：木环 业界要闻 Kubernetes External Secrets 近日，世</description>
+    </item>
     
     <item>
       <title>导致云原生微服务系统开发灾难性的8件事</title>
@@ -57,7 +66,7 @@
     </item>
     
     <item>
-      <title>Cloud Native Weekly第一期</title>
+      <title>云原生生态周报（Cloud Native Weekly）第1期</title>
       <link>http://www.servicemesher.com/blog/cloud-native-weekly-01/</link>
       <pubDate>Tue, 16 Apr 2019 19:35:39 +0800</pubDate>
       
