@@ -55,7 +55,7 @@
   <meta property="og:title" content="MicroProfile——为Istio创建的微服务编程模型" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/microprofile-the-microservice-programming-model-made-for-istio//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="MicroProfile——为Istio创建的微服务编程模型 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="MicroProfile——为Istio创建的微服务编程模型 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="MicroProfile——为Istio创建的微服务编程模型 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="MicroProfile——为Istio创建的微服务编程模型 logo" class="visible-xs visible-sm">
                     <span class="sr-only">MicroProfile——为Istio创建的微服务编程模型 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -311,7 +311,7 @@ autocomplete('#aa-search-input',
 
 <p>如果说Spring Cloud是以SpingBoot为核心和基础的微服务架构，那么MicroProfile则是将传统JavaEE轻量化以适应微服务时代的一个体系。作者Emily Jiang，开源项目<a href="https://github.com/eclipse/microprofile">eclipse/microprofile</a>的contributor之一，在本文中探讨了如何结合MicroProfile与流行的服务网格Istio安全地部署微服务，比较了二者的不同之处，并且阐述了二者共存的生态系统的现状及未来。</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g0yo4fnavmj209q063jrd.jpg" alt="shutterstock.jpg" /></p>
+<p><img src="bf8f1836ly1g0yo4fnavmj209q063jrd.jpg" alt="shutterstock.jpg" /></p>
 
 <h2 id="microprofile-in-a-nutshell">MicroProfile in a nutshell</h2>
 
@@ -374,7 +374,7 @@ autocomplete('#aa-search-input',
 
 <p>Istio由一个数据平面和一个控制平面组成 (Istio架构见下图，取自<a href="https://istio.io/">Istio .io</a>)。</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g0yt2h4ed1j20lc0g976a.jpg" alt="microprofile-istio-1.png" /></p>
+<p><img src="bf8f1836ly1g0yt2h4ed1j20lc0g976a.jpg" alt="microprofile-istio-1.png" /></p>
 
 <h2 id="microprofile-meets-istio">MicroProfile meets Istio</h2>
 
@@ -540,7 +540,7 @@ public Response getPropertiesForHost(
 
 <p>这些API可以通过这个端点查看 <code>/openapi/ui</code></p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g102sxzpyfj20lc0l5wjh.jpg" alt="microprofile-istio-2.png" /></p>
+<p><img src="bf8f1836ly1g102sxzpyfj20lc0l5wjh.jpg" alt="microprofile-istio-2.png" /></p>
 
 <p>这个规范为Istio提供了一个很好的补充，因为DevOps可以使用它来查找每个JAX-RS端点的详细信息。</p>
 
@@ -656,7 +656,7 @@ public class InventoryManager {
 
 <p>让我们将MicroProfile Fault Tolerance与Istio的故障处理进行比较。</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g1030s8iccj20k3099glq.jpg" alt="microprofile-istio-3.png" /></p>
+<p><img src="bf8f1836ly1g1030s8iccj20k3099glq.jpg" alt="microprofile-istio-3.png" /></p>
 
 <p><em>MicroProfile Fault Tolerance Circuit Breaker</em> 为客户端所有，客户端之间不共享；Istio断路器为后端服务所有，这意味着多个连接可以构成一个Circuit Breaker。</p>
 
@@ -896,13 +896,13 @@ MP_Fault_Tolerance_NonFallback_Enabled: &quot;false&quot;
 
 <p>如前所述，对于https请求，如果要使用Istio错误处理，则可以通过以下配置禁用MicroProfile容错(回退除外)。可以在configmap中设置相应的属性，如上一节所述，这将禁用相关的容错功能。</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g103drpcf7j20ne0cnq3h.jpg" alt="microprofile-istio-4.png" /></p>
+<p><img src="bf8f1836ly1g103drpcf7j20ne0cnq3h.jpg" alt="microprofile-istio-4.png" /></p>
 
 <p>对于Https请求，MicroProfile容错将处理容错功能，因为Istio不能注入错误处理。</p>
 
 <p>该计划是生成Istio配置规则，然后禁用MicroProfile容错，如果Istio可以处理这种情况。</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/bf8f1836ly1g103fet880j20lc0gqgmn.jpg" alt="microprofile-istio-5.png" /></p>
+<p><img src="bf8f1836ly1g103fet880j20lc0gqgmn.jpg" alt="microprofile-istio-5.png" /></p>
 
 <p>这部分是我的想法，我希望能从公众那里得到更多的反馈。</p>
 
@@ -1029,7 +1029,7 @@ MP_Fault_Tolerance_NonFallback_Enabled: &quot;false&quot;
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1318,6 +1318,9 @@ MP_Fault_Tolerance_NonFallback_Enabled: &quot;false&quot;
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1427,7 +1430,7 @@ MP_Fault_Tolerance_NonFallback_Enabled: &quot;false&quot;
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1447,7 +1450,7 @@ MP_Fault_Tolerance_NonFallback_Enabled: &quot;false&quot;
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1460,7 +1463,7 @@ MP_Fault_Tolerance_NonFallback_Enabled: &quot;false&quot;
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1473,7 +1476,7 @@ MP_Fault_Tolerance_NonFallback_Enabled: &quot;false&quot;
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1495,7 +1498,7 @@ MP_Fault_Tolerance_NonFallback_Enabled: &quot;false&quot;
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

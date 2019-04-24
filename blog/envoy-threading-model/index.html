@@ -55,7 +55,7 @@
   <meta property="og:title" content="Envoy架构师Matt Klein对Envoy线程模型的简介" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/envoy-threading-model//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Envoy架构师Matt Klein对Envoy线程模型的简介 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Envoy架构师Matt Klein对Envoy线程模型的简介 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Envoy架构师Matt Klein对Envoy线程模型的简介 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Envoy架构师Matt Klein对Envoy线程模型的简介 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Envoy架构师Matt Klein对Envoy线程模型的简介 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -315,7 +315,7 @@ autocomplete('#aa-search-input',
 
 <h3 id="线程模型概览">线程模型概览</h3>
 
-<p><img src="http://ww1.sinaimg.cn/large/5f3e3349gy1g0c5di41ayj218g10ewm0.jpg" alt="" /></p>
+<p><img src="5f3e3349gy1g0c5di41ayj218g10ewm0.jpg" alt="" /></p>
 
 <p>Envoy使用三种不同类型的线程，如上图所示。</p>
 
@@ -353,7 +353,7 @@ autocomplete('#aa-search-input',
 
 <p>由于Envoy将主线程职责与工作线程职责分开，因此需要在主线程上完成复杂处理，然后以高度并发的方式使每个工作线程可用。 本节介绍了Envoy的高级线程本地存储（TLS）系统。 在下一节中，我将描述如何使用它来处理集群管理。</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/5f3e3349gy1g0c5bd3l63j218g0n1wjh.jpg" alt="" /></p>
+<p><img src="5f3e3349gy1g0c5bd3l63j218g0n1wjh.jpg" alt="" /></p>
 
 <p>如已经描述的那样，主线程基本上处理Envoy过程中的所有管理/控制平面功能。 （控制平面在这里有点过载但是当在Envoy进程中考虑并与工人做的转发进行比较时，似乎是合适的）。 主线程进程执行某些工作是一种常见模式，然后需要使用该工作的结果更新每个工作线程，并且工作线程不需要在每次访问时获取锁定。</p>
 
@@ -376,7 +376,7 @@ autocomplete('#aa-search-input',
 
 <p>在本节中，我将描述TLS如何用于集群管理。 集群管理包括xDS API处理和/或DNS以及运行状况检查。</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/5f3e3349gy1g0c5dx3j34j20ir0agwgn.jpg" alt="" /></p>
+<p><img src="5f3e3349gy1g0c5dx3j34j20ir0agwgn.jpg" alt="" /></p>
 
 <p>图3显示了涉及以下组件和步骤的总体流程：</p>
 
@@ -536,7 +536,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -825,6 +825,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -934,7 +937,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -954,7 +957,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -967,7 +970,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -980,7 +983,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1002,7 +1005,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

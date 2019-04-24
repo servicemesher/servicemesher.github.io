@@ -55,7 +55,7 @@
   <meta property="og:title" content="Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/microservice-observability-with-istio//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -309,7 +309,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fvmzdkbqh3j30rs0fmta7.jpg" alt="" /></p>
+<p><img src="006tNc79gy1fvmzdkbqh3j30rs0fmta7.jpg" alt="" /></p>
 
 <blockquote>
 <p><a href="https://www.trulia.com">Trulia</a>是一个多功能的房地产网站，为您提供有关待售房屋、出租公寓、邻里洞察、市场和趋势的本地独家新闻，以帮助您确切了解房屋购买、出售或出租的内容、地点和时间。您还可以找到房地产经纪人，查看最近售出的房屋的价格，并查看您所在社区的房屋价值。</p>
@@ -321,7 +321,7 @@ autocomplete('#aa-search-input',
 
 <p>Trulia致力于将 <a href="https://www.trulia.com">https://www.trulia.com</a> 单体应用分解成面向服务（SOA）的架构。所有支持的APIs和服务都将替换成工程部门AWS账号下拥有的各种功能单元。许多遗留AWS服务都是通过AMI映像promotion进行部署的，并使用各种不同的方法实现可观测性。将测量工具添加到代码库和基础架构所需的手动操作一直是个传统痛点。此外，这种用于构建可观测性的手动、个性化方法意味着没有单一的代码库可以在增强和工具上进行协作。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fvmzdtyqq1j30sg0bpaap.jpg" alt="" /></p>
+<p><img src="006tNc79gy1fvmzdtyqq1j30sg0bpaap.jpg" alt="" /></p>
 
 <p>在2017年。我们就决定在同一的编排平台<a href="https://kubernetes.io/">kubernetes</a>上构建我们所有的微服务。我们希望标准化微服务的指标、监控、流控等技术。</p>
 
@@ -333,7 +333,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="解决途径">解决途径</h2>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fvmzicivg0j30sg0di75b.jpg" alt="" /></p>
+<p><img src="006tNc79gy1fvmzicivg0j30sg0di75b.jpg" alt="" /></p>
 
 <p>我们使用Istio透明代理我们的Kubernetes工作负载中的所有通信。将所有遥测集合移出进程，将其与单个微服务的代码库分离。</p>
 
@@ -345,7 +345,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="envoy提供的示例指标">Envoy提供的示例指标：</h2>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fvmzlevo8oj30sg0pedl0.jpg" alt="" /></p>
+<p><img src="006tNc79gy1fvmzlevo8oj30sg0pedl0.jpg" alt="" /></p>
 
 <p>上述在Prometheus中收集的指标，用于报警和Grafana绘图。Envoy 被注入到每个工作负载中，并采集有关请求率、延迟和响应代码等信息。</p>
 
@@ -462,7 +462,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -751,6 +751,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -860,7 +863,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -880,7 +883,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -893,7 +896,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -906,7 +909,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -928,7 +931,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

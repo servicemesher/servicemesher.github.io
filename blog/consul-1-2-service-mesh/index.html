@@ -55,7 +55,7 @@
   <meta property="og:title" content="Service Mesh新成员：Consul 1.2" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/consul-1-2-service-mesh//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Service Mesh新成员：Consul 1.2 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Service Mesh新成员：Consul 1.2 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Service Mesh新成员：Consul 1.2 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Service Mesh新成员：Consul 1.2 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Service Mesh新成员：Consul 1.2 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -314,13 +314,13 @@ autocomplete('#aa-search-input',
 
 <hr />
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsxqoqdg7mj312e0dw0tr.jpg" alt="HarshiCorp Consul" /></p>
+<p><img src="00704eQkgy1fsxqoqdg7mj312e0dw0tr.jpg" alt="HarshiCorp Consul" /></p>
 
 <p>我们很激动宣布 HashiCorp Consul 1.2 正式发布了。这个版本主要新增了一个新的功能叫做 <a href="https://www.consul.io/segmentation.html">Connect</a>, 它能够将现有的 Consul 集群自动转变为 service mesh （服务网格）的解决方案。Connect 通过自动 TLS 加密和基于鉴权的授权机制支持服务和服务之间的安全通信。</p>
 
 <p>当前全球有数以百万计的机器上正部署着 Consul。当升级到 Consul 1.2 并打开 Connect 功能后，任何现有的集群将立刻变身为支持任何包括物理机、云、容器和调度器等各种平台的 service mesh 方案。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fswof0iyxxj31rc0py1kx.jpg" alt="" /></p>
+<p><img src="00704eQkgy1fswof0iyxxj31rc0py1kx.jpg" alt="" /></p>
 
 <h2 id="现代服务网络-service-mesh">现代服务网络 Service Mesh</h2>
 
@@ -428,7 +428,7 @@ autocomplete('#aa-search-input',
 
 <p>服务之间的访问控制通过 “intentions” 进行配置。一个意向（intention）是一条从源到目的服务的允许或拦截规则。Intentions 可以通过 UI 界面、命令行、API 或 Terraform 进行创建。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fswofx2nh4j30u90k7dhv.jpg" alt="" /></p>
+<p><img src="00704eQkgy1fswofx2nh4j30u90k7dhv.jpg" alt="" /></p>
 
 <p>按照上述示例，允许从 <code>db</code> 服务到 <code>web</code> 的访问，可以执行：</p>
 
@@ -506,6 +506,8 @@ Created: web =&gt; db (allow)
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
+        <li><a href="/blog/a-new-more-efficient-proxy-model/"><i class="fa fa-link"></i>探讨Service Mesh中一种更高效的代理模式</a></li>
+         
         <li><a href="/blog/istio-is-not-just-for-microservices/"><i class="fa fa-link"></i>Istio不仅为微服务而生—使用Istio Service Mesh保护Kubernetes中的服务</a></li>
          
         <li><a href="/blog/vp-microservices-communication-governance-using-service-mesh/"><i class="fa fa-link"></i>InfoQ访谈：使用服务网格的微服务通信与治理</a></li>
@@ -513,8 +515,6 @@ Created: web =&gt; db (allow)
         <li><a href="/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/"><i class="fa fa-link"></i>容器、服务网格和API网关：从边缘开始</a></li>
          
         <li><a href="/blog/the-universal-data-plane-api/"><i class="fa fa-link"></i>Service Mesh中的通用数据平面API设计</a></li>
-         
-        <li><a href="/blog/making-most-out-microservices-service-mesh/"><i class="fa fa-link"></i>使用Service Mesh来充分利用微服务</a></li>
          
      </ul>
     </div>
@@ -573,7 +573,7 @@ Created: web =&gt; db (allow)
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -862,6 +862,9 @@ Created: web =&gt; db (allow)
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -971,7 +974,7 @@ Created: web =&gt; db (allow)
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -991,7 +994,7 @@ Created: web =&gt; db (allow)
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1004,7 +1007,7 @@ Created: web =&gt; db (allow)
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1017,7 +1020,7 @@ Created: web =&gt; db (allow)
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1039,7 +1042,7 @@ Created: web =&gt; db (allow)
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

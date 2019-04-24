@@ -55,7 +55,7 @@
   <meta property="og:title" content="使用Istio打造微服务（第1部分）" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/back-to-microservices-with-istio-p1//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="使用Istio打造微服务（第1部分） logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="使用Istio打造微服务（第1部分） logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="使用Istio打造微服务（第1部分） logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="使用Istio打造微服务（第1部分） logo" class="visible-xs visible-sm">
                     <span class="sr-only">使用Istio打造微服务（第1部分） - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -284,7 +284,7 @@ autocomplete('#aa-search-input',
                             
                             <div class="author-category">
                             
-                            <a href="https://ws2.sinaimg.cn/large/006tKfTcly1g0ku5ojo3gj31400u07wk.jpg">查看原文</a>
+                            <a href="/img/blog/banners/006tKfTcly1g0ku5ojo3gj31400u07wk.jpg">查看原文</a>
                             |
                             
                             
@@ -305,7 +305,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu1gyo9j20m80bq754.jpg" alt="" /></p>
+<p><img src="61411417ly1g0exu1gyo9j20m80bq754.jpg" alt="" /></p>
 
 <p><strong>Istio</strong> 是一个由Google，IBM和Lyft团队合作开发的开源项目，它提供了基于微服务的应用程序复杂性的解决方案，仅举几例：</p>
 
@@ -331,7 +331,7 @@ autocomplete('#aa-search-input',
 
 <p>你明白了，必须满足所有形式才可以为我们添加一项巨大的服务（有很多不是业务功能的代码）。在本文中，我们将展示Istio如何从我们的服务中删除所有上述交叉问题。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu1x75cj20ai081t8l.jpg" alt="图1.微服务的形式构成" /></p>
+<p><img src="61411417ly1g0exu1x75cj20ai081t8l.jpg" alt="图1.微服务的形式构成" /></p>
 
 <p><strong>注意</strong>： 本文假设您具有Kubernetes的知识。如果不是这种情况，我建议您阅读 <a href="https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882">我对Kubernetes的介绍</a>，然后继续阅读本文。</p>
 
@@ -339,7 +339,7 @@ autocomplete('#aa-search-input',
 
 <p>在没有Istio的世界中，一个服务向另一个服务直接发出请求，并且在发生故障的情况下，服务需要通过重试，超时，打开熔断器等来处理它。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu1eu2vj20m8054dg4.jpg" alt="图2. Kubernetes中的网络流量" /></p>
+<p><img src="61411417ly1g0exu1eu2vj20m8054dg4.jpg" alt="图2. Kubernetes中的网络流量" /></p>
 
 <p>为了解决这个问题，Istio通过与服务完全分离，并通过拦截所有网络通信来提供一种巧妙的解决方案。这样做可以实现：</p>
 
@@ -361,7 +361,7 @@ autocomplete('#aa-search-input',
 
 <p>注入的代理使Istio能够轻松满足我们的要求。举个例子，我们来看看重试和熔断器功能。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu34d0gg20m808a1kx.gif" alt="图3.Envoy如何实现Retries和CircuitBreaking" /></p>
+<p><img src="61411417ly1g0exu34d0gg20m808a1kx.gif" alt="图3.Envoy如何实现Retries和CircuitBreaking" /></p>
 
 <p>总结一下：</p>
 
@@ -384,7 +384,7 @@ autocomplete('#aa-search-input',
 
 <p>由三个组件组成： <strong>Pilot</strong>、 <strong>Mixer</strong> 和 <strong>Citadel</strong>，它们组合使用Envoys来路由流量，实施策略和收集遥测数据。如下图所示。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu2b2mqj20m80eogn9.jpg" alt="图4.与数据平面相关的控制平面" /></p>
+<p><img src="61411417ly1g0exu2b2mqj20m80eogn9.jpg" alt="图4.与数据平面相关的控制平面" /></p>
 
 <p>Envoy（即数据平面）使用由Istio定义的 <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Kubernetes自定义资源定义</a> 进行配置。这意味着对你而言，它只是另一个具有熟悉语法的Kubernetes资源。创建后将由<strong>控制平面</strong>获取，并将其应用于Envoy。</p>
 
@@ -394,7 +394,7 @@ autocomplete('#aa-search-input',
 
 <p>坦率地说，我们的服务对Istio的存在有着尽可能多的了解，就像鱼对水一样，他们会问自己“这到底是什么水？”。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu1l39rj20m809tqd9.jpg" alt="Victoria Dimitrakopoulos" /></p>
+<p><img src="61411417ly1g0exu1l39rj20m809tqd9.jpg" alt="Victoria Dimitrakopoulos" /></p>
 
 <p>这意味着您可以选择一个工作集群，在部署了Istio的组件后，其中的服务将继续工作，并且以相同的方式，您可以删除组件，一切都会很好。可以理解的是，您将失去Istio提供的功能。</p>
 
@@ -463,7 +463,7 @@ autocomplete('#aa-search-input',
 <li><strong>SA反馈服务</strong> ：接收用户关于分析准确性的反馈。</li>
 </ul>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu2q2ppj20m80apmxy.jpg" alt="图6情感分析微服务" /></p>
+<p><img src="61411417ly1g0exu2q2ppj20m80apmxy.jpg" alt="图6情感分析微服务" /></p>
 
 <p>在图6中，除了服务之外，我们还看到Ingress Controller在Kubernetes中将传入的请求路由到适当的服务，Istio使用了一个名为Ingress Gateway的类似概念，将在本文的后续部分中介绍。</p>
 
@@ -506,7 +506,7 @@ sa-web-app-599cf47c7c-s7cvd    2/2       Running   0          12m
 
 <p>视觉呈现在图7中。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu2ti9mj209n0dtwf8.jpg" alt="图7.其中一个Pod中的Envoy代理" /></p>
+<p><img src="61411417ly1g0exu2ti9mj209n0dtwf8.jpg" alt="图7.其中一个Pod中的Envoy代理" /></p>
 
 <p>现在，应用程序启动并运行，我们需要允许传入流量到达我们的应用程序。</p>
 
@@ -571,7 +571,7 @@ gateway.networking.istio.io/http-gateway created
 
 <p>对于我们度过即将到来的应用程序请求 <strong>HTTP网关</strong> 必须被路由到 <code>sa-frontend</code>，<code>sa-web-app</code> 和<code>sa-feedback</code> 服务（出了如图8）。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu2n39aj20m80gk75x.jpg" alt="图8.使用VirtualServices配置的路由" /></p>
+<p><img src="61411417ly1g0exu2n39aj20m80gk75x.jpg" alt="图8.使用VirtualServices配置的路由" /></p>
 
 <p>让我们分解以下路由到SA-Frontend的请求：</p>
 
@@ -627,7 +627,7 @@ virtualservice.networking.istio.io/sa-external-services created
 
 <p><strong>注意</strong>： 当我们应用Istio资源时，Kubernetes API服务器会创建一个由Istio控制平面接收的事件，然后将新配置应用于每个pod的Envoy代理。Ingress Gateway控制器是另一个由控制平面配置的Envoy，如图9所示。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu1t95sj20m80i2jt1.jpg" alt="图9.配置 **Istio\-IngressGateway** 来路由请求" /></p>
+<p><img src="61411417ly1g0exu1t95sj20m80i2jt1.jpg" alt="图9.配置 **Istio\-IngressGateway** 来路由请求" /></p>
 
 <p>现在可以访问Sentiment Analysis应用程序了 <code>http://{EXTERNAL-IP}/</code> 。如果您获得Not Found状态，请不要担心 <em>有时需要配置生效才能更新envoy的缓存</em> 。</p>
 
@@ -645,7 +645,7 @@ virtualservice.networking.istio.io/sa-external-services created
 
 <p>并 <a href="http://localhost:20001/">http://localhost:20001/</a> 使用“admin”（不含引号）为用户和密码打开登录。有很多有用的功能，例如检查Istio组件的配置，根据拦截网络请求和回答收集的信息可视化服务，“谁在调用谁？”，“哪个版本的服务有故障？”等等，花一些时间检验Kiali的功能，然后再转到下一节，用Grafana可视化指标！</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu28njyj20m80c7mye.jpg" alt="图10. Kiali \- 服务可观察性" /></p>
+<p><img src="61411417ly1g0exu28njyj20m80c7mye.jpg" alt="图10. Kiali \- 服务可观察性" /></p>
 
 <h3 id="grafana-度量可视化">Grafana - 度量可视化</h3>
 
@@ -658,7 +658,7 @@ virtualservice.networking.istio.io/sa-external-services created
 
 <p>在左上角单击菜单<strong>Home</strong> 并选择 <strong>Istio Service Dashboard</strong> 并在左上角选择以<strong>sa-web-app</strong>开头的服务，您将看到收集的指标，如下图所示：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu1z8vbj20m80cnabv.jpg" alt="" /></p>
+<p><img src="61411417ly1g0exu1z8vbj20m80cnabv.jpg" alt="" /></p>
 
 <p>我的妈呀，这是一个没有任何数据的视图，管理层永远不会赞同这一点。让我们通过执行以下命令生成一些负载：</p>
 
@@ -677,13 +677,13 @@ virtualservice.networking.istio.io/sa-external-services created
 
 <p>我们需要跟踪，因为我们所拥有的服务越多，就越难找出失败的原因。我们来看下面图片中的简单案例：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu2ht7hj20m804fjrw.jpg" alt="图12.通常随机失败的请求" /></p>
+<p><img src="61411417ly1g0exu2ht7hj20m804fjrw.jpg" alt="图12.通常随机失败的请求" /></p>
 
 <p>请求进入，失败，*原因是什么*？*第一次服务*？*还是第二个*？两者都有例外情况，让我们来看看每个日志。你发现自己这么做了多少次？ 我们的工作更像是软件侦探而不是开发人员。</p>
 
 <p>这是微服务中的一个普遍问题，它使用分布式跟踪系统解决，其中服务将唯一的header相互传递，然后将此信息转发到请求跟踪放在一起的分布式跟踪系统。一个例子如图13所示。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu2k4zsj20rs06uwfz.jpg" alt="图13.用于标识请求范围的TraceId" /></p>
+<p><img src="61411417ly1g0exu2k4zsj20rs06uwfz.jpg" alt="图13.用于标识请求范围的TraceId" /></p>
 
 <p>Istio使用Jaeger Tracer实现OpenTracing API，这是一个独立于供应商的框架。要访问Jaegers UI，请执行以下命令：</p>
 
@@ -695,7 +695,7 @@ virtualservice.networking.istio.io/sa-external-services created
 
 <p>然后在 <a href="http://localhost:16686/">http://localhost:16686</a> 中打开UI，选择 <strong>sa-web-app</strong> 服务， *如果下拉列表中未显示该*服务，<em>则在页面上生成一些活动并点击刷新</em> 。随后单击该按钮 <strong>查找痕迹</strong>， 这显示最近的痕迹，选择任何和所有的痕迹的详细分类将会显示 ，如图14所示。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu1ca17j20rs0bsgnr.jpg" alt="图14. Jaeger \- 请求跟踪" /></p>
+<p><img src="61411417ly1g0exu1ca17j20rs0bsgnr.jpg" alt="图14. Jaeger \- 请求跟踪" /></p>
 
 <p>跟踪显示：</p>
 
@@ -710,7 +710,7 @@ virtualservice.networking.istio.io/sa-external-services created
 
 <p><strong>注意</strong> ：在第4点，我们的应用程序需要获取Istio生成的header，并在下一个请求时将其传递下来，如下图所示。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu1odduj20m8055q3r.jpg" alt="图15.(A)Istio传递头， **(B)服务传递头**" /></p>
+<p><img src="61411417ly1g0exu1odduj20m8055q3r.jpg" alt="" /></p>
 
 <p>Istio做主要的繁重工作，因为它在传入的请求上生成header，在每个sidecar上创建新的span，传递它们，但是如果没有我们的服务传递header，我们将失去请求的完整跟踪。</p>
 
@@ -764,7 +764,7 @@ deployment.extensions/sa-frontend-green created
 
 <p>而作为双方部署在标签 <code>app: sa-frontend</code> 通过虚拟服务路由的请求 <code>sa-external-services</code>  的服务 <code>sa-frontend</code> 会被转发到所有的实例，并将于负载采用循环算法，这将导致在图16中提出的负载均衡问题。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu30v6lj20m80do761.jpg" alt="图16.找不到请求的文件" /></p>
+<p><img src="61411417ly1g0exu30v6lj20m80do761.jpg" alt="图16.找不到请求的文件" /></p>
 
 <p>找不到这些文件，因为它们在应用程序的不同版本中的命名方式不同。让我们验证一下：</p>
 
@@ -787,7 +787,7 @@ $ curl --silent http://$EXTERNAL_IP/ | tr '&quot;' '\n' | grep main
 
 <p>在 <strong>VirtualService</strong> 将请求路由到正确的服务之后，然后使用 <strong>DestinationRules</strong>， 我们可以指定适用于此服务实例的流量的策略，如图17所示。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu2yjsuj20rs09e75i.jpg" alt="图17.使用Istio资源的流量管理" /></p>
+<p><img src="61411417ly1g0exu2yjsuj20rs09e75i.jpg" alt="图17.使用Istio资源的流量管理" /></p>
 
 <p><strong>注意</strong>： 图17以易于理解的方式可视化Istio资源如何影响网络流量。但是，准确地说，决定将请求转发到哪个实例是由CRD配置的Ingress Gateway的Envoy做出的。</p>
 
@@ -854,11 +854,11 @@ sa-logic-buggy-76dff55847-kx8zz   2/2     app=sa-logic,version=v2
 
 <p>当 <code>sa-logic</code> 服务目标pod标记为 <code>app=sa-logic</code>时，任何传入请求将在所有实例之间进行负载均衡，如图18所示。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu199gtj20m80f5wgc.jpg" alt="图18. Round Robin负载均衡" /></p>
+<p><img src="61411417ly1g0exu199gtj20m80f5wgc.jpg" alt="图18. Round Robin负载均衡" /></p>
 
 <p>但我们希望将请求路由到版本为v1的实例，并镜像到版本为v2的实例，如图19所示。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu2f7y4j20m80b8q3y.jpg" alt="图19.路由到v1和镜像到v2" /></p>
+<p><img src="61411417ly1g0exu2f7y4j20m80b8q3y.jpg" alt="图19.路由到v1和镜像到v2" /></p>
 
 <p>这是使用VirtualService与DestinationRule结合实现的，其中目标规则指定到特定子集的子集和VirtualService路由。</p>
 
@@ -935,7 +935,7 @@ virtualservice.networking.istio.io/sa-logic created
 
 <p>检查Grafana中的结果，在那里我们可以看到有错误的版本大约有60％的请求失败，但没有一个失败影响最终用户，因为它们被当前活动的服务响应。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu2vr8gj20m80b0t9z.jpg" alt="图20. sa逻辑服务版本的成功率" /></p>
+<p><img src="61411417ly1g0exu2vr8gj20m80b0t9z.jpg" alt="图20. sa逻辑服务版本的成功率" /></p>
 
 <p>在本节中，我们第一次看到应用于我们服务的envoy的VirtualService，当对此 <code>sa-web-app</code> 提出请求时， <code>sa-logic</code>  通过sidecar Envoy，通过VirtualService配置为路由到子集v1并镜像到服务的子集v2 <code>sa-logic</code> 。</p>
 
@@ -1050,7 +1050,7 @@ virtualservice.networking.istio.io/sa-logic configured
 
 <p>并查看Grafana图表，了解成功率的改善情况（如图21所示）。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0exu1qjtxj20m80b63zk.jpg" alt="图21.使用超时和重试后的改进" /></p>
+<p><img src="61411417ly1g0exu1qjtxj20m80b63zk.jpg" alt="图21.使用超时和重试后的改进" /></p>
 
 <p>在 <code>sa-logic-buggy</code> 通过执行以下命令 进入下一部分delete 和VirtualService 之前 ：</p>
 
@@ -1096,7 +1096,7 @@ virtualservice.networking.istio.io “sa-logic” deleted
                         <ul class="pager blog-pager">
                         
                         <li class="previous">
-                        <a href="http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/" data-toggle="tooltip" data-placement="top" title="Istio知识图谱 v0.1 发布及社区图书孵化">&larr; 更旧</a>
+                        <a href="http://www.servicemesher.com/blog/istio-knowledge-map-v0-1-release/" data-toggle="tooltip" data-placement="top" title="Istio知识图谱 v0.1 发布及社区图书孵化">&larr; 更旧</a>
                         </li>
                          
                         <li class="next">
@@ -1124,7 +1124,7 @@ virtualservice.networking.istio.io “sa-logic” deleted
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/istio-knowledge-map-v0.1-release/"><i class="fa fa-link"></i>Istio知识图谱 v0.1 发布及社区图书孵化</a></li>
+        <li><a href="/blog/istio-knowledge-map-v0-1-release/"><i class="fa fa-link"></i>Istio知识图谱 v0.1 发布及社区图书孵化</a></li>
          
         <li><a href="/blog/istio-kubernetes-service-mesh/"><i class="fa fa-link"></i>Istio——企业级微服务解决方案</a></li>
          
@@ -1191,7 +1191,7 @@ virtualservice.networking.istio.io “sa-logic” deleted
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1480,6 +1480,9 @@ virtualservice.networking.istio.io “sa-logic” deleted
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1589,7 +1592,7 @@ virtualservice.networking.istio.io “sa-logic” deleted
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1609,7 +1612,7 @@ virtualservice.networking.istio.io “sa-logic” deleted
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1622,7 +1625,7 @@ virtualservice.networking.istio.io “sa-logic” deleted
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1635,7 +1638,7 @@ virtualservice.networking.istio.io “sa-logic” deleted
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1657,7 +1660,7 @@ virtualservice.networking.istio.io “sa-logic” deleted
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

@@ -55,7 +55,7 @@
   <meta property="og:title" content="使用 Envoy 搭建 Service Mesh" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/service-mesh-with-envoy-101//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="使用 Envoy 搭建 Service Mesh logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="使用 Envoy 搭建 Service Mesh logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="使用 Envoy 搭建 Service Mesh logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="使用 Envoy 搭建 Service Mesh logo" class="visible-xs visible-sm">
                     <span class="sr-only">使用 Envoy 搭建 Service Mesh - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -313,11 +313,11 @@ autocomplete('#aa-search-input',
 
 <p>Service Mesh 可以比作是微服务结构中的通信层。每个服务之间来往的所有请求都将通过网格。每个服务都有自己的代理服务，所有这些代理服务共同组成了“服务网格”(Service Mesh)。所以假如一个服务想要和另一个服务通信，他不是直接和这个目标服务通信的，他会先把请求路由给自己本地的代理，再由代理把请求路由到目标服务。从本质上讲，每个服务实例都只知道自己本地的代理，并不知道外面世界是什么样的。</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/7267315bgy1fx9svk4k4kj20dd059wef.jpg" alt="" /></p>
+<p><img src="7267315bgy1fx9svk4k4kj20dd059wef.jpg" alt="" /></p>
 
 <p>当你在谈论 “Service Mesh” 的时候，你肯定也会听到 “Sidecar” 这个词，“SideCar” 就是用于每个服务实例中的代理，每个 “SideCar” 负责一个服务中的一个实例。</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/7267315bgy1fx9td4xqnjj20hd0csthg.jpg" alt="" /></p>
+<p><img src="7267315bgy1fx9td4xqnjj20hd0csthg.jpg" alt="" /></p>
 
 <h3 id="service-mesh-能带来什么">Service Mesh 能带来什么?</h3>
 
@@ -338,7 +338,7 @@ autocomplete('#aa-search-input',
 
 <p>好，让我们来搭建一个由3个服务组成的 “Service Mesh”。我们要搭建的“Service Mesh”的结构如下所示，每个服务旁都设置有一个代理。</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/7267315bgy1fxaaka4lvdj20o70a63ys.jpg" alt="" /></p>
+<p><img src="7267315bgy1fxaaka4lvdj20o70a63ys.jpg" alt="" /></p>
 
 <h3 id="front-envoy">Front Envoy</h3>
 
@@ -715,7 +715,7 @@ services:
 
 <p>本节我们可以看到，如果我们把前面的服务配置都部署在 Kubernetes 上，其整个结构如下所示：</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/7267315bgy1fxde1rkcdwj20he08ymxb.jpg" alt="" /></p>
+<p><img src="7267315bgy1fxde1rkcdwj20he08ymxb.jpg" alt="" /></p>
 
 <p>所以需要修改的配置有：</p>
 
@@ -902,7 +902,7 @@ spec:
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1191,6 +1191,9 @@ spec:
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1300,7 +1303,7 @@ spec:
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1320,7 +1323,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1333,7 +1336,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1346,7 +1349,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1368,7 +1371,7 @@ spec:
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

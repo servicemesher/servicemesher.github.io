@@ -55,7 +55,7 @@
   <meta property="og:title" content="Circonus Istio Mixer适配器" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/the-circonus-istio-mixer-adapter//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Circonus Istio Mixer适配器 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Circonus Istio Mixer适配器 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Circonus Istio Mixer适配器 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Circonus Istio Mixer适配器 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Circonus Istio Mixer适配器 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -319,7 +319,7 @@ autocomplete('#aa-search-input',
 
 <p>以下是一个关于 Mixer 如何与这些外部后端服务交互的架构图：</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1ft2kovaczfj319u0zftc9.jpg" alt="" /></p>
+<p><img src="006tNc79gy1ft2kovaczfj319u0zftc9.jpg" alt="" /></p>
 
 <p>Istio 还包含了 StatsD 和 Prometheus 的 metrics 适配器。然而，Circonus 适配器与其他适配器又存在一些区别。首先，Circonus 适配器允许我们将请求持续时间作为一个直方图来收集，而不仅仅是记录固定的百分位数。这使我们能够计算任何时间窗上的任意分位数，并对所收集的直方图进行统计分析。第二，数据可以基本上永久保留。第三，telemetry 数据被保存在持久的环境中，而独立于 Kubernetes 管理的任何短暂资源之外。</p>
 
@@ -440,7 +440,7 @@ func (b logToEnvLogger) Write(msg []byte) (int, error) {
 
 <p>尽管如此，让我们看看在执行过程中是什么样子的。我安装了 Google Kubernetes Engine，使用 Circonus 加载了 Istio 的开发版本，并部署了于 Istio 一起提供的 BookInfo 示例应用程序。下图是从请求到应用程序的请求持续时间分布的热图。你会注意到高亮显示的时间片段的直方图覆盖。我添加了一个覆盖，添加了一个中位数、第九十和百分位的响应时间；在任意的分位数和时间窗上生成这些数据是有可能的，因为我们将原始的数据存储为对数线性直方图。注意，中位数和第九十百分位数是相对固定的，而第九十五百分位数倾向于在几百毫秒的范围内波动。这种类型的深度可观察性可以用来量化 Istio 本身在版本上的表现，因为 Istio 的开发正在快速迭代。或者，更可能的是，它将用来标识部署的应用程序中的问题。如果你的百分位数不符合你的内部服务水平目标 (SLO) ，这是一个很好的标识，说明你有事情需要做了。毕竟，如果有20个用户中有一个在你的应用程序上有低于标准的体验，难道你不想知道吗？</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1ft40ca0k7qj30vp0igq6c.jpg" alt="" /></p>
+<p><img src="006tKfTcly1ft40ca0k7qj30vp0igq6c.jpg" alt="" /></p>
 
 <p>这看起来很有趣，所以让我们来安排如何让这些东西运行起来。首先我们需要一个 Kubernetes 集群。<a href="https://cloud.google.com/kubernetes-engine/docs/quickstart">Google Kubernetes Engine</a> 提供了一种快速获取集群的简单方法。</p>
 
@@ -591,7 +591,7 @@ name: mixer
          
         <li><a href="/blog/distributed-tracing-istio-and-your-applications/"><i class="fa fa-link"></i>使用Istio分布式跟踪应用程序</a></li>
          
-        <li><a href="/blog/ab-testing-on-kubernetes-with-istio-0.8/"><i class="fa fa-link"></i>使用Istio 0.8对Kubernetes进行A/B测试</a></li>
+        <li><a href="/blog/ab-testing-on-kubernetes-with-istio-0-8/"><i class="fa fa-link"></i>使用Istio 0.8对Kubernetes进行A/B测试</a></li>
          
      </ul>
     </div>
@@ -650,7 +650,7 @@ name: mixer
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -939,6 +939,9 @@ name: mixer
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1048,7 +1051,7 @@ name: mixer
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1068,7 +1071,7 @@ name: mixer
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1081,7 +1084,7 @@ name: mixer
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1094,7 +1097,7 @@ name: mixer
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1116,7 +1119,7 @@ name: mixer
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

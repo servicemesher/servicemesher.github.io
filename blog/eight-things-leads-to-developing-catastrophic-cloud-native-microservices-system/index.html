@@ -55,7 +55,7 @@
   <meta property="og:title" content="导致云原生微服务系统开发灾难性的8件事" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="导致云原生微服务系统开发灾难性的8件事 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="导致云原生微服务系统开发灾难性的8件事 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="导致云原生微服务系统开发灾难性的8件事 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="导致云原生微服务系统开发灾难性的8件事 logo" class="visible-xs visible-sm">
                     <span class="sr-only">导致云原生微服务系统开发灾难性的8件事 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -319,7 +319,7 @@ autocomplete('#aa-search-input',
 
 <p>这是一种工作保障策略，它让参与项目的每个人在开发和测试中无休止地循环，而无法将服务投入生产环境！首先，一切都从简单开始，逐渐发现有越来越多的功能、业务逻辑被添加到微服务中，最后甚至不得不重新命名整个该死的东西。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1g23ajtc2kej305k057glt.jpg" alt="1" /></p>
+<p><img src="006tNc79ly1g23ajtc2kej305k057glt.jpg" alt="1" /></p>
 
 <p><u>临床症状和副作用</u></p>
 
@@ -328,7 +328,7 @@ autocomplete('#aa-search-input',
 <li>到处都是重复的微服务/代码。你可以找到一些重复的代码或微服务，它们被复制和部署到其他域中。</li>
 </ul>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1g23ajj6lw8j305k03swei.jpg" alt="2" /></p>
+<p><img src="006tNc79ly1g23ajj6lw8j305k03swei.jpg" alt="2" /></p>
 
 <p>如果你陷入了无休止的实现和测试地狱，就退一步看看如何分隔域。您是否接受（译注：此处原文有字母丢失）了一个来自其他领域的上下文，或者将不同的概念混合到一个领域中？也许回到设计阶段考虑边界是值得的。为了避免到处重复，请确保有适当的文档，比如在域之间使用OpenAPI标准的文档。</p>
 
@@ -336,7 +336,7 @@ autocomplete('#aa-search-input',
 
 <p>想吃意面的话这是一个不错的选择。在意面上放些肉丸子让它更美味？在服务中混合一些有状态的进程将会给您带来更多!</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1g24bk7332yj308w07kmy0.jpg" alt="3" />
+<p><img src="006tNc79ly1g24bk7332yj308w07kmy0.jpg" alt="3" />
 混合</p>
 
 <ul>
@@ -367,7 +367,7 @@ autocomplete('#aa-search-input',
 <li>一旦双方建立了契约，就需要特别小心版本的更新。</li>
 </ul>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g25q0lfgymj308w07dt9b.jpg" alt="3" /></p>
+<p><img src="006tNc79ly1g25q0lfgymj308w07dt9b.jpg" alt="3" /></p>
 
 <p>部署周期因系统而异，但是与更敏捷、更动态的云原生应用相比，棕色地带的应用（译注：作者本意应该是比喻新旧代码或功能耦合的有污染的应用）生命周期更长。为了更快，请始终考虑在你的棕色/绿色地带的应用程序之间设置一个屏蔽保护。因此，它适应更少的变化，并帮助绿色领域继续进行敏捷开发。在你的核心域微服务中，请避免添加任何依赖于外部消费者或特定于外部消费者的内容，因为这可能导致过多的自定义，从而破坏了确定的上下文边界。确保你有其他面向模块的公共库或外部系统来进行定制，并对内部业务模型隐藏复杂性。</p>
 
@@ -377,7 +377,7 @@ autocomplete('#aa-search-input',
 
 <p><u>临床症状和副作用</u></p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1g26lj2v5nsj308w06edgx.jpg" alt="4" /></p>
+<p><img src="006tNc79ly1g26lj2v5nsj308w06edgx.jpg" alt="4" /></p>
 
 <ul>
 <li>没有集中控制，所有重试、重路由、版本控制和部署策略都存储在每个独立的实例中。</li>
@@ -401,7 +401,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="6-乱序的事件">6. 乱序的事件</h2>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1g26n3fd6mvj308w07omxp.jpg" alt="6" /></p>
+<p><img src="006tNc79ly1g26n3fd6mvj308w07omxp.jpg" alt="6" /></p>
 
 <p>用事件来轰炸系统，把任何事件都通知到每个角落，这会让你的系统超级的反抗！顺便说一下，为什么不把所有的东西都序列化并存储所有的事件呢？为了更好的可追踪性！</p>
 
@@ -428,7 +428,7 @@ autocomplete('#aa-search-input',
 <li>事件到处更新状态。</li>
 </ul>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g26qyic03cj308w03saa7.jpg" alt="7" /></p>
+<p><img src="006tNc79ly1g26qyic03cj308w03saa7.jpg" alt="7" /></p>
 
 <p>当您拥有独立的数据源时，就有创建数据孤岛的风险，而且由于微服务的分布式特性和更复杂的数据存储场景，管理数据一致性变得更加困难。你可以开始研究如何使用许多现有的解决方案来捕获数据变更，比如在进程中发生的流事件变更，或者从主存储中监听更改。</p>
 
@@ -550,7 +550,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -839,6 +839,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -948,7 +951,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -968,7 +971,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -981,7 +984,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -994,7 +997,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1016,7 +1019,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

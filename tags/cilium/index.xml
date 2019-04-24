@@ -31,10 +31,10 @@
     
     <item>
       <title>Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等</title>
-      <link>http://www.servicemesher.com/blog/cilium1.2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</link>
+      <link>http://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</link>
       <pubDate>Mon, 27 Aug 2018 19:52:29 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/cilium1.2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</guid>
+      <guid>http://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</guid>
       <description>我们很高兴地宣布推出Cilium 1.2。该版本引入了几个新功能实现了Cilium用户和社区成员最迫切想要的功能。其中最吸引人的功能之一是引入</description>
     </item>
     
@@ -45,6 +45,15 @@
       
       <guid>http://www.servicemesher.com/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/</guid>
       <description>8月1日Istio 1.0 发布，Cilium社区感谢所有Istio贡献者为此付出的巨大努力。我们很幸运能够参与社区活动，为Istio做出贡献，并帮</description>
+    </item>
+    
+    <item>
+      <title>探讨Service Mesh中一种更高效的代理模式</title>
+      <link>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</link>
+      <pubDate>Sun, 01 Jul 2018 12:33:23 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</guid>
+      <description>背景和想法 Service Mesh 提供了微服务化开发的新思路，核心思想是构建一个代理转发网络并结合控制和转发分离的做法来对成千上万个微服务间做流量、策略、安全等</description>
     </item>
     
   </channel>

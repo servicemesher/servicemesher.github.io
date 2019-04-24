@@ -55,7 +55,7 @@
   <meta property="og:title" content="API管理和服务网格——为什么说服务网格无法替代API管理" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/api-management-and-service-mesh//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="API管理和服务网格——为什么说服务网格无法替代API管理 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="API管理和服务网格——为什么说服务网格无法替代API管理 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="API管理和服务网格——为什么说服务网格无法替代API管理 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="API管理和服务网格——为什么说服务网格无法替代API管理 logo" class="visible-xs visible-sm">
                     <span class="sr-only">API管理和服务网格——为什么说服务网格无法替代API管理 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -323,7 +323,7 @@ autocomplete('#aa-search-input',
 
 <p>此外，外部开发者可以很容易地发现我提供的API，并使用他们的信用卡以自服务的方式注册订阅计划，而这一切，对我的API代码来说应该是透明的。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fvpbzdautwj30m80cp412.jpg" alt="API Management Platform" /></p>
+<p><img src="006tNc79gy1fvpbzdautwj30m80cp412.jpg" alt="API Management Platform" /></p>
 
 <p>分析过这些需求之后，我们可以把它们归为以下几类：</p>
 
@@ -337,7 +337,7 @@ autocomplete('#aa-search-input',
 
 <p>API管理方案是如何做到这些的？这要得益于一个叫做API Gateway的组件。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fvpc2rrv5xj30lq097t90.jpg" alt="API Gateway" /></p>
+<p><img src="006tNc79gy1fvpc2rrv5xj30lq097t90.jpg" alt="API Gateway" /></p>
 
 <p>这是一个位于调用流程中间环节的组件，所有客户端请求都会经过它，它能够保护你的API端点，并通过与其他API Management组件通信来决定是否让一个用户访问的你的API。</p>
 
@@ -362,7 +362,7 @@ autocomplete('#aa-search-input',
 
 <p>API的背后是什么？多个互相通信的Service，它们之间的交互组成了一个完整的API，每个Service可能由不同的编程语言实现，并且由同一个庞大组织内的不同地区的不同团队进行维护和操作。这听起来耳熟吗？对，微服务！</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fvpc2uooboj30lo0f1wek.jpg" alt="Microservice or connected dots" /></p>
+<p><img src="006tNc79gy1fvpc2uooboj30lo0f1wek.jpg" alt="Microservice or connected dots" /></p>
 
 <p>一个完整的API，由多个Service共同完成，这听起来很棒，但是随着越来越多的团队为新特性或新需求发布新的Service，日渐增长的架构运维复杂度问题就会暴露出来：</p>
 
@@ -389,7 +389,7 @@ autocomplete('#aa-search-input',
 
 <p>我们来看一下Istio是如何工作的：</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fvpc361862j30dc0ao74r.jpg" alt="Istio Components diagram" /></p>
+<p><img src="006tNc79gy1fvpc361862j30dc0ao74r.jpg" alt="Istio Components diagram" /></p>
 
 <p>Istio使用<code>sidecar 容器</code>模式，通过在同一个Pod中运行一个新增的容器实例来扩展核心容器的功能。这个核心容器就是我们的Application，而Sidecar容器，是Istio基于Envoy的代理。</p>
 
@@ -403,7 +403,7 @@ autocomplete('#aa-search-input',
 
 <p>这两个方案有一点共同之处：</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fvpc37snftj30xc0lwwhf.jpg" alt="common thing" /></p>
+<p><img src="006tNc79gy1fvpc37snftj30xc0lwwhf.jpg" alt="common thing" /></p>
 
 <p>但是记住这一点很重要，它们的流量限制分别用来处理不同的事务：业务规则和基础设施之间的限制。</p>
 
@@ -521,7 +521,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -810,6 +810,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -919,7 +922,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -939,7 +942,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -952,7 +955,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -965,7 +968,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -987,7 +990,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

@@ -55,7 +55,7 @@
   <meta property="og:title" content="通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/using-istio-mixer-adapter-to-check-jwt//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁 logo" class="visible-xs visible-sm">
                     <span class="sr-only">通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -309,7 +309,7 @@ autocomplete('#aa-search-input',
 
 <p>从下图的架构模式中，我们可以看到所有的请求在进入网格时，都会通过istio-ingressgateway这个边缘节点，从而涌现出了一个非常显而易见的想法，即如果我们在所有的请求进入服务网格边缘时，进行特定的检查与策略，那么我们就能将某些不符合某种规则的请求拒绝的网格之外，比如那些携带被主动封禁JWT的HTTP请求。</p>
 
-<p><img src="http://ww1.sinaimg.cn/mw690/007pL7qRgy1g07dm5m93jj30wa0k2wg9.jpg" alt="" /></p>
+<p><img src="007pL7qRgy1g07dm5m93jj30wa0k2wg9.jpg" alt="" /></p>
 
 <h2 id="了解istio-mixer">了解Istio Mixer</h2>
 
@@ -367,7 +367,7 @@ spec:
 
 <p>在我们的场景中，假设每个请求所携带的JWT的Payload中有一个email属性来作为用户的唯一标识，当业务领域中的账户服务决定封禁某个用户时，他将会通知Adapter-Service，后者将会把这个信息存于某个数据持久服务中，比如Redis服务。当JWT-Adapter服务向Adapter-Service服务询问这个请求是否合法时，Adapter-Service将会通过Payload中Email属性在Redis中查询，如果查询到对应的数据，则代表这个用户被封禁，即这个请求不予通过，反之亦然。</p>
 
-<p><img src="http://ww1.sinaimg.cn/mw690/007pL7qRgy1g07jnrkcu5j30qm0awgm5.jpg" alt="" /></p>
+<p><img src="007pL7qRgy1g07jnrkcu5j30qm0awgm5.jpg" alt="" /></p>
 
 <h2 id="如何自定义编写一个adapter">如何自定义编写一个Adapter？</h2>
 
@@ -489,7 +489,7 @@ spec:
 
 <p><a href="https://github.com/Yisaer">Github</a> <a href="https://yisaer.github.io/atom.xml">博客RSS订阅</a></p>
 
-<p><img src="http://ww1.sinaimg.cn/mw690/007pL7qRgy1g07ln0lyk5j307e07974r.jpg" alt="" /></p>
+<p><img src="007pL7qRgy1g07ln0lyk5j307e07974r.jpg" alt="" /></p>
 
                         </div>
                         
@@ -503,7 +503,7 @@ spec:
                         </li>
                          
                         <li class="next">
-                        <a href="http://www.servicemesher.com/blog/cilium-1.4/" data-toggle="tooltip" data-placement="top" title="Cilium 1.4 发布了，新功能一览">更新 &rarr;</a>
+                        <a href="http://www.servicemesher.com/blog/cilium-1-4/" data-toggle="tooltip" data-placement="top" title="Cilium 1.4 发布了，新功能一览">更新 &rarr;</a>
                         </li>
                         
                         </ul>
@@ -594,7 +594,7 @@ spec:
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -883,6 +883,9 @@ spec:
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -992,7 +995,7 @@ spec:
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1012,7 +1015,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1025,7 +1028,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1038,7 +1041,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1060,7 +1063,7 @@ spec:
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

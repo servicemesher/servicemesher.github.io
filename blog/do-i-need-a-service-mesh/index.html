@@ -55,7 +55,7 @@
   <meta property="og:title" content="你真的需要服务网格吗？" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/do-i-need-a-service-mesh//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="你真的需要服务网格吗？ logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="你真的需要服务网格吗？ logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="你真的需要服务网格吗？ logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="你真的需要服务网格吗？ logo" class="visible-xs visible-sm">
                     <span class="sr-only">你真的需要服务网格吗？ - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -321,7 +321,9 @@ autocomplete('#aa-search-input',
 
 <p>这些功能对于简单和易于理解的应用程序来说已经足够了， <a href="https://www.docker.com/solutions/MTA">遗留的应用已经被容器化</a>。 它们允许你满怀信心地部署应用，根据需要扩容，避免意外故障，并实现简单的访问控制。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g1byouk0a6j30sg0da3zi.jpg" alt="1" />① Kubernetes 提供了带有服务发现和负载均衡的4层网络。② NGINX入口控制器负责把外部连接负载均衡到运行在Kubernetes集群的服务。</p>
+<p><img src="006tKfTcly1g1byouk0a6j30sg0da3zi.jpg" alt="1" /></p>
+
+<p>① Kubernetes 提供了带有服务发现和负载均衡的4层网络。② NGINX入口控制器负责把外部连接负载均衡到运行在Kubernetes集群的服务。</p>
 
 <p>Kubernetes在它的API中提供了一个入口（Ingress）资源对象。 这一对象定义了如何选择可以被集群外部访问的服务，一个入口控制器实现了那些策略。 NGINX作为大多数实现中负载均衡的选择，我们为开源的NGINX和NINGX Plus都提供了<a href="https://www.nginx.com/products/nginx/kubernetes-ingress-controller/">高性能、可支持的、生成环境的实现</a>。</p>
 
@@ -342,7 +344,9 @@ autocomplete('#aa-search-input',
 <li>为实现高级的负载均衡策略、蓝绿部署、金丝雀发布和熔断器，你可以选择性的部署代理和负载均衡器。</li>
 </ul>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g1d0pnxtybj30sg0brdgp.jpg" alt="2" />独立的微服务可以使用<strong>Prometheus导出器， 分布式追踪器， 双向TLS和SPIEE进行扩展</strong>。代理可以被部署为独立的服务如①，或者像②一样提供中央路由网格。</p>
+<p><img src="006tKfTcly1g1d0pnxtybj30sg0brdgp.jpg" alt="2" /></p>
+
+<p>独立的微服务可以使用<strong>Prometheus导出器， 分布式追踪器， 双向TLS和SPIEE进行扩展</strong>。代理可以被部署为独立的服务如①，或者像②一样提供中央路由网格。</p>
 
 <p>其中一些技术需要对每个服务做一些小的修改——例如，将证书注入到容器中，或者为Prometheus和OpenTracing添加模块。NGINX Plus可以为关键服务提供专用的负载均衡，通过服务发现和API驱动的配置来编排更改。NGINX微服务参考架构中的<a href="https://www.nginx.com/blog/microservices- Reference - Architecture - NGINX - Router - mes-model/">Router Mesh</a>模式实现了一个集群范围的流量控制点.</p>
 
@@ -358,7 +362,7 @@ autocomplete('#aa-search-input',
 
 <p>服务网格技术仍然是一项新技术，只有很少的生产环境的部署。早期的部署建立在复杂的、自主开发的解决方案之上，具体到每个采用者的需求。一种更为普遍的方法正在出现，称为“sidecar代理”模式。该方法在每个服务实例边部署一个7层代理；这些代理捕获所有的网络流量，并以一致的方式提供额外的功能——双向TLS、追踪、度量、流量控制等。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g1d19j3xxqj30sg0e0wg0.jpg" alt="3" /></p>
+<p><img src="006tKfTcly1g1d19j3xxqj30sg0e0wg0.jpg" alt="3" /></p>
 
 <p>在服务网格中，每个容器都包含一个嵌入式代理，它拦截所有的进出流量。代理代替服务处理加密、监视和跟踪，并实现高级的流量管理。</p>
 
@@ -368,7 +372,9 @@ autocomplete('#aa-search-input',
 
 <p>2019年初，仅在急需短期方案，并且其它解决方案的局限性导致需求无法被满足的情况下，才需要考虑采用仍属早期阶段的服务网格技术。当前服务网格实现的不成熟和快速变化使得部署它们的成本和风险很高。随着技术的成熟，成本和风险将会降低，采用服务网格的时间点将会越来越近。</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g1d1iior8kj30sg0fxjs0.jpg" alt="4" />随着应用程序复杂性的增加，服务网格将成为实现服务到服务的能力的现实选择。</p>
+<p><img src="006tKfTcly1g1d1iior8kj30sg0fxjs0.jpg" alt="4" /></p>
+
+<p>随着应用程序复杂性的增加，服务网格将成为实现服务到服务的能力的现实选择。</p>
 
 <p>但是，不要让缺乏稳定成熟的服务网格延误你今天正在考虑的任何计划。正如我们所看到的，Kubernetes和其他编排平台提供了丰富的功能，使得我们可以遵循熟悉的、易于理解的方式来实现复杂的功能。现在继续沿着这些路径前进，使用经过验证的解决方案，如入口路由器和内部负载均衡器。当你到达临界点时，将会知道是时候考虑使用服务网格去实现它们了。</p>
 
@@ -414,7 +420,7 @@ autocomplete('#aa-search-input',
          
         <li><a href="/blog/service-mesh-summary-2018/"><i class="fa fa-link"></i>Service Mesh的2018年度总结</a></li>
          
-        <li><a href="/blog/cilium-1.4/"><i class="fa fa-link"></i>Cilium 1.4 发布了，新功能一览</a></li>
+        <li><a href="/blog/cilium-1-4/"><i class="fa fa-link"></i>Cilium 1.4 发布了，新功能一览</a></li>
          
         <li><a href="/blog/using-istio-mixer-adapter-to-check-jwt/"><i class="fa fa-link"></i>通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁</a></li>
          
@@ -475,7 +481,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -764,6 +770,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -873,7 +882,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -893,7 +902,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -906,7 +915,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -919,7 +928,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -941,7 +950,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

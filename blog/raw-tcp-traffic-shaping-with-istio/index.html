@@ -55,7 +55,7 @@
   <meta property="og:title" content="Istio1.1.0下的TCP流量控制" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/raw-tcp-traffic-shaping-with-istio//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio1.1.0下的TCP流量控制 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio1.1.0下的TCP流量控制 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Istio1.1.0下的TCP流量控制 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Istio1.1.0下的TCP流量控制 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Istio1.1.0下的TCP流量控制 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -307,7 +307,7 @@ autocomplete('#aa-search-input',
 
 <p><a href="https://istio.io/">Istio</a>通过<a href="https://istio.io/docs/reference/config/istio.networking.v1alpha3/#VirtualService">虚拟服务</a>, <a href="https://istio.io/docs/reference/config/istio.networking.v1alpha3/#DestinationRule">目标规则</a>, <a href="https://istio.io/docs/reference/config/istio.networking.v1alpha3/#Gateway">Gateway</a>等概念提供了复杂的路由机制。Istio 1.0通过<a href="https://istio.io/docs/tasks/traffic-management/traffic-shifting/#apply-weight-based-routing">加权路由定义</a>启用了HTTP流量转移。我提交的<a href="https://github.com/envoyproxy/envoy/pull/4430">Envoy</a> 和<a href="https://github.com/istio/istio/pull/9112">Istio</a>的pull request为TCP/TLS服务提供了类似的特性。这一特性已经在Envoy <a href="https://www.envoyproxy.io/docs/envoy/latest/intro/version_history#oct-4-2018">1.8.0</a>中发布了。Istio中的这一特性也会在即将发布的<a href="https://github.com/istio/istio/releases/">1.1.0</a>版本中提供使用。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw3hlzj8krj304o06m3ya.jpg" alt="Istio" /></p>
+<p><img src="006tNbRwly1fw3hlzj8krj304o06m3ya.jpg" alt="Istio" /></p>
 
 <p>在本文中，我们将用<a href="https://golang.org/">Go</a>编写的一个简单的TCP Echo服务，用<a href="https://www.docker.com/">Docker</a>将其容器化并部署到<a href="https://kubernetes.io/">Kubernetes</a>上，并通过练习Istio的加权TCP路由特性来理解其在生产服务中的行为。</p>
 
@@ -315,7 +315,7 @@ autocomplete('#aa-search-input',
 
 <p>在本文中，我们将创建一个简单的监听连接的TCP服务，并在客户端的请求数据加上一个简单的前缀，将其作为响应返回。图示如下：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwgz3b6bpoj30r607qgm6.jpg" alt="TCP Client - Server Architecture" /></p>
+<p><img src="006tNbRwly1fwgz3b6bpoj30r607qgm6.jpg" alt="TCP Client - Server Architecture" /></p>
 
 <p>让我们看一下TCP Echo服务端的Go代码：</p>
 
@@ -652,7 +652,7 @@ two Sat Oct 20 04:38:27 UTC 2018
 
 <p>下图能让你很好地了解这个示范的情景：</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwhdkuu6sgj30zg0ikmze.jpg" alt="Architecture" /></p>
+<p><img src="006tNbRwly1fwhdkuu6sgj30zg0ikmze.jpg" alt="Architecture" /></p>
 
 <h2 id="清理">清理</h2>
 
@@ -772,7 +772,7 @@ Machine deleted.
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1061,6 +1061,9 @@ Machine deleted.
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1170,7 +1173,7 @@ Machine deleted.
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1190,7 +1193,7 @@ Machine deleted.
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1203,7 +1206,7 @@ Machine deleted.
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1216,7 +1219,7 @@ Machine deleted.
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1238,7 +1241,7 @@ Machine deleted.
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

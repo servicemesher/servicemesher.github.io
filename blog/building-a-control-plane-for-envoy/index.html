@@ -55,7 +55,7 @@
   <meta property="og:title" content="为 Envoy 赋能——如何基于 Envoy 构建一个多用途控制平面" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/building-a-control-plane-for-envoy//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="为 Envoy 赋能——如何基于 Envoy 构建一个多用途控制平面 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="为 Envoy 赋能——如何基于 Envoy 构建一个多用途控制平面 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="为 Envoy 赋能——如何基于 Envoy 构建一个多用途控制平面 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="为 Envoy 赋能——如何基于 Envoy 构建一个多用途控制平面 logo" class="visible-xs visible-sm">
                     <span class="sr-only">为 Envoy 赋能——如何基于 Envoy 构建一个多用途控制平面 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -333,7 +333,7 @@ autocomplete('#aa-search-input',
 
 <p>在响应返回的过程中，响应还能够从集群发回之前再次通过过滤器链。同样，根据需要，这些过滤器可能与外部服务器交互，也可能不与外部服务器交互。</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/006gLaqLly1g109jfa12cg30q10ia3zz.gif" alt="filter chain" /></p>
+<p><img src="006gLaqLly1g109jfa12cg30q10ia3zz.gif" alt="filter chain" /></p>
 
 <p>设置过滤器链和配置不同的过滤器及其外部服务器是控制平面的工作之一。使用 xDS API 将此配置信息发送给 Envoy。控制平面的职责是确保 Envoy 总是得到更新，并将任何需要更改其配置的情况通知 Envoy。由于在分布式系统中<a href="https://queue.acm.org/detail.cfm?id=2745385">“没有现在”</a>，Envoy 的策略是遵循最终一致性的配置模型来处理配置更改。</p>
 
@@ -527,7 +527,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -816,6 +816,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -925,7 +928,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -945,7 +948,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -958,7 +961,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -971,7 +974,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -993,7 +996,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

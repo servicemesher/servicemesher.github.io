@@ -55,7 +55,7 @@
   <meta property="og:title" content="Istio的GitOps—像代码一样管理Istio配置" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/gitops-for-istio-manage-istio-config-like-code//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio的GitOps—像代码一样管理Istio配置 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio的GitOps—像代码一样管理Istio配置 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Istio的GitOps—像代码一样管理Istio配置 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Istio的GitOps—像代码一样管理Istio配置 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Istio的GitOps—像代码一样管理Istio配置 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -322,7 +322,7 @@ autocomplete('#aa-search-input',
 
 <p>通过使用 Git 这样的声明式工具可以对整套配置文件做版本控制。通过将 Git 作为唯一的配置来源，可以很方便的复制整套基础架构，从而将系统的平均恢复时间从几小时缩短到几分钟。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fruc9ao41vj317o0oqq80.jpg" alt="" /></p>
+<p><img src="00704eQkgy1fruc9ao41vj317o0oqq80.jpg" alt="" /></p>
 
 <h3 id="gitops-赋能开发人员拥抱运维">GitOps 赋能开发人员拥抱运维</h3>
 
@@ -344,11 +344,11 @@ autocomplete('#aa-search-input',
 
 <p>通过 operator 模式，集群将始终与 Git 中签入的内容保持同步。Weave Flux 是开源的，它是使用 Istio 演示下面的金丝雀部署的基础，您可以使用 operator 管理集群中的更改。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fruc9qogakj312t0ls41d.jpg" alt="" /></p>
+<p><img src="00704eQkgy1fruc9qogakj312t0ls41d.jpg" alt="" /></p>
 
 <p>无论是开发流程还是生产流程，还是从预发到合并到生产，operator 都会将更改 pull 到集群中，即使是有多个更改也能以原子的方式部署。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fruca1y7xqj312p0jmn09.jpg" alt="" /></p>
+<p><img src="00704eQkgy1fruca1y7xqj312p0jmn09.jpg" alt="" /></p>
 
 <h3 id="istio-的-gitops-工作流程">Istio 的 GitOps 工作流程</h3>
 
@@ -356,7 +356,7 @@ autocomplete('#aa-search-input',
 
 <p>Istio 是一年前发布的服务网格。它是一个专用的基础设施层，用于为微服务架构中的所有服务间交互提供服务。Istio 中的所有操作都是通过声明式配置文件驱动的。也就是说像 Istio 这样的服务网格可以让开发人员在 Git 中像管理代码一样完全的管理服务行为。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frucacq5nij317u0oo46y.jpg" alt="" /></p>
+<p><img src="00704eQkgy1frucacq5nij317u0oo46y.jpg" alt="" /></p>
 
 <p>借助 Git 工作流程，开发人员可以对 Istio 中的任何内容进行建模，包括服务行为及其交互，如超时、断路器、流量路由、负载均衡及 A/B 测试和金丝雀发布等。</p>
 
@@ -373,7 +373,7 @@ autocomplete('#aa-search-input',
 
 <p>因为所有这些领域都可以跨越组织内的不同团队，所以这使得在 Istio 上管理应用程序尤其具有挑战性。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frucalfge7j317u0oq7aq.jpg" alt="" /></p>
+<p><img src="00704eQkgy1frucalfge7j317u0oq7aq.jpg" alt="" /></p>
 
 <p>这些配置驱动的很多设置是跨团队的。例如，有的团队想用 Zipkin 进行跟踪，而另一个团队可能想用 Jaeger。这些决策可以针对某一项服务进行，也可以跨服务进行。当决策跨越团队时，审批工作流程将变得更加复杂，并不总是原子性的。金丝雀发布不是原子的一次性事情。</p>
 
@@ -385,7 +385,7 @@ autocomplete('#aa-search-input',
 
 <p>但通过使用 GitOps 工作流程，您可以通过 Git 控制您的金丝雀，而不是设置两个独立的服务器。当出现问题时，可以回滚到旧版本，并且可以在金丝雀部署分支上进行迭代，并继续发布，直到满足预期为止。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1frucatn3n3j312q0lw102.jpg" alt="" /></p>
+<p><img src="00704eQkgy1frucatn3n3j312q0lw102.jpg" alt="" /></p>
 
 <h4 id="在-weave-cloud-中-git-控制的金丝雀发布具有完全可观察性">在 Weave Cloud 中，Git 控制的金丝雀发布具有完全可观察性</h4>
 
@@ -409,7 +409,7 @@ autocomplete('#aa-search-input',
                         </li>
                          
                         <li class="next">
-                        <a href="http://www.servicemesher.com/blog/istio-0.8-release-note/" data-toggle="tooltip" data-placement="top" title="Istio 0.8发布了！">更新 &rarr;</a>
+                        <a href="http://www.servicemesher.com/blog/istio-0-8-release-note/" data-toggle="tooltip" data-placement="top" title="Istio 0.8发布了！">更新 &rarr;</a>
                         </li>
                         
                         </ul>
@@ -494,7 +494,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -783,6 +783,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -892,7 +895,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -912,7 +915,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -925,7 +928,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -938,7 +941,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -960,7 +963,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

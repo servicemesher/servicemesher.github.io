@@ -55,7 +55,7 @@
   <meta property="og:title" content="轻量Service Mesh在Ucloud的实践" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/lightweight-service-mesh-practice-in-ucloud//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="轻量Service Mesh在Ucloud的实践 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="轻量Service Mesh在Ucloud的实践 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="轻量Service Mesh在Ucloud的实践 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="轻量Service Mesh在Ucloud的实践 logo" class="visible-xs visible-sm">
                     <span class="sr-only">轻量Service Mesh在Ucloud的实践 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -319,7 +319,7 @@ autocomplete('#aa-search-input',
 
 <p>但目前软件行业的现状大部分面临这样的问题，即无论花多大的成本去测试，真正的用户行为背后的需求总是不可能被完全满足的，缺陷总是会有的，这时我们最后的安全网就是“灰度发布”（又名“金丝雀发布”）。在采用用户真实行为作为终极测试的同时，通过控制变更范围尽可能的减少风险；一旦真的有缺陷可以快速回滚，尽可能以最大程度降低影响。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsaihrzqrjj30fo0hwgwj.jpg" alt="金丝雀" /></p>
+<p><img src="00704eQkgy1fsaihrzqrjj30fo0hwgwj.jpg" alt="金丝雀" /></p>
 
 <h2 id="为何采用service-mesh实现灰度发布">为何采用Service Mesh实现灰度发布</h2>
 
@@ -364,7 +364,7 @@ autocomplete('#aa-search-input',
 
 <p>下图是构成每个面板的不同组件：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsaijefq2qj30hs09e0vi.jpg" alt="Istio 架构图" /></p>
+<p><img src="00704eQkgy1fsaijefq2qj30hs09e0vi.jpg" alt="Istio 架构图" /></p>
 
 <p>经过一些代码级别的Research之后，我们最终选择了将Pilot从Istio中剥离出来，脱离K8S运行的轻量级Service Mesh方案。</p>
 
@@ -372,13 +372,13 @@ autocomplete('#aa-search-input',
 
 <p>在Istio中Pilot作为Envoy的控制面板提供集中式流量管理功能的模块，这是实现灰度发布必不可少的功能，事实上也是Service Mesh的核心功能。Mixer提供访问策略和控制功能，Istio-Auth提供安全认证功能，但在UCloud的内网环境下，我们可以将这两个模块去掉。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsaijtidnzj30hs0edq67.jpg" alt="Istio Pilot架构图" /></p>
+<p><img src="00704eQkgy1fsaijtidnzj30hs0edq67.jpg" alt="Istio Pilot架构图" /></p>
 
 <p>得益于Pilot的良好设计，ETCD Platform很容易实现，进而从ETCD获取Service和ServiceInstance信息。然后我们重写了Pilot的main.go，保留了Pilot的model、proxy和proxy/envoy模块；删除其他的Platform仅保留新增的ETCD Platform。</p>
 
 <p>最后我们在保留完整的Istio DSL支持的同时，得到了完全脱离K8S运行和编译的Pilot。同时我们将Pilot和ETCD gRPC naming and discovery做了深度整合，自动剔除没有在线的ServiceInstance信息。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsaik5pa5ej30hs0bg41v.jpg" alt="YAML" /></p>
+<p><img src="00704eQkgy1fsaik5pa5ej30hs0bg41v.jpg" alt="YAML" /></p>
 
 <p><strong>2.采用docker-compose管理container实现sidecar</strong></p>
 
@@ -499,7 +499,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -788,6 +788,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -897,7 +900,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -917,7 +920,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -930,7 +933,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -943,7 +946,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -965,7 +968,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

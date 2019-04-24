@@ -55,7 +55,7 @@
   <meta property="og:title" content="Service Mesh——后 Kubernetes 时代的微服务" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/service-mesh-the-microservices-in-post-kubernetes-era//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Service Mesh——后 Kubernetes 时代的微服务 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Service Mesh——后 Kubernetes 时代的微服务 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Service Mesh——后 Kubernetes 时代的微服务 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Service Mesh——后 Kubernetes 时代的微服务 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Service Mesh——后 Kubernetes 时代的微服务 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -379,7 +379,7 @@ autocomplete('#aa-search-input',
 
 <p>下图展示的是 Kubernetes 与 Service Mesh 中的的服务访问关系，本文仅针对 sidecar per-pod 模式，详情请参考<a href="https://jimmysong.io/istio-handbook/concepts/service-mesh-patterns.html">服务网格的实现模式</a>。</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz6c7pj4sqj31hk0rejuz.jpg" alt="kubernetes vs service mesh" /></p>
+<p><img src="006tNc79ly1fz6c7pj4sqj31hk0rejuz.jpg" alt="kubernetes vs service mesh" /></p>
 
 <p>Kubernetes 集群的每个节点都部署了一个 <code>kube-proxy</code> 组件，该组件会与 Kubernetes API Server 通信，获取集群中的 <a href="https://jimmysong.io/kubernetes-handbook/concepts/service.html">service</a> 信息，然后设置 iptables 规则，直接将对某个 service 的请求发送到对应的 Endpoint（属于同一组 service 的 pod）上。</p>
 
@@ -419,13 +419,13 @@ autocomplete('#aa-search-input',
 
 <p>下面这张图大家在了解 Service Mesh 的时候可能都看到过，每个方块代表一个服务的示例，例如 Kubernetes 中的一个 Pod（其中包含了 sidecar proxy），xDS 协议控制了 Istio Service Mesh 中所有流量的具体行为，即将下图中的方块链接到了一起。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fz73xstibij30b409cmyh.jpg" alt="Service Mesh 示意图" /></p>
+<p><img src="006tNc79ly1fz73xstibij30b409cmyh.jpg" alt="Service Mesh 示意图" /></p>
 
 <p>xDS 协议是由 <a href="https://envoyproxy.io">Envoy</a> 提出的，在 Envoy v2 版本 API 中最原始的 xDS 协议只指 CDS、EDS、LDS 和 RDS。</p>
 
 <p>下面我们以两个 service，每个 service 都有两个实例的例子来看下 Envoy 的 xDS 协议。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fz7auvvrjnj30s80j8gn6.jpg" alt="Envoy xDS 协议" /></p>
+<p><img src="006tNc79ly1fz7auvvrjnj30s80j8gn6.jpg" alt="Envoy xDS 协议" /></p>
 
 <p>上图中的箭头不是流量在进入 Enovy Proxy 后的路径或路由，而是想象的一种 Envoy 中 xDS 接口处理的顺序并非实际顺序，其实 xDS 之间也是有交叉引用的。</p>
 
@@ -468,7 +468,7 @@ autocomplete('#aa-search-input',
 
 <p>Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下面列举了 Envoy 里的基本术语及其数据结构解析，关于 Envoy 的详细介绍请参考 <a href="http://www.servicemesher.com/envoy/">Envoy 官方文档</a>，至于 Envoy 在 Service Mesh（不仅限于 Istio） 中是如何作为转发代理工作的请参考网易云刘超的这篇<a href="https://www.cnblogs.com/163yun/p/8962278.html">深入解读 Service Mesh 背后的技术细节 </a>以及<a href="https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/">理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</a>，本文引用其中的一些观点，详细内容不再赘述。</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz69bsaqk7j314k0tsq90.jpg" alt="Envoy proxy 架构图" /></p>
+<p><img src="006tNc79ly1fz69bsaqk7j314k0tsq90.jpg" alt="Envoy proxy 架构图" /></p>
 
 <h3 id="基本术语">基本术语</h3>
 
@@ -487,7 +487,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="istio-service-mesh">Istio Service Mesh</h2>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz73sprcdlj31580u046j.jpg" alt="Istio service mesh 架构图" /></p>
+<p><img src="006tNc79ly1fz73sprcdlj31580u046j.jpg" alt="Istio service mesh 架构图" /></p>
 
 <p>Istio 是一个功能十分丰富的 Service Mesh，它包括如下功能：</p>
 
@@ -692,7 +692,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -981,6 +981,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1090,7 +1093,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1110,7 +1113,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1123,7 +1126,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1136,7 +1139,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1158,7 +1161,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

@@ -55,7 +55,7 @@
   <meta property="og:title" content="Envoy 中的 xDS REST 和 gRPC 协议详解" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/envoy-xds-protocol//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Envoy 中的 xDS REST 和 gRPC 协议详解 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Envoy 中的 xDS REST 和 gRPC 协议详解 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Envoy 中的 xDS REST 和 gRPC 协议详解 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Envoy 中的 xDS REST 和 gRPC 协议详解 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Envoy 中的 xDS REST 和 gRPC 协议详解 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -386,7 +386,7 @@ nonce: A
 
 <p>Envoy 在处理 <code>DiscoveryResponse</code> 响应后，将通过流发送一个新的请求，请求包含应用成功的最后一个版本号和管理服务器提供的 <code>nonce</code>。如果本次更新已成功应用，则 <code>version_info</code> 的值设置为 <strong>X</strong>，如下序列图所示：</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxs5aod1j20cc06y74c.jpg" alt="Version update after ACK" /></p>
+<p><img src="7e0ee03agy1fvmxs5aod1j20cc06y74c.jpg" alt="Version update after ACK" /></p>
 
 <p>在此序列图及后续中，将统一使用以下缩写格式：</p>
 
@@ -401,11 +401,11 @@ nonce: A
 
 <p>版本为 Envoy 和管理服务器提供了共享当前应用配置的概念和通过 ACK/NACK 来进行配置更新的机制。如果 Envoy 拒绝配置更新 <strong>X</strong>，则回复 <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/discovery.proto#envoy-api-field-discoveryrequest-error-detail"><code>error_detail</code></a> 及前一个的版本号，在当前情况下为空的初始版本号，<code>error_detail</code> 包含了有关错误的更加详细的信息：</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxtjqtcsj20cc06y0ss.jpg" alt="No version update after NACK" /></p>
+<p><img src="7e0ee03agy1fvmxtjqtcsj20cc06y0ss.jpg" alt="No version update after NACK" /></p>
 
 <p>后续，API 更新可能会在新版本 <strong>Y</strong> 上成功：</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxtwzc96j20cc0923yp.jpg" alt="ACK after NACK" /></p>
+<p><img src="7e0ee03agy1fvmxtwzc96j20cc0923yp.jpg" alt="ACK after NACK" /></p>
 
 <p>每个流都有自己的版本概念，但不存在跨资源类型的共享版本。在不使用 ADS 的情况下，每个资源类型可能具有不同的版本，因为 Envoy API 允许指向不同的 EDS/RDS 资源配置并对应不同的 <code>ConfigSources</code>。</p>
 
@@ -427,22 +427,22 @@ nonce: A
 
 <p>对于 EDS/RDS ，Envoy 可以为每个给定类型的资源生成不同的流（如每个 <code>ConfigSource</code> 都有自己的上游管理服务器的集群）或当指定资源类型的请求发送到同一个管理服务器的时候，允许将多个资源请求组合在一起发送。虽然可以单个实现，但管理服务器应具备处理每个给定资源类型中对单个或多个 <code>resource_names</code>  请求的能力。下面的两个序列图对于获取两个 EDS 资源都是有效的 <code>{foo，bar}</code>：</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxuviiqsj20eh06ymx9.jpg" alt="Multiple EDS requests on the same stream" />
-<img src="https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxv7cv21j20j20a4wet.jpg" alt="Multiple EDS requests on distinct streams" /></p>
+<p><img src="7e0ee03agy1fvmxuviiqsj20eh06ymx9.jpg" alt="Multiple EDS requests on the same stream" />
+<img src="7e0ee03agy1fvmxv7cv21j20j20a4wet.jpg" alt="Multiple EDS requests on distinct streams" /></p>
 
 <h4 id="资源更新">资源更新</h4>
 
 <p>如上所述，Envoy 可能会更新  <code>DiscoveryRequest</code> 中出现的 <code>resource_names</code> 列表，其中 <code>DiscoveryRequest</code>  是用来 ACK/NACK 管理服务器的特定的 <code>DiscoveryResponse</code> 。此外，Envoy 后续可能会发送额外的 <code>DiscoveryRequests</code> ，用于在特定 <code>version_info</code> 上使用新的资源提示来更新管理服务器。例如，如果 Envoy 在 EDS 版本 <strong>X</strong> 时仅知道集群 <code>foo</code>，但在随后收到的 CDS 更新时额外获取了集群 <code>bar</code> ，它可能会为版本 <strong>X</strong> 发出额外的 <code>DiscoveryRequest</code> 请求，并将 <code>{foo，bar}</code> 作为请求的 <code>resource_names</code> 。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fvph0p7u8zj31fm0lq0ve.jpg" alt="CDS response leads to EDS resource hint update" /></p>
+<p><img src="006tNc79ly1fvph0p7u8zj31fm0lq0ve.jpg" alt="CDS response leads to EDS resource hint update" /></p>
 
 <p>这里可能会出现竞争状况；如果 Envoy 在版本 <strong>X</strong> 上发布了资源提示更新请求，但在管理服务器处理该请求之前发送了新的版本号为 <strong>Y</strong>  的响应，针对 <code>version_info</code> 为 <strong>X</strong> 的版本，资源提示更新可能会被解释为拒绝  <strong>Y</strong> 。为避免这种情况，通过使用管理服务器提供的 <code>nonce</code>，Envoy 可用来保证每个 <code>DiscoveryRequest</code> 对应到相应的 <code>DiscoveryResponse</code> ：</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fvph04ln3fj31kw0rogqc.jpg" alt="EDS update race motivates nonces" /></p>
+<p><img src="006tNc79ly1fvph04ln3fj31kw0rogqc.jpg" alt="EDS update race motivates nonces" /></p>
 
 <p>管理服务器不应该为含有过期 <code>nonce</code> 的 <code>DiscoveryRequest</code> 发送 <code>DiscoveryResponse</code> 响应。在向 Envoy 发送的 <code>DiscoveryResponse</code>  中包含了的新 <code>nonce</code> ，则此前的 <code>nonce</code> 将过期。在资源新版本就绪之前，管理服务器不需要向 Envoy 发送更新。同版本的早期请求将会过期。在新版本就绪时，管理服务器可能会处理同一个版本号的多个 <code>DiscoveryRequests</code>请求。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fvpgy6xewrj31b415ctcy.jpg" alt="Requests become stale" /></p>
+<p><img src="006tNc79ly1fvpgy6xewrj31b415ctcy.jpg" alt="Requests become stale" /></p>
 
 <p>上述资源更新序列表明 Envoy 并不能期待其发出的每个 <code>DiscoveryRequest</code> 都得到 <code>DiscoveryResponse</code> 响应。</p>
 
@@ -468,7 +468,7 @@ nonce: A
 
 <p>当管理服务器进行资源分发时，通过上述保证交互顺序的方式来避免流量丢弃是一项很有挑战的工作。ADS 允许单一管理服务器通过单个 gRPC 流，提供所有的 API 更新。配合仔细规划的更新顺序，ADS 可规避更新过程中流量丢失。使用 ADS，在单个流上可通过类型 URL 来进行复用多个独立的 <code>DiscoveryRequest</code>/<code>DiscoveryResponse</code> 序列。对于任何给定类型的 URL，以上 <code>DiscoveryRequest</code> 和 <code>DiscoveryResponse</code> 消息序列都适用。 更新序列可能如下所示：</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fvpgxnl947j313q0wgq62.jpg" alt="EDS/CDS multiplexed on an ADS stream" /></p>
+<p><img src="006tNc79ly1fvpgxnl947j313q0wgq62.jpg" alt="EDS/CDS multiplexed on an ADS stream" /></p>
 
 <p>每个 Envoy 实例可使用单独的 ADS 流。</p>
 
@@ -523,11 +523,11 @@ admin:
 
 <p>在第一个示例中，客户端连接并接收它的第一个更新并 ACK。第二次更新失败，客户端发送 NACK 拒绝更新。xDS客户端后续会自发地请求 “wc” 相关资源。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fvpgwfbep7j31kw0vldli.jpg" alt="Incremental session example" /></p>
+<p><img src="006tNc79ly1fvpgwfbep7j31kw0vldli.jpg" alt="Incremental session example" /></p>
 
 <p>在重新连接时，支持增量的 xDS 客户端可能会告诉服务器其已知资源从而避免通过网络重新发送它们。</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fvpgx05z3kj31kw0phwif.jpg" alt="Incremental reconnect example" /></p>
+<p><img src="006tNc79ly1fvpgx05z3kj31kw0phwif.jpg" alt="Incremental reconnect example" /></p>
 
 <h2 id="rest-json-轮询订阅">REST-JSON 轮询订阅</h2>
 
@@ -638,7 +638,7 @@ admin:
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -927,6 +927,9 @@ admin:
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1036,7 +1039,7 @@ admin:
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1056,7 +1059,7 @@ admin:
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1069,7 +1072,7 @@ admin:
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1082,7 +1085,7 @@ admin:
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1104,7 +1107,7 @@ admin:
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

@@ -55,7 +55,7 @@
   <meta property="og:title" content="Istio 的数据平面 Envoy Proxy 配置详解" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/envoy-proxy-config-deep-dive//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio 的数据平面 Envoy Proxy 配置详解 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio 的数据平面 Envoy Proxy 配置详解 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Istio 的数据平面 Envoy Proxy 配置详解 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Istio 的数据平面 Envoy Proxy 配置详解 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Istio 的数据平面 Envoy Proxy 配置详解 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -302,7 +302,7 @@ autocomplete('#aa-search-input',
 
 <p>Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下面列举了 Envoy 里的基本术语及其数据结构解析，关于 Envoy 的详细介绍请参考 <a href="http://www.servicemesher.com/envoy/">Envoy 官方文档</a>，至于 Envoy 在 Service Mesh（不仅限于 Istio） 中是如何作为转发代理工作的请参考网易云刘超的这篇<a href="https://www.cnblogs.com/163yun/p/8962278.html">深入解读 Service Mesh 背后的技术细节 </a>以及<a href="https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/">理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持</a>，本文引用其中的一些观点，详细内容不再赘述。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fy9qkff5nij314k0ts43z.jpg" alt="Envoy proxy 架构图" /></p>
+<p><img src="006tNbRwly1fy9qkff5nij314k0ts43z.jpg" alt="Envoy proxy 架构图" /></p>
 
 <h3 id="基本术语">基本术语</h3>
 
@@ -339,7 +339,7 @@ autocomplete('#aa-search-input',
 
 <p>将 Envoy 的运行时配置 dump 出来之后你将看到一个长 6000 余行的配置文件。关于该配置文件的介绍请参考 <a href="http://www.servicemesher.com/envoy/configuration/overview/v2_overview.html">Envoy v2 API 概览</a>。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fyb74brsd5j30xg0lojvt.jpg" alt="Envoy 配置" /></p>
+<p><img src="006tNbRwly1fyb74brsd5j30xg0lojvt.jpg" alt="Envoy 配置" /></p>
 
 <p>Istio 会在为 Service Mesh 中的每个 Pod 注入 Sidecar 的时候同时为 Envoy 注入 Bootstrap 配置，其余的配置是通过 Pilot 下发的，注意整个数据平面即 Service Mesh 中的 Envoy 的动态配置应该是相同的。您也可以使用上面的命令检查其他 sidecar 的 Envoy 配置是否跟最上面的那个相同。</p>
 
@@ -368,11 +368,11 @@ details-v1-876bf485f-sx7df.default                    SYNCED     SYNCED     SYNC
 
 <p>Enovy 的配置 dump 出来后的结构如下图所示。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fy2x2zk1hhj30ee0h9jtg.jpg" alt="Envoy 配置" /></p>
+<p><img src="006tNbRwly1fy2x2zk1hhj30ee0h9jtg.jpg" alt="Envoy 配置" /></p>
 
 <p>由于 bootstrap 中的配置是来自 Envoy 启动时加载的静态文件，主要配置了节点信息、tracing、admin 和统计信息收集等信息，这不是本文的重点，大家可以自行研究。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fy2xid761zj30c70ai0tj.jpg" alt="bootstrap 配置" /></p>
+<p><img src="006tNbRwly1fy2xid761zj30c70ai0tj.jpg" alt="bootstrap 配置" /></p>
 
 <p>上图是 bootstrap 的配置信息。</p>
 
@@ -803,7 +803,7 @@ details-v1-876bf485f-sx7df.default                    SYNCED     SYNCED     SYNC
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1092,6 +1092,9 @@ details-v1-876bf485f-sx7df.default                    SYNCED     SYNCED     SYNC
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1201,7 +1204,7 @@ details-v1-876bf485f-sx7df.default                    SYNCED     SYNCED     SYNC
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1221,7 +1224,7 @@ details-v1-876bf485f-sx7df.default                    SYNCED     SYNCED     SYNC
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1234,7 +1237,7 @@ details-v1-876bf485f-sx7df.default                    SYNCED     SYNCED     SYNC
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1247,7 +1250,7 @@ details-v1-876bf485f-sx7df.default                    SYNCED     SYNCED     SYNC
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1269,7 +1272,7 @@ details-v1-876bf485f-sx7df.default                    SYNCED     SYNCED     SYNC
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

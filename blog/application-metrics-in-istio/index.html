@@ -55,7 +55,7 @@
   <meta property="og:title" content="Istio中的应用程序指标度量" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/application-metrics-in-istio//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio中的应用程序指标度量 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio中的应用程序指标度量 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Istio中的应用程序指标度量 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Istio中的应用程序指标度量 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Istio中的应用程序指标度量 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -356,7 +356,7 @@ autocomplete('#aa-search-input',
 
 <p>所有这些endpoint端点对于调试Prometheus非常有用：</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/007uElTfly1g0s0xtqjpzj30l40cbtaw.jpg" alt="" /></p>
+<p><img src="007uElTfly1g0s0xtqjpzj30l40cbtaw.jpg" alt="" /></p>
 
 <p>原来，我需要在我的Pod YAML中添加一些注解，以便Prometheus对它们进行指标抓取。我必须通过这些注解告诉Prometheus哪些Pod需要被抓取指标数据，以及在哪个端口进行抓取：</p>
 
@@ -377,7 +377,7 @@ spec:
 
 <p>添加注解后，我能够在Prometheus中看到我的应用程序的指标数据：</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/007uElTfgy1g0sblvrx4tj30l409p74t.jpg" alt="" /></p>
+<p><img src="007uElTfgy1g0sblvrx4tj30l409p74t.jpg" alt="" /></p>
 
 <p>然而，这只适用于常规Pod，我无法看到启用了mTLS的Pod间的指标数据。</p>
 
@@ -433,7 +433,7 @@ spec:
         
         <li><a href="/blog/back-to-microservices-with-istio-p1/"><i class="fa fa-link"></i>使用Istio打造微服务（第1部分）</a></li>
          
-        <li><a href="/blog/istio-knowledge-map-v0.1-release/"><i class="fa fa-link"></i>Istio知识图谱 v0.1 发布及社区图书孵化</a></li>
+        <li><a href="/blog/istio-knowledge-map-v0-1-release/"><i class="fa fa-link"></i>Istio知识图谱 v0.1 发布及社区图书孵化</a></li>
          
         <li><a href="/blog/istio-kubernetes-service-mesh/"><i class="fa fa-link"></i>Istio——企业级微服务解决方案</a></li>
          
@@ -498,7 +498,7 @@ spec:
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -787,6 +787,9 @@ spec:
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -896,7 +899,7 @@ spec:
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -916,7 +919,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -929,7 +932,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -942,7 +945,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -964,7 +967,7 @@ spec:
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

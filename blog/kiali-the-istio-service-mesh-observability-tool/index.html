@@ -55,7 +55,7 @@
   <meta property="og:title" content="Kiali——Istio Service Mesh 的可观察性工具" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/kiali-the-istio-service-mesh-observability-tool//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Kiali——Istio Service Mesh 的可观察性工具 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Kiali——Istio Service Mesh 的可观察性工具 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Kiali——Istio Service Mesh 的可观察性工具 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Kiali——Istio Service Mesh 的可观察性工具 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Kiali——Istio Service Mesh 的可观察性工具 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -318,7 +318,7 @@ autocomplete('#aa-search-input',
 
 <p>下图展示了 kiali 中显示的 Bookinfo 示例的服务拓扑图。</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fw33xjfxtij31kw0veai7.jpg"></p>
+<p><img src="006tNbRwly1fw33xjfxtij31kw0veai7.jpg" alt="" /></p>
 
 <p>你可以使用 <a href="https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster">kubernetes-vagrant-centos-cluster</a> 来快速启动一个运行 Kiali 的 Kubernetes 集群。</p>
 
@@ -353,7 +353,7 @@ external_services:
 
 <p>Application、Workload 与 Service 的关系如下图所示。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw5mxl7c2wj31260psq5y.jpg"></p>
+<p><img src="006tNbRwly1fw5mxl7c2wj31260psq5y.jpg" alt="" /></p>
 
 <p>Kilia 的详细 API 使用说明请查看 Swagger API 文档，在 Kiali 的根目录下运行下面的命令可以查看 API 文档。</p>
 
@@ -362,13 +362,13 @@ external_services:
 
 <p>Swagger UI 如下图。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fw5kr3srpkj31kw14awo6.jpg"></p>
+<p><img src="006tNbRwly1fw5kr3srpkj31kw14awo6.jpg" alt="" /></p>
 
 <h2 id="架构">架构</h2>
 
 <p>Kiali 部署完成后只启动了一个 Pod，前后端都集成在这一个 Pod 中。Kiali 也有一些依赖的组件，例如如果要在 Kiali 的页面中获取到监控 metric 需要使用在 <code>istio-system</code> 中部署 Prometheus。分布式卓总直接下图是 Kiali 的架构，来自 Kiali 官网。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fw5je6mg6aj30jg0ayaar.jpg"></p>
+<p><img src="006tNbRwly1fw5je6mg6aj30jg0ayaar.jpg" alt="" /></p>
 
 <p>Kiali 使用传统的前后端分离架构：</p>
 
@@ -385,7 +385,7 @@ external_services:
 
 <p>Kiali 中的服务拓扑图比起 Istio 原来默认部署的 ServiceGraph 的效果更炫也更加直观，具有更多选项。</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fw5l2ntj0hj31kw0ze48t.jpg"></p>
+<p><img src="006tNbRwly1fw5l2ntj0hj31kw0ze48t.jpg" alt="" /></p>
 
 <p>例如使用 CURL 模拟请求。</p>
 
@@ -520,7 +520,7 @@ external_services:
 
 <p>关于 PQL 的详细使用方式请参考 <a href="https://prometheus.io/docs/prometheus/latest/querying/examples/">QUERY EXAMPLES - prometheus.io</a>。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fw966a6ki3j31hc0tdagx.jpg" alt="Prometheus"></p>
+<p><img src="006tNbRwly1fw966a6ki3j31hc0tdagx.jpg" alt="" /></p>
 
 <p>这里面包含了所有 workload 的流量信息，做简单的操作就可以计算出 application/service 的流量状况。</p>
 
@@ -720,7 +720,7 @@ type Edge struct {
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1009,6 +1009,9 @@ type Edge struct {
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1118,7 +1121,7 @@ type Edge struct {
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1138,7 +1141,7 @@ type Edge struct {
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1151,7 +1154,7 @@ type Edge struct {
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1164,7 +1167,7 @@ type Edge struct {
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1186,7 +1189,7 @@ type Edge struct {
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

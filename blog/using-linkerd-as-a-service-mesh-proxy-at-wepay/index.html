@@ -55,7 +55,7 @@
   <meta property="og:title" content="WePay如何使用Linkerd作为服务网格代理" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="WePay如何使用Linkerd作为服务网格代理 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="WePay如何使用Linkerd作为服务网格代理 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="WePay如何使用Linkerd作为服务网格代理 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="WePay如何使用Linkerd作为服务网格代理 logo" class="visible-xs visible-sm">
                     <span class="sr-only">WePay如何使用Linkerd作为服务网格代理 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -309,7 +309,7 @@ autocomplete('#aa-search-input',
 
 <p>在本系列的第一部分中，我们将看看曾使用过的一些路由和负载均衡选项并将它们与服务网格代理进行比较，以及它们是如何改变我们基础设施的运行方式的。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiygfruj20ie0gfgmw.jpg" alt="数据面板使用sidecar代理模式" /></p>
+<p><img src="b4e0632fgy1fsfoiygfruj20ie0gfgmw.jpg" alt="数据面板使用sidecar代理模式" /></p>
 
 <p>图1.数据面板使用sidecar代理模式</p>
 
@@ -325,7 +325,7 @@ autocomplete('#aa-search-input',
 
 <p>在WePay我们目前正在GKE中运行许多微服务（Sx）。 在同一个数据中心一些微服务与其他微服务通信，如下图所示：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiypj5yj20b60d974p.jpg" alt="使用GKE和NGINX的简单负载均衡" /></p>
+<p><img src="b4e0632fgy1fsfoiypj5yj20b60d974p.jpg" alt="使用GKE和NGINX的简单负载均衡" /></p>
 
 <p>图2.使用GKE和NGINX的简单负载均衡</p>
 
@@ -348,7 +348,7 @@ autocomplete('#aa-search-input',
 
 <p>Envoy和Linkerd都可以访问一些更复杂的负载均衡算法，但Linkerd聚焦于<a href="https://blog.buoyant.io/2017/01/31/making-things-faster-by-adding-more-steps/">性能调优</a>及其平台使用的是<a href="https://twitter.github.io/finagle/">Finagle</a>，使其成为负载均衡的最佳选择。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiywhuqj20fa0e50te.jpg" alt="Sidecar模式处理负载均衡" /></p>
+<p><img src="b4e0632fgy1fsfoiywhuqj20fa0e50te.jpg" alt="Sidecar模式处理负载均衡" /></p>
 
 <p>图3. Sidecar模式处理负载均衡</p>
 
@@ -356,7 +356,7 @@ autocomplete('#aa-search-input',
 
 <p>除基本的负载均衡功能外，Linkerd还支持Kubernetes DaemonSet，使负载均衡更接近每个Kubernetes节点边缘。从资源分配的角度看，这同样显著降低了在大型集群中运行代理的成本。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/00704eQkgy1fsgc5lihpkj30fa0e5q3u.jpg" alt="DaemonSet代理模式" />)</p>
+<p><img src="00704eQkgy1fsgc5lihpkj30fa0e5q3u.jpg" alt="DaemonSet代理模式" /></p>
 
 <p>图4.DaemonSet代理模式</p>
 
@@ -368,7 +368,7 @@ autocomplete('#aa-search-input',
 
 <p>此外，为任意微服务提供HTTP和HTTP/2（gRPC）的能力，以及在我们的基础设施中同时支持多种协议的需求，意味着多协议支持已经成为为我们的基础设施选择代理服务器的一项艰巨任务。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiykzugj20h40dot9a.jpg" alt="代理在相同的设置中接收和转发gRPC和HTTP" /></p>
+<p><img src="b4e0632fgy1fsfoiykzugj20h40dot9a.jpg" alt="代理在相同的设置中接收和转发gRPC和HTTP" /></p>
 
 <p>图5.代理在相同的设置中接收和转发gRPC和HTTP</p>
 
@@ -380,9 +380,9 @@ autocomplete('#aa-search-input',
 
 <p>在基础设施中，我们利用<a href="https://prometheus.io/">Prometheus</a>来监控Kubernetes、微服务及其他内部服务。 <a href="https://www.datawire.io/faster/ambassador-prometheus/">Envoy需要额外的一个步骤</a>才能使用Prometheus，但使用Linkerd的即用型<a href="https://linkerd.io/administration/telemetry/">Prometheus遥测插件</a>，我们可以更容易地启动和运行各种指标视图，而无需额外的服务将服务网格代理胶合到我们的可视化仪表板：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiytks8j21xg072mz2.jpg" alt="集群和应用程序级别代理指标视图" /></p>
+<p><img src="b4e0632fgy1fsfoiytks8j21xg072mz2.jpg" alt="集群和应用程序级别代理指标视图" /></p>
 
-<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiz6wbij21xg0vtwks.jpg" alt="集群和应用程序级别代理指标视图" /></p>
+<p><img src="b4e0632fgy1fsfoiz6wbij21xg0vtwks.jpg" alt="集群和应用程序级别代理指标视图" /></p>
 
 <p>图6.集群和应用程序级别代理指标视图</p>
 
@@ -396,7 +396,7 @@ autocomplete('#aa-search-input',
 
 <p>在使用sidecar代理模式的环境设置中，工作方式有所不同的是SSL握手的每个服务TLS证书。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/b4e0632fgy1fsfoiz1aqlj20h40cnaan.jpg" alt="用于SSL握手的每个服务TLS证书" /></p>
+<p><img src="b4e0632fgy1fsfoiz1aqlj20h40cnaan.jpg" alt="用于SSL握手的每个服务TLS证书" /></p>
 
 <p>图7.用于SSL握手的每个服务TLS证书</p>
 
@@ -519,7 +519,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -808,6 +808,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -917,7 +920,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -937,7 +940,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -950,7 +953,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -963,7 +966,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -985,7 +988,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

@@ -55,7 +55,7 @@
   <meta property="og:title" content="教程|使用Istio在Kubernetes集群中实现金丝雀部署" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/hands-on-canary-deployments-with-istio-and-kubernetes2//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="教程|使用Istio在Kubernetes集群中实现金丝雀部署 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="教程|使用Istio在Kubernetes集群中实现金丝雀部署 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="教程|使用Istio在Kubernetes集群中实现金丝雀部署 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="教程|使用Istio在Kubernetes集群中实现金丝雀部署 logo" class="visible-xs visible-sm">
                     <span class="sr-only">教程|使用Istio在Kubernetes集群中实现金丝雀部署 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -311,7 +311,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="https://ws4.sinaimg.cn/large/0069RVTdgy1fv873bgdexj30to0dbgnw.jpg" alt="" /></p>
+<p><img src="0069RVTdgy1fv873bgdexj30to0dbgnw.jpg" alt="" /></p>
 
 <p>作为Istio教程第二篇文章本教程将一步步带领你熟悉指令并解释指令的作用。我们的<a href="http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/">前一篇文章</a>解析了istio原理、示例，以及使用它给开发和运维带来的好处。我们也已经演示在如何在kubernetes集群安装Service Mesh。</p>
 
@@ -321,7 +321,7 @@ autocomplete('#aa-search-input',
 
 <p>安装完成后，你能在你的kubernetes dashboard的左侧边栏pods中查看已部署的istio组件。如下图所示：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/0069RVTdgy1fv87am5p4hj30j90hd40g.jpg" alt="" /></p>
+<p><img src="0069RVTdgy1fv87am5p4hj30j90hd40g.jpg" alt="" /></p>
 
 <p>我们将会启动一个自动化sidecar注入器，避免手动将Istio sidecar配置添加到每个部署的本地YAML文件中。“istio kube-inject”命令我们在前面的教程中已经介绍过。如果你的kubernetes的版本小于1.9，应该使用手动的方式执行“kubectl create *.yaml”在我们的开始后续教程之前。</p>
 
@@ -379,7 +379,7 @@ spec:
 
 <p>检查是否在仪表板中创建了deployment和service：</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/0069RVTdgy1fv87a7rmw9j30z40nl41z.jpg" alt="" /></p>
+<p><img src="0069RVTdgy1fv87a7rmw9j30z40nl41z.jpg" alt="" /></p>
 
 <p>在发布下一个版本之前，我们希望准备Istio Service Mesh以将大多数请求路由到版本1，并且只将特定的请求发送到版本2。我们可以通过创建仅指向版本1的默认路由并基于HTTP头创建其他规则来实现。Envoy代理将会把请求流量路由到应用程序的不同版本。</p>
 
@@ -424,11 +424,11 @@ spec:
 
 <p>通过Istio ingress gateway节点测试访问。你能在这个节点的“istio-system”的namespace下发现服务列表。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/0069RVTdgy1fv879ri2arj30zc0f741f.jpg" alt="" /></p>
+<p><img src="0069RVTdgy1fv879ri2arj30zc0f741f.jpg" alt="" /></p>
 
 <p>当导航到这个节点时，你应该看到实例程序的v1版本，因为它是唯一部署和在VirtualService中唯一可路由的版本。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1fv879yvt7mj30r207emxx.jpg" alt="" /></p>
+<p><img src="0069RVTdgy1fv879yvt7mj30r207emxx.jpg" alt="" /></p>
 
 <p>让我们分解您的请求在到达“version-1”pod之前经过的步骤：</p>
 
@@ -550,7 +550,7 @@ spec:
 
 <p>保存并退出文件编辑模式以应用修改后的资源。测试一下。在这个阶段，我们仍然可以加载网站，并刷新几次。现在，使用“kubectl create -f version-2-deployment.yaml”部署“version-2”并在仪表板中检查结果：</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1fv87b2qxtyj30xo0lpgp1.jpg" alt="" /><img src="https://kublr.com/wp-content/uploads/2018/08/Istio-canary-deployment-Dashbaord-1024x660.png" alt="" /></p>
+<p><img src="0069RVTdgy1fv87b2qxtyj30xo0lpgp1.jpg" alt="" /></p>
 
 <p>在此刻我们有四个“version-1”pod和一个“version-2”的金丝雀pod。刷新几次ingress endpoint确信你被路由到“version-2”。现在我们准备去修改路由规则，并发送HTTP头中“qa”包含“canary-test”值的任何HTTP请求到“version-2”。</p>
 
@@ -586,11 +586,11 @@ spec:
 
 <p>现在可以使用任何支持轻松修改发送到服务器的HTTP请求的工具来访问“version-2”。你可以使用postman,或者它的chorme插件，它是非常有名的api和http测试工具，但是它的返回结果页却是文本类型的。所以我们将会使用另外一个chrome插件“<a href="https://chrome.google.com/webstore/search/modify%20headers%20extension?hl=en">Modify Headers for Google Chrome</a>”。通过单击其图标安装并打开设置后，您可以添加任何页面请求的自定义header（并轻松打开和关闭）：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/0069RVTdgy1fv87cwrrpij30yf06jmy2.jpg" alt="" /> <img src="https://kublr.com/wp-content/uploads/2018/08/Modify-Headers-for-Google-Chrome-768x146.png" alt="" /></p>
+<p><img src="0069RVTdgy1fv87cwrrpij30yf06jmy2.jpg" alt="" /></p>
 
 <p>单击右上角的“加号”添加标题，填写名称和值，选择“添加”操作，然后单击“保存”。单击左上角的“开始播放”按钮（在我们的屏幕截图上显示“停止”的那个，因为它已经处于活动状态）。然后单击右侧规则“操作”部分中的“激活”按钮。使用此设置，再次加载入口页面以查看“version-2”蓝页！</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/0069RVTdgy1fv87db0lk9j30r207ndgn.jpg" alt="" /></p>
+<p><img src="0069RVTdgy1fv87db0lk9j30r207ndgn.jpg" alt="" /></p>
 
 <p>使用这个金丝雀部署，我们有一个带有新版应用程序的活跃pod，与所有其他pod一样驻留在相同的负载均衡器下，在相同的环境（生产）中，我们可以在不影响真实用户的情况下执行所需的测试。</p>
 
@@ -723,7 +723,7 @@ spec:
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1012,6 +1012,9 @@ spec:
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1121,7 +1124,7 @@ spec:
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1141,7 +1144,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1154,7 +1157,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1167,7 +1170,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1189,7 +1192,7 @@ spec:
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

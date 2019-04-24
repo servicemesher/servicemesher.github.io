@@ -211,10 +211,10 @@
     
     <item>
       <title>Istio知识图谱 v0.1 发布及社区图书孵化</title>
-      <link>http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/</link>
+      <link>http://www.servicemesher.com/blog/istio-knowledge-map-v0-1-release/</link>
       <pubDate>Mon, 25 Feb 2019 15:47:49 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/</guid>
+      <guid>http://www.servicemesher.com/blog/istio-knowledge-map-v0-1-release/</guid>
       <description>2019年2月15日晚，我在朋友圈里发起了 Istio 知识图谱项目。 而后获得 ServiceMesher 社区成员的热烈响应，在此后的一周内陆续有151参与进来。 经过10天的孵化</description>
     </item>
     
@@ -508,10 +508,10 @@
     
     <item>
       <title>Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等</title>
-      <link>http://www.servicemesher.com/blog/cilium1.2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</link>
+      <link>http://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</link>
       <pubDate>Mon, 27 Aug 2018 19:52:29 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/cilium1.2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</guid>
+      <guid>http://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</guid>
       <description>我们很高兴地宣布推出Cilium 1.2。该版本引入了几个新功能实现了Cilium用户和社区成员最迫切想要的功能。其中最吸引人的功能之一是引入</description>
     </item>
     
@@ -598,10 +598,10 @@
     
     <item>
       <title>Istio 1.0发布，已生产就绪！</title>
-      <link>http://www.servicemesher.com/blog/announcing-istio-1.0/</link>
+      <link>http://www.servicemesher.com/blog/announcing-istio-1-0/</link>
       <pubDate>Tue, 31 Jul 2018 21:44:58 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/announcing-istio-1.0/</guid>
+      <guid>http://www.servicemesher.com/blog/announcing-istio-1-0/</guid>
       <description>本文转载自：Istio 官方网站，原文地址：https://istio.io/zh/blog/2018/announcing-1.0/ 今天，我</description>
     </item>
     
@@ -661,10 +661,10 @@
     
     <item>
       <title>使用Istio 0.8对Kubernetes进行A/B测试</title>
-      <link>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0.8/</link>
+      <link>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0-8/</link>
       <pubDate>Fri, 13 Jul 2018 12:38:44 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0.8/</guid>
+      <guid>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0-8/</guid>
       <description>这是我们正在发布的系列文章中的第二篇，描述了我们在 Kubernetes 上采用 Istio 进行流量路由的经验。有关我们试图通过Vamp实现的更多详情以及我们选择 Istio 的原因，</description>
     </item>
     
@@ -904,10 +904,10 @@
     
     <item>
       <title>Istio 0.8的Helm Chart解析</title>
-      <link>http://www.servicemesher.com/blog/helm-chart-for-istio-0.8/</link>
+      <link>http://www.servicemesher.com/blog/helm-chart-for-istio-0-8/</link>
       <pubDate>Mon, 04 Jun 2018 16:09:57 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/helm-chart-for-istio-0.8/</guid>
+      <guid>http://www.servicemesher.com/blog/helm-chart-for-istio-0-8/</guid>
       <description>儿童节期间，拖拉了一个多月的 Istio 0.8 正式发布了，这可能是 Istio 1.0 之前的最后一个 LTS 版本，意义重大。 新版本中，原来的 Kubernetes 安装文件 install/kuber</description>
     </item>
     
@@ -922,10 +922,10 @@
     
     <item>
       <title>Istio 0.8发布了！</title>
-      <link>http://www.servicemesher.com/blog/istio-0.8-release-note/</link>
+      <link>http://www.servicemesher.com/blog/istio-0-8-release-note/</link>
       <pubDate>Fri, 01 Jun 2018 11:41:00 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-0.8-release-note/</guid>
+      <guid>http://www.servicemesher.com/blog/istio-0-8-release-note/</guid>
       <description>北京时间 2018 年 6 月 1 日（儿童节）上午 9: 30 Istio 0.8.0 LTS（长期支持版本）发布。该版本除了常见的一堆错误修复和性能改进之外，还包含以下更新和新功能。 网</description>
     </item>
     

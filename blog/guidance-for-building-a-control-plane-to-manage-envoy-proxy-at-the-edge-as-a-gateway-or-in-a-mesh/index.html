@@ -55,7 +55,7 @@
   <meta property="og:title" content="Envoy Proxy构建控制平面指南" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/guidance-for-building-a-control-plane-to-manage-envoy-proxy-at-the-edge-as-a-gateway-or-in-a-mesh//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Envoy Proxy构建控制平面指南 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Envoy Proxy构建控制平面指南 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Envoy Proxy构建控制平面指南 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Envoy Proxy构建控制平面指南 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Envoy Proxy构建控制平面指南 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -315,7 +315,7 @@ autocomplete('#aa-search-input',
 
 <p><a href="https://www.envoyproxy.io/">Envoy</a> 最近成为一个受欢迎的网络组件。 几年前 Matt Klein <a href="https://blog.envoyproxy.io/the-universal-data-plane-api-d15cec7a">写了一篇博客</a> ，讨论了Envoy的动态配置API，以及Envoy发展的历史和动机。 他称该博客为“通用数据平面API”。 由于许多其他项目采用<a href="https://www.envoyproxy.io/community">Envoy</a> 作为其产品的核心组件，因此对于应用程序/L7网络解决方案而言，毫不夸张地说，“Envoy已成为云原生架构中的通用数据平面”，而不仅仅是简单建立了API标准。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0mfoc0c9yj20dm07faap.jpg" alt="" /></p>
+<p><img src="61411417ly1g0mfoc0c9yj20dm07faap.jpg" alt="" /></p>
 
 <p>此外，由于 <a href="https://blog.envoyproxy.io/the-universal-data-plane-api-d15cec7a">Envoy的通用数据平面API</a> ，我们已经看到了许多 <em>管理层</em> 的实现， 用于配置和驱动基于Envoy的基础架构。 我们将深入探讨为Envoy构建控制平面所需的内容，以便您可以使用此信息来评估哪种类型的基础架构最适合您的组织和使用情况。 因为这是一个广泛的主题，我们将在未来几天发布的多部系列博客中解决它。</p>
 
@@ -329,13 +329,13 @@ autocomplete('#aa-search-input',
 <li>当其组织准备部署时，暂时没有成熟的控制平面（走的太快）</li>
 </ul>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0mforyrc1j20go0digsn.jpg" alt="" /></p>
+<p><img src="61411417ly1g0mforyrc1j20go0digsn.jpg" alt="" /></p>
 
 <p>若是因为一些早期采用者建立了他们自己的定制控制平面，并不意味着你现在也要自己重新开发控制平面。 因为Envoy构建控制平面的项目在去年已经成熟了很多，若你决定重新开发另一个控制平面前你应该探索使用它们。 其次，正如Datawire的人们发现的那样，<a href="https://twitter.com/danielbryantuk">丹尼尔·布莱恩特</a> 最近明确表示， <a href="https://www.infoq.com/articles/ambassador-api-gateway-kubernetes">为Envoy建造一个控制平面并不适合胆小的人</a> 。</p>
 
 <p><a href="https://www.solo.io/">我参与</a> 了 <a href="https://github.com/istio/istio">几个</a>为Envoy构建控制平面的<a href="https://github.com/solo-io/gloo">开源项目</a> 。 例如， <a href="https://gloo.solo.io/">Gloo</a> 是 <a href="https://medium.com/solo-io/announcing-gloo-the-function-gateway-3f0860ef6600">一个功能网关</a> ，可以充当非常强大的Kubernetes入口，API网关或功能网关，以简化单体应用到微服务的过渡。 Gloo <a href="https://gloo.solo.io/introduction/architecture/">有一个Envoy的控制平面</a> ，我们可以在这一系列的帖子中作为一个例子来说明如何构建一个简单的抽象，允许在你需要的控制点上实现可插拔性和可扩展性。 您可以用作参考的其他可靠的控制平面实现是 <a href="https://istio.io/">Istio</a> 和 <a href="https://github.com/heptio/contour">Heptio Contour</a> 我们将在整个系列博客中使用这些作为很好的例子。 如果不出意外，您可以了解Envoy控制平面存在哪些选项，并使用它来指导您的实施，如果您必须走这条路。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0mfpbj0hgj21200a840t.jpg" alt="" /></p>
+<p><img src="61411417ly1g0mfpbj0hgj21200a840t.jpg" alt="" /></p>
 
 <p>在这个博客系列中，我们将看看以下几个方面：</p>
 
@@ -364,7 +364,7 @@ autocomplete('#aa-search-input',
 <li><a href="https://www.envoyproxy.io/docs/envoy/v1.9.0/configuration/secret">secret发现服务 -</a> 用于分发Secret的 <a href="https://www.envoyproxy.io/docs/envoy/v1.9.0/configuration/secret">SDS</a> （证书和密钥）</li>
 </ul>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1g0mfpqxtkyj20p00gm0yz.jpg" alt="" /></p>
+<p><img src="61411417ly1g0mfpqxtkyj20p00gm0yz.jpg" alt="" /></p>
 
 <p>API使用 <a href="https://www.envoyproxy.io/docs/envoy/v1.9.0/configuration/overview/v2_overview#config-overview-v2">proto3 Protocol Buffers</a> 定义， 甚至还有一些参考实现可用于引导您自己的控制平面：</p>
 
@@ -499,7 +499,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -788,6 +788,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -897,7 +900,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -917,7 +920,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -930,7 +933,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -943,7 +946,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -965,7 +968,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

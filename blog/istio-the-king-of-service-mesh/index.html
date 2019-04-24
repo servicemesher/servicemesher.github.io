@@ -55,7 +55,7 @@
   <meta property="og:title" content="腾讯云容器团队内部Istio专题分享" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/istio-the-king-of-service-mesh//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="腾讯云容器团队内部Istio专题分享 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="腾讯云容器团队内部Istio专题分享 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="腾讯云容器团队内部Istio专题分享 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="腾讯云容器团队内部Istio专题分享 logo" class="visible-xs visible-sm">
                     <span class="sr-only">腾讯云容器团队内部Istio专题分享 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -330,7 +330,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="1-1-应用通信模式演进-网络流控进入操作系统">1.1 应用通信模式演进: 网络流控进入操作系统</h2>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr00rywkoj30nv0cmq4u.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr00rywkoj30nv0cmq4u.jpg" alt="" /></p>
 
 <p>在计算机网络发展的初期, 开发人员需要在自己的代码中处理服务器之间的网络连接问题, 包括流量控制, 缓存队列, 数据加密等. 在这段时间内底层网络逻辑和业务逻辑是混杂在一起.</p>
 
@@ -340,7 +340,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="1-2-应用通信模式演进-微服务架构的出现">1.2 应用通信模式演进: 微服务架构的出现</h2>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr00ypnboj30nr0d4ac8.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr00ypnboj30nr0d4ac8.jpg" alt="" /></p>
 
 <p>微服务架构是更为复杂的分布式系统，它给运维带来了更多挑战, 这些挑战主要包括资源的有效管理和服务之间的治理, 如:</p>
 
@@ -372,7 +372,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="1-3-sidecar-模式的兴起">1.3 Sidecar 模式的兴起</h2>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzr0c6zgunj30nt0d1ta5.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr0c6zgunj30nt0d1ta5.jpg" alt="" /></p>
 
 <p>Sidecar(有时会叫做agent) 在原有的客户端和服务端之间加多了一个代理, 为应用程序提供的额外的功能, 如服务发现, 路由代理, 认证授权, 链路跟踪 等等.</p>
 
@@ -420,7 +420,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="1-7-service-mesh-产品简史">1.7 Service Mesh 产品简史</h2>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzr01slci0j30n60gnac3.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr01slci0j30n60gnac3.jpg" alt="" /></p>
 
 <ul>
 <li>2016 年 1 月 15 日，前 Twitter 的基础设施工程师 <a href="https://twitter.com/wm">William Morgan</a> 和 Oliver Gould，在 GitHub 上发布了 Linkerd 0.0.7 版本，采用Scala编写, 他们同时组建了一个创业小公司 Buoyant，这是业界公认的第一个Service Mesh</li>
@@ -567,7 +567,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="2-1-istio-架构">2.1 Istio 架构</h2>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr02d148ij30fj0c1my4.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr02d148ij30fj0c1my4.jpg" alt="" /></p>
 
 <p>Istio Architecture（图片来自<a href="https://istio.io/docs/concepts/what-is-istio/">Isio官网文档</a>)</p>
 
@@ -600,7 +600,7 @@ autocomplete('#aa-search-input',
 
 <p>下面是我对Istio架构总结的思维导图:</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr02jcx0gj30wf0u0jud.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr02jcx0gj30wf0u0jud.jpg" alt="" /></p>
 
 <hr />
 
@@ -608,7 +608,7 @@ autocomplete('#aa-search-input',
 
 <p>以下是Istio官网经典的 BookInfo Demo, 这是一个多语言组成的异构微服务系统:</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr02xvs54j30h309qt9n.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr02xvs54j30h309qt9n.jpg" alt="" /></p>
 
 <p>Bookinfo Application（图片来自<a href="https://istio.io/docs/examples/bookinfo/">Isio官网文档</a>)</p>
 
@@ -1253,7 +1253,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <p>以下是分布式全链路跟踪示意图:</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr03q5ehnj30d207ddgc.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr03q5ehnj30d207ddgc.jpg" alt="" /></p>
 
 <p>一个典型的Trace案例（图片来自<a href="https://wu-sheng.gitbooks.io/opentracing-io/content/">opentracing文档中文版</a>)</p>
 
@@ -1261,7 +1261,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <p>Jaeger 是Uber 开源的全链路跟踪系统, 符合OpenTracing协议, OpenTracing 和 Jaeger 均是CNCF 成员项目, 以下是Jaeger 架构的示意图:</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr03yvpwlj31jw0u0wmd.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr03yvpwlj31jw0u0wmd.jpg" alt="" /></p>
 
 <p>Jaeger 架构示意图（图片来自<a href="https://www.jaegertracing.io/docs/1.6/architecture/">Jaeger官方文档</a>)</p>
 
@@ -1306,7 +1306,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <h2 id="4-1-pilot-架构">4.1 Pilot 架构</h2>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzr04ak32zj30kt0dqjsk.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr04ak32zj30kt0dqjsk.jpg" alt="" /></p>
 
 <p>Pilot Architecture（图片来自<a href="https://istio.io/docs/concepts/traffic-management/">Isio官网文档</a>)</p>
 
@@ -1346,7 +1346,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <h4 id="kubernetes-ingress-vs-istio-gateway">Kubernetes Ingress vs Istio Gateway</h4>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr04mmy6oj31220f0ju1.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr04mmy6oj31220f0ju1.jpg" alt="" /></p>
 
 <ul>
 <li>合并了L4-6和L7的规范, 对传统技术栈用户的应用迁入不方便</li>
@@ -1530,7 +1530,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <h2 id="4-4-mixer-架构">4.4 Mixer 架构</h2>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr052jgbaj30i70e73zq.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr052jgbaj30i70e73zq.jpg" alt="" /></p>
 
 <p>Mixer Topology（图片来自<a href="https://istio.io/docs/concepts/policies-and-telemetry/">Isio官网文档</a>)</p>
 
@@ -1640,7 +1640,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <hr />
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr05l1dnpj30q80jj0v5.jpg" alt="" /></p>
+<p><img src="006tNc79ly1fzr05l1dnpj30q80jj0v5.jpg" alt="" /></p>
 
 <hr />
 
@@ -1657,7 +1657,7 @@ ENDPOINT             STATUS      CLUSTER
 <li><a href="http://www.servicemesher.com">servicemesher 中文社区</a></li>
 </ul>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzs45dygpyj31jt0beq9s.jpg" alt="ServiceMesher社区" /></p>
+<p><img src="006tNc79ly1fzs45dygpyj31jt0beq9s.jpg" alt="ServiceMesher社区" /></p>
 
                         </div>
                         
@@ -1762,7 +1762,7 @@ ENDPOINT             STATUS      CLUSTER
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -2051,6 +2051,9 @@ ENDPOINT             STATUS      CLUSTER
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -2160,7 +2163,7 @@ ENDPOINT             STATUS      CLUSTER
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -2180,7 +2183,7 @@ ENDPOINT             STATUS      CLUSTER
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -2193,7 +2196,7 @@ ENDPOINT             STATUS      CLUSTER
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -2206,7 +2209,7 @@ ENDPOINT             STATUS      CLUSTER
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -2228,7 +2231,7 @@ ENDPOINT             STATUS      CLUSTER
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

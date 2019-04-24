@@ -55,7 +55,7 @@
   <meta property="og:title" content="使用Cilium增强Istio—通过Socket感知BPF程序" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="使用Cilium增强Istio—通过Socket感知BPF程序 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="使用Cilium增强Istio—通过Socket感知BPF程序 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="使用Cilium增强Istio—通过Socket感知BPF程序 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="使用Cilium增强Istio—通过Socket感知BPF程序 logo" class="visible-xs visible-sm">
                     <span class="sr-only">使用Cilium增强Istio—通过Socket感知BPF程序 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -307,7 +307,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="https://ws4.sinaimg.cn/large/0069RVTdly1fu84zi0tigj30td0gk75e.jpg" alt="" /></p>
+<p><img src="0069RVTdly1fu84zi0tigj30td0gk75e.jpg" alt="" /></p>
 
 <p>8月1日Istio 1.0 发布，Cilium社区感谢所有Istio贡献者为此付出的巨大努力。我们很幸运能够参与社区活动，为Istio做出贡献，并帮助一些用户通过Istio和Cilium进行生产部署。如果您有兴趣在深入了解技术细节之前了解Istio + Cilium的用户故事，请考虑阅读HP FitStation团队（最大的Cilium + Istio用户之一）发布的以下Istio博客: <a href="https://istio.io/blog/2018/hp/">Istio是惠普FitStation平台的游戏规则的改变者</a>。</p>
 
@@ -333,7 +333,7 @@ autocomplete('#aa-search-input',
 
 <p>Istio提供了一种通过负载均衡、服务间身份验证、监控等且没有侵入性创建部署服务网络的简便方法。可以通过在整个环境中部署特殊的sidecar代理来添加对服务的支持，该代理拦截微服务之间的所有网络通信，使用Istio的控制平面功能进行配置和管理。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/0069RVTdly1fu853bzn1aj311o0rs426.jpg" alt="" /></p>
+<p><img src="0069RVTdly1fu853bzn1aj311o0rs426.jpg" alt="" /></p>
 
 <p>您可以在<a href="https://istio.io/zh/docs">Istio文档</a>中阅读有关Istio概念和架构的更多信息。</p>
 
@@ -351,7 +351,7 @@ autocomplete('#aa-search-input',
 
 <p>Istio服务网格架构要求将参与服务网格的所有pod的出站和入站请求的所有网络流量都要重定向到sidecar代理。Sidecar代理将终止所有TCP连接并执行诸如遥测、重试、路由、双向TLS之类的服务和代表服务的授权，并使用辅助所谓的上游TCP连接来到达目的地服务,这正是服务之间支持双向TLS,没有代码侵入性原因所在。然而，当使用标准的基于IP的工具（如iptables）实现重定向时，这种重定向可能会很费事，因为必须多次遍历整个TCP/IP堆栈。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/0069RVTdly1fu853qn3w1j30fi0bo0tx.jpg" alt="" /></p>
+<p><img src="0069RVTdly1fu853qn3w1j30fi0bo0tx.jpg" alt="" /></p>
 
 <p>Cilium充分使用了一个叫sockmap的令人兴奋的BPF功能。它允许过滤和重定向，基于套接字级别，使Cilium可以socket感知。此socket是应用程序用于发送和接收网络流量的接口。这允许在相同节点上实质上短路TCP socket，从而以完全透明的方式大幅加速应用程序和服务网格的sidecar代理的通信速度。应用程序和sidecar代理都不需要以任何方式进行修改。如果您有兴趣了解有关此用例的更多信息，请参阅位于奥斯汀的KubeCon 2018上的演示文稿——<strong>使用CIlium加速Envoy、Istio和Linux内核（<a href="https://t.co/cx6CQhn1xl">录像</a>、<a href="https://www.slideshare.net/ThomasGraf5/accelerating-envoy-and-istio-with-cilium-and-the-linux-kernel">幻灯片</a>）</strong>。</p>
 
@@ -381,7 +381,7 @@ autocomplete('#aa-search-input',
 
 <p>Level 2 安全级别通过使用socket感知BPF程序在socket级别提供分段，在同一个pod中引入容器和进程之间的分段。</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/0069RVTdly1fu854newqhj312w0iijud.jpg" alt="" /></p>
+<p><img src="0069RVTdly1fu854newqhj312w0iijud.jpg" alt="" /></p>
 
 <ul>
 <li><p>强制所有应用流量流经sidecar: 通过使用socket感知BPF策略，Cilium可以确保应用程序的所有通信都必须通过sidecar进行入站和出站连接。保证应用程序容器本身不能从pod外部接收连接，或者在不通过sidecar代理的情况下向pod外部发出请求。</p></li>
@@ -397,19 +397,19 @@ autocomplete('#aa-search-input',
 
 <p>Istio依赖于对应用程序协议层（如HTTP）的可见性，以提供诸如基于URI的路由，基于HTTP头的授权和API请求级别遥测和跟踪等功能。通过将双向TLS与Istio Citadel管理的证书相互应用，可以在未加密的服务之间保持应用程序流量并在源服务器和目标服务的sidecar代理之间执行TLS加密来实现此可见性。</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/0069RVTdly1fu854xy8csj312w0f2jsu.jpg" alt="" /></p>
+<p><img src="0069RVTdly1fu854xy8csj312w0f2jsu.jpg" alt="" /></p>
 
 <p>这适用于网格内部服务之间的连接。与网格之外的服务的通信几乎由应用程序本身进行TLS加密保证，以便在不可信的因特网上保护通信。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/0069RVTdly1fu8555b0z3j312w0e8t9y.jpg" alt="" /></p>
+<p><img src="0069RVTdly1fu8555b0z3j312w0e8t9y.jpg" alt="" /></p>
 
 <p>Linux的kTLS（内核TLS）工作原理最初是由Facebook的Dave Watson提出。它包括将数据的对称加密从应用程序中的SSL库迁移到Linux内核中的socket功能。这项工作的最初动机是纯粹的性能优化，因为使用kTLS比SSL库快3-4％。这对于经过SSL静态数据的提供者有足够的兴趣去继续。这项工作已经合并，并且可以在最新的Linux内核中使用。结合在Linux socket层注入的BPF程序的功能，kTLS实现了数据的透明可见性，否则此时已加密。</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/0069RVTdly1fu855axcscj312w0gdgn4.jpg" alt="" /></p>
+<p><img src="0069RVTdly1fu855axcscj312w0gdgn4.jpg" alt="" /></p>
 
 <p>我们仍在研究这个功能，但有一个初始的功能原型，证明了获得可见性和控制数据的概念，这些数据通常是在应用程序本身中进行TLS加密的。下一步是将此数据提供给sidecar，以便在与外部服务的连接上释放Istio。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/0069RVTdly1fu855mb70uj312w0lm77l.jpg" alt="" /></p>
+<p><img src="0069RVTdly1fu855mb70uj312w0lm77l.jpg" alt="" /></p>
 
 <h4 id="在没侵入应用程序的情况下ktls是如何实现透明化的">在没侵入应用程序的情况下kTLS是如何实现透明化的？</h4>
 
@@ -491,7 +491,7 @@ autocomplete('#aa-search-input',
          
         <li><a href="/blog/sidecar-design-pattern-in-microservices-ecosystem/"><i class="fa fa-link"></i>微服务中的Sidecar设计模式解析</a></li>
          
-        <li><a href="/blog/announcing-istio-1.0/"><i class="fa fa-link"></i>Istio 1.0发布，已生产就绪！</a></li>
+        <li><a href="/blog/announcing-istio-1-0/"><i class="fa fa-link"></i>Istio 1.0发布，已生产就绪！</a></li>
          
      </ul>
     </div>
@@ -550,7 +550,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -839,6 +839,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -948,7 +951,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -968,7 +971,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -981,7 +984,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -994,7 +997,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1016,7 +1019,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

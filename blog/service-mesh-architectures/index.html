@@ -55,7 +55,7 @@
   <meta property="og:title" content="Service Mesh架构解析" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/service-mesh-architectures//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Service Mesh架构解析 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Service Mesh架构解析 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Service Mesh架构解析 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Service Mesh架构解析 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Service Mesh架构解析 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -339,7 +339,7 @@ autocomplete('#aa-search-input',
 
 <p>软件中库引用的方式是个很自然的选择。它简单明了。在这种架构中，每个微服务应用程序包中都有实现Service Mesh功能的库。像<a href="https://github.com/Netflix/Hystrix">Hystrix</a>和<a href="https://github.com/Netflix/Hystrix">Ribbon</a>就是用库的方法。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006XVfd7gy1ft2yu15ollj30fx0an3z0.jpg" alt="picture" /></p>
+<p><img src="006XVfd7gy1ft2yu15ollj30fx0an3z0.jpg" alt="picture" /></p>
 
 <p>如果一个团队仅使用一种语言开发并且还负责一个应用的运行，那么使用库引用就很容易，这种方式自然也是很合适的。库方法不需要与底层基础架构进行太多合作，如Kubernetes无需关心正在运行的一个应用是否包含Hystrix库。</p>
 
@@ -357,7 +357,7 @@ autocomplete('#aa-search-input',
 
 <p>由于每个节点上都需要一个节点代理，因此需要与基础架构进行一些协作，如果没有协作的话此模型就无法工作。通过类比，大多数应用程序会把选择TCP堆栈，猜一个端口号，然后发送或接收TCP数据包的事委托给基础设施（也就是操作系统）。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006XVfd7gy1ft2yu1ipj2j30gd0b2t9d.jpg" alt="agent" /></p>
+<p><img src="006XVfd7gy1ft2yu1ipj2j30gd0b2t9d.jpg" alt="agent" /></p>
 
 <p>相比工作审计来说，这个模型强调工作资源共享，如果节点代理用一些内存来缓存微服务的数据，那么服务就可能会在几秒钟内转向并使用该缓存区提供的数据。这可能非常有效，但容易被滥用。如果我的微服务请求所有缓存区空间，节点代理要先为你的微服务在缓存区提供一个快照。您需要更多代码来管理每个共享资源。</p>
 
@@ -373,7 +373,7 @@ autocomplete('#aa-search-input',
 
 <p>Sidecar有利于工作审计，特别是在一些与安全相关的方面。例如：假设我使用Service Mesh来提供零信任模式的安全性。我希望Service Mesh以加密方式去验证客户端和服务器。如果使用节点代理来实现：当我的pod想成为另一个服务器pod的客户端时，节点代理将代表我的pod进行身份验证。节点代理也在服务其他pod，因此必须确保另一个pod不能代表我的pod进行身份验证去欺骗他。如果我们用Sidecar来实现，我pod的Sidecar不会服务于其他pod。我们可以遵循最小特权原则，并在认证密钥，内存和网络功能方面满足这个pod最低限度的需求。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006XVfd7gy1ft2yu1chcrj30gf0awdgg.jpg" alt="sidecar" /></p>
+<p><img src="006XVfd7gy1ft2yu1chcrj30gf0awdgg.jpg" alt="sidecar" /></p>
 
 <p>因此，从外部看，Sidecar与其附属的应用程序具有相同的权限。另一方面，sidecar需要介入应用程序和外部服务之间。这会产生一些安全顾虑：你即希望sidecar拥有尽可能少的权限，但你又需要给它足够的权限来控制进出应用程序的流量。例如，在Istio中，负责设置Sidecar的init容器要具有设置iptables规则NET_ADMIN权限。初始化方式是较好的安全实践，它用最少的权限运行后就消失，但NET_ADMIN的所有内容都代表了被攻击的点。 （已经有人在加强改进这一点）。</p>
 
@@ -514,7 +514,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -803,6 +803,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -912,7 +915,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -932,7 +935,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -945,7 +948,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -958,7 +961,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -980,7 +983,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

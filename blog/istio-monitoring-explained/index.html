@@ -55,7 +55,7 @@
   <meta property="og:title" content="Istio 监控详解" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/istio-monitoring-explained//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio 监控详解 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio 监控详解 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Istio 监控详解 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Istio 监控详解 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Istio 监控详解 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -311,7 +311,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="前言">前言</h2>
 
-<p><img src="http://ww1.sinaimg.cn/large/bf8f1836ly1g229m58cmnj215o0jggrx.jpg" alt="istio-monitoring-explained" /></p>
+<p><img src="bf8f1836ly1g229m58cmnj215o0jggrx.jpg" alt="istio-monitoring-explained" /></p>
 
 <p>如果我说“服务网格”是当今技术社区的热门话题，没有人会感到惊讶。这个领域最活跃的项目之一是<a href="https://istio.io/">Istio</a>。它由IBM、谷歌和Lyft联合创建，作为对微服务体系结构已知问题的解决方案。容器和Kubernetes极大地帮助了Istio适配微服务体系结构。然而，与此同时，他们也带来了一系列我们以前没有遇到过的新问题。</p>
 
@@ -331,7 +331,7 @@ autocomplete('#aa-search-input',
 
 <p>“适配器”是一个附加到“Mixer”的处理程序，负责为后端调整属性数据。后端可以是对该数据感兴趣的任何外部服务。例如，监视工具(如Prometheus或Stackdriver)、授权后端或日志堆栈。</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/bf8f1836ly1g229z6meb0j20gq088t99.jpg" alt="istio-mixer-diagram" /></p>
+<p><img src="bf8f1836ly1g229z6meb0j20gq088t99.jpg" alt="istio-mixer-diagram" /></p>
 
 <h2 id="概念解析">概念解析</h2>
 
@@ -471,7 +471,7 @@ spec:
 
 <p>一旦应用了这些定义，Istio将指示Prometheus adapter开始收集并为新的metric服务。如果我们查看Prometheus用户界面，并且查找新的metric，我们应该可以看到以下内容:</p>
 
-<p><img src="http://ww1.sinaimg.cn/large/bf8f1836ly1g22a7dcfl9j218g0klq5c.jpg" alt="istio-prometheus-graph" /></p>
+<p><img src="bf8f1836ly1g22a7dcfl9j218g0klq5c.jpg" alt="istio-prometheus-graph" /></p>
 
 <h2 id="结论">结论</h2>
 
@@ -590,7 +590,7 @@ spec:
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -879,6 +879,9 @@ spec:
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -988,7 +991,7 @@ spec:
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1008,7 +1011,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1021,7 +1024,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1034,7 +1037,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1056,7 +1059,7 @@ spec:
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

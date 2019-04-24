@@ -55,7 +55,7 @@
   <meta property="og:title" content="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/x-protocol-rapid-decode-forward//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发 logo" class="visible-xs visible-sm">
                     <span class="sr-only">SOFAMesh中的多协议通用解决方案x-protocol介绍系列（2）——快速解码转发 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -345,7 +345,7 @@ autocomplete('#aa-search-input',
 
 <p>首先，毫无疑问的，必须拿到destination/目的地，也就是客户端请求必须通过某种方式明确的告之代理该请求的destination，这样代理程序才能根据这个destionation去找到正确的目标服务器，然后才有后续的连接目标服务器和转发请求等操作。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fw2zu0jen9j30vs0d475q.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fw2zu0jen9j30vs0d475q.jpg" alt="" /></p>
 
 <p>Destination信息的表述形式可能有：</p>
 
@@ -379,7 +379,7 @@ autocomplete('#aa-search-input',
 
 <p>如何从请求的通讯协议中获取destination？这涉及到具体通讯协议的解码，其中第一个要解决的问题就是如何在连续的TCP报文中将每个请求内容拆分开，这里就涉及到经典的TCP沾包、拆包问题。</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fw2zuc1molj30vw0ayaax.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fw2zuc1molj30vw0ayaax.jpg" alt="" /></p>
 
 <p>转发请求时，由于涉及到负载均衡，我们需要将请求发送给多个服务器端实例。因此，有一个非常明确的要求：就是必须以单个请求为单位进行转发。即单个请求必须完整的转发给某台服务器端实例，负载均衡需要以请求为单位，不能将一个请求的多个报文包分别转发到不同的服务器端实例。所以，拆包是请求转发的必备基础。</p>
 
@@ -393,11 +393,11 @@ autocomplete('#aa-search-input',
 
 <p>HTTP/1.1不支持多路复用（http1.1有提过支持幂等方法的pipeline机制但是未能普及），用的是经典的ping-pong模式：在请求发送之后，必须独占当前连接，等待服务器端给出这个请求的应答，然后才能释放连接。因此HTTP/1.1下，并发多个请求就必须采用多连接，为了提升性能通常会使用长连接+连接池的设计。而如果有了requestid和多路复用的支持，客户端和Mesh之间理论上就可以只用一条连接（实践中可能会选择建立多条）来支持并发请求：</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw2zujxeh7j313x0dwtaz.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fw2zujxeh7j313x0dwtaz.jpg" alt="" /></p>
 
 <p>而Mesh与服务器（也可能是对端的Mesh）之间，也同样可以受益于多路复用技术，来自不同客户端而去往同一个目的地的请求可以混杂在同一条连接上发送。通过RequestId的关联，Mesh可以正确将reponse发送到请求来自的客户端。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw2zuxvz4lj310r0dzwgj.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fw2zuxvz4lj310r0dzwgj.jpg" alt="" /></p>
 
 <p>由于篇幅和主题限制，我们不在这里展开多路复用的原理。后面针对每个具体的通讯协议进行分析时再具体看各个协议的支持情况。</p>
 
@@ -427,7 +427,7 @@ autocomplete('#aa-search-input',
 
 <p>bolt 是蚂蚁金服集团开放的基于 Netty 开发的网络通信框架，其协议格式是变长，即协议头+payload。具体格式定义如下，以request为例（response类似）：</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw2zv3sqhij312j0833zq.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fw2zv3sqhij312j0833zq.jpg" alt="" /></p>
 
 <p>我们只关注和请求转发直接相关的字段：</p>
 
@@ -472,7 +472,7 @@ autocomplete('#aa-search-input',
 
 <p>Dubbo协议也是类似的协议头+payload的变长结构，其协议格式如下：</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw2zvfi4g9j30oh03gmxj.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fw2zvfi4g9j30oh03gmxj.jpg" alt="" /></p>
 
 <p>其中long类型的<code>id</code>字段用来把请求request和返回的response对应上，即我们所说的<code>RequestId</code>。</p>
 
@@ -515,7 +515,7 @@ autocomplete('#aa-search-input',
 
 <p>首先HTTP/2是以帧的方式组织报文的，所有的帧都是变长，固定的9个字节+可变的payload，Length字段指定payload的大小：</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fw2zvsjz65j30jg0650tg.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fw2zvsjz65j30jg0650tg.jpg" alt="" /></p>
 
 <p>HTTP2的请求和应答，也被称为Message，是由多个帧构成，在去除控制帧之外，Message通常由Header帧开始，后面接CONTINUATION帧和Data帧（也可能没有，如GET请求）。每个帧都可以通过头部的Flags字段来设置END_STREAM标志，表示请求或者应答的结束。即TCP拆包的问题在HTTP/2下是有非常标准而统一的方式完成，完全和HTTP/2上承载的协议无关。</p>
 
@@ -650,7 +650,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -939,6 +939,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1048,7 +1051,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1068,7 +1071,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1081,7 +1084,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1094,7 +1097,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1116,7 +1119,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

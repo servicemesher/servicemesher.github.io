@@ -55,7 +55,7 @@
   <meta property="og:title" content="Kubernetes Ingress Controller的使用介绍及高可用落地" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/kubernetes-ingress-controller-deployment-and-ha//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Kubernetes Ingress Controller的使用介绍及高可用落地 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Kubernetes Ingress Controller的使用介绍及高可用落地 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Kubernetes Ingress Controller的使用介绍及高可用落地 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Kubernetes Ingress Controller的使用介绍及高可用落地 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Kubernetes Ingress Controller的使用介绍及高可用落地 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -335,7 +335,7 @@ autocomplete('#aa-search-input',
 
 <p>我们跑的大多服务都是应用层http（s），Ingress Controller使用service或者pod的网络将它暴露在集群外，然后它反向代理集群内的七层服务，通过vhost子域名那样路由到后端的服务，<code>Ingress Controller</code>工作架构如下，借用traefik官方的图。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fyl4kdlseyj30mg0dc405.jpg" alt="traefik" /></p>
+<p><img src="006tNbRwly1fyl4kdlseyj30mg0dc405.jpg" alt="traefik" /></p>
 
 <p>你可以将<code>api.domain.com</code>进来的流量路由到集群里api的pod，你可以将<code>backoffice.domain.com</code>流量路由到backoffice的一组pod上，虽说我们可以自己搭建一个nginx来代替掉<code>Ingress Controller</code>，但是要增加代理的service长期来看维护很不方便，在使用上<code>Ingress Controller</code>后可以用一种抽象的对象告诉controller添加对应的代理，也就是<code>kind: Ingress</code>。它里面描述了从Ingress Controller访问进来的ServerName和web的url要代理到集群里哪个service（以及service的port）等等具体信息。</p>
 
@@ -630,9 +630,9 @@ spec:
          
         <li><a href="/blog/prometheus-monitor-k8s-2/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列2——监控部署</a></li>
          
-        <li><a href="/blog/prometheus-monitor-k8s-1/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列1——监控框架</a></li>
-         
         <li><a href="/blog/prometheus-monitor-k8s-3/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列3——业务指标采集</a></li>
+         
+        <li><a href="/blog/prometheus-monitor-k8s-1/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列1——监控框架</a></li>
          
      </ul>
     </div>
@@ -691,7 +691,7 @@ spec:
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -980,6 +980,9 @@ spec:
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1089,7 +1092,7 @@ spec:
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1109,7 +1112,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1122,7 +1125,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1135,7 +1138,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1157,7 +1160,7 @@ spec:
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

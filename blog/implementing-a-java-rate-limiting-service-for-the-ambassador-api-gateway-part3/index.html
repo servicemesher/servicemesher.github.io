@@ -55,7 +55,7 @@
   <meta property="og:title" content="速率限制part3—基于Ambassador API网关实现Java速率限制服务" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="速率限制part3—基于Ambassador API网关实现Java速率限制服务 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="速率限制part3—基于Ambassador API网关实现Java速率限制服务 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="速率限制part3—基于Ambassador API网关实现Java速率限制服务 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="速率限制part3—基于Ambassador API网关实现Java速率限制服务 logo" class="visible-xs visible-sm">
                     <span class="sr-only">速率限制part3—基于Ambassador API网关实现Java速率限制服务 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -334,7 +334,7 @@ autocomplete('#aa-search-input',
 
 <p>第一阶段的服务和部署架构如下图所示：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fsvwpjxbzuj20hi0gjdga.jpg" alt="第一阶段架构" /></p>
+<p><img src="78a165e1gy1fsvwpjxbzuj20hi0gjdga.jpg" alt="第一阶段架构" /></p>
 
 <p>从图中可以看到，Docker Java Shopping应用程序主要由三个服务组成。在先前的教程中，你已经添加Ambassador API网关作为系统的“front door”（大门）。需要注意的是，Ambassador API网关直接使用Web 80号端口，因此需要确保本地运行的其他应用没有占用该端口。</p>
 
@@ -362,7 +362,7 @@ total 48
 
 <p>通过以上命令部署，这与之前架构的区别在于添加了<code>ratelimiter</code>服务。 这个服务是用Java编写的，且没有使用微服务框架。它发布了一个gRPC端点，可供Ambassador来使用以实现速率限制。这种方案允许灵活定制速率限制算法（关于这点的好处请查看我<a href="https://blog.getambassador.io/rate-limiting-for-api-gateways-892310a2da02">以前的文章</a>）。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/78a165e1gy1fsvwvs0d8kj20hi0gj74v.jpg" alt="限速架构" /></p>
+<p><img src="78a165e1gy1fsvwvs0d8kj20hi0gj74v.jpg" alt="限速架构" /></p>
 
 <h2 id="探索部署于kubernetes的限速器服务">探索部署于Kubernetes的限速器服务</h2>
 
@@ -605,9 +605,9 @@ Ratelimit.RateLimitResponse rateLimitResponse = generateRateLimitResponse(code);
          
         <li><a href="/blog/hangzhou-meetup-20180630/"><i class="fa fa-link"></i>第一届Service Mesh Meetup杭州站回顾</a></li>
          
-        <li><a href="/blog/istio-is-not-just-for-microservices/"><i class="fa fa-link"></i>Istio不仅为微服务而生—使用Istio Service Mesh保护Kubernetes中的服务</a></li>
+        <li><a href="/blog/a-new-more-efficient-proxy-model/"><i class="fa fa-link"></i>探讨Service Mesh中一种更高效的代理模式</a></li>
          
-        <li><a href="/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/"><i class="fa fa-link"></i>利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持</a></li>
+        <li><a href="/blog/istio-is-not-just-for-microservices/"><i class="fa fa-link"></i>Istio不仅为微服务而生—使用Istio Service Mesh保护Kubernetes中的服务</a></li>
          
      </ul>
     </div>
@@ -666,7 +666,7 @@ Ratelimit.RateLimitResponse rateLimitResponse = generateRateLimitResponse(code);
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -955,6 +955,9 @@ Ratelimit.RateLimitResponse rateLimitResponse = generateRateLimitResponse(code);
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1064,7 +1067,7 @@ Ratelimit.RateLimitResponse rateLimitResponse = generateRateLimitResponse(code);
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1084,7 +1087,7 @@ Ratelimit.RateLimitResponse rateLimitResponse = generateRateLimitResponse(code);
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1097,7 +1100,7 @@ Ratelimit.RateLimitResponse rateLimitResponse = generateRateLimitResponse(code);
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1110,7 +1113,7 @@ Ratelimit.RateLimitResponse rateLimitResponse = generateRateLimitResponse(code);
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1132,7 +1135,7 @@ Ratelimit.RateLimitResponse rateLimitResponse = generateRateLimitResponse(code);
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

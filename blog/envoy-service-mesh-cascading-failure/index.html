@@ -55,7 +55,7 @@
   <meta property="og:title" content="Envoy服务网格在Lyft的实践及未来路线图" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/envoy-service-mesh-cascading-failure//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Envoy服务网格在Lyft的实践及未来路线图 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Envoy服务网格在Lyft的实践及未来路线图 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Envoy服务网格在Lyft的实践及未来路线图 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Envoy服务网格在Lyft的实践及未来路线图 logo" class="visible-xs visible-sm">
                     <span class="sr-only">Envoy服务网格在Lyft的实践及未来路线图 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -309,7 +309,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuv5nathu3j318g0ii0uc.jpg" alt="Envoy Lyft" /></p>
+<p><img src="006tNbRwgy1fuv5nathu3j318g0ii0uc.jpg" alt="Envoy Lyft" /></p>
 
 <h2 id="关键要点">关键要点</h2>
 
@@ -386,7 +386,7 @@ autocomplete('#aa-search-input',
 
 <p>Lyft 的网络团队为所有配置的速率限制提供指标。当服务所有者创建新的速率限制以在边缘、服务之间或数据库中强制执行时，可以立即收集与防御机制有关的数据。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1furr8zvymaj20h4029wf0.jpg" alt="" /></p>
+<p><img src="61411417ly1furr8zvymaj20h4029wf0.jpg" alt="" /></p>
 
 <p>上图是 ratelimit 服务仪表板的一个片段，其中显示了三个面板：</p>
 
@@ -422,7 +422,7 @@ autocomplete('#aa-search-input',
 
 <h4 id="设置限制"><strong>设置限制</strong></h4>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1furr903c8uj20go03l764.jpg" alt="" /></p>
+<p><img src="61411417ly1furr903c8uj20go03l764.jpg" alt="" /></p>
 
 <p>上面的仪表板是一个交互式仪表板，服务所有者可以对 Lyft 的所有服务允许的最大并发请求数量进行试验，以满足其特定服务。在上面的示例中，“位置”服务的所有者可以看到，除“viewport”服务之外，大多数调用服务的60个并发请求的限制就足够了。使用此仪表板，服务所有者可以查看并发配置中的选择性更改在当前网络拓扑中的外观，并可以放心地进行这些更改。</p>
 
@@ -432,13 +432,13 @@ autocomplete('#aa-search-input',
 
 <p><em>入口并发</em></p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1furr901sd6j20h103hjrw.jpg" alt="" /></p>
+<p><img src="61411417ly1furr901sd6j20h103hjrw.jpg" alt="" /></p>
 
 <p>使用上面的两个面板，服务所有者可以看到从他们的 sidecar Envoy 到他们的服务的并发连接数（使用左边的面板），并查看是否正触发并发限制（使用右侧的面板）。</p>
 
 <p><em>出口并发</em></p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1furrb4gp54j20go03g0tc.jpg" alt="" /></p>
+<p><img src="61411417ly1furrb4gp54j20go03g0tc.jpg" alt="" /></p>
 
 <p>使用上面的两个面板，服务所有者可以在任何时间点（从左侧的面板）可视化从任何服务到其服务的并发请求数。此外，他们可以可视化超出配置限制的服务（使用右侧面板），然后继续使用具体数据解决问题。</p>
 
@@ -481,11 +481,11 @@ autocomplete('#aa-search-input',
 
 <h2 id="关于作者">关于作者</h2>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1furr8ztt97j202d02sweb.jpg" alt="" /></p>
+<p><img src="61411417ly1furr8ztt97j202d02sweb.jpg" alt="" /></p>
 
 <p><strong>Jose Nino</strong> 是 Lyft 网络团队开发工具和配置的负责人。在近两年的时间里，他一直在 Lyft 工作，Jose 一直在创建系统来扩展 Lyft Envoy 生产环境的配置，以适应日益庞大的部署和工程组织。他曾担任开源 Envoy 维护人员，并培养了 Envoy 不断发展的社区。最近，Jose 继续扩展 Lyft 的网络负载容忍系统。何塞在几个场地谈到了 Envoy 和其他相关话题，最近一次是在 Kubecon EU 2018。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1furr8zquv6j202d02sdfo.jpg" alt="" /></p>
+<p><img src="61411417ly1furr8zquv6j202d02sdfo.jpg" alt="" /></p>
 
 <p><strong>Daniel Hochman</strong> 是 Lyft 的高级基础设施工程师。他热衷于扩展创新产品和流程，以改善公司内外的生活质量。在 Lyft 工作期间，他成功地指导了平台产品和组织发展的爆炸式增长。他编写了吞吐量最高的微服务之一，并介绍了几种关键存储技术。Daniel 目前负责 Lyft 的交通网络，并负责在内部和边缘扩展 Lyft 的网络基础设施。</p>
 
@@ -592,7 +592,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -881,6 +881,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -990,7 +993,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1010,7 +1013,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1023,7 +1026,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1036,7 +1039,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1058,7 +1061,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

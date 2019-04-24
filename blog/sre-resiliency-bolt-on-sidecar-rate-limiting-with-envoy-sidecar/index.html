@@ -55,7 +55,7 @@
   <meta property="og:title" content="SRE 弹性能力：使用 Envoy 对应用进行速率限制" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="SRE 弹性能力：使用 Envoy 对应用进行速率限制 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="SRE 弹性能力：使用 Envoy 对应用进行速率限制 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="SRE 弹性能力：使用 Envoy 对应用进行速率限制 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="SRE 弹性能力：使用 Envoy 对应用进行速率限制 logo" class="visible-xs visible-sm">
                     <span class="sr-only">SRE 弹性能力：使用 Envoy 对应用进行速率限制 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -317,7 +317,7 @@ autocomplete('#aa-search-input',
 
 <p>对 <code>API</code> 的使用进行约束的常用方法是启用速率限制。与基于 IP 的速率限制或者 web 框架提供的应用级别速率限制不同，Envoy 允许在 <code>HTTP</code> 层实现快速，高性能和可靠的全局速率限制。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fwrjjnhj5rj30am0b1aa7.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwrjjnhj5rj30am0b1aa7.jpg" alt="" /></p>
 
 <p>上图中左侧的 <code>Service Client</code> 代表使用率特别高的客户端。在运行期间，它可以使负载均衡后端的所有服务实例流量饱和，并使其他更高优先级的客户端丢弃其请求。</p>
 
@@ -334,11 +334,11 @@ autocomplete('#aa-search-input',
 echo &quot;GET http://localhost:8080/slow&quot; | vegeta attack -rate=500 -duration=0 | tee results.bin | vegeta report
 </code></pre>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwrjy191ohj30lr07jq34.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwrjy191ohj30lr07jq34.jpg" alt="" /></p>
 
 <p>在模拟后台作业期间，对 API 资源 <code>/slow</code> 的访问速率达到了每秒 <code>3500</code> 个请求，影响到了其他端点和客户端。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwrk228etaj30nd07m74v.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwrk228etaj30nd07m74v.jpg" alt="" /></p>
 
 <p>为了解决这个问题，下面的解决方案将使用 Envoy 强制限制请求速率为 <code>500个请求/秒</code>。但首先&hellip;</p>
 
@@ -374,7 +374,7 @@ echo &quot;GET http://localhost:8080/slow&quot; | vegeta attack -rate=500 -durat
 
 <p>第一步是将 Envoy 配置为处于批处理作业客户端和 API 负载均衡器之间，客户端向 API 发起的所有请求都会首先经过 Envoy 的处理。首先需要让 Envoy 知道如何连接 API，然后再更新批处理作业的配置，使该客户端向 Envoy 发出请起，而不是直接向 API 发出请求。配置完之后的最终状态如下图所示：</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwskywz0cqj30ct0dywf6.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwskywz0cqj30ct0dywf6.jpg" alt="" /></p>
 
 <p>此步骤仅通过 Envoy 来对 API 流量进行路由，尚未对应用进行速率限制。为了达到限速的目的，我们还需要做一些额外的配置：</p>
 
@@ -462,11 +462,11 @@ admin:
 echo &quot;GET http://localhost:10000/slow&quot; | vegeta attack -rate=500 -duration=0 | tee results.bin | vegeta report
 </code></pre>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwsmozv3daj30nr07lgm9.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwsmozv3daj30nr07lgm9.jpg" alt="" /></p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwsmprdwh2j30br07hq3b.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwsmprdwh2j30br07hq3b.jpg" alt="" /></p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwsmq2wanfj30nr07kgm6.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwsmq2wanfj30nr07kgm6.jpg" alt="" /></p>
 
 <p>上图显示 Envoy 现在正在接收客户端发送给 API 的所有请求，并将它们发送到上游的负载均衡器！</p>
 
@@ -474,7 +474,7 @@ echo &quot;GET http://localhost:10000/slow&quot; | vegeta attack -rate=500 -dura
 
 <p>此步骤将配置运行 Lyft 开源的全局 <a href="https://github.com/lyft/ratelimit">速率限制</a> 服务。运行该服务非常简单，只需要克隆它的代码仓库，修改一部分配置文件，然后通过 <code>docker-compose</code> 启动就行了。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fwsmxzrlsmj30hk0dyaav.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwsmxzrlsmj30hk0dyaav.jpg" alt="" /></p>
 
 <p>首先克隆 <a href="https://github.com/lyft/ratelimit">Ratelimit 代码仓库</a>并修改配置文件，更新 <code>domain</code> 字段以及 <code>descriptor</code> 字段的 <code>key</code> 和 <code>value</code>：</p>
 
@@ -500,7 +500,7 @@ descriptors:
 
 <p>最后一步是配置 Envoy 使用全局速率限制服务，以强制执行速率限制并降低对 API 的请求速率。配置生效后，Envoy 将会检查每个传入连接的速率限制，并根据上面的配置过滤掉一部分请求（限制最多 500 个请求/秒）。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwsnt0oi5gj30hk0de3zb.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwsnt0oi5gj30hk0de3zb.jpg" alt="" /></p>
 
 <p>开启了速率限制的 Envoy 配置文件如下所示：</p>
 
@@ -620,15 +620,15 @@ Error Set:
 
 <p>通过 Envoy 暴露的速率限制指标（<code>envoy_cluster_ratelimit_over_limit</code>）或（<code>4xx</code> 响应）的速率来绘制仪表板，可以看到相应的可视化图表：</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwsohfxmscj30m107iq3k.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwsohfxmscj30m107iq3k.jpg" alt="" /></p>
 
 <p>通过可视化 API 服务实际看到的请求数量，可以证明请求速率在 <code>500个请求/秒</code> 上下波动，这正是我们所期望的！</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fwsongr2zhj30jw07ejrr.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwsongr2zhj30jw07ejrr.jpg" alt="" /></p>
 
 <p>再查看一下 Envoy 传出的 API 连接，可以看到传出请求速率也在 <code>500个请求/秒</code> 上下波动！</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwsopzl2uhj30l707ijry.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fwsopzl2uhj30l707ijry.jpg" alt="" /></p>
 
 <p>实验成功！</p>
 
@@ -751,7 +751,7 @@ Error Set:
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1040,6 +1040,9 @@ Error Set:
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1149,7 +1152,7 @@ Error Set:
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1169,7 +1172,7 @@ Error Set:
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1182,7 +1185,7 @@ Error Set:
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1195,7 +1198,7 @@ Error Set:
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1217,7 +1220,7 @@ Error Set:
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

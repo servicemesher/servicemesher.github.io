@@ -13,10 +13,10 @@
     
     <item>
       <title>Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等</title>
-      <link>http://www.servicemesher.com/blog/cilium1.2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</link>
+      <link>http://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</link>
       <pubDate>Mon, 27 Aug 2018 19:52:29 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/cilium1.2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</guid>
+      <guid>http://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</guid>
       <description>我们很高兴地宣布推出Cilium 1.2。该版本引入了几个新功能实现了Cilium用户和社区成员最迫切想要的功能。其中最吸引人的功能之一是引入</description>
     </item>
     

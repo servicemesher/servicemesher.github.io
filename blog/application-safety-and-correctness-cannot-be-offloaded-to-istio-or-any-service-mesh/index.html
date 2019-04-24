@@ -55,7 +55,7 @@
   <meta property="og:title" content="应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/application-safety-and-correctness-cannot-be-offloaded-to-istio-or-any-service-mesh//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格 logo" class="visible-xs visible-sm">
                     <span class="sr-only">应用程序安全性和正确性的责任不能推卸给Istio和任何服务网格 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -369,7 +369,7 @@ autocomplete('#aa-search-input',
 
 <p>例如：在 Saltzer 的论文中，他们使用从应用程序 A 传输文件到应用程序 B 的示例：</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuibtn8kvfj31fc0v2ju4.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fuibtn8kvfj31fc0v2ju4.jpg" alt="" /></p>
 
 <p>我们需要做什么（安全）来保证文件被正确的传送到？在图中的任何一点都有能出现错误：</p>
 
@@ -381,7 +381,7 @@ autocomplete('#aa-search-input',
 
 <p>我们可以进行优化，例如使用更可靠的传输，如 TCP 协议或消息队列，但是 TCP 不知道“正确传输文件”的语意，所以我们期望的最好结果至少是当我们在网络上处理事情时，网络是可靠的。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuiihqrv73j31es0eqjsf.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fuiihqrv73j31es0eqjsf.jpg" alt="" /></p>
 
 <p>为了完整的实现端到端的正确性，我们可能需要使用一些类似文件校验的东西，与文件一起在文件初始化时写入，然后在 B 接收文件时校验其校验和。然而，我们在校验传输的正确性（实现细节），其职责在于找出解决方案并使其正确，而不是使用 TCP 或者消息队列。</p>
 
@@ -408,7 +408,7 @@ autocomplete('#aa-search-input',
 
 <p>可以使用一个简单的例子，”在购物车中添加一个项目“，我们可以来说明这个概念：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuikdn3j02j31ks0oa77e.jpg" alt="" /></p>
+<p><img src="006tNbRwgy1fuikdn3j02j31ks0oa77e.jpg" alt="" /></p>
 
 <p>当一个用户在点击“加入购物车”功能时，用户期望看到的是商品已经加入到他们的购物车中。在系统中，这可能涉及到对推荐引擎的协调、调用顺序（嘿，我们把它加入到购物车中了，想知道是否计算推荐报价来配合它）、库存服务和其他服务等，然后再调用服务插入购物车。我们需要能够将消息转换到不同的后端，处理失败（并回滚我们发起的任何更改），并且在每个服务中我们都需要可以处理重复。如果由于某种原因，调用变得很慢，但用户又再次点击了“加入购物车”时怎么办呢？如果用户这么做了，那么再多可靠的基础设施也拯救不了我们；我们需要在应用程序中检测和实现重复检查/幂等服务。</p>
 
@@ -444,11 +444,11 @@ autocomplete('#aa-search-input',
 
 <p>在过去，我们试图将这些领域中的职责混合在一起。我们会做一些事情，比如把所有东西都推入集中式基础设施中，这样它基本上就100%可用的（应用程序网络+应用系统集成）。我们将应用程序的关注点放在集中的基础设施中（它本应该使我们更加敏捷），但是当需要对应用程序做快速的更改时，却遇到了瓶颈和僵化的问题。这些动态体现在我们实现企业服务总线（ESB）的方式上：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fuit5y2mn6j311g0x418y.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuit5y2mn6j311g0x418y.jpg" alt="" /></p>
 
 <p>或者，我认为大型云厂商（Netflix、Amazon、Twitter 等）以及认识到了这些模式的“应用程序职责”方面，并将应用程序网络代码混合到应用程序中。想想像 Netflix OSS ，有用于断路器、客户端负载均衡、服务发现等不同的库。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fuitn6o25ij30yy0x0408.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuitn6o25ij30yy0x0408.jpg" alt="" /></p>
 
 <p>如你所知，围绕应用程序网络的 Netflix OSS 库非常关注 Java。当组织开始采用 Netflix OSS 以及类似spring-cloud-netflix 这样的衍生产品时，他们就会遇到这样一个事实：一旦开始添加其他语言时，操作这样的架构就变的令人望而却步了。Netflix 已经非常成熟了并且实现了自动化，但其他公司并不是 Netflix 。在尝试操作应用程序库和框架来解决应用程序联网问题是遇到的一些问题：</p>
 
@@ -462,7 +462,7 @@ autocomplete('#aa-search-input',
 
 <p>Istio 和服务网格的总体目标是解决应用程序网络类问题。将这些问题的解决方案迁移到服务网格中是可操作性的优化。但这并不意味着它不再是应用程序的责任，而是意味着这些功能的实现存在于进程之外了，并且必须是可配置的。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fuiuklgkjxj31060wyt9g.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuiuklgkjxj31060wyt9g.jpg" alt="" /></p>
 
 <p>通过这样做，我们可以通过以下操作来优化可操作性:</p>
 
@@ -490,7 +490,7 @@ autocomplete('#aa-search-input',
 <li><a href="https://github.com/apache/camel/blob/master/components/readme.adoc">Backend/legacy systems integration</a></li>
 </ul>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fuiv4suzo8j316m0xataq.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuiv4suzo8j316m0xataq.jpg" alt="" /></p>
 
 <p>其他框架包括 <a href="https://spring.io/projects/spring-integration">Spring Integration</a>，甚至还有 WSO2 中一个有趣的新编程语言 <a href="https://ballerina.io/">Ballerina</a> 。请注意，重用现有的模式和构造是非常好的，特别是当这些模式相对于您选择的语言来说成熟时，但是这些模式都不需要您使用框架。</p>
 
@@ -498,7 +498,7 @@ autocomplete('#aa-search-input',
 
 <p>关于微服务，我有一个朋友提出了一个问题，关于微服务的“智能端点和dumb pipe”这句话很吸引人，但很简单，“让基础设施智能化”是个前提：</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fuivligg5sj30g50cygmn.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuivligg5sj30g50cygmn.jpg" alt="" /></p>
 
 <p>管道仍然是dumb的；我们不是通过使用服务网格将应用程序的正确性和安全性的应用程序逻辑强制加入基础设施中。我们只是使它更可靠，优化运维方面，并简化应用程序必须实现的内容（不必为此负责）。如果你不认同或者有其他想法，请随时在 Twitter 上留言或联系 <a href="https://twitter.com/christianposta">@christianposta</a> 。</p>
 
@@ -607,7 +607,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -896,6 +896,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1005,7 +1008,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1025,7 +1028,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1038,7 +1041,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1051,7 +1054,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1073,7 +1076,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

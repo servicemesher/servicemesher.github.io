@@ -55,7 +55,7 @@
   <meta property="og:title" content="利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/istio-envoy-cert-manager-lets-encrypt-for-tls//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持 logo" class="visible-xs visible-sm">
                     <span class="sr-only">利用Let&#39;s Encrypt 为Istio（Envoy）添加TLS 支持 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -516,7 +516,7 @@ istio-ingress-7f8468bb7b-pxl94 istio-ingress [2018-01-23T21:01:58.287Z] &quot;GE
 
 <p>这是因为 Let&rsquo;s Encrypt 服务器正在轮询验证令牌，并且您的设置尚未运行。截至目前你的设置看起来像这样：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1fshj4soh0mj20m80j3mzg.jpg" alt="" /></p>
+<p><img src="61411417ly1fshj4soh0mj20m80j3mzg.jpg" alt="" /></p>
 
 <p>现在是删除由 Cert-Manager 创建的不需要的东西的时候了。使用您最擅长的 K8s 工具，如仪表板或 kubectl，并从 <em>istio-system</em> 命名空间中删除 Service 和 Ingress。它们将被命名为 <strong>cm-istio-ingress-certs-xxxx</strong>。  如果您的证书申请中有许多域名，你应该删除多余的域名。</p>
 
@@ -760,7 +760,7 @@ spec:
 
 <p>请注意，您需要为所有 HTTPS 域名使用一个 Ingress，而为 HTTP 使用一个 Ingress  &hellip;这里仅显示HTTPS：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/61411417ly1fshj4vatnoj20m80j376n.jpg" alt="" /></p>
+<p><img src="61411417ly1fshj4vatnoj20m80j376n.jpg" alt="" /></p>
 
 <p>验证完成后，Cert-Manager 应该删除 istio-system 命名空间中的 Token-Exchange pod。是的，一旦 Cert-Manager 与Let&rsquo;s Encrypt 服务器达成一致，他们将交换用于续订的永久密钥。无需使用 pod ，甚至 Services 和 Ingress，至少如果你确定你不需要添加或改变证书中的某些东西。</p>
 
@@ -879,7 +879,7 @@ spec:
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1168,6 +1168,9 @@ spec:
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1277,7 +1280,7 @@ spec:
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1297,7 +1300,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1310,7 +1313,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1323,7 +1326,7 @@ spec:
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1345,7 +1348,7 @@ spec:
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

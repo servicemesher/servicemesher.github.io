@@ -103,10 +103,10 @@
     
     <item>
       <title>Istio知识图谱 v0.1 发布及社区图书孵化</title>
-      <link>http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/</link>
+      <link>http://www.servicemesher.com/blog/istio-knowledge-map-v0-1-release/</link>
       <pubDate>Mon, 25 Feb 2019 15:47:49 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-knowledge-map-v0.1-release/</guid>
+      <guid>http://www.servicemesher.com/blog/istio-knowledge-map-v0-1-release/</guid>
       <description>2019年2月15日晚，我在朋友圈里发起了 Istio 知识图谱项目。 而后获得 ServiceMesher 社区成员的热烈响应，在此后的一周内陆续有151参与进来。 经过10天的孵化</description>
     </item>
     
@@ -211,10 +211,10 @@
     
     <item>
       <title>Istio 1.0发布，已生产就绪！</title>
-      <link>http://www.servicemesher.com/blog/announcing-istio-1.0/</link>
+      <link>http://www.servicemesher.com/blog/announcing-istio-1-0/</link>
       <pubDate>Tue, 31 Jul 2018 21:44:58 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/announcing-istio-1.0/</guid>
+      <guid>http://www.servicemesher.com/blog/announcing-istio-1-0/</guid>
       <description>本文转载自：Istio 官方网站，原文地址：https://istio.io/zh/blog/2018/announcing-1.0/ 今天，我</description>
     </item>
     
@@ -247,10 +247,10 @@
     
     <item>
       <title>Istio 0.8的Helm Chart解析</title>
-      <link>http://www.servicemesher.com/blog/helm-chart-for-istio-0.8/</link>
+      <link>http://www.servicemesher.com/blog/helm-chart-for-istio-0-8/</link>
       <pubDate>Mon, 04 Jun 2018 16:09:57 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/helm-chart-for-istio-0.8/</guid>
+      <guid>http://www.servicemesher.com/blog/helm-chart-for-istio-0-8/</guid>
       <description>儿童节期间，拖拉了一个多月的 Istio 0.8 正式发布了，这可能是 Istio 1.0 之前的最后一个 LTS 版本，意义重大。 新版本中，原来的 Kubernetes 安装文件 install/kuber</description>
     </item>
     

@@ -55,7 +55,7 @@
   <meta property="og:title" content="构建无缝集成的gRPC-Web和Istio的云原生应用教程" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/seamless-cloud-native-apps-with-grpc-web-and-istio//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="构建无缝集成的gRPC-Web和Istio的云原生应用教程 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="构建无缝集成的gRPC-Web和Istio的云原生应用教程 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="构建无缝集成的gRPC-Web和Istio的云原生应用教程 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="构建无缝集成的gRPC-Web和Istio的云原生应用教程 logo" class="visible-xs visible-sm">
                     <span class="sr-only">构建无缝集成的gRPC-Web和Istio的云原生应用教程 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -311,7 +311,9 @@ autocomplete('#aa-search-input',
 
 <p><a href="https://github.com/grpc/grpc-web">gRPC-Web</a>使Web应用能够通过类似于Envoy的代理访问gRPC后端。Envoy是Istio的默认代理，因此，我们可以利用Istio的<a href="https://istio.io/docs/reference/config/istio.networking.v1alpha3/#EnvoyFilter">EnvoyFilter</a>构件来创建无缝连接的云原生应用。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxnm8x3odlj308c02zdfy.jpg" alt="grpc" /> <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxnm9cn3xjj302s046748.jpg" alt="istio" /></p>
+<p><img src="006tNbRwly1fxnm8x3odlj308c02zdfy.jpg" alt="grpc" /></p>
+
+<p><img src="006tNbRwly1fxnm9cn3xjj302s046748.jpg" alt="istio" /></p>
 
 <h2 id="介绍">介绍</h2>
 
@@ -332,7 +334,7 @@ autocomplete('#aa-search-input',
 
 <p>让我们进一步理解emoji服务的最终架构是什么样子。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxnmaqiaqfj30gc08yaax.jpg" alt="architecture" /></p>
+<p><img src="006tNbRwly1fxnmaqiaqfj30gc08yaax.jpg" alt="architecture" /></p>
 
 <p>简而言之，只要用户提供一些文本，Web应用就会利用gRPC-Web库向Istio Gatway发送HTTP请求。然后，Istio网关将HTTP请求路由到emoji服务旁运行的Proxy sidecar，后者使用Envoy的<a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/grpc_web_filter">gRPC-Web</a> filter将HTTP调用转换成gRPC调用。</p>
 
@@ -730,11 +732,11 @@ Serving HTTP on 0.0.0.0 port 8080 ...
 
 <p>如果一切顺利，你将拥有一个功能完整的基于gRPC-Web的Web应用，如下所示。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxoshsy5ltg30bc02a0sz.gif" alt="web" /></p>
+<p><img src="006tNbRwly1fxoshsy5ltg30bc02a0sz.gif" alt="web" /></p>
 
 <p>如果你在Chrome等浏览器上打开开发者工具，你将会看到如下所示的gRPC-Web HTTP请求。</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxou9b402nj30in0hi0uo.jpg" alt="chrome" /></p>
+<p><img src="006tNbRwly1fxou9b402nj30in0hi0uo.jpg" alt="chrome" /></p>
 
 <h2 id="结论">结论</h2>
 
@@ -850,7 +852,7 @@ Serving HTTP on 0.0.0.0 port 8080 ...
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1139,6 +1141,9 @@ Serving HTTP on 0.0.0.0 port 8080 ...
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1248,7 +1253,7 @@ Serving HTTP on 0.0.0.0 port 8080 ...
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1268,7 +1273,7 @@ Serving HTTP on 0.0.0.0 port 8080 ...
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1281,7 +1286,7 @@ Serving HTTP on 0.0.0.0 port 8080 ...
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1294,7 +1299,7 @@ Serving HTTP on 0.0.0.0 port 8080 ...
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1316,7 +1321,7 @@ Serving HTTP on 0.0.0.0 port 8080 ...
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

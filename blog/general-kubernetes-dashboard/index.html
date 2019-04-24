@@ -55,7 +55,7 @@
   <meta property="og:title" content="kubernetes dashboard在ssl的各种场景下的手动部署" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/general-kubernetes-dashboard//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="kubernetes dashboard在ssl的各种场景下的手动部署 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="kubernetes dashboard在ssl的各种场景下的手动部署 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="kubernetes dashboard在ssl的各种场景下的手动部署 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="kubernetes dashboard在ssl的各种场景下的手动部署 logo" class="visible-xs visible-sm">
                     <span class="sr-only">kubernetes dashboard在ssl的各种场景下的手动部署 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -397,7 +397,7 @@ ca.crt: LS0tLS1CRUdJTiBDRVJUS..........................
 
 <p><code>--auto-generate-certificates</code>从字面意思看是dashboard自己生成https的证书，但是实际上如下面的图这个证书chrome浏览器是不认的其他浏览器不清楚，chrome打开后在网页上是没有无视警告继续的选项，可以自行去试试看，网上也没找到添加例外只找到了全局关闭非权威SSL警告。不推荐这种（或者说这种完全行不通？）</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g22j058fljj30l30grjsz.jpg" alt="browser-cannot-continue" /></p>
+<p><img src="005BYqpggy1g22j058fljj30l30grjsz.jpg" alt="browser-cannot-continue" /></p>
 
 <h3 id="使用http">使用http</h3>
 
@@ -571,9 +571,9 @@ acme.sh --issue --dns dns_ali -d *.k8s.youdomain.com
 <p>域名在腾讯云的话确保nameserver设置的是dnspod（好像默认就是这个），我们去dnspod的官网上使用登陆腾讯云的账号（例如我是qq登陆）后在开发者api里开启dnspod的api token。
 注意token在创建的时候只显示一次，记得截图发给自己的时候别点错地方关了，不然得再创建个。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g22j058335j30js0c0t9g.jpg" alt="tx-dns-setting" /></p>
+<p><img src="005BYqpgly1g22j058335j30js0c0t9g.jpg" alt="tx-dns-setting" /></p>
 
-<p><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g22j0563f6j31060gcq33.jpg" alt="dnspod-getToken" /></p>
+<p><img src="005BYqpggy1g22j0563f6j31060gcq33.jpg" alt="dnspod-getToken" /></p>
 
 <pre><code class="language-bash">export DP_Id=&quot;1234&quot;
 export DP_Key=&quot;sADDsdasdgdsfsdfsdfasfdsfasfasfds&quot;
@@ -582,7 +582,7 @@ acme.sh --issue --dns dns_dp -d *.zhangguanzhang.com
 
 <p>运行后会看到文件路径：</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g22j0598m4j31hc0n3wfi.jpg" alt="scriptOutput" /></p>
+<p><img src="005BYqpgly1g22j0598m4j31hc0n3wfi.jpg" alt="scriptOutput" /></p>
 
 <p>前面证书生成以后， 接下来需要把证书 copy 到真正需要用它的地方。
 注意， 默认生成的证书都放在安装目录下: <code>~/.acme.sh/</code>， 请不要直接使用此目录下的文件， 例如: 不要直接让 nginx/apache 的配置文件使用这下面的文件. 这里面的文件都是内部使用， 而且目录结构可能会变化。
@@ -632,7 +632,7 @@ type: kubernetes.io/tls
 
 <p>创建dashboard后在云上的域名控制台设置解析过来，通过https的域名访问。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g22j05at9mj31560mf40n.jpg" alt="results" /></p>
+<p><img src="005BYqpgly1g22j05at9mj31560mf40n.jpg" alt="results" /></p>
 
 <h2 id="ingress-controller使用域名证书代理dashboard">Ingress Controller使用域名证书代理dashboard</h2>
 
@@ -765,11 +765,11 @@ xxxxxxxxxxxxxx
          
         <li><a href="/blog/evaluation-of-serverless-frameworks-for-kbe/"><i class="fa fa-link"></i>Kubernetes（K8s）的无服务器框架的评估</a></li>
          
-        <li><a href="/blog/prometheus-monitor-k8s-2/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列2——监控部署</a></li>
+        <li><a href="/blog/prometheus-monitor-k8s-3/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列3——业务指标采集</a></li>
          
         <li><a href="/blog/prometheus-monitor-k8s-1/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列1——监控框架</a></li>
          
-        <li><a href="/blog/prometheus-monitor-k8s-3/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列3——业务指标采集</a></li>
+        <li><a href="/blog/prometheus-monitor-k8s-2/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列2——监控部署</a></li>
          
      </ul>
     </div>
@@ -828,7 +828,7 @@ xxxxxxxxxxxxxx
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1117,6 +1117,9 @@ xxxxxxxxxxxxxx
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1226,7 +1229,7 @@ xxxxxxxxxxxxxx
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1246,7 +1249,7 @@ xxxxxxxxxxxxxx
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1259,7 +1262,7 @@ xxxxxxxxxxxxxx
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1272,7 +1275,7 @@ xxxxxxxxxxxxxx
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1294,7 +1297,7 @@ xxxxxxxxxxxxxx
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

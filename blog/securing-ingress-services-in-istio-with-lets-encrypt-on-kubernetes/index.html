@@ -55,7 +55,7 @@
   <meta property="og:title" content="使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务 logo" class="visible-xs visible-sm">
                     <span class="sr-only">使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -313,7 +313,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fugglksoz4j318g0r5wr1.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fugglksoz4j318g0r5wr1.jpg" alt="" /></p>
 
 <h1 id="使用let-s-encrypt在kubernetes上保护istio的ingress-services">使用Let’s Encrypt在Kubernetes上保护Istio的Ingress services</h1>
 
@@ -347,7 +347,7 @@ autocomplete('#aa-search-input',
 
 <p>我们在<a href="https://www.name.com/">name.com</a>注册了域名democluster.net。您还可以在Google域名服务里创建域名，但我们已经为此博客帖子提供了一个域名。这是name.com中的域名服务器配置示例。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fuggenbqltj318g0kv77u.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuggenbqltj318g0kv77u.jpg" alt="" /></p>
 
 <p>检查您的域名服务配置是否已更新。域名通过互联网缓存，实际更新可能需要48小时。在我们的案例中花了大约2个小时。</p>
 
@@ -355,7 +355,7 @@ autocomplete('#aa-search-input',
 
 <p>您可以转到Google DNS页面并打开您的zone，将会有NS类型下的域名服务器列表。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fuggewu5srj318g0g7wgu.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuggewu5srj318g0g7wgu.jpg" alt="" /></p>
 
 <p>创建网关后，Vamp Lamia将为您设置zone记录，然后在UI中列出域名服务。Let’s Encrypt 身份验证需要更新域名服务。</p>
 
@@ -371,7 +371,7 @@ autocomplete('#aa-search-input',
 
 <p>对于此demo，您需要添加<code>google_project_id</code>和<code>google_service_account</code>作为元数据。为此，您必须创建服务帐户并将json文件的内容复制到值区域。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fuggft0tl6j31jk10dadl.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuggft0tl6j31jk10dadl.jpg" alt="" /></p>
 
 <p>我们要创建：</p>
 
@@ -384,29 +384,29 @@ autocomplete('#aa-search-input',
 
 <p>创建如下service：</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fuggga5izhj318g0ptmzl.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuggga5izhj318g0ptmzl.jpg" alt="" /></p>
 
 <p>创建如下destination rule：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fugggrx6gvj318g1coadt.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fugggrx6gvj318g1coadt.jpg" alt="" /></p>
 
 <p>创建如下gateway。</p>
 
 <p>请注意，您需要使用您拥有的domain中的其他主机名。 “Secured Host”将用于注册DNS和Let&rsquo;s Encrypt。 由于TCP协议限制，每个端口只能有一个安全主机。 HTTPS的默认端口是443。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fugghg6fq1j31jk1990xs.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fugghg6fq1j31jk1990xs.jpg" alt="" /></p>
 
 <p>创建一个如下 virtual service，在这协议是http，SSL/TLS终止发生在集群边缘，内部服务可以继续使用http。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fugghxl50jj318g23m445.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fugghxl50jj318g23m445.jpg" alt="" /></p>
 
 <p>您可能需要等待获取UI中已更新网关的通知。您可以查看“Gateway Details”页面以查看当前域名服务的列表。</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fuggi6si7sj318g0ptacl.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuggi6si7sj318g0ptacl.jpg" alt="" /></p>
 
 <p>如果一切顺利，您可以在浏览器上看到你的网站：</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fuggifkpnuj318g0ytn2i.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuggifkpnuj318g0ytn2i.jpg" alt="" /></p>
 
 <h2 id="了解原理">了解原理</h2>
 
@@ -414,7 +414,7 @@ autocomplete('#aa-search-input',
 
 <p>Vamp Lamia将生成证书，Let&rsquo;s Encrypt使用DNS Challenge进行认证，并使用您的DNS提供商进行设置。此过程的结果也会在Google DNS页面上显示，如下所示：</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fuggiowxisj318g0gw0va.jpg" alt="" /></p>
+<p><img src="006tNbRwly1fuggiowxisj318g0gw0va.jpg" alt="" /></p>
 
 <p>当客户端要求证书注册时，Let&rsquo;s Encrypt会要求对该domain进行授权。有两种可能的方式:HTTP challenge和DNS challenge。我们正在使用DNS challenge，因为它更灵活。Let’s Encrypt给出一个摘要哈希，我们在<code>_acme-challenge.shop.democluster.net</code>下插入了一条TXT记录。</p>
 
@@ -462,7 +462,7 @@ autocomplete('#aa-search-input',
     <div class="panel-body">
      <ul class="nav nav-pills nav-stacked">
         
-        <li><a href="/blog/ab-testing-on-kubernetes-with-istio-0.8/"><i class="fa fa-link"></i>使用Istio 0.8对Kubernetes进行A/B测试</a></li>
+        <li><a href="/blog/ab-testing-on-kubernetes-with-istio-0-8/"><i class="fa fa-link"></i>使用Istio 0.8对Kubernetes进行A/B测试</a></li>
          
         <li><a href="/blog/knative-serving-autoscaler-single-tenancy-deep-dive/"><i class="fa fa-link"></i>基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</a></li>
          
@@ -529,7 +529,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -818,6 +818,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -927,7 +930,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -947,7 +950,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -960,7 +963,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -973,7 +976,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -995,7 +998,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

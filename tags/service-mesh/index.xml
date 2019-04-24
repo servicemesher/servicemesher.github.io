@@ -85,10 +85,10 @@
     
     <item>
       <title>Cilium 1.4 发布了，新功能一览</title>
-      <link>http://www.servicemesher.com/blog/cilium-1.4/</link>
+      <link>http://www.servicemesher.com/blog/cilium-1-4/</link>
       <pubDate>Mon, 18 Feb 2019 17:59:29 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/cilium-1.4/</guid>
+      <guid>http://www.servicemesher.com/blog/cilium-1-4/</guid>
       <description>我们很高兴地宣布Cilium 1.4版本。 该版本引入了几项新功能以及优化和可扩展性工作。 重点包括增加全局服务，提供跨多个集群的Kubernet</description>
     </item>
     
@@ -522,6 +522,15 @@
       
       <guid>http://www.servicemesher.com/blog/consul-1-2-service-mesh/</guid>
       <description>本文译自 HashiCorp 官网关于 Consul 1.2 支持 Service Mesh 发布的博客文章。 本文是 HashiCorp 创始人 Mitchell Hashimoto 在 2018 年 6 月 26 日发布的关于 Consul 1.2 新功能 Service Mesh 的官方介绍。译者接触过的 Hashicorp 的产品有过不</description>
+    </item>
+    
+    <item>
+      <title>探讨Service Mesh中一种更高效的代理模式</title>
+      <link>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</link>
+      <pubDate>Sun, 01 Jul 2018 12:33:23 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</guid>
+      <description>背景和想法 Service Mesh 提供了微服务化开发的新思路，核心思想是构建一个代理转发网络并结合控制和转发分离的做法来对成千上万个微服务间做流量、策略、安全等</description>
     </item>
     
     <item>

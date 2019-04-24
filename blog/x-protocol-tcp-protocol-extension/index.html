@@ -55,7 +55,7 @@
   <meta property="og:title" content="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/x-protocol-tcp-protocol-extension//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展 logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展 logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展 logo" class="visible-xs visible-sm">
                     <span class="sr-only">SOFAMesh中的多协议通用解决方案x-protocol介绍系列（3）——TCP协议扩展 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -325,13 +325,13 @@ autocomplete('#aa-search-input',
 
 <p>为此，我们需要考虑在SOFAMesh和SOFAMosn中增加这些通讯协议的支持，尤其是要可以让我们的客户非常方便的扩展支持各种私有TCP协议：</p>
 
-<p><img src="https://skyao.io/post/201809-xprotocol-tcp-protocol-extension/images/supported-protocol.jpg" alt="img" /></p>
+<p><img src="supported-protocol.jpg" alt="img" /></p>
 
 <h2 id="实现分析">实现分析</h2>
 
 <p>我们来大体看一下，在SOFAMesh/Istio中要新增一个通讯协议需要有哪些工作：</p>
 
-<p><img src="https://skyao.io/post/201809-xprotocol-tcp-protocol-extension/images/tbd.jpg" alt="img" /></p>
+<p><img src="tbd.jpg" alt="img" /></p>
 
 <ol>
 <li>protocol decoder：负责解析协议，读取协议字段</li>
@@ -348,11 +348,11 @@ autocomplete('#aa-search-input',
 
 <p>我们来看看第三块的工作量是什么，inbound 和 outbound 的Virtual Host配置示例如下：</p>
 
-<p><img src="https://skyao.io/post/201809-xprotocol-tcp-protocol-extension/images/outbound.png" alt="img" /></p>
+<p><img src="outbound.png" alt="img" /></p>
 
 <p>outbound 配置中，注意 domains 字段是各种域名和ClusterIP，而 routes 中，match是通过prefix来匹配。我们结合HTTP/1.1，domains字段是用来和请求的Host header进行域名匹配的，比如 <code>Host: istio-telemetry</code>，这决定了哪些请求是要转发到 istio-telemetry 这个服务的。routes的match用来进行路由匹配的，通过HTTP请求的path进行匹配。</p>
 
-<p><img src="https://skyao.io/post/201809-xprotocol-tcp-protocol-extension/images/inbound.png" alt="img" /></p>
+<p><img src="inbound.png" alt="img" /></p>
 
 <p>inbound 配置类似，只是inbound更简单，domains匹配<code>*</code>就可以。</p>
 
@@ -426,7 +426,7 @@ autocomplete('#aa-search-input',
 
 <p>因此，在x-protocol中，如果需要引入一个新的通讯协议，需要的工作内容只有必不可少的protocol encoder 和 protocol decoder，和实现以下几个接口：</p>
 
-<p><img src="https://skyao.io/post/201809-xprotocol-tcp-protocol-extension/images/xprotocol-interfaces.png" alt="img" /></p>
+<p><img src="xprotocol-interfaces.png" alt="img" /></p>
 
 <h2 id="总结">总结</h2>
 
@@ -537,7 +537,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -826,6 +826,9 @@ autocomplete('#aa-search-input',
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -935,7 +938,7 @@ autocomplete('#aa-search-input',
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -955,7 +958,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -968,7 +971,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -981,7 +984,7 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1003,7 +1006,7 @@ autocomplete('#aa-search-input',
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 

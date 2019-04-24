@@ -55,7 +55,7 @@
   <meta property="og:title" content="Istio 庖丁解牛三：galley" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/istio-analysis-3//" />
-  <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1ft0fjbip45j30xd0xbgpl.jpg" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
   <meta property="og:image:alt" content="ServiceMesher Logo" />
 
   
@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshutb9ya0j316v09nabp.jpg" alt="Istio 庖丁解牛三：galley logo" class="hidden-xs hidden-sm">
-                    <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshuwshsojj30f303ewev.jpg" alt="Istio 庖丁解牛三：galley logo" class="visible-xs visible-sm">
+                    <img src="/img/servicemesher-logo.jpg" alt="Istio 庖丁解牛三：galley logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Istio 庖丁解牛三：galley logo" class="visible-xs visible-sm">
                     <span class="sr-only">Istio 庖丁解牛三：galley - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
@@ -301,9 +301,9 @@ autocomplete('#aa-search-input',
 
 <p>今天我们来解析istio控制面组件Galley。Galley Pod是一个单容器单进程组件, 没有sidecar, 结构独立，职责明确。</p>
 
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g1nihj4ybjj31850u0dld.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g1nihj4ybjj31850u0dld.jpg" alt="" /></p>
 
-<p><a href="https://ws4.sinaimg.cn/large/006tKfTcgy1g187dn7s1tj315m0u0x6t.jpg">查看高清原图</a></p>
+<p><a href="006tKfTcgy1g187dn7s1tj315m0u0x6t.jpg">查看高清原图</a></p>
 
 <p>前不久istio 1.1 版本正式发布, 其中istio的配置管理机制有较大的改进, 以下是<a href="https://istio.io/about/notes/1.1/">1.1 release note</a> 中部分说明:</p>
 
@@ -340,7 +340,7 @@ autocomplete('#aa-search-input',
 
 <p>早期的Galley 仅仅负责对「配置」进行运行时验证, istio 控制面各个组件各自去list/watch 各自关注的「配置」, 以下是istio早期的Configuration flow:</p>
 
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1g1nii10vwuj31d20swjv7.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g1nii10vwuj31d20swjv7.jpg" alt="" /></p>
 
 <p>越来越多且复杂的「配置」给istio 用户带来了诸多不便, 主要体现在:</p>
 
@@ -358,7 +358,7 @@ autocomplete('#aa-search-input',
 
 <p>在<a href="https://imfox.io/2019/03/19/istio-analysis-2/">istio 庖丁解牛(二) sidecar injector</a>中我分析了istio-sidecar-injector 如何利用 MutatingWebhook 来实现sidecar注入, Galley 使用了k8s提供的另一个Admission Webhooks: ValidatingWebhook, 来做配置的验证:</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g1mcwsf5ggj30sz0ecjt4.jpg" alt="img" /></p>
+<p><img src="006tKfTcgy1g1mcwsf5ggj30sz0ecjt4.jpg" alt="img" /></p>
 
 <p>istio 需要一个关于ValidatingWebhook的配置项, 用于告诉k8s api server, 哪些CRD应该发往哪个服务的哪个接口去做验证, 该配置名为istio-galley, 简化的内容如下:</p>
 
@@ -429,7 +429,7 @@ h.HandleFunc(&quot;/admitmixer&quot;, wh.serveAdmitMixer)
 
 <p>两种模式的示意图如下:</p>
 
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1n7omb7vrj30uk0u0452.jpg" alt="img" /></p>
+<p><img src="006tKfTcgy1g1n7omb7vrj30uk0u0452.jpg" alt="img" /></p>
 
 <h2 id="galley-配置管理实现浅析">Galley 配置管理实现浅析</h2>
 
@@ -461,9 +461,9 @@ go server.StartProbeCheck(livenessProbeController, readinessProbeController, gal
 
 <p>下面是Galley 配置服务结构示意图:</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g1mzi3oe9xj31r10u0qgp.jpg" alt="img" /></p>
+<p><img src="006tKfTcgy1g1mzi3oe9xj31r10u0qgp.jpg" alt="img" /></p>
 
-<p><a href="https://ws2.sinaimg.cn/large/006tKfTcgy1g1n8o76s8yj31r10u0trx.jpg">查看高清原图</a></p>
+<p><a href="006tKfTcgy1g1n8o76s8yj31r10u0trx.jpg">查看高清原图</a></p>
 
 <p>从上图可以看到, Galley 配置服务主要包括 Processor 和 负责mcp通信的grpc Server.</p>
 
@@ -738,7 +738,7 @@ func (con *connection) queueResponse(resp *WatchResponse) {
 
 <p>最后上一张Galley mcp 服务相关模型UML:</p>
 
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1g1nik3wvyyj30u012w14d.jpg" alt="" /></p>
+<p><img src="006tKfTcly1g1nik3wvyyj30u012w14d.jpg" alt="" /></p>
 
 <p><a href="https://imfox.io/assets/images/istio-a/galley_uml.png">查看高清原图</a></p>
 
@@ -857,7 +857,7 @@ func (con *connection) queueResponse(resp *WatchResponse) {
             <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
             </li>
             
-            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (20)</a>
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (21)</a>
             </li>
             
             <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
@@ -1146,6 +1146,9 @@ func (con *connection) queueResponse(resp *WatchResponse) {
             <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
             </li>
             
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
             <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
             </li>
             
@@ -1255,7 +1258,7 @@ func (con *connection) queueResponse(resp *WatchResponse) {
         <div class="col-md-4 col-sm-6">
             <h4>关于我们</h4>
 
-            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=https://ws1.sinaimg.cn/large/00704eQkgy1fshv7n2uf7j303k03kweu.jpg></p>
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
 
 
             <hr class="hidden-md hidden-lg hidden-sm">
@@ -1275,7 +1278,7 @@ func (con *connection) queueResponse(resp *WatchResponse) {
                     <div class="image same-height-always">
                         <a href="/blog/cloud-native-weekly-02/">
                           
-                          <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
+                          <img src="/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg" class="img-responsive" alt="云原生生态周报（Cloud Native Weekly）第2期">
                           
                         </a>
                     </div>
@@ -1288,7 +1291,7 @@ func (con *connection) queueResponse(resp *WatchResponse) {
                     <div class="image same-height-always">
                         <a href="/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/">
                           
-                          <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
+                          <img src="/img/blog/banners/006tNc79ly1g2bdihh91yj31400u0hdv.jpg" class="img-responsive" alt="导致云原生微服务系统开发灾难性的8件事">
                           
                         </a>
                     </div>
@@ -1301,7 +1304,7 @@ func (con *connection) queueResponse(resp *WatchResponse) {
                     <div class="image same-height-always">
                         <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/">
                           
-                          <img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
+                          <img src="/img/blog/banners/006tNc79ly1g2bd7nfv72j31400u0x6s.jpg" class="img-responsive" alt="为 Envoy 构建控制面指南第4部分：构建的可扩展性">
                           
                         </a>
                     </div>
@@ -1323,7 +1326,7 @@ func (con *connection) queueResponse(resp *WatchResponse) {
 
           <h4>联系</h4>
 
-            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cgovjotj303k03kq2t.jpg"></p>
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
       
 
 
