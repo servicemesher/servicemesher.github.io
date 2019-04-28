@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="Prometheus所有的监控的agent底层最终都是查询的/proc和/sys里的信息推送，本文分享了当收集宿主机信息的agent跑在pod中时会遇到的问题。">
   <meta property="og:description" content="Prometheus所有的监控的agent底层最终都是查询的/proc和/sys里的信息推送，本文分享了当收集宿主机信息的agent跑在pod中时会遇到的问题。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -435,7 +438,7 @@ ssh_tunnel_open_fail_count 0
 而metrics要么程序定义输出(模块或者自定义开发)，要么用官方的各种exporter(node-exporter，mysqld-exporter，memcached_exporter&hellip;)采集要监控的信息占用一个web端口然后输出成metrics格式的信息，prometheus server去收集各个target的metrics存储起来(tsdb)。
 用户可以在prometheus的http页面上用promQL(prometheus的查询语言)或者(grafana数据来源就是用)api去查询一些信息，也可以利用pushgateway去统一采集然后prometheus从pushgateway采集(所以pushgateway类似于zabbix的proxy)，prometheus的工作架构如下图：</p>
 
-<p><img src="006tNc79ly1fyzbj3vh0vj30ms0db406.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-operator-manual/006tNc79ly1fyzbj3vh0vj30ms0db406.jpg" alt="" /></p>
 
 <h3 id="为什么需要prometheus-operator">为什么需要prometheus-operator</h3>
 
@@ -451,7 +454,7 @@ ssh_tunnel_open_fail_count 0
 
 <p>工作架构如下图所示。</p>
 
-<p><img src="006tNc79ly1fyzbjl4ql8j31dw0t2djs.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-operator-manual/006tNc79ly1fyzbjl4ql8j31dw0t2djs.jpg" alt="" /></p>
 
 <h2 id="demo部署学习">Demo部署学习</h2>
 
@@ -825,9 +828,9 @@ EOF
 
 <p>打开浏览器访问<code>ip:30900</code>进入target发现已经监听起来了，对应的config里也有配置生成和导入。</p>
 
-<p><img src="006tNc79ly1fyzbkz9djqj314c0fv41z.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-operator-manual/006tNc79ly1fyzbkz9djqj314c0fv41z.jpg" alt="" /></p>
 
-<p><img src="006tNc79ly1fyzblkgpcnj30r80q8juf.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-operator-manual/006tNc79ly1fyzblkgpcnj30r80q8juf.jpg" alt="" /></p>
 
 <p>先清理掉上面的，然后我们使用官方提供的全套yaml正式部署<code>prometheus-operator</code>。</p>
 
@@ -910,7 +913,7 @@ kubectl apply -f serviceMonitor/
 
 <h4 id="坑一">坑一</h4>
 
-<p><img src="006tNc79ly1fyzbmiknc2j30vc07n0u2.jpg" alt="" />
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-operator-manual/006tNc79ly1fyzbmiknc2j30vc07n0u2.jpg" alt="" />
 这里要注意有一个坑，二进制部署k8s管理组件和新版本kubeadm部署的都会发现在prometheus server的页面上发现<code>kube-controller</code>和<code>kube-schedule</code>的target为0/0也就是上图所示。这是因为serviceMonitor是根据label去选取svc的，我们可以看到对应的<code>serviceMonitor</code>是选取的ns范围是<code>kube-system</code>。</p>
 
 <pre><code class="language-bash">$ grep -2 selector serviceMonitor/prometheus-serviceMonitorKube*
@@ -1120,7 +1123,7 @@ spec:
 
 <p>访问prometheus server的web页面我们发现即使创建了svc和注入对应ep的信息在target页面发现prometheus server请求被拒绝。</p>
 
-<p><img src="006tNc79ly1fyzbmvpd9bj31g80jndlf.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-operator-manual/006tNc79ly1fyzbmvpd9bj31g80jndlf.jpg" alt="" /></p>
 
 <p>在宿主机上我们发现127.0.0.1才能访问，网卡ip不能访问(这里是另一个环境找的，所以ip是192不是前面的172)</p>
 
@@ -1158,9 +1161,9 @@ schedulerExtraArgs:
 
 <p>通过浏览器查看<code>prometheus.monitoring.k8s.local</code>与<code>grafana.monitoring.k8s.local</code>是否正常，若沒问题就可以看到下图结果，grafana初始用股名和密码是admin。</p>
 
-<p><img src="006tNc79ly1fyzbnfx054j31l40u0qaw.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-operator-manual/006tNc79ly1fyzbnfx054j31l40u0qaw.jpg" alt="" /></p>
 
-<p><img src="006tNc79ly1fyzbnrpze3j31hc0q2dke.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-operator-manual/006tNc79ly1fyzbnrpze3j31hc0q2dke.jpg" alt="" /></p>
 
 <h2 id="最后">最后</h2>
 

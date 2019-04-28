@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="此文章着重介绍如何在入门阶段使用 Kubernetes，以及要面向 Kubernetes 编程带来的优势。">
   <meta property="og:description" content="此文章着重介绍如何在入门阶段使用 Kubernetes，以及要面向 Kubernetes 编程带来的优势。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -445,7 +448,7 @@ autocomplete('#aa-search-input',
 
 <p>部署完成的结构图大概如下所示：</p>
 
-<p><img src="006tKfTcly1g0d0l7cowtj30zo0dedgy.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/the-data-center-os-kubernetes/006tKfTcly1g0d0l7cowtj30zo0dedgy.jpg" alt="" /></p>
 
 <h5 id="没有-kubernetes-之前的部署">没有 Kubernetes 之前的部署</h5>
 
@@ -502,7 +505,7 @@ spec:
 
 <p>访问刚部署的 HTTP 服务:</p>
 
-<p><img src="006tKfTcly1g0d0mmkficj311c0lyq69.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/the-data-center-os-kubernetes/006tKfTcly1g0d0mmkficj311c0lyq69.jpg" alt="" /></p>
 
 <p>发生了什么？这里大概简单的介绍一下我们的“菜单”：</p>
 
@@ -609,7 +612,7 @@ spec:
 
 <p><strong>一个简单的图将它们串起来：</strong></p>
 
-<p><img src="006tKfTcly1g0d0nds0wmj31v60u0wl1.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/the-data-center-os-kubernetes/006tKfTcly1g0d0nds0wmj31v60u0wl1.jpg" alt="" /></p>
 
 <p>上图展示了我们的 My-App-Operator 的 “厨师长” 的关系图。当我们需要一个 &ldquo;my-app&rdquo; 应用实例时，我们只要告诉我们的 “厨师长” 是需要多少副本数的实例。我们的 “厨师长”  自动将需求转化成 Deployment，其它的功能就完全依靠了 “Deployment 厨师长”。</p>
 
@@ -625,7 +628,7 @@ spec:
 
 <p>这3件事情，其实就是 Controller 模式的核心三件事：</p>
 
-<p><img src="006tKfTcly1g0d0o7mda6j319k0u0di3.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/the-data-center-os-kubernetes/006tKfTcly1g0d0o7mda6j319k0u0di3.jpg" alt="" /></p>
 
 <p>那么用 Kubernetes 写一个 Operator 需要多久？</p>
 

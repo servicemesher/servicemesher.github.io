@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文根据钟华在腾讯云容器团队进行的istio主题分享和现场演示整理输出。">
   <meta property="og:description" content="本文根据钟华在腾讯云容器团队进行的istio主题分享和现场演示整理输出。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -330,7 +333,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="1-1-应用通信模式演进-网络流控进入操作系统">1.1 应用通信模式演进: 网络流控进入操作系统</h2>
 
-<p><img src="006tNc79ly1fzr00rywkoj30nv0cmq4u.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr00rywkoj30nv0cmq4u.jpg" alt="" /></p>
 
 <p>在计算机网络发展的初期, 开发人员需要在自己的代码中处理服务器之间的网络连接问题, 包括流量控制, 缓存队列, 数据加密等. 在这段时间内底层网络逻辑和业务逻辑是混杂在一起.</p>
 
@@ -340,7 +343,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="1-2-应用通信模式演进-微服务架构的出现">1.2 应用通信模式演进: 微服务架构的出现</h2>
 
-<p><img src="006tNc79ly1fzr00ypnboj30nr0d4ac8.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr00ypnboj30nr0d4ac8.jpg" alt="" /></p>
 
 <p>微服务架构是更为复杂的分布式系统，它给运维带来了更多挑战, 这些挑战主要包括资源的有效管理和服务之间的治理, 如:</p>
 
@@ -372,7 +375,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="1-3-sidecar-模式的兴起">1.3 Sidecar 模式的兴起</h2>
 
-<p><img src="006tNc79ly1fzr0c6zgunj30nt0d1ta5.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr0c6zgunj30nt0d1ta5.jpg" alt="" /></p>
 
 <p>Sidecar(有时会叫做agent) 在原有的客户端和服务端之间加多了一个代理, 为应用程序提供的额外的功能, 如服务发现, 路由代理, 认证授权, 链路跟踪 等等.</p>
 
@@ -420,7 +423,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="1-7-service-mesh-产品简史">1.7 Service Mesh 产品简史</h2>
 
-<p><img src="006tNc79ly1fzr01slci0j30n60gnac3.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr01slci0j30n60gnac3.jpg" alt="" /></p>
 
 <ul>
 <li>2016 年 1 月 15 日，前 Twitter 的基础设施工程师 <a href="https://twitter.com/wm">William Morgan</a> 和 Oliver Gould，在 GitHub 上发布了 Linkerd 0.0.7 版本，采用Scala编写, 他们同时组建了一个创业小公司 Buoyant，这是业界公认的第一个Service Mesh</li>
@@ -567,7 +570,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="2-1-istio-架构">2.1 Istio 架构</h2>
 
-<p><img src="006tNc79ly1fzr02d148ij30fj0c1my4.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr02d148ij30fj0c1my4.jpg" alt="" /></p>
 
 <p>Istio Architecture（图片来自<a href="https://istio.io/docs/concepts/what-is-istio/">Isio官网文档</a>)</p>
 
@@ -600,7 +603,7 @@ autocomplete('#aa-search-input',
 
 <p>下面是我对Istio架构总结的思维导图:</p>
 
-<p><img src="006tNc79ly1fzr02jcx0gj30wf0u0jud.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr02jcx0gj30wf0u0jud.jpg" alt="" /></p>
 
 <hr />
 
@@ -608,7 +611,7 @@ autocomplete('#aa-search-input',
 
 <p>以下是Istio官网经典的 BookInfo Demo, 这是一个多语言组成的异构微服务系统:</p>
 
-<p><img src="006tNc79ly1fzr02xvs54j30h309qt9n.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr02xvs54j30h309qt9n.jpg" alt="" /></p>
 
 <p>Bookinfo Application（图片来自<a href="https://istio.io/docs/examples/bookinfo/">Isio官网文档</a>)</p>
 
@@ -1253,7 +1256,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <p>以下是分布式全链路跟踪示意图:</p>
 
-<p><img src="006tNc79ly1fzr03q5ehnj30d207ddgc.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr03q5ehnj30d207ddgc.jpg" alt="" /></p>
 
 <p>一个典型的Trace案例（图片来自<a href="https://wu-sheng.gitbooks.io/opentracing-io/content/">opentracing文档中文版</a>)</p>
 
@@ -1261,7 +1264,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <p>Jaeger 是Uber 开源的全链路跟踪系统, 符合OpenTracing协议, OpenTracing 和 Jaeger 均是CNCF 成员项目, 以下是Jaeger 架构的示意图:</p>
 
-<p><img src="006tNc79ly1fzr03yvpwlj31jw0u0wmd.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr03yvpwlj31jw0u0wmd.jpg" alt="" /></p>
 
 <p>Jaeger 架构示意图（图片来自<a href="https://www.jaegertracing.io/docs/1.6/architecture/">Jaeger官方文档</a>)</p>
 
@@ -1306,7 +1309,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <h2 id="4-1-pilot-架构">4.1 Pilot 架构</h2>
 
-<p><img src="006tNc79ly1fzr04ak32zj30kt0dqjsk.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr04ak32zj30kt0dqjsk.jpg" alt="" /></p>
 
 <p>Pilot Architecture（图片来自<a href="https://istio.io/docs/concepts/traffic-management/">Isio官网文档</a>)</p>
 
@@ -1346,7 +1349,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <h4 id="kubernetes-ingress-vs-istio-gateway">Kubernetes Ingress vs Istio Gateway</h4>
 
-<p><img src="006tNc79ly1fzr04mmy6oj31220f0ju1.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr04mmy6oj31220f0ju1.jpg" alt="" /></p>
 
 <ul>
 <li>合并了L4-6和L7的规范, 对传统技术栈用户的应用迁入不方便</li>
@@ -1530,7 +1533,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <h2 id="4-4-mixer-架构">4.4 Mixer 架构</h2>
 
-<p><img src="006tNc79ly1fzr052jgbaj30i70e73zq.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr052jgbaj30i70e73zq.jpg" alt="" /></p>
 
 <p>Mixer Topology（图片来自<a href="https://istio.io/docs/concepts/policies-and-telemetry/">Isio官网文档</a>)</p>
 
@@ -1640,7 +1643,7 @@ ENDPOINT             STATUS      CLUSTER
 
 <hr />
 
-<p><img src="006tNc79ly1fzr05l1dnpj30q80jj0v5.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzr05l1dnpj30q80jj0v5.jpg" alt="" /></p>
 
 <hr />
 
@@ -1657,7 +1660,7 @@ ENDPOINT             STATUS      CLUSTER
 <li><a href="http://www.servicemesher.com">servicemesher 中文社区</a></li>
 </ul>
 
-<p><img src="006tNc79ly1fzs45dygpyj31jt0beq9s.jpg" alt="ServiceMesher社区" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-the-king-of-service-mesh/006tNc79ly1fzs45dygpyj31jt0beq9s.jpg" alt="ServiceMesher社区" /></p>
 
                         </div>
                         

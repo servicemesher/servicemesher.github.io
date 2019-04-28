@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="今天我们来分析下 isito-sidecar-injector 组件。">
   <meta property="og:description" content="今天我们来分析下 isito-sidecar-injector 组件。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -304,9 +307,9 @@ autocomplete('#aa-search-input',
 
 <p>今天我们分析下 istio-sidecar-injector 组件:</p>
 
-<p><img src="006tKfTcgy1g17x6h2bzzj316f0u0wwn.jpg" alt="image-20190319105935249" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-2/006tKfTcgy1g17x6h2bzzj316f0u0wwn.jpg" alt="image-20190319105935249" /></p>
 
-<p><a href="006tKfTcgy1g0z3wp5comj315m0u0kjr.jpg">查看高清原图</a></p>
+<p><a href="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-2/006tKfTcgy1g0z3wp5comj315m0u0kjr.jpg">查看高清原图</a></p>
 
 <p>用户空间的Pod要想加入mesh, 首先需要注入sidecar 容器, istio 提供了2种方式实现注入:</p>
 
@@ -322,7 +325,7 @@ autocomplete('#aa-search-input',
 <li>名为<code>istio-proxy</code>的sidecar容器: 两个进程pilot-agent和envoy, pilot-agent 进行初始化并启动envoy</li>
 </ul>
 
-<p><img src="006tKfTcgy1g14nv8w2vzj30wq0grtbv.jpg" alt="img" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-2/006tKfTcgy1g14nv8w2vzj30wq0grtbv.jpg" alt="img" /></p>
 
 <hr />
 

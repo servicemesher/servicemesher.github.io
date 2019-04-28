@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文是对 Google 开源的 serverless 计算平台 knative 的介绍。">
   <meta property="og:description" content="本文是对 Google 开源的 serverless 计算平台 knative 的介绍。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -455,7 +458,7 @@ spec:
 
 <p>下面这张图介绍了 knative serving 各组件之间的关系：</p>
 
-<p><img src="006tNbRwgy1fum2swzqebj31j00to41f.jpg" alt="knative serving architecture" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/knative-serverless-platform/006tNbRwgy1fum2swzqebj31j00to41f.jpg" alt="knative serving architecture" /></p>
 
 <ul>
 <li>可以看到，每个 revision 对应了一组 deployment 管理的 pod</li>
@@ -483,7 +486,7 @@ spec:
 
 <p>它们之间的关系流程图如下：</p>
 
-<p><img src="006tNbRwgy1fum30a10ynj31jm0v2dkq.jpg" alt="knative eventing architecture" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/knative-serverless-platform/006tNbRwgy1fum30a10ynj31jm0v2dkq.jpg" alt="knative eventing architecture" /></p>
 
 <p>Bus 是 knative 内部的事件存储层，用户可以选择自己感兴趣的实现，目前支持的方式有：Stub（在内存中实现的简单消息系统）、Kafka、Google PubSub。如果想要事件能够正常运行，必须在 knative 集群中安装其中一个 bus 实现方式。</p>
 

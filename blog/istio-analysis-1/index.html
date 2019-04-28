@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="Istio 作为 Service Mesh 领域的集大成者, 提供了流控, 安全, 遥测等模型, 其功能复杂, 模块众多, 有较高的学习和使用门槛, 本文会对istio 1.1 的各组件进行分析, 希望能帮助读者了解istio各组件的职责、以及相互的协作关系。">
   <meta property="og:description" content="Istio 作为 Service Mesh 领域的集大成者, 提供了流控, 安全, 遥测等模型, 其功能复杂, 模块众多, 有较高的学习和使用门槛, 本文会对istio 1.1 的各组件进行分析, 希望能帮助读者了解istio各组件的职责、以及相互的协作关系。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -306,7 +309,7 @@ autocomplete('#aa-search-input',
 
 <p>以下是istio 1.1 官方架构图:</p>
 
-<p><img src="006tKfTcly1g1084dxf7rj30w90u0tdg.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-1/006tKfTcly1g1084dxf7rj30w90u0tdg.jpg" alt="" /></p>
 
 <p>虽然Istio 支持多个平台, 但将其与 Kubernetes 结合使用，其优势会更大, Istio 对Kubernetes 平台支持也是最完善的, 本文将基于Istio + Kubernetes 进行展开.</p>
 
@@ -329,9 +332,9 @@ prometheus-66b7689b97-w9glt                   1/1       Running
 
 <p>将istio系统组件细化到进程级别, 大概是这个样子:</p>
 
-<p><img src="006tKfTcly1g1084pamt2j318d0u04qp.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-1/006tKfTcly1g1084pamt2j318d0u04qp.jpg" alt="" /></p>
 
-<p><a href="006tKfTcgy1g0z3wp5comj315m0u0kjr.jpg">查看高清原图</a></p>
+<p><a href="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-1/006tKfTcgy1g0z3wp5comj315m0u0kjr.jpg">查看高清原图</a></p>
 
 <p>Service Mesh 的Sidecar 模式要求对数据面的用户Pod进行代理的注入, 注入的代理容器会去处理服务治理领域的各种「脏活累活」, 使得用户容器可以专心处理业务逻辑.</p>
 

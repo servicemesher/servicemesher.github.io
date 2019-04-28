@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="Cilium 1.4：多集群服务路由，DNS授权，IPVLAN支持，透明加密，Flannel集成，与其他CNI的基准测试。">
   <meta property="og:description" content="Cilium 1.4：多集群服务路由，DNS授权，IPVLAN支持，透明加密，Flannel集成，与其他CNI的基准测试。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -305,7 +308,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="61411417ly1g05xmk6vqhj20jg08odga.jpg" alt="发布概述" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmk6vqhj20jg08odga.jpg" alt="发布概述" /></p>
 
 <p>我们很高兴地宣布Cilium 1.4版本。 该版本引入了几项新功能以及优化和可扩展性工作。 重点包括增加全局服务，提供跨多个集群的Kubernetes服务路由、DNS请求/响应感知授权和可见性、透明加密（beta）、IPVLAN支持以获得更好的性能和延迟（beta）、与Flannel集成、GKE在COS上支持、基于AWS元数据的策略实施（alpha）以及优化内存和CPU使用的重要工作。</p>
 
@@ -323,15 +326,15 @@ autocomplete('#aa-search-input',
 
 <p>Cilium 1.3在多个集群之间引入了基本的pod IP路由功能。Cilium 1.4引入了基于标准Kubernetes服务的全局服务概念。全局服务允许用户指定Kubernetes服务在多个集群中可用。然后，该服务可以在多个集群中具有后端pod。</p>
 
-<p>用户体验就像在每个集群中定义具有相同名称和命名空间的Kubernetes服务并添加注释以将其标记为全局一样简单。 <img src="61411417ly1g05xmkdyp1j21fk0mggly.jpg" alt="多集群服务" /></p>
+<p>用户体验就像在每个集群中定义具有相同名称和命名空间的Kubernetes服务并添加注释以将其标记为全局一样简单。 <img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmkdyp1j21fk0mggly.jpg" alt="多集群服务" /></p>
 
 <p>当pod向上或向下扩展或变得不健康时，Kubernetes运行状态检查信息可用于自动添加和删除后端服务。</p>
 
-<p><img src="61411417ly1g05xmk3324j21g80hkwev.jpg" alt="多集群故障转移" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmk3324j21g80hkwev.jpg" alt="多集群故障转移" /></p>
 
 <p>控制平面建立在etcd之上，类似于Kubernetes原生的操作方式，具有弹性和简单性作为其基本设计模式。每个集群继续运行其自己的etcd集群，并且复制以只读方式进行，这可确保集群中的故障不会影响其他集群。</p>
 
-<p><img src="61411417ly1g05xmjzw1jj20jg09ljrn.jpg" alt="集群控制平面" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmjzw1jj20jg09ljrn.jpg" alt="集群控制平面" /></p>
 
 <p>将集群连接在一起就像使用云供应商的标准路由API或基于常规IP地址的VPN网关和隧道的本地基础设施在VPC之间提供路由，然后通过内部Kubernetes负载均衡器暴露Cilium控制平面以将其暴露给内部VPC一样简单。TLS用于使用作为Kubernetes Secret管理的证书和密钥对客户端和服务器进行身份验证。</p>
 
@@ -339,11 +342,11 @@ autocomplete('#aa-search-input',
 
 <p>添加了一种新的基于IPVLAN的数据路径模式。与基于veth的体系结构相比，IPVLAN具有低延迟优势。使用netperf在3.40Ghz Xeon上的两个本地容器之间测量了以下基准测试，并使用单核禁用超线程。与veth相比，IPVLAN的P99延迟相对较低（越低越好）：</p>
 
-<p><img src="61411417ly1g05ygz1tuxj20wa0iu3yo.jpg" alt="IPVLAN性能(延迟)" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05ygz1tuxj20wa0iu3yo.jpg" alt="IPVLAN性能(延迟)" /></p>
 
 <p>IPVLAN和veth之间的最大吞吐量（越高越好）非常相似，但是通过从内核编译netfilter/iptables可以实现非常显着的性能提升。如果您不使用NodePort服务并且在离开Kubernete worker node时不需要伪装网络流量，则已经可以完全运行您的Kubernetes集群。我们将在接下来的几周内提供有关如何运行iptables和kube-proxy的指南。</p>
 
-<p><img src="61411417ly1g05xmkwgobj20gs0abdfq.jpg" alt="IPVLAN性能" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmkwgobj20gs0abdfq.jpg" alt="IPVLAN性能" /></p>
 
 <p>IPVLAN是1.4中的beta级功能，有关如何启用和配置该功能的说明，请参阅 <a href="https://docs.cilium.io/en/v1.4/gettingstarted/ipvlan/">IPVLAN入门指南</a> 。</p>
 
@@ -363,7 +366,7 @@ autocomplete('#aa-search-input',
 <li>现在可以通过API访问的Cilium授权日志记录层记录DNS查找和响应。 这提供了pod执行的每个DNS请求和响应的精确日志。</li>
 </ul>
 
-<p><img src="61411417ly1g05xmku6whj217i09c3yk.jpg" alt="DNS" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmku6whj217i09c3yk.jpg" alt="DNS" /></p>
 
 <p>上面的示例显示了一个成功的DNS序列，然后是DNS服务器响应的对IP的HTTP请求。 这是应用程序的行为方式和允许的方式。 后续HTTP请求可以使用缓存的DNS信息，允许此类请求。 DNS信息将根据记录中的TTL信息超时。</p>
 
@@ -408,7 +411,7 @@ spec:
 
 <p>为集群内和集群之间的所有服务到服务通信提供透明加密是一种经常被要求的功能。 加密允许在不受信任的网络中运行Kubernetes，透明地加密集群中服务之间的所有通信。 身份验证可确保只有受信任的工作节点才能参与集群。</p>
 
-<p><img src="61411417ly1g05xmkyg5yj20w80dijrg.jpg" alt="加密" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmkyg5yj20w80dijrg.jpg" alt="加密" /></p>
 
 <p>加密基于X.509证书和密钥。 目前，使用PSK，使用Kubernetes Secret分发给所有节点。 但是，基础结构与SPIFFE兼容，并允许在将来的版本中在每个服务级别上使用SPIFFE证书提供服务身份验证。 数据路径实现使用Linux内核的IPSec实现，它避免了作为所有服务的一部分运行sidecar代理的需要，并确保通过现代处理器中的专用CPU指令集有效和自动地使用硬件辅助加密加速。</p>
 
@@ -418,11 +421,11 @@ spec:
 
 <p>正如<a href="https://www.youtube.com/watch?v=ER9eIXL2_14">在KubeCon上宣布的那样</a> ，我们正在使用Cilium 1.4进行本地进程通信加速。</p>
 
-<p>Sockmap加速本地进程通信主要用于sidecar代理和本地进程之间的通信，但适用于所有本地进程。 <img src="61411417ly1g05xmkn6wfj20vs0j0glt.jpg" alt="SockMap加速了延迟" /></p>
+<p>Sockmap加速本地进程通信主要用于sidecar代理和本地进程之间的通信，但适用于所有本地进程。 <img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmkn6wfj20vs0j0glt.jpg" alt="SockMap加速了延迟" /></p>
 
-<p>启用sockmap时，请求数/s和最大吞吐量都加倍： <img src="61411417ly1g05xmkb7mbj20w20j00su.jpg" alt="SockMap加速了请求处​​理" /></p>
+<p>启用sockmap时，请求数/s和最大吞吐量都加倍： <img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmkb7mbj20w20j00su.jpg" alt="SockMap加速了请求处​​理" /></p>
 
-<p><img src="61411417ly1g05xmkrc2cj20g309jgli.jpg" alt="SockMap加速了吞吐量" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmkrc2cj20g309jgli.jpg" alt="SockMap加速了吞吐量" /></p>
 
 <p>请注意，所有这些性能数字均为每个CPU核心。</p>
 
@@ -430,14 +433,14 @@ spec:
 
 <h2 id="新grafana仪表板">新Grafana仪表板</h2>
 
-<p><img src="61411417ly1g05xmjnwpaj22fu0jywfi.jpg" alt="Grafana" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmjnwpaj22fu0jywfi.jpg" alt="Grafana" /></p>
 
 <p>添加了几个新的Prometheus指标，并且可以使用单个命令将新的Grafana仪表板部署到任何Kubernetes集群中：</p>
 
 <pre><code class="language-bash">kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/v1.4/examples/kubernetes/addons/prometheus/monitoring-example.yaml
 </code></pre>
 
-<p><img src="61411417ly1g05xmjiv1kj22f40z6di3.jpg" alt="Grafana" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmjiv1kj22f40z6di3.jpg" alt="Grafana" /></p>
 
 <h2 id="flannel整合-测试版">Flannel整合（测试版）</h2>
 
@@ -474,7 +477,7 @@ spec:
 
 <p>说了那么多，接下来让我们深入研究数字：</p>
 
-<p><img src="61411417ly1g05xmkgwo1j20fz09ta9z.jpg" alt="CNI延迟" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmkgwo1j20fz09ta9z.jpg" alt="CNI延迟" /></p>
 
 <p>以上数字显示了两个容器在单个连接上交换尽可能多的1字节请求和响应消息时的各种延迟测量。 此测试主要显示特定转发路径是否非常有利于吞吐量而非延迟。</p>
 
@@ -492,11 +495,11 @@ spec:
 <li>任何每个数据包开销都会产生巨大影响。 冷缓存和数据结构也会产生负面影响。 必须遍历的代码越少越好。</li>
 </ul>
 
-<p><img src="61411417ly1g05xmkn6wfj20vs0j0glt.jpg" alt="CNI RR" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmkn6wfj20vs0j0glt.jpg" alt="CNI RR" /></p>
 
 <p>上图显示了执行相同基准测试的每秒请求数。 每秒请求与延迟相当重叠。 对于之前的测试，这些数字是按CPU核心测量的。</p>
 
-<p><img src="61411417ly1g05xmjsdpnj20wk0iuaa4.jpg" alt="CNI Stream" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmjsdpnj20wk0iuaa4.jpg" alt="CNI Stream" /></p>
 
 <p>最后一张图说明了频谱的相反情况。 TCP_STREAM测试试图通过单个TCP连接抽取尽可能多的字节。 这是内存带宽可以发挥作用的地方，网络硬件或云供应商限制通常可以人为地限制基准。</p>
 
@@ -505,7 +508,7 @@ spec:
 <li>我们预计Calico与Cilium的数字相似，所以我们可能会错误地配置一些东西。 任何帮助表示赞赏。 Calico在TCP_STREAM中表现更差并没有多大意义，因为此测试中的iptables开销在大量数据中分摊。</li>
 </ul>
 
-<p><img src="61411417ly1g05xmkrc2cj20g309jgli.jpg" alt="带有SockMap的CNI Stream" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/cilium-1-4/61411417ly1g05xmkrc2cj20g309jgli.jpg" alt="带有SockMap的CNI Stream" /></p>
 
 <p>将Sockmap添加回图片证明了在套接字级别进行网络连接的性能优势。 同样，这种好处仅在本地进程之间获得，因为当sidecar代理生效时或者当服务被调度到同一节点上以便改进本地通信时，它经常发生。</p>
 

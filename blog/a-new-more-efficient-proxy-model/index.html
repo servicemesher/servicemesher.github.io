@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="借助 eBPF，作为 Service Mesh 的数据转发层，对接 Pilot、Mixer 等控制面，实现策略、流量和安全管理，是不是一种更高效的方式？这会比 Envoy 拥有更好的性能，虽然性能未必是 Mesh 首要考虑的问题，本文中讲述使用 Cilium 的尝试。">
   <meta property="og:description" content="借助 eBPF，作为 Service Mesh 的数据转发层，对接 Pilot、Mixer 等控制面，实现策略、流量和安全管理，是不是一种更高效的方式？这会比 Envoy 拥有更好的性能，虽然性能未必是 Mesh 首要考虑的问题，本文中讲述使用 Cilium 的尝试。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -310,7 +313,7 @@ autocomplete('#aa-search-input',
 
 <p>Cilium 部署了一个“书店”集群服务为例子来说明，如下，在下发“路由策略”之前流量如下：</p>
 
-<p><img src="00704eQkgy1fsu96134y9j30cj09rt93.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/a-new-more-efficient-proxy-model/00704eQkgy1fsu96134y9j30cj09rt93.jpg" alt="" /></p>
 
 <p>正常流量从书页到详情页，到评论页面</p>
 
@@ -331,13 +334,13 @@ spec:
 
 <p>导流后如下：</p>
 
-<p><img src="00704eQkgy1fsu96jwbo7j30jh0d8dgv.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/a-new-more-efficient-proxy-model/00704eQkgy1fsu96jwbo7j30jh0d8dgv.jpg" alt="" /></p>
 
 <p>可见，Cilium 能识别 service-name 和 labels ，并进行导流。策略相当灵活。</p>
 
 <p>Cilium 还做了个性能测试，在 Pod - Proxy - Pod 场景下的请求延迟对比：</p>
 
-<p><img src="00704eQkgy1fsu96qkxthj30jg0ay0um.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/a-new-more-efficient-proxy-model/00704eQkgy1fsu96qkxthj30jg0ay0um.jpg" alt="" /></p>
 
 <p>Cilium 的延迟全部小于当前的 Envoy、Nginx、Haproxy 代理。</p>
 
@@ -375,7 +378,7 @@ spec:
 
 <p>Envoy 与应用部署在一起，提供服务间请求高效转发，并提供扩展接口以实现不同的转发策略，同时上报流量监控数据，提供 HTTP、gRPC、TCP 转发能力。</p>
 
-<p><img src="00704eQkgy1fsu97qrffkj31900oqwid.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/a-new-more-efficient-proxy-model/00704eQkgy1fsu97qrffkj31900oqwid.jpg" alt="" /></p>
 
 <p>一开始 Linked 仅仅只有数据层面，是缺乏控制面的，而 Istio 一开始的定位就很清晰地包括了控制和数据面，后来 Buoyant 公司借鉴 Istio 的思想，开发了与 Istio 竞争的 Conduit，控制面用 Rust 开发，从这个角度讲， Google 似乎看得更远，Buoyant 挺有危机感。</p>
 
@@ -634,7 +637,7 @@ spec:
 
 <p>整体 Cilium 架构如下：</p>
 
-<p><img src="00704eQkgy1fsu98qo3jgj318z143gos.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/a-new-more-efficient-proxy-model/00704eQkgy1fsu98qo3jgj318z143gos.jpg" alt="" /></p>
 
 <p>上层对接控制编排面，下层转换成 BPF 的程序注入到内核网络栈执行。</p>
 

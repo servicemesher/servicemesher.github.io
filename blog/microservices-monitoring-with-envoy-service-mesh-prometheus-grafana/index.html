@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文介绍了Envoy service mesh下结合Prometheus和Grafana实现的微服务监控方案。">
   <meta property="og:description" content="本文介绍了Envoy service mesh下结合Prometheus和Grafana实现的微服务监控方案。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -325,7 +328,7 @@ autocomplete('#aa-search-input',
 
 <p>这是我们将要构建的系统概览。</p>
 
-<p><img src="006tNbRwgy1fwx6wg1dscj30m90cg0sy.jpg" alt="overall setup" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/006tNbRwgy1fwx6wg1dscj30m90cg0sy.jpg" alt="overall setup" /></p>
 
 <h2 id="statsd">Statsd</h2>
 
@@ -438,7 +441,7 @@ static_resources:
 
 <p>Statsd exporter中的统计信息格式如下图所示</p>
 
-<p><img src="006tNbRwgy1fwxf9t7t5bj318g0azgof.jpg" alt="来自statsd exporter的prometheus格式的指标" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/006tNbRwgy1fwxf9t7t5bj318g0azgof.jpg" alt="来自statsd exporter的prometheus格式的指标" /></p>
 
 <p>这里边将有上百个指标，同时，在上面的截图中我们能看到Service A和Service B之间的通信延迟指标。上图的指标是遵循prometheus格式的</p>
 
@@ -468,13 +471,13 @@ scrape_configs:
 
 <p>现在启动Prometheus，里面应该有一些数据了。让我们打开localhost:9090来看一看</p>
 
-<p><img src="006tNbRwgy1fwy55z3klmj31jk0f6gmd.jpg" alt="prometheus查询页面" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/006tNbRwgy1fwy55z3klmj31jk0f6gmd.jpg" alt="prometheus查询页面" /></p>
 
 <p>如图所示，可以看到我们的指标。你能做的可不仅仅是选择已有的指标，从<a href="https://prometheus.io/docs/prometheus/latest/querying/basics/">这里</a>可以阅读关于prometheus查询语言的更多信息。它还可以基于查询结果绘制图表，除此之外还有一个报警系统。</p>
 
 <p>如果我们打开prometheus的targets页面，将能看到所有的拉取目标和它们的健康状态</p>
 
-<p><img src="006tNbRwgy1fwy5occy0pj31jk0gbjs6.jpg" alt="prometheus目标" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/006tNbRwgy1fwy5occy0pj31jk0gbjs6.jpg" alt="prometheus目标" /></p>
 
 <h2 id="grafana">Grafana</h2>
 
@@ -576,7 +579,7 @@ dashboard = Dashboard(
 
 <p>所以，启动Grafana时我们只需要传递仪表盘和数据源就好了。当访问http:localhost:3000时，你将看到：</p>
 
-<p><img src="006tNbRwly1fx6n732mrdj31jk0h7jsc.jpg" alt="grafana仪表盘" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/006tNbRwly1fx6n732mrdj31jk0h7jsc.jpg" alt="grafana仪表盘" /></p>
 
 <p>现在你应该能看到2xx，5xx和延迟的图表，同时还能看到一个下拉菜单，你可以通过它选择源服务和目标服务。关于Grafana还有许多内容我们没有讨论到，包括强大的查询编辑器和告警系统。更重要的是，这一切都是可以通过插件和应用扩展的，可以参考<a href="https://github.com/grafana/kubernetes-app">这里</a>的例子。如果你正想可视化常见服务如redis，rabbitmq等的指标，grafana有一个<a href="https://grafana.com/dashboards">公共仪表盘</a>库，你只需要导入它们就可以使用了。使用Grafana 还有一个好处，你可以通过配置文件和代码创建和管理所有东西，而不需要过多地通过UI来操作。</p>
 

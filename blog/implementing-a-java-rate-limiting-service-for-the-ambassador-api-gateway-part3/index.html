@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="在本速率限制系列的第三篇文章中，根据实际Java语言编写的案例带领我们使用Ambassador API网关速率限制入门，并将实例部署到Kubernetes中，同时使用Java语言演示基于令牌通算法的速率限制方式。">
   <meta property="og:description" content="在本速率限制系列的第三篇文章中，根据实际Java语言编写的案例带领我们使用Ambassador API网关速率限制入门，并将实例部署到Kubernetes中，同时使用Java语言演示基于令牌通算法的速率限制方式。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -334,7 +337,7 @@ autocomplete('#aa-search-input',
 
 <p>第一阶段的服务和部署架构如下图所示：</p>
 
-<p><img src="78a165e1gy1fsvwpjxbzuj20hi0gjdga.jpg" alt="第一阶段架构" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3/78a165e1gy1fsvwpjxbzuj20hi0gjdga.jpg" alt="第一阶段架构" /></p>
 
 <p>从图中可以看到，Docker Java Shopping应用程序主要由三个服务组成。在先前的教程中，你已经添加Ambassador API网关作为系统的“front door”（大门）。需要注意的是，Ambassador API网关直接使用Web 80号端口，因此需要确保本地运行的其他应用没有占用该端口。</p>
 
@@ -362,7 +365,7 @@ total 48
 
 <p>通过以上命令部署，这与之前架构的区别在于添加了<code>ratelimiter</code>服务。 这个服务是用Java编写的，且没有使用微服务框架。它发布了一个gRPC端点，可供Ambassador来使用以实现速率限制。这种方案允许灵活定制速率限制算法（关于这点的好处请查看我<a href="https://blog.getambassador.io/rate-limiting-for-api-gateways-892310a2da02">以前的文章</a>）。</p>
 
-<p><img src="78a165e1gy1fsvwvs0d8kj20hi0gj74v.jpg" alt="限速架构" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3/78a165e1gy1fsvwvs0d8kj20hi0gj74v.jpg" alt="限速架构" /></p>
 
 <h2 id="探索部署于kubernetes的限速器服务">探索部署于Kubernetes的限速器服务</h2>
 

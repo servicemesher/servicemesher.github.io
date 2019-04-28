@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文介绍了一种实现简单HTTP流量嗅探代理的基本步骤，并进行了相关实验验证，生动展现了Istio实现流量管理的核心原理与概念。">
   <meta property="og:description" content="本文介绍了一种实现简单HTTP流量嗅探代理的基本步骤，并进行了相关实验验证，生动展现了Istio实现流量管理的核心原理与概念。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -309,13 +312,13 @@ autocomplete('#aa-search-input',
 
 <p>sidecar代理模式是一个重要的概念，它允许<a href="https://istio.io/">Istio</a>为<a href="https://en.wikipedia.org/wiki/Microservices#Service_Mesh">服务网格</a>中运行的服务提供路由、度量、安全和其他功能。在这篇文章中，我将解释为Istio提供支持的关键技术，同时还将向您展示一种构建简单的HTTP流量嗅探sidecar代理的方法。</p>
 
-<p><img src="007uElTfly1g13lok0vq4j318g0lqt8v.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/hand-crafting-a-sidecar-proxy-like-istio/007uElTfly1g13lok0vq4j318g0lqt8v.jpg" alt="" /></p>
 
 <h2 id="引言">引言</h2>
 
 <p>服务网格的实现通常依赖于sidecar代理，这些代理使得服务网格能够控制、观察和加密保护应用程序。sidecar代理是反向代理，所有流量在到达目标服务之前流过它。代理将分析流经自己的流量并生成有用的统计信息，而且还能提供灵活的路由功能。此外，代理还可以使用<a href="https://venilnoronha.io/a-step-by-step-guide-to-mtls-in-go">mTLS</a>来加密保护应用程序流量。</p>
 
-<p><img src="007uElTfly1g13lxd0qs0j30mm0a9goa.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/hand-crafting-a-sidecar-proxy-like-istio/007uElTfly1g13lxd0qs0j30mm0a9goa.jpg" alt="" /></p>
 
 <p>在这篇文章中，我们将构建一个简单的sidecar代理，它可以嗅探HTTP流量并生成统计信息，例如请求大小，响应状态等。然后，我们将在<a href="https://kubernetes.io/">Kubernetes</a> Pod中部署HTTP服务，配置sidecar代理，并检查生成的统计信息。</p>
 
@@ -468,7 +471,7 @@ EXPOSE 8000
 
 <p><code>iptables</code>最简单的用途是将一个端口映射到另一个端口。我们可以利用它来透明地将流量路由到我们的代理。Istio正是基于这个确切的概念来建立它的Pod网络。</p>
 
-<p><img src="007uElTfly1g13msbkiasj30so0ab784.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/hand-crafting-a-sidecar-proxy-like-istio/007uElTfly1g13msbkiasj30so0ab784.jpg" alt="" /></p>
 
 <p>这里的想法是将<code>eth0</code>接口上的服务端口（<code>80</code>）映射到代理端口（<code>8000</code>）。这将确保每当容器尝试通过端口<code>80</code>访问服务时，来自容器外部的流量就会路由到代理。如上图所示，我们让<code>lo</code>接口将Pod内部流量直接路由到目标服务，即没有跳转到代理服务。</p>
 

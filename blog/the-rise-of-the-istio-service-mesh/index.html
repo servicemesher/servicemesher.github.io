@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文将探讨为什么我会坚信Istio会很受欢迎并给出了四个原因，分别从微服务与转型、微服务先驱Netflix OSS的案例、分布式架构的方面来阐述微服务使用服务网格的必然性。">
   <meta property="og:description" content="本文将探讨为什么我会坚信Istio会很受欢迎并给出了四个原因，分别从微服务与转型、微服务先驱Netflix OSS的案例、分布式架构的方面来阐述微服务使用服务网格的必然性。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -325,7 +328,7 @@ autocomplete('#aa-search-input',
 
 <p>Christian Posta的演讲“<a href="https://www.slideshare.net/ceposta/the-hardest-part-of-microservices-calling-your-services">微服务中最困难的部分：调用你的服务</a>”谈到了一个重要问题。当调用API时，你可能会认为你在处理A和B之间的直接集成调用（下图1）。然而计算机网络并不会针对直接通信进行优化（下图2）。因此在某些情况，尤其当应用处于你正考虑或使用的云环境中时，你不可避免且不得不考虑这些不同的失控物理和虚拟网络设备。例如，就可能存在这样一种情况：其中一台设备的性能低于最佳性能，这将影响整个应用程序的响应时间（下图3）。</p>
 
-<p><img src="78a165e1gy1fs7fmkvibwj20jf0dfq40.jpg" alt="A和B之间的调用关系图" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/the-rise-of-the-Istio-service-mesh/78a165e1gy1fs7fmkvibwj20jf0dfq40.jpg" alt="A和B之间的调用关系图" /></p>
 
 <h2 id="微服务先驱和netflix-oss">微服务先驱和Netflix OSS</h2>
 

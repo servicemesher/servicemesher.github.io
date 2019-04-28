@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="Red Hat OpenShift通过一个名叫istio-pod-network-controller的 DaemonSet 控制器将配置Pod的iptables规则的逻辑移出Pod本身，从而消除了特权容器的需求来提高Istio Deployment的安全性。">
   <meta property="og:description" content="Red Hat OpenShift通过一个名叫istio-pod-network-controller的 DaemonSet 控制器将配置Pod的iptables规则的逻辑移出Pod本身，从而消除了特权容器的需求来提高Istio Deployment的安全性。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -329,7 +332,7 @@ autocomplete('#aa-search-input',
 
 <p>解决这个问题的一种方法是将配置 Pod 的 iptables 规则的逻辑移出 Pod 本身。该方案通过一个名叫 <code>istio-pod-network-controller</code> 的 DaemonSet 控制器，来监视新 Pod 的创建，并在创建后立即在这些新 Pod 中配置相应的 iptables 规则。下图描绘了该解决方案的整体架构：</p>
 
-<p><img src="006tNbRwgy1fvlv897xs7j30ae06qjrr.jpg" alt="istio-pod-network-controller 架构示意图" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/increasing-security-of-istio-deployments-by-removing-the-need-for-privileged-containers/006tNbRwgy1fvlv897xs7j30ae06qjrr.jpg" alt="istio-pod-network-controller 架构示意图" /></p>
 
 <p>流程如下：</p>
 

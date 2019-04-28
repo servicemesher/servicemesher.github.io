@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文展示了如何从头开始构建Istio应用程序和Istio路由的基础知识。">
   <meta property="og:description" content="本文展示了如何从头开始构建Istio应用程序和Istio路由的基础知识。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -441,7 +444,7 @@ istio-ingressgateway   LoadBalancer   10.31.247.41   35.240.XX.XXX
 
 <p>当我们用浏览器访问外部地址时，我们应该看到HelloWorld ASP.NET Core程序。</p>
 
-<p><img src="8af9f4b8ly1fx7ok0aj8lj218g0ly0yt.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-routing-basics/8af9f4b8ly1fx7ok0aj8lj218g0ly0yt.jpg" alt="" /></p>
 
 <h2 id="destinationrule">DestinationRule</h2>
 
@@ -511,9 +514,9 @@ deployment.extensions &quot;aspnetcore-v2&quot; created
 
 <p>如果刷新浏览器，你可以看到VirtualService 在v1 和v2 版本之间切换:</p>
 
-<p><img src="8af9f4b8ly1fx7ok0aj8lj218g0ly0yt.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-routing-basics/8af9f4b8ly1fx7ok0aj8lj218g0ly0yt.jpg" alt="" /></p>
 
-<p><img src="8af9f4b8ly1fx7ol13ivmj218g0ie76h.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-routing-basics/8af9f4b8ly1fx7ol13ivmj218g0ie76h.jpg" alt="" /></p>
 
 <p>这个结果是预料之中的，因为这两个版本都暴露在相同的Kubernetes服务之后：aspnetcore-service。</p>
 

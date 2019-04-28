@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文讲述了容器化基础设运维的挑战，Istio给我们带来了哪些便利，怎样通过设置服务级别目标（SLO）、服务级别目标（SLO）、服务级别协议（SLA）、RED仪表板，根据监控数据的分布，进行数据分析来判断性能指标，而不是简单的百分位统计。">
   <meta property="og:description" content="本文讲述了容器化基础设运维的挑战，Istio给我们带来了哪些便利，怎样通过设置服务级别目标（SLO）、服务级别目标（SLO）、服务级别协议（SLA）、RED仪表板，根据监控数据的分布，进行数据分析来判断性能指标，而不是简单的百分位统计。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -321,7 +324,7 @@ autocomplete('#aa-search-input',
 
 <p>那么，Istio 是如何融入Kubernetes 生态系统的？Kubernetes 充当数据层，Istio 充当<a href="https://istio.io/docs/concepts/what-is-istio/overview/">控制层</a>。Kubernetes   承载应用程序流量、处理容器编排、部署和扩展。Istio 路由应用程序流量，处理策略执行，流量管理和负载均衡。它还处理遥测，如指标、日志和跟踪。Istio 是基于容器的基础设施中负责保护微服务和报告的部分。</p>
 
-<p><img src="61411417ly1fshmugpbmcj20go0bc0t7.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmugpbmcj20go0bc0t7.jpg" alt="" /></p>
 
 <p>上图显示了服务网格架构。Istio 为每项服务部署了一个 <a href="https://www.envoyproxy.io/">envoy sidecar proxy</a>。Envoy 通过 gRPC 调用代理到 Istio Mixer 服务的入站请求。然后，Mixer 应用流量管理规则，并联合请求遥测。Mixer 是 Istio 的大脑。运维人员可以编写 YAML 文件来控制 Envoy 如何重定向流量。他们还可以指定监测信息推送和可观测性系统的遥测技术。可以在运行时根据需要应用规则，而无需重新启动任何 Istio 组件。</p>
 
@@ -389,19 +392,19 @@ prometheus-837521fe34    2/2   Running  0       2m
 
 <p>另外，Istio 为我们提供了一个 Grafana 仪表板，它包含我们想要的部分：</p>
 
-<p><img src="61411417ly1fshmuh33fcj20go08k77r.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmuh33fcj20go08k77r.jpg" alt="" /></p>
 
 <p>我们想要的组件在上面的屏幕截图中以红色圈起来。我们在左上角的每秒操作请求率，右上角的每秒失败请求数，以及底部的响应时间图。这张图上还有其他几个指标，但让我们仔细看看我们圈出的那些指标：</p>
 
-<p><img src="61411417ly1fshmuh936hj20go081778.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmuh936hj20go081778.jpg" alt="" /></p>
 
 <p>以上屏幕截图显示了仪表板的速率组件。这非常简单。我们计算返回 200 响应代码的请求数，并绘制一段时间内的速率图。</p>
 
-<p><img src="61411417ly1fshmuhs1lwj20go089mzq.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmuhs1lwj20go089mzq.jpg" alt="" /></p>
 
 <p>Istio 仪表板为返回 5xx 错误代码的响应做了类似的操作。在上面的屏幕截图中，您可以看到它如何通过 ingress controller 或 productpage 页面本身的错误来分解错误。</p>
 
-<p><img src="61411417ly1fshmuhdtxwj20go08ywjw.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmuhdtxwj20go08ywjw.jpg" alt="" /></p>
 
 <p>该屏幕截图显示了请求持续时间图。此图是关于我们服务的健康状况的最丰富信息。这些数据由 Prometheus 监测系统提供，因此我们可以看到请求时间百分点，包括中位数，第90,95和第99百分位。</p>
 
@@ -427,7 +430,7 @@ prometheus-837521fe34    2/2   Running  0       2m
 
 <h1 id="直方图计量数据">直方图计量数据</h1>
 
-<p><img src="61411417ly1fshmugb1z9j20go05uaah.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmugb1z9j20go05uaah.jpg" alt="" /></p>
 
 <p>上图是使用直方图以微秒为单位显示服务延迟数据的可视化表示。样本数量位于 Y 轴上，样本值（在本例中为微秒等待时间）位于 X 轴上。这是我们在 Circonus 开发的开源直方图。（请参阅 <a href="https://github.com/circonus-labs/libcircllhist">C 语言</a> 和 <a href="https://github.com/circonus-labs/circonusllhist">Golang 中</a>的开源代码，或者<a href="https://www.circonus.com/2018/05/effective-management-of-high-volume-numeric-data-with-histograms/">在此处</a>阅读有关直方图的更多信息）还有一些开源的直方图实现，如 <a href="https://github.com/tdunning/t-digest">Ted Dunning 的 t-消化直方图</a>和 <a href="http://hdrhistogram.org">HDR 直方图</a>。</p>
 
@@ -437,7 +440,7 @@ prometheus-837521fe34    2/2   Running  0       2m
 
 <p>如上图所示，此对数线性直方图中包含每个幂为 10 的 90 个间隔。您可以看到 10k 到 1M 之间分布的 90 个间隔。在每个 10 的幂下，间隔的大小增加 10 倍。这使得我们能够以高相对精度记录各种各样的值，而不需要提前知道数据分布。让我们看看当我们覆盖一些百分点时，这看起来像什么：</p>
 
-<p><img src="61411417ly1fshmuhj1ilj20go0583yl.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmuhj1ilj20go0583yl.jpg" alt="" /></p>
 
 <p>现在您可以看到我们的平均水平，第 50 百分位（也称为中位数）和第 90 百分位。第 90 百分位是 90％ 样本低于该值的值。</p>
 
@@ -445,37 +448,37 @@ prometheus-837521fe34    2/2   Running  0       2m
 
 <p>上面截图中的 RED 仪表盘持续时间图有四个百分点，第50、90、95和99百分位。我们也可以覆盖这些分布的百分位数。即使没有数据，我们也可以看到请求分布看起来很粗略的表示，但是这会做出很多假设。我们看看仅基于几个百分点的假设如何误导我们，这是其他模式的分布：</p>
 
-<p><img src="61411417ly1fshmuh00flj20go07wjs7.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmuh00flj20go07wjs7.jpg" alt="" /></p>
 
 <p>该直方图显示具有两种不同模式的分布。最左边的模式可能是由于缓存服务而产生的快速响应，以及来自磁盘的正确模式。仅仅使用四个百分点来衡量延迟就几乎不可能辨别出这样的分布。这给了我们一个百分点可以掩盖的复杂性的感觉。考虑具有两种以上模式的分布：</p>
 
-<p><img src="61411417ly1fshn01jrnnj20go06hq48.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshn01jrnnj20go06hq48.jpg" alt="" /></p>
 
 <p>此分布至少有四种可见模式。如果我们对全分布进行数学运算，我们会在这里找到 20 多种模式。您需要记录几个百分位以接近上面的延迟分布？关于下面的分布会怎么样？</p>
 
-<p><img src="61411417ly1fshmuge1ksj20go07oabj.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmuge1ksj20go07oabj.jpg" alt="" /></p>
 
 <p>由许多服务组成的复杂系统将生成无法用百分位准确表示的延迟分布。您必须记录整个延迟分布才能充分表示它。这是将数据的完整分布存储在直方图中并根据需要计算百分位数的优选原因之一，而不是仅存储几个百分点。</p>
 
 <p>这种直方图可视化显示了固定时间窗口上的分布。我们可以存储多个分布，以了解它随时间变化的情况，如下所示：</p>
 
-<p><img src="61411417ly1fshmugi6lsj20go05rq5j.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmugi6lsj20go05rq5j.jpg" alt="" /></p>
 
 <p>这是一个 heapmap，它代表一组随时间变化的直方图。想象一下，这个热图中的每一列都有一个从上面看的单独的条形图，颜色用于指示每个间隔的高度。这是来自 10 个负载均衡器集群的响应延迟的 grafana 可视化。这使我们能够深入了解整个集群的系统行为，一周之内就有超过 100 万个数据样本。这里的中位数大约在 500 微秒左右，以红色带表示。</p>
 
-<p><img src="61411417ly1fshmui01hbj20go06t0vy.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmui01hbj20go06t0vy.jpg" alt="" /></p>
 
 <p>以上是另一种类型的热图。此处，饱和度用于指示每个间隔的“高度”（颜色越深的色块更“饱和”）。此外，这次我们在 heatmap 上覆盖了一段时间内的百分比计算。百分位数是健壮的性的度量标准，非常有用。我们可以在这里看到，随着延迟分布向上移动，90％ 以上的百分位数是怎样增加的。</p>
 
 <p>让我们来看看这些基于分布的持续时间图，看看我们是否可以生成比 Istio 仪表板样本更多的信息：</p>
 
-<p><img src="61411417ly1fshmugsu6uj20go09k42b.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmugsu6uj20go09k42b.jpg" alt="" /></p>
 
 <p>上面的屏幕截图是修改后的 RED 仪表板，显示基于分布的延迟数据。在左下角，我们显示了一个固定时间窗口上的延迟直方图。在它的右边，我们使用热图将分布分解成更小的时间窗口。利用 RED 仪表板的布局，我们可以通过几个小组信息全面了解我们的服务是如何运作的。这个特定的仪表板是使用 Grafana 实现的，使用 IRONdb 时间序列数据库服务，该数据库本地存储延迟时间数据作为对数线性直方图。</p>
 
 <p>我们可以进一步扩展这个 RED 仪表板，并将 SLI 覆盖到图表上：</p>
 
-<p><img src="61411417ly1fshmugl9wyj20go07p41y.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmugl9wyj20go07p41y.jpg" alt="" /></p>
 
 <p>对于速率面板，我们的 SLI 可能会保持每秒最低水平的请求。对于速率面板，我们的 SLI 可能会保持每秒一定数量的错误。正如我们之前研究过持续时间 SLI，我们可能希望整个服务的第 99 个百分点由多个窗格组成，以在固定窗口内保持一定的延迟。使用存储为直方图的 Istio 遥测技术可以让我们设置这些有意义的服务范围的 SLI。现在我们还有很多工作要做，而且我们可以更好地审问我们的数据（见下文）。</p>
 
@@ -496,7 +499,7 @@ prometheus-837521fe34    2/2   Running  0       2m
 
 <p>首先，我们需要将请求延迟记录为分发。然后我们可以将它们绘制成热图。我们可以使用分布数据来计算超过500ms SLI 的请求的百分比，方法是使用逆百分比。我们将这个答案乘以该时间窗口中的请求总数，并随时间积分。然后我们可以绘制覆盖在热图上的结果：</p>
 
-<p><img src="61411417ly1fshmugwviwj20go06jdhf.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmugwviwj20go06jdhf.jpg" alt="" /></p>
 
 <p>在此屏幕截图中，我们已经圈出了发生速度降低的热图的一部分。增加的延迟分布是相当缓慢的指示。图中的线表示受到一段时间影响的请求总数。</p>
 
@@ -508,7 +511,7 @@ prometheus-837521fe34    2/2   Running  0       2m
 
 <p>答案通常“视情况而定”。根据一天中的时间和一周的日子，负载会有所不同，除了因特殊事件而变化之外。那是在我们甚至考虑系统在负载下的行为之前。让我们把一些数学工作，并使用延迟带来可视化我们的系统如何执行：</p>
 
-<p><img src="61411417ly1fshmuhvtnnj20go08p0uv.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/61411417ly1fshmuhvtnnj20go08p0uv.jpg" alt="" /></p>
 
 <p>上面的可视化显示延迟分布随着时间的推移被延迟带分解。这里的频段显示 25ms 到 100ms，100-250ms，250-1000 和 1000ms 以下的请求数。快速的请求分组以绿色显示，请求速度的请求变慢以红色显示。</p>
 

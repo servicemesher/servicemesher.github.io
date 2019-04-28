@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="由微服务同步通信的核心问题引入，讨论断路器模式，再深入阐述Istio与Hystrix两种断路器的实现原理，最后比较二者的优缺点和选型建议。">
   <meta property="og:description" content="由微服务同步通信的核心问题引入，讨论断路器模式，再深入阐述Istio与Hystrix两种断路器的实现原理，最后比较二者的优缺点和选型建议。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -319,7 +322,7 @@ autocomplete('#aa-search-input',
 
 <p>断路器模式是微服务体系结构中广泛采用的模式之一。我们将比较使用两种不同方法实现它的优缺点: Hystrix和Istio。</p>
 
-<p><img src="bf8f1836ly1g0vdlvuhijj20xc0hggnu.jpg" alt="istio-vs-hystrix.jpg" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-vs-hystrix-circuit-breaker/bf8f1836ly1g0vdlvuhijj20xc0hggnu.jpg" alt="istio-vs-hystrix.jpg" /></p>
 
 <h2 id="微服务同步通信的核心问题">微服务同步通信的核心问题</h2>
 
@@ -369,7 +372,7 @@ autocomplete('#aa-search-input',
 
 <p>这可以用下图来总结:</p>
 
-<p><img src="bf8f1836ly1g0vdvft88xj21gk0qiwih.jpg" alt="state-diagram.jpg" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-vs-hystrix-circuit-breaker/bf8f1836ly1g0vdvft88xj21gk0qiwih.jpg" alt="state-diagram.jpg" /></p>
 
 <h2 id="istio断路器">Istio断路器</h2>
 
@@ -393,7 +396,7 @@ autocomplete('#aa-search-input',
 
 <p>正如我们所说，Istio构建在您选择的集群管理平台上，并要求应用程序在这个平台部署。Kubernetes通过<code>DestinationRule</code>实现断路器模式，或者更具体的路径<code>TrafficPolicy</code>(原<code>断路器</code>)-&gt;<code>OutlierDetection</code>，根据以下模型:</p>
 
-<p><img src="bf8f1836ly1g0vdwafn1kj21qv18tn4m.jpg" alt="istio-class-diagram.jpg" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-vs-hystrix-circuit-breaker/bf8f1836ly1g0vdwafn1kj21qv18tn4m.jpg" alt="istio-class-diagram.jpg" /></p>
 
 <p>参数如下:</p>
 
@@ -479,7 +482,7 @@ Netflix最近宣布，它已经停止开发Hystrix库，转而开发目前知名
 
 <p>这是Hystrix模型的一个非常简单的类图:</p>
 
-<p><img src="bf8f1836ly1g0vdwaxlekj21fz1rbak7.jpg" alt="hystrix-class-diagram.jpg" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-vs-hystrix-circuit-breaker/bf8f1836ly1g0vdwaxlekj21fz1rbak7.jpg" alt="hystrix-class-diagram.jpg" /></p>
 
 <p>最关键的地方就在 <code>HystrixCommand</code>方法 <code>run()</code>和 <code>getFallback()</code>:</p>
 

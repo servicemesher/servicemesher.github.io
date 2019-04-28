@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文介绍如何使用Flagger和Istio实现自动化金丝雀部署。">
   <meta property="og:description" content="本文介绍如何使用Flagger和Istio实现自动化金丝雀部署。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -492,7 +495,7 @@ spec:
 <h2 id="使用flagger部署web应用">使用Flagger部署web应用</h2>
 
 <p>Flagger包含一个Kubernetes deployment和一个可选的horizontal pod autoscaler（HPA），然后创建一些资源对象（Kubernetes deployments， ClusterIP services和Istio virtual services）。这些资源对象会在网络上暴露应用并实现金丝雀分析和升级。
-<img src="0071hauBly1g1u72wr801j30rs0cdq4w.jpg" alt="" />
+<img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/automated-canary-deployments-with-flagger-and-istio/0071hauBly1g1u72wr801j30rs0cdq4w.jpg" alt="" />
 创建一个test namespace，并开启Istio sidecar注入：</p>
 
 <pre><code class="language-bash">REPO=https://raw.githubusercontent.com/weaveworks/flagger/master
@@ -581,7 +584,7 @@ virtualservice.networking.istio.io/podinfo
 <h2 id="自动金丝雀分析和升级">自动金丝雀分析和升级</h2>
 
 <p>Flagger实现了一个控制循环，逐渐将流量转移到金丝雀，同时测量HTTP请求成功率等关键性能指标，请求平均持续时间以及pod健康状态。根据对KPI的分析，升级或中止金丝雀部署，并将分析结果发送到Slack。
-<img src="0071hauBgy1g1uawf9vhqj30rs0a976b.jpg" alt="" />
+<img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/automated-canary-deployments-with-flagger-and-istio/0071hauBgy1g1uawf9vhqj30rs0a976b.jpg" alt="" />
 以下对象的更改会触发金丝雀部署：</p>
 
 <ul>
@@ -621,7 +624,7 @@ Promotion completed! Scaling down podinfo.test
 
 <p>在分析过程中，可以使用Grafana监控金丝雀的进展：</p>
 
-<p><img src="0071hauBly1g1ubacxpukj30rs0mhjvg.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/automated-canary-deployments-with-flagger-and-istio/0071hauBly1g1ubacxpukj30rs0mhjvg.jpg" alt="" /></p>
 
 <p>请注意，如果在金丝雀分析期间对deployment应用新的更改，Flagger将重新启动分析阶段。</p>
 
@@ -636,7 +639,7 @@ prod        backend   Failed        0        2019-01-14T17:05:07Z
 
 <p>如果你启用了Slack通知，则会收到以下消息：</p>
 
-<p><img src="0071hauBly1g1ubdv033ej30rs0ap400.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/automated-canary-deployments-with-flagger-and-istio/0071hauBly1g1ubdv033ej30rs0ap400.jpg" alt="" /></p>
 
 <h2 id="自动回滚">自动回滚</h2>
 
@@ -686,7 +689,7 @@ Canary failed! Scaling down podinfo.test
 
 <p>如果你启用了Slack通知，当超出了进度超时，或者分析达到了最大失败次数，你将收到一条消息：</p>
 
-<p><img src="0071hauBly1g1uc4hvoo6j30rs05ymy8.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/automated-canary-deployments-with-flagger-and-istio/0071hauBly1g1uc4hvoo6j30rs05ymy8.jpg" alt="" /></p>
 
 <h1 id="总结">总结</h1>
 

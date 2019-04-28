@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="Envoy的架构师Matt Klein对Envoy中多线程模型的简单介绍。">
   <meta property="og:description" content="Envoy的架构师Matt Klein对Envoy中多线程模型的简单介绍。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -315,7 +318,7 @@ autocomplete('#aa-search-input',
 
 <h3 id="线程模型概览">线程模型概览</h3>
 
-<p><img src="5f3e3349gy1g0c5di41ayj218g10ewm0.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/envoy-threading-model/5f3e3349gy1g0c5di41ayj218g10ewm0.jpg" alt="" /></p>
 
 <p>Envoy使用三种不同类型的线程，如上图所示。</p>
 
@@ -353,7 +356,7 @@ autocomplete('#aa-search-input',
 
 <p>由于Envoy将主线程职责与工作线程职责分开，因此需要在主线程上完成复杂处理，然后以高度并发的方式使每个工作线程可用。 本节介绍了Envoy的高级线程本地存储（TLS）系统。 在下一节中，我将描述如何使用它来处理集群管理。</p>
 
-<p><img src="5f3e3349gy1g0c5bd3l63j218g0n1wjh.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/envoy-threading-model/5f3e3349gy1g0c5bd3l63j218g0n1wjh.jpg" alt="" /></p>
 
 <p>如已经描述的那样，主线程基本上处理Envoy过程中的所有管理/控制平面功能。 （控制平面在这里有点过载但是当在Envoy进程中考虑并与工人做的转发进行比较时，似乎是合适的）。 主线程进程执行某些工作是一种常见模式，然后需要使用该工作的结果更新每个工作线程，并且工作线程不需要在每次访问时获取锁定。</p>
 
@@ -376,7 +379,7 @@ autocomplete('#aa-search-input',
 
 <p>在本节中，我将描述TLS如何用于集群管理。 集群管理包括xDS API处理和/或DNS以及运行状况检查。</p>
 
-<p><img src="5f3e3349gy1g0c5dx3j34j20ir0agwgn.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/envoy-threading-model/5f3e3349gy1g0c5dx3j34j20ir0agwgn.jpg" alt="" /></p>
 
 <p>图3显示了涉及以下组件和步骤的总体流程：</p>
 

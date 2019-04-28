@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="开发人员正在摆脱大型单体应用的束缚，转而采用小巧而专一的微服务，以加速软件开发并加强系统弹性。为了满足这个新生态的需求，开发人员需要为部署的微服务创建一个具有负载均衡、高级流量管理、请求跟踪和连接功能的服务网络。">
   <meta property="og:description" content="开发人员正在摆脱大型单体应用的束缚，转而采用小巧而专一的微服务，以加速软件开发并加强系统弹性。为了满足这个新生态的需求，开发人员需要为部署的微服务创建一个具有负载均衡、高级流量管理、请求跟踪和连接功能的服务网络。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -316,7 +319,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="流程">流程</h2>
 
-<p><img src="00704eQkgy1fs1ew7msf1j32kn19zwmb.jpg" alt="IStio部署和使用流程图" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/manage-microservices-traffic-using-istio/00704eQkgy1fs1ew7msf1j32kn19zwmb.jpg" alt="IStio部署和使用流程图" /></p>
 
 <ol>
 <li>用户在 Kubernetes 上部署其配置的应用程序。应用程序 <code>BookInfo</code> 由四个微服务组成。该应用中的微服务使用不同的语言编写——Python、Java、Ruby 和 Node.js。<code>Reivew</code> 微服务使用 Java 编写，有三个不同的版本。</li>

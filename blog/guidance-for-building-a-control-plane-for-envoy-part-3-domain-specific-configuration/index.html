@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文介绍如何为 Envoy 构建控制平面指南的第3部分：领域特定配置。">
   <meta property="og:description" content="本文介绍如何为 Envoy 构建控制平面指南的第3部分：领域特定配置。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -340,7 +343,7 @@ autocomplete('#aa-search-input',
 <li><a href="https://istio.io/docs/reference/config/networking/">ServiceEntry</a>：显式地将服务添加到 Istio 的服务注册中心</li>
 </ul>
 
-<p><img src="006gLaqLgy1g1ocpfgj5dj30ma09dq3j.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/006gLaqLgy1g1ocpfgj5dj30ma09dq3j.jpg" alt="" /></p>
 
 <p>运行在 Kubernetes 中的所有这些配置对象都实现为 <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">CustomResourceDefinitions</a>。</p>
 
@@ -351,7 +354,7 @@ autocomplete('#aa-search-input',
 <li><a href="https://github.com/heptio/contour/blob/master/docs/annotations.md">Ingress 资源支持</a>，允许你在你的 Kubernetes Ingress 资源上指定注解。</li>
 </ul>
 
-<p><img src="006gLaqLly1g1oao8vmp8j30hc05gaa8.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/006gLaqLly1g1oao8vmp8j30hc05gaa8.jpg" alt="" /></p>
 
 <p>在 <a href="https://gloo.solo.io/">Gloo 项目</a>中，将可用的配置对象分成两个级别：</p>
 
@@ -376,7 +379,7 @@ autocomplete('#aa-search-input',
 <li><a href="https://gloo.solo.io/v1/github.com/solo-io/gloo/projects/gloo/api/v1/proxy.proto.sk/">Proxy</a>：代理是抽象我们可以应用于 Envoy 的所有配置的主要对象。这包括监听器、虚拟主机、路由和上行流。高级对象（VirtualService，Gateway等）用于驱动这个低级代理对象。</li>
 </ul>
 
-<p><img src="006gLaqLgy1g1ocrrdccrj30o20dxabd.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/006gLaqLgy1g1ocrrdccrj30o20dxabd.jpg" alt="" /></p>
 
 <p>Gloo 控件的两层配置之间的分离允许我们在保持配置 Envoy 的简单抽象的同时扩展 Gloo 控制平面功能。本系列的第 4 部分将对此进行更详细的解释。</p>
 

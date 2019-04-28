@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文介绍网络安全公司Twistlock如何实现Istio service mesh的可视化并增强微服务的安全性">
   <meta property="og:description" content="本文介绍网络安全公司Twistlock如何实现Istio service mesh的可视化并增强微服务的安全性" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -329,13 +332,13 @@ autocomplete('#aa-search-input',
 
 <p>该应用程序的拓扑结构如下所示：</p>
 
-<p><img src="00704eQkgy1fs7h9ansyfj30r30j40uw.jpg" alt="istio bookinfo为服务拓扑图" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/00704eQkgy1fs7h9ansyfj30r30j40uw.jpg" alt="istio bookinfo为服务拓扑图" /></p>
 
 <h2 id="可视化和控制雷达视图上的istio">可视化和控制雷达视图上的Istio</h2>
 
 <p>我们在使用Istio的客户中意识到的第一个挑战就是可视化服务的拓扑结构。尽管Twistlock一直提供雷达视图来为您的整个容器化环境提供实时Visio，但Istio允许我们以更多的应用特定知识和深度进一步增强这些数据。</p>
 
-<p><img src="00704eQkgy1fs7hau83l5j30r30dyn0t.jpg" alt="istio可视化拓扑" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/00704eQkgy1fs7hau83l5j30r30dyn0t.jpg" alt="istio可视化拓扑" /></p>
 
 <p><strong>Istio的主要安全优势之一是严格控制的网络策略——即严格控制通信协议和实体之间的连接。</strong>为此，建议在Istio中启用<a href="https://istio.io/docs/tasks/security/role-based-access-control/">服务级别访问控制</a>。在Twistlock中使用此功能时，您可以直接在雷达的可视化界面中获得对网络拓扑的完全可视性和控制。</p>
 
@@ -345,11 +348,11 @@ autocomplete('#aa-search-input',
 
 <p>Twistlock会自动注册整个配置，以便动态更新并注释到每个服务的Radar界面上：</p>
 
-<p><img src="00704eQkgy1fs7hld5v39j30r30dwwjb.jpg" alt="twistlock radar界面" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/00704eQkgy1fs7hld5v39j30r30dwwjb.jpg" alt="twistlock radar界面" /></p>
 
 <p>此外，单击服务角色时，可以查看每个角色的详细信息：</p>
 
-<p><img src="00704eQkgy1fs7hm2a3tgj30r30dd786.jpg" alt="istio radar界面" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/00704eQkgy1fs7hm2a3tgj30r30dd786.jpg" alt="istio radar界面" /></p>
 
 <p>使用Twistlock，我们可以编辑和管理与给定实体关联的所有安全设置，并查看Istio管理服务网格拓扑中反映的更改。</p>
 
@@ -359,11 +362,11 @@ autocomplete('#aa-search-input',
 
 <p>例如，如果在Bookinfo应用程序中，攻击者成功过的破解了<code>productpage</code>服务并从那里访问<code>ratings</code>服务，那么会发生什么？从技术上讲，如果所有网格规则配置正确，Istio网络策略可能会阻止连接，但您仍然需要关注日常的检测和警告，这是通过CNNF（我们L3云原生网络防火墙）与Istio集成：</p>
 
-<p><img src="00704eQkgy1fs7hm2a3tgj30r30dd786.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/00704eQkgy1fs7hm2a3tgj30r30dd786.jpg" alt="" /></p>
 
 <p>当然，这些网络违规也会在雷达中报告和显示：</p>
 
-<p><img src="00704eQkgy1fs7i4zhla0j30r30fewi7.jpg" alt="istio radar" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/00704eQkgy1fs7i4zhla0j30r30fewi7.jpg" alt="istio radar" /></p>
 
 <p>该流程中将利用Twistlock的ML驱动的行为建模来自动检测异常情况，随后让Istio关闭该服务的响应以隔离受损的服务。</p>
 

@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="研究Istio下构建简洁的微服务架构，对Istio的研究也更深入，自定义Mixer Adapter必不可少，以下结合使用场景做一个自定义适配器的实践分享。">
   <meta property="og:description" content="研究Istio下构建简洁的微服务架构，对Istio的研究也更深入，自定义Mixer Adapter必不可少，以下结合使用场景做一个自定义适配器的实践分享。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -304,7 +307,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="背景">背景</h2>
 
-<p><img src="006tKfTcly1g0t2s7z4cxj312c0k3add.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/custom-istio-mixer-adapter/006tKfTcly1g0t2s7z4cxj312c0k3add.jpg" alt="" /></p>
 
 <p>结合<a href="https://github.com/hb-go/micro-mesh#micro-mesh">https://github.com/hb-go/micro-mesh</a>的实践场景，需要在<code>ingressgateway</code>与<code>API service</code>间加入认证&amp;鉴权(JWT&amp;RBAC)，自然考虑Istio提供的<a href="https://istio.io/zh/docs/concepts/security/">安全</a>方案，但使用JWT做认证鉴权在后端是无状态的，这样在使用场景上有一定限制，如:</p>
 
@@ -340,7 +343,7 @@ autocomplete('#aa-search-input',
 
 <p>配置关系及执行流程如图：</p>
 
-<p><img src="006tKfTcly1g0t2of1ziej31bg0nsdma.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/custom-istio-mixer-adapter/006tKfTcly1g0t2of1ziej31bg0nsdma.jpg" alt="" /></p>
 
 <ul>
 <li>属性：使用<code>istio</code>的<code>attributes</code>，<code>istio/mixer/testdata/config/attributes.yaml</code></li>

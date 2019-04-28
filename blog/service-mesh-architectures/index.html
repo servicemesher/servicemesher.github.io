@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="这是介绍服务网格的架构系列的第二篇文章，本文讲解了Service Mesh术语的含义，为什么说节点代理和Sidecar模型是微服务的新模式和未来。">
   <meta property="og:description" content="这是介绍服务网格的架构系列的第二篇文章，本文讲解了Service Mesh术语的含义，为什么说节点代理和Sidecar模型是微服务的新模式和未来。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -339,7 +342,7 @@ autocomplete('#aa-search-input',
 
 <p>软件中库引用的方式是个很自然的选择。它简单明了。在这种架构中，每个微服务应用程序包中都有实现Service Mesh功能的库。像<a href="https://github.com/Netflix/Hystrix">Hystrix</a>和<a href="https://github.com/Netflix/Hystrix">Ribbon</a>就是用库的方法。</p>
 
-<p><img src="006XVfd7gy1ft2yu15ollj30fx0an3z0.jpg" alt="picture" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/service-mesh-architectures/006XVfd7gy1ft2yu15ollj30fx0an3z0.jpg" alt="picture" /></p>
 
 <p>如果一个团队仅使用一种语言开发并且还负责一个应用的运行，那么使用库引用就很容易，这种方式自然也是很合适的。库方法不需要与底层基础架构进行太多合作，如Kubernetes无需关心正在运行的一个应用是否包含Hystrix库。</p>
 
@@ -357,7 +360,7 @@ autocomplete('#aa-search-input',
 
 <p>由于每个节点上都需要一个节点代理，因此需要与基础架构进行一些协作，如果没有协作的话此模型就无法工作。通过类比，大多数应用程序会把选择TCP堆栈，猜一个端口号，然后发送或接收TCP数据包的事委托给基础设施（也就是操作系统）。</p>
 
-<p><img src="006XVfd7gy1ft2yu1ipj2j30gd0b2t9d.jpg" alt="agent" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/service-mesh-architectures/006XVfd7gy1ft2yu1ipj2j30gd0b2t9d.jpg" alt="agent" /></p>
 
 <p>相比工作审计来说，这个模型强调工作资源共享，如果节点代理用一些内存来缓存微服务的数据，那么服务就可能会在几秒钟内转向并使用该缓存区提供的数据。这可能非常有效，但容易被滥用。如果我的微服务请求所有缓存区空间，节点代理要先为你的微服务在缓存区提供一个快照。您需要更多代码来管理每个共享资源。</p>
 
@@ -373,7 +376,7 @@ autocomplete('#aa-search-input',
 
 <p>Sidecar有利于工作审计，特别是在一些与安全相关的方面。例如：假设我使用Service Mesh来提供零信任模式的安全性。我希望Service Mesh以加密方式去验证客户端和服务器。如果使用节点代理来实现：当我的pod想成为另一个服务器pod的客户端时，节点代理将代表我的pod进行身份验证。节点代理也在服务其他pod，因此必须确保另一个pod不能代表我的pod进行身份验证去欺骗他。如果我们用Sidecar来实现，我pod的Sidecar不会服务于其他pod。我们可以遵循最小特权原则，并在认证密钥，内存和网络功能方面满足这个pod最低限度的需求。</p>
 
-<p><img src="006XVfd7gy1ft2yu1chcrj30gf0awdgg.jpg" alt="sidecar" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/service-mesh-architectures/006XVfd7gy1ft2yu1chcrj30gf0awdgg.jpg" alt="sidecar" /></p>
 
 <p>因此，从外部看，Sidecar与其附属的应用程序具有相同的权限。另一方面，sidecar需要介入应用程序和外部服务之间。这会产生一些安全顾虑：你即希望sidecar拥有尽可能少的权限，但你又需要给它足够的权限来控制进出应用程序的流量。例如，在Istio中，负责设置Sidecar的init容器要具有设置iptables规则NET_ADMIN权限。初始化方式是较好的安全实践，它用最少的权限运行后就消失，但NET_ADMIN的所有内容都代表了被攻击的点。 （已经有人在加强改进这一点）。</p>
 

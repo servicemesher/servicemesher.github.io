@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="在计算领域，速率限制通常用于控制服务发起或消耗的操作速率，或者是请求发送或接收的流量。如果你有一年以上的软件开发经验，那么你应该会遇到这个概念。但是，和很多软件架构所面临的挑战一样，比起实际出现的问题，需要思考的问题会更多。本文概述了现代分布式应用程序中的一些关于速率限制的实现方案、优势和挑战。">
   <meta property="og:description" content="在计算领域，速率限制通常用于控制服务发起或消耗的操作速率，或者是请求发送或接收的流量。如果你有一年以上的软件开发经验，那么你应该会遇到这个概念。但是，和很多软件架构所面临的挑战一样，比起实际出现的问题，需要思考的问题会更多。本文概述了现代分布式应用程序中的一些关于速率限制的实现方案、优势和挑战。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -321,26 +324,26 @@ autocomplete('#aa-search-input',
 
 <p>基于简化的原则，我们假设正在处理点对点通信模型中的速率限制。在这种场景下，你可以在数据发送的“发送端”或数据消费“接收端”中的任何地方实施速率限制，当然还有其他“中间件”选项：</p>
 
-<p><img src="78a165e1gy1fsmq2gb6qhj20lp05wmx4.jpg" alt="发送端和接收端" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/78a165e1gy1fsmq2gb6qhj20lp05wmx4.jpg" alt="发送端和接收端" /></p>
 
 <ul>
 <li>你可以控制发送端发送请求的速率 ：通过定义时间限制循环来定期发送API请求。</li>
 <li>你可以控制接收端接收请求的速率：在当前任务/线程处理完成之前拒绝新的入站HTTP连接。</li>
 </ul>
 
-<p><img src="78a165e1gy1fsmq7eltt3j20rc06tdfv.jpg" alt="控制速率" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/78a165e1gy1fsmq7eltt3j20rc06tdfv.jpg" alt="控制速率" /></p>
 
 <ul>
 <li>你可以使用中间层来缓冲发送的请求：通过将请求放入队列（可以通过定义不同优先级，为请求提供不同级别的SLA）。</li>
 </ul>
 
-<p><img src="78a165e1gy1fsmq8on7a0j20lr07eaa2.jpg" alt="请求缓冲" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/78a165e1gy1fsmq8on7a0j20lr07eaa2.jpg" alt="请求缓冲" /></p>
 
 <ul>
 <li>你可以使用中间层来限制发送的请求：通过使用某种形式的代理或网关。这样当下游服务不再接受请求时，它会切换至断路器。</li>
 </ul>
 
-<p><img src="78a165e1gy1fsmq9qjzycj20jk06tdgn.jpg" alt="中间层" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/78a165e1gy1fsmq9qjzycj20jk06tdgn.jpg" alt="中间层" /></p>
 
 <h2 id="如何权衡">如何权衡？</h2>
 
@@ -383,7 +386,7 @@ autocomplete('#aa-search-input',
 
 <p>在Java语言中，我经常使用Google开源的 Guava RateLimiter 库来解决这类问题。我写的发送端的应用程序示例就像下面这样：</p>
 
-<p><img src="78a165e1gy1fsmqalcy5zj20kv03gglu.jpg" alt="Guava案例" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/78a165e1gy1fsmqalcy5zj20kv03gglu.jpg" alt="Guava案例" /></p>
 
 <p>这是一个基于  <a href="https://google.github.io/guava/releases/19.0/api/docs/index.html?com/google/common/util/concurrent/RateLimiter.html">Guava RateLimiter JavaDoc</a>  的简单示例，实际上我可能在任务执行逻辑中增加一些异常处理块。</p>
 
@@ -391,7 +394,7 @@ autocomplete('#aa-search-input',
 
 <p>在这种场景下，可以防止API后端过载的唯一方法是通过对接收端进行速率限制，最好是将限制功能放到如API网关这类外部服务上。</p>
 
-<p><img src="78a165e1gy1fsmqcco3umj20h80bemxj.jpg" alt="API Gateway" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/78a165e1gy1fsmqcco3umj20h80bemxj.jpg" alt="API Gateway" /></p>
 
 <h2 id="结论">结论</h2>
 

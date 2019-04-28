@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文用实例讲解了如何利用Envoy和Jaeger实现分布式追踪。">
   <meta property="og:description" content="本文用实例讲解了如何利用Envoy和Jaeger实现分布式追踪。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -346,7 +349,7 @@ autocomplete('#aa-search-input',
 
 <p>下面的图展示了我们尝试构建的系统全貌：</p>
 
-<p><img src="006tNbRwly1fxvygc19pfj30o70a6glq.jpg" alt="service setup" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/distributed-tracing-with-envoy-service-mesh-jaeger/006tNbRwly1fxvygc19pfj30o70a6glq.jpg" alt="service setup" /></p>
 
 <p>服务安装</p>
 
@@ -510,7 +513,7 @@ func main() {
 
 <p>所有这些完成后，如果您运行<code>docker-compose up</code>并访问前端Envoy端点，就会生成追踪信息并推送到Jaeger。Jaeger有一个非常友好的UI界面来展示追踪信息，我们的信息看上去像这样：</p>
 
-<p><img src="006tNbRwly1fxw0rfr8dyj31jk0e8q62.jpg" alt="trace from jaeger" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/distributed-tracing-with-envoy-service-mesh-jaeger/006tNbRwly1fxw0rfr8dyj31jk0e8q62.jpg" alt="trace from jaeger" /></p>
 
 <p>正如你看到的，它提供了总体的时间损耗，系统各部分是时间损耗，哪个服务调用哪个服务，服务和服务的关系（服务b和服务c是兄弟关系）。Jaeger的进一步使用留待你自己去探索。</p>
 

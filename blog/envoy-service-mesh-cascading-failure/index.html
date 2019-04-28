@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文分享了Lyft对于Envoy的在服务网格领域的实践，主要为了解决级联故障的问题，以及Lyft对于Envoy的未来规划。">
   <meta property="og:description" content="本文分享了Lyft对于Envoy的在服务网格领域的实践，主要为了解决级联故障的问题，以及Lyft对于Envoy的未来规划。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -309,7 +312,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="006tNbRwgy1fuv5nathu3j318g0ii0uc.jpg" alt="Envoy Lyft" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/envoy-service-mesh-cascading-failure/006tNbRwgy1fuv5nathu3j318g0ii0uc.jpg" alt="Envoy Lyft" /></p>
 
 <h2 id="关键要点">关键要点</h2>
 
@@ -386,7 +389,7 @@ autocomplete('#aa-search-input',
 
 <p>Lyft 的网络团队为所有配置的速率限制提供指标。当服务所有者创建新的速率限制以在边缘、服务之间或数据库中强制执行时，可以立即收集与防御机制有关的数据。</p>
 
-<p><img src="61411417ly1furr8zvymaj20h4029wf0.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/envoy-service-mesh-cascading-failure/61411417ly1furr8zvymaj20h4029wf0.jpg" alt="" /></p>
 
 <p>上图是 ratelimit 服务仪表板的一个片段，其中显示了三个面板：</p>
 
@@ -422,7 +425,7 @@ autocomplete('#aa-search-input',
 
 <h4 id="设置限制"><strong>设置限制</strong></h4>
 
-<p><img src="61411417ly1furr903c8uj20go03l764.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/envoy-service-mesh-cascading-failure/61411417ly1furr903c8uj20go03l764.jpg" alt="" /></p>
 
 <p>上面的仪表板是一个交互式仪表板，服务所有者可以对 Lyft 的所有服务允许的最大并发请求数量进行试验，以满足其特定服务。在上面的示例中，“位置”服务的所有者可以看到，除“viewport”服务之外，大多数调用服务的60个并发请求的限制就足够了。使用此仪表板，服务所有者可以查看并发配置中的选择性更改在当前网络拓扑中的外观，并可以放心地进行这些更改。</p>
 
@@ -432,13 +435,13 @@ autocomplete('#aa-search-input',
 
 <p><em>入口并发</em></p>
 
-<p><img src="61411417ly1furr901sd6j20h103hjrw.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/envoy-service-mesh-cascading-failure/61411417ly1furr901sd6j20h103hjrw.jpg" alt="" /></p>
 
 <p>使用上面的两个面板，服务所有者可以看到从他们的 sidecar Envoy 到他们的服务的并发连接数（使用左边的面板），并查看是否正触发并发限制（使用右侧的面板）。</p>
 
 <p><em>出口并发</em></p>
 
-<p><img src="61411417ly1furrb4gp54j20go03g0tc.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/envoy-service-mesh-cascading-failure/61411417ly1furrb4gp54j20go03g0tc.jpg" alt="" /></p>
 
 <p>使用上面的两个面板，服务所有者可以在任何时间点（从左侧的面板）可视化从任何服务到其服务的并发请求数。此外，他们可以可视化超出配置限制的服务（使用右侧面板），然后继续使用具体数据解决问题。</p>
 
@@ -481,11 +484,11 @@ autocomplete('#aa-search-input',
 
 <h2 id="关于作者">关于作者</h2>
 
-<p><img src="61411417ly1furr8ztt97j202d02sweb.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/envoy-service-mesh-cascading-failure/61411417ly1furr8ztt97j202d02sweb.jpg" alt="" /></p>
 
 <p><strong>Jose Nino</strong> 是 Lyft 网络团队开发工具和配置的负责人。在近两年的时间里，他一直在 Lyft 工作，Jose 一直在创建系统来扩展 Lyft Envoy 生产环境的配置，以适应日益庞大的部署和工程组织。他曾担任开源 Envoy 维护人员，并培养了 Envoy 不断发展的社区。最近，Jose 继续扩展 Lyft 的网络负载容忍系统。何塞在几个场地谈到了 Envoy 和其他相关话题，最近一次是在 Kubecon EU 2018。</p>
 
-<p><img src="61411417ly1furr8zquv6j202d02sdfo.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/envoy-service-mesh-cascading-failure/61411417ly1furr8zquv6j202d02sdfo.jpg" alt="" /></p>
 
 <p><strong>Daniel Hochman</strong> 是 Lyft 的高级基础设施工程师。他热衷于扩展创新产品和流程，以改善公司内外的生活质量。在 Lyft 工作期间，他成功地指导了平台产品和组织发展的爆炸式增长。他编写了吞吐量最高的微服务之一，并介绍了几种关键存储技术。Daniel 目前负责 Lyft 的交通网络，并负责在内部和边缘扩展 Lyft 的网络基础设施。</p>
 

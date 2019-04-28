@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="Vizceral是Netflix发布的一个开源项目，用于近乎实时地监控应用程序和集群之间的网络流量。Vistio是使用Vizceral对Istio和网格监控的改进。本文是使用Vistio对Istio mesh做流量可视化的教程。">
   <meta property="og:description" content="Vizceral是Netflix发布的一个开源项目，用于近乎实时地监控应用程序和集群之间的网络流量。Vistio是使用Vizceral对Istio和网格监控的改进。本文是使用Vistio对Istio mesh做流量可视化的教程。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -306,7 +309,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="00704eQkgy1fshfooas1oj318g0wrq9y.jpg" alt="vistio全局级别可视化视图" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/00704eQkgy1fshfooas1oj318g0wrq9y.jpg" alt="vistio全局级别可视化视图" /></p>
 
 <blockquote>
 <p>原文：<a href="https://itnext.io/vistio-visualize-your-istio-mesh-using-netflixs-vizceral-b075c402e18e">https://itnext.io/vistio-visualize-your-istio-mesh-using-netflixs-vizceral-b075c402e18e</a></p>
@@ -322,7 +325,7 @@ autocomplete('#aa-search-input',
 
 <p>在集群级别（如下所示），您可以可视化内部网格的流量。通过设置警告和错误级别警报，当应用程序出现问题时可以被快速检测出来。</p>
 
-<p><img src="00704eQkgy1fshft5oxlwj318g0pe0wp.jpg" alt="Vistio的集群级别可视化" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/00704eQkgy1fshft5oxlwj318g0pe0wp.jpg" alt="Vistio的集群级别可视化" /></p>
 
 <h3 id="在istio服务网格中安装vistio">在Istio服务网格中安装Vistio</h3>
 
@@ -348,7 +351,7 @@ autocomplete('#aa-search-input',
 
 <p>如果您还尚未部署服务网格，可以按照此<a href="https://istio.io/docs/guides/bookinfo/">Istio Bookinfo Demo</a>中的说明部署Istio及其示例应用程序。您需要能够在应用程序之间生成流量。要测试指标是否从Mixer正确发送到Prometheus，您可以运行以下Prometheus查询<code>istio_request_count</code>，应该会看到多个条目。</p>
 
-<p><img src="00704eQkgy1fshg0vw25ij318g0jzqjq.jpg" alt="Prometheus查询" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/00704eQkgy1fshg0vw25ij318g0jzqjq.jpg" alt="Prometheus查询" /></p>
 
 <h3 id="部署vistio">部署Vistio</h3>
 
@@ -405,7 +408,7 @@ autocomplete('#aa-search-input',
 
 <p>vistio-web调用vistio-api来渲染服务网格。访问<a href="http://localhost:9091/graph">http://localhost:9091/graph</a>您应该会看到类似下列的输出。</p>
 
-<p><img src="00704eQkgy1fshi61t04oj310q17c0y1.jpg" alt="vistio-api的期望输出" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/00704eQkgy1fshi61t04oj310q17c0y1.jpg" alt="vistio-api的期望输出" /></p>
 
 <p><strong>暴露Vistio</strong></p>
 
@@ -418,7 +421,7 @@ autocomplete('#aa-search-input',
 
 <p>如果一切都已经启动并准备就绪，您就可以访问Vistio UI，开始探索服务网格网络，访问<a href="http://localhost:8080">http://localhost:8080</a>您将会看到类似下图的输出。</p>
 
-<p><img src="00704eQkgy1fshi98duzgj318g0l2406.jpg" alt="Vistio主页面" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/00704eQkgy1fshi98duzgj318g0l2406.jpg" alt="Vistio主页面" /></p>
 
 <h3 id="探索">探索</h3>
 
@@ -426,11 +429,11 @@ autocomplete('#aa-search-input',
 
 <p>如果您点击istio-mesh气泡，您将能够查看您的网状网络。</p>
 
-<p><img src="00704eQkgy1fshibdwcj3j318g0p8th1.jpg" alt="istio mesh的网络流量" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/00704eQkgy1fshibdwcj3j318g0p8th1.jpg" alt="istio mesh的网络流量" /></p>
 
 <p>在您的Istio网格中，您可以使用许多可视化工具来帮助您查明故障的应用程序。</p>
 
-<p><img src="00704eQkgy1fshicc7or1j318g0p8ahr.jpg" alt="查明网络问题" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/00704eQkgy1fshicc7or1j318g0p8ahr.jpg" alt="查明网络问题" /></p>
 
 <p>使用屏幕右上方的过滤器可以快速过滤出错误率较高的应用程序。通过高级配置，当错误率超过特定值时，也可以触发警报。警报将显示给定应用程序的当前错误率趋势。</p>
 
@@ -438,7 +441,7 @@ autocomplete('#aa-search-input',
 
 <p>访问<a href="http://localhost:9091/graph">http://localhost:9091/graph</a>，如果您从vistio-api中看到以下输出，表示某些功能无法正常工作。正确的输出显示在教程上面。</p>
 
-<p><img src="00704eQkgy1fshie7wxkyj30ks0f4myd.jpg" alt="vistio api的不正确输出" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/00704eQkgy1fshie7wxkyj30ks0f4myd.jpg" alt="vistio api的不正确输出" /></p>
 
 <p><strong>1.</strong>  检查vistio-api日志中是否有错误——在大多数情况下，vistio-api将记录与Prometheus通信时遇到的任何问题。</p>
 

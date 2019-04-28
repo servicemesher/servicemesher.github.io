@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文介绍了在Istio环境下进行应用程序指标度量的背景知识、一般方法以及可能出现的问题。">
   <meta property="og:description" content="本文介绍了在Istio环境下进行应用程序指标度量的背景知识、一般方法以及可能出现的问题。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -356,7 +359,7 @@ autocomplete('#aa-search-input',
 
 <p>所有这些endpoint端点对于调试Prometheus非常有用：</p>
 
-<p><img src="007uElTfly1g0s0xtqjpzj30l40cbtaw.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/application-metrics-in-istio/007uElTfly1g0s0xtqjpzj30l40cbtaw.jpg" alt="" /></p>
 
 <p>原来，我需要在我的Pod YAML中添加一些注解，以便Prometheus对它们进行指标抓取。我必须通过这些注解告诉Prometheus哪些Pod需要被抓取指标数据，以及在哪个端口进行抓取：</p>
 
@@ -377,7 +380,7 @@ spec:
 
 <p>添加注解后，我能够在Prometheus中看到我的应用程序的指标数据：</p>
 
-<p><img src="007uElTfgy1g0sblvrx4tj30l409p74t.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/application-metrics-in-istio/007uElTfgy1g0sblvrx4tj30l409p74t.jpg" alt="" /></p>
 
 <p>然而，这只适用于常规Pod，我无法看到启用了mTLS的Pod间的指标数据。</p>
 

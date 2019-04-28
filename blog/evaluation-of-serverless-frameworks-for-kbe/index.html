@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文讲解了如何利用K8S的设计参数和服务编排功能，并将它们与无服务器框架和函数即服务（FaaS）结合起来。">
   <meta property="og:description" content="本文讲解了如何利用K8S的设计参数和服务编排功能，并将它们与无服务器框架和函数即服务（FaaS）结合起来。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -319,7 +322,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="61411417ly1fwtshzvvdnj20m808ct8v.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/evaluation-of-serverless-frameworks-for-kbe/61411417ly1fwtshzvvdnj20m808ct8v.jpg" alt="" /></p>
 
 <h1 id="评估kubernetes-k8s-的无服务器框架">评估Kubernetes（K8s）的无服务器框架</h1>
 
@@ -349,7 +352,7 @@ autocomplete('#aa-search-input',
 <li>提供一个大盘，来检查应用的健康情况，并通过自动重启，自动复制和自动缩放来进行应用程序的自我修复。</li>
 </ul>
 
-<p><img src="61411417ly1fwtsgn1842j20ao07idgj.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/evaluation-of-serverless-frameworks-for-kbe/61411417ly1fwtsgn1842j20ao07idgj.jpg" alt="" /></p>
 
 <h4 id="无服务器系统可以包括通过客户端请求触发的功能或作为业务服务的一部分执行的功能-这两个过程都可以使用容器集群管理器-如kubernetes-进行编排-资料来源-dzone-com">无服务器系统可以包括通过客户端请求触发的功能或作为业务服务的一部分执行的功能。这两个过程都可以使用容器集群管理器（如Kubernetes）进行编排。资料来源：dzone.com</h4>
 
@@ -557,7 +560,7 @@ gcloud container clusters create demo \
 
 <p>Kubernetes集群由主节点和节点资源组成 - 主节点协调集群，节点运行应用程序，并通过Kubernetes API进行通信。我们使用OpenFaaS CLI构建了容器化应用程序并编写了.yml文件来构建和部署该函数。通过在Kubernetes集群中的节点之间部署该函数，我们允许GKE分发和调度我们的节点资源。我们的节点已经配置了处理容器操作的工具，可以通过kubectl CLI。</p>
 
-<p><img src="61411417ly1fwtsgn3annj20d80apmy6.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/evaluation-of-serverless-frameworks-for-kbe/61411417ly1fwtsgn3annj20d80apmy6.jpg" alt="" /></p>
 
 <h4 id="资料来源-dzone-com">资料来源：dzone.com</h4>
 
@@ -653,7 +656,7 @@ echo &quot;OpenFaaS Gateway IP: ${gateway_ip}&quot;
 
 <p>通过在源码级别进行操作，Fission使用户不必处理容器的镜像构建，将镜像推送到注册表，管理注册表凭据，镜像版本控制和其他管理任务。</p>
 
-<p><img src="61411417ly1fwtsgn7oehj20hs0dcglu.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/evaluation-of-serverless-frameworks-for-kbe/61411417ly1fwtsgn7oehj20hs0dcglu.jpg" alt="" /></p>
 
 <h4 id="https-kubernetes-io-blog-2017-01-fission-serverless-functions-as-service-for-kubernetes"><a href="https://kubernetes.io/blog/2017/01/fission-serverless-functions-as-service-for-kubernetes">https://kubernetes.io/blog/2017/01/fission-serverless-functions-as-service-for-kubernetes</a></h4>
 
@@ -719,7 +722,7 @@ Hello, world!
 
 <p><code>kubectl proxy --port=8080</code></p>
 
-<p><img src="61411417ly1fwtsjw13nsj218g0jrq81.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/evaluation-of-serverless-frameworks-for-kbe/61411417ly1fwtsjw13nsj218g0jrq81.jpg" alt="" /></p>
 
 <p><strong>可以通过浏览器导航到<a href="http://localhost8080/ui">http://localhost8080/i</a>来访问仪表板</strong></p></li>
 
@@ -738,11 +741,11 @@ $ sudo cp bundles/kubeless_darwin-amd64/kubeless /usr/local/bin/
 
 <li><p>在K8s群集中部署Kubeless</p>
 
-<p><img src="61411417ly1fwx4ug1ieuj20jr0c3dgl.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/evaluation-of-serverless-frameworks-for-kbe/61411417ly1fwx4ug1ieuj20jr0c3dgl.jpg" alt="" /></p>
 
 <p>我们将使用此<a href="https://github.com/kubeless/kubeless/releases">链接中</a> 的清单在K8s群集中部署Kubless。根据清单创建一个kubeless命名空间，一个函数ThirdPartyResource，一个kubeless控制器，并在进程中设置一个kafka，zookeeper StatefulSet。Kubless的一个主要优点是它具有高度的Kubernetes原生特性，它可以设置非rbac和rbac特定环境。下面的屏幕截图显示了如何使用kubectl命令在非rbac环境中部署kubeless。</p>
 
-<p><img src="61411417ly1fwx4ug4tx0j20hr05bwew.jpg" alt="" /></p></li>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/evaluation-of-serverless-frameworks-for-kbe/61411417ly1fwx4ug4tx0j20hr05bwew.jpg" alt="" /></p></li>
 
 <li><p>创建函数</p>
 
@@ -791,7 +794,7 @@ $ sudo cp bundles/kubeless_darwin-amd64/kubeless /usr/local/bin/
 
 <h2 id="关于作者">关于作者</h2>
 
-<p><img src="61411417ly1fwtsgn5g0oj206y06y74m.jpg" alt="Hisham" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/evaluation-of-serverless-frameworks-for-kbe/61411417ly1fwtsgn5g0oj206y06y74m.jpg" alt="Hisham" /></p>
 
 <hr />
 

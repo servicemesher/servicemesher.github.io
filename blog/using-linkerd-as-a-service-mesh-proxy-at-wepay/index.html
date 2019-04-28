@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文是WePay（一家做支付平台和风控产品的公司）使用Linkerd作为服务网格的代理的分享文章。">
   <meta property="og:description" content="本文是WePay（一家做支付平台和风控产品的公司）使用Linkerd作为服务网格的代理的分享文章。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -309,7 +312,7 @@ autocomplete('#aa-search-input',
 
 <p>在本系列的第一部分中，我们将看看曾使用过的一些路由和负载均衡选项并将它们与服务网格代理进行比较，以及它们是如何改变我们基础设施的运行方式的。</p>
 
-<p><img src="b4e0632fgy1fsfoiygfruj20ie0gfgmw.jpg" alt="数据面板使用sidecar代理模式" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/b4e0632fgy1fsfoiygfruj20ie0gfgmw.jpg" alt="数据面板使用sidecar代理模式" /></p>
 
 <p>图1.数据面板使用sidecar代理模式</p>
 
@@ -325,7 +328,7 @@ autocomplete('#aa-search-input',
 
 <p>在WePay我们目前正在GKE中运行许多微服务（Sx）。 在同一个数据中心一些微服务与其他微服务通信，如下图所示：</p>
 
-<p><img src="b4e0632fgy1fsfoiypj5yj20b60d974p.jpg" alt="使用GKE和NGINX的简单负载均衡" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/b4e0632fgy1fsfoiypj5yj20b60d974p.jpg" alt="使用GKE和NGINX的简单负载均衡" /></p>
 
 <p>图2.使用GKE和NGINX的简单负载均衡</p>
 
@@ -348,7 +351,7 @@ autocomplete('#aa-search-input',
 
 <p>Envoy和Linkerd都可以访问一些更复杂的负载均衡算法，但Linkerd聚焦于<a href="https://blog.buoyant.io/2017/01/31/making-things-faster-by-adding-more-steps/">性能调优</a>及其平台使用的是<a href="https://twitter.github.io/finagle/">Finagle</a>，使其成为负载均衡的最佳选择。</p>
 
-<p><img src="b4e0632fgy1fsfoiywhuqj20fa0e50te.jpg" alt="Sidecar模式处理负载均衡" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/b4e0632fgy1fsfoiywhuqj20fa0e50te.jpg" alt="Sidecar模式处理负载均衡" /></p>
 
 <p>图3. Sidecar模式处理负载均衡</p>
 
@@ -356,7 +359,7 @@ autocomplete('#aa-search-input',
 
 <p>除基本的负载均衡功能外，Linkerd还支持Kubernetes DaemonSet，使负载均衡更接近每个Kubernetes节点边缘。从资源分配的角度看，这同样显著降低了在大型集群中运行代理的成本。</p>
 
-<p><img src="00704eQkgy1fsgc5lihpkj30fa0e5q3u.jpg" alt="DaemonSet代理模式" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/00704eQkgy1fsgc5lihpkj30fa0e5q3u.jpg" alt="DaemonSet代理模式" /></p>
 
 <p>图4.DaemonSet代理模式</p>
 
@@ -368,7 +371,7 @@ autocomplete('#aa-search-input',
 
 <p>此外，为任意微服务提供HTTP和HTTP/2（gRPC）的能力，以及在我们的基础设施中同时支持多种协议的需求，意味着多协议支持已经成为为我们的基础设施选择代理服务器的一项艰巨任务。</p>
 
-<p><img src="b4e0632fgy1fsfoiykzugj20h40dot9a.jpg" alt="代理在相同的设置中接收和转发gRPC和HTTP" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/b4e0632fgy1fsfoiykzugj20h40dot9a.jpg" alt="代理在相同的设置中接收和转发gRPC和HTTP" /></p>
 
 <p>图5.代理在相同的设置中接收和转发gRPC和HTTP</p>
 
@@ -380,9 +383,9 @@ autocomplete('#aa-search-input',
 
 <p>在基础设施中，我们利用<a href="https://prometheus.io/">Prometheus</a>来监控Kubernetes、微服务及其他内部服务。 <a href="https://www.datawire.io/faster/ambassador-prometheus/">Envoy需要额外的一个步骤</a>才能使用Prometheus，但使用Linkerd的即用型<a href="https://linkerd.io/administration/telemetry/">Prometheus遥测插件</a>，我们可以更容易地启动和运行各种指标视图，而无需额外的服务将服务网格代理胶合到我们的可视化仪表板：</p>
 
-<p><img src="b4e0632fgy1fsfoiytks8j21xg072mz2.jpg" alt="集群和应用程序级别代理指标视图" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/b4e0632fgy1fsfoiytks8j21xg072mz2.jpg" alt="集群和应用程序级别代理指标视图" /></p>
 
-<p><img src="b4e0632fgy1fsfoiz6wbij21xg0vtwks.jpg" alt="集群和应用程序级别代理指标视图" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/b4e0632fgy1fsfoiz6wbij21xg0vtwks.jpg" alt="集群和应用程序级别代理指标视图" /></p>
 
 <p>图6.集群和应用程序级别代理指标视图</p>
 
@@ -396,7 +399,7 @@ autocomplete('#aa-search-input',
 
 <p>在使用sidecar代理模式的环境设置中，工作方式有所不同的是SSL握手的每个服务TLS证书。</p>
 
-<p><img src="b4e0632fgy1fsfoiz1aqlj20h40cnaan.jpg" alt="用于SSL握手的每个服务TLS证书" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/b4e0632fgy1fsfoiz1aqlj20h40cnaan.jpg" alt="用于SSL握手的每个服务TLS证书" /></p>
 
 <p>图7.用于SSL握手的每个服务TLS证书</p>
 

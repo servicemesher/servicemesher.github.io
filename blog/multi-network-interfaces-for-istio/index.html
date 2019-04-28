@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="随着Kubernetes在NFV（网络功能虚拟化）领域中的逐渐应用，已经出现多个Kubernetes的多网络平面解决方案，Istio也需要考虑支持多网络平面，以为5G的微服务化架构提供服务通讯和管控的基础设施。">
   <meta property="og:description" content="随着Kubernetes在NFV（网络功能虚拟化）领域中的逐渐应用，已经出现多个Kubernetes的多网络平面解决方案，Istio也需要考虑支持多网络平面，以为5G的微服务化架构提供服务通讯和管控的基础设施。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -323,7 +326,7 @@ autocomplete('#aa-search-input',
 
 <p>在电信的NFV（网络功能虚拟化）领域中，已经有多个针对Kubernetes的多网络平面解决方案。其中一个<a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/">Kubernetes推荐的方案</a>是中兴通讯提供的<a href="https://github.com/ZTE/Knitter/">Knitter</a>开源实现。下图展示了Knitter是如何实现Kubernetes的多网络平面支持的。</p>
 
-<p><img src="006tNbRwgy1fyc7fxczghj30zz0gu0vc.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/multi-network-interfaces-for-istio/006tNbRwgy1fyc7fxczghj30zz0gu0vc.jpg" alt="" /></p>
 
 <p>Kubernetes多网络平面开源项目<a href="https://github.com/ZTE/Knitter/">Knitter</a></p>
 
@@ -335,7 +338,7 @@ autocomplete('#aa-search-input',
 
 <p>下图描述了在多网络平面场景下 Istio 1.1存在的问题。</p>
 
-<p><img src="006tNbRwgy1fyc7gf6gcaj30m809zgnf.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/multi-network-interfaces-for-istio/006tNbRwgy1fyc7gf6gcaj30m809zgnf.jpg" alt="" /></p>
 
 <p>Istio在多网络平面场景下的问题</p>
 
@@ -369,7 +372,7 @@ autocomplete('#aa-search-input',
 
 <p>从上面的描述可以看到，要支持多网络平面，Istio需要修改Pilot生成Outbound Listener的代码实现，下图描述了修改后的处理逻辑。</p>
 
-<p><img src="006tNbRwgy1fyc7gnvm1vj30m80ac760.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/multi-network-interfaces-for-istio/006tNbRwgy1fyc7gnvm1vj30m80ac760.jpg" alt="" /></p>
 
 <p>Istio多网络平面解决方案</p>
 

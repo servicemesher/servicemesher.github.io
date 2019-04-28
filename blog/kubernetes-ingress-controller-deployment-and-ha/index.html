@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文是对 Kubernetes 的 Ingress controller 的介绍、部署及高可用说明。">
   <meta property="og:description" content="本文是对 Kubernetes 的 Ingress controller 的介绍、部署及高可用说明。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -335,7 +338,7 @@ autocomplete('#aa-search-input',
 
 <p>我们跑的大多服务都是应用层http（s），Ingress Controller使用service或者pod的网络将它暴露在集群外，然后它反向代理集群内的七层服务，通过vhost子域名那样路由到后端的服务，<code>Ingress Controller</code>工作架构如下，借用traefik官方的图。</p>
 
-<p><img src="006tNbRwly1fyl4kdlseyj30mg0dc405.jpg" alt="traefik" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/kubernetes-ingress-controller-deployment-and-ha/006tNbRwly1fyl4kdlseyj30mg0dc405.jpg" alt="traefik" /></p>
 
 <p>你可以将<code>api.domain.com</code>进来的流量路由到集群里api的pod，你可以将<code>backoffice.domain.com</code>流量路由到backoffice的一组pod上，虽说我们可以自己搭建一个nginx来代替掉<code>Ingress Controller</code>，但是要增加代理的service长期来看维护很不方便，在使用上<code>Ingress Controller</code>后可以用一种抽象的对象告诉controller添加对应的代理，也就是<code>kind: Ingress</code>。它里面描述了从Ingress Controller访问进来的ServerName和web的url要代理到集群里哪个service（以及service的port）等等具体信息。</p>
 

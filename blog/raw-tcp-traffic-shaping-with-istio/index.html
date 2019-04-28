@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文通过构建一个简单的echo服务演示了如何在Istio1.1.0下进行TCP流量控制。">
   <meta property="og:description" content="本文通过构建一个简单的echo服务演示了如何在Istio1.1.0下进行TCP流量控制。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -307,7 +310,7 @@ autocomplete('#aa-search-input',
 
 <p><a href="https://istio.io/">Istio</a>通过<a href="https://istio.io/docs/reference/config/istio.networking.v1alpha3/#VirtualService">虚拟服务</a>, <a href="https://istio.io/docs/reference/config/istio.networking.v1alpha3/#DestinationRule">目标规则</a>, <a href="https://istio.io/docs/reference/config/istio.networking.v1alpha3/#Gateway">Gateway</a>等概念提供了复杂的路由机制。Istio 1.0通过<a href="https://istio.io/docs/tasks/traffic-management/traffic-shifting/#apply-weight-based-routing">加权路由定义</a>启用了HTTP流量转移。我提交的<a href="https://github.com/envoyproxy/envoy/pull/4430">Envoy</a> 和<a href="https://github.com/istio/istio/pull/9112">Istio</a>的pull request为TCP/TLS服务提供了类似的特性。这一特性已经在Envoy <a href="https://www.envoyproxy.io/docs/envoy/latest/intro/version_history#oct-4-2018">1.8.0</a>中发布了。Istio中的这一特性也会在即将发布的<a href="https://github.com/istio/istio/releases/">1.1.0</a>版本中提供使用。</p>
 
-<p><img src="006tNbRwly1fw3hlzj8krj304o06m3ya.jpg" alt="Istio" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/raw-tcp-traffic-shaping-with-istio/006tNbRwly1fw3hlzj8krj304o06m3ya.jpg" alt="Istio" /></p>
 
 <p>在本文中，我们将用<a href="https://golang.org/">Go</a>编写的一个简单的TCP Echo服务，用<a href="https://www.docker.com/">Docker</a>将其容器化并部署到<a href="https://kubernetes.io/">Kubernetes</a>上，并通过练习Istio的加权TCP路由特性来理解其在生产服务中的行为。</p>
 
@@ -315,7 +318,7 @@ autocomplete('#aa-search-input',
 
 <p>在本文中，我们将创建一个简单的监听连接的TCP服务，并在客户端的请求数据加上一个简单的前缀，将其作为响应返回。图示如下：</p>
 
-<p><img src="006tNbRwly1fwgz3b6bpoj30r607qgm6.jpg" alt="TCP Client - Server Architecture" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/raw-tcp-traffic-shaping-with-istio/006tNbRwly1fwgz3b6bpoj30r607qgm6.jpg" alt="TCP Client - Server Architecture" /></p>
 
 <p>让我们看一下TCP Echo服务端的Go代码：</p>
 
@@ -652,7 +655,7 @@ two Sat Oct 20 04:38:27 UTC 2018
 
 <p>下图能让你很好地了解这个示范的情景：</p>
 
-<p><img src="006tNbRwly1fwhdkuu6sgj30zg0ikmze.jpg" alt="Architecture" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/raw-tcp-traffic-shaping-with-istio/006tNbRwly1fwhdkuu6sgj30zg0ikmze.jpg" alt="Architecture" /></p>
 
 <h2 id="清理">清理</h2>
 

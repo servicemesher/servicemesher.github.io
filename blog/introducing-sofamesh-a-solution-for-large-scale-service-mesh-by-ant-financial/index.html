@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案，同时开源了Go语言版的Sidecar—SOFA MOSN（可单独使用），期待通过社区贡献。">
   <meta property="og:description" content="蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案，同时开源了Go语言版的Sidecar—SOFA MOSN（可单独使用），期待通过社区贡献。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -333,7 +336,7 @@ autocomplete('#aa-search-input',
 
 <p>SOFAMesh将在兼容Istio整体架构和协议的基础上，做出部分调整：</p>
 
-<p><img src="006tNbRwgy1fuyr4vizzwj31kw1biq98.jpg" alt="SOFAMesh architecture" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/006tNbRwgy1fuyr4vizzwj31kw1biq98.jpg" alt="SOFAMesh architecture" /></p>
 
 <ol>
 <li><strong>使用Golang语言开发全新的Sidecar，替代Envoy</strong></li>
@@ -355,7 +358,7 @@ autocomplete('#aa-search-input',
 
 <p>SOFAMesh中Golang版本的Sidecar，是一个名为MOSN(Modular Observable Smart Netstub)的全新开发的模块，实现Envoy的功能，兼容Envoy的API，可以和Istio集成。</p>
 
-<p><img src="006tKfTcgy1ft75ot24lzj31ec18479s.jpg" alt="SOFAMesh MOSN" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/006tKfTcgy1ft75ot24lzj31ec18479s.jpg" alt="SOFAMesh MOSN" /></p>
 
 <p>此外，我们会增加对SOFARPC、Dubbo等通讯协议的支持，以便更好的迎合国内用户包括我们自身的实际需求。</p>
 
@@ -367,7 +370,7 @@ autocomplete('#aa-search-input',
 
 <p>我们将大幅扩展和增强Istio中的Pilot模块：</p>
 
-<p><img src="006tKfTcgy1ft75pq8rplj31kw19sn5q.jpg" alt="SOFAMesh Pilot architecture" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/006tKfTcgy1ft75pq8rplj31kw19sn5q.jpg" alt="SOFAMesh Pilot architecture" /></p>
 
 <ol>
 <li><strong>增加SOFARegistry的Adapter，提供超大规模服务注册和发现的解决方案</strong></li>

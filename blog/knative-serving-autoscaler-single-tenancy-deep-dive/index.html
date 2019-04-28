@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。">
   <meta property="og:description" content="我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -317,7 +320,7 @@ autocomplete('#aa-search-input',
 
 <p>Knative构建在Kubernetes和<a href="https://istio.io/">Istio</a>之上，它的设计考虑到了多种角色通过该框架进行交互，包括开发人员、运维人员和平台提供者。</p>
 
-<p><img src="0069RVTdgy1fu1er29srhj30ws0mpgo9.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/knative-serving-autoscaler-single-tenancy-deep-dive/0069RVTdgy1fu1er29srhj30ws0mpgo9.jpg" alt="" /></p>
 
 <p>Knative所涉及的角色（图片来源于<a href="https://github.com/knative/docs/">Knative GitHub仓库</a>）</p>
 
@@ -376,7 +379,7 @@ autocomplete('#aa-search-input',
 
 <h1 id="autoscaler单租户图">autoscaler单租户图</h1>
 
-<p><img src="0069RVTdgy1fu1g19gvitj31kw13agrp.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/knative-serving-autoscaler-single-tenancy-deep-dive/0069RVTdgy1fu1g19gvitj31kw13agrp.jpg" alt="" /></p>
 
 <p>上图基于 <a href="https://github.com/knative/serving/blob/master/docs/scaling/DEVELOPMENT.md">https://github.com/knative/serving/blob/master/docs/scaling/DEVELOPMENT.md</a> 绘制。</p>
 

@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文介绍了 Istio Service Mesh 中的可观察性工具 Kiali 的功能、架构和部分代码。">
   <meta property="og:description" content="本文介绍了 Istio Service Mesh 中的可观察性工具 Kiali 的功能、架构和部分代码。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -318,7 +321,7 @@ autocomplete('#aa-search-input',
 
 <p>下图展示了 kiali 中显示的 Bookinfo 示例的服务拓扑图。</p>
 
-<p><img src="006tNbRwly1fw33xjfxtij31kw0veai7.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/kiali-the-istio-service-mesh-observability-tool/006tNbRwly1fw33xjfxtij31kw0veai7.jpg" alt="" /></p>
 
 <p>你可以使用 <a href="https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster">kubernetes-vagrant-centos-cluster</a> 来快速启动一个运行 Kiali 的 Kubernetes 集群。</p>
 
@@ -353,7 +356,7 @@ external_services:
 
 <p>Application、Workload 与 Service 的关系如下图所示。</p>
 
-<p><img src="006tNbRwly1fw5mxl7c2wj31260psq5y.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/kiali-the-istio-service-mesh-observability-tool/006tNbRwly1fw5mxl7c2wj31260psq5y.jpg" alt="" /></p>
 
 <p>Kilia 的详细 API 使用说明请查看 Swagger API 文档，在 Kiali 的根目录下运行下面的命令可以查看 API 文档。</p>
 
@@ -362,13 +365,13 @@ external_services:
 
 <p>Swagger UI 如下图。</p>
 
-<p><img src="006tNbRwly1fw5kr3srpkj31kw14awo6.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/kiali-the-istio-service-mesh-observability-tool/006tNbRwly1fw5kr3srpkj31kw14awo6.jpg" alt="" /></p>
 
 <h2 id="架构">架构</h2>
 
 <p>Kiali 部署完成后只启动了一个 Pod，前后端都集成在这一个 Pod 中。Kiali 也有一些依赖的组件，例如如果要在 Kiali 的页面中获取到监控 metric 需要使用在 <code>istio-system</code> 中部署 Prometheus。分布式卓总直接下图是 Kiali 的架构，来自 Kiali 官网。</p>
 
-<p><img src="006tNbRwly1fw5je6mg6aj30jg0ayaar.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/kiali-the-istio-service-mesh-observability-tool/006tNbRwly1fw5je6mg6aj30jg0ayaar.jpg" alt="" /></p>
 
 <p>Kiali 使用传统的前后端分离架构：</p>
 
@@ -385,7 +388,7 @@ external_services:
 
 <p>Kiali 中的服务拓扑图比起 Istio 原来默认部署的 ServiceGraph 的效果更炫也更加直观，具有更多选项。</p>
 
-<p><img src="006tNbRwly1fw5l2ntj0hj31kw0ze48t.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/kiali-the-istio-service-mesh-observability-tool/006tNbRwly1fw5l2ntj0hj31kw0ze48t.jpg" alt="" /></p>
 
 <p>例如使用 CURL 模拟请求。</p>
 
@@ -520,7 +523,7 @@ external_services:
 
 <p>关于 PQL 的详细使用方式请参考 <a href="https://prometheus.io/docs/prometheus/latest/querying/examples/">QUERY EXAMPLES - prometheus.io</a>。</p>
 
-<p><img src="006tNbRwly1fw966a6ki3j31hc0tdagx.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/kiali-the-istio-service-mesh-observability-tool/006tNbRwly1fw966a6ki3j31hc0tdagx.jpg" alt="" /></p>
 
 <p>这里面包含了所有 workload 的流量信息，做简单的操作就可以计算出 application/service 的流量状况。</p>
 

@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="对于服务的可见性，在 Istio 设计之初，是没有特别考虑的，或者说，Istio 一开始的设计就是建立在如下前提下的：Istio中的任何服务都可以访问其他任意服务。直到Istio1.1版本才开始正视这个问题。">
   <meta property="og:description" content="对于服务的可见性，在 Istio 设计之初，是没有特别考虑的，或者说，Istio 一开始的设计就是建立在如下前提下的：Istio中的任何服务都可以访问其他任意服务。直到Istio1.1版本才开始正视这个问题。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -313,17 +316,17 @@ autocomplete('#aa-search-input',
 <li>下发的频度非常密集：系统中任何一个服务的变动，都需要通知到每一个Sidecar，即使这个Sidecar所在的服务完全不访问它</li>
 </ul>
 
-<p><img src="006tKfTcly1g17zrs3ev2j315y0sktd0.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-service-visibility/006tKfTcly1g17zrs3ev2j315y0sktd0.jpg" alt="" /></p>
 
 <p>试想：假定 A 服务只需要访问 B/C 两个服务，但是在一个有1000个服务的系统中，A服务的 Sidecar 会不得不接收到其他 998 个服务的数据和每一次的变化通知。其所需有效数据和实际得到数据的比例高达 2:1000！</p>
 
-<p><img src="006tKfTcly1g17zrsjj4dj315y0skwkf.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-service-visibility/006tKfTcly1g17zrsjj4dj315y0skwkf.jpg" alt="" /></p>
 
 <p>因此，在没有服务可见性控制的情况下，Pilot到Sidecar的数据下发的有效性低得可谓令人发指！</p>
 
 <p>理想模式：同样假定 A 服务只需要访问 B/C 两个服务，如果能通过某个方式将这个信息（成为服务依赖或者服务可见性）提供出来，让Istio得到这个信息，那么在Pilot往A服务的Sidecar下发数据时，就可以做一个简单的过滤：只发送B/C服务的信息，和只在B/C服务发生变更时通知A。而这个简单过滤所带来的Pilot和Sidecar之间数据下发的性能提升，是和系统内服务数量成线性关系，很容易就实现两个或者三个数量级的提升。</p>
 
-<p><img src="006tKfTcly1g17zrtimf4j315y0sk0xo.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-service-visibility/006tKfTcly1g17zrtimf4j315y0sk0xo.jpg" alt="" /></p>
 
 <p>在Istio问世快2年之际，Istio终于开始正视这个问题——好吧，我坦白，在这一点上，我是有怨言的：Istio的工程实现中，对实际生产问题的考虑，非常不到位。</p>
 
@@ -572,7 +575,7 @@ spec:
 
 <p>当然，记得有个前提条件：service-b/service-c 的 k8s service 和相关的 CRD（DestinationRule / ServiceEntry / VirtualService）都必须正确的设置 exportTo。</p>
 
-<p><img src="006tKfTcly1g17zrt2bzej314e0hn77k.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-service-visibility/006tKfTcly1g17zrt2bzej314e0hn77k.jpg" alt="" /></p>
 
 <blockquote>
 <p>备注：这里设计的有点复杂，按照这个思路，如果要实现上述的精确限制，多个环节都必须明确设置。一旦有一个地方出错，就会无法访问，然后debug的过程估计不会轻松。</p>

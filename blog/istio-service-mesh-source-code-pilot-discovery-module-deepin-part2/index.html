@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-discovery的深度源码解析续篇。">
   <meta property="og:description" content="本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-discovery的深度源码解析续篇。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -309,7 +312,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="pilot总体架构">pilot总体架构</h2>
 
-<p><img src="006tKfTcgy1ftppxdcmwvj31kw0vvtdl.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/006tKfTcgy1ftppxdcmwvj31kw0vvtdl.jpg" alt="" /></p>
 
 <p>首先我们回顾一下pilot总体架构，上面是<a href="https://github.com/istio/old_pilot_repo/blob/master/doc/design.md">官方关于pilot的架构图</a>，因为是old_pilot_repo目录下，可能与最新架构有出入，仅供参考。所谓的pilot包含两个组件：pilot-agent和pilot-discovery。图里的agent对应pilot-agent二进制，proxy对应Envoy二进制，它们两个在同一个容器中，discovery service对应pilot-discovery二进制，在另外一个跟应用分开部署的单独的deployment中。</p>
 
@@ -326,7 +329,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="pilot-discovery的统一存储模型-abstract-model">pilot-discovery的统一存储模型（Abstract Model）</h2>
 
-<p><img src="006tKfTcgy1ftppyenvgyj30la0fudhb.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/006tKfTcgy1ftppyenvgyj30la0fudhb.jpg" alt="" /></p>
 
 <p>根据上面官方的pilot-discovery架构图，pilot-discovery有两个输入信息（黄色部分）</p>
 

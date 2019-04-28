@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文重点为分析Istio Gateway以及VirtualService定义如何生成Istio Ingress Gateway的Envoy相关配置。">
   <meta property="og:description" content="本文重点为分析Istio Gateway以及VirtualService定义如何生成Istio Ingress Gateway的Envoy相关配置。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -298,7 +301,7 @@ autocomplete('#aa-search-input',
                         <div id="post-content">
                           
 
-<p><img src="006tNbRwly1fw7vchevggj30xu0cwq5i.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fw7vchevggj30xu0cwq5i.jpg" alt="" /></p>
 
 <ul>
 <li>gateway定义用于配置在mesh边缘，到mesh的tcp和http的负载均衡。</li>
@@ -308,7 +311,7 @@ autocomplete('#aa-search-input',
 
 <h3 id="相关拓扑">相关拓扑</h3>
 
-<p><img src="006tNbRwly1fwvgzlp7z2j31g21lvwl8.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fwvgzlp7z2j31g21lvwl8.jpg" alt="" /></p>
 
 <ul>
 <li>使用azure aks环境。</li>
@@ -317,7 +320,7 @@ autocomplete('#aa-search-input',
 <li>通过该external ip对应的域名，访问ingress gateway svc。</li>
 </ul>
 
-<p><img src="006tNbRwly1fwvbny77fbj31kw24l4hn.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fwvbny77fbj31kw24l4hn.jpg" alt="" /></p>
 
 <ul>
 <li>增加gateway定义。</li>
@@ -418,7 +421,7 @@ x-more-info: http://tools.ietf.org/html/rfc2324
 
 <h3 id="相关拓扑-1">相关拓扑</h3>
 
-<p><img src="006tNbRwly1fwvh1kuhgpj31g21lv7az.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fwvh1kuhgpj31g21lv7az.jpg" alt="" /></p>
 
 <ul>
 <li>使用azure aks环境。</li>
@@ -429,7 +432,7 @@ x-more-info: http://tools.ietf.org/html/rfc2324
 <li>tls请求在ingress gateway处被卸载，并转化为http请求。</li>
 </ul>
 
-<p><img src="006tNbRwly1fwvh283d8ij31kw2cdtz8.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fwvh283d8ij31kw2cdtz8.jpg" alt="" /></p>
 
 <ul>
 <li>增加gateway定义。</li>
@@ -612,7 +615,7 @@ x-more-info: http://tools.ietf.org/html/rfc2324
 
 <h3 id="相关拓扑-2">相关拓扑</h3>
 
-<p><img src="006tNbRwly1fwwfxwn47kj31g21lv459.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fwwfxwn47kj31g21lv459.jpg" alt="" /></p>
 
 <ul>
 <li>使用azure aks环境。</li>
@@ -623,7 +626,7 @@ x-more-info: http://tools.ietf.org/html/rfc2324
 <li>mtls请求在ingress gateway处被卸载，并转化为http请求。</li>
 </ul>
 
-<p><img src="006tNbRwly1fwwfynfmf5j31kw22k1fp.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fwwfynfmf5j31kw22k1fp.jpg" alt="" /></p>
 
 <ul>
 <li>增加gateway定义。</li>
@@ -760,7 +763,7 @@ x-more-info: http://tools.ietf.org/html/rfc2324
 
 <h3 id="相关拓扑-3">相关拓扑</h3>
 
-<p><img src="006tNbRwly1fwwi9rvcrpj31g21j1n4s.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fwwi9rvcrpj31g21j1n4s.jpg" alt="" /></p>
 
 <ul>
 <li>使用azure aks环境。</li>
@@ -771,7 +774,7 @@ x-more-info: http://tools.ietf.org/html/rfc2324
 <li>客户端使用http方式访问主机。</li>
 </ul>
 
-<p><img src="006tNbRwly1fwwk8t9x7oj31kw1ogkgw.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fwwk8t9x7oj31kw1ogkgw.jpg" alt="" /></p>
 
 <ul>
 <li>为2个主机配置统一的gateway定义。</li>
@@ -931,7 +934,7 @@ x-envoy-upstream-service-time: 7
 
 <h3 id="相关拓扑-4">相关拓扑</h3>
 
-<p><img src="006tNbRwly1fwwkizdfefj31g21j1gt7.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fwwkizdfefj31g21j1gt7.jpg" alt="" /></p>
 
 <ul>
 <li>使用azure aks环境。</li>
@@ -942,7 +945,7 @@ x-envoy-upstream-service-time: 7
 <li>客户端使用tls方式访问主机。</li>
 </ul>
 
-<p><img src="006tNbRwly1fwwkjjhqctj31kw2257wh.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/summary-control-traffic-using-gateway-in-istio/006tNbRwly1fwwkjjhqctj31kw2257wh.jpg" alt="" /></p>
 
 <ul>
 <li>为2个主机分别配置gateway中的server定义。</li>

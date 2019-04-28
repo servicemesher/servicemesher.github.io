@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="今天我们来解析istio控制面组件Galley。Galley Pod是一个单容器单进程组件，没有sidecar，结构独立，职责明确。">
   <meta property="og:description" content="今天我们来解析istio控制面组件Galley。Galley Pod是一个单容器单进程组件，没有sidecar，结构独立，职责明确。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -301,9 +304,9 @@ autocomplete('#aa-search-input',
 
 <p>今天我们来解析istio控制面组件Galley。Galley Pod是一个单容器单进程组件, 没有sidecar, 结构独立，职责明确。</p>
 
-<p><img src="006tKfTcly1g1nihj4ybjj31850u0dld.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-3/006tKfTcly1g1nihj4ybjj31850u0dld.jpg" alt="" /></p>
 
-<p><a href="006tKfTcgy1g187dn7s1tj315m0u0x6t.jpg">查看高清原图</a></p>
+<p><a href="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-3/006tKfTcgy1g187dn7s1tj315m0u0x6t.jpg">查看高清原图</a></p>
 
 <p>前不久istio 1.1 版本正式发布, 其中istio的配置管理机制有较大的改进, 以下是<a href="https://istio.io/about/notes/1.1/">1.1 release note</a> 中部分说明:</p>
 
@@ -340,7 +343,7 @@ autocomplete('#aa-search-input',
 
 <p>早期的Galley 仅仅负责对「配置」进行运行时验证, istio 控制面各个组件各自去list/watch 各自关注的「配置」, 以下是istio早期的Configuration flow:</p>
 
-<p><img src="006tKfTcly1g1nii10vwuj31d20swjv7.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-3/006tKfTcly1g1nii10vwuj31d20swjv7.jpg" alt="" /></p>
 
 <p>越来越多且复杂的「配置」给istio 用户带来了诸多不便, 主要体现在:</p>
 
@@ -358,7 +361,7 @@ autocomplete('#aa-search-input',
 
 <p>在<a href="https://imfox.io/2019/03/19/istio-analysis-2/">istio 庖丁解牛(二) sidecar injector</a>中我分析了istio-sidecar-injector 如何利用 MutatingWebhook 来实现sidecar注入, Galley 使用了k8s提供的另一个Admission Webhooks: ValidatingWebhook, 来做配置的验证:</p>
 
-<p><img src="006tKfTcgy1g1mcwsf5ggj30sz0ecjt4.jpg" alt="img" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-3/006tKfTcgy1g1mcwsf5ggj30sz0ecjt4.jpg" alt="img" /></p>
 
 <p>istio 需要一个关于ValidatingWebhook的配置项, 用于告诉k8s api server, 哪些CRD应该发往哪个服务的哪个接口去做验证, 该配置名为istio-galley, 简化的内容如下:</p>
 
@@ -429,7 +432,7 @@ h.HandleFunc(&quot;/admitmixer&quot;, wh.serveAdmitMixer)
 
 <p>两种模式的示意图如下:</p>
 
-<p><img src="006tKfTcgy1g1n7omb7vrj30uk0u0452.jpg" alt="img" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-3/006tKfTcgy1g1n7omb7vrj30uk0u0452.jpg" alt="img" /></p>
 
 <h2 id="galley-配置管理实现浅析">Galley 配置管理实现浅析</h2>
 
@@ -461,9 +464,9 @@ go server.StartProbeCheck(livenessProbeController, readinessProbeController, gal
 
 <p>下面是Galley 配置服务结构示意图:</p>
 
-<p><img src="006tKfTcgy1g1mzi3oe9xj31r10u0qgp.jpg" alt="img" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-3/006tKfTcgy1g1mzi3oe9xj31r10u0qgp.jpg" alt="img" /></p>
 
-<p><a href="006tKfTcgy1g1n8o76s8yj31r10u0trx.jpg">查看高清原图</a></p>
+<p><a href="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-3/006tKfTcgy1g1n8o76s8yj31r10u0trx.jpg">查看高清原图</a></p>
 
 <p>从上图可以看到, Galley 配置服务主要包括 Processor 和 负责mcp通信的grpc Server.</p>
 
@@ -738,7 +741,7 @@ func (con *connection) queueResponse(resp *WatchResponse) {
 
 <p>最后上一张Galley mcp 服务相关模型UML:</p>
 
-<p><img src="006tKfTcly1g1nik3wvyyj30u012w14d.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-analysis-3/006tKfTcly1g1nik3wvyyj30u012w14d.jpg" alt="" /></p>
 
 <p><a href="https://imfox.io/assets/images/istio-a/galley_uml.png">查看高清原图</a></p>
 

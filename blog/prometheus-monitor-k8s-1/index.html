@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文旨在于寻找一套能够胜任kubernetes集群监控的架构。">
   <meta property="og:description" content="本文旨在于寻找一套能够胜任kubernetes集群监控的架构。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -329,21 +332,21 @@ autocomplete('#aa-search-input',
 来自 Google 的容器监控工具，也是 Kubelet 内置的容器资源收集工具。它会自动收集本机容器 CPU、内存、网络和文件系统的资源占用情况，并对外提供 cAdvisor 原生的 API。随 kubelet 启动   &ndash;cadvisor-port = 1</li>
 </ul>
 
-<p><img src="006tKfTcly1g1g78rcw8wj30u0129wmo.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-monitor-k8s-1/006tKfTcly1g1g78rcw8wj30u0129wmo.jpg" alt="" /></p>
 
 <ul>
 <li><strong>Heapster</strong>:
 由于 cAdvisor 只提供了单机的容器资源占用情况，而 Heapster 则提供了整个集群的资源监控（kubernetes 1.11 之前，hpa都是从heapster获取数据），并支持持久化数据存储到 InfluxDB</li>
 </ul>
 
-<p><img src="006tKfTcly1g1g7911wprj30hs07bdga.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-monitor-k8s-1/006tKfTcly1g1g7911wprj30hs07bdga.jpg" alt="" /></p>
 
 <ul>
 <li><strong>Promethues</strong>:
 提供强大的数据采集、数据存储、数据展示、告警等，天生完美支持kubernetes，CNCF基金会的第二个成员，第一个是Kubernetes。而且Prometheus里面很多思想都来源于Google内部的监控系统Borgmon，可以说是Google的干儿子。</li>
 </ul>
 
-<p><img src="006tKfTcly1g1g79cw3yjj311j0mjadw.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-monitor-k8s-1/006tKfTcly1g1g79cw3yjj311j0mjadw.jpg" alt="" /></p>
 
 <ul>
 <li><strong>kube-state-metrics</strong>在这里作为prometheus的一个exporter来使用，提供deployment、daemonset、cronjob等服务的监控数据，由kubernestes官方提供，与prometheus紧密结合。
@@ -383,7 +386,7 @@ autocomplete('#aa-search-input',
 
 <p>好在这些问题对Prometheus来说都不是难事，最终，我们采取 Prometheus + kube-state-metrics + Alertmanager + Grafana 架构来做Kubernetes集群监控。监控系统具体架构如下</p>
 
-<p><img src="006tKfTcly1g1g79nq0ncj30qq0jq770.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/prometheus-monitor-k8s-1/006tKfTcly1g1g79nq0ncj30qq0jq770.jpg" alt="" /></p>
 
 <p>使用这个架构，那上面所提到的三个问题将不再是问题。</p>
 

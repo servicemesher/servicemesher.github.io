@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文介绍了什么是Istio，并详细分析了Istio的优势，最后分享了关于Istio的一些落地经验。">
   <meta property="og:description" content="本文介绍了什么是Istio，并详细分析了Istio的优势，最后分享了关于Istio的一些落地经验。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -319,13 +322,13 @@ autocomplete('#aa-search-input',
 <li>把这些功能和公司用到的所有语言的网络库打包到一起，并为所有的服务和团队维护它们。</li>
 </ol>
 
-<p><img src="005UD0i6ly1fzodfkzee3j30go09s3yt.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-kubernetes-service-mesh/005UD0i6ly1fzodfkzee3j30go09s3yt.jpg" alt="" /></p>
 
 <ol>
 <li>通过服务网格透明的提供这些功能。Istio使用的就是这种方式。Istio把<a href="https://www.envoyproxy.io/">Envoy代理</a>作为每个pod的sidecar运行并通过Istio的控制平面来动态的配置Envoy从而实现这些功能。具体如下图所示:</li>
 </ol>
 
-<p><img src="006tKfTcly1g0crgzxldoj30z10u0437.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-kubernetes-service-mesh/006tKfTcly1g0crgzxldoj30z10u0437.jpg" alt="" /></p>
 
 <p>利用基于Envoy的sidecar机制，Istio无需修改应用代码就可以完成嵌入。Envoy代理容器的所有网络流量，而Istio的控制平面可以动态配置Envoy的策略。因此Istio可以在对应用透明的前提下提供诸如TLS双向验证、限流和熔断等功能。</p>
 

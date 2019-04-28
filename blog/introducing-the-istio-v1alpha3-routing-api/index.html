@@ -64,6 +64,9 @@
   <meta name="twitter:description" content="本文讲解的是Istio 0.8中的一项重大变化——引入v1alpha3 routing API，旧版本的API将不再兼容，未来会提供模型转换工具来转换旧版 API。">
   <meta property="og:description" content="本文讲解的是Istio 0.8中的一项重大变化——引入v1alpha3 routing API，旧版本的API将不再兼容，未来会提供模型转换工具来转换旧版 API。" />
 
+  &lt;!- 防止微博图床的图片不显示 -->
+  <meta name="referrer" content="never">
+
   
   
   <script>
@@ -324,7 +327,7 @@ autocomplete('#aa-search-input',
 
 <p>在一个典型的网格中，通常有一个或多个用于终止外部TLS链接，将流量引入网格的负载均衡器（我们称之为gateway）。 然后流量通过sidecar网关（sidecar gateway）流经内部服务。应用程序使用外部服务的情况也很常见（例如访问Google Maps API），一些情况下，这些外部服务可能被直接调用；但在某些部署中，网格中所有访问外部服务的流量可能被要求强制通过专用的出口网关（Egress gateway）。 下图描绘了网关在网格中的使用情况。</p>
 
-<p><img src="6ce41a46ly1fs1eqjfubij20m308mgmu.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/introducing-the-istio-v1alpha3-routing-api/6ce41a46ly1fs1eqjfubij20m308mgmu.jpg" alt="" /></p>
 
 <p>考虑到上述因素，<code>v1alpha3</code>引入了以下这些新的配置资源来控制进入网格、网格内部和离开网格的流量路由。</p>
 
@@ -338,7 +341,7 @@ autocomplete('#aa-search-input',
 <p><code>VirtualService</code>、<code>DestinationRule</code>和<code>ServiceEntry</code>分别替换了原API中的<code>RouteRule</code>、<code>DestinationPolicy</code>和<code>EgressRule</code>。<code>Gateway</code>是一个独立于平台的抽象，用于对流入专用中间设备的流量进行建模。</p>
 
 <p>下图描述了跨多个配置资源的控制流程。
-<img src="6ce41a46ly1fs1erey8a3j20lt0acgmi.jpg" alt="" /></p>
+<img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/introducing-the-istio-v1alpha3-routing-api/6ce41a46ly1fs1erey8a3j20lt0acgmi.jpg" alt="" /></p>
 
 <h3 id="gateway">Gateway</h3>
 
