@@ -6,10 +6,19 @@
     <description>Recent content in Cloud Native on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 23 Apr 2019 10:44:45 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 May 2019 15:12:53 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/cloud-native/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>云原生生态周报（Cloud Native Weekly）第3期</title>
+      <link>http://www.servicemesher.com/blog/cloud-native-weekly-03/</link>
+      <pubDate>Tue, 07 May 2019 15:12:53 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cloud-native-weekly-03/</guid>
+      <description>摘要： Docker Hub遭入侵，19万账号被泄露；Java 8 终于开始提供良好的容器支持；Snyk 年度安全报告出炉，容器安全问题形势空前严峻。 业界要闻 Docker</description>
+    </item>
     
     <item>
       <title>云原生生态周报（Cloud Native Weekly）第2期</title>

@@ -6,10 +6,19 @@
     <description>Recent content in Envoy on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 22 Apr 2019 10:41:16 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 May 2019 11:50:05 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/envoy/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Envoy、服务网格和可观察性之企业最佳实践</title>
+      <link>http://www.servicemesher.com/blog/envoy-service-mesh-and-observability-best-practices-for-enterprises/</link>
+      <pubDate>Tue, 07 May 2019 11:50:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-service-mesh-and-observability-best-practices-for-enterprises/</guid>
+      <description>编者按 Envoy 创始人 Matt Klein 分享了他对企业开始使用 Envoy 部署微服务所遇到的挑战以及可观察性的看法和选择，他认为 Service Mesh 还处于早期阶段，企业应该逐步推进，同时最</description>
+    </item>
     
     <item>
       <title>为 Envoy 构建控制面指南第4部分：构建的可扩展性</title>

@@ -6,10 +6,19 @@
     <description>Recent content in Linkerd on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 19 Sep 2018 10:18:54 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 06 May 2019 21:50:05 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/linkerd/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio和Linkerd的CPU基准测试</title>
+      <link>http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</link>
+      <pubDate>Mon, 06 May 2019 21:50:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</guid>
+      <description>[编者按] 作者是Shopify的工程师，公司在引入Istio作为服务网格的过程中发现消耗的计算成本过高。基于此问题，作者使用了公司内部开发的</description>
+    </item>
     
     <item>
       <title>Linkerd 2.0 GA版本发布</title>

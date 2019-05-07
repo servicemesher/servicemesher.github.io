@@ -12,6 +12,33 @@
     
     
     <item>
+      <title>云原生生态周报（Cloud Native Weekly）第3期</title>
+      <link>http://www.servicemesher.com/blog/cloud-native-weekly-03/</link>
+      <pubDate>Tue, 07 May 2019 15:12:53 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cloud-native-weekly-03/</guid>
+      <description>摘要： Docker Hub遭入侵，19万账号被泄露；Java 8 终于开始提供良好的容器支持；Snyk 年度安全报告出炉，容器安全问题形势空前严峻。 业界要闻 Docker</description>
+    </item>
+    
+    <item>
+      <title>Envoy、服务网格和可观察性之企业最佳实践</title>
+      <link>http://www.servicemesher.com/blog/envoy-service-mesh-and-observability-best-practices-for-enterprises/</link>
+      <pubDate>Tue, 07 May 2019 11:50:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-service-mesh-and-observability-best-practices-for-enterprises/</guid>
+      <description>编者按 Envoy 创始人 Matt Klein 分享了他对企业开始使用 Envoy 部署微服务所遇到的挑战以及可观察性的看法和选择，他认为 Service Mesh 还处于早期阶段，企业应该逐步推进，同时最</description>
+    </item>
+    
+    <item>
+      <title>Istio和Linkerd的CPU基准测试</title>
+      <link>http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</link>
+      <pubDate>Mon, 06 May 2019 21:50:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</guid>
+      <description>[编者按] 作者是Shopify的工程师，公司在引入Istio作为服务网格的过程中发现消耗的计算成本过高。基于此问题，作者使用了公司内部开发的</description>
+    </item>
+    
+    <item>
       <title>云原生生态周报（Cloud Native Weekly）第2期</title>
       <link>http://www.servicemesher.com/blog/cloud-native-weekly-02/</link>
       <pubDate>Tue, 23 Apr 2019 10:44:45 +0800</pubDate>
