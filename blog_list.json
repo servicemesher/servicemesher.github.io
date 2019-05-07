@@ -64,6 +64,38 @@
     "wordcount": 3577
   },
   {
+    "author": "Michael Kipper",
+    "authorlink": "https://medium.com/@michael_87395/",
+    "banner": "/img/blog/banners/006tNbRwly1fy1zsehjgtj313z0u04qs.jpg",
+    "categories": [
+      "translation"
+    ],
+    "date": "2019-05-06T21:50:05+08:00",
+    "fuzzywordcount": 3100,
+    "keywords": [
+      "service mesh",
+      "istio",
+      "linkerd"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-05-06T21:50:05+08:00",
+    "objectID": "ed973c3e210942f17b04dbb0378b7846",
+    "permalink": "http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/",
+    "publishdate": "2019-05-06T21:50:05+08:00",
+    "readingtime": 6,
+    "relpermalink": "/blog/benchmarking-istio-and-linkerd-cpu/",
+    "summary": "本文对Istio和Linkerd的CPU使用情况做了基准测试和比较。",
+    "tags": [
+      "istio",
+      "linkerd"
+    ],
+    "title": "Istio和Linkerd的CPU基准测试",
+    "translator": "马若飞",
+    "url": "/blog/benchmarking-istio-and-linkerd-cpu/",
+    "weight": 0,
+    "wordcount": 3001
+  },
+  {
     "author": "云原生编辑部",
     "authorlink": "/",
     "banner": "/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg",

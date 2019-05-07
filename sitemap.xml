@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</loc>
+    <lastmod>2019-05-06T21:50:05+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/cloud-native-weekly-02/</loc>
     <lastmod>2019-04-23T10:44:45+08:00</lastmod>
   </url>
@@ -1489,7 +1494,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/linkerd/</loc>
-    <lastmod>2018-09-19T10:18:54+08:00</lastmod>
+    <lastmod>2019-05-06T21:50:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
