@@ -6,10 +6,19 @@
     <description>Recent content in Google on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 28 Aug 2018 16:15:25 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 08 May 2019 22:40:05 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/google/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Google混合云多云平台Anthos Config Mangement产品设计分析</title>
+      <link>http://www.servicemesher.com/blog/anthos-config-management-intro/</link>
+      <pubDate>Wed, 08 May 2019 22:40:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/anthos-config-management-intro/</guid>
+      <description>0. Anthos Config Management是什么？ Hello World Demo 大家可以看Arctiq公司搞的修改node数量Demo：https://www.arctiq.ca/</description>
+    </item>
     
     <item>
       <title>IBM云计算CTO讲述Istio项目的起源、分工及目标</title>

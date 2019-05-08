@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/blog/anthos-config-management-intro/</loc>
+    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/cncf-udpa-wg/</loc>
+    <lastmod>2019-05-08T10:12:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/cloud-native-weekly-03/</loc>
     <lastmod>2019-05-07T15:12:53+08:00</lastmod>
   </url>
@@ -1086,6 +1096,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/anthos/</loc>
+    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/api-management/</loc>
     <lastmod>2018-10-09T12:26:41+08:00</lastmod>
     <priority>0</priority>
@@ -1230,13 +1246,13 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/envoy/</loc>
-    <lastmod>2019-05-07T11:50:05+08:00</lastmod>
+    <lastmod>2019-05-08T10:12:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/envoy/</loc>
-    <lastmod>2019-01-07T17:48:01+08:00</lastmod>
+    <lastmod>2019-05-08T10:12:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1307,6 +1323,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/categories/gitops/</loc>
+    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/gloo/</loc>
     <lastmod>2019-04-22T10:41:16+08:00</lastmod>
     <priority>0</priority>
@@ -1320,7 +1342,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/google/</loc>
-    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
+    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1398,7 +1420,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-05-07T11:50:05+08:00</lastmod>
+    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1710,7 +1732,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-05-07T15:12:53+08:00</lastmod>
+    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1854,7 +1876,7 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/xds/</loc>
-    <lastmod>2019-01-17T20:16:18+08:00</lastmod>
+    <lastmod>2019-05-08T10:12:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   

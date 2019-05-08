@@ -6,10 +6,19 @@
     <description>Recent content in Envoy on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 07 Jan 2019 17:48:01 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 08 May 2019 10:12:18 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/envoy/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CNCF正在筹建通用数据平面API工作组，以制定数据平面的标准API</title>
+      <link>http://www.servicemesher.com/blog/cncf-udpa-wg/</link>
+      <pubDate>Wed, 08 May 2019 10:12:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/cncf-udpa-wg/</guid>
+      <description>背景 昨日得到的消息，CNCF正在筹建通用数据平面API工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准API，为</description>
+    </item>
     
     <item>
       <title>Istio 的数据平面 Envoy Proxy 配置详解</title>

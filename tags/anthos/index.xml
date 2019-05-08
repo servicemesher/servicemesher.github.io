@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Anthos on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/anthos/</link>
+    <description>Recent content in Anthos on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 08 May 2019 22:40:05 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/anthos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Google混合云多云平台Anthos Config Mangement产品设计分析</title>
+      <link>http://www.servicemesher.com/blog/anthos-config-management-intro/</link>
+      <pubDate>Wed, 08 May 2019 22:40:05 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/anthos-config-management-intro/</guid>
+      <description>0. Anthos Config Management是什么？ Hello World Demo 大家可以看Arctiq公司搞的修改node数量Demo：https://www.arctiq.ca/</description>
+    </item>
+    
+  </channel>
+</rss>

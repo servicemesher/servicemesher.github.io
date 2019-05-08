@@ -1,5 +1,76 @@
 [
   {
+    "author": "钟成",
+    "authorlink": "/",
+    "banner": "/img/blog/banners/00704eQkgy1fs3o6ljkknj30rs0ku4qp.jpg",
+    "categories": [
+      "gitops"
+    ],
+    "date": "2019-05-08T22:40:05+08:00",
+    "fuzzywordcount": 4200,
+    "keywords": [
+      "service mesh",
+      "istio",
+      "gitops",
+      "混合云",
+      "antnos",
+      "google"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-05-08T22:40:05+08:00",
+    "objectID": "508220bbfb32aba1c7ccdba4f0cd0946",
+    "permalink": "http://www.servicemesher.com/blog/anthos-config-management-intro/",
+    "publishdate": "2019-05-08T22:40:05+08:00",
+    "readingtime": 9,
+    "relpermalink": "/blog/anthos-config-management-intro/",
+    "summary": "简单说，当你修改某个git管理下的yaml配置文件，里面描述了某个GKE私有集群某个cluster的node数量，然后Anthos Config Management会帮你自动的发命令并让节点数量变成你想要的那个。",
+    "tags": [
+      "istio",
+      "anthos",
+      "google"
+    ],
+    "title": "Google混合云多云平台Anthos Config Mangement产品设计分析",
+    "translator": null,
+    "url": "/blog/anthos-config-management-intro/",
+    "weight": 0,
+    "wordcount": 4145
+  },
+  {
+    "author": "敖小剑",
+    "authorlink": "https://skyao.io",
+    "banner": "https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*vSigSoIeSPgAAAAAAAAAAABjARQnAQ",
+    "categories": [
+      "envoy"
+    ],
+    "date": "2019-05-08T10:12:18+08:00",
+    "fuzzywordcount": 1600,
+    "keywords": [
+      "service mesh",
+      "istio",
+      "服务网格",
+      "envoy",
+      "xds",
+      "数据平面"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-05-08T10:12:18+08:00",
+    "objectID": "6cb4149d16cb350b7a3fd28b8e0f569c",
+    "permalink": "http://www.servicemesher.com/blog/cncf-udpa-wg/",
+    "publishdate": "2019-05-08T10:12:18+08:00",
+    "readingtime": 4,
+    "relpermalink": "/blog/cncf-udpa-wg/",
+    "summary": "CNCF正在筹建通用数据平面API工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准API，为L4/L7数据平面配置提供事实上的标准，初始成员将包括 Envoy 和 gRPC 项目的代表。",
+    "tags": [
+      "envoy",
+      "xds"
+    ],
+    "title": "CNCF正在筹建通用数据平面API工作组，以制定数据平面的标准API",
+    "translator": null,
+    "url": "/blog/cncf-udpa-wg/",
+    "weight": 0,
+    "wordcount": 1576
+  },
+  {
     "author": "云原生编辑部",
     "authorlink": "/",
     "banner": "/img/blog/banners/006tNc79ly1g2cdisc93uj313z0u0qv6.jpg",
