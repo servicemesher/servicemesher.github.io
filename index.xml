@@ -17,7 +17,7 @@
       <pubDate>Wed, 08 May 2019 22:40:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/anthos-config-management-intro/</guid>
-      <description>0. Anthos Config Management是什么？ Hello World Demo 大家可以看Arctiq公司搞的修改node数量Demo：https://www.arctiq.ca/</description>
+      <description>本文通过对Google近期发布的Anthos混合云产品的核心组件 Anthos Config Management进行分析，探究其背后设计的核心理念——Infrast</description>
     </item>
     
     <item>
