@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 11 Apr 2019 16:56:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 09 May 2019 21:38:59 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Google Traffic Director详细介绍</title>
+      <link>http://www.servicemesher.com/blog/google-traffic-director-detail/</link>
+      <pubDate>Thu, 09 May 2019 21:38:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/google-traffic-director-detail/</guid>
+      <description>Traffic Director介绍 Traffic Director 是 Google Cloud 推出的完全托管的服务网格流量控制平面。 援引来自Traffic Director官方网站的介绍资料，Traffi</description>
+    </item>
     
     <item>
       <title>从边车模式到 Service Mesh</title>

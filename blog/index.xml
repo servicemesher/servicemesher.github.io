@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Google Traffic Director详细介绍</title>
+      <link>http://www.servicemesher.com/blog/google-traffic-director-detail/</link>
+      <pubDate>Thu, 09 May 2019 21:38:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/google-traffic-director-detail/</guid>
+      <description>Traffic Director介绍 Traffic Director 是 Google Cloud 推出的完全托管的服务网格流量控制平面。 援引来自Traffic Director官方网站的介绍资料，Traffi</description>
+    </item>
+    
+    <item>
       <title>Google混合云多云平台Anthos Config Mangement产品设计分析</title>
       <link>http://www.servicemesher.com/blog/anthos-config-management-intro/</link>
       <pubDate>Wed, 08 May 2019 22:40:05 +0800</pubDate>

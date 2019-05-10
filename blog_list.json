@@ -1,5 +1,35 @@
 [
   {
+    "author": "敖小剑",
+    "authorlink": "https://skyao.io",
+    "banner": "/img/blog/banners/006tNbRwgy1fug0qf4f7qj31jk15ox6r.jpg",
+    "categories": [
+      "service mesh"
+    ],
+    "date": "2019-05-09T21:38:59+08:00",
+    "fuzzywordcount": 8000,
+    "keywords": [
+      "service mesh"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-05-09T21:38:59+08:00",
+    "objectID": "e4d25ebbc4db3faef040585876e853ad",
+    "permalink": "http://www.servicemesher.com/blog/google-traffic-director-detail/",
+    "publishdate": "2019-05-09T21:38:59+08:00",
+    "readingtime": 16,
+    "relpermalink": "/blog/google-traffic-director-detail/",
+    "summary": "Traffic Director 是 Google Cloud 推出的完全托管的服务网格流量控制平面。",
+    "tags": [
+      "Service Mesh",
+      "google"
+    ],
+    "title": "Google Traffic Director详细介绍",
+    "translator": null,
+    "url": "/blog/google-traffic-director-detail/",
+    "weight": 0,
+    "wordcount": 7994
+  },
+  {
     "author": "钟成",
     "authorlink": "/",
     "banner": "/img/blog/banners/00704eQkgy1fs3o6ljkknj30rs0ku4qp.jpg",

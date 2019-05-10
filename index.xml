@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 08 May 2019 22:40:05 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 09 May 2019 21:38:59 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Google Traffic Director详细介绍</title>
+      <link>http://www.servicemesher.com/blog/google-traffic-director-detail/</link>
+      <pubDate>Thu, 09 May 2019 21:38:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/google-traffic-director-detail/</guid>
+      <description>Traffic Director介绍 Traffic Director 是 Google Cloud 推出的完全托管的服务网格流量控制平面。 援引来自Traffic Director官方网站的介绍资料，Traffi</description>
+    </item>
     
     <item>
       <title>Google混合云多云平台Anthos Config Mangement产品设计分析</title>
@@ -1943,7 +1952,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 12 崔秀龙 6 钟华 4 赵化冰 4 高松 3 郑伟 3 罗佳豪 3 张馆长 3 云原生编辑部 3 丁轶群 3 陈</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 13 崔秀龙 6 钟华 4 赵化冰 4 高松 3 郑伟 3 罗佳豪 3 张馆长 3 云原生编辑部 3 丁轶群 3 陈</description>
     </item>
     
     <item>
