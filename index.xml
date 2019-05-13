@@ -6,10 +6,19 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 13 May 2019 12:20:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 May 2019 20:08:37 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>API Gateway的身份认同危机</title>
+      <link>http://www.servicemesher.com/blog/api-gateways-are-going-through-an-identity-crisis/</link>
+      <pubDate>Mon, 13 May 2019 20:08:37 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/api-gateways-are-going-through-an-identity-crisis/</guid>
+      <description>如今，API网关经历了一系列身份认同危机： 它们是集中式共享资源，有助于将API暴露和维护到外部实体吗？ 它们是否为集群的ingress哨兵，严</description>
+    </item>
     
     <item>
       <title>Google Cloud Run详细介绍</title>

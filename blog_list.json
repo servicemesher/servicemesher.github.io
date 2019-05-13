@@ -1,5 +1,38 @@
 [
   {
+    "author": "Christian Posta",
+    "authorlink": "https://github.com/shenxg13/istio-no-best-practice",
+    "banner": "/img/blog/banners/006tNbRwly1fw867vtusqj30rs0kudth.jpg",
+    "categories": [
+      "istio"
+    ],
+    "date": "2019-05-13T20:08:37+08:00",
+    "fuzzywordcount": 4800,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "ingress gateway"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-05-13T20:08:37+08:00",
+    "objectID": "36bc0644594e23a857947d99488fe81b",
+    "permalink": "http://www.servicemesher.com/blog/api-gateways-are-going-through-an-identity-crisis/",
+    "publishdate": "2019-05-13T20:08:37+08:00",
+    "readingtime": 10,
+    "relpermalink": "/blog/api-gateways-are-going-through-an-identity-crisis/",
+    "summary": "本文主要向读者介绍在FAAS和微服务架构之间的区别以及如何根据自身情况选择正确的架构方案。",
+    "tags": [
+      "service mesh",
+      "ingresss",
+      "api gateway"
+    ],
+    "title": "API Gateway的身份认同危机",
+    "translator": null,
+    "url": "/blog/api-gateways-are-going-through-an-identity-crisis/",
+    "weight": 0,
+    "wordcount": 4748
+  },
+  {
     "author": "敖小剑",
     "authorlink": "https://skyao.io",
     "banner": "/img/blog/banners/006tNbRwly1fx5dtjdrmbj31ji15mqva.jpg",
