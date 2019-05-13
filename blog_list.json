@@ -2,6 +2,36 @@
   {
     "author": "敖小剑",
     "authorlink": "https://skyao.io",
+    "banner": "/img/blog/banners/006tNbRwly1fx5dtjdrmbj31ji15mqva.jpg",
+    "categories": [
+      "service mesh"
+    ],
+    "date": "2019-05-13T12:20:46+08:00",
+    "fuzzywordcount": 5800,
+    "keywords": [],
+    "lang": "zh",
+    "lastmod": "2019-05-13T12:20:46+08:00",
+    "objectID": "7c331dbeb081c5053daaf0597f6fb665",
+    "permalink": "http://www.servicemesher.com/blog/google-cloud-run-intro/",
+    "publishdate": "2019-05-13T12:20:46+08:00",
+    "readingtime": 12,
+    "relpermalink": "/blog/google-cloud-run-intro/",
+    "summary": null,
+    "tags": [
+      "google",
+      "cloud run",
+      "knative",
+      "service mesh"
+    ],
+    "title": "Google Cloud Run详细介绍",
+    "translator": null,
+    "url": "/blog/google-cloud-run-intro/",
+    "weight": 0,
+    "wordcount": 5761
+  },
+  {
+    "author": "敖小剑",
+    "authorlink": "https://skyao.io",
     "banner": "/img/blog/banners/006tNbRwgy1fug0qf4f7qj31jk15ox6r.jpg",
     "categories": [
       "service mesh"

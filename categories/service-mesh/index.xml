@@ -6,10 +6,19 @@
     <description>Recent content in Service Mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 09 May 2019 21:38:59 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 May 2019 12:20:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Google Cloud Run详细介绍</title>
+      <link>http://www.servicemesher.com/blog/google-cloud-run-intro/</link>
+      <pubDate>Mon, 13 May 2019 12:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/google-cloud-run-intro/</guid>
+      <description>在Cloud Next 2019 大会上，Google 宣布了 Cloud Run，这是一个新的基于容器运行 Serverless 应用的解决方案。Cloud Run 基于开源的 knative 项目，宣称要将 serverless 带入容</description>
+    </item>
     
     <item>
       <title>Google Traffic Director详细介绍</title>

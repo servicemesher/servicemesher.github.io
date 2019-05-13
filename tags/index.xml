@@ -138,6 +138,15 @@
     </item>
     
     <item>
+      <title>Cloud Run</title>
+      <link>http://www.servicemesher.com/tags/cloud-run/</link>
+      <pubDate>Mon, 13 May 2019 12:20:46 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/cloud-run/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cncf</title>
       <link>http://www.servicemesher.com/tags/cncf/</link>
       <pubDate>Fri, 15 Feb 2019 10:41:22 +0800</pubDate>
@@ -365,7 +374,7 @@
     <item>
       <title>Google</title>
       <link>http://www.servicemesher.com/tags/google/</link>
-      <pubDate>Thu, 09 May 2019 21:38:59 +0800</pubDate>
+      <pubDate>Mon, 13 May 2019 12:20:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/google/</guid>
       <description></description>
@@ -518,7 +527,7 @@
     <item>
       <title>Knative</title>
       <link>http://www.servicemesher.com/tags/knative/</link>
-      <pubDate>Tue, 12 Mar 2019 11:17:13 +0800</pubDate>
+      <pubDate>Mon, 13 May 2019 12:20:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/knative/</guid>
       <description></description>
@@ -842,7 +851,7 @@
     <item>
       <title>Service Mesh</title>
       <link>http://www.servicemesher.com/tags/service-mesh/</link>
-      <pubDate>Thu, 09 May 2019 21:38:59 +0800</pubDate>
+      <pubDate>Mon, 13 May 2019 12:20:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/service-mesh/</guid>
       <description></description>
