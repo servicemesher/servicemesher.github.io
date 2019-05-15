@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Google混合云多云平台Anthos Config Mangement产品设计分析 · Service Mesh|服务网格中文社区</title>
+  <title>Google混合云多云平台Anthos Config Management产品设计分析 · Service Mesh|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
@@ -52,7 +52,7 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="Google混合云多云平台Anthos Config Mangement产品设计分析" />
+  <meta property="og:title" content="Google混合云多云平台Anthos Config Management产品设计分析" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/anthos-config-management-intro//" />
   <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
@@ -99,9 +99,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="/img/servicemesher-logo.jpg" alt="Google混合云多云平台Anthos Config Mangement产品设计分析 logo" class="hidden-xs hidden-sm">
-                    <img src="/img/logosmall.jpg" alt="Google混合云多云平台Anthos Config Mangement产品设计分析 logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Google混合云多云平台Anthos Config Mangement产品设计分析 - 跳到主页</span>
+                    <img src="/img/servicemesher-logo.jpg" alt="Google混合云多云平台Anthos Config Management产品设计分析 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Google混合云多云平台Anthos Config Management产品设计分析 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Google混合云多云平台Anthos Config Management产品设计分析 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -247,7 +247,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Google混合云多云平台Anthos Config Mangement产品设计分析</h1>
+                <h1>Google混合云多云平台Anthos Config Management产品设计分析</h1>
             </div>
         </div>
     </div>
@@ -373,7 +373,7 @@ autocomplete('#aa-search-input',
 
 <p><img src="https://ata2-img.cn-hangzhou.oss-pub.aliyun-inc.com/6587d93de31ac21cdb7c0aad02223d7f.jpg" alt="acm2.jpg" /></p>
 
-<p>是的，这张图在组件上画的非常清晰，Anthos Config Mangement，在运行形态上是一个k8s的operator，部署在多个集群里面，并且应该可以从同一个远程git repo里面读取配置，从这个<a href="https://github.com/GoogleCloudPlatform/csp-config-management">demo库</a>里面，我们可以看到这个operator读取git库的配置</p>
+<p>是的，这张图在组件上画的非常清晰，Anthos Config Management，在运行形态上是一个k8s的operator，部署在多个集群里面，并且应该可以从同一个远程git repo里面读取配置，从这个<a href="https://github.com/GoogleCloudPlatform/csp-config-management">demo库</a>里面，我们可以看到这个operator读取git库的配置</p>
 
 <pre><code class="language-yaml">apiVersion: addons.sigs.k8s.io/v1alpha1
 kind: ConfigManagement
@@ -388,7 +388,7 @@ spec:
     policyDir: foo-corp
 </code></pre>
 
-<p>这里几个参数清晰的标明，Anthos Config Mangement会去每5秒钟读取一次git repo的0.1.0分支，并按照这个分支上的配置来进行后续的操作。那么，这些操作具体能干啥，怎么干呢？<a href="https://cloud.google.com/anthos/docs/concepts/anthos-overview#centralized_config_management">官方文档</a>实在是太可怜了，就几句话就想打发我们，不过，从Demo里面我们可以试图寻找这些功能和配置的对应关系。读者可以把<a href="https://github.com/GoogleCloudPlatform/csp-config-management">demo库</a> git clone下来，比对着看。</p>
+<p>这里几个参数清晰的标明，Anthos Config Management会去每5秒钟读取一次git repo的0.1.0分支，并按照这个分支上的配置来进行后续的操作。那么，这些操作具体能干啥，怎么干呢？<a href="https://cloud.google.com/anthos/docs/concepts/anthos-overview#centralized_config_management">官方文档</a>实在是太可怜了，就几句话就想打发我们，不过，从Demo里面我们可以试图寻找这些功能和配置的对应关系。读者可以把<a href="https://github.com/GoogleCloudPlatform/csp-config-management">demo库</a> git clone下来，比对着看。</p>
 
 <p>官方的功能描述是：</p>
 

@@ -27,10 +27,10 @@
       "api gateway"
     ],
     "title": "API Gateway的身份认同危机",
-    "translator": null,
+    "translator": "周雨青",
     "url": "/blog/api-gateways-are-going-through-an-identity-crisis/",
     "weight": 0,
-    "wordcount": 4748
+    "wordcount": 4756
   },
   {
     "author": "敖小剑",
@@ -122,11 +122,11 @@
       "anthos",
       "google"
     ],
-    "title": "Google混合云多云平台Anthos Config Mangement产品设计分析",
+    "title": "Google混合云多云平台Anthos Config Management产品设计分析",
     "translator": null,
     "url": "/blog/anthos-config-management-intro/",
     "weight": 0,
-    "wordcount": 4196
+    "wordcount": 4198
   },
   {
     "author": "敖小剑",
