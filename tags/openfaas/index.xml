@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Openfaas on ServiceMesher</title>
+    <title>OpenFaaS on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/openfaas/</link>
-    <description>Recent content in Openfaas on ServiceMesher</description>
+    <description>Recent content in OpenFaaS on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 08 Nov 2018 13:20:46 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</guid>
-      <description>评估Kubernetes（K8s）的无服务器框架 Rancher 1.6和Rancher 2.0底层容器编排引擎的术语和概念略微有所不同。想要了解这些差异就需</description>
+      <description>本文讲解了如何利用K8S的设计参数和服务编排功能，并将它们与无服务器框架和函数即服务（FaaS）结合起来。</description>
     </item>
     
   </channel>

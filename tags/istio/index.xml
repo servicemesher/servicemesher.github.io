@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Istio on ServiceMesher</title>
+    <title>istio on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/istio/</link>
-    <description>Recent content in Istio on ServiceMesher</description>
+    <description>Recent content in istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 08 May 2019 22:40:05 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Solo.io打造的Gloo——Knative中Istio的替代方案</title>
+      <link>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</link>
+      <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</guid>
+      <description>[编者按] &amp;gt; 之前有社区成员询问是不是想尝试Knative时，必须要安装Istio才行，今天就告诉大家一种Istio的替代方案，使用Solo.</description>
+    </item>
     
     <item>
       <title>Google混合云多云平台Anthos Config Management产品设计分析</title>
@@ -17,7 +26,7 @@
       <pubDate>Wed, 08 May 2019 22:40:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/anthos-config-management-intro/</guid>
-      <description>本文通过对Google近期发布的Anthos混合云产品的核心组件 Anthos Config Management进行分析，探究其背后设计的核心理念——Infrast</description>
+      <description>简单说，当你修改某个git管理下的yaml配置文件，里面描述了某个GKE私有集群某个cluster的node数量，然后Anthos Config Management会帮你自动的发命令并让节点数量变成你想要的那个。</description>
     </item>
     
     <item>
@@ -26,7 +35,7 @@
       <pubDate>Tue, 07 May 2019 11:50:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-service-mesh-and-observability-best-practices-for-enterprises/</guid>
-      <description>编者按 Envoy 创始人 Matt Klein 分享了他对企业开始使用 Envoy 部署微服务所遇到的挑战以及可观察性的看法和选择，他认为 Service Mesh 还处于早期阶段，企业应该逐步推进，同时最</description>
+      <description>通过对Envoy创始人Matt Klein的采访，Matt分享了他对企业开始使用微服务部署Envoy所遇到的挑战以及可观察性的看法和选择。</description>
     </item>
     
     <item>
@@ -35,7 +44,7 @@
       <pubDate>Mon, 06 May 2019 21:50:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</guid>
-      <description>[编者按] 作者是Shopify的工程师，公司在引入Istio作为服务网格的过程中发现消耗的计算成本过高。基于此问题，作者使用了公司内部开发的</description>
+      <description>本文对Istio和Linkerd的CPU使用情况做了基准测试和比较。</description>
     </item>
     
     <item>
@@ -44,7 +53,7 @@
       <pubDate>Fri, 19 Apr 2019 18:15:10 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-monitoring-explained/</guid>
-      <description>编者按 本文先后阐述服务网格中监控的重要性和Istio相关名词概念，再由一个实例切入，详解在Istio中部署和实现监控的全过程。（注：阅读本文</description>
+      <description>本文先后阐述服务网格中监控的重要性和Istio相关名词概念，再由一个实例切入，详解在Istio中部署和实现监控的全过程。</description>
     </item>
     
     <item>
@@ -53,7 +62,7 @@
       <pubDate>Wed, 10 Apr 2019 10:08:11 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-service-mesh-era-istios-role-in-the-future-of-hybrid-cloud/</guid>
-      <description>欢迎回到我们关于Service Mesh和Istio的博客文章系列。 在之前的帖子中，我们讨论了Istio服务网格是什么，以及它为什么如此重要。</description>
+      <description>谈谈如何使用Istio将混合服务网格变为现实，以及Istio在混合云未来扮演的角色。</description>
     </item>
     
     <item>
@@ -62,7 +71,7 @@
       <pubDate>Tue, 09 Apr 2019 22:54:09 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-cni-note/</guid>
-      <description>设计目标 当前实现将用户 pod 流量转发到 proxy 的默认方式是使用 privileged 权限的 istio-init 这个 init container 来做的（运行脚本写入 iptables），Istio CNI 插件的主要设计目标</description>
+      <description>这是一篇关于 Istio CNI 的学习笔记。</description>
     </item>
     
     <item>
@@ -71,7 +80,7 @@
       <pubDate>Tue, 09 Apr 2019 20:38:30 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/automated-canary-deployments-with-flagger-and-istio/</guid>
-      <description>持续部署（Continuous delivery）符合企业软件实践，它是完善持续集成（continuous integration）原则的自然演</description>
+      <description>本文介绍如何使用Flagger和Istio实现自动化金丝雀部署。</description>
     </item>
     
     <item>
@@ -80,7 +89,7 @@
       <pubDate>Mon, 08 Apr 2019 21:33:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/data-plane-setup/</guid>
-      <description>Istio 服务网格架构的概述，通常都是从对数据面和控制面的叙述开始的。 来自 Istio 的文档： Istio 服务网格逻辑上分为数据平面和控制平面。 数据平面由一组以 sidecar 方式部</description>
+      <description>本文中我们会深入到 Sidecar 注入模型中，来更清晰的了解 Sidecar 的注入过程。</description>
     </item>
     
     <item>
@@ -89,7 +98,7 @@
       <pubDate>Mon, 01 Apr 2019 22:24:01 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-analysis-3/</guid>
-      <description>作者: 钟华，腾讯云容器产品中心高级工程师，热衷于容器、微服务、service mesh、istio、devops 等领域技术。 今天我们来解析is</description>
+      <description>今天我们来解析istio控制面组件Galley。Galley Pod是一个单容器单进程组件，没有sidecar，结构独立，职责明确。</description>
     </item>
     
     <item>
@@ -98,7 +107,7 @@
       <pubDate>Sun, 31 Mar 2019 11:17:45 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microprofile-the-microservice-programming-model-made-for-istio/</guid>
-      <description>编者按 如果说Spring Cloud是以SpingBoot为核心和基础的微服务架构，那么MicroProfile则是将传统JavaEE轻量化以</description>
+      <description>本文探讨了如何结合eclipse/microprofile与流行的服务网格Istio安全地部署微服务。</description>
     </item>
     
     <item>
@@ -107,7 +116,7 @@
       <pubDate>Sun, 31 Mar 2019 11:12:07 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/circuit-breaking-and-outlier-detection-in-istio/</guid>
-      <description>在微服务领域，各个服务需要在网络上执行大量的调用。而网络是很脆弱的，如果某个服务繁忙或者无法响应请求，将有可能引发集群的大规模级联故障，从而</description>
+      <description>通过 Istio 来窥探 Envoy 的熔断与异常检测机制。</description>
     </item>
     
     <item>
@@ -116,7 +125,7 @@
       <pubDate>Mon, 25 Mar 2019 21:02:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/building-a-control-plane-for-envoy/</guid>
-      <description>[编者案] Idit Levine 作为 solo.io 创始人兼首席执行官，在本系列博客中介绍了她们的产品 Gloo。这篇博客是系列中的其中一篇，这一篇的主要内容是，如果要基于 Envoy</description>
+      <description>本文介绍如何利用 Gloo 提供的功能，减少自己需要编写的代码。</description>
     </item>
     
     <item>
@@ -125,7 +134,7 @@
       <pubDate>Mon, 25 Mar 2019 11:04:02 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-rbac-quick-start/</guid>
-      <description>Istio提供了非常易用的安全解决方案，包括服务间身份验证mTLS，服务间访问控制RBAC，以及终端用户身份验证JWT等，本文主要介绍如何使</description>
+      <description>Istio提供了非常易用的安全解决方案，包括服务间身份验证mTLS，服务间访问控制RBAC，以及终端用户身份验证JWT等，本文主要介绍如何使用服务间访问控制，同时涉及双向TLS。</description>
     </item>
     
     <item>
@@ -134,7 +143,7 @@
       <pubDate>Mon, 25 Mar 2019 10:58:41 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/back-to-microservices-with-istio-part-2-authentication-authorization/</guid>
-      <description>*这篇文章是使用Istio打造微服务*的第二部分，如果没有看第一篇的话，请先看第一部分内容，因为这篇博客是以第一篇博客为基础进行进一步深入的</description>
+      <description>系列文章使用Istio打造微服务的第2部分。</description>
     </item>
     
     <item>
@@ -143,7 +152,7 @@
       <pubDate>Wed, 20 Mar 2019 07:29:54 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-11/</guid>
-      <description>下面这段是发布说明，来自 Istio 官方博客 https://istio.io/zh/blog/2019/announcing-1.1/，译者宋净超。 Istio</description>
+      <description>Istio 1.1发布了，该版本历时8个月，ServiceMesher 社区同时推出了 Istio 中文文档。</description>
     </item>
     
     <item>
@@ -152,7 +161,7 @@
       <pubDate>Tue, 19 Mar 2019 12:27:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-visibility/</guid>
-      <description>背景 对于服务的可见性，在 Istio 设计之初，是没有特别考虑的，或者说，Istio 一开始的假定，就是建立在如下这个前提下的： Istio中的每个服务都可</description>
+      <description>对于服务的可见性，在 Istio 设计之初，是没有特别考虑的，或者说，Istio 一开始的设计就是建立在如下前提下的：Istio中的任何服务都可以访问其他任意服务。直到Istio1.1版本才开始正视这个问题。</description>
     </item>
     
     <item>
@@ -161,7 +170,7 @@
       <pubDate>Tue, 19 Mar 2019 12:21:02 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-analysis-2/</guid>
-      <description>作者: 钟华，腾讯云容器团队高级工程师，热衷于容器、微服务、service mesh、istio、devops 等领域技术 今天我们分析下 istio-sidecar-injector 组件: 查</description>
+      <description>今天我们来分析下 isito-sidecar-injector 组件。</description>
     </item>
     
     <item>
@@ -170,7 +179,7 @@
       <pubDate>Tue, 19 Mar 2019 10:41:25 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-and-chasm/</guid>
-      <description>本文转载自崔秀龙的博客。 引子 这几天拜读了灵雀云出品的一篇文章：《从“鸿沟理论”看云原生》，其中有两段关于 Istio 的陈述，我深感赞同： 在 Control Plane</description>
+      <description>Istio 1.1新特性概览。</description>
     </item>
     
     <item>
@@ -179,7 +188,7 @@
       <pubDate>Tue, 19 Mar 2019 10:23:41 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-pilot-service-registry-code-analysis/</guid>
-      <description>本文转载自赵化冰的博客。 在Istio架构中，Pilot组件负责维护网格中的标准服务模型，该标准服务模型独立于各种底层平台，Pilot通过适配</description>
+      <description>本文将从代码出发，对Istio Pilot的服务注册插件机制进行分析。</description>
     </item>
     
     <item>
@@ -188,7 +197,7 @@
       <pubDate>Mon, 18 Mar 2019 11:23:11 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/hand-crafting-a-sidecar-proxy-like-istio/</guid>
-      <description>sidecar代理模式是一个重要的概念，它允许Istio为服务网格中运行的服务提供路由、度量、安全和其他功能。在这篇文章中，我将解释为Ist</description>
+      <description>本文介绍了一种实现简单HTTP流量嗅探代理的基本步骤，并进行了相关实验验证，生动展现了Istio实现流量管理的核心原理与概念。</description>
     </item>
     
     <item>
@@ -197,7 +206,7 @@
       <pubDate>Tue, 12 Mar 2019 19:10:41 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-analysis-1/</guid>
-      <description>作者: 钟华，腾讯云容器团队高级工程师，热衷于容器、微服务、service mesh、istio、devops 等领域技术。 Istio 作为 Service Mesh 领域的集大成</description>
+      <description>Istio 作为 Service Mesh 领域的集大成者, 提供了流控, 安全, 遥测等模型, 其功能复杂, 模块众多, 有较高的学习和使用门槛, 本文会对istio 1.1 的各组件进行分析, 希望能帮助读者了解istio各组件的职责、以及相互的协作关系。</description>
     </item>
     
     <item>
@@ -206,7 +215,7 @@
       <pubDate>Fri, 08 Mar 2019 15:12:41 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/</guid>
-      <description>编者按 本文作者由浅及深，从核心问题的引入到具体模式的代码实现，阐述了微服务两种断路器模式的实现原理、优缺点以及二者的比较。 前言 不可否认的是，</description>
+      <description>由微服务同步通信的核心问题引入，讨论断路器模式，再深入阐述Istio与Hystrix两种断路器的实现原理，最后比较二者的优缺点和选型建议。</description>
     </item>
     
     <item>
@@ -215,7 +224,7 @@
       <pubDate>Wed, 06 Mar 2019 15:21:50 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/custom-istio-mixer-adapter/</guid>
-      <description>快速开始：https://micro-mesh/examples/adapter/auth源码传送门。 研究Istio下构建简洁的微服务架构，</description>
+      <description>研究Istio下构建简洁的微服务架构，对Istio的研究也更深入，自定义Mixer Adapter必不可少，以下结合使用场景做一个自定义适配器的实践分享。</description>
     </item>
     
     <item>
@@ -224,7 +233,7 @@
       <pubDate>Wed, 06 Mar 2019 14:00:26 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/application-metrics-in-istio/</guid>
-      <description>背景 Istio发送的默认指标有助于了解流量如何在集群中流动。但是，要了解应用程序的行为，还需要应用程序指标。 Prometheus提供了客户端</description>
+      <description>本文介绍了在Istio环境下进行应用程序指标度量的背景知识、一般方法以及可能出现的问题。</description>
     </item>
     
     <item>
@@ -233,7 +242,7 @@
       <pubDate>Wed, 27 Feb 2019 11:35:38 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/back-to-microservices-with-istio-p1/</guid>
-      <description>Istio 是一个由Google，IBM和Lyft团队合作开发的开源项目，它提供了基于微服务的应用程序复杂性的解决方案，仅举几例： 流量管理 ：超时，重试</description>
+      <description>使用Istio打造微服务的教程（第1部分）。</description>
     </item>
     
     <item>
@@ -242,7 +251,7 @@
       <pubDate>Mon, 25 Feb 2019 15:47:49 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-knowledge-map-v0-1-release/</guid>
-      <description>2019年2月15日晚，我在朋友圈里发起了 Istio 知识图谱项目。 而后获得 ServiceMesher 社区成员的热烈响应，在此后的一周内陆续有151参与进来。 经过10天的孵化</description>
+      <description>Istio知识图谱 v0.1版本发布及 Istio handbook 联署签名征集。</description>
     </item>
     
     <item>
@@ -251,7 +260,7 @@
       <pubDate>Wed, 20 Feb 2019 11:44:49 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-kubernetes-service-mesh/</guid>
-      <description>2017年5月，谷歌面向大规模容器化应用管理的开源项目Istio正式发布了。此后经过快速的发展，于2018年7月发布了里程碑式的1.0版本。</description>
+      <description>本文介绍了什么是Istio，并详细分析了Istio的优势，最后分享了关于Istio的一些落地经验。</description>
     </item>
     
     <item>
@@ -260,7 +269,7 @@
       <pubDate>Tue, 19 Feb 2019 12:08:33 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/reading-istio-service-mesh-book/</guid>
-      <description>《深入浅出Istio》这本书这两天开始卖了，我也第一时间入手了以后到现在已经基本上全部翻完了。在这里记录一下看完这本书的读后感。 总体来说，这</description>
+      <description>本文是《深入浅出 Istio》（崔秀龙著，电子工业出版社出版）一书的读后感。</description>
     </item>
     
     <item>
@@ -269,7 +278,7 @@
       <pubDate>Mon, 18 Feb 2019 10:16:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/using-istio-mixer-adapter-to-check-jwt/</guid>
-      <description>互联网服务离不开用户认证。JSON Web Token(后简称JWT)是一个轻巧，分布式的用户授权鉴权规范。和过去的session数据持久化的方案相</description>
+      <description>本文介绍了作者如何通过自定义Istio Mixer Adapter在JWT场景下实现用户封禁的原理与步骤。</description>
     </item>
     
     <item>
@@ -278,7 +287,7 @@
       <pubDate>Sat, 02 Feb 2019 15:21:28 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-the-king-of-service-mesh/</guid>
-      <description>作者：钟华，腾讯云容器团队高级工程师，热衷于容器、微服务、service mesh、istio 等领域。 今天分享的内容主要包括以下4个话题: 1 Service</description>
+      <description>本文根据钟华在腾讯云容器团队进行的istio主题分享和现场演示整理输出。</description>
     </item>
     
     <item>
@@ -287,7 +296,7 @@
       <pubDate>Thu, 17 Jan 2019 20:16:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-the-microservices-in-post-kubernetes-era/</guid>
-      <description>这不是一篇教程，本文试图带您梳理清楚 Kubernetes、Envoy（xDS 协议）以及 Istio Service Mesh 之间的关系及内在联系。本文介绍了 Kubernetes 中的负载均衡方</description>
+      <description>本文假定您已经对 Kubernetes 有比较全面的了解，同时还使用过 Istio service mesh，但是对于 Kubernetes、Envoy 及 Istio 之间的关系不甚了解，及 Istio 如何使用 xDS 协议控制所有的 Sidecar 有浓厚的兴趣，那么推荐您继续阅读。</description>
     </item>
     
     <item>
@@ -296,7 +305,7 @@
       <pubDate>Thu, 27 Dec 2018 11:46:42 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/</guid>
-      <description>本文以 Istio 官方的 bookinfo 示例来讲解在进入 Pod 的流量被 iptables 转交给 Envoy sidecar 后，Envoy 是如何做路由转发的，详述了 Inbound 和 Outbound 处理过程。关于流量拦截的详细分析请参考理</description>
+      <description>本文以 Istio 官方的 bookinfo 示例来讲解在进入 Pod 的流量被 iptables 转交给 Envoy sidecar 后，Envoy 是如何做路由转发的，详述了 Inbound 和 Outbound 处理过程。</description>
     </item>
     
     <item>
@@ -305,7 +314,7 @@
       <pubDate>Wed, 19 Dec 2018 17:55:08 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/multi-network-interfaces-for-istio/</guid>
-      <description>本文转载自赵化冰的博客。 Istio 1.0版本只支持在单个网络，即Mesh中的服务只能连接在一个网络上。虽然在架构设计上是开放的，但从目前的代码来看，</description>
+      <description>随着Kubernetes在NFV（网络功能虚拟化）领域中的逐渐应用，已经出现多个Kubernetes的多网络平面解决方案，Istio也需要考虑支持多网络平面，以为5G的微服务化架构提供服务通讯和管控的基础设施。</description>
     </item>
     
     <item>
@@ -314,7 +323,7 @@
       <pubDate>Tue, 18 Dec 2018 19:49:56 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-and-traffic-model/</guid>
-      <description>本文转载自宋净超的博客。 本文介绍了 Istio 和 Kubernetes 中的一些服务和流量的抽象模型。虽然 Istio 一开始确定的抽象模型与对接的底层平台无关，但目前来看基本绑定 Ku</description>
+      <description>本文介绍了 Kubernetes、Envoy 和 Istio 中流量管理的一些服务模型以及为什么说 Kubernetes service 存在的意义仅剩下做服务发现。</description>
     </item>
     
     <item>
@@ -323,7 +332,7 @@
       <pubDate>Mon, 10 Dec 2018 21:50:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/</guid>
-      <description>gRPC-Web使Web应用能够通过类似于Envoy的代理访问gRPC后端。Envoy是Istio的默认代理，因此，我们可以利用Istio的</description>
+      <description>本文构建了一个简单的Web应用，该应用使用emoji替换用户输入文本中的关键字，并使用gRPC-Web和Istio与gRPC后端进行通信。</description>
     </item>
     
     <item>
@@ -332,7 +341,7 @@
       <pubDate>Wed, 28 Nov 2018 11:25:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/invisible-men-in-the-world-of-cloudnative/</guid>
-      <description>一直想给我所从事的企业服务行业写点啥，又千头万绪不知从何说起。此次 KubeCon 上海一行，眼见 CNCF 高起朱楼大宴宾客，深受触动。企业服务这个巨大的“角落”，</description>
+      <description>一直想给我所从事的企业服务行业写点啥，又千头万绪不知从何说起。此次 KubeCon 上海一行，眼见 CNCF 高起朱楼大宴宾客，深受触动。企业服务这个巨大的“角落”，似乎已被遗忘。本文尝试给云原生时代的同学们讲讲这个似乎有点蒙昧的角落。也希望能给奋斗在企业服务项目中的朋友们一点启发。</description>
     </item>
     
     <item>
@@ -341,7 +350,7 @@
       <pubDate>Tue, 27 Nov 2018 19:09:15 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/</guid>
-      <description>在这个令人惊奇的时代，我们可以不需要编写一行代码，便可以很智能的集成应用程序，收集应用程序指标。 在这篇文章中，我将演示使用 helm 安装 Istio mtls 环境、必</description>
+      <description>本文展示的是如何使用 Istio 和 Envoy 来对 gRPC 做度量。</description>
     </item>
     
     <item>
@@ -350,7 +359,7 @@
       <pubDate>Tue, 27 Nov 2018 18:51:24 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-routing-basics/</guid>
-      <description>当学习像Istio这样的新技术时，我推荐看一看项目自带的示例。Istio包含了一些示例程序，但都有各种各样的不足。比如说BookInfo就是</description>
+      <description>本文展示了如何从头开始构建Istio应用程序和Istio路由的基础知识。</description>
     </item>
     
     <item>
@@ -359,7 +368,7 @@
       <pubDate>Thu, 22 Nov 2018 22:07:15 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-what-happens-when-control-plane-is-down/</guid>
-      <description>大家好！我在Istio上做了一些实验，禁用控制平面的组件，并观察应用和服务网格会发生什么。下面是我的笔记。 Pilot Pilot负责Istio的流量控</description>
+      <description>本文展示了当Istio控制平面的组件出现故障以后会发生什么现象。</description>
     </item>
     
     <item>
@@ -368,7 +377,7 @@
       <pubDate>Thu, 22 Nov 2018 21:56:14 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-is-it-a-bird-microgateway-blog-series-part-4/</guid>
-      <description>“它是一只鸟，它是一架飞机，它是超级……”。不，等等，它是Istio！即使你眯着眼睛，也能够看出来！什么是Istio？超级英雄有各种形状和大</description>
+      <description>本文讲述Istio强大的功能以及Istio组件介绍。</description>
     </item>
     
     <item>
@@ -377,7 +386,7 @@
       <pubDate>Thu, 25 Oct 2018 20:49:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</guid>
-      <description>介绍 自从istio-1.0.0在今年发布了正式版以后，Coohom项目在生产环境中也开启了使用istio来作为服务网格。 本文将会介绍与分享在</description>
+      <description>本文是酷家乐的Coohom项目使用Istio服务网格的实践经验分享。</description>
     </item>
     
     <item>
@@ -386,7 +395,7 @@
       <pubDate>Thu, 25 Oct 2018 10:44:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</guid>
-      <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武汉研发中心推出Naftis，帮助用户更轻松</description>
+      <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武研推出Naftis，帮助用户更轻松地管理Istio。</description>
     </item>
     
     <item>
@@ -395,7 +404,7 @@
       <pubDate>Wed, 24 Oct 2018 11:45:02 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/raw-tcp-traffic-shaping-with-istio/</guid>
-      <description>Istio通过虚拟服务, 目标规则, Gateway等概念提供了复杂的路由机制。Istio 1.0通过加权路由定义启用了HTTP流量转移。我提交的</description>
+      <description>本文通过构建一个简单的echo服务演示了如何在Istio1.1.0下进行TCP流量控制。</description>
     </item>
     
     <item>
@@ -404,7 +413,7 @@
       <pubDate>Mon, 22 Oct 2018 19:33:39 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-ui-tutorial/</guid>
-      <description>由来 ​ 开发istio-ui是由于运维：到时候线上几百个istio配置文件管理会很麻烦。其实在开始接触istio的时候，我们其他同学就有这样的</description>
+      <description>本文介绍的是联邦车网的工程师朱经惠开源的istio-ui项目，该项目主要是为了减轻配置工作和减少犯错几率。</description>
     </item>
     
     <item>
@@ -413,7 +422,7 @@
       <pubDate>Mon, 22 Oct 2018 14:15:27 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/kiali-the-istio-service-mesh-observability-tool/</guid>
-      <description>Istio 中有个 issue #9066 要求将 Istio 中默认使用的 Service Graph 替换成 Kiali。Kiali 最初是由 Red Hat 开源的，用于解决 Service Mesh 中可观察性即微服务的可视性问题。目前已获得 Istio</description>
+      <description>本文介绍了 Istio Service Mesh 中的可观察性工具 Kiali 的功能、架构和部分代码。</description>
     </item>
     
     <item>
@@ -422,7 +431,7 @@
       <pubDate>Fri, 19 Oct 2018 10:24:23 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-paas-integration/</guid>
-      <description>本文转载自赵化冰的博客。 Istio发布1.0版本后，其服务发现和路由规则功能已基本具备production能力，我们也开始了Istio和公司</description>
+      <description>Istio发布1.0版本后，其服务发现和路由规则功能已基本具备production能力，我们也开始了Istio和公司内部微服务平台的集成工作，打算以Istio为基础打造一个微服务管控中心，在这里把目前的进展和遇到的坑和大家分享一下。</description>
     </item>
     
     <item>
@@ -431,7 +440,7 @@
       <pubDate>Wed, 17 Oct 2018 19:13:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/set-sail-a-production-ready-istio-adapter/</guid>
-      <description>构建生产就绪的Istio Adapter 你已经浏览了Istio Mixer Adapter的指南 ，现在想要发布自己的Adapter？这篇文章将教你创建自己的Adapt</description>
+      <description>本文通过示例讲解了如何创建并部署一个生产环境就绪的Istio Adapter。</description>
     </item>
     
     <item>
@@ -440,7 +449,7 @@
       <pubDate>Mon, 15 Oct 2018 19:24:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/manipulating-istio-and-other-custom-kubernetes-resources-in-golang/</guid>
-      <description>在本文中，我将演示如何使用Golang来操作Kubernetes Custom Resources，以Istio为例。 不需要您了解Istio，我只是用它来</description>
+      <description>主要介绍了在Golang中操作Istio和其他Kubernetes自定义资源（CRD），主要讲解了除go-client之外的另一种方法。</description>
     </item>
     
     <item>
@@ -449,7 +458,7 @@
       <pubDate>Mon, 08 Oct 2018 19:29:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-traffic-management-impl-intro/</guid>
-      <description>本文由作者授权，转载自赵化冰的博客。 Istio作为一个service mesh开源项目，其中最重要的功能就是对网格中微服务之间的流量进行管理，</description>
+      <description>本文尝试结合系统架构、配置文件和代码对Istio流量管理的架构和实现机制进行分析，以达到从整体上理解Pilot和Envoy的流量管理机制的目的。</description>
     </item>
     
     <item>
@@ -458,7 +467,7 @@
       <pubDate>Wed, 26 Sep 2018 15:49:30 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microservice-observability-with-istio/</guid>
-      <description>Trulia是一个多功能的房地产网站，为您提供有关待售房屋、出租公寓、邻里洞察、市场和趋势的本地独家新闻，以帮助您确切了解房屋购买、出售或出</description>
+      <description>在kubernetes和istio的帮助下，Trulia能够分解PHP单体架构替换成可持续交付的微服务架构。团队不再被迫手动将工具添加到单个代码库或基础架构自动化中。</description>
     </item>
     
     <item>
@@ -467,7 +476,7 @@
       <pubDate>Tue, 25 Sep 2018 16:22:22 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/increasing-security-of-istio-deployments-by-removing-the-need-for-privileged-containers/</guid>
-      <description>随着 Istio 1.0 版本的发布，Istio 正在为开发云原生应用并希望采用服务网格解决方案的公司准备黄金时间。但是，有一个潜在的问题可能会降低这些公司的采</description>
+      <description>Red Hat OpenShift通过一个名叫istio-pod-network-controller的 DaemonSet 控制器将配置Pod的iptables规则的逻辑移出Pod本身，从而消除了特权容器的需求来提高Istio Deployment的安全性。</description>
     </item>
     
     <item>
@@ -476,7 +485,7 @@
       <pubDate>Tue, 25 Sep 2018 16:09:49 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</guid>
-      <description>Red Hat的OpenShift服务网格技术预览版上线，基于Istio。 软件开发实践的进步与软件交付中的技术改进相结合导致了组织中的应用程序实例</description>
+      <description>技术预览计划将为现有的OpenShift Container Platform客户提供在其OpenShift集群上部署和使用Istio平台的能力。红帽正在提供此计划，旨在收集反馈和经验，同时Red Hat期望在2019自然年提供OpenShift上Istio的全面支持和全面可用性。</description>
     </item>
     
     <item>
@@ -485,7 +494,7 @@
       <pubDate>Mon, 17 Sep 2018 19:19:27 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-interview-redbear-brian-harrington/</guid>
-      <description>Istio正在引发大量的关注，特别是1.0版本发布后。但它是否成为Kubernetes之上的事实的服务网络标准呢？ 我们采访了Red Hat的I</description>
+      <description>Istio能否成为Kubernetes之上的事实的服务网络标准呢？ 我们采访了Red Hat的Istio产品经理“红胡子”Brian Harrington，他的答案是肯定的。</description>
     </item>
     
     <item>
@@ -494,7 +503,7 @@
       <pubDate>Thu, 13 Sep 2018 20:26:56 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</guid>
-      <description>作为Istio教程第二篇文章本教程将一步步带领你熟悉指令并解释指令的作用。我们的前一篇文章解析了istio原理、示例，以及使用它给开发和运维</description>
+      <description>作为Kublr推出的Istio教程第二篇文章本教程将一步步带领你熟悉Istio指令并解释指令的作用，并在Kubernetes集群中实现金丝雀部署。</description>
     </item>
     
     <item>
@@ -503,7 +512,7 @@
       <pubDate>Tue, 11 Sep 2018 14:48:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/</guid>
-      <description>以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar</description>
+      <description>以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的。</description>
     </item>
     
     <item>
@@ -512,7 +521,7 @@
       <pubDate>Mon, 10 Sep 2018 15:18:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/aspen-mesh-released/</guid>
-      <description>Aspen Mesh这家公司隶属于F5，Aspen Mesh基于Istio 1.0开发，这个周末刚发布了1.0版本，可以申请免费试用。 Aspen Mesh对比Ist</description>
+      <description>Aspen Mesh这家公司隶属于F5，Aspen Mesh基于Istio 1.0开发，上个周末刚发布了1.0版本，可以申请免费试用。</description>
     </item>
     
     <item>
@@ -521,7 +530,7 @@
       <pubDate>Thu, 30 Aug 2018 15:21:45 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</guid>
-      <description>本文为该教程的第1部分。 如果你之前没有听说过Service Mesh，不用担心。虽然从可用文档、公开讨论和Github活跃度来看，它是一个相对</description>
+      <description>本文kublr出品的Istio Service Mesh教程的第1部分，主要讲解了Istio的部署和流量路由部分。</description>
     </item>
     
     <item>
@@ -530,7 +539,7 @@
       <pubDate>Tue, 28 Aug 2018 16:15:25 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-aims-to-be-the-mesh-plumbing-for-containerized-microservices/</guid>
-      <description>本文原标题为：Istio目标是成为容器化微服务的网状管道 在精彩的软件容器世界中，原本早已解决的问题又有新的解决方案出现，给人有种恍惚的感觉。</description>
+      <description>本文主要是IBM研究员兼云计算CTO Jason McGee对Istio项目的起源、分工与目标的解说。</description>
     </item>
     
     <item>
@@ -539,7 +548,7 @@
       <pubDate>Mon, 27 Aug 2018 19:52:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</guid>
-      <description>我们很高兴地宣布推出Cilium 1.2。该版本引入了几个新功能实现了Cilium用户和社区成员最迫切想要的功能。其中最吸引人的功能之一是引入</description>
+      <description>Cilum使用Kube-router在Kubernetes Pod与集群外部运行的服务之间建立连接，再引入基于DNS 名称的安全策略保护对集群外服务的访问，再增加Cluster Mesh增加对多Kubernetes集群的支持。</description>
     </item>
     
     <item>
@@ -548,7 +557,7 @@
       <pubDate>Thu, 23 Aug 2018 15:31:39 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/application-safety-and-correctness-cannot-be-offloaded-to-istio-or-any-service-mesh/</guid>
-      <description>我最近在讨论集成服务的演进以及服务网格的使用，特别是关于 Istio 。自从2017年1月我听说了 Istio 以来，我一直很兴奋，事实上我是为这种新技术感到兴奋，</description>
+      <description>Istio和服务网格的总体目标是解决应用程序网络类问题。将这些问题的解决方案迁移到服务网格中是可操作性的优化。但这并不意味着它不再是应用程序的责任，而是意味着这些功能的实现存在于进程之外了，并且必须是可配置的。</description>
     </item>
     
     <item>
@@ -557,7 +566,7 @@
       <pubDate>Mon, 20 Aug 2018 21:04:02 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</guid>
-      <description>使用Let’s Encrypt在Kubernetes上保护Istio的Ingress services 这是我在kubernetes之上部署Istio系列文章中</description>
+      <description>这是Vamp在kubernetes之上部署Istio系列文章中的第三篇，内容是关于Vamp试图通过Vamp Lamia实现的更多细节以及我们为什么选择Istio的原因。</description>
     </item>
     
     <item>
@@ -566,7 +575,7 @@
       <pubDate>Mon, 20 Aug 2018 16:14:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/google-istio-bigger-kubernetes-serverless/</guid>
-      <description>Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。 随着现代数字计算基础设施的不断发</description>
+      <description>Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。你可以在任何你喜欢的云提供商之间自由迁移，且使你上云之路更加平稳。一旦人们熟悉了Kubernetes和Istio的管理和编排方式，上云就不会变得可怕了。</description>
     </item>
     
     <item>
@@ -575,7 +584,7 @@
       <pubDate>Mon, 13 Aug 2018 20:44:06 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/why-you-should-care-about-istio-gateways/</guid>
-      <description>如果您要拆分单体架构，使用Istio管理您的微服务的一个巨大优势是，它利用与传统负载均衡器和应用分发控制器类似的入口模型的配置。 在负载均衡器</description>
+      <description>在Istio中，Gateway控制网格边缘的服务暴露。Gateway允许用户指定L4-L6设置，如端口和TLS设置。对于Ingress流量的L7设置，Istio允许您将网关绑定到VirtualServices。</description>
     </item>
     
     <item>
@@ -584,7 +593,7 @@
       <pubDate>Mon, 13 Aug 2018 16:19:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/</guid>
-      <description>8月1日Istio 1.0 发布，Cilium社区感谢所有Istio贡献者为此付出的巨大努力。我们很幸运能够参与社区活动，为Istio做出贡献，并帮</description>
+      <description>本博客将介绍BPF和Cilium如何增强Istio的一些细节，主要关注Istio的安全性，开启Istio对外部服务的支持和性能部分。</description>
     </item>
     
     <item>
@@ -593,7 +602,7 @@
       <pubDate>Tue, 07 Aug 2018 22:20:49 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/</guid>
-      <description>我们都是知道Kubernetes中个资源对象叫 autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动</description>
+      <description>我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。</description>
     </item>
     
     <item>
@@ -602,7 +611,7 @@
       <pubDate>Mon, 06 Aug 2018 08:43:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-tutorials-collection/</guid>
-      <description>8月1日0点，Istio 1.0发布，已生产就绪！大家都已经跃跃欲试了，几天前我发布了一键在本地搭建运行Istio 1.0的分布式Kuberne</description>
+      <description>给大家推荐下，目前本人搜集到的可以说是最完整的Isito学习环境和包含代码的示例教程。</description>
     </item>
     
     <item>
@@ -611,7 +620,7 @@
       <pubDate>Sun, 05 Aug 2018 15:47:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-tech-boosts-kubernetes-work-with-trade-offs/</guid>
-      <description>IT 团队能否只使用一种工具，使开发人员能够专注于编写应用程序代码，使管理员只专注于 IT 资源的管理？使用 Istio 可以实现，尽管如此，采纳 Istio 前确实需要研究</description>
+      <description>本文中各位分析师给出了采纳在Kubernets上运行的Istio service mesh的利弊分析。</description>
     </item>
     
     <item>
@@ -620,7 +629,7 @@
       <pubDate>Thu, 02 Aug 2018 15:32:40 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/</guid>
-      <description>Sidecar 设计模式已经越来越受欢迎，并在社区内得到更广泛的采用。构建具有高度可扩展性、弹性、安全性和可观察性的微服务架构具有挑战性。Service Mesh</description>
+      <description>Sidecar 设计模式已经越来越受欢迎，并在社区内得到更广泛的采用。构建具有高度可扩展性、弹性、安全性和可观察性的微服务架构具有挑战性。Service Mesh 架构的发展已经改变了游戏规则。它降低了与微服务架构相关的复杂性，并提供了许多功能，如负载平衡、服务发现、流量管理、熔断、遥测、故障注入等。</description>
     </item>
     
     <item>
@@ -629,7 +638,7 @@
       <pubDate>Tue, 31 Jul 2018 21:44:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/announcing-istio-1-0/</guid>
-      <description>本文转载自：Istio 官方网站，原文地址：https://istio.io/zh/blog/2018/announcing-1.0/ 今天，我</description>
+      <description>今天，我们很高兴地宣布 Istio 1.0。这距离最初的 0.1 版本发布以来已经过了一年多时间了。从 0.1 起，Istio 就在蓬勃发展的社区、贡献者和用户的帮助下迅速发展。现在已经有许多公司成功将 Istio 应用于生产，并通过 Istio 提供的洞察力和控制力获得了真正的价值。</description>
     </item>
     
     <item>
@@ -638,7 +647,7 @@
       <pubDate>Sat, 28 Jul 2018 17:49:21 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/</guid>
-      <description>本文为Service Mesh深度学习系列之一： Service Mesh深度学习系列part1—istio源码分析之pilot-agent模块分析 Service Mesh</description>
+      <description>本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-discovery的深度源码解析续篇。</description>
     </item>
     
     <item>
@@ -647,7 +656,7 @@
       <pubDate>Thu, 26 Jul 2018 21:12:31 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-architecture-radicalizes-container-networking/</guid>
-      <description>容器是IT行业的超级英雄，它与服务网格是最佳组合。它们联手对抗混乱的网络管理。 容器和微服务出现催生了一种称为服务网格的新型网络架构范例，但 IT</description>
+      <description>本文将是您了解和评估何时以及如何采纳服务网格的最佳参考资料。本文回顾了服务网格的历史，并采访了创造Service Mesh一词的Buoyant创始人，Istio的产品经理，Enovy的架构师Matt Klein，分别就谁应该何时以何种方式采纳服务网格给出了意见并展望了服务网格的未来。</description>
     </item>
     
     <item>
@@ -656,7 +665,7 @@
       <pubDate>Tue, 17 Jul 2018 20:12:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-circonus-istio-mixer-adapter/</guid>
-      <description>本文英文原文最初发表时间：2017年12月6日 Circonus 参与开源软件有着悠久的传统。因此，当看到 Istio 提供了一个精心设计的接口，通过适配器连接 syndicate 服务遥测</description>
+      <description>本文是Circonus公司的人员分享的为Istio mixer开发适配器的过程。</description>
     </item>
     
     <item>
@@ -665,7 +674,7 @@
       <pubDate>Tue, 17 Jul 2018 17:32:31 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin/</guid>
-      <description>本文分析的istio代码版本为0.8.0，commit为0cd8d67，commit时间为2018年6月18日。 本文为Service Mesh</description>
+      <description>本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-discovery的深度源码解析。</description>
     </item>
     
     <item>
@@ -674,7 +683,7 @@
       <pubDate>Tue, 17 Jul 2018 12:53:14 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/distributed-tracing-istio-and-your-applications/</guid>
-      <description>在微服务领域，分布式跟踪正逐渐成为调试和跟踪应用程序最重要的依赖工具。 最近的聚会和会议上，我发现很多人对分布式跟踪的工作原理很感兴趣，但同时</description>
+      <description>本文是由Aspen Mesh（隶属于F5）公司的Neeraj Poddar介绍如何在Istio中使用分布式跟踪，需要修改程序才能利用Istio做分布式追踪，Istio报告的Span如何与应用程序创建的Span交互。</description>
     </item>
     
     <item>
@@ -683,7 +692,7 @@
       <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</guid>
-      <description>4月，蚂蚁金服自主研发的分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA ）启动开源计划，并开放多个组件，（相关背景请点</description>
+      <description>蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案，同时开源了Go语言版的Sidecar—SOFA MOSN（可单独使用），期待通过社区贡献。</description>
     </item>
     
     <item>
@@ -692,7 +701,7 @@
       <pubDate>Fri, 13 Jul 2018 12:38:44 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0-8/</guid>
-      <description>这是我们正在发布的系列文章中的第二篇，描述了我们在 Kubernetes 上采用 Istio 进行流量路由的经验。有关我们试图通过Vamp实现的更多详情以及我们选择 Istio 的原因，</description>
+      <description>本文讲述Vamp（一款商业版的云原生应用平台）如何在Kubernetes上采用Istio进行流量路由的经验</description>
     </item>
     
     <item>
@@ -701,7 +710,7 @@
       <pubDate>Wed, 11 Jul 2018 14:24:24 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin/</guid>
-      <description>本文分析的istio代码版本为0.8.0，commit为0cd8d67，commit时间为2018年6月18日。 本文为Service Mesh</description>
+      <description>本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-agent的深度源码解析。</description>
     </item>
     
     <item>
@@ -710,7 +719,7 @@
       <pubDate>Mon, 09 Jul 2018 12:37:48 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-future-service-mesh/</guid>
-      <description>本文转载自InfoQ。 重要结论 微服务风格的架构能够简化单个服务的开发。然而，对于成百上千个微服务的通信、监控以及安全性的管理并不是一件简单的</description>
+      <description>本文讲述了Istio的基本原理以及后续发展计划，得出结论说istio是服务网格的未来</description>
     </item>
     
     <item>
@@ -719,7 +728,7 @@
       <pubDate>Wed, 04 Jul 2018 19:44:08 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</guid>
-      <description>本文系转载，作者：郑伟，小米信息部技术架构组 本系列文章主要从源码（35e2b904）出发，对istio做深入剖析，让大家对istio有更深的</description>
+      <description>本系列文章主要从Istio源码出发深入剖析，让大家对istio有更深的认知，从而方便平时排查问题。本文是对Istio中Mixer的工作流程浅析。</description>
     </item>
     
     <item>
@@ -728,7 +737,7 @@
       <pubDate>Wed, 04 Jul 2018 19:24:37 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/</guid>
-      <description>本文系转载，原文作者：郑伟，小米信息部技术架构组 本系列文章主要从源码（35e2b904）出发，对istio做深入剖析，让大家对istio有更</description>
+      <description>本系列文章主要从Istio源码出发深入剖析，让大家对istio有更深的认知，从而方便平时排查问题。本文讲解Istio中的bookinfo示例并执行过文档中的task，介绍从执行istioctl指令到配置文件生效的整个流程。</description>
     </item>
     
     <item>
@@ -737,7 +746,7 @@
       <pubDate>Wed, 04 Jul 2018 19:11:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-deepin-part1-framework-and-environment/</guid>
-      <description>本文系转载，作者：郑伟，小米信息部技术架构组 本系列文章主要从源码（35e2b904）出发，对istio做深入剖析，让大家对istio有更深的</description>
+      <description>本系列文章主要从Istio源码出发深入剖析，让大家对istio有更深的认知，从而方便平时排查问题。本文讲解Istio源码架构及开发环境搭建。</description>
     </item>
     
     <item>
@@ -746,7 +755,7 @@
       <pubDate>Wed, 04 Jul 2018 17:54:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/</guid>
-      <description>运营容器化基础设施给我们带来了一系列新的挑战。您需要对容器进行测试，评估您的 API 端点性能，并确定您的基础架构中的不良的组件。Istio 服务网格</description>
+      <description>本文讲述了容器化基础设运维的挑战，Istio给我们带来了哪些便利，怎样通过设置服务级别目标（SLO）、服务级别目标（SLO）、服务级别协议（SLA）、RED仪表板，根据监控数据的分布，进行数据分析来判断性能指标，而不是简单的百分位统计。</description>
     </item>
     
     <item>
@@ -755,7 +764,7 @@
       <pubDate>Wed, 04 Jul 2018 17:44:01 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/traffic-routing-between-fn-functions-using-fn-project-and-istio-fd/</guid>
-      <description>在本文中，我将解释如何在 Fn 函数之间使用 Istio 服务网格实现基于版本的流量路由。 我将首先解释 Istio 路由的基础知识以及将 Fn 部署和运行在 Kubernetes 上的方式。最后，我</description>
+      <description>本文首先解释 Istio 路由的基础知识以及将服务器架构（Serverless framework）Fn 部署和运行在 Kubernetes 上的方式。然后将说明如何利用 Istio 服务网格及其路由规则在两个不同的 Fn 函数之间路由流量的。</description>
     </item>
     
     <item>
@@ -764,7 +773,7 @@
       <pubDate>Thu, 28 Jun 2018 15:09:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-is-not-just-for-microservices/</guid>
-      <description>通过使用 Istio Service Mesh 来保障 Kubernetes 平台服务。通常可以运行示例代码有助于用户更清晰的理解并将概念应用到实际的案例中。该项目围绕一个简单的 Node.js 应用程序演示了以</description>
+      <description>通过使用 Istio Service Mesh 来保障 Kubernetes 平台服务。通常可以运行示例代码有助于用户更清晰的理解并将概念应用到实际的案例中。该项目围绕一个简单的 Node.js 应用程序演示了以 Istio Service Mesh 为 ETCD 的持久化数据服务的能力。</description>
     </item>
     
     <item>
@@ -773,7 +782,7 @@
       <pubDate>Mon, 25 Jun 2018 20:30:52 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/</guid>
-      <description>更新 感谢 Laurent Demailly 的评论，这里有一些更新。这篇文章已经得到了更新： 现在有一个 Cert-Manager 官方 Helm chart Istio Ingress 也支持基于 HTTP/2 的 GRPC Istio Istio 是管理微服务世界中数据流的一种新方式</description>
+      <description>本文是使用Let&amp;rsquo;s Encrypt为Isito（Envoy）Service Mesh添加TLS安全支持的教程。</description>
     </item>
     
     <item>
@@ -782,7 +791,7 @@
       <pubDate>Thu, 21 Jun 2018 18:11:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/soft-multitenancy-in-istio-service-mesh/</guid>
-      <description>多租户是一个在各种环境和各种应用中都得到了广泛应用的概念，但是不同环境中，为每租户提供的具体实现和功能性都是有差异的。Kubernetes 多</description>
+      <description>多租户是一个在各种环境和各种应用中都得到了广泛应用的概念，但是不同环境中，为每租户提供的具体实现和功能性都是有差异的。Kubernetes 多租户工作组致力于在 Kubernetes 中定义多租户用例和功能。然而根据他们的工作进展来看，恶意容器和负载对于其他租户的 Pod 和内核资源的访问无法做到完全控制，因此只有“软性多租户”支持是可行的。</description>
     </item>
     
     <item>
@@ -791,7 +800,7 @@
       <pubDate>Thu, 21 Jun 2018 18:00:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</guid>
-      <description>Docker 和 Kubernetes 为代表的容器技术炙手可热，熟知这一技术领域的用户，一定都知道下一个热点：Service Mesh，它承诺将微服务之间的内部网络通信均一化</description>
+      <description>本文中提到的典型是Envoy（数据平面）、Istio（控制平面）和Ambassador（API Gateway），Matt Klein指出人们在践行微服务的道路踩到的坑大多是与debugging有关，我们应该从服务网格的边缘开始实现反向代理、负载均衡和动态路由。实现或迁移基于容器技术的云原生平台如Kubernetes才刚刚开始，Service Mesh填补了该平台中的许多空白。</description>
     </item>
     
     <item>
@@ -800,7 +809,7 @@
       <pubDate>Thu, 21 Jun 2018 16:55:56 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-pilot-xds-note/</guid>
-      <description>本文转载自nino&amp;rsquo;s blog。 本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理</description>
+      <description>本篇总结pilot的xDS常用接口，顺便浏览了部分pilot实现，下篇总结下istio的流量管理和服务发现的实现。简单来说istio做为管理面，集合了配置中心和服务中心两个功能，并把配置发现和服务发现以一组统一的xDS接口提供出来，数据面的envoy通过xDS获取需要的信息来做服务间通信和服务治理。</description>
     </item>
     
     <item>
@@ -809,7 +818,7 @@
       <pubDate>Wed, 20 Jun 2018 10:25:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/</guid>
-      <description>原文：https://itnext.io/vistio-visualize-your-istio-mesh-using-netflixs-v</description>
+      <description>Vizceral是Netflix发布的一个开源项目，用于近乎实时地监控应用程序和集群之间的网络流量。Vistio是使用Vizceral对Istio和网格监控的改进。本文是使用Vistio对Istio mesh做流量可视化的教程。</description>
     </item>
     
     <item>
@@ -818,7 +827,7 @@
       <pubDate>Tue, 19 Jun 2018 15:54:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-in-cookpad/</guid>
-      <description>这个原文是 5 月初发表的日文原文的翻译。补充一下这篇文章的背景，Cookpad 是一家拥有 200 多种产品开发的中型科技公司，拥有 10 多支团队，每月平均</description>
+      <description>Cookpad是日本的一家分享菜谱和烹调经验的网站，本文是该网站使用Service Mesh的实践，当前Cookpad没有直接使用Istio而是以Envoy为数据平面，自研的控制平面。</description>
     </item>
     
     <item>
@@ -827,7 +836,7 @@
       <pubDate>Tue, 12 Jun 2018 15:06:25 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/</guid>
-      <description>如何确保微服务之间网络通信的可靠性、安全性和可管理性？ 使用服务网格吧！ 在过去一年中，Istio服务网格技术引发关注度和吸引力的持续提升，这是</description>
+      <description>本文将探讨为什么我会坚信Istio会很受欢迎并给出了四个原因，分别从微服务与转型、微服务先驱Netflix OSS的案例、分布式架构的方面来阐述微服务使用服务网格的必然性。</description>
     </item>
     
     <item>
@@ -836,7 +845,7 @@
       <pubDate>Mon, 11 Jun 2018 20:40:28 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/twistlock-makes-istios-security-layer-more-robust-easier-to-monitor/</guid>
-      <description>Istio已经成为一种流行且可靠的服务网格管理平台，使用它可以更轻松地部署、操作和扩展跨云部署的微服务。作为保证这些服务网格的一种方式，Tw</description>
+      <description>本文介绍网络安全公司Twistlock如何实现Istio service mesh的可视化并增强微服务的安全性</description>
     </item>
     
     <item>
@@ -845,7 +854,7 @@
       <pubDate>Mon, 11 Jun 2018 14:03:34 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part4-signature/</guid>
-      <description>本文转载自敖小剑的博客 接前文，继续分析Mixer Check Cache的源码，这次的重点是签名算法，也就是Referenced::Signature(</description>
+      <description>接前文，继续分析Mixer Check Cache的源码，这次的重点是签名算法，也就是Referenced::Signature()方法。</description>
     </item>
     
     <item>
@@ -854,7 +863,7 @@
       <pubDate>Mon, 11 Jun 2018 13:43:10 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part3-main/</guid>
-      <description>本文转载自敖小剑的博客 经过前面基本概念和实现原理的介绍，大家对mixer check cache应该有了基本的了解，下面我们开始展开源代码来细细研读。 Check</description>
+      <description>经过前面基本概念和实现原理的介绍，大家对mixer check cache应该有了基本的了解，下面我们开始展开源代码来细细研读。</description>
     </item>
     
     <item>
@@ -863,7 +872,7 @@
       <pubDate>Mon, 11 Jun 2018 10:56:15 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-security-notes-by-fleeto/</guid>
-      <description>本文转载自 伪架构师。 Istio 为网格中的微服务提供了较为完善的安全加固功能，在不影响代码的前提下，可以从多个角度提供安全支撑，官方文档做了较为详细的</description>
+      <description>Istio 为网格中的微服务提供了较为完善的安全加固功能，在不影响代码的前提下，可以从多个角度提供安全支撑，官方文档做了较为详细的介绍，但是也比较破碎，这里尝试做个简介兼索引，实现过程还是要根据官方文档进行。</description>
     </item>
     
     <item>
@@ -872,7 +881,7 @@
       <pubDate>Fri, 08 Jun 2018 16:01:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/</guid>
-      <description>现代服务网格架构提供了很多的新功能，基础设施相关的依赖部分被逐步从代码中移除，极大的降低了编码工作量。除此之外，这一架构的智能路由功能还把金</description>
+      <description>这是一篇关于在 Istio 路由规则中使用 Opentracing Baggage 对流量进行分布式追踪的教程。</description>
     </item>
     
     <item>
@@ -881,7 +890,7 @@
       <pubDate>Fri, 08 Jun 2018 12:40:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/tracing-grpc-with-istio/</guid>
-      <description>Aspen Mesh很喜欢用gRPC。Apen Mesh面向公众的API和许多内部API大多都是使用gRPC构建的。如果您还没有听说过 gRPC（熟练掌握</description>
+      <description>本文介绍的是如何在Istio中使用grpc并设置跟踪（tracing）与header传播，包括gRPC到grpc请求传播header、gRPC到HTTP请求传播header、使用grpc-gateway时传播header等</description>
     </item>
     
     <item>
@@ -890,7 +899,7 @@
       <pubDate>Thu, 07 Jun 2018 19:27:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-security-addressing-attack-vectors-with-istio/</guid>
-      <description>把单体应用拆分为微服务之后，会得到不少好处，例如稳定性的提高、持续运行时间的增长以及更好的故障隔离等。然而把大应用拆分为小服务的过程中，也会</description>
+      <description>把单体应用拆分为微服务的过程中，会引入一个风险就是——可能的受攻击面积变大了。从前单体应用中通过函数调用完成的通信，现在都要通过网络完成。提高安全性从而避免这个问题带来的安全影响，是微服务之路上必须要着重考虑的问题。</description>
     </item>
     
     <item>
@@ -899,7 +908,7 @@
       <pubDate>Thu, 07 Jun 2018 19:19:44 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part2-principle/</guid>
-      <description>转载自敖小剑的博客 前言 经过前面的基础概念的介绍，我们现在已经可以勾勒出一个mixer cache的实现轮廓，当然实际代码实现时会有很多细节。但</description>
+      <description>经过前面的基础概念的介绍，我们现在已经可以勾勒出一个mixer cache的实现轮廓，当然实际代码实现时会有很多细节。但是为了方便理解，我们在深入细节之前，先给出一个简化版本，让大家快速了解mixer cache的实现原理。后面的章节我们再逐渐深入。</description>
     </item>
     
     <item>
@@ -908,7 +917,7 @@
       <pubDate>Thu, 07 Jun 2018 19:16:21 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part1-concepts/</guid>
-      <description>前言 本系列文章将详细介绍Istio中Mixer Cache的工作原理，为了避免空谈，将引入广大程序员同学喜闻乐见的源码分析环节，并结合Mixe</description>
+      <description>本系列文章将详细介绍Istio中Mixer Cache的工作原理，为了避免空谈，将引入广大程序员同学喜闻乐见的源码分析环节，并结合Mixer的接口API，详细展现Mixer Cache的各种细节。</description>
     </item>
     
     <item>
@@ -917,7 +926,7 @@
       <pubDate>Wed, 06 Jun 2018 18:30:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/introducing-the-istio-v1alpha3-routing-api/</guid>
-      <description>到目前为止，Istio提供了一个简单的API来进行流量管理，该API包括了四种资源：RouteRule、DestinationPolicy、</description>
+      <description>本文讲解的是Istio 0.8中的一项重大变化——引入v1alpha3 routing API，旧版本的API将不再兼容，未来会提供模型转换工具来转换旧版 API。</description>
     </item>
     
     <item>
@@ -926,7 +935,7 @@
       <pubDate>Wed, 06 Jun 2018 15:32:26 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/manage-microservices-traffic-using-istio/</guid>
-      <description>说明 开发人员正在摆脱大型单体应用的束缚，转而采用小巧而专一的微服务，以加速软件开发并加强系统弹性。为了满足这个新生态的需求，开发人员需要为部</description>
+      <description>开发人员正在摆脱大型单体应用的束缚，转而采用小巧而专一的微服务，以加速软件开发并加强系统弹性。为了满足这个新生态的需求，开发人员需要为部署的微服务创建一个具有负载均衡、高级流量管理、请求跟踪和连接功能的服务网络。</description>
     </item>
     
     <item>
@@ -935,7 +944,7 @@
       <pubDate>Mon, 04 Jun 2018 16:09:57 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/helm-chart-for-istio-0-8/</guid>
-      <description>儿童节期间，拖拉了一个多月的 Istio 0.8 正式发布了，这可能是 Istio 1.0 之前的最后一个 LTS 版本，意义重大。 新版本中，原来的 Kubernetes 安装文件 install/kuber</description>
+      <description>本文将带您探究 Istio 0.8 LTS 版本中的 Helm Chart 的安装部署及其结构。</description>
     </item>
     
     <item>
@@ -944,7 +953,7 @@
       <pubDate>Mon, 04 Jun 2018 11:33:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/building-istio-with-minikube-in-a-container-and-jenkins/</guid>
-      <description>AspenMesh提供一种Istio的分布式架构支持，这意味着即使与上游Istio项目无关，我们也需要能够测试和修复Bug。为此我们已开发构</description>
+      <description>本文讲述如何制作一个新的 Minikube-in-a-Container 容器和使用 Jenkins Pipeline 来构建和测试 Istio 的流程脚本。</description>
     </item>
     
     <item>
@@ -953,7 +962,7 @@
       <pubDate>Fri, 01 Jun 2018 11:41:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-0-8-release-note/</guid>
-      <description>北京时间 2018 年 6 月 1 日（儿童节）上午 9: 30 Istio 0.8.0 LTS（长期支持版本）发布。该版本除了常见的一堆错误修复和性能改进之外，还包含以下更新和新功能。 网</description>
+      <description>北京时间 2018 年 6 月 1 日（儿童节）上午 9: 30 Istio 0.8.0 LTS（长期支持版本）发布。该版本除了常见的一堆错误修复和性能改进之外，还包含以下更新和新功能。</description>
     </item>
     
     <item>
@@ -962,7 +971,7 @@
       <pubDate>Thu, 31 May 2018 21:12:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</guid>
-      <description>在今年的哥本哈根 Kubecon 大会上，Weaveworks 的 CEO Alexis Richardson 与 Varun Talwar（来自一家隐形创业公司）谈到了 GitOps 工作流程和 Istio。会后 Weaveworks 的 Stefan Prodan 进行</description>
+      <description>本文是 Weaveworks 的 CEO 对 GitOps 工作流程和 Istio 的看法。本文还介绍了如何使用 GitOps 上线和管理 Istio 的金丝雀部署。以上观点来自哥本哈根 Kubecon 上的 Weaveworks 的分享。</description>
     </item>
     
     <item>
@@ -971,7 +980,7 @@
       <pubDate>Wed, 23 May 2018 16:09:57 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/deepin-service-mesh-tech-details/</guid>
-      <description>在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章</description>
+      <description>在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章，来解析Service Mesh背后的技术细节。</description>
     </item>
     
     <item>
@@ -980,7 +989,7 @@
       <pubDate>Tue, 22 May 2018 12:16:22 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-tutorial/</guid>
-      <description>本文是 Istio 管理 Java 微服务的案例教程，使用的所有工具和软件全部基于开源方案，替换了 redhat-developer-demos/istio-tutorial 中的 minishift 环境，使用 kubernetes-vagrant-centos-cluster 替代，沿用了原有的微服务示例，使用 Zipkin 做分布式</description>
+      <description>本文是 Istio 管理 Java 微服务的案例教程，使用的所有工具和软件全部基于开源方案，替换了 redhat-developer-demos/istio-tutorial 中的 minishift 环境，使用 kubernetes-vagrant-centos-cluster 替代，沿用了原有的微服务示例，使用 Zipkin 做分布式追踪而不是 Jaeger。</description>
     </item>
     
   </channel>

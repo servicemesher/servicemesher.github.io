@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Monitoring on ServiceMesher</title>
+    <title>monitoring on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/monitoring/</link>
-    <description>Recent content in Monitoring on ServiceMesher</description>
+    <description>Recent content in monitoring on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 08 Nov 2018 15:20:46 +0800</lastBuildDate>
@@ -26,7 +26,7 @@
       <pubDate>Wed, 04 Jul 2018 17:54:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/</guid>
-      <description>运营容器化基础设施给我们带来了一系列新的挑战。您需要对容器进行测试，评估您的 API 端点性能，并确定您的基础架构中的不良的组件。Istio 服务网格</description>
+      <description>本文讲述了容器化基础设运维的挑战，Istio给我们带来了哪些便利，怎样通过设置服务级别目标（SLO）、服务级别目标（SLO）、服务级别协议（SLA）、RED仪表板，根据监控数据的分布，进行数据分析来判断性能指标，而不是简单的百分位统计。</description>
     </item>
     
   </channel>

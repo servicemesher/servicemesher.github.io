@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Grpc Web on ServiceMesher</title>
+    <title>grpc-web on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/grpc-web/</link>
-    <description>Recent content in Grpc Web on ServiceMesher</description>
+    <description>Recent content in grpc-web on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 28 Jan 2019 14:20:33 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 28 Jan 2019 14:20:33 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-and-grpc-web-a-fresh-new-alternative-to-rest/</guid>
-      <description>gRPC-Web作为gRPC的JavaScript客户端库，使Web应用可以不用自定义HTTP服务器为中介，直接通过Envoy与gRPC服务</description>
+      <description>本文为大家推荐的是一种REST的替代方案 Envoy + gRPC-Web。</description>
     </item>
     
   </channel>

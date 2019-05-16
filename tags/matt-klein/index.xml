@@ -17,7 +17,7 @@
       <pubDate>Fri, 22 Jun 2018 19:01:51 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/</guid>
-      <description>关键点 服务网格框架用于处理服务间的通信，并提供连接、管理和保护微服务的平台。 服务网格通过处理需要复杂编码的功能来帮助应用程序开发人员，例如路</description>
+      <description>本文是InfoQ对Serivce Mesh业界领袖Matt Klein、Dan Berg、Priyanka Sharma、Lachlan Evenson、Varun Talwar、Oliver Gould的采访，几位大咖分别就Service Mesh的定义及其在微服务交互和治理方面带来的优势、服务网格与ESB的区别，谁应该关心服务网格，服务网格的运行方式、sidecar以及学习曲线展开了讨论。</description>
     </item>
     
   </channel>

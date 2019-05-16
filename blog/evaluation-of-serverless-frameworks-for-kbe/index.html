@@ -13,7 +13,7 @@
   <meta name="keywords" content="Serverless, 无服务, Kubernetes, FaaS">
   
 
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.55.5" />
 
   
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -674,9 +674,11 @@ echo &quot;OpenFaaS Gateway IP: ${gateway_ip}&quot;
 <li><p>安装Helm CLI， Helm是一个Kubernetes包管理器。让我们初始化Helm：</p>
 
 <pre><code class="language-shell">$ helm init
-</code></pre></li>
+</code></pre>
 
-<li><p>在GKE命名空间中安装Fission</p>
+<ol>
+<li>在GKE命名空间中安装Fission</li>
+</ol>
 
 <pre><code class="language-shell">$ helm install --namespace fission https://github.com/fission/fission/releases/download/0.7.0/fission-all-0.7.0.tgz
 </code></pre></li>
@@ -688,9 +690,11 @@ echo &quot;OpenFaaS Gateway IP: ${gateway_ip}&quot;
 <pre><code class="language-shell">$ curl -Lo fission https://github.com/fission/fission/releases/download/0.7.0/fission-cli-osx&amp;&amp; chmod +x fission &amp;&amp; sudo mv fission /usr/local/bin/
 </code></pre>
 
-<p><strong>Windows</strong> 在 <a href="https://github.com/fission/fission/releases">此处</a> 下载Windows可执行文件。</p></li>
+<p><strong>Windows</strong> 在 <a href="https://github.com/fission/fission/releases">此处</a> 下载Windows可执行文件。</p>
 
-<li><p>创建HTTP服务我们将创建一个简单的HTTP服务来打印Hello World。</p>
+<ol>
+<li>创建HTTP服务我们将创建一个简单的HTTP服务来打印Hello World。</li>
+</ol>
 
 <pre><code class="language-shell">$ cat &gt; hello.py
 
@@ -706,8 +710,7 @@ def main(context):
 $ curl http://&lt;fission router&gt;/hello
 
 Hello, world!
-</code></pre></li>
-</ol>
+</code></pre>
 
 <h2 id="d-kubeless和部署spring-boot模板">D. Kubeless和部署Spring Boot模板</h2>
 
@@ -716,7 +719,8 @@ Hello, world!
 <p>我们可以使用在上一个练习中GCP上创建的K8s群集在Fission上部署HTTP请求。让我们走过这个过程吧。</p>
 
 <ol>
-<li><p>访问Kubernetes仪表板</p>
+<li>访问Kubernetes仪表板</li>
+</ol>
 
 <p>在K8s集群正在运行的情况下，我们可以使用kubectl在8080端口上使用仪表板：</p>
 
@@ -724,9 +728,11 @@ Hello, world!
 
 <p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/evaluation-of-serverless-frameworks-for-kbe/61411417ly1fwtsjw13nsj218g0jrq81.jpg" alt="" /></p>
 
-<p><strong>可以通过浏览器导航到<a href="http://localhost8080/ui">http://localhost8080/i</a>来访问仪表板</strong></p></li>
+<p><strong>可以通过浏览器导航到<a href="http://localhost8080/ui">http://localhost8080/i</a>来访问仪表板</strong></p>
 
-<li><p>安装Kubeless CLI</p>
+<ol>
+<li>安装Kubeless CLI</li>
+</ol>
 
 <p><strong>OSX</strong></p>
 
@@ -765,9 +771,11 @@ $ sudo cp bundles/kubeless_darwin-amd64/kubeless /usr/local/bin/
         // 此时，我们有标题，方法，网址和请求体，现在可以做任何我们需要的事情来回应这个要求。
       });
     }).listen(8080); // 激活此服务器，监听8080端口。
-</code></pre></li>
+</code></pre>
 
-<li><p>在Kubeless环境中运行函数</p>
+<ol>
+<li>在Kubeless环境中运行函数</li>
+</ol>
 
 <p>我们可以通过提供以下信息向Kubeless注册该函数：</p>
 
@@ -777,7 +785,6 @@ $ sudo cp bundles/kubeless_darwin-amd64/kubeless /usr/local/bin/
 <li>要执行以运行代码的语言运行时</li>
 <li>包含函数代码的文件的名称</li>
 <li>文件内部函数的名称</li>
-</ol></li>
 </ol>
 
 <p>通过添加上面的变量1-5，我们调用以下命令在Kubeless中注册和部署函数：</p>
@@ -798,7 +805,8 @@ $ sudo cp bundles/kubeless_darwin-amd64/kubeless /usr/local/bin/
 
 <hr />
 
-<p>Hisham是一位咨询企业解决方案架构师，在利用容器技术解决基础架构问题和更快地部署应用程序以及更高级别的安全性，性能和可靠性方面拥有丰富的经验 最近，Hisham一直在为各种中间件应用程序利用容器和云原生架构，以在整个企业中部署复杂的关键任务服务。在进入咨询领域之前，Hisham曾在Aon Hewitt，Lexmark和ADP从事软件实施和技术支持工作。</p>
+<p>Hisham是一位咨询企业解决方案架构师，在利用容器技术解决基础架构问题和更快地部署应用程序以及更高级别的安全性，性能和可靠性方面拥有丰富的经验 最近，Hisham一直在为各种中间件应用程序利用容器和云原生架构，以在整个企业中部署复杂的关键任务服务。在进入咨询领域之前，Hisham曾在Aon Hewitt，Lexmark和ADP从事软件实施和技术支持工作。</p></li>
+</ol>
 
                         </div>
                         
@@ -907,7 +915,7 @@ $ sudo cp bundles/kubeless_darwin-amd64/kubeless /usr/local/bin/
             <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
             </li>
             
-            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (114)</a>
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (115)</a>
             </li>
             
             <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
@@ -1329,6 +1337,19 @@ $ sudo cp bundles/kubeless_darwin-amd64/kubeless /usr/local/bin/
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/">
+                          
+                            <img src="/img/placeholder.png" class="img-responsive" alt="Solo.io打造的Gloo——Knative中Istio的替代方案">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/">Solo.io打造的Gloo——Knative中Istio的替代方案</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="/blog/api-gateways-are-going-through-an-identity-crisis/">
                           
                           <img src="/img/blog/banners/006tNbRwly1fw867vtusqj30rs0kudth.jpg" class="img-responsive" alt="API Gateway的身份认同危机">
@@ -1350,19 +1371,6 @@ $ sudo cp bundles/kubeless_darwin-amd64/kubeless /usr/local/bin/
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="/blog/google-cloud-run-intro/">Google Cloud Run详细介绍</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/google-traffic-director-detail/">
-                          
-                          <img src="/img/blog/banners/006tNbRwgy1fug0qf4f7qj31jk15ox6r.jpg" class="img-responsive" alt="Google Traffic Director详细介绍">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/google-traffic-director-detail/">Google Traffic Director详细介绍</a></h5>
                     </div>
                 </div>
                 

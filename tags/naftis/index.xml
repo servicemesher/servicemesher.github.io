@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Naftis on ServiceMesher</title>
+    <title>naftis on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/naftis/</link>
-    <description>Recent content in Naftis on ServiceMesher</description>
+    <description>Recent content in naftis on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 25 Oct 2018 10:44:46 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 25 Oct 2018 10:44:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</guid>
-      <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武汉研发中心推出Naftis，帮助用户更轻松</description>
+      <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武研推出Naftis，帮助用户更轻松地管理Istio。</description>
     </item>
     
   </channel>

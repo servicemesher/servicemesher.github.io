@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ingress on ServiceMesher</title>
+    <title>ingress on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/ingress/</link>
-    <description>Recent content in Ingress on ServiceMesher</description>
+    <description>Recent content in ingress on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 17 Apr 2019 11:23:34 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 17 Apr 2019 11:23:34 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</guid>
-      <description>本文转载自zhangguanzhang的博客。 从之前对ingress controller到现在了解架构和一些经验总结下，顺带给人科普少走弯路</description>
+      <description>本文是对 Kubernetes 的 Ingress controller 的介绍、部署及高可用说明。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 20 Sep 2018 18:00:47 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</guid>
-      <description>据我所知，这是kubernetes可用网关的最完整的列表。从技术上来讲，Ambassador不是ingress，但是它表现地已经非常好了。你</description>
+      <description>本文是对可作为Kubernetes中的API网关的开源软件的推荐列表。</description>
     </item>
     
   </channel>

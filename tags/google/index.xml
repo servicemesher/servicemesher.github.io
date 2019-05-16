@@ -26,7 +26,7 @@
       <pubDate>Thu, 09 May 2019 21:38:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/google-traffic-director-detail/</guid>
-      <description>Traffic Director介绍 Traffic Director 是 Google Cloud 推出的完全托管的服务网格流量控制平面。 援引来自Traffic Director官方网站的介绍资料，Traffi</description>
+      <description>Traffic Director 是 Google Cloud 推出的完全托管的服务网格流量控制平面。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Wed, 08 May 2019 22:40:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/anthos-config-management-intro/</guid>
-      <description>本文通过对Google近期发布的Anthos混合云产品的核心组件 Anthos Config Management进行分析，探究其背后设计的核心理念——Infrast</description>
+      <description>简单说，当你修改某个git管理下的yaml配置文件，里面描述了某个GKE私有集群某个cluster的node数量，然后Anthos Config Management会帮你自动的发命令并让节点数量变成你想要的那个。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Tue, 28 Aug 2018 16:15:25 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-aims-to-be-the-mesh-plumbing-for-containerized-microservices/</guid>
-      <description>本文原标题为：Istio目标是成为容器化微服务的网状管道 在精彩的软件容器世界中，原本早已解决的问题又有新的解决方案出现，给人有种恍惚的感觉。</description>
+      <description>本文主要是IBM研究员兼云计算CTO Jason McGee对Istio项目的起源、分工与目标的解说。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Mon, 20 Aug 2018 16:14:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/google-istio-bigger-kubernetes-serverless/</guid>
-      <description>Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。 随着现代数字计算基础设施的不断发</description>
+      <description>Google Cloud采用了Istio服务网格技术来管理微服务，这可能比Kubernetes和无服务器产生更大的影响。你可以在任何你喜欢的云提供商之间自由迁移，且使你上云之路更加平稳。一旦人们熟悉了Kubernetes和Istio的管理和编排方式，上云就不会变得可怕了。</description>
     </item>
     
   </channel>

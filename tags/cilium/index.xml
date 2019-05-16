@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cilium on ServiceMesher</title>
+    <title>cilium on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/cilium/</link>
-    <description>Recent content in Cilium on ServiceMesher</description>
+    <description>Recent content in cilium on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 07 Nov 2018 14:14:01 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 07 Nov 2018 14:14:01 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cilium-intro/</guid>
-      <description>Cilium是一个纯开源软件，没有哪家公司提供商业化支持，也不是由某一公司开源，该软件用于透明地保护使用Linux容器管理平台（如Docke</description>
+      <description>Cilium是一个纯开源软件，没有哪家公司提供商业化支持，也不是由某一公司开源，该软件用于透明地保护使用Linux容器管理平台（如Docker和Kubernetes）部署的应用程序服务之间的网络连接。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 06 Nov 2018 12:20:51 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/</guid>
-      <description>Cilium 1.3：具有Cassandra和Memcached支持的Envoy Go语言扩展 我们很高兴地宣布Cilium 1.3发布了。这个版本加入了几个</description>
+      <description>本文讲解了具备API感知的网络和安全性管理的开源软件Cilium1.3的新特性，并用示例演示新的Go扩展如何使用。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Mon, 27 Aug 2018 19:52:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</guid>
-      <description>我们很高兴地宣布推出Cilium 1.2。该版本引入了几个新功能实现了Cilium用户和社区成员最迫切想要的功能。其中最吸引人的功能之一是引入</description>
+      <description>Cilum使用Kube-router在Kubernetes Pod与集群外部运行的服务之间建立连接，再引入基于DNS 名称的安全策略保护对集群外服务的访问，再增加Cluster Mesh增加对多Kubernetes集群的支持。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Mon, 13 Aug 2018 16:19:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/</guid>
-      <description>8月1日Istio 1.0 发布，Cilium社区感谢所有Istio贡献者为此付出的巨大努力。我们很幸运能够参与社区活动，为Istio做出贡献，并帮</description>
+      <description>本博客将介绍BPF和Cilium如何增强Istio的一些细节，主要关注Istio的安全性，开启Istio对外部服务的支持和性能部分。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Sun, 01 Jul 2018 12:33:23 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</guid>
-      <description>背景和想法 Service Mesh 提供了微服务化开发的新思路，核心思想是构建一个代理转发网络并结合控制和转发分离的做法来对成千上万个微服务间做流量、策略、安全等</description>
+      <description>借助 eBPF，作为 Service Mesh 的数据转发层，对接 Pilot、Mixer 等控制面，实现策略、流量和安全管理，是不是一种更高效的方式？这会比 Envoy 拥有更好的性能，虽然性能未必是 Mesh 首要考虑的问题，本文中讲述使用 Cilium 的尝试。</description>
     </item>
     
   </channel>

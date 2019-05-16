@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Knative on ServiceMesher</title>
+    <title>knative on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/knative/</link>
-    <description>Recent content in Knative on ServiceMesher</description>
+    <description>Recent content in knative on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 13 May 2019 12:20:46 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/knative/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Solo.io打造的Gloo——Knative中Istio的替代方案</title>
+      <link>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</link>
+      <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</guid>
+      <description>[编者按] &amp;gt; 之前有社区成员询问是不是想尝试Knative时，必须要安装Istio才行，今天就告诉大家一种Istio的替代方案，使用Solo.</description>
+    </item>
     
     <item>
       <title>Google Cloud Run详细介绍</title>
@@ -26,7 +35,7 @@
       <pubDate>Tue, 12 Mar 2019 11:17:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/knative-serving/</guid>
-      <description>译者：杨铁党、孙海洲、邱世达、宋净超、徐鹏 Knative 是一个基于 Kubernetes 的，用于构建、部署和管理现代 serverless 应用的平台。Getting Started with Knative 是一本由 Pivotal 公司赞助 O’</description>
+      <description>本章介绍 Knative Serving 组件，描述 Knative Serving 如何部署并为应用和函数 (funtions) 提供服务。</description>
     </item>
     
     <item>
@@ -35,7 +44,7 @@
       <pubDate>Mon, 11 Mar 2019 12:23:31 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/knative-overview/</guid>
-      <description>译者：陈佳栋、宋净超、孙海洲、徐鹏、邱世达 Knative 是一个基于 Kubernetes 的，用于构建、部署和管理现代 serverless 应用的平台。Getting Started with Knative 是一本由 Pivotal 公司赞助 O’</description>
+      <description>本文是 Knative 入门系列的第一篇，knative 概述。</description>
     </item>
     
     <item>
@@ -44,7 +53,7 @@
       <pubDate>Fri, 01 Mar 2019 10:40:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/knative-whittling-down-the-code/</guid>
-      <description>[编者案] Knative 作为 Google 发起开源的 serverless 项目，给我们提供了一套简单易用的 serverless 开源解决方案。本文作者直观地向我们展示了如何使用Knative来一步一步逐渐</description>
+      <description>本文介绍如何利用Knative提供的功能，减少自己需要编写的代码。</description>
     </item>
     
     <item>
@@ -53,7 +62,7 @@
       <pubDate>Fri, 22 Feb 2019 14:08:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</guid>
-      <description>关于 Knative eventing 的基本概念可以参考: https://github.com/knative/docs/blob/master/eventing/README.md https://thenewstack.io/knative-enables-portable-serverless-platforms-on-kubernetes-for-any-cloud/ 本文不对基本概念做介绍，本文主要是基于 Kubernetes Event Source example 为例分析 in-memory-channel 的实现原理。 在运行 Kubernetes Event Source example 之前要保证已经安装了 in-memory-channel , 下</description>
+      <description>本文不对基本概念做介绍，本文主要是基于 Kubernetes Event Source example 为例分析 in-memory-channel 的实现原理。</description>
     </item>
     
     <item>
@@ -62,7 +71,7 @@
       <pubDate>Wed, 02 Jan 2019 11:35:38 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/knative-redefine-serverless/</guid>
-      <description>大家好，今天给大家来的演讲专题是“Knative：重新定义Serverless”, 我是来自蚂蚁金服中间件的敖小剑。 这是我的个人资料，有兴趣的</description>
+      <description>本文整理自敖小剑在2018年GIAC上海站的分享。</description>
     </item>
     
     <item>
@@ -71,7 +80,7 @@
       <pubDate>Tue, 18 Dec 2018 19:43:14 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/knative-serverless-platform/</guid>
-      <description>本文作者：吴伟，蚂蚁金服系统部技术专家，本文转载自其博客。 knative 是谷歌开源的 serverless 架构方案，旨在提供一套简单易用的 serverless 方案，把 serverless 标准化。目前参与的公司</description>
+      <description>本文是对 Google 开源的 serverless 计算平台 knative 的介绍。</description>
     </item>
     
     <item>
@@ -80,7 +89,7 @@
       <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
-      <description>Jenkins服务来源于创建自2004年的Hudson。在软件行业中，Jenkins已经是家喻户晓的明星产品，并且已经是CI和CD的领头羊。</description>
+      <description>本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。</description>
     </item>
     
     <item>
@@ -89,7 +98,7 @@
       <pubDate>Tue, 07 Aug 2018 22:20:49 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/</guid>
-      <description>我们都是知道Kubernetes中个资源对象叫 autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动</description>
+      <description>我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。</description>
     </item>
     
   </channel>

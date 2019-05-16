@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Coohom on ServiceMesher</title>
+    <title>coohom on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/coohom/</link>
-    <description>Recent content in Coohom on ServiceMesher</description>
+    <description>Recent content in coohom on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 25 Oct 2018 20:49:29 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 25 Oct 2018 20:49:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</guid>
-      <description>介绍 自从istio-1.0.0在今年发布了正式版以后，Coohom项目在生产环境中也开启了使用istio来作为服务网格。 本文将会介绍与分享在</description>
+      <description>本文是酷家乐的Coohom项目使用Istio服务网格的实践经验分享。</description>
     </item>
     
   </channel>

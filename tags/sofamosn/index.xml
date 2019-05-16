@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sofamosn on ServiceMesher</title>
+    <title>sofamosn on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/sofamosn/</link>
-    <description>Recent content in Sofamosn on ServiceMesher</description>
+    <description>Recent content in sofamosn on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 17 Dec 2018 11:07:07 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 17 Dec 2018 11:07:07 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/sofa-mosn-0-4-0-changelog/</guid>
-      <description>SOFAMosn几个月前由蚂蚁金服开源，使用Go语言实现，遵循Envoy xDS协议，既可以单独作为网络代理使用，也可以作为Istio/SOF</description>
+      <description>本文是蚂蚁金服开源的 SOFAMosn 的0.4.0版本的发布日志。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 04 Dec 2018 17:32:44 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</guid>
-      <description>朵晓东，花名奕杉，蚂蚁金服高级技术专家。专注企业云计算技术及产品，蚂蚁金融云 PaaS 创始团队核心成员，Antstack 网络产品负责人。开源爱好者，</description>
+      <description>本文根据晓东在 GIAC 上海站的演讲内容整理，完整的分享 PPT 获取方式见文章底部。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Thu, 29 Nov 2018 14:51:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/ant-financial-service-mesh-adoption-plan/</guid>
-      <description>大家好，今天给大家带来的演讲主题是“蚂蚁金服Service Mesh渐进式迁移方案”，给大家介绍一下我们蚂蚁金服主站的Service Mesh迁</description>
+      <description>本文是上周末Service Mesh Meetup上海站的演讲内容，前面一半内容来自蚂蚁金服的敖小剑，后一半来自阿里UC的龙轼。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Fri, 31 Aug 2018 12:27:25 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</guid>
-      <description>本文作者：邵俊雄（熊啸），蚂蚁金服中间件团队高级技术专家，目前主要负责 SOFAMesh 的开发工作。 本文是基于作者在 Service Mesh Meetup #3 深圳的主题分享《SOFAMesh</description>
+      <description>本文作者是蚂蚁金服中间件团队的高级技术专家邵俊雄（熊啸），主要负责 SOFAMesh 的开发工作。本文是基于作者在 Service Mesh Meetup #3 深圳的主题分享《SOFAMesh的通用协议扩展》部分内容所整理，完整内容见文末的直播回放。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Mon, 20 Aug 2018 11:24:33 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/sofa-mosn-performance-report-0-1-0/</guid>
-      <description>以下的的性能报告为 SOFAMosn 0.1.0 在做 Bolt 与 HTTP1.x 协议的纯 TCP 转发上与 envoy 的一些性能对比数据，主要表现在 QPS、RTT、失败率/成功率等。 本文原文来自：https</description>
+      <description>以下的蚂蚁金服开源的SOFAMosn 0.1.0版本的性能报告，在做Bolt与HTTP1.x 协议的纯TCP，转发上与Envoy的一些性能对比数据、主要表现在QPS、RTT、失败率/成功率等。</description>
     </item>
     
   </channel>

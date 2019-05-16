@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sofamesh on ServiceMesher</title>
+    <title>sofamesh on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/sofamesh/</link>
-    <description>Recent content in Sofamesh on ServiceMesher</description>
+    <description>Recent content in sofamesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 04 Dec 2018 17:32:44 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 04 Dec 2018 17:32:44 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</guid>
-      <description>朵晓东，花名奕杉，蚂蚁金服高级技术专家。专注企业云计算技术及产品，蚂蚁金融云 PaaS 创始团队核心成员，Antstack 网络产品负责人。开源爱好者，</description>
+      <description>本文根据晓东在 GIAC 上海站的演讲内容整理，完整的分享 PPT 获取方式见文章底部。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 29 Nov 2018 14:51:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/ant-financial-service-mesh-adoption-plan/</guid>
-      <description>大家好，今天给大家带来的演讲主题是“蚂蚁金服Service Mesh渐进式迁移方案”，给大家介绍一下我们蚂蚁金服主站的Service Mesh迁</description>
+      <description>本文是上周末Service Mesh Meetup上海站的演讲内容，前面一半内容来自蚂蚁金服的敖小剑，后一半来自阿里UC的龙轼。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Sun, 14 Oct 2018 14:53:04 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/</guid>
-      <description>本文是SOFAMesh中的多协议通用解决方案x-protocol介绍系列文章之一。 SOFAMesh中的多协议通用解决方案x-protocol</description>
+      <description>在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，本文介绍的是TCP协议扩展。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Wed, 10 Oct 2018 11:45:26 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/x-protocol-rapid-decode-forward/</guid>
-      <description>本文是SOFAMesh中的多协议通用解决方案x-protocol介绍系列文章之一。 SOFAMesh中的多协议通用解决方案x-protocol</description>
+      <description>在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，本文介绍的是快速解码转发方案。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Mon, 08 Oct 2018 14:58:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/x-protocol-common-address-solution/</guid>
-      <description>本文是SOFAMesh中的多协议通用解决方案x-protocol介绍系列文章之一。 SOFAMesh中的多协议通用解决方案x-protocol</description>
+      <description>在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，首先介绍的是DNS通用寻址方案。</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Tue, 11 Sep 2018 19:06:22 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</guid>
-      <description>本文作者：彭泽文，阿里巴巴UC事业部高级开发工程师 X-protocol 的定位是云原生、高性能、低侵入性的通用 Service Mesh 落地方案，依托 Kubernetes 基座，利用其原生的服务注册和服</description>
+      <description>本文将以 Dubbo 为例，演示 SOFAMesh 中 Dubbo on x-protocol 场景下 Service Mesh 路由功能，涵盖 Version route 、Weighted route 功能。</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@
       <pubDate>Fri, 31 Aug 2018 12:27:25 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</guid>
-      <description>本文作者：邵俊雄（熊啸），蚂蚁金服中间件团队高级技术专家，目前主要负责 SOFAMesh 的开发工作。 本文是基于作者在 Service Mesh Meetup #3 深圳的主题分享《SOFAMesh</description>
+      <description>本文作者是蚂蚁金服中间件团队的高级技术专家邵俊雄（熊啸），主要负责 SOFAMesh 的开发工作。本文是基于作者在 Service Mesh Meetup #3 深圳的主题分享《SOFAMesh的通用协议扩展》部分内容所整理，完整内容见文末的直播回放。</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
       <pubDate>Thu, 02 Aug 2018 14:31:43 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/sofa-mosn-deep-dive/</guid>
-      <description>SOFAMosn GitHub地址：https://github.com/alipay/sofa-mosn 本文作者：朵晓东，花名奕杉，蚂蚁金服高级技术专家，</description>
+      <description>本文基于蚂蚁金服高级技术专家朵晓东在第二届Service Mesh Meetup北京站分享的部分内容所整理。</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@
       <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</guid>
-      <description>4月，蚂蚁金服自主研发的分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA ）启动开源计划，并开放多个组件，（相关背景请点</description>
+      <description>蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案，同时开源了Go语言版的Sidecar—SOFA MOSN（可单独使用），期待通过社区贡献。</description>
     </item>
     
     <item>
@@ -98,7 +98,7 @@
       <pubDate>Wed, 04 Jul 2018 19:56:20 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/</guid>
-      <description>本文是根据蚂蚁金服 Service Mesh 布道师敖小剑在 Service Mesher社区进行的第一次 Meetup 上分享的《大规模微服务架构下的 Service Mesh 探索之路》现场演讲内容实录整理编辑而成</description>
+      <description>本文是根据蚂蚁金服 Service Mesh 布道师敖小剑在 Service Mesher社区进行的第一次 Meetup 上分享的《大规模微服务架构下的 Service Mesh 探索之路》现场演讲内容实录整理编辑而成，希望能给关注 Service Mesh 产品的朋友们带来帮助和了解。</description>
     </item>
     
   </channel>

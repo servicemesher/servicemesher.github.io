@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gateway on ServiceMesher</title>
+    <title>gateway on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/gateway/</link>
-    <description>Recent content in Gateway on ServiceMesher</description>
+    <description>Recent content in gateway on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 20 Sep 2018 18:00:47 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 20 Sep 2018 18:00:47 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</guid>
-      <description>据我所知，这是kubernetes可用网关的最完整的列表。从技术上来讲，Ambassador不是ingress，但是它表现地已经非常好了。你</description>
+      <description>本文是对可作为Kubernetes中的API网关的开源软件的推荐列表。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 20 Sep 2018 11:35:02 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/kong-at-1-0-a-service-control-platform/</guid>
-      <description>图片：Kong公司员工们在庆祝第一届Kong Summit举办（来自Kong官方Twitter） Kong公司的前身是Mashape，发布了其核</description>
+      <description>Kong 1.0是该公司构建服务控制平台愿景的基础，该平台结合了人工智能、机器学习和其他先进技术，可以促进信息流在服务之间的流动。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Mon, 13 Aug 2018 20:44:06 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/why-you-should-care-about-istio-gateways/</guid>
-      <description>如果您要拆分单体架构，使用Istio管理您的微服务的一个巨大优势是，它利用与传统负载均衡器和应用分发控制器类似的入口模型的配置。 在负载均衡器</description>
+      <description>在Istio中，Gateway控制网格边缘的服务暴露。Gateway允许用户指定L4-L6设置，如端口和TLS设置。对于Ingress流量的L7设置，Istio允许您将网关绑定到VirtualServices。</description>
     </item>
     
   </channel>

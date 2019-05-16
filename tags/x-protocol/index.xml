@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>X Protocol on ServiceMesher</title>
+    <title>x-protocol on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/x-protocol/</link>
-    <description>Recent content in X Protocol on ServiceMesher</description>
+    <description>Recent content in x-protocol on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Sun, 14 Oct 2018 14:53:04 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Sun, 14 Oct 2018 14:53:04 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/x-protocol-tcp-protocol-extension/</guid>
-      <description>本文是SOFAMesh中的多协议通用解决方案x-protocol介绍系列文章之一。 SOFAMesh中的多协议通用解决方案x-protocol</description>
+      <description>在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，本文介绍的是TCP协议扩展。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Wed, 10 Oct 2018 11:45:26 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/x-protocol-rapid-decode-forward/</guid>
-      <description>本文是SOFAMesh中的多协议通用解决方案x-protocol介绍系列文章之一。 SOFAMesh中的多协议通用解决方案x-protocol</description>
+      <description>在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，本文介绍的是快速解码转发方案。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Mon, 08 Oct 2018 14:58:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/x-protocol-common-address-solution/</guid>
-      <description>本文是SOFAMesh中的多协议通用解决方案x-protocol介绍系列文章之一。 SOFAMesh中的多协议通用解决方案x-protocol</description>
+      <description>在本系列文章中，我们将详解Service Mesh中的多协议解决方案x-protocol，首先介绍的是DNS通用寻址方案。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Tue, 11 Sep 2018 19:06:22 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</guid>
-      <description>本文作者：彭泽文，阿里巴巴UC事业部高级开发工程师 X-protocol 的定位是云原生、高性能、低侵入性的通用 Service Mesh 落地方案，依托 Kubernetes 基座，利用其原生的服务注册和服</description>
+      <description>本文将以 Dubbo 为例，演示 SOFAMesh 中 Dubbo on x-protocol 场景下 Service Mesh 路由功能，涵盖 Version route 、Weighted route 功能。</description>
     </item>
     
   </channel>

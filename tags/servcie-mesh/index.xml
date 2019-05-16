@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Servcie Mesh on ServiceMesher</title>
+    <title>servcie mesh on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/servcie-mesh/</link>
-    <description>Recent content in Servcie Mesh on ServiceMesher</description>
+    <description>Recent content in servcie mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 01 Nov 2018 20:10:14 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 01 Nov 2018 20:10:14 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-future-of-service-mesh/</guid>
-      <description>在服务网格系列的第一部分中，我们认为服务网格是微服务体系架构发展的必然和有益的结果。随着 Istio 1.0 的发布，我们在服务网格领域已经经过了一个重要的里</description>
+      <description>本文通过分析服务网格的优势，阐述了其未来的发展情况。</description>
     </item>
     
   </channel>

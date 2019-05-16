@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Microservices on ServiceMesher</title>
+    <title>microservices on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/microservices/</link>
-    <description>Recent content in Microservices on ServiceMesher</description>
+    <description>Recent content in microservices on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 22 Apr 2019 13:54:05 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 22 Apr 2019 13:54:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/</guid>
-      <description>编者按 作者以较为嘲讽的口吻列举了在开发云原生微服务系统时可能出现的8个错误，告诫开发人员要注意避免这些问题。其观点集中在业务划分、解耦合、重</description>
+      <description>本文介绍了作者认为在开发云原生微服务系统时会出现的8个问题，并告诫大家避免犯错。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 09 Apr 2019 22:42:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/faas-vs-microservices/</guid>
-      <description>在做项目的云原生改造时我们可以采用微服务架构。DevOps和自动化构建两方面的成功经验对微服务的实践很有帮助。经过一段时间的实践，你可能会有</description>
+      <description>本文主要向读者介绍FaaS和微服务架构之间的区别以及如何根据自身情况选择正确的架构方案。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Wed, 20 Feb 2019 11:44:49 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-kubernetes-service-mesh/</guid>
-      <description>2017年5月，谷歌面向大规模容器化应用管理的开源项目Istio正式发布了。此后经过快速的发展，于2018年7月发布了里程碑式的1.0版本。</description>
+      <description>本文介绍了什么是Istio，并详细分析了Istio的优势，最后分享了关于Istio的一些落地经验。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Thu, 13 Dec 2018 19:23:09 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</guid>
-      <description>在过去几年中，我们注意到应用程序架构正在迅速转变为分布式微服务架构——单体和庞大的应用程序被分解为更小的单个服务，其可被独立修改、构建、部署</description>
+      <description>本文中概述了应用架构的演进及微服务生态是如何演化到服务网格的。</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Fri, 07 Sep 2018 12:33:30 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/test-drive-your-first-istio-deployment-using-play-with-kubernetes-platform-cloud-computing/</guid>
-      <description>作为一名全栈开发，假如最近花了不少时间开发应用，肯定已经理解了微服务架构下要面临的一系列全新挑战。尽管应用已经从庞大的单体应用转变成了开发更</description>
+      <description>在Docker提供的免费的Kubernetes试玩平台上，使用好奇心驱动的方式部署一个Istio Service Mesh。本方式适合没有测试资源又不想自己整环境的，只是想上去爽一把的人士。</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@
       <pubDate>Fri, 07 Sep 2018 12:27:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microservices-post-kubernetes/</guid>
-      <description>关键要点 微服务架构仍然是分布式系统最流行的架构风格。 但 Kubernetes 和云原生运动已经在很大程度上重新定义了应用程序的设计和开发。 在云原生平台上，服务的可</description>
+      <description>在Kubernetes诞生的前几年微服务还是分布式系统最流行的架构风格。但Kubernetes和云原生运动已经改变了应用程序设计和开发的方方面面。在本文中，我要质疑微服务的一些理念，指明它们在后Kubernetes时代不会再像以前那样强大。</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
       <pubDate>Thu, 02 Aug 2018 15:32:40 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/</guid>
-      <description>Sidecar 设计模式已经越来越受欢迎，并在社区内得到更广泛的采用。构建具有高度可扩展性、弹性、安全性和可观察性的微服务架构具有挑战性。Service Mesh</description>
+      <description>Sidecar 设计模式已经越来越受欢迎，并在社区内得到更广泛的采用。构建具有高度可扩展性、弹性、安全性和可观察性的微服务架构具有挑战性。Service Mesh 架构的发展已经改变了游戏规则。它降低了与微服务架构相关的复杂性，并提供了许多功能，如负载平衡、服务发现、流量管理、熔断、遥测、故障注入等。</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@
       <pubDate>Sat, 28 Jul 2018 17:11:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/how-service-mesh-addresses-3-major-microservices/</guid>
-      <description>我们都知道微服务会增加复杂性。 了解服务网络如何解决这一问题和其他挑战。 我最近正在阅读 Dimensional Research 撰写的全球微服务趋势报告，在阅读的同时，我个人也认为</description>
+      <description>本文讲述的是企业在实施微服务时遇到的挑战，以及如何使用Service Mesh应对这些挑战。</description>
     </item>
     
     <item>
@@ -98,7 +98,7 @@
       <pubDate>Tue, 12 Jun 2018 15:06:25 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/</guid>
-      <description>如何确保微服务之间网络通信的可靠性、安全性和可管理性？ 使用服务网格吧！ 在过去一年中，Istio服务网格技术引发关注度和吸引力的持续提升，这是</description>
+      <description>本文将探讨为什么我会坚信Istio会很受欢迎并给出了四个原因，分别从微服务与转型、微服务先驱Netflix OSS的案例、分布式架构的方面来阐述微服务使用服务网格的必然性。</description>
     </item>
     
     <item>

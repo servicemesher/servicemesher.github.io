@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Iptables on ServiceMesher</title>
+    <title>iptables on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/iptables/</link>
-    <description>Recent content in Iptables on ServiceMesher</description>
+    <description>Recent content in iptables on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 11 Sep 2018 14:48:53 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 11 Sep 2018 14:48:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/</guid>
-      <description>以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar</description>
+      <description>以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的。</description>
     </item>
     
   </channel>

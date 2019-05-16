@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kube Router on ServiceMesher</title>
+    <title>kube-router on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/kube-router/</link>
-    <description>Recent content in Kube Router on ServiceMesher</description>
+    <description>Recent content in kube-router on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 27 Aug 2018 19:52:29 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 27 Aug 2018 19:52:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</guid>
-      <description>我们很高兴地宣布推出Cilium 1.2。该版本引入了几个新功能实现了Cilium用户和社区成员最迫切想要的功能。其中最吸引人的功能之一是引入</description>
+      <description>Cilum使用Kube-router在Kubernetes Pod与集群外部运行的服务之间建立连接，再引入基于DNS 名称的安全策略保护对集群外服务的访问，再增加Cluster Mesh增加对多Kubernetes集群的支持。</description>
     </item>
     
   </channel>

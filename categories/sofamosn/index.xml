@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sofamosn on ServiceMesher</title>
+    <title>sofamosn on ServiceMesher</title>
     <link>http://www.servicemesher.com/categories/sofamosn/</link>
-    <description>Recent content in Sofamosn on ServiceMesher</description>
+    <description>Recent content in sofamosn on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 17 Dec 2018 11:07:07 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 17 Dec 2018 11:07:07 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/sofa-mosn-0-4-0-changelog/</guid>
-      <description>SOFAMosn几个月前由蚂蚁金服开源，使用Go语言实现，遵循Envoy xDS协议，既可以单独作为网络代理使用，也可以作为Istio/SOF</description>
+      <description>本文是蚂蚁金服开源的 SOFAMosn 的0.4.0版本的发布日志。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 04 Dec 2018 17:32:44 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</guid>
-      <description>朵晓东，花名奕杉，蚂蚁金服高级技术专家。专注企业云计算技术及产品，蚂蚁金融云 PaaS 创始团队核心成员，Antstack 网络产品负责人。开源爱好者，</description>
+      <description>本文根据晓东在 GIAC 上海站的演讲内容整理，完整的分享 PPT 获取方式见文章底部。</description>
     </item>
     
   </channel>

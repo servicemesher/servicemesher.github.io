@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cncf on ServiceMesher</title>
+    <title>cncf on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/cncf/</link>
-    <description>Recent content in Cncf on ServiceMesher</description>
+    <description>Recent content in cncf on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 15 Feb 2019 10:41:22 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Fri, 15 Feb 2019 10:41:22 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cncf-annual-report-2018-review/</guid>
-      <description>2019年2月初，CNCF 发布了2018年的年度报告，这是 CNCF 继2017年度报告之后，第二次发布年度报告，2017年度的报告只有区区14页，今</description>
+      <description>本文是对 CNCF（云原生计算基金会）2018年年度报告的解读。</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Meetup on ServiceMesher</title>
+    <title>meetup on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/meetup/</link>
-    <description>Recent content in Meetup on ServiceMesher</description>
+    <description>Recent content in meetup on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 08 Jan 2019 10:41:54 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 08 Jan 2019 10:41:54 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-meetup-guangzhou-20190106/</guid>
-      <description>唯品会 Service Mesh 的实践分享 郑德惠 唯品会Java资深开发工程师，内部Service Mesh框架负责人，唯品会开源项目vjtools重要开发者，10年</description>
+      <description>ServiceMesher社区和蚂蚁金服联合主办、SOFAStack社区协办的第五届Service Mesh Meetup广州站收官，唯品会郑德惠、蚂蚁金服陈逸凡、HPE的崔秀龙给大家带来分享并增加Roundtable环节。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Mon, 26 Nov 2018 10:53:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-meetup-shanghai-20181125/</guid>
-      <description>Observability and Istio telemetry 吴晟 Apache SkyWalking创始人、Apache Sharding-Sphere原型作者、比特大陆资深技术专家、CNCF OpenTrac</description>
+      <description>ServiceMesher社区和蚂蚁金服联合主办、SOFAStack社区协办的第四届Service Mesh Meetup上海站收官，Apache Skywalking 创始人吴晟、蚂蚁金服敖小剑、阿里巴巴 UC 张瑜标(龙轼)、谐云科技徐运元、七牛云的冯玮给大家带来分享。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Mon, 27 Aug 2018 11:40:45 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-meetup-shenzhen-20180825/</guid>
-      <description>ServiceMesher社区和蚂蚁金服联合主办、SOFAStack社区协办的第三届Service Mesh Meetup深圳站收官，感谢各位现场参加</description>
+      <description>ServiceMesher社区和蚂蚁金服联合主办、SOFAStack社区协办的第三届Service Mesh Meetup深圳站收官，华为张超盟、蚂蚁金服熊啸、JEX杨文、联邦车网朱经惠给大家带来分享。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Mon, 30 Jul 2018 19:08:31 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/beijing-meetup-20180729/</guid>
-      <description>2018年7月29日，周日，天气闷热，北京中关村e世界。 由ServiceMesher社区和蚂蚁金服联合举办的，Sharding-Sphere</description>
+      <description>2018年7月29日，北京，中关村e世界，由ServiceMesher社区和蚂蚁金服联合举办的，Sharding-Sphere社区、Apache SkyWalking社区、SOFA社区、新浪微博协办的第二届Service Mesh Meetup北京站圆满落幕。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Tue, 03 Jul 2018 12:22:47 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/hangzhou-meetup-20180630/</guid>
-      <description>6月30日，杭州，蚂蚁Z空间，一大早就下起了雨，我还心想，这雨要是下大了会不会很多人不来了？而且我们还一早就放出了IT大咖说的直播链接。没想</description>
+      <description>2018年6月30日，杭州，蚂蚁Z空间，一大早就下起了雨，我还心想，这雨要是下大了会不会很多人不来了？而且我们还一早就放出了IT大咖说的直播链接。没想到最后现场签到了有120多个小伙伴！视频直播最高峰值800多人同时在线，截止7月1号显示有5340人观看。</description>
     </item>
     
   </channel>

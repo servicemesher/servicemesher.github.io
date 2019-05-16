@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ingress Gateway on ServiceMesher</title>
+    <title>Ingress-Gateway on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/ingress-gateway/</link>
-    <description>Recent content in Ingress Gateway on ServiceMesher</description>
+    <description>Recent content in Ingress-Gateway on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 05 Nov 2018 02:08:37 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 05 Nov 2018 02:08:37 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/summary-control-traffic-using-gateway-in-istio/</guid>
-      <description>gateway定义用于配置在mesh边缘，到mesh的tcp和http的负载均衡。 非TLS单主机环境 相关拓扑 使用azure aks环境。 ingress ga</description>
+      <description>本文重点为分析Istio Gateway以及VirtualService定义如何生成Istio Ingress Gateway的Envoy相关配置。</description>
     </item>
     
   </channel>

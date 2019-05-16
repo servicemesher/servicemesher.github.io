@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Istio Source Deepin on ServiceMesher</title>
+    <title>istio source deepin on ServiceMesher</title>
     <link>http://www.servicemesher.com/categories/istio-source-deepin/</link>
-    <description>Recent content in Istio Source Deepin on ServiceMesher</description>
+    <description>Recent content in istio source deepin on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Sat, 28 Jul 2018 17:49:21 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Sat, 28 Jul 2018 17:49:21 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/</guid>
-      <description>本文为Service Mesh深度学习系列之一： Service Mesh深度学习系列part1—istio源码分析之pilot-agent模块分析 Service Mesh</description>
+      <description>本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-discovery的深度源码解析续篇。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 17 Jul 2018 17:32:31 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin/</guid>
-      <description>本文分析的istio代码版本为0.8.0，commit为0cd8d67，commit时间为2018年6月18日。 本文为Service Mesh</description>
+      <description>本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-discovery的深度源码解析。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Wed, 11 Jul 2018 14:24:24 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin/</guid>
-      <description>本文分析的istio代码版本为0.8.0，commit为0cd8d67，commit时间为2018年6月18日。 本文为Service Mesh</description>
+      <description>本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-agent的深度源码解析。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Wed, 04 Jul 2018 19:44:08 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</guid>
-      <description>本文系转载，作者：郑伟，小米信息部技术架构组 本系列文章主要从源码（35e2b904）出发，对istio做深入剖析，让大家对istio有更深的</description>
+      <description>本系列文章主要从Istio源码出发深入剖析，让大家对istio有更深的认知，从而方便平时排查问题。本文是对Istio中Mixer的工作流程浅析。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Wed, 04 Jul 2018 19:24:37 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/</guid>
-      <description>本文系转载，原文作者：郑伟，小米信息部技术架构组 本系列文章主要从源码（35e2b904）出发，对istio做深入剖析，让大家对istio有更</description>
+      <description>本系列文章主要从Istio源码出发深入剖析，让大家对istio有更深的认知，从而方便平时排查问题。本文讲解Istio中的bookinfo示例并执行过文档中的task，介绍从执行istioctl指令到配置文件生效的整个流程。</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Wed, 04 Jul 2018 19:11:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-deepin-part1-framework-and-environment/</guid>
-      <description>本文系转载，作者：郑伟，小米信息部技术架构组 本系列文章主要从源码（35e2b904）出发，对istio做深入剖析，让大家对istio有更深的</description>
+      <description>本系列文章主要从Istio源码出发深入剖析，让大家对istio有更深的认知，从而方便平时排查问题。本文讲解Istio源码架构及开发环境搭建。</description>
     </item>
     
   </channel>

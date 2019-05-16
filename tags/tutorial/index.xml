@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tutorial on ServiceMesher</title>
+    <title>tutorial on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/tutorial/</link>
-    <description>Recent content in Tutorial on ServiceMesher</description>
+    <description>Recent content in tutorial on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 10 Dec 2018 21:50:05 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 10 Dec 2018 21:50:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/</guid>
-      <description>gRPC-Web使Web应用能够通过类似于Envoy的代理访问gRPC后端。Envoy是Istio的默认代理，因此，我们可以利用Istio的</description>
+      <description>本文构建了一个简单的Web应用，该应用使用emoji替换用户输入文本中的关键字，并使用gRPC-Web和Istio与gRPC后端进行通信。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Wed, 17 Oct 2018 19:13:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/set-sail-a-production-ready-istio-adapter/</guid>
-      <description>构建生产就绪的Istio Adapter 你已经浏览了Istio Mixer Adapter的指南 ，现在想要发布自己的Adapter？这篇文章将教你创建自己的Adapt</description>
+      <description>本文通过示例讲解了如何创建并部署一个生产环境就绪的Istio Adapter。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Thu, 13 Sep 2018 20:26:56 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</guid>
-      <description>作为Istio教程第二篇文章本教程将一步步带领你熟悉指令并解释指令的作用。我们的前一篇文章解析了istio原理、示例，以及使用它给开发和运维</description>
+      <description>作为Kublr推出的Istio教程第二篇文章本教程将一步步带领你熟悉Istio指令并解释指令的作用，并在Kubernetes集群中实现金丝雀部署。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Mon, 06 Aug 2018 08:43:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-tutorials-collection/</guid>
-      <description>8月1日0点，Istio 1.0发布，已生产就绪！大家都已经跃跃欲试了，几天前我发布了一键在本地搭建运行Istio 1.0的分布式Kuberne</description>
+      <description>给大家推荐下，目前本人搜集到的可以说是最完整的Isito学习环境和包含代码的示例教程。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Wed, 20 Jun 2018 10:25:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/</guid>
-      <description>原文：https://itnext.io/vistio-visualize-your-istio-mesh-using-netflixs-v</description>
+      <description>Vizceral是Netflix发布的一个开源项目，用于近乎实时地监控应用程序和集群之间的网络流量。Vistio是使用Vizceral对Istio和网格监控的改进。本文是使用Vistio对Istio mesh做流量可视化的教程。</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Fri, 08 Jun 2018 16:01:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/</guid>
-      <description>现代服务网格架构提供了很多的新功能，基础设施相关的依赖部分被逐步从代码中移除，极大的降低了编码工作量。除此之外，这一架构的智能路由功能还把金</description>
+      <description>这是一篇关于在 Istio 路由规则中使用 Opentracing Baggage 对流量进行分布式追踪的教程。</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@
       <pubDate>Wed, 06 Jun 2018 15:32:26 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/manage-microservices-traffic-using-istio/</guid>
-      <description>说明 开发人员正在摆脱大型单体应用的束缚，转而采用小巧而专一的微服务，以加速软件开发并加强系统弹性。为了满足这个新生态的需求，开发人员需要为部</description>
+      <description>开发人员正在摆脱大型单体应用的束缚，转而采用小巧而专一的微服务，以加速软件开发并加强系统弹性。为了满足这个新生态的需求，开发人员需要为部署的微服务创建一个具有负载均衡、高级流量管理、请求跟踪和连接功能的服务网络。</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
       <pubDate>Tue, 22 May 2018 12:16:22 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-tutorial/</guid>
-      <description>本文是 Istio 管理 Java 微服务的案例教程，使用的所有工具和软件全部基于开源方案，替换了 redhat-developer-demos/istio-tutorial 中的 minishift 环境，使用 kubernetes-vagrant-centos-cluster 替代，沿用了原有的微服务示例，使用 Zipkin 做分布式</description>
+      <description>本文是 Istio 管理 Java 微服务的案例教程，使用的所有工具和软件全部基于开源方案，替换了 redhat-developer-demos/istio-tutorial 中的 minishift 环境，使用 kubernetes-vagrant-centos-cluster 替代，沿用了原有的微服务示例，使用 Zipkin 做分布式追踪而不是 Jaeger。</description>
     </item>
     
   </channel>

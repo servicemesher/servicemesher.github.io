@@ -13,7 +13,7 @@
   <meta name="keywords" content="service mesh, 服务网格, istio">
   
 
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.55.5" />
 
   
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -1602,8 +1602,9 @@ func WriteBootstrap(config *meshconfig.ProxyConfig, node string, epoch int, pilo
  },
  &quot;last_updated&quot;: &quot;2018-09-06T09:34:22.184Z&quot;
 }
-</code></pre></li>
+</code></pre>
 
+<ol>
 <li><p>inbound|9080||details.default.svc.cluster.local cluster配置的host为127.0.0.1：9080。</p></li>
 
 <li><p>请求被转发到127.0.0.1：9080，即Details服务进行处理。</p></li>
@@ -1632,6 +1633,7 @@ func WriteBootstrap(config *meshconfig.ProxyConfig, node string, epoch int, pilo
 <li><a href="https://github.com/envoyproxy/data-plane-api/blob/master/XDS_PROTOCOL.md">xDS REST and gRPC protocol</a><a href="https://github.com/istio/istio/tree/master/pilot/pkg/proxy/envoy/v2">https://github.com/istio/istio/tree/master/pilot/pkg/proxy/envoy/v2</a></li>
 <li><a href="https://github.com/istio/istio/tree/master/pilot/pkg/proxy/envoy/v2">Pilot Debug interface</a></li>
 <li><a href="https://zhaohuabing.com/2018/05/23/istio-auto-injection-with-webhook/">Istio Sidecar自动注入原理</a></li>
+</ol></li>
 </ol>
 
                         </div>
@@ -1749,7 +1751,7 @@ func WriteBootstrap(config *meshconfig.ProxyConfig, node string, epoch int, pilo
             <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
             </li>
             
-            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (114)</a>
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (115)</a>
             </li>
             
             <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
@@ -2171,6 +2173,19 @@ func WriteBootstrap(config *meshconfig.ProxyConfig, node string, epoch int, pilo
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/">
+                          
+                            <img src="/img/placeholder.png" class="img-responsive" alt="Solo.io打造的Gloo——Knative中Istio的替代方案">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/">Solo.io打造的Gloo——Knative中Istio的替代方案</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="/blog/api-gateways-are-going-through-an-identity-crisis/">
                           
                           <img src="/img/blog/banners/006tNbRwly1fw867vtusqj30rs0kudth.jpg" class="img-responsive" alt="API Gateway的身份认同危机">
@@ -2192,19 +2207,6 @@ func WriteBootstrap(config *meshconfig.ProxyConfig, node string, epoch int, pilo
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="/blog/google-cloud-run-intro/">Google Cloud Run详细介绍</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/google-traffic-director-detail/">
-                          
-                          <img src="/img/blog/banners/006tNbRwgy1fug0qf4f7qj31jk15ox6r.jpg" class="img-responsive" alt="Google Traffic Director详细介绍">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/google-traffic-director-detail/">Google Traffic Director详细介绍</a></h5>
                     </div>
                 </div>
                 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Monitoring on ServiceMesher</title>
+    <title>monitoring on ServiceMesher</title>
     <link>http://www.servicemesher.com/categories/monitoring/</link>
-    <description>Recent content in Monitoring on ServiceMesher</description>
+    <description>Recent content in monitoring on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 26 Mar 2019 11:12:00 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/prometheus-monitor-k8s-1/</guid>
-      <description>背景 由于容器化和微服务的大力发展，Kubernetes基本已经统一了容器管理方案，当我们使用Kubernetes来进行容器化管理的时候，全面</description>
+      <description>本文旨在于寻找一套能够胜任kubernetes集群监控的架构。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/prometheus-monitor-k8s-2/</guid>
-      <description>背景 由于容器化和微服务的大力发展，Kubernetes基本已经统一了容器管理方案，当我们使用Kubernetes来进行容器化管理的时候，全面</description>
+      <description>本文介绍 Prometheus 监控的部署。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/prometheus-monitor-k8s-3/</guid>
-      <description>背景 由于容器化和微服务的大力发展，Kubernetes基本已经统一了容器管理方案，当我们使用Kubernetes来进行容器化管理的时候，全面</description>
+      <description>本文介绍 Prometheus 如何采集业务指标。</description>
     </item>
     
   </channel>

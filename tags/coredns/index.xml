@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Coredns on ServiceMesher</title>
+    <title>coredns on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/coredns/</link>
-    <description>Recent content in Coredns on ServiceMesher</description>
+    <description>Recent content in coredns on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 29 Nov 2018 14:51:19 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 29 Nov 2018 14:51:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/ant-financial-service-mesh-adoption-plan/</guid>
-      <description>大家好，今天给大家带来的演讲主题是“蚂蚁金服Service Mesh渐进式迁移方案”，给大家介绍一下我们蚂蚁金服主站的Service Mesh迁</description>
+      <description>本文是上周末Service Mesh Meetup上海站的演讲内容，前面一半内容来自蚂蚁金服的敖小剑，后一半来自阿里UC的龙轼。</description>
     </item>
     
   </channel>

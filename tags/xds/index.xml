@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Xds on ServiceMesher</title>
+    <title>xds on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/xds/</link>
-    <description>Recent content in Xds on ServiceMesher</description>
+    <description>Recent content in xds on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 08 May 2019 10:12:18 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 08 May 2019 10:12:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cncf-udpa-wg/</guid>
-      <description>背景 昨日得到的消息，CNCF正在筹建通用数据平面API工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准API，为</description>
+      <description>CNCF正在筹建通用数据平面API工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准API，为L4/L7数据平面配置提供事实上的标准，初始成员将包括 Envoy 和 gRPC 项目的代表。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 17 Jan 2019 20:16:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-the-microservices-in-post-kubernetes-era/</guid>
-      <description>这不是一篇教程，本文试图带您梳理清楚 Kubernetes、Envoy（xDS 协议）以及 Istio Service Mesh 之间的关系及内在联系。本文介绍了 Kubernetes 中的负载均衡方</description>
+      <description>本文假定您已经对 Kubernetes 有比较全面的了解，同时还使用过 Istio service mesh，但是对于 Kubernetes、Envoy 及 Istio 之间的关系不甚了解，及 Istio 如何使用 xDS 协议控制所有的 Sidecar 有浓厚的兴趣，那么推荐您继续阅读。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Mon, 07 Jan 2019 17:48:01 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-proxy-config-deep-dive/</guid>
-      <description>Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下</description>
+      <description>本文介绍了 Envoy proxy 的概念，对应的 xDS 的版本以及配置的详细解析。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Fri, 28 Sep 2018 19:07:20 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-xds-protocol/</guid>
-      <description>Envoy 通过查询文件或管理服务器来动态发现资源。概括地讲，对应的发现服务及其相应的 API 被称作 xDS 。Envoy 通过订阅（ subscription ）方式来获取资源，如监控指定路</description>
+      <description>本文翻译自 Envoy 代码库中的文档，本文通过示例详解了 Envoy 的 xDS REST 和 gPRC 协议。</description>
     </item>
     
   </channel>

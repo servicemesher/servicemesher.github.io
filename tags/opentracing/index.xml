@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Opentracing on ServiceMesher</title>
+    <title>opentracing  on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/opentracing/</link>
-    <description>Recent content in Opentracing on ServiceMesher</description>
+    <description>Recent content in opentracing  on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 08 Jun 2018 16:01:00 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Fri, 08 Jun 2018 16:01:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-routing-using-opentracing-baggage-distributed-context-propagation/</guid>
-      <description>现代服务网格架构提供了很多的新功能，基础设施相关的依赖部分被逐步从代码中移除，极大的降低了编码工作量。除此之外，这一架构的智能路由功能还把金</description>
+      <description>这是一篇关于在 Istio 路由规则中使用 Opentracing Baggage 对流量进行分布式追踪的教程。</description>
     </item>
     
   </channel>

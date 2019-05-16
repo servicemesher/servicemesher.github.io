@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jaeger on ServiceMesher</title>
+    <title>jaeger on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/jaeger/</link>
-    <description>Recent content in Jaeger on ServiceMesher</description>
+    <description>Recent content in jaeger on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 11 Dec 2018 14:24:23 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 11 Dec 2018 14:24:23 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</guid>
-      <description>如果你是初次接触服务网格和Envoy，我这里有一篇文章可以帮助你入门。 在微服务架构中，可观测性变得越加重要。我认为这是选择微服务这条路的必要</description>
+      <description>本文用实例讲解了如何利用Envoy和Jaeger实现分布式追踪。</description>
     </item>
     
   </channel>

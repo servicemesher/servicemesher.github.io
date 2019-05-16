@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Envoy on ServiceMesher</title>
+    <title>envoy on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/envoy/</link>
-    <description>Recent content in Envoy on ServiceMesher</description>
+    <description>Recent content in envoy on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 08 May 2019 10:12:18 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 08 May 2019 10:12:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cncf-udpa-wg/</guid>
-      <description>背景 昨日得到的消息，CNCF正在筹建通用数据平面API工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准API，为</description>
+      <description>CNCF正在筹建通用数据平面API工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准API，为L4/L7数据平面配置提供事实上的标准，初始成员将包括 Envoy 和 gRPC 项目的代表。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 07 May 2019 11:50:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-service-mesh-and-observability-best-practices-for-enterprises/</guid>
-      <description>编者按 Envoy 创始人 Matt Klein 分享了他对企业开始使用 Envoy 部署微服务所遇到的挑战以及可观察性的看法和选择，他认为 Service Mesh 还处于早期阶段，企业应该逐步推进，同时最</description>
+      <description>通过对Envoy创始人Matt Klein的采访，Matt分享了他对企业开始使用微服务部署Envoy所遇到的挑战以及可观察性的看法和选择。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Mon, 22 Apr 2019 10:41:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/</guid>
-      <description>编者按 本文介绍如何为 Envoy 构建控制面指南的第4部分：构建的可扩展性。Gloo团队建议将重点放在控制平面的简单核心上，然后通过插件和微服务控制器的</description>
+      <description>本文介绍如何为 Envoy 构建控制面指南的第4部分：构建的可扩展性。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Mon, 25 Mar 2019 21:02:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/building-a-control-plane-for-envoy/</guid>
-      <description>[编者案] Idit Levine 作为 solo.io 创始人兼首席执行官，在本系列博客中介绍了她们的产品 Gloo。这篇博客是系列中的其中一篇，这一篇的主要内容是，如果要基于 Envoy</description>
+      <description>本文介绍如何利用 Gloo 提供的功能，减少自己需要编写的代码。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Wed, 06 Mar 2019 12:17:02 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-to-manage-envoy-proxy-at-the-edge-as-a-gateway-or-in-a-mesh/</guid>
-      <description>[编者案] Envoy 作为最受欢迎的早期网络组件，现在已经可以说是云原生架构中的通用数据平面。本文作者指引我们更方便的使用Envoy，及其定制控制平面</description>
+      <description>Envoy Proxy构建控制平面指南。</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Wed, 20 Feb 2019 20:17:12 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-threading-model/</guid>
-      <description>编者注：原文于2017年7月30日发布于 Envoy 博客上。 关于Envoy代码库的底层技术文档目前相当稀少。 为了纠正这个问题，我打算做一系列关于各种子</description>
+      <description>Envoy的架构师Matt Klein对Envoy中多线程模型的简单介绍。</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@
       <pubDate>Mon, 28 Jan 2019 14:20:33 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-and-grpc-web-a-fresh-new-alternative-to-rest/</guid>
-      <description>gRPC-Web作为gRPC的JavaScript客户端库，使Web应用可以不用自定义HTTP服务器为中介，直接通过Envoy与gRPC服务</description>
+      <description>本文为大家推荐的是一种REST的替代方案 Envoy + gRPC-Web。</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
       <pubDate>Thu, 17 Jan 2019 20:16:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-the-microservices-in-post-kubernetes-era/</guid>
-      <description>这不是一篇教程，本文试图带您梳理清楚 Kubernetes、Envoy（xDS 协议）以及 Istio Service Mesh 之间的关系及内在联系。本文介绍了 Kubernetes 中的负载均衡方</description>
+      <description>本文假定您已经对 Kubernetes 有比较全面的了解，同时还使用过 Istio service mesh，但是对于 Kubernetes、Envoy 及 Istio 之间的关系不甚了解，及 Istio 如何使用 xDS 协议控制所有的 Sidecar 有浓厚的兴趣，那么推荐您继续阅读。</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@
       <pubDate>Mon, 07 Jan 2019 17:48:01 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-proxy-config-deep-dive/</guid>
-      <description>Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下</description>
+      <description>本文介绍了 Envoy proxy 的概念，对应的 xDS 的版本以及配置的详细解析。</description>
     </item>
     
     <item>
@@ -98,7 +98,7 @@
       <pubDate>Thu, 27 Dec 2018 11:46:42 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/</guid>
-      <description>本文以 Istio 官方的 bookinfo 示例来讲解在进入 Pod 的流量被 iptables 转交给 Envoy sidecar 后，Envoy 是如何做路由转发的，详述了 Inbound 和 Outbound 处理过程。关于流量拦截的详细分析请参考理</description>
+      <description>本文以 Istio 官方的 bookinfo 示例来讲解在进入 Pod 的流量被 iptables 转交给 Envoy sidecar 后，Envoy 是如何做路由转发的，详述了 Inbound 和 Outbound 处理过程。</description>
     </item>
     
     <item>
@@ -107,7 +107,7 @@
       <pubDate>Tue, 18 Dec 2018 19:49:56 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-and-traffic-model/</guid>
-      <description>本文转载自宋净超的博客。 本文介绍了 Istio 和 Kubernetes 中的一些服务和流量的抽象模型。虽然 Istio 一开始确定的抽象模型与对接的底层平台无关，但目前来看基本绑定 Ku</description>
+      <description>本文介绍了 Kubernetes、Envoy 和 Istio 中流量管理的一些服务模型以及为什么说 Kubernetes service 存在的意义仅剩下做服务发现。</description>
     </item>
     
     <item>
@@ -116,7 +116,7 @@
       <pubDate>Tue, 11 Dec 2018 14:24:23 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</guid>
-      <description>如果你是初次接触服务网格和Envoy，我这里有一篇文章可以帮助你入门。 在微服务架构中，可观测性变得越加重要。我认为这是选择微服务这条路的必要</description>
+      <description>本文用实例讲解了如何利用Envoy和Jaeger实现分布式追踪。</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@
       <pubDate>Fri, 07 Dec 2018 12:52:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-stats/</guid>
-      <description>这是我在Envoy架构系列中的第3篇文章。这篇文章基于以前关于Envoy的线程模型和热重启功能的帖子。如果您还没有阅读这些帖子，请先阅读。 需</description>
+      <description>本文讲述了Envoy数据统计系统的设计及实现原理。</description>
     </item>
     
     <item>
@@ -134,7 +134,7 @@
       <pubDate>Tue, 27 Nov 2018 19:09:15 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/</guid>
-      <description>在这个令人惊奇的时代，我们可以不需要编写一行代码，便可以很智能的集成应用程序，收集应用程序指标。 在这篇文章中，我将演示使用 helm 安装 Istio mtls 环境、必</description>
+      <description>本文展示的是如何使用 Istio 和 Envoy 来对 gRPC 做度量。</description>
     </item>
     
     <item>
@@ -143,7 +143,7 @@
       <pubDate>Fri, 23 Nov 2018 14:27:26 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-with-envoy-101/</guid>
-      <description>本文将简单的讨论下我们经常听到的 “Service Mesh” 是什么，以及如何使用 “Envoy” 构建服务网格(Service Mesh)。 什么是 Service</description>
+      <description>本文将简单的讨论下我们经常听到的 Service Mesh 是什么，以及如何使用 Envoy 构建服务网格(Service Mesh),使用速率限制服务来减轻客户端对 API 资源的消耗。</description>
     </item>
     
     <item>
@@ -152,7 +152,7 @@
       <pubDate>Thu, 22 Nov 2018 15:16:06 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/transcoding-grpc-to-http-json-using-envoy/</guid>
-      <description>试用gRPC构建服务时要在.proto文件中定义消息（message）和服务（service）。gRPC支持多种语言自动生成客户端、服务端和</description>
+      <description>本文用实例讲解了如何利用Envoy将gRPC转码为HTTP/JSON。</description>
     </item>
     
     <item>
@@ -161,7 +161,7 @@
       <pubDate>Tue, 20 Nov 2018 11:40:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/</guid>
-      <description>如果你刚接触“Service Mesh“和“Envoy”，我这里有一篇文章可以帮你入门。 这是Envoy service mesh下的可观测性系列的第二篇文章，</description>
+      <description>本文介绍了Envoy service mesh下结合Prometheus和Grafana实现的微服务监控方案。</description>
     </item>
     
     <item>
@@ -170,7 +170,7 @@
       <pubDate>Thu, 15 Nov 2018 13:20:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</guid>
-      <description>Envoy是专为Cloud Native应用设计的轻量级服务代理，也是为数不多的支持gRPC的代理之一。gRPC是一个基于HTTP/2的高性能</description>
+      <description>本文使用C++构建了客户端/服务端应用，通过Envoy代理和gPRC协议进行通信，然后使用Go语言实现了Envoy速率限制服务。</description>
     </item>
     
     <item>
@@ -179,7 +179,7 @@
       <pubDate>Tue, 06 Nov 2018 12:20:51 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/</guid>
-      <description>Cilium 1.3：具有Cassandra和Memcached支持的Envoy Go语言扩展 我们很高兴地宣布Cilium 1.3发布了。这个版本加入了几个</description>
+      <description>本文讲解了具备API感知的网络和安全性管理的开源软件Cilium1.3的新特性，并用示例演示新的Go扩展如何使用。</description>
     </item>
     
     <item>
@@ -188,7 +188,7 @@
       <pubDate>Sun, 04 Nov 2018 12:00:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</guid>
-      <description>速率限制是缓解级联故障和防止耗尽共享资源的一种简单有效的方法。Envoy 是一个功能丰富的代理，可以为任何服务轻松添加速率限制的功能。本文将介</description>
+      <description>本文详述了如何做速率限制服务来减轻客户端对 API 资源的消耗。</description>
     </item>
     
     <item>
@@ -197,7 +197,7 @@
       <pubDate>Fri, 28 Sep 2018 19:07:20 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-xds-protocol/</guid>
-      <description>Envoy 通过查询文件或管理服务器来动态发现资源。概括地讲，对应的发现服务及其相应的 API 被称作 xDS 。Envoy 通过订阅（ subscription ）方式来获取资源，如监控指定路</description>
+      <description>本文翻译自 Envoy 代码库中的文档，本文通过示例详解了 Envoy 的 xDS REST 和 gPRC 协议。</description>
     </item>
     
     <item>
@@ -206,7 +206,7 @@
       <pubDate>Wed, 12 Sep 2018 12:38:52 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-importance-of-control-planes-with-service-mesh/</guid>
-      <description>本文将带您了解为什么服务网格和边缘代理如此重要以及它们与持续交付的关系。 了解现代云架构如何使用微服务具有的许多优势，使开发人员能够以CI/C</description>
+      <description>本文将带您了解为什么服务网格和边缘代理如此重要以及它们与持续交付的关系。</description>
     </item>
     
     <item>
@@ -215,7 +215,7 @@
       <pubDate>Tue, 11 Sep 2018 14:48:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/</guid>
-      <description>以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar</description>
+      <description>以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的。</description>
     </item>
     
     <item>
@@ -224,7 +224,7 @@
       <pubDate>Sun, 02 Sep 2018 13:48:47 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</guid>
-      <description>关键要点 在过去的四年中，Lyft 已从单体架构转变为数百个微服务。随着微服务数量的增加，由于级联故障或意外内部拒绝服务导致的中断次数也在增加。</description>
+      <description>本文分享了Lyft对于Envoy的在服务网格领域的实践，主要为了解决级联故障的问题，以及Lyft对于Envoy的未来规划。</description>
     </item>
     
     <item>
@@ -233,7 +233,7 @@
       <pubDate>Mon, 25 Jun 2018 20:30:52 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/</guid>
-      <description>更新 感谢 Laurent Demailly 的评论，这里有一些更新。这篇文章已经得到了更新： 现在有一个 Cert-Manager 官方 Helm chart Istio Ingress 也支持基于 HTTP/2 的 GRPC Istio Istio 是管理微服务世界中数据流的一种新方式</description>
+      <description>本文是使用Let&amp;rsquo;s Encrypt为Isito（Envoy）Service Mesh添加TLS安全支持的教程。</description>
     </item>
     
     <item>
@@ -242,7 +242,7 @@
       <pubDate>Thu, 21 Jun 2018 18:00:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</guid>
-      <description>Docker 和 Kubernetes 为代表的容器技术炙手可热，熟知这一技术领域的用户，一定都知道下一个热点：Service Mesh，它承诺将微服务之间的内部网络通信均一化</description>
+      <description>本文中提到的典型是Envoy（数据平面）、Istio（控制平面）和Ambassador（API Gateway），Matt Klein指出人们在践行微服务的道路踩到的坑大多是与debugging有关，我们应该从服务网格的边缘开始实现反向代理、负载均衡和动态路由。实现或迁移基于容器技术的云原生平台如Kubernetes才刚刚开始，Service Mesh填补了该平台中的许多空白。</description>
     </item>
     
     <item>
@@ -251,7 +251,7 @@
       <pubDate>Thu, 21 Jun 2018 16:11:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-universal-data-plane-api/</guid>
-      <description>正如我之前所说的，在如此短的时间内，Envoy 带来的兴奋既神奇又震撼人心。我经常问自己：envoy 的哪些方面导致了我们所看到的异常的社区增长</description>
+      <description>本文是Matt Klein于2017年9月在Meduim上发表的通用数据平面API文章，文中指出了Envoy在API设计上的要点，以及数据平面与控制平面的关系。</description>
     </item>
     
     <item>
@@ -260,7 +260,7 @@
       <pubDate>Tue, 19 Jun 2018 15:54:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-in-cookpad/</guid>
-      <description>这个原文是 5 月初发表的日文原文的翻译。补充一下这篇文章的背景，Cookpad 是一家拥有 200 多种产品开发的中型科技公司，拥有 10 多支团队，每月平均</description>
+      <description>Cookpad是日本的一家分享菜谱和烹调经验的网站，本文是该网站使用Service Mesh的实践，当前Cookpad没有直接使用Istio而是以Envoy为数据平面，自研的控制平面。</description>
     </item>
     
   </channel>

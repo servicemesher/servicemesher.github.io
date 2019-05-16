@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Envoy on ServiceMesher</title>
+    <title>envoy on ServiceMesher</title>
     <link>http://www.servicemesher.com/categories/envoy/</link>
-    <description>Recent content in Envoy on ServiceMesher</description>
+    <description>Recent content in envoy on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 08 May 2019 10:12:18 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 08 May 2019 10:12:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cncf-udpa-wg/</guid>
-      <description>背景 昨日得到的消息，CNCF正在筹建通用数据平面API工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准API，为</description>
+      <description>CNCF正在筹建通用数据平面API工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准API，为L4/L7数据平面配置提供事实上的标准，初始成员将包括 Envoy 和 gRPC 项目的代表。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Mon, 07 Jan 2019 17:48:01 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-proxy-config-deep-dive/</guid>
-      <description>Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下</description>
+      <description>本文介绍了 Envoy proxy 的概念，对应的 xDS 的版本以及配置的详细解析。</description>
     </item>
     
   </channel>

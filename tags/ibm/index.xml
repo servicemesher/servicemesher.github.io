@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ibm on ServiceMesher</title>
+    <title>IBM on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/ibm/</link>
-    <description>Recent content in Ibm on ServiceMesher</description>
+    <description>Recent content in IBM on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 28 Aug 2018 16:15:25 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 28 Aug 2018 16:15:25 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-aims-to-be-the-mesh-plumbing-for-containerized-microservices/</guid>
-      <description>本文原标题为：Istio目标是成为容器化微服务的网状管道 在精彩的软件容器世界中，原本早已解决的问题又有新的解决方案出现，给人有种恍惚的感觉。</description>
+      <description>本文主要是IBM研究员兼云计算CTO Jason McGee对Istio项目的起源、分工与目标的解说。</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jenkins on ServiceMesher</title>
+    <title>jenkins on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/jenkins/</link>
-    <description>Recent content in Jenkins on ServiceMesher</description>
+    <description>Recent content in jenkins on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 04 Dec 2018 14:47:13 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
-      <description>Jenkins服务来源于创建自2004年的Hudson。在软件行业中，Jenkins已经是家喻户晓的明星产品，并且已经是CI和CD的领头羊。</description>
+      <description>本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Mon, 04 Jun 2018 11:33:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/building-istio-with-minikube-in-a-container-and-jenkins/</guid>
-      <description>AspenMesh提供一种Istio的分布式架构支持，这意味着即使与上游Istio项目无关，我们也需要能够测试和修复Bug。为此我们已开发构</description>
+      <description>本文讲述如何制作一个新的 Minikube-in-a-Container 容器和使用 Jenkins Pipeline 来构建和测试 Istio 的流程脚本。</description>
     </item>
     
   </channel>

@@ -17,7 +17,7 @@
       <pubDate>Tue, 20 Nov 2018 11:40:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/</guid>
-      <description>如果你刚接触“Service Mesh“和“Envoy”，我这里有一篇文章可以帮你入门。 这是Envoy service mesh下的可观测性系列的第二篇文章，</description>
+      <description>本文介绍了Envoy service mesh下结合Prometheus和Grafana实现的微服务监控方案。</description>
     </item>
     
   </channel>

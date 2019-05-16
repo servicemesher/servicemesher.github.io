@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kubernetes on ServiceMesher</title>
+    <title>kubernetes on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/kubernetes/</link>
-    <description>Recent content in Kubernetes on ServiceMesher</description>
+    <description>Recent content in kubernetes on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 17 Apr 2019 11:23:34 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Solo.io打造的Gloo——Knative中Istio的替代方案</title>
+      <link>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</link>
+      <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</guid>
+      <description>[编者按] &amp;gt; 之前有社区成员询问是不是想尝试Knative时，必须要安装Istio才行，今天就告诉大家一种Istio的替代方案，使用Solo.</description>
+    </item>
     
     <item>
       <title>Kubernetes Ingress Controller的使用介绍及高可用落地</title>
@@ -17,7 +26,7 @@
       <pubDate>Wed, 17 Apr 2019 11:23:34 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</guid>
-      <description>本文转载自zhangguanzhang的博客。 从之前对ingress controller到现在了解架构和一些经验总结下，顺带给人科普少走弯路</description>
+      <description>本文是对 Kubernetes 的 Ingress controller 的介绍、部署及高可用说明。</description>
     </item>
     
     <item>
@@ -26,7 +35,7 @@
       <pubDate>Wed, 17 Apr 2019 11:23:34 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/general-kubernetes-dashboard/</guid>
-      <description>本文转载自zhangguanzhang的博客。 旨在面向新手讲解手动部署过程，本文dashboard的暴露不会用nodePort（不喜欢使用它</description>
+      <description>本文是对 Kubernetes 的 dashboard有关ssl下各个场景的相关说明。</description>
     </item>
     
     <item>
@@ -35,7 +44,7 @@
       <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/prometheus-monitor-k8s-1/</guid>
-      <description>背景 由于容器化和微服务的大力发展，Kubernetes基本已经统一了容器管理方案，当我们使用Kubernetes来进行容器化管理的时候，全面</description>
+      <description>本文旨在于寻找一套能够胜任kubernetes集群监控的架构。</description>
     </item>
     
     <item>
@@ -44,7 +53,7 @@
       <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/prometheus-monitor-k8s-2/</guid>
-      <description>背景 由于容器化和微服务的大力发展，Kubernetes基本已经统一了容器管理方案，当我们使用Kubernetes来进行容器化管理的时候，全面</description>
+      <description>本文介绍 Prometheus 监控的部署。</description>
     </item>
     
     <item>
@@ -53,7 +62,7 @@
       <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/prometheus-monitor-k8s-3/</guid>
-      <description>背景 由于容器化和微服务的大力发展，Kubernetes基本已经统一了容器管理方案，当我们使用Kubernetes来进行容器化管理的时候，全面</description>
+      <description>本文介绍 Prometheus 如何采集业务指标。</description>
     </item>
     
     <item>
@@ -62,7 +71,7 @@
       <pubDate>Tue, 08 Jan 2019 17:40:30 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/prometheus-operator-manual/</guid>
-      <description>写这篇文章原因 所有监控的agent底层最终都是查询的/proc和/sys里的信息推送(如果错了轻喷)，因为在Kubernetes中收集宿主机</description>
+      <description>Prometheus所有的监控的agent底层最终都是查询的/proc和/sys里的信息推送，本文分享了当收集宿主机信息的agent跑在pod中时会遇到的问题。</description>
     </item>
     
     <item>
@@ -71,7 +80,7 @@
       <pubDate>Thu, 20 Dec 2018 15:14:54 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/kubernetes-resource-management/</guid>
-      <description>本文转载自吴伟的博客。 kubernetes 资源简介 什么是资源？ 在 kubernetes 中，有两个基础但是非常重要的概念：node 和 pod。node 翻译成节点，是对集群资源的抽象；</description>
+      <description>本文是关于 Kubernetes 中资源管理的概述。</description>
     </item>
     
     <item>
@@ -80,7 +89,7 @@
       <pubDate>Tue, 18 Dec 2018 19:49:56 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-and-traffic-model/</guid>
-      <description>本文转载自宋净超的博客。 本文介绍了 Istio 和 Kubernetes 中的一些服务和流量的抽象模型。虽然 Istio 一开始确定的抽象模型与对接的底层平台无关，但目前来看基本绑定 Ku</description>
+      <description>本文介绍了 Kubernetes、Envoy 和 Istio 中流量管理的一些服务模型以及为什么说 Kubernetes service 存在的意义仅剩下做服务发现。</description>
     </item>
     
     <item>
@@ -89,7 +98,7 @@
       <pubDate>Wed, 12 Dec 2018 11:39:01 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/kubernetes-crd-quick-start/</guid>
-      <description>本文首先向你简单介绍了 Kubernetes，然后教你从零开始构建一个 Kubernetes CRD。如果你已经对 Kubernetes 十分了解的话可以跳过本文前半部分的 Kubernetes 介绍，直接从</description>
+      <description>本文首先向你简单介绍了 Kubernetes，然后教你从零开始构建一个 Kubernetes CRD。</description>
     </item>
     
     <item>
@@ -107,7 +116,7 @@
       <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</guid>
-      <description>评估Kubernetes（K8s）的无服务器框架 Rancher 1.6和Rancher 2.0底层容器编排引擎的术语和概念略微有所不同。想要了解这些差异就需</description>
+      <description>本文讲解了如何利用K8S的设计参数和服务编排功能，并将它们与无服务器框架和函数即服务（FaaS）结合起来。</description>
     </item>
     
     <item>
@@ -116,7 +125,7 @@
       <pubDate>Wed, 31 Oct 2018 20:01:03 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/</guid>
-      <description>Kubernetes 不仅仅是一个容器管理工具。它是一个平台，旨在处理包装在任意数量的容器和组合中的各种工作负载。Kubernetes内置了多个控制器，可映射到</description>
+      <description>本文介绍了如何将云原生工作负载映射到Kubernetes中的控制器。</description>
     </item>
     
     <item>
@@ -125,7 +134,7 @@
       <pubDate>Tue, 30 Oct 2018 17:15:17 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/myth-cloud-native-portability/</guid>
-      <description>本文最初发表于2017年5月24日。 随着大量新平台和支持工具的出现，云原生势头正在增长。 这些新平台为开发人员提供了越来越多的功能 ，可以以自动</description>
+      <description>本文介绍了云原生的可移植性，告诫读者应该看重生态系统而不是某个具体平台。</description>
     </item>
     
     <item>
@@ -134,7 +143,7 @@
       <pubDate>Mon, 15 Oct 2018 19:24:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/manipulating-istio-and-other-custom-kubernetes-resources-in-golang/</guid>
-      <description>在本文中，我将演示如何使用Golang来操作Kubernetes Custom Resources，以Istio为例。 不需要您了解Istio，我只是用它来</description>
+      <description>主要介绍了在Golang中操作Istio和其他Kubernetes自定义资源（CRD），主要讲解了除go-client之外的另一种方法。</description>
     </item>
     
     <item>
@@ -143,7 +152,7 @@
       <pubDate>Wed, 26 Sep 2018 15:49:30 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microservice-observability-with-istio/</guid>
-      <description>Trulia是一个多功能的房地产网站，为您提供有关待售房屋、出租公寓、邻里洞察、市场和趋势的本地独家新闻，以帮助您确切了解房屋购买、出售或出</description>
+      <description>在kubernetes和istio的帮助下，Trulia能够分解PHP单体架构替换成可持续交付的微服务架构。团队不再被迫手动将工具添加到单个代码库或基础架构自动化中。</description>
     </item>
     
     <item>
@@ -152,7 +161,7 @@
       <pubDate>Thu, 13 Sep 2018 20:26:56 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</guid>
-      <description>作为Istio教程第二篇文章本教程将一步步带领你熟悉指令并解释指令的作用。我们的前一篇文章解析了istio原理、示例，以及使用它给开发和运维</description>
+      <description>作为Kublr推出的Istio教程第二篇文章本教程将一步步带领你熟悉Istio指令并解释指令的作用，并在Kubernetes集群中实现金丝雀部署。</description>
     </item>
     
     <item>
@@ -161,7 +170,7 @@
       <pubDate>Fri, 07 Sep 2018 12:33:30 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/test-drive-your-first-istio-deployment-using-play-with-kubernetes-platform-cloud-computing/</guid>
-      <description>作为一名全栈开发，假如最近花了不少时间开发应用，肯定已经理解了微服务架构下要面临的一系列全新挑战。尽管应用已经从庞大的单体应用转变成了开发更</description>
+      <description>在Docker提供的免费的Kubernetes试玩平台上，使用好奇心驱动的方式部署一个Istio Service Mesh。本方式适合没有测试资源又不想自己整环境的，只是想上去爽一把的人士。</description>
     </item>
     
     <item>
@@ -170,7 +179,7 @@
       <pubDate>Fri, 07 Sep 2018 12:27:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microservices-post-kubernetes/</guid>
-      <description>关键要点 微服务架构仍然是分布式系统最流行的架构风格。 但 Kubernetes 和云原生运动已经在很大程度上重新定义了应用程序的设计和开发。 在云原生平台上，服务的可</description>
+      <description>在Kubernetes诞生的前几年微服务还是分布式系统最流行的架构风格。但Kubernetes和云原生运动已经改变了应用程序设计和开发的方方面面。在本文中，我要质疑微服务的一些理念，指明它们在后Kubernetes时代不会再像以前那样强大。</description>
     </item>
     
     <item>
@@ -179,7 +188,7 @@
       <pubDate>Thu, 30 Aug 2018 15:21:45 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</guid>
-      <description>本文为该教程的第1部分。 如果你之前没有听说过Service Mesh，不用担心。虽然从可用文档、公开讨论和Github活跃度来看，它是一个相对</description>
+      <description>本文kublr出品的Istio Service Mesh教程的第1部分，主要讲解了Istio的部署和流量路由部分。</description>
     </item>
     
     <item>
@@ -188,7 +197,7 @@
       <pubDate>Mon, 20 Aug 2018 21:04:02 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</guid>
-      <description>使用Let’s Encrypt在Kubernetes上保护Istio的Ingress services 这是我在kubernetes之上部署Istio系列文章中</description>
+      <description>这是Vamp在kubernetes之上部署Istio系列文章中的第三篇，内容是关于Vamp试图通过Vamp Lamia实现的更多细节以及我们为什么选择Istio的原因。</description>
     </item>
     
     <item>
@@ -197,7 +206,7 @@
       <pubDate>Tue, 07 Aug 2018 22:20:49 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/</guid>
-      <description>我们都是知道Kubernetes中个资源对象叫 autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动</description>
+      <description>我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。</description>
     </item>
     
     <item>
@@ -206,7 +215,7 @@
       <pubDate>Fri, 13 Jul 2018 12:38:44 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0-8/</guid>
-      <description>这是我们正在发布的系列文章中的第二篇，描述了我们在 Kubernetes 上采用 Istio 进行流量路由的经验。有关我们试图通过Vamp实现的更多详情以及我们选择 Istio 的原因，</description>
+      <description>本文讲述Vamp（一款商业版的云原生应用平台）如何在Kubernetes上采用Istio进行流量路由的经验</description>
     </item>
     
   </channel>

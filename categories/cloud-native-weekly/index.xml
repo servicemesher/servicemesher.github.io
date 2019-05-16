@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cloud Native Weekly on ServiceMesher</title>
+    <title>cloud native weekly on ServiceMesher</title>
     <link>http://www.servicemesher.com/categories/cloud-native-weekly/</link>
-    <description>Recent content in Cloud Native Weekly on ServiceMesher</description>
+    <description>Recent content in cloud native weekly on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 07 May 2019 15:12:53 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 07 May 2019 15:12:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cloud-native-weekly-03/</guid>
-      <description>摘要： Docker Hub遭入侵，19万账号被泄露；Java 8 终于开始提供良好的容器支持；Snyk 年度安全报告出炉，容器安全问题形势空前严峻。 业界要闻 Docker</description>
+      <description>这是 Cloud Native 周报第3期。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 23 Apr 2019 10:44:45 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cloud-native-weekly-02/</guid>
-      <description>本周报由阿里巴巴容器平台联合蚂蚁金服共同发布 本周作者：傅伟，敖小剑，张磊，临石，南异，心贵，王夕宁，长虑 责任编辑：木环 业界要闻 Kubernetes External Secrets 近日，世</description>
+      <description>这是 Cloud Native 周报第2期。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Tue, 16 Apr 2019 19:35:39 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cloud-native-weekly-01/</guid>
-      <description>本周作者：张磊 临石 禅鸣 至简 宋净超 编辑：木环 这是 Cloud Native 周报第一期。 业界要闻 在上周于旧金山举办的 Google Cloud Next 2019 大会上，Google Cloud正式发布了：</description>
+      <description>这是 Cloud Native 周报第一期。</description>
     </item>
     
   </channel>

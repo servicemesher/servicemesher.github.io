@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Trulia on ServiceMesher</title>
+    <title>trulia on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/trulia/</link>
-    <description>Recent content in Trulia on ServiceMesher</description>
+    <description>Recent content in trulia on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 26 Sep 2018 15:49:30 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 26 Sep 2018 15:49:30 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microservice-observability-with-istio/</guid>
-      <description>Trulia是一个多功能的房地产网站，为您提供有关待售房屋、出租公寓、邻里洞察、市场和趋势的本地独家新闻，以帮助您确切了解房屋购买、出售或出</description>
+      <description>在kubernetes和istio的帮助下，Trulia能够分解PHP单体架构替换成可持续交付的微服务架构。团队不再被迫手动将工具添加到单个代码库或基础架构自动化中。</description>
     </item>
     
   </channel>

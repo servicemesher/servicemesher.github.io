@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Nfv on ServiceMesher</title>
+    <title>NFV on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/nfv/</link>
-    <description>Recent content in Nfv on ServiceMesher</description>
+    <description>Recent content in NFV on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 19 Dec 2018 17:55:08 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 19 Dec 2018 17:55:08 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/multi-network-interfaces-for-istio/</guid>
-      <description>本文转载自赵化冰的博客。 Istio 1.0版本只支持在单个网络，即Mesh中的服务只能连接在一个网络上。虽然在架构设计上是开放的，但从目前的代码来看，</description>
+      <description>随着Kubernetes在NFV（网络功能虚拟化）领域中的逐渐应用，已经出现多个Kubernetes的多网络平面解决方案，Istio也需要考虑支持多网络平面，以为5G的微服务化架构提供服务通讯和管控的基础设施。</description>
     </item>
     
   </channel>

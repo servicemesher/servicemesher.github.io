@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Microprofile on ServiceMesher</title>
+    <title>microprofile on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/microprofile/</link>
-    <description>Recent content in Microprofile on ServiceMesher</description>
+    <description>Recent content in microprofile on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Sun, 31 Mar 2019 11:17:45 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Sun, 31 Mar 2019 11:17:45 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/microprofile-the-microservice-programming-model-made-for-istio/</guid>
-      <description>编者按 如果说Spring Cloud是以SpingBoot为核心和基础的微服务架构，那么MicroProfile则是将传统JavaEE轻量化以</description>
+      <description>本文探讨了如何结合eclipse/microprofile与流行的服务网格Istio安全地部署微服务。</description>
     </item>
     
   </channel>

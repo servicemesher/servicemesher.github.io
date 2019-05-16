@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Operator on ServiceMesher</title>
+    <title>operator on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/operator/</link>
-    <description>Recent content in Operator on ServiceMesher</description>
+    <description>Recent content in operator on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 08 Jan 2019 17:40:30 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 08 Jan 2019 17:40:30 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/prometheus-operator-manual/</guid>
-      <description>写这篇文章原因 所有监控的agent底层最终都是查询的/proc和/sys里的信息推送(如果错了轻喷)，因为在Kubernetes中收集宿主机</description>
+      <description>Prometheus所有的监控的agent底层最终都是查询的/proc和/sys里的信息推送，本文分享了当收集宿主机信息的agent跑在pod中时会遇到的问题。</description>
     </item>
     
   </channel>

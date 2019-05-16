@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chart on ServiceMesher</title>
+    <title>chart on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/chart/</link>
-    <description>Recent content in Chart on ServiceMesher</description>
+    <description>Recent content in chart on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 04 Jun 2018 16:09:57 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 04 Jun 2018 16:09:57 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/helm-chart-for-istio-0-8/</guid>
-      <description>儿童节期间，拖拉了一个多月的 Istio 0.8 正式发布了，这可能是 Istio 1.0 之前的最后一个 LTS 版本，意义重大。 新版本中，原来的 Kubernetes 安装文件 install/kuber</description>
+      <description>本文将带您探究 Istio 0.8 LTS 版本中的 Helm Chart 的安装部署及其结构。</description>
     </item>
     
   </channel>

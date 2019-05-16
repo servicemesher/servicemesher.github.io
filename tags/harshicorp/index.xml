@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Harshicorp on ServiceMesher</title>
+    <title>harshicorp on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/harshicorp/</link>
-    <description>Recent content in Harshicorp on ServiceMesher</description>
+    <description>Recent content in harshicorp on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 04 Jul 2018 12:48:07 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 04 Jul 2018 12:48:07 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/consul-1-2-service-mesh/</guid>
-      <description>本文译自 HashiCorp 官网关于 Consul 1.2 支持 Service Mesh 发布的博客文章。 本文是 HashiCorp 创始人 Mitchell Hashimoto 在 2018 年 6 月 26 日发布的关于 Consul 1.2 新功能 Service Mesh 的官方介绍。译者接触过的 Hashicorp 的产品有过不</description>
+      <description>本文是 HashiCorp 创始人 Mitchell Hashimoto 在 2018 年 6 月 26 日发布的关于 Consul 1.2 新功能 Service Mesh 的官方介绍。</description>
     </item>
     
   </channel>

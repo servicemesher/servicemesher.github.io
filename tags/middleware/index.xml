@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Middleware on ServiceMesher</title>
+    <title>middleware on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/middleware/</link>
-    <description>Recent content in Middleware on ServiceMesher</description>
+    <description>Recent content in middleware on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 23 Oct 2018 14:19:51 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 23 Oct 2018 14:19:51 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/does-the-service-mesh-spell-the-end-for-middleware/</guid>
-      <description>在Istio和相关技术持续获得增势之时，中间件在Service Mesh中的地位正在逐渐减弱。尽管它们都可以用来监管不同应用和服务之间的通信，</description>
+      <description>本文分别介绍了中间件和服务网格，以及两者之间的权衡。使用诸如Istio之类的工具，将中间件的计算能力带入到Kubernetes和基于容器的系统。如果组织架构希望使用服务网格替代某些中间件，则必须重新评估其组织流程和方法论。</description>
     </item>
     
   </channel>

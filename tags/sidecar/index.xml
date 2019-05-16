@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sidecar on ServiceMesher</title>
+    <title>sidecar on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/sidecar/</link>
-    <description>Recent content in Sidecar on ServiceMesher</description>
+    <description>Recent content in sidecar on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 11 Apr 2019 16:56:23 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 11 Apr 2019 16:56:23 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/from-sidecar-to-servicemesh/</guid>
-      <description>所谓边车模式（ Sidecar pattern ），也译作挎斗模式，是分布式架构中云设计模式的一种。因为其非常类似于生活中的边三轮摩托车而得名。该设计模式通过给应用程序加</description>
+      <description>本文谈谈从边车模式这一分布式架构的设计模式到 Service Mesh 的演变。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Mon, 18 Mar 2019 11:23:11 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/hand-crafting-a-sidecar-proxy-like-istio/</guid>
-      <description>sidecar代理模式是一个重要的概念，它允许Istio为服务网格中运行的服务提供路由、度量、安全和其他功能。在这篇文章中，我将解释为Ist</description>
+      <description>本文介绍了一种实现简单HTTP流量嗅探代理的基本步骤，并进行了相关实验验证，生动展现了Istio实现流量管理的核心原理与概念。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Tue, 11 Sep 2018 14:48:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/</guid>
-      <description>以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar</description>
+      <description>以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Thu, 02 Aug 2018 15:32:40 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/</guid>
-      <description>Sidecar 设计模式已经越来越受欢迎，并在社区内得到更广泛的采用。构建具有高度可扩展性、弹性、安全性和可观察性的微服务架构具有挑战性。Service Mesh</description>
+      <description>Sidecar 设计模式已经越来越受欢迎，并在社区内得到更广泛的采用。构建具有高度可扩展性、弹性、安全性和可观察性的微服务架构具有挑战性。Service Mesh 架构的发展已经改变了游戏规则。它降低了与微服务架构相关的复杂性，并提供了许多功能，如负载平衡、服务发现、流量管理、熔断、遥测、故障注入等。</description>
     </item>
     
   </channel>

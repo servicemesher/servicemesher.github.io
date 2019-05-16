@@ -3,13 +3,114 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.servicemesher.com/categories/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/gloo/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/istio/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/knative/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/serverless/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/translation/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/api-gateways-are-going-through-an-identity-crisis/</loc>
     <lastmod>2019-05-13T20:08:37+08:00</lastmod>
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/api-gateway/</loc>
+    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ingresss/</loc>
+    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/istio/</loc>
+    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
+    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/google/</loc>
+    <lastmod>2019-05-13T12:20:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/google-cloud-run-intro/</loc>
     <lastmod>2019-05-13T12:20:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/cloud-run/</loc>
+    <lastmod>2019-05-13T12:20:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
+    <lastmod>2019-05-13T12:20:46+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -23,8 +124,50 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/anthos/</loc>
+    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/gitops/</loc>
+    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/cncf-udpa-wg/</loc>
     <lastmod>2019-05-08T10:12:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/envoy/</loc>
+    <lastmod>2019-05-08T10:12:18+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/envoy/</loc>
+    <lastmod>2019-05-08T10:12:18+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/xds/</loc>
+    <lastmod>2019-05-08T10:12:18+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/cloud-native/</loc>
+    <lastmod>2019-05-07T15:12:53+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/cloud-native-weekly/</loc>
+    <lastmod>2019-05-07T15:12:53+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -43,8 +186,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/linkerd/</loc>
+    <lastmod>2019-05-06T21:50:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/cloud-native-weekly-02/</loc>
     <lastmod>2019-04-23T10:44:45+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/microservices/</loc>
+    <lastmod>2019-04-22T13:54:05+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -68,6 +223,24 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/dashboard/</loc>
+    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ingress/</loc>
+    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/kubernetes/</loc>
+    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/general-kubernetes-dashboard/</loc>
     <lastmod>2019-04-17T11:23:34+08:00</lastmod>
   </url>
@@ -75,6 +248,12 @@
   <url>
     <loc>http://www.servicemesher.com/blog/cloud-native-weekly-01/</loc>
     <lastmod>2019-04-16T19:35:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/sidecar/</loc>
+    <lastmod>2019-04-11T16:56:23+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -93,8 +272,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/faas/</loc>
+    <lastmod>2019-04-09T22:42:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/faas-vs-microservices/</loc>
     <lastmod>2019-04-09T22:42:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/flagger/</loc>
+    <lastmod>2019-04-09T20:38:30+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -110,6 +301,18 @@
   <url>
     <loc>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/</loc>
     <lastmod>2019-04-04T18:00:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/app-mesh/</loc>
+    <lastmod>2019-04-03T20:14:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/aws/</loc>
+    <lastmod>2019-04-03T20:14:43+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -133,6 +336,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/microprofile/</loc>
+    <lastmod>2019-03-31T11:17:45+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/circuit-breaking-and-outlier-detection-in-istio/</loc>
     <lastmod>2019-03-31T11:12:07+08:00</lastmod>
   </url>
@@ -150,6 +359,18 @@
   <url>
     <loc>http://www.servicemesher.com/blog/prometheus-monitor-k8s-3/</loc>
     <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/monitoring/</loc>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/prometheus/</loc>
+    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -213,6 +434,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/hystrix/</loc>
+    <lastmod>2019-03-08T15:12:41+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/</loc>
     <lastmod>2019-03-08T15:12:41+08:00</lastmod>
   </url>
@@ -253,6 +480,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/categories/knative/</loc>
+    <lastmod>2019-02-22T14:08:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/envoy-threading-model/</loc>
     <lastmod>2019-02-20T20:17:12+08:00</lastmod>
   </url>
@@ -265,6 +498,12 @@
   <url>
     <loc>http://www.servicemesher.com/blog/istio-kubernetes-service-mesh/</loc>
     <lastmod>2019-02-20T11:44:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/culture/</loc>
+    <lastmod>2019-02-19T12:08:33+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -293,8 +532,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/cncf/</loc>
+    <lastmod>2019-02-15T10:41:22+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/kong-mesh-analyse-report/</loc>
     <lastmod>2019-02-15T10:35:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/kong/</loc>
+    <lastmod>2019-02-15T10:35:59+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -308,8 +559,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/grpc-web/</loc>
+    <lastmod>2019-01-28T14:20:33+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/service-mesh-the-microservices-in-post-kubernetes-era/</loc>
     <lastmod>2019-01-17T20:16:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/practice/</loc>
+    <lastmod>2019-01-11T11:10:19+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -318,8 +581,26 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/operator/</loc>
+    <lastmod>2019-01-08T17:40:30+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/prometheus-operator-manual/</loc>
     <lastmod>2019-01-08T17:40:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/meetup/</loc>
+    <lastmod>2019-01-08T10:41:54+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/meetup/</loc>
+    <lastmod>2019-01-08T10:41:54+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -338,8 +619,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/supergloo/</loc>
+    <lastmod>2019-01-03T15:49:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/knative-redefine-serverless/</loc>
     <lastmod>2019-01-02T11:35:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/serverless/</loc>
+    <lastmod>2019-01-02T11:35:38+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -353,8 +646,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/open-source/</loc>
+    <lastmod>2018-12-26T16:35:38+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/kubernetes-resource-management/</loc>
     <lastmod>2018-12-20T15:14:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/nfv/</loc>
+    <lastmod>2018-12-19T17:55:08+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -373,6 +678,24 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/ant-financial/</loc>
+    <lastmod>2018-12-17T11:07:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/sofamosn/</loc>
+    <lastmod>2018-12-17T11:07:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/sofamosn/</loc>
+    <lastmod>2018-12-17T11:07:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/sofa-mosn-0-4-0-changelog/</loc>
     <lastmod>2018-12-17T11:07:07+08:00</lastmod>
   </url>
@@ -383,13 +706,43 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/crd/</loc>
+    <lastmod>2018-12-12T11:39:01+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/kubernetes-crd-quick-start/</loc>
     <lastmod>2018-12-12T11:39:01+08:00</lastmod>
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/jaeger/</loc>
+    <lastmod>2018-12-11T14:24:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</loc>
     <lastmod>2018-12-11T14:24:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/grpc/</loc>
+    <lastmod>2018-12-10T21:50:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/tutorial/</loc>
+    <lastmod>2018-12-10T21:50:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/tutorial/</loc>
+    <lastmod>2018-12-10T21:50:05+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -403,6 +756,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/sofamesh/</loc>
+    <lastmod>2018-12-04T17:32:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/microservice-with-service-mesh-at-ant-financial/</loc>
     <lastmod>2018-12-04T17:32:44+08:00</lastmod>
   </url>
@@ -410,6 +769,30 @@
   <url>
     <loc>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</loc>
     <lastmod>2018-12-04T14:47:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ci-cd/</loc>
+    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/jenkins/</loc>
+    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/coredns/</loc>
+    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/sofamesh/</loc>
+    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -423,8 +806,26 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/microservice/</loc>
+    <lastmod>2018-11-27T19:29:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/design-patterns-for-microservice-communication/</loc>
     <lastmod>2018-11-27T19:29:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/event-driven/</loc>
+    <lastmod>2018-11-27T19:22:12+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/evnet-mesh/</loc>
+    <lastmod>2018-11-27T19:22:12+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -463,6 +864,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/microgateway/</loc>
+    <lastmod>2018-11-22T21:56:14+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/transcoding-grpc-to-http-json-using-envoy/</loc>
     <lastmod>2018-11-22T15:16:06+08:00</lastmod>
   </url>
@@ -473,8 +880,38 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/monitor/</loc>
+    <lastmod>2018-11-20T11:40:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/grafana/</loc>
+    <lastmod>2018-11-20T11:40:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</loc>
     <lastmod>2018-11-15T13:20:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/rate-limiting/</loc>
+    <lastmod>2018-11-15T13:20:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/docker/</loc>
+    <lastmod>2018-11-08T15:20:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/monitoring/</loc>
+    <lastmod>2018-11-08T15:20:46+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -483,8 +920,26 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/fission/</loc>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/kubeless/</loc>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</loc>
     <lastmod>2018-11-08T13:20:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/openfaas/</loc>
+    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -493,8 +948,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/cilium/</loc>
+    <lastmod>2018-11-07T14:14:01+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/</loc>
     <lastmod>2018-11-06T12:20:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ingress-gateway/</loc>
+    <lastmod>2018-11-05T02:08:37+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -505,6 +972,12 @@
   <url>
     <loc>http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</loc>
     <lastmod>2018-11-04T12:00:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/servcie-mesh/</loc>
+    <lastmod>2018-11-01T20:10:14+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -528,8 +1001,32 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/coohom/</loc>
+    <lastmod>2018-10-25T20:49:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</loc>
     <lastmod>2018-10-25T20:49:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/naftis/</loc>
+    <lastmod>2018-10-25T10:44:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ui/</loc>
+    <lastmod>2018-10-25T10:44:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/xiaomi/</loc>
+    <lastmod>2018-10-25T10:44:46+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -540,6 +1037,12 @@
   <url>
     <loc>http://www.servicemesher.com/blog/raw-tcp-traffic-shaping-with-istio/</loc>
     <lastmod>2018-10-24T11:45:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/middleware/</loc>
+    <lastmod>2018-10-23T14:19:51+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -558,13 +1061,31 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/kiali/</loc>
+    <lastmod>2018-10-22T14:15:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-paas-integration/</loc>
     <lastmod>2018-10-19T10:24:23+08:00</lastmod>
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/paas/</loc>
+    <lastmod>2018-10-19T10:24:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/set-sail-a-production-ready-istio-adapter/</loc>
     <lastmod>2018-10-17T19:13:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/golang/</loc>
+    <lastmod>2018-10-15T19:24:46+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -578,6 +1099,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/x-protocol/</loc>
+    <lastmod>2018-10-14T14:53:04+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/going-beyond-container-orchestration/</loc>
     <lastmod>2018-10-11T19:28:26+08:00</lastmod>
   </url>
@@ -585,6 +1112,12 @@
   <url>
     <loc>http://www.servicemesher.com/blog/x-protocol-rapid-decode-forward/</loc>
     <lastmod>2018-10-10T11:45:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/api-management/</loc>
+    <lastmod>2018-10-09T12:26:41+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -613,6 +1146,30 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/trulia/</loc>
+    <lastmod>2018-09-26T15:49:30+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/openshift/</loc>
+    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/red-hat/</loc>
+    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/security/</loc>
+    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/increasing-security-of-istio-deployments-by-removing-the-need-for-privileged-containers/</loc>
     <lastmod>2018-09-25T16:22:22+08:00</lastmod>
   </url>
@@ -623,8 +1180,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/open-shift/</loc>
+    <lastmod>2018-09-25T16:09:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</loc>
     <lastmod>2018-09-20T18:00:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/gateway/</loc>
+    <lastmod>2018-09-20T18:00:47+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -648,8 +1217,26 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/container/</loc>
+    <lastmod>2018-09-16T16:49:58+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/kublr/</loc>
+    <lastmod>2018-09-13T20:26:56+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</loc>
     <lastmod>2018-09-13T20:26:56+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ambassador/</loc>
+    <lastmod>2018-09-12T12:38:52+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -663,6 +1250,18 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/dubbo/</loc>
+    <lastmod>2018-09-11T19:06:22+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/iptables/</loc>
+    <lastmod>2018-09-11T14:48:53+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/</loc>
     <lastmod>2018-09-11T14:48:53+08:00</lastmod>
   </url>
@@ -670,6 +1269,18 @@
   <url>
     <loc>http://www.servicemesher.com/blog/aspen-mesh-released/</loc>
     <lastmod>2018-09-10T15:18:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/aspen-mesh/</loc>
+    <lastmod>2018-09-10T15:18:18+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/f5/</loc>
+    <lastmod>2018-09-10T15:18:18+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -688,6 +1299,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/lyft/</loc>
+    <lastmod>2018-09-02T13:48:47+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/</loc>
     <lastmod>2018-08-31T12:27:25+08:00</lastmod>
   </url>
@@ -695,6 +1312,12 @@
   <url>
     <loc>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</loc>
     <lastmod>2018-08-30T15:21:45+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ibm/</loc>
+    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -708,6 +1331,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/kube-router/</loc>
+    <lastmod>2018-08-27T19:52:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/service-mesh-meetup-shenzhen-20180825/</loc>
     <lastmod>2018-08-27T11:40:45+08:00</lastmod>
   </url>
@@ -715,6 +1344,18 @@
   <url>
     <loc>http://www.servicemesher.com/blog/application-safety-and-correctness-cannot-be-offloaded-to-istio-or-any-service-mesh/</loc>
     <lastmod>2018-08-23T15:31:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/lets-encrypt/</loc>
+    <lastmod>2018-08-20T21:04:02+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/vamp/</loc>
+    <lastmod>2018-08-20T21:04:02+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -748,6 +1389,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/fintech/</loc>
+    <lastmod>2018-08-08T22:12:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/enabling-the-financial-services-shift-to-microservices/</loc>
     <lastmod>2018-08-08T22:12:16+08:00</lastmod>
   </url>
@@ -778,6 +1425,18 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/mosn/</loc>
+    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/sofa/</loc>
+    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/announcing-istio-1-0/</loc>
     <lastmod>2018-07-31T21:44:58+08:00</lastmod>
   </url>
@@ -790,6 +1449,12 @@
   <url>
     <loc>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/</loc>
     <lastmod>2018-07-28T17:49:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/istio-source-deepin/</loc>
+    <lastmod>2018-07-28T17:49:21+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -813,8 +1478,20 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/circonus/</loc>
+    <lastmod>2018-07-17T20:12:18+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin/</loc>
     <lastmod>2018-07-17T17:32:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/tracing/</loc>
+    <lastmod>2018-07-17T12:53:14+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -823,13 +1500,37 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/sofastack/</loc>
+    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</loc>
     <lastmod>2018-07-16T15:51:34+08:00</lastmod>
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/ab-test/</loc>
+    <lastmod>2018-07-13T12:38:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0-8/</loc>
     <lastmod>2018-07-13T12:38:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/distributing-system/</loc>
+    <lastmod>2018-07-11T15:32:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/rate-limiting/</loc>
+    <lastmod>2018-07-11T15:32:40+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -853,6 +1554,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/conduit/</loc>
+    <lastmod>2018-07-09T12:19:53+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/</loc>
     <lastmod>2018-07-04T19:56:20+08:00</lastmod>
   </url>
@@ -860,6 +1567,12 @@
   <url>
     <loc>http://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</loc>
     <lastmod>2018-07-04T19:44:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/source-code/</loc>
+    <lastmod>2018-07-04T19:44:08+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -873,8 +1586,26 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/sre/</loc>
+    <lastmod>2018-07-04T17:54:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/comprehensive-container-based-service-monitoring-with-kubernetes-and-istio/</loc>
     <lastmod>2018-07-04T17:54:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/fn/</loc>
+    <lastmod>2018-07-04T17:44:01+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/function/</loc>
+    <lastmod>2018-07-04T17:44:01+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -885,6 +1616,18 @@
   <url>
     <loc>http://www.servicemesher.com/blog/consul-1-2-service-mesh/</loc>
     <lastmod>2018-07-04T12:48:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/consul/</loc>
+    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/harshicorp/</loc>
+    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -903,6 +1646,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/proxy/</loc>
+    <lastmod>2018-07-01T12:33:23+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</loc>
     <lastmod>2018-07-01T12:33:23+08:00</lastmod>
   </url>
@@ -918,13 +1667,31 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/tls/</loc>
+    <lastmod>2018-06-25T20:30:52+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-envoy-cert-manager-lets-encrypt-for-tls/</loc>
     <lastmod>2018-06-25T20:30:52+08:00</lastmod>
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/infoq/</loc>
+    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/vp-microservices-communication-governance-using-service-mesh/</loc>
     <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/matt-klein/</loc>
+    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -935,6 +1702,12 @@
   <url>
     <loc>http://www.servicemesher.com/blog/containers-service-mesh-and-api-gateways-it-starts-at-the-edge/</loc>
     <lastmod>2018-06-21T18:00:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/pilot/</loc>
+    <lastmod>2018-06-21T16:55:56+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -953,6 +1726,18 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/vistio/</loc>
+    <lastmod>2018-06-20T10:25:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/vizceral/</loc>
+    <lastmod>2018-06-20T10:25:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/making-most-out-microservices-service-mesh/</loc>
     <lastmod>2018-06-19T18:04:08+08:00</lastmod>
   </url>
@@ -965,6 +1750,12 @@
   <url>
     <loc>http://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</loc>
     <lastmod>2018-06-19T11:42:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ucloud/</loc>
+    <lastmod>2018-06-14T10:43:16+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -993,6 +1784,12 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/categories/istio-mixer-cache/</loc>
+    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/istio-mixer-cache-part3-main/</loc>
     <lastmod>2018-06-11T13:43:10+08:00</lastmod>
   </url>
@@ -1000,6 +1797,18 @@
   <url>
     <loc>http://www.servicemesher.com/blog/istio-security-notes-by-fleeto/</loc>
     <lastmod>2018-06-11T10:56:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/baggage/</loc>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/opentracing/</loc>
+    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -1048,6 +1857,18 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/chart/</loc>
+    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/helm/</loc>
+    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/the-path-to-service-mesh/</loc>
     <lastmod>2018-06-04T15:55:08+08:00</lastmod>
   </url>
@@ -1065,6 +1886,18 @@
   <url>
     <loc>http://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</loc>
     <lastmod>2018-05-31T21:12:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/gitops/</loc>
+    <lastmod>2018-05-31T21:12:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/huawei/</loc>
+    <lastmod>2018-05-30T15:00:22+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -1090,833 +1923,6 @@
   <url>
     <loc>http://www.servicemesher.com/blog/</loc>
     <lastmod>2018-05-20T15:51:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ab-test/</loc>
-    <lastmod>2018-07-13T12:38:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ambassador/</loc>
-    <lastmod>2018-09-12T12:38:52+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ant-financial/</loc>
-    <lastmod>2018-12-17T11:07:07+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/anthos/</loc>
-    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/api-gateway/</loc>
-    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/api-management/</loc>
-    <lastmod>2018-10-09T12:26:41+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/app-mesh/</loc>
-    <lastmod>2019-04-03T20:14:43+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/aspen-mesh/</loc>
-    <lastmod>2018-09-10T15:18:18+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/aws/</loc>
-    <lastmod>2019-04-03T20:14:43+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/baggage/</loc>
-    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/chart/</loc>
-    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ci-cd/</loc>
-    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/cilium/</loc>
-    <lastmod>2018-11-07T14:14:01+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/circonus/</loc>
-    <lastmod>2018-07-17T20:12:18+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/cloud-native/</loc>
-    <lastmod>2019-05-07T15:12:53+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/cloud-native-weekly/</loc>
-    <lastmod>2019-05-07T15:12:53+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/cloud-run/</loc>
-    <lastmod>2019-05-13T12:20:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/cncf/</loc>
-    <lastmod>2019-02-15T10:41:22+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/conduit/</loc>
-    <lastmod>2018-07-09T12:19:53+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/consul/</loc>
-    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/container/</loc>
-    <lastmod>2018-09-16T16:49:58+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/coohom/</loc>
-    <lastmod>2018-10-25T20:49:29+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/coredns/</loc>
-    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/crd/</loc>
-    <lastmod>2018-12-12T11:39:01+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/culture/</loc>
-    <lastmod>2019-02-19T12:08:33+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/dashboard/</loc>
-    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/distributing-system/</loc>
-    <lastmod>2018-07-11T15:32:40+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/docker/</loc>
-    <lastmod>2018-11-08T15:20:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/dubbo/</loc>
-    <lastmod>2018-09-11T19:06:22+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/envoy/</loc>
-    <lastmod>2019-05-08T10:12:18+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/envoy/</loc>
-    <lastmod>2019-05-08T10:12:18+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/event-driven/</loc>
-    <lastmod>2018-11-27T19:22:12+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/evnet-mesh/</loc>
-    <lastmod>2018-11-27T19:22:12+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/f5/</loc>
-    <lastmod>2018-09-10T15:18:18+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/faas/</loc>
-    <lastmod>2019-04-09T22:42:29+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/fintech/</loc>
-    <lastmod>2018-08-08T22:12:16+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/fission/</loc>
-    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/flagger/</loc>
-    <lastmod>2019-04-09T20:38:30+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/fn/</loc>
-    <lastmod>2018-07-04T17:44:01+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/function/</loc>
-    <lastmod>2018-07-04T17:44:01+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/gateway/</loc>
-    <lastmod>2018-09-20T18:00:47+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/gitops/</loc>
-    <lastmod>2018-05-31T21:12:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/gitops/</loc>
-    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/gloo/</loc>
-    <lastmod>2019-04-22T10:41:16+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/golang/</loc>
-    <lastmod>2018-10-15T19:24:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/google/</loc>
-    <lastmod>2019-05-13T12:20:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/grafana/</loc>
-    <lastmod>2018-11-20T11:40:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/grpc/</loc>
-    <lastmod>2018-12-10T21:50:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/grpc-web/</loc>
-    <lastmod>2019-01-28T14:20:33+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/harshicorp/</loc>
-    <lastmod>2018-07-04T12:48:07+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/helm/</loc>
-    <lastmod>2018-06-04T16:09:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/huawei/</loc>
-    <lastmod>2018-05-30T15:00:22+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/hystrix/</loc>
-    <lastmod>2019-03-08T15:12:41+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ibm/</loc>
-    <lastmod>2018-08-28T16:15:25+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/infoq/</loc>
-    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ingress/</loc>
-    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ingress-gateway/</loc>
-    <lastmod>2018-11-05T02:08:37+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ingresss/</loc>
-    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/iptables/</loc>
-    <lastmod>2018-09-11T14:48:53+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-05-08T22:40:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/istio/</loc>
-    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/istio-mixer-cache/</loc>
-    <lastmod>2018-06-11T14:03:34+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/istio-source-deepin/</loc>
-    <lastmod>2018-07-28T17:49:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/jaeger/</loc>
-    <lastmod>2018-12-11T14:24:23+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/jenkins/</loc>
-    <lastmod>2018-12-04T14:47:13+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/kiali/</loc>
-    <lastmod>2018-10-22T14:15:27+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/knative/</loc>
-    <lastmod>2019-05-13T12:20:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/knative/</loc>
-    <lastmod>2019-02-22T14:08:59+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/kong/</loc>
-    <lastmod>2019-02-15T10:35:59+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/kube-router/</loc>
-    <lastmod>2018-08-27T19:52:29+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/kubeless/</loc>
-    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
-    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/kubernetes/</loc>
-    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/kublr/</loc>
-    <lastmod>2018-09-13T20:26:56+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/lets-encrypt/</loc>
-    <lastmod>2018-08-20T21:04:02+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/linkerd/</loc>
-    <lastmod>2019-05-06T21:50:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/lyft/</loc>
-    <lastmod>2018-09-02T13:48:47+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/matt-klein/</loc>
-    <lastmod>2018-06-22T19:01:51+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/meetup/</loc>
-    <lastmod>2019-01-08T10:41:54+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/meetup/</loc>
-    <lastmod>2019-01-08T10:41:54+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/microgateway/</loc>
-    <lastmod>2018-11-22T21:56:14+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/microprofile/</loc>
-    <lastmod>2019-03-31T11:17:45+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/microservice/</loc>
-    <lastmod>2018-11-27T19:29:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/microservices/</loc>
-    <lastmod>2019-04-22T13:54:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/middleware/</loc>
-    <lastmod>2018-10-23T14:19:51+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/monitor/</loc>
-    <lastmod>2018-11-20T11:40:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/monitoring/</loc>
-    <lastmod>2018-11-08T15:20:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/monitoring/</loc>
-    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/mosn/</loc>
-    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/naftis/</loc>
-    <lastmod>2018-10-25T10:44:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/nfv/</loc>
-    <lastmod>2018-12-19T17:55:08+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/open-shift/</loc>
-    <lastmod>2018-09-25T16:09:49+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/open-source/</loc>
-    <lastmod>2018-12-26T16:35:38+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/openfaas/</loc>
-    <lastmod>2018-11-08T13:20:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/openshift/</loc>
-    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/opentracing/</loc>
-    <lastmod>2018-06-08T16:01:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/operator/</loc>
-    <lastmod>2019-01-08T17:40:30+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/paas/</loc>
-    <lastmod>2018-10-19T10:24:23+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/pilot/</loc>
-    <lastmod>2018-06-21T16:55:56+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/practice/</loc>
-    <lastmod>2019-01-11T11:10:19+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/prometheus/</loc>
-    <lastmod>2019-03-26T11:12:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/proxy/</loc>
-    <lastmod>2018-07-01T12:33:23+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/rate-limiting/</loc>
-    <lastmod>2018-11-15T13:20:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/rate-limiting/</loc>
-    <lastmod>2018-07-11T15:32:40+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/red-hat/</loc>
-    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/security/</loc>
-    <lastmod>2018-09-25T16:22:22+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/servcie-mesh/</loc>
-    <lastmod>2018-11-01T20:10:14+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/serverless/</loc>
-    <lastmod>2019-04-09T22:42:29+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/serverless/</loc>
-    <lastmod>2019-01-02T11:35:38+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
-    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2019-05-13T12:20:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/sidecar/</loc>
-    <lastmod>2019-04-11T16:56:23+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/sofa/</loc>
-    <lastmod>2018-08-02T14:31:43+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/sofamesh/</loc>
-    <lastmod>2018-12-04T17:32:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/sofamesh/</loc>
-    <lastmod>2018-11-29T14:51:19+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/sofamosn/</loc>
-    <lastmod>2018-12-17T11:07:07+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/sofamosn/</loc>
-    <lastmod>2018-12-17T11:07:07+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/sofastack/</loc>
-    <lastmod>2018-07-16T15:51:34+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/source-code/</loc>
-    <lastmod>2018-07-04T19:44:08+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/sre/</loc>
-    <lastmod>2018-07-04T17:54:13+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/supergloo/</loc>
-    <lastmod>2019-01-03T15:49:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/</loc>
-    <lastmod>2018-07-13T12:38:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/tls/</loc>
-    <lastmod>2018-06-25T20:30:52+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/tracing/</loc>
-    <lastmod>2018-07-17T12:53:14+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/translation/</loc>
-    <lastmod>2019-05-07T11:50:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/trulia/</loc>
-    <lastmod>2018-09-26T15:49:30+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/tutorial/</loc>
-    <lastmod>2018-12-10T21:50:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/tutorial/</loc>
-    <lastmod>2018-12-10T21:50:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ucloud/</loc>
-    <lastmod>2018-06-14T10:43:16+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ui/</loc>
-    <lastmod>2018-10-25T10:44:46+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/vamp/</loc>
-    <lastmod>2018-08-20T21:04:02+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/vistio/</loc>
-    <lastmod>2018-06-20T10:25:16+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/vizceral/</loc>
-    <lastmod>2018-06-20T10:25:16+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/x-protocol/</loc>
-    <lastmod>2018-10-14T14:53:04+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/xds/</loc>
-    <lastmod>2019-05-08T10:12:18+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/xiaomi/</loc>
-    <lastmod>2018-10-25T10:44:46+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

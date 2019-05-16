@@ -6,48 +6,22 @@
     <description>Recent content in Categories on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
+    <lastBuildDate>Thu, 16 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Cloud Native Weekly</title>
-      <link>http://www.servicemesher.com/categories/cloud-native-weekly/</link>
-      <pubDate>Tue, 07 May 2019 15:12:53 +0800</pubDate>
+      <title>translation</title>
+      <link>http://www.servicemesher.com/categories/translation/</link>
+      <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.servicemesher.com/categories/cloud-native-weekly/</guid>
+      <guid>http://www.servicemesher.com/categories/translation/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Culture</title>
-      <link>http://www.servicemesher.com/categories/culture/</link>
-      <pubDate>Tue, 19 Feb 2019 12:08:33 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/culture/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Envoy</title>
-      <link>http://www.servicemesher.com/categories/envoy/</link>
-      <pubDate>Wed, 08 May 2019 10:12:18 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/envoy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gitops</title>
-      <link>http://www.servicemesher.com/categories/gitops/</link>
-      <pubDate>Wed, 08 May 2019 22:40:05 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/gitops/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Istio</title>
+      <title>istio</title>
       <link>http://www.servicemesher.com/categories/istio/</link>
       <pubDate>Mon, 13 May 2019 20:08:37 +0800</pubDate>
       
@@ -56,88 +30,7 @@
     </item>
     
     <item>
-      <title>Istio Mixer Cache</title>
-      <link>http://www.servicemesher.com/categories/istio-mixer-cache/</link>
-      <pubDate>Mon, 11 Jun 2018 14:03:34 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/istio-mixer-cache/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Istio Source Deepin</title>
-      <link>http://www.servicemesher.com/categories/istio-source-deepin/</link>
-      <pubDate>Sat, 28 Jul 2018 17:49:21 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/istio-source-deepin/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Knative</title>
-      <link>http://www.servicemesher.com/categories/knative/</link>
-      <pubDate>Fri, 22 Feb 2019 14:08:59 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/knative/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>http://www.servicemesher.com/categories/kubernetes/</link>
-      <pubDate>Wed, 17 Apr 2019 11:23:34 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Meetup</title>
-      <link>http://www.servicemesher.com/categories/meetup/</link>
-      <pubDate>Tue, 08 Jan 2019 10:41:54 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/meetup/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Monitoring</title>
-      <link>http://www.servicemesher.com/categories/monitoring/</link>
-      <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/monitoring/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Practice</title>
-      <link>http://www.servicemesher.com/categories/practice/</link>
-      <pubDate>Fri, 11 Jan 2019 11:10:19 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/practice/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rate Limiting</title>
-      <link>http://www.servicemesher.com/categories/rate-limiting/</link>
-      <pubDate>Wed, 11 Jul 2018 15:32:40 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/rate-limiting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Serverless</title>
-      <link>http://www.servicemesher.com/categories/serverless/</link>
-      <pubDate>Wed, 02 Jan 2019 11:35:38 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/serverless/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Service Mesh</title>
+      <title>service mesh</title>
       <link>http://www.servicemesher.com/categories/service-mesh/</link>
       <pubDate>Mon, 13 May 2019 12:20:46 +0800</pubDate>
       
@@ -146,16 +39,97 @@
     </item>
     
     <item>
-      <title>Sofamesh</title>
-      <link>http://www.servicemesher.com/categories/sofamesh/</link>
-      <pubDate>Thu, 29 Nov 2018 14:51:19 +0800</pubDate>
+      <title>gitops</title>
+      <link>http://www.servicemesher.com/categories/gitops/</link>
+      <pubDate>Wed, 08 May 2019 22:40:05 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/categories/sofamesh/</guid>
+      <guid>http://www.servicemesher.com/categories/gitops/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Sofamosn</title>
+      <title>envoy</title>
+      <link>http://www.servicemesher.com/categories/envoy/</link>
+      <pubDate>Wed, 08 May 2019 10:12:18 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/envoy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cloud native weekly</title>
+      <link>http://www.servicemesher.com/categories/cloud-native-weekly/</link>
+      <pubDate>Tue, 07 May 2019 15:12:53 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/cloud-native-weekly/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>http://www.servicemesher.com/categories/kubernetes/</link>
+      <pubDate>Wed, 17 Apr 2019 11:23:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>monitoring</title>
+      <link>http://www.servicemesher.com/categories/monitoring/</link>
+      <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>knative</title>
+      <link>http://www.servicemesher.com/categories/knative/</link>
+      <pubDate>Fri, 22 Feb 2019 14:08:59 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/knative/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>culture</title>
+      <link>http://www.servicemesher.com/categories/culture/</link>
+      <pubDate>Tue, 19 Feb 2019 12:08:33 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/culture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>practice</title>
+      <link>http://www.servicemesher.com/categories/practice/</link>
+      <pubDate>Fri, 11 Jan 2019 11:10:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/practice/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>meetup</title>
+      <link>http://www.servicemesher.com/categories/meetup/</link>
+      <pubDate>Tue, 08 Jan 2019 10:41:54 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/meetup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>serverless</title>
+      <link>http://www.servicemesher.com/categories/serverless/</link>
+      <pubDate>Wed, 02 Jan 2019 11:35:38 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/serverless/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sofamosn</title>
       <link>http://www.servicemesher.com/categories/sofamosn/</link>
       <pubDate>Mon, 17 Dec 2018 11:07:07 +0800</pubDate>
       
@@ -164,20 +138,47 @@
     </item>
     
     <item>
-      <title>Translation</title>
-      <link>http://www.servicemesher.com/categories/translation/</link>
-      <pubDate>Tue, 07 May 2019 11:50:05 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/translation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tutorial</title>
+      <title>tutorial</title>
       <link>http://www.servicemesher.com/categories/tutorial/</link>
       <pubDate>Mon, 10 Dec 2018 21:50:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/categories/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sofamesh</title>
+      <link>http://www.servicemesher.com/categories/sofamesh/</link>
+      <pubDate>Thu, 29 Nov 2018 14:51:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/sofamesh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>istio source deepin</title>
+      <link>http://www.servicemesher.com/categories/istio-source-deepin/</link>
+      <pubDate>Sat, 28 Jul 2018 17:49:21 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/istio-source-deepin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rate limiting</title>
+      <link>http://www.servicemesher.com/categories/rate-limiting/</link>
+      <pubDate>Wed, 11 Jul 2018 15:32:40 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/rate-limiting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>istio mixer cache</title>
+      <link>http://www.servicemesher.com/categories/istio-mixer-cache/</link>
+      <pubDate>Mon, 11 Jun 2018 14:03:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/istio-mixer-cache/</guid>
       <description></description>
     </item>
     

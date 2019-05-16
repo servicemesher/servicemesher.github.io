@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ui on ServiceMesher</title>
+    <title>ui on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/ui/</link>
-    <description>Recent content in Ui on ServiceMesher</description>
+    <description>Recent content in ui on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 25 Oct 2018 10:44:46 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 25 Oct 2018 10:44:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</guid>
-      <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武汉研发中心推出Naftis，帮助用户更轻松</description>
+      <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武研推出Naftis，帮助用户更轻松地管理Istio。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Mon, 22 Oct 2018 19:33:39 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-ui-tutorial/</guid>
-      <description>由来 ​ 开发istio-ui是由于运维：到时候线上几百个istio配置文件管理会很麻烦。其实在开始接触istio的时候，我们其他同学就有这样的</description>
+      <description>本文介绍的是联邦车网的工程师朱经惠开源的istio-ui项目，该项目主要是为了减轻配置工作和减少犯错几率。</description>
     </item>
     
   </channel>

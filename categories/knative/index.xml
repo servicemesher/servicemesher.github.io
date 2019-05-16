@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Knative on ServiceMesher</title>
+    <title>knative on ServiceMesher</title>
     <link>http://www.servicemesher.com/categories/knative/</link>
-    <description>Recent content in Knative on ServiceMesher</description>
+    <description>Recent content in knative on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 22 Feb 2019 14:08:59 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Fri, 22 Feb 2019 14:08:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</guid>
-      <description>关于 Knative eventing 的基本概念可以参考: https://github.com/knative/docs/blob/master/eventing/README.md https://thenewstack.io/knative-enables-portable-serverless-platforms-on-kubernetes-for-any-cloud/ 本文不对基本概念做介绍，本文主要是基于 Kubernetes Event Source example 为例分析 in-memory-channel 的实现原理。 在运行 Kubernetes Event Source example 之前要保证已经安装了 in-memory-channel , 下</description>
+      <description>本文不对基本概念做介绍，本文主要是基于 Kubernetes Event Source example 为例分析 in-memory-channel 的实现原理。</description>
     </item>
     
   </channel>

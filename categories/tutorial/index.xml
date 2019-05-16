@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tutorial on ServiceMesher</title>
+    <title>tutorial on ServiceMesher</title>
     <link>http://www.servicemesher.com/categories/tutorial/</link>
-    <description>Recent content in Tutorial on ServiceMesher</description>
+    <description>Recent content in tutorial on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 10 Dec 2018 21:50:05 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 10 Dec 2018 21:50:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/</guid>
-      <description>gRPC-Web使Web应用能够通过类似于Envoy的代理访问gRPC后端。Envoy是Istio的默认代理，因此，我们可以利用Istio的</description>
+      <description>本文构建了一个简单的Web应用，该应用使用emoji替换用户输入文本中的关键字，并使用gRPC-Web和Istio与gRPC后端进行通信。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 13 Sep 2018 20:26:56 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</guid>
-      <description>作为Istio教程第二篇文章本教程将一步步带领你熟悉指令并解释指令的作用。我们的前一篇文章解析了istio原理、示例，以及使用它给开发和运维</description>
+      <description>作为Kublr推出的Istio教程第二篇文章本教程将一步步带领你熟悉Istio指令并解释指令的作用，并在Kubernetes集群中实现金丝雀部署。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Thu, 30 Aug 2018 15:21:45 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</guid>
-      <description>本文为该教程的第1部分。 如果你之前没有听说过Service Mesh，不用担心。虽然从可用文档、公开讨论和Github活跃度来看，它是一个相对</description>
+      <description>本文kublr出品的Istio Service Mesh教程的第1部分，主要讲解了Istio的部署和流量路由部分。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Mon, 06 Aug 2018 08:43:29 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-tutorials-collection/</guid>
-      <description>8月1日0点，Istio 1.0发布，已生产就绪！大家都已经跃跃欲试了，几天前我发布了一键在本地搭建运行Istio 1.0的分布式Kuberne</description>
+      <description>给大家推荐下，目前本人搜集到的可以说是最完整的Isito学习环境和包含代码的示例教程。</description>
     </item>
     
   </channel>

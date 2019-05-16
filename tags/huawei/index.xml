@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Huawei on ServiceMesher</title>
+    <title>huawei on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/huawei/</link>
-    <description>Recent content in Huawei on ServiceMesher</description>
+    <description>Recent content in huawei on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 30 May 2018 15:00:22 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 30 May 2018 15:00:22 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-desigin-patterns-for-a-commercial-service-mesh/</guid>
-      <description>作者介绍：田晓亮，8年软件行业经验，曾就职于三星，2012年进入云计算领域，对PaaS，DevOps，APM有深入的研究和实践经验，方案支撑</description>
+      <description>本文分享了微服务中存在的问题，以及如何通过商用级的 Service Mesh 设计来解决问题，作者分享了华为的 Service Mesh 设计之道。</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Service Mesh on ServiceMesher</title>
+    <title>service mesh on ServiceMesher</title>
     <link>http://www.servicemesher.com/categories/service-mesh/</link>
-    <description>Recent content in Service Mesh on ServiceMesher</description>
+    <description>Recent content in service mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 13 May 2019 12:20:46 +0800</lastBuildDate>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 09 May 2019 21:38:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/google-traffic-director-detail/</guid>
-      <description>Traffic Director介绍 Traffic Director 是 Google Cloud 推出的完全托管的服务网格流量控制平面。 援引来自Traffic Director官方网站的介绍资料，Traffi</description>
+      <description>Traffic Director 是 Google Cloud 推出的完全托管的服务网格流量控制平面。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Thu, 11 Apr 2019 16:56:23 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/from-sidecar-to-servicemesh/</guid>
-      <description>所谓边车模式（ Sidecar pattern ），也译作挎斗模式，是分布式架构中云设计模式的一种。因为其非常类似于生活中的边三轮摩托车而得名。该设计模式通过给应用程序加</description>
+      <description>本文谈谈从边车模式这一分布式架构的设计模式到 Service Mesh 的演变。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Tue, 19 Mar 2019 10:41:25 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-and-chasm/</guid>
-      <description>本文转载自崔秀龙的博客。 引子 这几天拜读了灵雀云出品的一篇文章：《从“鸿沟理论”看云原生》，其中有两段关于 Istio 的陈述，我深感赞同： 在 Control Plane</description>
+      <description>Istio 1.1新特性概览。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Mon, 18 Feb 2019 22:49:28 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-summary-2018/</guid>
-      <description>前言 在2017年年底，在Service Mesh刚刚兴起之时，应InfoQ的邀请撰写过一篇名为 &amp;ldquo;Service Mesh年度总结：群雄逐鹿烽烟起&amp;rdquo;</description>
+      <description>Service Mesh 2018年度总结。</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Fri, 15 Feb 2019 10:35:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/kong-mesh-analyse-report/</guid>
-      <description>Kong是一个基于OpenResty (Nginx) 封装的微服务中间件产品，在微服务架构体系中，作为API网关以及API中间件（kubernetes ing</description>
+      <description>本文试用了 kong mesh 并与 istio + envoy 做了功能对比。</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@
       <pubDate>Thu, 17 Jan 2019 20:16:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/service-mesh-the-microservices-in-post-kubernetes-era/</guid>
-      <description>这不是一篇教程，本文试图带您梳理清楚 Kubernetes、Envoy（xDS 协议）以及 Istio Service Mesh 之间的关系及内在联系。本文介绍了 Kubernetes 中的负载均衡方</description>
+      <description>本文假定您已经对 Kubernetes 有比较全面的了解，同时还使用过 Istio service mesh，但是对于 Kubernetes、Envoy 及 Istio 之间的关系不甚了解，及 Istio 如何使用 xDS 协议控制所有的 Sidecar 有浓厚的兴趣，那么推荐您继续阅读。</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
       <pubDate>Thu, 03 Jan 2019 15:49:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/</guid>
-      <description>笔者2017年就曾注意到 solo.io 这家公司，它的创始人 Idit 曾在 KubeCon 上分享过 Squash，去年11月推出了 SuperGloo 服务网格编排器再起吸引了我的注意，但最重要的一</description>
+      <description>作为服务网格的编排器，它为用户自由组合任何服务网格开启了方便之门，SuperGloo 也承载着 Solo 这家公司的愿景，混合云环境的云原生应用管理平台。</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@
       <pubDate>Wed, 07 Nov 2018 14:14:01 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cilium-intro/</guid>
-      <description>Cilium是一个纯开源软件，没有哪家公司提供商业化支持，也不是由某一公司开源，该软件用于透明地保护使用Linux容器管理平台（如Docke</description>
+      <description>Cilium是一个纯开源软件，没有哪家公司提供商业化支持，也不是由某一公司开源，该软件用于透明地保护使用Linux容器管理平台（如Docker和Kubernetes）部署的应用程序服务之间的网络连接。</description>
     </item>
     
     <item>
@@ -98,7 +98,7 @@
       <pubDate>Thu, 25 Oct 2018 10:44:46 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</guid>
-      <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武汉研发中心推出Naftis，帮助用户更轻松</description>
+      <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武研推出Naftis，帮助用户更轻松地管理Istio。</description>
     </item>
     
     <item>
@@ -107,7 +107,7 @@
       <pubDate>Mon, 10 Sep 2018 15:18:18 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/aspen-mesh-released/</guid>
-      <description>Aspen Mesh这家公司隶属于F5，Aspen Mesh基于Istio 1.0开发，这个周末刚发布了1.0版本，可以申请免费试用。 Aspen Mesh对比Ist</description>
+      <description>Aspen Mesh这家公司隶属于F5，Aspen Mesh基于Istio 1.0开发，上个周末刚发布了1.0版本，可以申请免费试用。</description>
     </item>
     
     <item>
@@ -116,7 +116,7 @@
       <pubDate>Mon, 20 Aug 2018 11:38:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-enterprise-path-to-service-mesh-architectures/</guid>
-      <description>追本溯源，Service Mesh实际上是一种SDN，等同于OSI模型中的会话层。 每一次技术变革，必然要导致生产力和生产关系的变革，我们看到这</description>
+      <description>本文是宋净超（Jimmy Song）对Lee Calcote的The Enterprise path to Service Mesh Architectures一书的解读。追本溯源，Service Mesh实际上是一种SDN，等同于OSI模型中的会话层。</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@
       <pubDate>Mon, 20 Aug 2018 11:24:33 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/sofa-mosn-performance-report-0-1-0/</guid>
-      <description>以下的的性能报告为 SOFAMosn 0.1.0 在做 Bolt 与 HTTP1.x 协议的纯 TCP 转发上与 envoy 的一些性能对比数据，主要表现在 QPS、RTT、失败率/成功率等。 本文原文来自：https</description>
+      <description>以下的蚂蚁金服开源的SOFAMosn 0.1.0版本的性能报告，在做Bolt与HTTP1.x 协议的纯TCP，转发上与Envoy的一些性能对比数据、主要表现在QPS、RTT、失败率/成功率等。</description>
     </item>
     
     <item>
@@ -134,7 +134,7 @@
       <pubDate>Mon, 13 Aug 2018 16:19:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/how-cilium-enhances-istio-with-socket-aware-bpf-programs/</guid>
-      <description>8月1日Istio 1.0 发布，Cilium社区感谢所有Istio贡献者为此付出的巨大努力。我们很幸运能够参与社区活动，为Istio做出贡献，并帮</description>
+      <description>本博客将介绍BPF和Cilium如何增强Istio的一些细节，主要关注Istio的安全性，开启Istio对外部服务的支持和性能部分。</description>
     </item>
     
     <item>
@@ -143,7 +143,7 @@
       <pubDate>Thu, 02 Aug 2018 14:31:43 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/sofa-mosn-deep-dive/</guid>
-      <description>SOFAMosn GitHub地址：https://github.com/alipay/sofa-mosn 本文作者：朵晓东，花名奕杉，蚂蚁金服高级技术专家，</description>
+      <description>本文基于蚂蚁金服高级技术专家朵晓东在第二届Service Mesh Meetup北京站分享的部分内容所整理。</description>
     </item>
     
     <item>
@@ -152,7 +152,7 @@
       <pubDate>Sat, 28 Jul 2018 17:49:21 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin-part2/</guid>
-      <description>本文为Service Mesh深度学习系列之一： Service Mesh深度学习系列part1—istio源码分析之pilot-agent模块分析 Service Mesh</description>
+      <description>本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-discovery的深度源码解析续篇。</description>
     </item>
     
     <item>
@@ -161,7 +161,7 @@
       <pubDate>Tue, 17 Jul 2018 17:32:31 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-discovery-module-deepin/</guid>
-      <description>本文分析的istio代码版本为0.8.0，commit为0cd8d67，commit时间为2018年6月18日。 本文为Service Mesh</description>
+      <description>本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-discovery的深度源码解析。</description>
     </item>
     
     <item>
@@ -170,7 +170,7 @@
       <pubDate>Wed, 11 Jul 2018 14:24:24 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/istio-service-mesh-source-code-pilot-agent-deepin/</guid>
-      <description>本文分析的istio代码版本为0.8.0，commit为0cd8d67，commit时间为2018年6月18日。 本文为Service Mesh</description>
+      <description>本文是谐云科技CTO丁轶群博士对Istio 0.8版本代码中的pilot-agent的深度源码解析。</description>
     </item>
     
     <item>
@@ -179,7 +179,7 @@
       <pubDate>Mon, 09 Jul 2018 12:19:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/rip-conduit/</guid>
-      <description>本文转载自伪架构师的博客。 7 月 6 日，Linkerd 博客再次更新，宣布 Conduit 0.5 发布：在翻炒了无数次 Prometheus 支持的冷饭之后，终于发布了新的功能 —— TLS 支持。</description>
+      <description>2018年7月6日，Linkerd博客再次更新，宣布Conduit 0.5发布：在翻炒了无数次Prometheus支持的冷饭之后，终于发布了新的功能——TLS支持。紧接着一个更加重磅的消息：0.5将是Conduit最后一个版本，未来将作为Linkerd 2.0的基础继续存在——Conduit 的 Github 项目将会转移为Linkerd2。</description>
     </item>
     
     <item>
@@ -188,7 +188,7 @@
       <pubDate>Sun, 01 Jul 2018 12:33:23 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/a-new-more-efficient-proxy-model/</guid>
-      <description>背景和想法 Service Mesh 提供了微服务化开发的新思路，核心思想是构建一个代理转发网络并结合控制和转发分离的做法来对成千上万个微服务间做流量、策略、安全等</description>
+      <description>借助 eBPF，作为 Service Mesh 的数据转发层，对接 Pilot、Mixer 等控制面，实现策略、流量和安全管理，是不是一种更高效的方式？这会比 Envoy 拥有更好的性能，虽然性能未必是 Mesh 首要考虑的问题，本文中讲述使用 Cilium 的尝试。</description>
     </item>
     
     <item>
@@ -197,7 +197,7 @@
       <pubDate>Wed, 30 May 2018 15:00:22 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/the-desigin-patterns-for-a-commercial-service-mesh/</guid>
-      <description>作者介绍：田晓亮，8年软件行业经验，曾就职于三星，2012年进入云计算领域，对PaaS，DevOps，APM有深入的研究和实践经验，方案支撑</description>
+      <description>本文分享了微服务中存在的问题，以及如何通过商用级的 Service Mesh 设计来解决问题，作者分享了华为的 Service Mesh 设计之道。</description>
     </item>
     
     <item>
@@ -206,7 +206,7 @@
       <pubDate>Wed, 23 May 2018 16:09:57 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/deepin-service-mesh-tech-details/</guid>
-      <description>在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章</description>
+      <description>在Kubernetes称为容器编排的标准之后，Service Mesh开始火了起来，但是很多文章讲概念的多，讲技术细节的少，所以专门写一篇文章，来解析Service Mesh背后的技术细节。</description>
     </item>
     
     <item>

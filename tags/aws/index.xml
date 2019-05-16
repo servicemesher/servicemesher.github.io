@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Aws on ServiceMesher</title>
+    <title>aws on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/aws/</link>
-    <description>Recent content in Aws on ServiceMesher</description>
+    <description>Recent content in aws on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 03 Apr 2019 20:14:43 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 03 Apr 2019 20:14:43 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/redefining-application-communications-with-aws-app-mesh/</guid>
-      <description>原文发表于2019年3月27日。 在 re:Invent 2018，AWS宣布了AWS App Mesh 的公开预览版，App Mesh是一个服务网格，可以轻松监视和控制跨应用的通</description>
+      <description>在 re:Invent 2018，AWS宣布了AWS App Mesh 的公开预览版，App Mesh是一个服务网格，可以轻松监视和控制跨应用的通信。今天，我很高兴地宣布App Mesh 已经可以为用户提供使用了（GA）。</description>
     </item>
     
   </channel>

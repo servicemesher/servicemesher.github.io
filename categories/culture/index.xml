@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Culture on ServiceMesher</title>
+    <title>culture on ServiceMesher</title>
     <link>http://www.servicemesher.com/categories/culture/</link>
-    <description>Recent content in Culture on ServiceMesher</description>
+    <description>Recent content in culture on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 19 Feb 2019 12:08:33 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 19 Feb 2019 12:08:33 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/reading-istio-service-mesh-book/</guid>
-      <description>《深入浅出Istio》这本书这两天开始卖了，我也第一时间入手了以后到现在已经基本上全部翻完了。在这里记录一下看完这本书的读后感。 总体来说，这</description>
+      <description>本文是《深入浅出 Istio》（崔秀龙著，电子工业出版社出版）一书的读后感。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Fri, 15 Feb 2019 10:41:22 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/cncf-annual-report-2018-review/</guid>
-      <description>2019年2月初，CNCF 发布了2018年的年度报告，这是 CNCF 继2017年度报告之后，第二次发布年度报告，2017年度的报告只有区区14页，今</description>
+      <description>本文是对 CNCF（云原生计算基金会）2018年年度报告的解读。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Fri, 11 Jan 2019 11:10:19 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/explore-at-the-edge-of-istio-service-mesh/</guid>
-      <description>崔秀龙，HPE 软件分析师，Kubernetes 权威指南作者之一，Kubernetes、Istio 项目成员。 本文根据崔秀龙在 2019 广州 Service Mesh Meetup#5 分享整</description>
+      <description>本文根据崔秀龙在 2019 广州 Service Mesh Meetup#5 分享整理。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Wed, 26 Dec 2018 16:35:38 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</guid>
-      <description>本篇主要通过对中国开发者在开源社区中的活动的观察，总结了一些有待提升或者存在弊病的现象。这些现象的背后原因可能是开发者的利益诉求，也可能是公</description>
+      <description>本文谈论了一些 GitHub 上中式开源的怪象，希望从事开源的读者引以为戒。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Wed, 28 Nov 2018 11:25:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/invisible-men-in-the-world-of-cloudnative/</guid>
-      <description>一直想给我所从事的企业服务行业写点啥，又千头万绪不知从何说起。此次 KubeCon 上海一行，眼见 CNCF 高起朱楼大宴宾客，深受触动。企业服务这个巨大的“角落”，</description>
+      <description>一直想给我所从事的企业服务行业写点啥，又千头万绪不知从何说起。此次 KubeCon 上海一行，眼见 CNCF 高起朱楼大宴宾客，深受触动。企业服务这个巨大的“角落”，似乎已被遗忘。本文尝试给云原生时代的同学们讲讲这个似乎有点蒙昧的角落。也希望能给奋斗在企业服务项目中的朋友们一点启发。</description>
     </item>
     
   </channel>

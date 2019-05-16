@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linkerd on ServiceMesher</title>
+    <title>linkerd on ServiceMesher</title>
     <link>http://www.servicemesher.com/tags/linkerd/</link>
-    <description>Recent content in Linkerd on ServiceMesher</description>
+    <description>Recent content in linkerd on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 06 May 2019 21:50:05 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 06 May 2019 21:50:05 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</guid>
-      <description>[编者按] 作者是Shopify的工程师，公司在引入Istio作为服务网格的过程中发现消耗的计算成本过高。基于此问题，作者使用了公司内部开发的</description>
+      <description>本文对Istio和Linkerd的CPU使用情况做了基准测试和比较。</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Wed, 19 Sep 2018 10:18:54 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/linkerd-2-0-in-general-availability/</guid>
-      <description>今天，云原生计算基金会（CNCF）和Linkerd的维护者很高兴地宣布Linkerd 2.0 GA发布。 2.0版本为Linkerd带来了性能、资源消</description>
+      <description>Linkerd 2.0版本为Linkerd带来了性能、资源消耗和易用性方面的显着改进。它还将项目从集群范围的service mesh转换为可组合的service sidecar，旨在为开发人员和服务所有者提供在云原生环境中成功所需的关键工具。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Mon, 09 Jul 2018 12:19:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/rip-conduit/</guid>
-      <description>本文转载自伪架构师的博客。 7 月 6 日，Linkerd 博客再次更新，宣布 Conduit 0.5 发布：在翻炒了无数次 Prometheus 支持的冷饭之后，终于发布了新的功能 —— TLS 支持。</description>
+      <description>2018年7月6日，Linkerd博客再次更新，宣布Conduit 0.5发布：在翻炒了无数次Prometheus支持的冷饭之后，终于发布了新的功能——TLS支持。紧接着一个更加重磅的消息：0.5将是Conduit最后一个版本，未来将作为Linkerd 2.0的基础继续存在——Conduit 的 Github 项目将会转移为Linkerd2。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Tue, 19 Jun 2018 11:42:58 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</guid>
-      <description>在接下来的几个月中，我们将撰写一系列文章来记录从传统负载均衡器到谷歌Kubernetes引擎（GKE）之上服务网格的WePay工程化之路。 在</description>
+      <description>本文是WePay（一家做支付平台和风控产品的公司）使用Linkerd作为服务网格的代理的分享文章。</description>
     </item>
     
   </channel>
