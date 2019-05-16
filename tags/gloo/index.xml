@@ -6,7 +6,7 @@
     <description>Recent content in gloo on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 16 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 May 2019 12:20:44 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/gloo/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,10 @@
     <item>
       <title>Solo.io打造的Gloo——Knative中Istio的替代方案</title>
       <link>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</link>
-      <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 16 May 2019 12:20:44 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</guid>
-      <description>[编者按] &amp;gt; 之前有社区成员询问是不是想尝试Knative时，必须要安装Istio才行，今天就告诉大家一种Istio的替代方案，使用Solo.</description>
+      <description>本文介绍如何Solo.io公司研发的Gloo产品，可以作为使用Knative时部署Istio的替代方案。</description>
     </item>
     
     <item>
