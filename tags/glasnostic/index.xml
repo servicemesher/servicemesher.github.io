@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Glasnostic on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/glasnostic/</link>
+    <description>Recent content in Glasnostic on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 20 May 2019 12:10:44 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/glasnostic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>防止系统故障:熔断-它是什么以及它是如何工作的(第2部分)</title>
+      <link>http://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</link>
+      <pubDate>Mon, 20 May 2019 12:10:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</guid>
+      <description>本文介绍了开发人员和运维人员两种不同视角下的微服务典型应用场景，对比了熔断功能的三种不同实现：Hystrix, Service Mesh (Istio、Linkerd) 和 Glasnostic。</description>
+    </item>
+    
+  </channel>
+</rss>

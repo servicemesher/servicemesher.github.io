@@ -6,10 +6,64 @@
     <description>Recent content in Tags on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 16 May 2019 12:20:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 May 2019 12:10:44 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Circuit Breaking</title>
+      <link>http://www.servicemesher.com/tags/circuit-breaking/</link>
+      <pubDate>Mon, 20 May 2019 12:10:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/circuit-breaking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Glasnostic</title>
+      <link>http://www.servicemesher.com/tags/glasnostic/</link>
+      <pubDate>Mon, 20 May 2019 12:10:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/glasnostic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hystrix</title>
+      <link>http://www.servicemesher.com/tags/hystrix/</link>
+      <pubDate>Mon, 20 May 2019 12:10:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/hystrix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linkerd</title>
+      <link>http://www.servicemesher.com/tags/linkerd/</link>
+      <pubDate>Mon, 20 May 2019 12:10:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/linkerd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>istio</title>
+      <link>http://www.servicemesher.com/tags/istio/</link>
+      <pubDate>Mon, 20 May 2019 12:10:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/istio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>service mesh</title>
+      <link>http://www.servicemesher.com/tags/service-mesh/</link>
+      <pubDate>Mon, 20 May 2019 12:09:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/service-mesh/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>gloo</title>
@@ -17,15 +71,6 @@
       <pubDate>Thu, 16 May 2019 12:20:44 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/gloo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>istio</title>
-      <link>http://www.servicemesher.com/tags/istio/</link>
-      <pubDate>Thu, 16 May 2019 12:20:44 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/istio/</guid>
       <description></description>
     </item>
     
@@ -84,15 +129,6 @@
     </item>
     
     <item>
-      <title>service mesh</title>
-      <link>http://www.servicemesher.com/tags/service-mesh/</link>
-      <pubDate>Mon, 13 May 2019 20:08:37 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/service-mesh/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Google</title>
       <link>http://www.servicemesher.com/tags/google/</link>
       <pubDate>Mon, 13 May 2019 12:20:46 +0800</pubDate>
@@ -143,15 +179,6 @@
       <pubDate>Tue, 07 May 2019 15:12:53 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/cloud-native/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linkerd</title>
-      <link>http://www.servicemesher.com/tags/linkerd/</link>
-      <pubDate>Mon, 06 May 2019 21:50:05 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/linkerd/</guid>
       <description></description>
     </item>
     
@@ -233,15 +260,6 @@
       <pubDate>Tue, 26 Mar 2019 11:12:00 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/prometheus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hystrix</title>
-      <link>http://www.servicemesher.com/tags/hystrix/</link>
-      <pubDate>Fri, 08 Mar 2019 15:12:41 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/hystrix/</guid>
       <description></description>
     </item>
     

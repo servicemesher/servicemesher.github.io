@@ -6,10 +6,28 @@
     <description>Recent content in istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 16 May 2019 12:20:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 May 2019 12:10:44 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>防止系统故障:熔断-它是什么以及它是如何工作的(第2部分)</title>
+      <link>http://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</link>
+      <pubDate>Mon, 20 May 2019 12:10:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</guid>
+      <description>本文介绍了开发人员和运维人员两种不同视角下的微服务典型应用场景，对比了熔断功能的三种不同实现：Hystrix, Service Mesh (Istio、Linkerd) 和 Glasnostic。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Service Mesh</title>
+      <link>http://www.servicemesher.com/blog/kubernetes-service-mesh/</link>
+      <pubDate>Mon, 20 May 2019 12:09:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/kubernetes-service-mesh/</guid>
+      <description>文章介绍了为什么要用服务网格，以及简单的介绍了两个重要实现：Istio和Linkerd，鼓励大家上手实验。</description>
+    </item>
     
     <item>
       <title>Solo.io打造的Gloo——Knative中Istio的替代方案</title>

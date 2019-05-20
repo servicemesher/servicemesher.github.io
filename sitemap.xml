@@ -4,13 +4,71 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/</loc>
-    <lastmod>2019-05-16T12:20:44+08:00</lastmod>
+    <lastmod>2019-05-20T12:10:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/circuit-breaking/</loc>
+    <lastmod>2019-05-20T12:10:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/glasnostic/</loc>
+    <lastmod>2019-05-20T12:10:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/hystrix/</loc>
+    <lastmod>2019-05-20T12:10:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/linkerd/</loc>
+    <lastmod>2019-05-20T12:10:44+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-05-16T12:20:44+08:00</lastmod>
+    <lastmod>2019-05-20T12:10:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/</loc>
+    <lastmod>2019-05-20T12:10:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/istio/</loc>
+    <lastmod>2019-05-20T12:10:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/translation/</loc>
+    <lastmod>2019-05-20T12:10:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</loc>
+    <lastmod>2019-05-20T12:10:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/kubernetes-service-mesh/</loc>
+    <lastmod>2019-05-20T12:09:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
+    <lastmod>2019-05-20T12:09:44+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -20,19 +78,7 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/</loc>
-    <lastmod>2019-05-16T12:20:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.servicemesher.com/tags/gloo/</loc>
-    <lastmod>2019-05-16T12:20:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/istio/</loc>
     <lastmod>2019-05-16T12:20:44+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -51,12 +97,6 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/serverless/</loc>
-    <lastmod>2019-05-16T12:20:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/translation/</loc>
     <lastmod>2019-05-16T12:20:44+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -91,12 +131,6 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/ingresss/</loc>
-    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
     <lastmod>2019-05-13T20:08:37+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -194,12 +228,6 @@
   <url>
     <loc>http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</loc>
     <lastmod>2019-05-06T21:50:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/linkerd/</loc>
-    <lastmod>2019-05-06T21:50:05+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -436,12 +464,6 @@
   <url>
     <loc>http://www.servicemesher.com/blog/knative-overview/</loc>
     <lastmod>2019-03-11T12:23:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/hystrix/</loc>
-    <lastmod>2019-03-08T15:12:41+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

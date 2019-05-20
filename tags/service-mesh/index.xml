@@ -6,10 +6,19 @@
     <description>Recent content in service mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 13 May 2019 20:08:37 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 May 2019 12:09:44 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes Service Mesh</title>
+      <link>http://www.servicemesher.com/blog/kubernetes-service-mesh/</link>
+      <pubDate>Mon, 20 May 2019 12:09:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/kubernetes-service-mesh/</guid>
+      <description>文章介绍了为什么要用服务网格，以及简单的介绍了两个重要实现：Istio和Linkerd，鼓励大家上手实验。</description>
+    </item>
     
     <item>
       <title>API Gateway的身份认同危机</title>
