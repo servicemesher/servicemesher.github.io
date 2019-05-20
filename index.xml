@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>如何为服务网格选择入口网关？</title>
+      <link>http://www.servicemesher.com/blog/how-to-pick-gateway-for-service-mesh/</link>
+      <pubDate>Wed, 15 May 2019 12:23:01 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/how-to-pick-gateway-for-service-mesh/</guid>
+      <description>本文将对Service Mesh对外暴露服务的各种方式进行详细介绍和对比分析，并根据分析结果提出一个可用于产品部署的入口网关解决方案。</description>
+    </item>
+    
+    <item>
       <title>API Gateway的身份认同危机</title>
       <link>http://www.servicemesher.com/blog/api-gateways-are-going-through-an-identity-crisis/</link>
       <pubDate>Mon, 13 May 2019 20:08:37 +0800</pubDate>
@@ -1979,7 +1988,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 14 崔秀龙 6 钟华 4 赵化冰 4 高松 3 郑伟 3 罗佳豪 3 张馆长 3 云原生编辑部 3 丁轶群 3 陈</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 14 崔秀龙 6 赵化冰 5 钟华 4 高松 3 郑伟 3 罗佳豪 3 张馆长 3 云原生编辑部 3 丁轶群 3 陈</description>
     </item>
     
     <item>

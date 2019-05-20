@@ -62,24 +62,35 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/blog/api-gateways-are-going-through-an-identity-crisis/</loc>
-    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.servicemesher.com/tags/api-gateway/</loc>
-    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
+    <lastmod>2019-05-15T12:23:01+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/ingresss/</loc>
-    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
+    <loc>http://www.servicemesher.com/tags/ingress/</loc>
+    <lastmod>2019-05-15T12:23:01+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/categories/istio/</loc>
+    <lastmod>2019-05-15T12:23:01+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/how-to-pick-gateway-for-service-mesh/</loc>
+    <lastmod>2019-05-15T12:23:01+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/api-gateways-are-going-through-an-identity-crisis/</loc>
+    <lastmod>2019-05-13T20:08:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/ingresss/</loc>
     <lastmod>2019-05-13T20:08:37+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -141,13 +152,13 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/envoy/</loc>
+    <loc>http://www.servicemesher.com/categories/envoy/</loc>
     <lastmod>2019-05-08T10:12:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/envoy/</loc>
+    <loc>http://www.servicemesher.com/tags/envoy/</loc>
     <lastmod>2019-05-08T10:12:18+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -224,12 +235,6 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/dashboard/</loc>
-    <lastmod>2019-04-17T11:23:34+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/ingress/</loc>
     <lastmod>2019-04-17T11:23:34+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -592,13 +597,13 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/meetup/</loc>
+    <loc>http://www.servicemesher.com/categories/meetup/</loc>
     <lastmod>2019-01-08T10:41:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/meetup/</loc>
+    <loc>http://www.servicemesher.com/tags/meetup/</loc>
     <lastmod>2019-01-08T10:41:54+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -684,13 +689,13 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/sofamosn/</loc>
+    <loc>http://www.servicemesher.com/categories/sofamosn/</loc>
     <lastmod>2018-12-17T11:07:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/sofamosn/</loc>
+    <loc>http://www.servicemesher.com/tags/sofamosn/</loc>
     <lastmod>2018-12-17T11:07:07+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -734,13 +739,13 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/tags/tutorial/</loc>
+    <loc>http://www.servicemesher.com/categories/tutorial/</loc>
     <lastmod>2018-12-10T21:50:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/tutorial/</loc>
+    <loc>http://www.servicemesher.com/tags/tutorial/</loc>
     <lastmod>2018-12-10T21:50:05+08:00</lastmod>
     <priority>0</priority>
   </url>

@@ -37,6 +37,41 @@
     "wordcount": 2649
   },
   {
+    "author": "赵化冰",
+    "authorlink": "https://zhaohuabing.com",
+    "banner": "/img/blog/banners/6ce41a46gy1g31wxsf5ibj20rs0ku10r.jpg",
+    "categories": [
+      "istio"
+    ],
+    "date": "2019-05-15T12:23:01+08:00",
+    "fuzzywordcount": 8500,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "istio",
+      "API Gateway",
+      "Ingress"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-05-15T12:23:01+08:00",
+    "objectID": "d13342e1d06e8c7efce8a1e7df9940a5",
+    "permalink": "http://www.servicemesher.com/blog/how-to-pick-gateway-for-service-mesh/",
+    "publishdate": "2019-05-15T12:23:01+08:00",
+    "readingtime": 17,
+    "relpermalink": "/blog/how-to-pick-gateway-for-service-mesh/",
+    "summary": "本文将对Service Mesh对外暴露服务的各种方式进行详细介绍和对比分析，并根据分析结果提出一个可用于产品部署的入口网关解决方案。",
+    "tags": [
+      "istio",
+      "API Gateway",
+      "Ingress"
+    ],
+    "title": "如何为服务网格选择入口网关？",
+    "translator": null,
+    "url": "/blog/how-to-pick-gateway-for-service-mesh/",
+    "weight": 0,
+    "wordcount": 8469
+  },
+  {
     "author": "Christian Posta",
     "authorlink": "https://github.com/shenxg13/istio-no-best-practice",
     "banner": "/img/blog/banners/006tNbRwly1fw867vtusqj30rs0kudth.jpg",
