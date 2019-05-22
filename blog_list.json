@@ -30,7 +30,7 @@
       "Istio",
       "Linkerd"
     ],
-    "title": "防止系统故障:熔断-它是什么以及它是如何工作的(第2部分)",
+    "title": "熔断简介及工作原理详解(第2部分)",
     "translator": "罗广明",
     "url": "/blog/preventing-systemic-failure-circuit-breaking-part-2/",
     "weight": 0,
@@ -242,7 +242,7 @@
       "gitops"
     ],
     "date": "2019-05-08T22:40:05+08:00",
-    "fuzzywordcount": 4200,
+    "fuzzywordcount": 4300,
     "keywords": [
       "service mesh",
       "istio",
@@ -268,7 +268,7 @@
     "translator": null,
     "url": "/blog/anthos-config-management-intro/",
     "weight": 0,
-    "wordcount": 4198
+    "wordcount": 4201
   },
   {
     "author": "敖小剑",
