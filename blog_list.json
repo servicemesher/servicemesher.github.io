@@ -30,7 +30,7 @@
       "Istio",
       "Linkerd"
     ],
-    "title": "熔断简介及工作原理详解(第2部分)",
+    "title": "微服务中的熔断简介及工作原理详解（第2部分）",
     "translator": "罗广明",
     "url": "/blog/preventing-systemic-failure-circuit-breaking-part-2/",
     "weight": 0,
