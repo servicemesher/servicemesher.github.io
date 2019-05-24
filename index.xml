@@ -57,6 +57,15 @@
     </item>
     
     <item>
+      <title>Istio 庖丁解牛四：pilot discovery</title>
+      <link>http://www.servicemesher.com/blog/istio-analysis-4/</link>
+      <pubDate>Mon, 13 May 2019 18:24:01 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-analysis-4/</guid>
+      <description>Pilot 译为领航员, 在mesh中负责路由领航, 是istio控制面的核心组件。</description>
+    </item>
+    
+    <item>
       <title>Google Cloud Run详细介绍</title>
       <link>http://www.servicemesher.com/blog/google-cloud-run-intro/</link>
       <pubDate>Mon, 13 May 2019 12:20:46 +0800</pubDate>
@@ -2006,7 +2015,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 14 崔秀龙 6 赵化冰 5 钟华 4 高松 3 郑伟 3 罗佳豪 3 张馆长 3 云原生编辑部 3 丁轶群 3 陈</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 14 崔秀龙 6 钟华 5 赵化冰 5 高松 3 郑伟 3 罗佳豪 3 张馆长 3 云原生编辑部 3 丁轶群 3 陈</description>
     </item>
     
     <item>

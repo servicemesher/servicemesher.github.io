@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>Istio 庖丁解牛四：pilot discovery</title>
+      <link>http://www.servicemesher.com/blog/istio-analysis-4/</link>
+      <pubDate>Mon, 13 May 2019 18:24:01 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-analysis-4/</guid>
+      <description>Pilot 译为领航员, 在mesh中负责路由领航, 是istio控制面的核心组件。</description>
+    </item>
+    
+    <item>
       <title>Istio 学习笔记：Istio CNI 插件</title>
       <link>http://www.servicemesher.com/blog/istio-cni-note/</link>
       <pubDate>Tue, 09 Apr 2019 22:54:09 +0800</pubDate>

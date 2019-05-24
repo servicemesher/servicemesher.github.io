@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>Istio 庖丁解牛四：pilot discovery</title>
+      <link>http://www.servicemesher.com/blog/istio-analysis-4/</link>
+      <pubDate>Mon, 13 May 2019 18:24:01 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/istio-analysis-4/</guid>
+      <description>Pilot 译为领航员, 在mesh中负责路由领航, 是istio控制面的核心组件。</description>
+    </item>
+    
+    <item>
       <title>Google混合云多云平台Anthos Config Management产品设计分析</title>
       <link>http://www.servicemesher.com/blog/anthos-config-management-intro/</link>
       <pubDate>Wed, 08 May 2019 22:40:05 +0800</pubDate>

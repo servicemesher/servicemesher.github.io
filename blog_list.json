@@ -175,6 +175,37 @@
     "wordcount": 4756
   },
   {
+    "author": "钟华",
+    "authorlink": "https://imfox.io",
+    "banner": "/img/blog/banners/006tKfTcly1g1o2g4k3ofj31420u0hdw.jpg",
+    "categories": [
+      "istio"
+    ],
+    "date": "2019-05-13T18:24:01+08:00",
+    "fuzzywordcount": 6300,
+    "keywords": [
+      "service mesh",
+      "服务网格",
+      "istio"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-05-13T18:24:01+08:00",
+    "objectID": "6be7bc3846b9148977535799599316a8",
+    "permalink": "http://www.servicemesher.com/blog/istio-analysis-4/",
+    "publishdate": "2019-05-13T18:24:01+08:00",
+    "readingtime": 13,
+    "relpermalink": "/blog/istio-analysis-4/",
+    "summary": "Pilot 译为领航员, 在mesh中负责路由领航, 是istio控制面的核心组件。",
+    "tags": [
+      "istio"
+    ],
+    "title": "Istio 庖丁解牛四：pilot discovery",
+    "translator": null,
+    "url": "/blog/istio-analysis-4/",
+    "weight": 0,
+    "wordcount": 6271
+  },
+  {
     "author": "敖小剑",
     "authorlink": "https://skyao.io",
     "banner": "/img/blog/banners/006tNbRwly1fx5dtjdrmbj31ji15mqva.jpg",
