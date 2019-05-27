@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>基于Go、gRPC和Protobuf的微服务的Istio可观察性 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="istio, microservice">
+  
+
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="基于Go、gRPC和Protobuf的微服务的Istio可观察性" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices//" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="文章介绍了为什么要用服务网格，以及简单的介绍了两个重要实现：Istio和Linkerd，鼓励大家上手实验。">
+  <meta property="og:description" content="文章介绍了为什么要用服务网格，以及简单的介绍了两个重要实现：Istio和Linkerd，鼓励大家上手实验。">
+  <meta name="twitter:description" content="文章介绍了为什么要用服务网格，以及简单的介绍了两个重要实现：Istio和Linkerd，鼓励大家上手实验。">
+  <meta property="og:description" content="文章介绍了为什么要用服务网格，以及简单的介绍了两个重要实现：Istio和Linkerd，鼓励大家上手实验。" />
+
+  
+  <meta name="referrer" content="never">
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+  
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="/img/servicemesher-logo.jpg" alt="基于Go、gRPC和Protobuf的微服务的Istio可观察性 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="基于Go、gRPC和Protobuf的微服务的Istio可观察性 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">基于Go、gRPC和Protobuf的微服务的Istio可观察性 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Service Mesh列表</a></li>
+                      
+                        <li><a href="/envoy/">Envoy官方文档中文版</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio中文官网</a></li>
+                      
+                        <li><a href="/categories/practice/">实践汇总</a></li>
+                      
+                        <li><a href="/istio-handbook/">Istio Handbook</a></li>
+                      
+                        <li><a href="/getting-started-with-knative/">Knative入门</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">社区 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                        <li><a href="https://github.com/servicemesher/istio-knowledge-map">Istio知识图谱</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>基于Go、gRPC和Protobuf的微服务的Istio可观察性</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年5月27日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://en.gravatar.com/garystafford">Gary Stafford</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/malphi">马若飞</a>
+                            
+                            
+                            | 审校者
+                            
+                            <a href="104"><i>罗广明</i></a>
+                            
+                            
+                            |
+                            7900字 | 阅读大约需要16分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://programmaticponderings.com/2019/04/17/istio-observability-with-go-grpc-and-protocol-buffers-based-microservices/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/translation">translation</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/microservice/"><i>#microservice</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p><strong>编者按</strong></p>
+
+<blockquote>
+<p>本文演示了如何基于Go语言、gRPC和Protobuf技术构建一个微服务，并着重介绍了实现Istio可观测功能的三大支柱：日志、度量和追踪，以及与之对应的工具Logrus、Prometheus、Grafana、Jeager等。通过文章内容和示例代码，读者会对如何构建gRPC技术栈的微服务和使用Istio可视化工具观测服务的实现方案有一个全面的认识。</p>
+</blockquote>
+
+<p>在过去的两篇文章中（<a href="https://programmaticponderings.com/2019/03/10/kubernetes-based-microservice-observability-with-istio-service-mesh-part-1/">具有Istio服务网格的基于Kubernetes的微服务可视化</a> 和 <a href="https://programmaticponderings.com/2019/03/31/azure-kubernetes-service-aks-observability-with-istio/">具有Istio服务网格的AKS可视化</a>），我们探索了包含在Istio服务网格中的可视化工具，包括用于指标收集、监控和报警的<a href="https://prometheus.io/">Prometheus</a> 和 <a href="https://grafana.com/">Grafana</a>，用做分布式追踪的<a href="https://www.jaegertracing.io/">Jaeger</a>，以及基于Istio服务网格的微服务可视化和监控工具<a href="https://www.kiali.io/">Kiali</a>和云平台原生的监控、日志服务相比（例如GCP的 <a href="https://cloud.google.com/monitoring/">Stackdriver</a>，AWS上的 <a href="https://aws.amazon.com/cloudwatch/">CloudWatch</a>，Azure上的 <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/overview">Azure Monitor</a>），我们有针对现代化的、分布式的云应用的全面的可视化解决方案。</p>
+
+<p>在这篇文章中，我们将考察使用Istio可视化工具来监控基于Go语言的微服务，它们使用 <a href="https://developers.google.com/protocol-buffers/">Protocol Buffers</a>、<a href="https://grpc.io/">gRPC</a>和<a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2</a>作为客户端-服务端通信，这与传统的基于REST JSON和HTTP进行通信是不同的。我们将看到Kubernetes、Istio、Envoy和可视化工具如何与gRPC无缝地工作，就像在<a href="https://cloud.google.com/kubernetes-engine/">Google Kubernetes Engine</a>上通过HTTP处理JSON一样。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/1.png" alt="screen_shot_2019-04-18_at_6_03_38_pm" /></p>
+
+<h2 id="技术">技术</h2>
+
+<h3 id="image-result-for-grpc-logo-https-raw-githubusercontent-com-servicemesher-website-master-content-blog-istio-observability-with-go-gprc-and-protocol-buffers-based-microservices-2-1-png">[<img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/2-1.png" alt="Image result for grpc logo" />]</h3>
+
+<p>根据<a href="https://grpc.io/">gRPC项目</a>介绍， gRPC是<a href="https://www.cncf.io/">CNCF</a>的孵化项目，一个现代化的、高性能、开源和通用的<a href="https://en.wikipedia.org/wiki/remote_procedurere_call">RPC</a>框架，可以在任何地方运行。它使客户端和服务端应用能够透明地通信，并更加容易的构建连接系统。Google是gRPC最初的开发者，多年来一直使用gRPC中的底层技术和概念。当前的实现用于几个谷歌的云产品和对外的API。许多其他组织也在使用它，比如Square、Netflix、CoreOS、Docker、CockroachDB、Cisco、Juniper Networks等。</p>
+
+<h3 id="image-result-for-google-developer-https-raw-githubusercontent-com-servicemesher-website-master-content-blog-istio-observability-with-go-gprc-and-protocol-buffers-based-microservices-3-png"><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/3.png" alt="Image result for google developer" /></h3>
+
+<p>默认情况下gRPC使用Protocol Buffers。根据<a href="https://developers.google.com/protocol-buffers/">Google官方的介绍</a>，Protocol Buffers是一种与语言和平台无关的、高效的、可扩展的自动序列化结构化的数据的机制，以便在通信协议、数据存储等方面使用。Protocol Buffers比XML小3到10倍，并且快20到100倍。使用生成数据访问类编译的<code>.proto</code>源文件很容易以编程方式使用。</p>
+
+<blockquote>
+<p>Protocol Buffers比XML小3到10倍，并且快20到100倍。</p>
+</blockquote>
+
+<p>Protocol buffers 目前支持生成Java，Python，Objective-C，C++，Dart，Go，Ruby和C#代码。 本文我们使用Go语言编程。你可以从Google的 <a href="https://developers.google.com/protocol-buffers/docs/encoding">开发者页面</a>了解更多Protobuf二进制格式的信息。</p>
+
+<h3 id="image-result-for-envoy-proxy-https-raw-githubusercontent-com-servicemesher-website-master-content-blog-istio-observability-with-go-gprc-and-protocol-buffers-based-microservices-4-1-png"><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/4-1.png" alt="Image result for envoy proxy" /></h3>
+
+<p>根据<a href="https://istio.io/docs/concepts/what-is-istio/#envoy">Istio项目</a>的介绍，Istio使用了一个扩展版本的 <a href="https://www.envoyproxy.io/">Envoy</a> 代理。Envoy作为sidecar和与它相关的服务部署在同一个Kubernetes Pod中。Envoy由Lyft创建，是一个C++开发的高性能代理，为服务网格中的所有服务传送出入流量。Istio利用了Envoy的许多内置特性，包括动态服务发现，负载均衡，TLS终止，HTTP/2和gRPC代理，熔断、健康检查，灰度发布，故障注入和富指标等。</p>
+
+<p>根据Google的Harvey Tuch的文章<a href="https://blog.envoyproxy.io/evolving-a-protocol-buffer-canonical-api-e1b2c2ca0dec">Evolving a Protocol Buffer canonical API</a>，Envoy代理兼容Protocol Buffers，特别是<a href="https://developers.google.com/protocol-buffers/docs/proto3">proto3</a>，作为Lyft gRPC API第二版本的首选规范。</p>
+
+<h2 id="涉及的微服务平台">涉及的微服务平台</h2>
+
+<p>在前两篇文章中，我们探讨了Istio的可观察性工具，使用了用Go编写的基于RESTful的微服务的API平台，并使用JSON通过HTTP进行服务到服务的通信。API平台由8个基于 <a href="https://golang.org/">Go</a> 的微服务和一个示例Angular 7，基于<a href="https://en.wikipedia.org/wiki/TypeScript">TypeScript</a> 的前端web客户端组成。对于基于事件队列的通信，各种服务都依赖于MongoDB和RabbitMQ。下面是使用HTTP传输JSON的平台架构。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/5.png" alt="Golang Service Diagram with Proxy v2" /></p>
+
+<p>下面是Angular 7的web客户端接口。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/6.png" alt="screen_shot_2019-04-15_at_10_23_47_pm" /></p>
+
+<h3 id="转到-grpc-和-protocol-buffers">转到 gRPC 和 Protocol Buffers</h3>
+
+<p>在本文中，我修改了8个Go微服务使用 <a href="https://grpc.io/">gRPC</a> 和 <a href="https://developers.google.com/protocol-buffers/">Protocol Buffers</a>（Google的数据交换格式）。具体来讲，服务使用了Protocol Buffers的<a href="https://github.com/protocolbuffers/protobuf/releases">版本3</a>（简称proto3）。使用gRPC的方式, 一个gRPC客户端会调用gRPC服务端。平台的一些服务是gRPC服务端，另一些是gRPC客户端，而一些同时充当客户端和服务端，如服务A、B和EE。修改后的体系结构如下所示。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/7.png" alt="Golang-Service-Diagram-with-gRPC" /></p>
+
+<h3 id="grpc-网关">gRPC 网关</h3>
+
+<p>假设为了进行这个演示，API的大多数消费者仍然希望使用RESTful JSON通过HTTP API进行通信，我已经向平台添加了一个<a href="https://github.com/grpc-ecosystem/grpc-gateway">gRPC 网关</a> 作为反向代理。它是一个gRPC到JSON的反向代理，这是一种通用的架构模式，它通过基于HTTP的客户端代理JSON与基于gRPC的微服务进行通信。来自<a href="https://github.com/grpc-ecosystem/grpc-gateway">grpc-gateway</a>的GitHub项目的图有效地演示了反向代理是如何工作的。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/8.png" alt="grpc_gateway.png" /></p>
+
+<p><em>图像来源： <a href="https://github.com/grpc-ecosystem/grpc-gateway">https://github.com/grpc-ecosystem/grpc-gateway</a></em></p>
+
+<p>在上面的平台架构图中添加了反向代理，替换了API边缘的服务A。代理位于基于Angular的Web UI和服务A之间。此外，服务之间的通信方式是通过gRPC上的Protobuf，而不是HTTP上的JSON。Envoy代理（通过Istio）的使用没有改变，基于MongoDB Atlas的数据库和基于CloudAMQP RabbitMQ的队列也没有改变，它们仍然位于Kubernetes集群的外部。</p>
+
+<h3 id="替换-grpc-网关">替换 gRPC 网关</h3>
+
+<p>作为gRPC网关反向代理的替代方案，我们可以将基于TypeScript的Angular UI客户端转换为gRPC和Protocol Buffers，并继续作为边缘服务直接与服务A通信。然而，这将限制API的其他消费者依赖gRPC而不是HTTP和JSON，除非我们选择发布两个不同的endpoint：gRPC和HTTP JSON（这是另一种常见的模式）。</p>
+
+<h1 id="演示">演示</h1>
+
+<p>在本文的演示中，我们将重复上一篇文章（<a href="https://programmaticponderings.com/2019/03/10/kubernetes-based-microservice-observability-with-istio-service-mesh-part-1/">Kubernetes-based Microservice Observability with Istio Service Mesh</a>）中完全相同的安装过程。我们将把修改后的基于grpc的平台部署到GCP的GKE上。你也可以遵循<a href="https://programmaticponderings.com/2019/03/31/azure-kubernetes-service-aks-observability-with-istio/">Azure Kubernetes Service (AKS) Observability with Istio Service Mesh</a>，轻松的将平台部署到AKS。</p>
+
+<h2 id="源代码">源代码</h2>
+
+<p>本文的所有源代码都可以在GitHub上找到，包含了三个项目。基于Go的微服务源代码、所有Kubernetes资源和所有部署脚本都位于<a href="https://github.com/garystafford/k8s-istio-observe-backend">k8s-istio-observe-backend</a>项目代码库的“grpc”分支中。</p>
+
+<pre><code class="language-bash">git clone \
+  --branch grpc --single-branch --depth 1 --no-tags \
+  https://github.com/garystafford/k8s-istio-observe-backend.git
+</code></pre>
+
+<p>基于angular的web客户端源代码在<a href="https://github.com/garyst/k8s-istio-observe-frontend">k8s-istio-observe-frontend</a>代码库的&rdquo;grpc&rdquo;分支。.proto源文件和使用Protocol Buffers编译器生成的代码位于新的<a href="https://github.com/garystford/pb-greeting">pb-greeting</a>项目代码库中。在本文的演示中，你不需要克隆这些项目中的任何一个。</p>
+
+<p>所有的服务、UI和反向代理的的Docker镜像都在<a href="https://hub.docker.com/search?q=&quot;garystafford&amp;type=image&amp;sort=updated_at&amp;order=desc">Docker Hub</a>。</p>
+
+<h2 id="代码变化">代码变化</h2>
+
+<p>本文并不是专门针对gRPC和Protobuf编写的。但是，为了更好地理解这些技术的可观察性需求和功能，与HTTP JSON相比，复查一些源代码是有帮助的。</p>
+
+<h3 id="服务-a">服务 A</h3>
+
+<p>首先，将如下所示的服务A的源代码与前一篇文章中的原始代码进行比较。服务的代码几乎被完全重写。编写代码时，我依赖于几个参考资料，包括<a href="https://aspenmesh.io/2018/04/tracing-grpc-with-istio/">使用Istio追踪gRPC</a>，由Aspen Mesh的Neeraj Poddar编写，和Masroor Hasan撰写的<a href="https://medium.com/@masroor.hasan/tracing-infrastructure-with-jaeger-on-kubernetes-6800132a677">Kubernetes上的分布式追踪架构Jeager</a>。</p>
+
+<p>下面是服务A具体的代码变化：</p>
+
+<ul>
+<li>导入<a href="https://github.com/garystafford/pb-greeting">pb-greeting</a> protobuf 包；</li>
+<li>本地 Greeting 结构体被 <code>pb.Greeting</code> 结构体替代；</li>
+<li>所有的服务都基于 <code>50051</code>端口；</li>
+<li>HTTP 服务器和所有的 API 资源处理器函数被移除；</li>
+<li>用于做Jeager的分布式追踪的请求头信息从HTTP的请求对象中移动到了gRPC context对象中的metadata里；</li>
+<li>服务A作为gRPC服务端，被gRPC网关反向代理(客户端)通过Greeting函数调用；</li>
+<li>主要的 <code>PingHandler</code> 函数，返回服务的 Greeting，被 <a href="https://github.com/garystafford/pb-greeting">pb-greeting</a> protobuf 包的 `Greeting函数替代；</li>
+<li>服务A作为gRPC客户端，使用CallGrpcService` 函数调用服务B和服务C；</li>
+<li>CORS 被从Istio中卸载；</li>
+<li>Logging 方法没有改变；</li>
+</ul>
+
+<p>基于gRPC的<a href="https://github.com/garystafford/k8s-istio-observe-backend/blob/grpc/services/service-a/main.go">服务 A</a> 的源码如下(<a href="https://gist.github.com/garystafford/cb73d9037d2e492c3031a5fd3c8c3a5f"><em>要点</em></a>):</p>
+
+<pre><code class="language-go">// author: Gary A. Stafford
+// site: https://programmaticponderings.com
+// license: MIT License
+// purpose: Service A - gRPC/Protobuf
+
+
+package main
+
+import (
+	&quot;context&quot;
+	&quot;github.com/banzaicloud/logrus-runtime-formatter&quot;
+	&quot;github.com/google/uuid&quot;
+	&quot;github.com/grpc-ecosystem/go-grpc-middleware/tracing/opentracing&quot;
+	ot &quot;github.com/opentracing/opentracing-go&quot;
+	log &quot;github.com/sirupsen/logrus&quot;
+	&quot;google.golang.org/grpc&quot;
+	&quot;google.golang.org/grpc/metadata&quot;
+	&quot;net&quot;
+	&quot;os&quot;
+	&quot;time&quot;
+
+	pb &quot;github.com/garystafford/pb-greeting&quot;
+)
+
+
+const (
+	port = &quot;:50051&quot;
+)
+
+type greetingServiceServer struct {
+}
+
+var (
+	greetings []*pb.Greeting
+)
+
+func (s *greetingServiceServer) Greeting(ctx context.Context, req *pb.GreetingRequest) (*pb.GreetingResponse, error) {
+	greetings = nil
+
+	tmpGreeting := pb.Greeting{
+		Id:      uuid.New().String(),
+		Service: &quot;Service-A&quot;,
+		Message: &quot;Hello, from Service-A!&quot;,
+		Created: time.Now().Local().String(),
+	}
+
+	greetings = append(greetings, &amp;tmpGreeting)
+
+	CallGrpcService(ctx, &quot;service-b:50051&quot;)
+	CallGrpcService(ctx, &quot;service-c:50051&quot;)
+
+	return &amp;pb.GreetingResponse{
+		Greeting: greetings,
+	}, nil
+}
+
+func CallGrpcService(ctx context.Context, address string) {
+	conn, err := createGRPCConn(ctx, address)
+	if err != nil {
+		log.Fatalf(&quot;did not connect: %v&quot;, err)
+	}
+	defer conn.Close()
+
+	headersIn, _ := metadata.FromIncomingContext(ctx)
+	log.Infof(&quot;headersIn: %s&quot;, headersIn)
+
+	client := pb.NewGreetingServiceClient(conn)
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+
+	ctx = metadata.NewOutgoingContext(context.Background(), headersIn)
+
+	defer cancel()
+
+	req := pb.GreetingRequest{}
+	greeting, err := client.Greeting(ctx, &amp;req)
+	log.Info(greeting.GetGreeting())
+	if err != nil {
+		log.Fatalf(&quot;did not connect: %v&quot;, err)
+	}
+	for _, greeting := range greeting.GetGreeting() {
+		greetings = append(greetings, greeting)
+	}
+}
+
+func createGRPCConn(ctx context.Context, addr string) (*grpc.ClientConn, error) {
+	//https://aspenmesh.io/2018/04/tracing-grpc-with-istio/
+	var opts []grpc.DialOption
+	opts = append(opts, grpc.WithStreamInterceptor(
+		grpc_opentracing.StreamClientInterceptor(
+			grpc_opentracing.WithTracer(ot.GlobalTracer()))))
+	opts = append(opts, grpc.WithUnaryInterceptor(
+		grpc_opentracing.UnaryClientInterceptor(
+			grpc_opentracing.WithTracer(ot.GlobalTracer()))))
+	opts = append(opts, grpc.WithInsecure())
+	conn, err := grpc.DialContext(ctx, addr, opts...)
+	if err != nil {
+		log.Fatalf(&quot;Failed to connect to application addr: &quot;, err)
+		return nil, err
+	}
+	return conn, nil
+}
+
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
+}
+
+func init() {
+	formatter := runtime.Formatter{ChildFormatter: &amp;log.JSONFormatter{}}
+	formatter.Line = true
+	log.SetFormatter(&amp;formatter)
+	log.SetOutput(os.Stdout)
+	level, err := log.ParseLevel(getEnv(&quot;LOG_LEVEL&quot;, &quot;info&quot;))
+	if err != nil {
+		log.Error(err)
+	}
+	log.SetLevel(level)
+}
+
+func main() {
+	lis, err := net.Listen(&quot;tcp&quot;, port)
+	if err != nil {
+		log.Fatalf(&quot;failed to listen: %v&quot;, err)
+	}
+
+	s := grpc.NewServer()
+	pb.RegisterGreetingServiceServer(s, &amp;greetingServiceServer{})
+	log.Fatal(s.Serve(lis))
+}
+</code></pre>
+
+<h3 id="greeting-protocol-buffers">Greeting Protocol Buffers</h3>
+
+<p>下面显示的是greeting的 .proto源文件。最初在服务中定义的greeting返回结构体大体上没变。UI客户端响应看起来也是一样的。</p>
+
+<pre><code class="language-protocol-buffer">syntax = &quot;proto3&quot;;
+package greeting;
+
+import &quot;google/api/annotations.proto&quot;;
+
+message Greeting {
+    string id = 1;
+    string service = 2;
+    string message = 3;
+    string created = 4;
+}
+message GreetingRequest {
+}
+
+message GreetingResponse {
+    repeated Greeting greeting = 1;
+}
+service GreetingService {
+    rpc Greeting (GreetingRequest) returns (GreetingResponse) {
+        option (google.api.http) = {
+            get: &quot;/api/v1/greeting&quot;
+        };
+    }
+}
+</code></pre>
+
+<p>使用基于Go的协议编译器插件protoc进行编译时，最初的27行源代码膨胀到几乎270行，生成的数据访问类更容易通过编程使用。</p>
+
+<pre><code class="language-bash"># Generate gRPC stub (.pb.go)
+protoc -I /usr/local/include -I. \
+  -I ${GOPATH}/src \
+  -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+  --go_out=plugins=grpc:. \
+  greeting.proto
+
+# Generate reverse-proxy (.pb.gw.go)
+protoc -I /usr/local/include -I. \
+  -I ${GOPATH}/src \
+  -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+  --grpc-gateway_out=logtostderr=true:. \
+  greeting.proto
+
+# Generate swagger definitions (.swagger.json)
+protoc -I /usr/local/include -I. \
+  -I ${GOPATH}/src \
+  -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+  --swagger_out=logtostderr=true:. \
+  greeting.proto
+</code></pre>
+
+<p>下面是编译代码的一小段，供参考。编译后的代码包含在GitHub上的 <a href="https://github.com/garystafford/pb-greeting">pb-greeting</a> 项目中，并导入到每个微服务和反向代理（<a href="https://gist.github.com/garystafford/57ab662f19a2d2c85d2882bb9e280430">要点</a>）。我们还编译了一个单独的版本来实现反向代理。</p>
+
+<p>使用Swagger，我们可以查看greeting protocol buffers的单个RESTful API资源，该资源使用HTTP GET方法公开。我使用基于docker版本的<a href="https://hub.docker.com/r/swaggerapi/swagger-ui/">Swagger UI</a>来查看原生代码生成的Swagger定义。</p>
+
+<pre><code class="language-bash">docker run -p 8080:8080 -d --name swagger-ui \
+  -e SWAGGER_JSON=/tmp/greeting.swagger.json \
+  -v ${GOAPTH}/src/pb-greeting:/tmp swaggerapi/swagger-ui
+</code></pre>
+
+<p>Angular UI向“/api/v1/greeting”资源发出HTTP GET请求，该资源被转换为gRPC并代理到Service A，在那里由“greeting”函数处理。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/9.png" alt="screen_shot_2019-04-15_at_9_05_23_pm" /></p>
+
+<h3 id="grpc-网关反向代理">gRPC 网关反向代理</h3>
+
+<p>如前所述，<a href="https://github.com/grpc-ecosystem/grpc-gateway">gRPC 网关</a> 反向代理是全新的，下面列出了主要的代码特性：</p>
+
+<p>如前所述，gRPC网关反向代理服务是全新的。</p>
+
+<ul>
+<li>导入 <a href="https://github.com/garystafford/pb-greeting">pb-greeting</a> protobuf 包；</li>
+<li>代理使用 <code>80</code>端口；</li>
+<li>用于与Jaeger一起进行分布式追踪的请求头从传入的HTTP请求中收集信息，并传递给gRPC上下文中的服务A；</li>
+<li>代理被编写为gRPC客户端，调用服务A；</li>
+<li>日志大部分没有改变；</li>
+</ul>
+
+<p><a href="https://github.com/garystafford/k8s-istio-observe-backend/blob/grpc/services/service-rev-proxy/main.go">反向代理</a> 源码如下：</p>
+
+<pre><code class="language-go">// author: Gary A. Stafford
+// site: https://programmaticponderings.com
+// license: MIT License
+// purpose: gRPC Gateway / Reverse Proxy
+// reference: https://github.com/grpc-ecosystem/grpc-gateway
+
+
+package main
+
+
+import (
+	&quot;context&quot;
+	&quot;flag&quot;
+	lrf &quot;github.com/banzaicloud/logrus-runtime-formatter&quot;
+	gw &quot;github.com/garystafford/pb-greeting&quot;
+	&quot;github.com/grpc-ecosystem/grpc-gateway/runtime&quot;
+	log &quot;github.com/sirupsen/logrus&quot;
+	&quot;google.golang.org/grpc&quot;
+	&quot;google.golang.org/grpc/metadata&quot;
+	&quot;net/http&quot;
+	&quot;os&quot;
+)
+
+
+func injectHeadersIntoMetadata(ctx context.Context, req *http.Request) metadata.MD {
+	//https://aspenmesh.io/2018/04/tracing-grpc-with-istio/
+	var (
+		otHeaders = []string{
+			&quot;x-request-id&quot;,
+			&quot;x-b3-traceid&quot;,
+			&quot;x-b3-spanid&quot;,
+			&quot;x-b3-parentspanid&quot;,
+			&quot;x-b3-sampled&quot;,
+			&quot;x-b3-flags&quot;,
+			&quot;x-ot-span-context&quot;}
+	)
+	var pairs []string
+
+
+	for _, h := range otHeaders {
+		if v := req.Header.Get(h); len(v) &gt; 0 {
+			pairs = append(pairs, h, v)
+		}
+	}
+	return metadata.Pairs(pairs...)
+}
+
+
+type annotator func(context.Context, *http.Request) metadata.MD
+
+
+func chainGrpcAnnotators(annotators ...annotator) annotator {
+	return func(c context.Context, r *http.Request) metadata.MD {
+		var mds []metadata.MD
+		for _, a := range annotators {
+			mds = append(mds, a(c, r))
+		}
+		return metadata.Join(mds...)
+	}
+}
+
+
+func run() error {
+	ctx := context.Background()
+	ctx, cancel := context.WithCancel(ctx)
+	defer cancel()
+
+
+	annotators := []annotator{injectHeadersIntoMetadata}
+
+
+	mux := runtime.NewServeMux(
+		runtime.WithMetadata(chainGrpcAnnotators(annotators...)),
+	)
+
+
+	opts := []grpc.DialOption{grpc.WithInsecure()}
+	err := gw.RegisterGreetingServiceHandlerFromEndpoint(ctx, mux, &quot;service-a:50051&quot;, opts)
+	if err != nil {
+		return err
+	}
+
+
+	return http.ListenAndServe(&quot;:80&quot;, mux)
+}
+
+
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
+}
+
+
+func init() {
+	formatter := lrf.Formatter{ChildFormatter: &amp;log.JSONFormatter{}}
+	formatter.Line = true
+	log.SetFormatter(&amp;formatter)
+	log.SetOutput(os.Stdout)
+	level, err := log.ParseLevel(getEnv(&quot;LOG_LEVEL&quot;, &quot;info&quot;))
+	if err != nil {
+		log.Error(err)
+	}
+	log.SetLevel(level)
+}
+
+
+func main() {
+	flag.Parse()
+
+
+	if err := run(); err != nil {
+		log.Fatal(err)
+	}
+}
+</code></pre>
+
+<p>在下面显示的Stackdriver日志中，我们看到JSON有效负载中的一组HTTP请求头的示例，它们从gRPC网关的反向代理被传播到上游基于gRPC的Go服务。头传播确保请求在整个服务调用链上生成完整的分布式追踪。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/10.png" alt="screen_shot_2019-04-15_at_11_10_50_pm" /></p>
+
+<h3 id="istio-虚拟服务和-cors">Istio 虚拟服务和 CORS</h3>
+
+<p>根据<a href="https://github.com/grpc/grpc-web/issues/435#issuecomment-454113721">GitHub</a>项目中反馈的问题，gRPC网关不直接支持跨源资源共享（Cross-Origin Resource Sharing, CORS）策略。根据我的经验，gRPC网关不能处理选项HTTP方法请求，必须由Angular 7的web UI发出。因此，我使用虚拟服务资源的 <a href="https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/#CorsPolicy">CorsPolicy</a> 配置将CORS的职责转移给了Istio。这使得CORS比硬编码到服务代码中更容易管理：</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: service-rev-proxy
+spec:
+  hosts:
+  - api.dev.example-api.com
+  gateways:
+  - demo-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-rev-proxy.dev.svc.cluster.local
+      weight: 100
+    corsPolicy:
+      allowOrigin:
+      - &quot;*&quot;
+      allowMethods:
+      - OPTIONS
+      - GET
+      allowCredentials: true
+      allowHeaders:
+      - &quot;*&quot;
+</code></pre>
+
+<h2 id="安装">安装</h2>
+
+<p>要将微服务平台部署到GKE，请遵循本文第一部分的详细说明，或<a href="https://programmaticponderings.com/2019/03/10/kubernetes-based-microservice-observability-with-istio-service-mesh-part-1/">基于Kubernetes的微服务可观察性与Istio服务网格:第1部分</a>， 或针对AKS的 <a href="https://programmaticponderings.com/2019/03/31/azure-kubernetes-service-aks-observability-with-istio/">Azure Kubernetes服务(AKS)可观察性与Istio服务网格</a>。</p>
+
+<ul>
+<li>创建额外的MongoDB Atlas 数据库和CloudAMQP RabbitMQ 集群；</li>
+<li>为你的环境修改Kubernetes资源文件和bash脚本；</li>
+<li>在GCP或Azure上创建可管理的GKE或AKS；</li>
+<li>使用Helm配置和部署Istio到Kubernetes集群；</li>
+<li>为平台暴露出去的资源创建DNS记录；</li>
+<li>在Kubernetes集群上部署基于Go的微服务、gRPC网关反向代理、Angular UI和相关的资源；</li>
+<li>测试和排查平台部署的问题；</li>
+<li>观察结果。</li>
+</ul>
+
+<h1 id="三大支柱">三大支柱</h1>
+
+<p>正如在第一篇文章中介绍的，日志、度量和追踪通常被称为可观察性的三大支柱。这些是我们可以观察到的系统的外部输出。随着现代分布式系统变得越来越复杂，观察这些系统的能力同样需要现代化的工具，具有这种级别的复杂性需要在设计时考虑到。在如今混合云、多语言、基于事件驱动、基于容器和serverless、可无限扩展的临时计算平台下传统的日志记录和监视系统常常难以胜任。</p>
+
+<p>像<a href="https://istio.io/">Istio服务网格</a> 这样的工具尝试通过与几个最好的开源遥测工具集成来解决可观测性的挑战。Istio的集成包括用于分布式追踪的<a href="https://www.jaegertracing.io/">Jaeger</a>，用于基于Istio服务网格的微服务可视化和监控的<a href="https://www.kiali.io/">Kiali</a>，以及用于度量收集、监控和报警的<a href="https://prometheus.io/">Prometheus</a> 和 <a href="https://grafana.com/">Grafana</a> 。与云平台本地监视和日志服务相结合，例如针对GKE的<a href="https://cloud.google.com/monitoring/">Stackdriver</a>、针对Amazon的EKS的<a href="https://aws.amazon.com/cloudwatch/">CloudWatch</a>或针对AKS的<a href="https://docs.microsoft.com/en-us/azure/azure-monitor/overview">Azure Monitor</a> 日志，我们为现代的、分布式的、基于云的应用程序提供了完整的可观察性解决方案。</p>
+
+<h2 id="支柱-1-日志">支柱 1: 日志</h2>
+
+<p>对基于Go语言的服务代码或Kubernetes资源的日志配置来说，从HTTP JSON转到gRPC不需要任何改变。</p>
+
+<h3 id="带有logrus的stackdriver">带有Logrus的Stackdriver</h3>
+
+<p>正如上一篇文章的第二部分（<a href="https://programmaticponderings.com/2019/03/21/kubernetes-based-microservice-observability-with-istio-service-mesh-part-2/">基于kubernetes的微服务可观察性与Istio服务网格</a>）所提到的，我们针对8个基于Go的微服务和反向代理的日志策略仍然是使用<a href="https://github.com/sirupsen/logrus">Logrus</a>(流行的Go语言结构化日志系统)和Banzai Cloud的<a href="https://github.com/sirupsen/logrus">logrus-runtime-formatter</a>。</p>
+
+<p>如果您还记得，Banzai formatter会自动将运行时/堆栈信息（包括函数名和行号）标记在日志消息里；在排查故障时非常有用。我们还使用Logrus的JSON formatter。在下面显示的Stackdriver控制台中，注意下面的每个日志条目如何在消息中包含JSON有效负载，包含日志级别、函数名、日志条目的起始行和消息。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/11.png" alt="screen_shot_2019-04-15_at_11_10_36_pm" /></p>
+
+<p>下图是一个特定日志条目的JSON有效负载的详细信息。在这个示例中，我们可以看到从下游服务传来的请求头。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/12.png" alt="screen_shot_2019-04-15_at_11_10_50_pm" /></p>
+
+<h2 id="支柱-2-度量">支柱 2: 度量</h2>
+
+<p>对基于Go语言的服务代码或Kubernetes资源的度量配置来说，从HTTP JSON转到gRPC不需要任何改变。</p>
+
+<h3 id="prometheus">Prometheus</h3>
+
+<p><a href="https://prometheus.io/">Prometheus</a> 是一个完全开源的社区驱动的系统监控和报警工具集，最初是在2012年左右在SoundCloud开发的。有趣的是，Prometheus在2016年加入了<a href="https://cncf.io/">云原生计算基金会</a> （CNCF），成为继<a href="http://kubernetes.io/">Kubernetes</a>之后的第二个托管项目。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/13.png" alt="screen_shot_2019-04-15_at_11_04_54_pm" /></p>
+
+<h3 id="grafana">Grafana</h3>
+
+<p>Grafana将自己描述为时间序列分析开源软件的领袖。根据<a href="https://grafana.com/grafana">Grafana Labs</a>的说法，Grafana允许你查询、观测、提醒和理解指标，无论它们存储在哪里。你可以轻松地创建、探索和共享有丰富视图的数据驱动的仪表板。Grafana允许用户为最重要的指标定义可视化的警报规则。Grafana将持续评估规则并发送通知。</p>
+
+<p><a href="https://istio.io/docs/tasks/telemetry/using-istio-dashboard/#about-the-grafana-add-on">Istio</a>的Grafana插件是Grafana的一个预配置的实例。Grafana Docker基础镜像已经修改为带有Prometheus数据源和安装好的Istio仪表板。下图展示了看到的两个预先配置的仪表板：Istio Mesh仪表板和Istio性能仪表板。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/14.png" alt="screen_shot_2019-04-15_at_10_45_38_pm" />
+<img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/15.png" alt="screen_shot_2019-04-15_at_10_46_03_pm" /></p>
+
+<h2 id="支柱-3-追踪">支柱 3: 追踪</h2>
+
+<p>从HTTP的JSON迁移到gRPC确实需要重写服务代码中的追踪逻辑。事实上，我花了大部分时间来确保报头的正确性，它从Istio Ingress网关传播到gRPC网关反向代理、再到gRPC上下文中的服务A，以及上游到所有依赖的、基于gRPC的服务。我确信在我当前的代码中有许多关于正确处理追踪以及如何在服务调用堆栈中传播这些信息的优化。</p>
+
+<h3 id="jaeger">Jaeger</h3>
+
+<p>根据网站的介绍，<a href="https://www.jaegertracing.io/docs/1.10/">Jaeger</a>是受<a href="https://research.google.com/pubs/pub36356.html">Dapper</a> 和<a href="http://zipkin.io/">OpenZipkin</a>的启发，由<a href="http://uber.github.io/">Uber Technologies</a>公司发布的一个开源分布式追踪系统。它用于监控和排查基于微服务的分布式系统，包括分布式上下文传播、分布式事务监控、故障根本原因分析、服务依赖关系分析以及性能和延迟优化。Jaeger<a href="https://www.jaegertracing.io/docs/1.10/architecture/">网站</a>有一篇非常好的有关Jaeger架构和通用追踪相关术语的概述文章。</p>
+
+<p>下面看到的是一个Jaeger UI 追踪视图。在其中有一系列由<a href="https://github.com/rakyll/hey">hey</a>生成的追踪数据，hey是一个流行的负载生成器和基准测试工具，是Apache Bench （ab）的一个有价值的替代品。与ab不同的是hey支持HTTP/2。在前一篇文章中详细介绍了hey的用法。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/16.png" alt="screen_shot_2019-04-18_at_6_08_21_pm" /></p>
+
+<p>你可能还记得，一个追踪数据是贯穿系统的执行路径，可以认为是一个span的<a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">有向无环图</a> （DAG）。如果你使用过Apache Spark这样的系统，那么你可能已经很熟悉DAG了。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/17.png" alt="screen_shot_2019-04-15_at_11_06_13_pm" /></p>
+
+<p>下面是Jaeger UI Trace 的详细视图。示例的追踪信息包含了16个span，其中包含9个组件——7个基于go的服务、一个反向代理和一个Istio Ingress网关。每个追踪和span都有时间点。追踪中的根span是Istio Ingress网关。在这个演示中，追踪没有在RabbitMQ消息队列埋点。这意味着您不会看到包含服务D到服务F之间通过RabbitMQ进行解耦的、基于消息通信的追踪信息。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/18.png" alt="screen_shot_2019-04-15_at_11_08_07_pm" /></p>
+
+<p>在Jaeger UI Trace 详细视图中，您还可以植入一个包含额外元数据的单个span。元数据包括被调用的URL、HTTP方法、响应状态和其他几个报头。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/19.png" alt="screen_shot_2019-04-15_at_11_08_22_pm" /></p>
+
+<h2 id="微服务的可观察性">微服务的可观察性</h2>
+
+<p>对基于Go语言的服务代码或Kubernetes资源的Kiali配置来说，从HTTP JSON转到gRPC不需要任何改变。</p>
+
+<h3 id="kiali">Kiali</h3>
+
+<p>根据他们的<a href="https://www.kiali.io/documentation/overview/">网站</a>描述，Kiali提供了以下问题的答案：Istio服务网格中的微服务是什么？它们是如何连接的？Kiali基于在OpenShift或Kubernetes平台的Istio运行，提供服务网格拓扑监测、断路器、请求速率等特性的可见性。它提供了从抽象的应用到服务和工作负载等不同级别的网格组件的视图。</p>
+
+<p>Kiali UI中的图形视图是运行在Istio服务网格中的组件的可视化表示。下图显示了过滤集群的dev命名空间，可以注意到Kiali已经映射了平台中的所有组件，以及丰富的元数据，比如它们的版本和通信协议。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/20.png" alt="screen_shot_2019-04-18_at_6_03_38_pm" /></p>
+
+<p>使用Kiali，我们可以确认服务到服务的IPC协议现在已经由gRPC替换了之前的HTTP。</p>
+
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/21.png" alt="screen_shot_2019-04-14_at_11_15_49_am" /></p>
+
+<h1 id="总结">总结</h1>
+
+<p>尽管将HTTP JSON转换为基于gRPC的protocol buffers需要对服务进行大量的代码更改，但这并不影响我们使用Istio提供的工具(包括Prometheus、Grafana、Jaeger和Kiali)对服务进行观测。</p>
+
+<p><em>本文所有观点均为原创，和我之前的雇主和其客户无关。</em></p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/" data-toggle="tooltip" data-placement="top" title="微服务中的熔断简介及工作原理详解（第2部分）">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/how-to-pick-gateway-for-service-mesh/"><i class="fa fa-link"></i>如何为服务网格选择入口网关？</a></li>
+         
+        <li><a href="/blog/istio-analysis-4/"><i class="fa fa-link"></i>Istio 庖丁解牛四：pilot discovery</a></li>
+         
+        <li><a href="/blog/anthos-config-management-intro/"><i class="fa fa-link"></i>Google混合云多云平台Anthos Config Management产品设计分析</a></li>
+         
+        <li><a href="/blog/envoy-service-mesh-and-observability-best-practices-for-enterprises/"><i class="fa fa-link"></i>Envoy、服务网格和可观察性之企业最佳实践</a></li>
+         
+        <li><a href="/blog/benchmarking-istio-and-linkerd-cpu/"><i class="fa fa-link"></i>Istio和Linkerd的CPU基准测试</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/cloud-native-weekly"><i class="fa fa-navicon"></i>cloud-native-weekly (3)</a>
+            </li>
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (5)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (2)</a>
+            </li>
+            
+            <li><a href="/categories/gitops"><i class="fa fa-navicon"></i>gitops (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (31)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (1)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (5)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/monitoring"><i class="fa fa-navicon"></i>monitoring (3)</a>
+            </li>
+            
+            <li><a href="/categories/practice"><i class="fa fa-navicon"></i>practice (16)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (23)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (118)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/anthos"><i class="fa fa-tags"></i> anthos</a>
+            </li>
+            
+            <li><a href="/tags/api-gateway"><i class="fa fa-tags"></i> api-gateway</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/app-mesh"><i class="fa fa-tags"></i> app-mesh</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/aws"><i class="fa fa-tags"></i> aws</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/circuit-breaking"><i class="fa fa-tags"></i> circuit-breaking</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/cloud-run"><i class="fa fa-tags"></i> cloud-run</a>
+            </li>
+            
+            <li><a href="/tags/cncf"><i class="fa fa-tags"></i> cncf</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/flagger"><i class="fa fa-tags"></i> flagger</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/glasnostic"><i class="fa fa-tags"></i> glasnostic</a>
+            </li>
+            
+            <li><a href="/tags/gloo"><i class="fa fa-tags"></i> gloo</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/grpc-web"><i class="fa fa-tags"></i> grpc-web</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/hystrix"><i class="fa fa-tags"></i> hystrix</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/ingresss"><i class="fa fa-tags"></i> ingresss</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microprofile"><i class="fa fa-tags"></i> microprofile</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/nfv"><i class="fa fa-tags"></i> nfv</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/open-source"><i class="fa fa-tags"></i> open-source</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/operator"><i class="fa fa-tags"></i> operator</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/supergloo"><i class="fa fa-tags"></i> supergloo</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/">
+                          
+                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*N5URQKoNYCEAAAAAAAAAAABkARQnAQ" class="img-responsive" alt="基于Go、gRPC和Protobuf的微服务的Istio可观察性">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/">基于Go、gRPC和Protobuf的微服务的Istio可观察性</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/preventing-systemic-failure-circuit-breaking-part-2/">
+                          
+                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*Ea73SaVMhSMAAAAAAAAAAABjARQnAQ" class="img-responsive" alt="微服务中的熔断简介及工作原理详解（第2部分）">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/preventing-systemic-failure-circuit-breaking-part-2/">微服务中的熔断简介及工作原理详解（第2部分）</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/kubernetes-service-mesh/">
+                          
+                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*v-tESaIfS8MAAAAAAAAAAABjARQnAQ" class="img-responsive" alt="基于 Kubernetes 的 Service Mesh 简介">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/kubernetes-service-mesh/">基于 Kubernetes 的 Service Mesh 简介</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

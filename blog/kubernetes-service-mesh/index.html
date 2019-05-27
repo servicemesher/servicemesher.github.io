@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kubernetes Service Mesh · Service Mesh|服务网格中文社区</title>
+  <title>基于 Kubernetes 的 Service Mesh 简介 · Service Mesh|服务网格中文社区</title>
   <meta name="author" content="Jimmy Song(宋净超)" />
 
   
@@ -52,7 +52,7 @@
   <link rel="stylesheet" href="/css/prism.css" />
 
   
-  <meta property="og:title" content="Kubernetes Service Mesh" />
+  <meta property="og:title" content="基于 Kubernetes 的 Service Mesh 简介" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/kubernetes-service-mesh//" />
   <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
@@ -99,9 +99,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="/img/servicemesher-logo.jpg" alt="Kubernetes Service Mesh logo" class="hidden-xs hidden-sm">
-                    <img src="/img/logosmall.jpg" alt="Kubernetes Service Mesh logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Kubernetes Service Mesh - 跳到主页</span>
+                    <img src="/img/servicemesher-logo.jpg" alt="基于 Kubernetes 的 Service Mesh 简介 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="基于 Kubernetes 的 Service Mesh 简介 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">基于 Kubernetes 的 Service Mesh 简介 - 跳到主页</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -247,7 +247,7 @@ autocomplete('#aa-search-input',
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Kubernetes Service Mesh</h1>
+                <h1>基于 Kubernetes 的 Service Mesh 简介</h1>
             </div>
         </div>
     </div>
@@ -269,7 +269,7 @@ autocomplete('#aa-search-input',
                             </i>
                             |
                             
-                            作者 <a href="https://akomljen.com/author/alen/">ALEN KOMLJEN</a>
+                            作者 <a href="https://akomljen.com/author/alen/">Alen Komjen</a>
                             
                             
                             | 译者 <a href="https://github.com/chengwhynot">张成</a>
@@ -314,7 +314,7 @@ autocomplete('#aa-search-input',
 
 <h2 id="基于kubernetes的服务网格">基于Kubernetes的服务网格</h2>
 
-<p><strong>编者按</strong></p>
+<p>编者按</p>
 
 <blockquote>
 <p>文章介绍了基于Kubernetes的服务网格，简要的说明了服务网格的作用，sidecar的作用以及服务网格两个重要实现：Istio与Linkerd的起源和结构，鼓励大家上手尝试。</p>
@@ -364,7 +364,7 @@ autocomplete('#aa-search-input',
 
 <p><strong>Istio</strong>当前支持Kubernetes和<a href="https://www.nomadproject.io/">Nomad</a>，将来会添加更多的功能。Istio是一个多平台解决方案。它可以做微服务流量管理，策略应用以及聚合采样信息。Istio也是Go语言编写的轻量应用，但不同于Linkerd2，它使用<a href="https://www.envoyproxy.io/">Envoy</a>来做服务代理。下图说明Istio中各个部分是如何组合工作的:</p>
 
-<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/kubernetes-service-mesh/arch.svg" alt="istio_architecture" /></p>
+<p><img src="https://raw.githubusercontent.com/servicemesher/website/master/content/blog/kubernetes-service-mesh/arch.png" alt="istio_architecture" /></p>
 
 <p>我喜欢Istio的其中一点是<a href="https://istio.io/docs/setup/kubernetes/sidecar-injection.html#automatic-sidecar-injection">sidecar自动注入</a>，前提是你已经使用<a href="https://akomljen.com/package-kubernetes-applications-with-helm/">Helm</a>来发布应用，这样的话就不需要手工把sidecar注入到kubernetes的配置文件里面。</p>
 
@@ -491,7 +491,7 @@ autocomplete('#aa-search-input',
             <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
             </li>
             
-            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (117)</a>
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (118)</a>
             </li>
             
             <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
@@ -919,6 +919,19 @@ autocomplete('#aa-search-input',
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/">
+                          
+                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*N5URQKoNYCEAAAAAAAAAAABkARQnAQ" class="img-responsive" alt="基于Go、gRPC和Protobuf的微服务的Istio可观察性">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/istio-observability-with-go-gprc-and-protocol-buffers-based-microservices/">基于Go、gRPC和Protobuf的微服务的Istio可观察性</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="/blog/preventing-systemic-failure-circuit-breaking-part-2/">
                           
                           <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*Ea73SaVMhSMAAAAAAAAAAABjARQnAQ" class="img-responsive" alt="微服务中的熔断简介及工作原理详解（第2部分）">
@@ -934,25 +947,12 @@ autocomplete('#aa-search-input',
                     <div class="image same-height-always">
                         <a href="/blog/kubernetes-service-mesh/">
                           
-                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*v-tESaIfS8MAAAAAAAAAAABjARQnAQ" class="img-responsive" alt="Kubernetes Service Mesh">
+                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*v-tESaIfS8MAAAAAAAAAAABjARQnAQ" class="img-responsive" alt="基于 Kubernetes 的 Service Mesh 简介">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="/blog/kubernetes-service-mesh/">Kubernetes Service Mesh</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/">
-                          
-                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*HhAtQ6ARaHUAAAAAAAAAAABjARQnAQ" class="img-responsive" alt="Solo.io打造的Gloo——Knative中Istio的替代方案">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/">Solo.io打造的Gloo——Knative中Istio的替代方案</a></h5>
+                        <h5><a href="/blog/kubernetes-service-mesh/">基于 Kubernetes 的 Service Mesh 简介</a></h5>
                     </div>
                 </div>
                 
