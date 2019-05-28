@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>servicemesh on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/servicemesh/</link>
+    <description>Recent content in servicemesh on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 27 May 2019 04:55:44 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/servicemesh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>部署Envoy代理来为Monzo提速</title>
+      <link>http://www.servicemesher.com/blog/deploying-envoy-proxy/</link>
+      <pubDate>Mon, 27 May 2019 04:55:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/deploying-envoy-proxy/</guid>
+      <description>本文介绍了使用Envoy来加速Monzo，对比了使用Linkerd和Envoy，通过试验证明Envoy拥有更小的延迟。</description>
+    </item>
+    
+  </channel>
+</rss>

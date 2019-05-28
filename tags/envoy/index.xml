@@ -6,10 +6,19 @@
     <description>Recent content in envoy on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 08 May 2019 10:12:18 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 27 May 2019 04:55:44 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/envoy/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>部署Envoy代理来为Monzo提速</title>
+      <link>http://www.servicemesher.com/blog/deploying-envoy-proxy/</link>
+      <pubDate>Mon, 27 May 2019 04:55:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/deploying-envoy-proxy/</guid>
+      <description>本文介绍了使用Envoy来加速Monzo，对比了使用Linkerd和Envoy，通过试验证明Envoy拥有更小的延迟。</description>
+    </item>
     
     <item>
       <title>CNCF正在筹建通用数据平面API工作组，以制定数据平面的标准API</title>
