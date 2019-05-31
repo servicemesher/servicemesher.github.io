@@ -1,5 +1,38 @@
 [
   {
+    "author": "Marton Sereg",
+    "authorlink": "",
+    "banner": "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*RGLVQ4yDxfIAAAAAAAAAAABkARQnAQ",
+    "categories": [
+      "translation"
+    ],
+    "date": "2019-05-29T17:20:42+08:00",
+    "fuzzywordcount": 4800,
+    "keywords": [
+      "service mesh",
+      "istio",
+      "telemetry"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-05-29T17:20:42+08:00",
+    "objectID": "b03fc3046a577df0c43298e116fc0697",
+    "permalink": "http://www.servicemesher.com/blog/exploring-istio-telemetry-and-observability/",
+    "publishdate": "2019-05-29T17:20:42+08:00",
+    "readingtime": 10,
+    "relpermalink": "/blog/exploring-istio-telemetry-and-observability/",
+    "summary": "文章介绍了istio环境下，如何结合Prometheus进行网络度量指标监测，给出了一些示例配置。最后，还推广了一下Banzai Cloud自家的Pipeline，天然支持跨云、混合云情况下的网络度量监测，欢迎体验。",
+    "tags": [
+      "istio",
+      "operator",
+      "monitor"
+    ],
+    "title": "Istio遥测和可观察性探索",
+    "translator": "张成",
+    "url": "/blog/exploring-istio-telemetry-and-observability/",
+    "weight": 0,
+    "wordcount": 4754
+  },
+  {
     "author": "敖小剑",
     "authorlink": "https://skyao.io/",
     "banner": "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*uxhbQq6zPjUAAAAAAAAAAABkARQnAQ",

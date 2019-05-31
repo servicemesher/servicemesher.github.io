@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Istio遥测和可观察性探索</title>
+      <link>http://www.servicemesher.com/blog/exploring-istio-telemetry-and-observability/</link>
+      <pubDate>Wed, 29 May 2019 17:20:42 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/exploring-istio-telemetry-and-observability/</guid>
+      <description>文章介绍了istio环境下，如何结合Prometheus进行网络度量指标监测，给出了一些示例配置。最后，还推广了一下Banzai Cloud自家的Pipeline，天然支持跨云、混合云情况下的网络度量监测，欢迎体验。</description>
+    </item>
+    
+    <item>
       <title>Service Mesh发展趋势：云原生中流砥柱</title>
       <link>http://www.servicemesher.com/blog/201905-servicemesh-development-trend/</link>
       <pubDate>Tue, 28 May 2019 07:15:43 +0800</pubDate>

@@ -6,10 +6,19 @@
     <description>Recent content in Monitor on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 20 Nov 2018 11:40:46 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2019 17:20:42 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/monitor/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio遥测和可观察性探索</title>
+      <link>http://www.servicemesher.com/blog/exploring-istio-telemetry-and-observability/</link>
+      <pubDate>Wed, 29 May 2019 17:20:42 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/exploring-istio-telemetry-and-observability/</guid>
+      <description>文章介绍了istio环境下，如何结合Prometheus进行网络度量指标监测，给出了一些示例配置。最后，还推广了一下Banzai Cloud自家的Pipeline，天然支持跨云、混合云情况下的网络度量监测，欢迎体验。</description>
+    </item>
     
     <item>
       <title>Envoy service mesh、Prometheus和Grafana下的微服务监控</title>

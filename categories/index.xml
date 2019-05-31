@@ -6,10 +6,19 @@
     <description>Recent content in Categories on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 28 May 2019 07:15:43 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2019 17:20:42 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>translation</title>
+      <link>http://www.servicemesher.com/categories/translation/</link>
+      <pubDate>Wed, 29 May 2019 17:20:42 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/translation/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>service mesh</title>
@@ -17,15 +26,6 @@
       <pubDate>Tue, 28 May 2019 07:15:43 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/categories/service-mesh/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>translation</title>
-      <link>http://www.servicemesher.com/categories/translation/</link>
-      <pubDate>Mon, 27 May 2019 04:55:44 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/translation/</guid>
       <description></description>
     </item>
     
