@@ -4,8 +4,55 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/</loc>
-    <lastmod>2019-05-29T17:20:42+08:00</lastmod>
+    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/</loc>
+    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/supergloo/</loc>
+    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/</loc>
+    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/istio/</loc>
+    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
+    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
+    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/translation/</loc>
+    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/containers-microservices-service-meshes/</loc>
+    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
   </url>
   
   <url>
@@ -20,31 +67,7 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-05-29T17:20:42+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/</loc>
-    <lastmod>2019-05-29T17:20:42+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-05-29T17:20:42+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.servicemesher.com/tags/operator/</loc>
-    <lastmod>2019-05-29T17:20:42+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/translation/</loc>
     <lastmod>2019-05-29T17:20:42+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -56,12 +79,6 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2019-05-28T07:15:43+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
     <lastmod>2019-05-28T07:15:43+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -146,12 +163,6 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/knative/</loc>
-    <lastmod>2019-05-16T12:20:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
     <lastmod>2019-05-16T12:20:44+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -691,12 +702,6 @@
   <url>
     <loc>http://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/</loc>
     <lastmod>2019-01-03T15:49:46+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/supergloo/</loc>
-    <lastmod>2019-01-03T15:49:46+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

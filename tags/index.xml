@@ -6,10 +6,46 @@
     <description>Recent content in Tags on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 29 May 2019 17:20:42 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jun 2019 11:20:34 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SuperGloo</title>
+      <link>http://www.servicemesher.com/tags/supergloo/</link>
+      <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/supergloo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>istio</title>
+      <link>http://www.servicemesher.com/tags/istio/</link>
+      <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/istio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>http://www.servicemesher.com/tags/kubernetes/</link>
+      <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>service mesh</title>
+      <link>http://www.servicemesher.com/tags/service-mesh/</link>
+      <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/service-mesh/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Monitor</title>
@@ -21,29 +57,11 @@
     </item>
     
     <item>
-      <title>istio</title>
-      <link>http://www.servicemesher.com/tags/istio/</link>
-      <pubDate>Wed, 29 May 2019 17:20:42 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/istio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>operator</title>
       <link>http://www.servicemesher.com/tags/operator/</link>
       <pubDate>Wed, 29 May 2019 17:20:42 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/operator/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>service mesh</title>
-      <link>http://www.servicemesher.com/tags/service-mesh/</link>
-      <pubDate>Tue, 28 May 2019 07:15:43 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/service-mesh/</guid>
       <description></description>
     </item>
     
@@ -125,15 +143,6 @@
       <pubDate>Thu, 16 May 2019 12:20:44 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/knative/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>http://www.servicemesher.com/tags/kubernetes/</link>
-      <pubDate>Thu, 16 May 2019 12:20:44 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
@@ -332,15 +341,6 @@
       <pubDate>Tue, 08 Jan 2019 10:41:54 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/meetup/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>supergloo</title>
-      <link>http://www.servicemesher.com/tags/supergloo/</link>
-      <pubDate>Thu, 03 Jan 2019 15:49:46 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/supergloo/</guid>
       <description></description>
     </item>
     

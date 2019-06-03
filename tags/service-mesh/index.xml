@@ -6,10 +6,19 @@
     <description>Recent content in service mesh on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 28 May 2019 07:15:43 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jun 2019 11:20:34 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/service-mesh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>容器、微服务和服务网格简史</title>
+      <link>http://www.servicemesher.com/blog/containers-microservices-service-meshes/</link>
+      <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/containers-microservices-service-meshes/</guid>
+      <description>编者按 本文通过介绍一个构建和运行微服务的平台dotCloud的历史、容器间路由，进而阐述了它与现代服务网格的相同与不同之处；接着介绍了如何实</description>
+    </item>
     
     <item>
       <title>Service Mesh发展趋势：云原生中流砥柱</title>

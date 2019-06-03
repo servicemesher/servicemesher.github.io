@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>容器、微服务和服务网格简史</title>
+      <link>http://www.servicemesher.com/blog/containers-microservices-service-meshes/</link>
+      <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/containers-microservices-service-meshes/</guid>
+      <description>编者按 本文通过介绍一个构建和运行微服务的平台dotCloud的历史、容器间路由，进而阐述了它与现代服务网格的相同与不同之处；接着介绍了如何实</description>
+    </item>
+    
+    <item>
       <title>Istio遥测和可观察性探索</title>
       <link>http://www.servicemesher.com/blog/exploring-istio-telemetry-and-observability/</link>
       <pubDate>Wed, 29 May 2019 17:20:42 +0800</pubDate>
