@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>使用Jenkins X实现ChatOps</title>
+      <link>http://www.servicemesher.com/blog/implementing-chatops-with-jenkins-x/</link>
+      <pubDate>Thu, 06 Jun 2019 04:30:44 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/implementing-chatops-with-jenkins-x/</guid>
+      <description>本文很好的阐述了如何使用Jenkins X来实践ChatOps，文中手把手带我们从零开始完成了一次Kubernetes Native的CI/CD之旅。</description>
+    </item>
+    
+    <item>
       <title>容器、微服务和服务网格简史</title>
       <link>http://www.servicemesher.com/blog/containers-microservices-service-meshes/</link>
       <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>

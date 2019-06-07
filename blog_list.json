@@ -1,5 +1,38 @@
 [
   {
+    "author": "Viktor Farcic",
+    "authorlink": "https://leanpub.com/u/vfarcic",
+    "banner": "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*UNy3SKvtH3QAAAAAAAAAAABkARQnAQ",
+    "categories": [
+      "translation"
+    ],
+    "date": "2019-06-06T04:30:44+08:00",
+    "fuzzywordcount": 3300,
+    "keywords": [
+      "Jenkins X",
+      "Jenkins X",
+      "Prow"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-06-06T04:30:44+08:00",
+    "objectID": "370d00bb0c9a0225a45dc21bb9948e80",
+    "permalink": "http://www.servicemesher.com/blog/implementing-chatops-with-jenkins-x/",
+    "publishdate": "2019-06-06T04:30:44+08:00",
+    "readingtime": 7,
+    "relpermalink": "/blog/implementing-chatops-with-jenkins-x/",
+    "summary": "本文很好的阐述了如何使用Jenkins X来实践ChatOps，文中手把手带我们从零开始完成了一次Kubernetes Native的CI/CD之旅。",
+    "tags": [
+      "Jenkins X",
+      "Jenkins X",
+      "Prow"
+    ],
+    "title": "使用Jenkins X实现ChatOps",
+    "translator": "孙海洲",
+    "url": "/blog/implementing-chatops-with-jenkins-x/",
+    "weight": 0,
+    "wordcount": 3220
+  },
+  {
     "author": "Jérôme Petazzoni",
     "authorlink": "https://jpetazzo.github.io",
     "banner": "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*ynV-TqegwKAAAAAAAAAAAABkARQnAQ",
