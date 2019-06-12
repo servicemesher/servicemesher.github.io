@@ -33,6 +33,37 @@
     "wordcount": 3220
   },
   {
+    "author": "敖小剑",
+    "authorlink": "https://github.com/skyao",
+    "banner": "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*wk5LToh54pQAAAAAAAAAAABkARQnAQ",
+    "categories": [
+      "service-mesh"
+    ],
+    "date": "2019-06-05T15:54:19+08:00",
+    "fuzzywordcount": 8900,
+    "keywords": [
+      "service mesh",
+      "SMI"
+    ],
+    "lang": "zh",
+    "lastmod": "2019-06-05T15:54:19+08:00",
+    "objectID": "166e4a32c1efc5b362f37ce33badac7b",
+    "permalink": "http://www.servicemesher.com/blog/service-mesh-interface-detail/",
+    "publishdate": "2019-06-05T15:54:19+08:00",
+    "readingtime": 18,
+    "relpermalink": "/blog/service-mesh-interface-detail/",
+    "summary": "微软最近宣布了 Service Mesh Interface 服务网格规范，定义了通用标准，包含基本特性以满足大多数场景下的通用需求。本文将带您深入了解 Service Mesh Interface。",
+    "tags": [
+      "SMI",
+      "service mesh"
+    ],
+    "title": "Service Mesh Interface详细介绍",
+    "translator": null,
+    "url": "/blog/service-mesh-interface-detail/",
+    "weight": 0,
+    "wordcount": 8850
+  },
+  {
     "author": "Jérôme Petazzoni",
     "authorlink": "https://jpetazzo.github.io",
     "banner": "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*ynV-TqegwKAAAAAAAAAAAABkARQnAQ",

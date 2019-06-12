@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Service Mesh Interface详细介绍</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-interface-detail/</link>
+      <pubDate>Wed, 05 Jun 2019 15:54:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-interface-detail/</guid>
+      <description>微软最近宣布了 Service Mesh Interface 服务网格规范，定义了通用标准，包含基本特性以满足大多数场景下的通用需求。本文将带您深入了解 Service Mesh Interface。</description>
+    </item>
+    
+    <item>
       <title>容器、微服务和服务网格简史</title>
       <link>http://www.servicemesher.com/blog/containers-microservices-service-meshes/</link>
       <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>
@@ -2078,7 +2087,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 15 崔秀龙 6 钟华 5 赵化冰 5 高松 3 郑伟 3 罗佳豪 3 张馆长 3 云原生编辑部 3 丁轶群 3 陈</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 16 崔秀龙 6 钟华 5 赵化冰 5 高松 3 郑伟 3 罗佳豪 3 张馆长 3 云原生编辑部 3 丁轶群 3 陈</description>
     </item>
     
     <item>

@@ -44,6 +44,29 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/smi/</loc>
+    <lastmod>2019-06-05T15:54:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/service-mesh-interface-detail/</loc>
+    <lastmod>2019-06-05T15:54:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
+    <lastmod>2019-06-05T15:54:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
+    <lastmod>2019-06-05T15:54:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/tags/supergloo/</loc>
     <lastmod>2019-06-03T11:20:34+08:00</lastmod>
     <priority>0</priority>
@@ -57,12 +80,6 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
-    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
     <lastmod>2019-06-03T11:20:34+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -92,12 +109,6 @@
   <url>
     <loc>http://www.servicemesher.com/blog/201905-servicemesh-development-trend/</loc>
     <lastmod>2019-05-28T07:15:43+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2019-05-28T07:15:43+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

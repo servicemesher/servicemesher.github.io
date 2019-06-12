@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Service Mesh Interface详细介绍</title>
+      <link>http://www.servicemesher.com/blog/service-mesh-interface-detail/</link>
+      <pubDate>Wed, 05 Jun 2019 15:54:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/service-mesh-interface-detail/</guid>
+      <description>微软最近宣布了 Service Mesh Interface 服务网格规范，定义了通用标准，包含基本特性以满足大多数场景下的通用需求。本文将带您深入了解 Service Mesh Interface。</description>
+    </item>
+    
+    <item>
       <title>容器、微服务和服务网格简史</title>
       <link>http://www.servicemesher.com/blog/containers-microservices-service-meshes/</link>
       <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>

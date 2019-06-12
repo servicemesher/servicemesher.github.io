@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Service Mesh Interface详细介绍 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, SMI">
+  
+
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Service Mesh Interface详细介绍" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/service-mesh-interface-detail//" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="微软最近宣布了 Service Mesh Interface 服务网格规范，定义了通用标准，包含基本特性以满足大多数场景下的通用需求。本文将带您深入了解 Service Mesh Interface。">
+  <meta property="og:description" content="微软最近宣布了 Service Mesh Interface 服务网格规范，定义了通用标准，包含基本特性以满足大多数场景下的通用需求。本文将带您深入了解 Service Mesh Interface。">
+  <meta name="twitter:description" content="微软最近宣布了 Service Mesh Interface 服务网格规范，定义了通用标准，包含基本特性以满足大多数场景下的通用需求。本文将带您深入了解 Service Mesh Interface。">
+  <meta property="og:description" content="微软最近宣布了 Service Mesh Interface 服务网格规范，定义了通用标准，包含基本特性以满足大多数场景下的通用需求。本文将带您深入了解 Service Mesh Interface。" />
+
+  
+  <meta name="referrer" content="never">
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+  
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="/img/servicemesher-logo.jpg" alt="Service Mesh Interface详细介绍 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Service Mesh Interface详细介绍 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Service Mesh Interface详细介绍 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Service Mesh列表</a></li>
+                      
+                        <li><a href="/envoy/">Envoy官方文档中文版</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio中文官网</a></li>
+                      
+                        <li><a href="/categories/practice/">实践汇总</a></li>
+                      
+                        <li><a href="/istio-handbook/">Istio Handbook</a></li>
+                      
+                        <li><a href="/getting-started-with-knative/">Knative入门</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">社区 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                        <li><a href="https://github.com/servicemesher/istio-knowledge-map">Istio知识图谱</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Service Mesh Interface详细介绍</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年6月5日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://github.com/skyao">敖小剑</a>
+                            
+                            
+                            
+                            | 审校者
+                            
+                            <a href="https://jimmysong.io"><i>殷龙飞</i></a>
+                            
+                            
+                            |
+                            8900字 | 阅读大约需要18分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://skyao.io/post/201906-service-mesh-interface-detail/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/service-mesh">service-mesh</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/smi/"><i>#SMI</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<h2 id="smi介绍">SMI介绍</h2>
+
+<p><img src="images/smi-logo_0.png" alt="" /></p>
+
+<h3 id="smi是什么">SMI是什么？</h3>
+
+<p>5月21号，在 kubeconf上，微软联合一众小伙伴，宣布了 Service Mesh Interface，简称SMI。SMI是一个服务网格规范，定义了通用标准，包含基本特性以满足大多数场景下的通用需求。</p>
+
+<p>援引来自SMI官方网站  <a href="https://smi-spec.io/">smi-spec.io</a> 的介绍资料，对 Service Mesh Interface 的定位是 ：</p>
+
+<blockquote>
+<p>A standard interface for service meshes on Kubernetes.</p>
+
+<p>Kubernetes上的 service mesh 的标准接口</p>
+</blockquote>
+
+<p>微软的 <a href="https://msft.today/hello-service-mesh-interface-smi-a-specification-for-service-mesh-interoperability/">官方博客文章</a> 这样介绍SMI：</p>
+
+<blockquote>
+<p>SMI定义了一组通用可移植的API，为开发人员提供跨不同服务网格技术的互通性，包括Istio，Linkerd和Consul Connect。</p>
+</blockquote>
+
+<p><img src="images/smi.jpg" alt="" /></p>
+
+<p>SMI 是希望在各家 Service Mesh 的实现之上建立一个抽象的API层，然后通过这个抽象来解耦和屏蔽底层 Service Mesh 实现，让上层的应用、工具、生态系统可以建立在一个业界标准之上，从而实现跨不同实现的可移植性和互通性。</p>
+
+<h3 id="smi推出的背景">SMI推出的背景</h3>
+
+<p><a href="https://medium.com/@idit.levine_92620">Idit Levine</a>，初创公司 solo.io 的创始人兼CEO，作为SMI推出的重要力量之一，撰文描述了 SMI 推出的背景：</p>
+
+<blockquote>
+<p>服务网格生态系统正在兴起，众多的网格供应商和不同的用例需要不同的技术。所以问题来了：我们如何实现在不破坏最终用户体验的前提下促进行业创新？通过以一组标准API达成一致，我们可以提供互通性，并在不同网格以及为这些网格构建的工具之上维持最终用户体验。</p>
+
+<p>今天发布的 Service Mesh Interface（SMI）是使这一构想走向行业现实的重要一步。</p>
+</blockquote>
+
+<p>下面这幅图片可以非常清晰的表述SMI的定位，也可以帮助我们一起来解读SMI推出的背景：</p>
+
+<p><img src="images/SMI-Graphic.jpg" alt="" /></p>
+
+<ol>
+<li><p>Service Mesh的价值正在被普遍认可：从最早的Linkerd，Envoy，到两年前Google力推Istio，以及 Linkerd2 的推出，最近 AWS 推出了 App Mesh，Google 则将 Istio 搬上了Google Cloud 推出了 Istio 的公有云托管版本 Google Cloud Service Mesh，还推出了单独的控制平面产品 Google Traffic Director。微软也在去年推出了Azure完全托管版本的Service Fabric Mesh （预览版）。云市场三巨头都已经先后出手。</p></li>
+
+<li><p>市场上出现了众多的Service Mesh产品：开源的，闭源的，大公司出的，小公司出的，市场繁荣的同时也带来了市场碎片化的问题。</p>
+
+<p><img src="images/smi-background.jpg" alt="" /></p></li>
+
+<li><p>在云原生理念下，我们推崇应用轻量化，只关注业务逻辑。Service Mesh技术很好的实现了这一战略目标：运行在 service mesh 上的应用可以和底层 service mesh 的具体实现解耦。理论上应用在不同的 service mesh 实现上迁移是可行的，从这一点说，service mesh 在云原生的道路上迈出了重要一步。</p></li>
+
+<li><p>但是，所有围绕业务应用的外围工作，比如通过 service mesh对流量进行控制，配置各种安全/监控/策略等行为，以及在这些需求上建立起来的工具和生态系统，却不得不牢牢的绑死在某个具体的 service mesh实现上，所谓&rdquo;供应商锁定&rdquo;。</p></li>
+
+<li><p>其根本问题在于各家实现不同，又没有统一标准。因此，要想解决上述问题，就必须釜底抽薪：<strong>解决 Service Mesh 的标准化问题</strong>。</p></li>
+</ol>
+
+<p>微软给出的解决方案就是引入SMI，作为一个通用的行业规范/标准，如果能让各家 service mesh 提供商都遵循这个标准，则有机会在具体的 service mesh 产品之上，抽象出一个公共层（如定义一组通用可移植的API），屏蔽掉上层应用/工具/生态系统对具体  service mesh 产品的实现细节。</p>
+
+<p>是不是觉得 SMI 的概念有种熟悉的味道？是的，没错，类似的事情在k8s中之前就发生过很多次，比如 CNI、CRI、CSI，还有下图展示的 Ingress：</p>
+
+<p><img src="images/smi-concept.jpg" alt="" /></p>
+
+<p>在SMI中，将这个目标称为 &ldquo;<strong>Interoperability</strong>&rdquo; / 互通性。我个人理解，这其实和 google 一直在倡导的 &ldquo;not lock-in&rdquo; 是一个概念：有通用的社区标准/行业标准，在此基础上客户可以在多个实现/多个供应商之间自由选择和迁移，没有被绑定的风险，而且提供给用户的功能以及使用方式也保持一致，也就是 Idit Levine 所强调的 &ldquo;维持最终用户体验&rdquo;。</p>
+
+<p>从这个角度说，我很欣喜的看到 SMI 的推出，虽然这条路可能不是那么容易走，但是，的确，&rdquo;Service Mesh Interface（SMI）是使这一构想走向行业现实的重要一步&rdquo;。</p>
+
+<h3 id="和通用数据平面api的关系">和通用数据平面API的关系</h3>
+
+<p>在SMI提出来之前不久（大概早两个星期），CNCF也在进行类似的标准化操作：CNCF正在筹建通用数据平面API工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准API，为L4/L7数据平面配置提供事实上的标准，初始成员将包括 Envoy 和 gRPC 项目的代表。事实上是 Google 在驱动，主要参与的项目是 Istio 和 Envoy。</p>
+
+<p>下面这张图片展示UDPA 和 SMI 这两个新近推出的 Service Mesh 标准API的关系：</p>
+
+<p><img src="images/two-api.png" alt="" /></p>
+
+<ul>
+<li>Universal Data Plane API 是数据平面的标准，控制平面通过这个API来控制数据平面的行为。工作组的初始成员来自包括 Envoy 和 gRPC 项目的代表，<strong>背后的公司主要是 Google</strong> 。</li>
+<li>Service Mesh Interface 是控制平面的标准，上层的应用/工具/生态体系通过 Service Mesh Interface 来实现跨不同的Service Mesh实现为最终用户提供一致性的体验。<strong>SMI由微软牵头</strong>，联合 Linkerd，HashiCorp，Solo，Kinvolk和Weaveworks。</li>
+</ul>
+
+<h3 id="smi的目标和愿景">SMI的目标和愿景</h3>
+
+<p>关于 SMI 的目标和愿景，我援引  Idit Levine 的这段话（这段话也同样出现在 smi-spec 的 github 首页）：</p>
+
+<blockquote>
+<p>SMI 是在 Kubernetes 上运行服务网格的规范。它定义了由各种供应商实现的通用标准。这使得最终用户的标准化和服务网格供应商的创新可以两全其美。SMI 实现了灵活性和互通性。</p>
+</blockquote>
+
+<p>更详细而明确的目标描述来自 smi-spec 的 github 首页：</p>
+
+<blockquote>
+<p>目标</p>
+
+<p>SMI API的目标是提供一组通用的，可移植的Service Mesh API，Kubernetes用户可以以供应商无关的方式使用这些API。通过这种方式，可以定义使用Service Mesh技术的应用程序，而无需紧密绑定到任何特定实现。</p>
+</blockquote>
+
+<p>然后还特别强调：</p>
+
+<blockquote>
+<p>非目标</p>
+
+<p><strong>SMI项目本身不实现服务网格</strong>。SMI只是试图定义通用规范。同样，SMI不定义服务网格的具体范围，而是一个通用子集。 欢迎SMI供应商添加超出SMI规范的供应商特定扩展和API。 我们希望随着时间的推移，随着更多功能被普遍接受为服务网格的一部分，这些定义将迁移到SMI规范中。</p>
+</blockquote>
+
+<p>总结：首先非常明确的一点是，SMI是定义标准API，而不是标准实现。</p>
+
+<p>而 SMI 的具体目标，在 SMI 的官方网站是这样介绍的：</p>
+
+<ol>
+<li>A standard interface for service meshes on Kubernetes: Kubernetes上的 service mesh 的标准接口</li>
+<li>A basic feature set for the most common service mesh use cases：用于最通用的服务网格用例的基本特性</li>
+<li>Flexibility to support new service mesh capabilities over time：随着时间的推移灵活地支持新的服务网格能力</li>
+<li>Space for the ecosystem to innovate with service mesh technology: 使用服务网格技术实现生态系统创新的空间</li>
+</ol>
+
+<h3 id="smi社区">SMI社区</h3>
+
+<p>有需求，有市场，有想法，有目标，我们再来看看 SMI 阵营现在都有什么力量。</p>
+
+<p>微软在推出 SMI 时的描述到：SMI是一个开放项目，由微软，Linkerd，HashiCorp，Solo，Kinvolk和Weaveworks联合启动; 并得到了Aspen Mesh，Canonical，Docker，Pivotal，Rancher，Red Hat和VMware的支持。</p>
+
+<p><img src="images/partnership.png" alt="" /></p>
+
+<p>阵营还是挺强大的：</p>
+
+<ul>
+<li>微软：SMI的带头大哥，云计算的三巨头之一</li>
+<li>Buoyant：Service Mesh 技术的拓荒牛 + 布道者，小而弥坚的初创公司，有一个不大但是力量很强又非常有经验还很务实的团队。其旗下的 Linkerd2 已经明确表示将支持 SMI。</li>
+<li>HashiCorp：大名鼎鼎的 consul 就出自这里，Consul Connect 也是目前活跃的 service mesh 实现之一，虽然Consul Connect在国内知名度和影响力都很小（也就年度总结的时候捎带着看一眼状态的那种）。Consul Connect 目前也表示提供了对 SMI 的支持。</li>
+<li>Solo.io：深藏不露的初创型小公司，&rdquo;产品面很广，除了 Service Mesh 方面大有名气的 SuperGloo 和 Service Mesh hub 之外，还有远程调试、混沌工程、unikernels 以及微服务网关等几个产品。&rdquo;（这段话我从秀龙的文章里面抄过来的，总结的很好）。另外，业界网红 Christian Posta 前段时间加入这家公司。solo公司旗下的 SuperGloo 是业界第一个 service mesh 编排产品，因此对 SMI 的热爱和支持是无可复加的。SuperGloo 和 Service Mesh Hub 已经实现了对 SMI 的支持。</li>
+<li>Mesery 和 Kinvolk：这两家公司最近在 service mesh社区有点名气，因为他们近期做了 Istio vs Linkerd 的性能测试并给出了报告，闹的满城风雨。而且他们也都喜欢用 solo 出的 SuperGloo（毕竟业界号称 service mesh 编排的也就独此一家）。</li>
+<li>Aspen Mesh： F5 （没错，就是那个巨贵的F5）出的的Istio商业版本。但是没有看到 Aspen Mesh 给出支持 SMI 的信息，暂时还不知道 Aspen Mesh 和 SMI 的关系。</li>
+<li>vmware：vmware在2018年底推出了 VMware NSX Service Mesh ，和Aspen Mesh一样也是基于 Istio 。</li>
+</ul>
+
+<p>其他公司就不再一一列出来了，主要是不清楚他们在 SMI 这个事情上扮演什么角色。</p>
+
+<p>而关键点在于，Google （还有同属Istio阵营的 IBM / Lyft）不在其列。而 Service Mesh 的其他玩家，几乎都参与了 SMI，甚至包括原本在 Istio 项目上和 google 一直合作的公司，耐人寻味。</p>
+
+<h2 id="smi规范内容">SMI规范内容</h2>
+
+<h3 id="smi规范介绍">SMI规范介绍</h3>
+
+<p>Service Mesh Interface 规范涵盖最常见服务网格能力：</p>
+
+<ul>
+<li>Traffic Policy/流量策略 - 跨服务应用身份和传输加密等策略</li>
+<li>Traffic Telemetry/流量遥测 - 捕获关键指标，如错误率和服务间的延迟</li>
+<li>Traffic Management/流量管理 - 在不同服务之间转移流量</li>
+</ul>
+
+<p>SMI规范由多个API组成：</p>
+
+<ul>
+<li>Traffic Access Control/流量访问控制 - 根据客户端的身份配置对特定pod和路由的访问，以将应用程序锁定到仅允许的用户和服务。</li>
+<li>Traffic Specs/流量规范 - 定义流量的表示方式，基于每个协议的基础。 这些资源与访问控制和其他类型的策略协同工作，以在协议级别管理流量。</li>
+<li>Traffic Split/流量分割 - 逐步引导各种服务之间的流量百分比，以帮助构建金丝雀推出。</li>
+<li>Traffic Metrics/流量指标 - 暴露通用的流量指标，供dashboard和autoscaler等工具使用。</li>
+</ul>
+
+<p>注意：SMI 被指定为 Kubernetes Custom Resource Definitions（CRD）和 Extension API Servers 的集合。 这些API可以安装到Kubernetes集群上，并使用标准工具进行操作。</p>
+
+<p>在设计上，SMI 强调 &ldquo;Provider Agnostic（供应商无关）&rdquo;：</p>
+
+<blockquote>
+<p>SMI API的目标是提供一组通用的可移植的服务网格API，Kubernetes用户可以以供应商无关的方式使用这些API。 通过这种方式，人们可以定义使用服务网格技术的应用程序，而无需紧密绑定到任何特定实现。</p>
+</blockquote>
+
+<p>下面我们来详细看一下 SMI 规范的具体API定义，其定义来自<a href="https://github.com/deislabs/smi-spec">https://github.com/deislabs/smi-spec</a> 。</p>
+
+<h3 id="traffic-spec">Traffic Spec</h3>
+
+<p>Traffic Spec资源用于让用户定义流量。通常与Access Control（访问控制）和其他策略一起使用，以具体定义需要如何处理流经网格的特定类型流量。</p>
+
+<p>用户往往希望在服务网格内运行许多不同的协议。 当然，主要会是HTTP，但也会有其他协议。 Traffic Spec规范中的每个资源都旨在与特定协议1：1匹配。 这让用户可以以协议特定的方式来定义流量。</p>
+
+<p><strong>HTTPRouteGroup</strong></p>
+
+<p>HTTPRouteGroup 资源用于描述HTTP/1和HTTP/2流量，它枚举了应用程序可以提供的路由。</p>
+
+<pre><code class="language-yaml">apiVersion: specs.smi-spec.io/v1alpha1
+kind: HTTPRouteGroup
+metadata:
+  name: the-routes
+matches:
+- name: metrics
+  pathRegex: &quot;/metrics&quot;
+  methods:
+  - GET
+- name: health
+  pathRegex: &quot;/ping&quot;
+  methods: [&quot;*&quot;]
+</code></pre>
+
+<p>上面的例子定义两个<code>match</code>，<code>metrics</code>和<code>health</code>。 name 字段是key，所有字段都是必需的。 正则表达式用于匹配URI。 HTTP Mesh可以具体制定如 <code>GET</code> 或用 <code>*</code> 来匹配所有。</p>
+
+<p>HTTPRouteGroup 当前的功能限制（未来会加入，只是当前作为第一个版本内容还比较少）：</p>
+
+<ol>
+<li>只支持 HTTP 协议，连 gRPC 都还未支持</li>
+<li><code>match</code> 字段当前仅适用于 <code>URI</code>。 很明显这是不够的，未来计划扩展以支持HTTP header，Host等。</li>
+</ol>
+
+<blockquote>
+<p>个人看法：目前在只有 HTTP 协议支持，而且 HTTP 路由定义居然不支持 HTTP header 匹配，足够说明目前 SMI 的确是处于项目早期状态。</p>
+</blockquote>
+
+<p><strong>TCPRoute</strong></p>
+
+<p>TCPRoute资源用于描述 L4 TCP流量。 这个路由极其简单（或者叫做简陋），定义应用程序接收到的原始的、无协议特征的流量。</p>
+
+<p>看完下面的yaml例子就明白为什么称为极其简单了：</p>
+
+<pre><code class="language-yaml">apiVersion: specs.smi-spec.io/v1alpha1
+kind: TCPRoute
+metadata:
+  name: tcp-route
+</code></pre>
+
+<p>上面的路由只做了定义，尚未与任何资源相关联。 我们继续看如何使用，比如与Access Control 配合。</p>
+
+<h3 id="traffic-access-control">Traffic Access Control</h3>
+
+<p>Traffic Access Control 资源用来为应用程序定义访问控制策略：</p>
+
+<ol>
+<li>访问控制属于授权（authorization）范畴，默认身份验证（Authentication）已经由底层实现处理</li>
+<li>SMI规范中的访问控制是附加的，默认情况下<strong>拒绝所有流量</strong>。</li>
+</ol>
+
+<p><strong>TrafficTarget 规范</strong></p>
+
+<p>TrafficTarget 规范用来定义流量访问控制，而 SMI 中访问控制是基于服务身份（service identity）的，并且目前只支持通过 Kubernetes service account 来指派服务身份（其他身份机制将在稍后支持）。</p>
+
+<p>流量访问控制有三个概念，分别在 TrafficTarget 中以三个字段定义：</p>
+
+<ol>
+<li>Source：流量的来源，体现为具体的 Pod 列表，目前支持通过selector来实现，暂时不支持以资源的方式选择（如指定Deployment、指定Service）</li>
+<li>Destination：流量的目标，同样体现为具体的 Pod 列表，也只支持selector</li>
+<li>Route：流量规范，用来区分 Destination 提供的多种不同的流量访问方式，如下图中的api访问和获取metrics信息</li>
+</ol>
+
+<p><img src="images/smi-traffic-target.png" alt="" /></p>
+
+<p>在这个例子中，展示对api进行访问和获取metrics信息这两个操作的流量访问控制：</p>
+
+<pre><code class="language-yaml"># 定义TrafficSpec
+apiVersion: specs.smi-spec.io/v1alpha1
+kind: HTTPRouteGroup
+metadata:
+  name: api-service-routes
+matches:
+  - name: api  # api访问的流量
+    pathRegex: /api
+    methods: [&quot;*&quot;]
+  - name: metrics # 获取metrics的流量
+    pathRegex: /metrics
+    methods: [&quot;GET&quot;]
+
+---
+kind: TrafficTarget
+apiVersion: access.smi-spec.io/v1alpha1
+metadata:
+ name: api-service-metrics # 定义获取metrics的Target
+ namespace: default
+destination:	# 通过 ServiceAccount 选择pods
+ kind: ServiceAccount
+ name: api-service
+ namespace: default
+specs: # 引用traficSec定义的route，指定为获取metrics
+- kind: HTTPRouteGroup
+  name: api-service-routes
+  matches:
+    - metrics
+sources: # 通过 ServiceAccount 选择pods
+- kind: ServiceAccount
+  name: prometheus
+  namespace: default
+
+---
+kind: TrafficTarget
+apiVersion: access.smi-spec.io/v1alpha1
+metadata:
+ name: api-service-api # 定义访问api接口的Target
+ namespace: default
+destination: # 通过 ServiceAccount 选择pods
+ kind: ServiceAccount
+ name: api-service
+ namespace: default
+ port: 8080
+specs: # 引用traficSec定义的route，指定为api访问
+- kind: HTTPRouteGroup
+  name: api-service-routes
+  matches:
+    - api
+sources: # 通过 ServiceAccount 选择pods
+- kind: ServiceAccount
+  name: website-service
+  namespace: default
+- kind: ServiceAccount
+  name: payments-service
+  namespace: default
+</code></pre>
+
+<p>上述实例定义了两个容许的访问控制：</p>
+
+<ol>
+<li>对于以 ServiceAccount 为 api-service 运行的 pods，容许来自以 ServiceAccount 为 prometheus 的 pods 访问 api-service-routes 定义下的 metrics 路由</li>
+<li>对于以 ServiceAccount 为 api-service 运行的 pods，容许来自以 ServiceAccount 为 website-service 和 payments-service  的 pods 访问 api-service-routes 定义下的 api 路由</li>
+</ol>
+
+<p>其中有部分字段为可选字段：</p>
+
+<ul>
+<li>matches 字段：如果省略，则对 TrafficSpec 下定义的所有Route都生效</li>
+<li>Port字段：如果省略，则表示所有端口</li>
+</ul>
+
+<p>SMI 流量访问控制的规则是默认都不容许访问，只有通过 TrafficTarget 指定的符合条件的流量才容许访问。而访问控制的执行，是明确要求在访问的服务器端（即Destination）强制执行，而是否在客户端（即Source）进行访问控制则由SMI的具体实现来决定。</p>
+
+<p>注意目前 Traffic Access Control 在定义 Source 和 Destination 时，都是通过 Selector 来定义的，我们细看这张图片：</p>
+
+<p><img src="images/smi-traffic-target.png" alt="" /></p>
+
+<p>从访问控制的业务语义上看，上面两个 TrafficTarget 翻译出来就是：</p>
+
+<ul>
+<li>容许以 ServiceAccount prometheus 运行的服务访问以 ServiceAccount api-service 运行的服务的 metrics</li>
+<li>容许以 ServiceAccount web-service 和 payment-service 运行的服务访问以 ServiceAccount api-service 运行的服务的 api</li>
+</ul>
+
+<p>而不是我们平时熟悉的资源方式如&rdquo;容许A服务访问B服务&rdquo;，即访问控制中对服务的标示目前只能通过 ServiceAccount + Selector 来完成，而不是通过简单的服务Id或者名称来指定资源。请注意&rdquo;容许以身份A运行的服务访问以身份B运行的服务&rdquo; 和 &ldquo;容许A服务访问B服务&rdquo; 的细微差别。</p>
+
+<p>关于这一点，在 SMI 的文档的&rdquo;Tradeoffs&rdquo;中提到：</p>
+
+<blockquote>
+<p>Resources vs selectors - it would be possible to reference concrete resources such as a deployment instead of selecting across pods.</p>
+
+<p>资源 vs 选择器 - 可以引用具体资源（如deployment）而不是pod选择。</p>
+</blockquote>
+
+<h3 id="traffic-split">Traffic Split</h3>
+
+<p>Traffic Split 资源用来实现流量的百分比拆分，熟悉Istio的同学应该非常了解这个功能的强大。</p>
+
+<p>但是 SMI 中 Traffic Split 的配置方式和 Istio 有非常大的不同，比如下面的配置，要对 foobar 服务按照版本进行流量拆分，v1 和 v2 权重分别为 1 和 500m （1=1000m），在 Traffic Split 的配置中会出现多个 service：</p>
+
+<pre><code class="language-yaml">apiVersion: split.smi-spec.io/v1alpha1
+kind: TrafficSplit
+metadata:
+  name: foobar-rollout
+spec:
+  service: foobar # root service，客户端用这个服务名来连接目标应用
+  backends: # root service 后面的服务，有自己的selectors, endpoints 和 configuration
+  - service: foobar-v1
+    weight: 1
+  - service: foobar-v2
+    weight: 500m
+</code></pre>
+
+<ul>
+<li>&ldquo;foobar&rdquo;：通过 <code>spec.service</code> 指定，这是 Traffic Split 的 root service，是要配置进行流量拆分的目标服务的FQDN，客户端用这个 service 进行通信，也就是说这个 root service 是暴露给客户端的。</li>
+<li>&ldquo;footer-v1&rdquo; 和 &ldquo;footer-v2&rdquo;：这两个后端服务，是&rdquo;隐藏&rdquo;在 root service 后面的，通常是 root service 的子集，典型实现上是 selector 多加一个 version label 限制。</li>
+</ul>
+
+<p>这样，如果要对某个服务的两个子集进行流量拆分，典型如版本v1和版本v2，在 SMI 中就会有三个 k8s service 定义：</p>
+
+<table>
+<thead>
+<tr>
+<th>资源</th>
+<th>selector （label）</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>service foobar</td>
+<td><code>app: foobar</code></td>
+<td>root service</td>
+</tr>
+
+<tr>
+<td>service foobar-v1</td>
+<td><code>app: foobar</code>, <code>version: v1</code></td>
+<td>backend service</td>
+</tr>
+
+<tr>
+<td>service foobar-v2</td>
+<td><code>app: foobar</code>, <code>version: v2</code></td>
+<td>backend service</td>
+</tr>
+</tbody>
+</table>
+
+<p>这三个 service 和 pod 的关系如下图所示：</p>
+
+<p><img src="images/smi-traffic-split.png" alt="" /></p>
+
+<p>我们来对比 Istio 中实现类似功能的方式，Istio中需要为准备进行流量拆分的服务定义 VirtualService，通过 subset 来区分不同的流量去向：</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: foobar-route
+spec:
+  hosts:
+  - foobar
+  http:
+  - route:
+    - destination:
+        host: foobar
+        subset: v2
+      weight: 25
+    - destination:
+        host: foobar
+        subset: v1
+      weight: 75
+</code></pre>
+
+<p>subset 在 DestinationRule 中定义，注意这里只涉及到 labels，服务（以host标志）并没有多个，还是 foobar：</p>
+
+<pre><code class="language-yam">apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: foobar-destination
+spec:
+  host: foobar
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+</code></pre>
+
+<p>在Istio 中，service 和 subset 的关系如下图所示：</p>
+
+<p><img src="images/istio-traffic-split.png" alt="" /></p>
+
+<p>可以看到 SMI 中的 backend service 和 Istio 中的 subset 在功能上几乎是对等的。</p>
+
+<p>但是：SMI 和 Istio 的根本差异在于 Istio 中的 subset 是一个虚拟的抽象对象，在k8s中并没有实体资源。而在 SMI 中，backend service 是实实在在存在的 k8s service 资源。</p>
+
+<p>这里个人觉得有一个隐忧：在 SMI 中，为了进行流量拆分，就不得不为每个版本建立一个独立的k8s service，service 数量会比 Istio 方案多很多。</p>
+
+<p>另外就是在权重设置上的细微的差别，SMI 用的是相对weight（比如可以设置为1:2），而 Istio 是严格的百分比，而且要求总和为100。</p>
+
+<h3 id="traffic-metrics">Traffic Metrics</h3>
+
+<p>Traffic Metrics 资源提供通用集成点，工具可以通过访问这些集成点来抓取指标。Traffic Metrics 遵循 <code>metrics.k8s.io</code> 的模式，其即时指标可用于各种 CLI工具，HPA伸缩等。</p>
+
+<p>和大多数Metrics系统一致，SMI的Traffic Metrics 数据包含两个核心对象：</p>
+
+<ol>
+<li>Resource：Metrics 和资源绑定，资源可以是 pod 和更高级别的概念如 namespaces, deployments 或者 services 。Pod是 Metrics 可以关联的最细粒度的资源，通过集合可以得到推断出其他。</li>
+<li>Edge：表示流量来源或其目的地，描述力量的方向。</li>
+</ol>
+
+<p><strong>TrafficMetrics</strong></p>
+
+<p>TrafficMetrics是核心资源，关联到资源，具有edge，延迟百分位数和请求量：</p>
+
+<pre><code class="language-yaml">apiVersion: metrics.smi-spec.io/v1alpha1
+kind: TrafficMetrics
+resource:
+  name: foo-775b9cbd88-ntxsl
+  namespace: foobar
+  kind: Pod
+edge:
+  direction: to
+  resource:
+    name: baz-577db7d977-lsk2q
+    namespace: foobar
+    kind: Pod
+timestamp: 2019-04-08T22:25:55Z
+window: 30s
+metrics:
+- name: p99_response_latency
+  unit: seconds
+  value: 10m
+- name: p90_response_latency
+  unit: seconds
+  value: 10m
+- name: p50_response_latency
+  unit: seconds
+  value: 10m
+- name: success_count
+  value: 100
+- name: failure_count
+  value: 100
+</code></pre>
+
+<p>TrafficMetrics 的定义和使用暂时没看到有特殊之处。</p>
+
+<h3 id="smi规范总结">SMI规范总结</h3>
+
+<p>从上面我们详细分析的 SMI 主要规范的定义看，Traffic Access Control / Traffic Specs / Traffic Split / Traffic Metrics 这四个目前定义好的规范，无论从功能还是从API设计上看，都缺乏亮点，至少与目前大家熟悉的 Istio API 相比，没有明显优势：</p>
+
+<ul>
+<li>Traffic Specs 中 HTTPRouteGroup 只支持HTTP1.1，甚至不支持header，TCPRoute更是简陋到极致</li>
+<li>Traffic Access Control 只支持 ServiceAccount</li>
+<li>Traffic Split：需要为每个需要拆分的流量额外增加 k8s service</li>
+<li>TrafficMetrics：平平无奇</li>
+</ul>
+
+<p>考虑到目前 SMI 还是第一个版本，处于项目早期阶段，不够成熟情有可原，我们更要关注的是其后续版本的演进，希望未来 SMI 可以成长为一个足够坚实而可用的标准API。</p>
+
+<h2 id="smi分析">SMI分析</h2>
+
+<p>前面我们分析过 SMI 推出的背景，我归结为关键的两点：</p>
+
+<ol>
+<li>有利可图：Service Mesh技术被普遍看好，其长远价值被各大厂商认可</li>
+<li>有机可趁：作为市场领头羊的Google和Istio，表现疲软</li>
+</ol>
+
+<p>另外Google在Istio项目上，表现也有些令人费解：</p>
+
+<ol>
+<li>迟迟不进CNCF：早先还有未能发布1.0版本不满足CNCF要求的借口，而最近则感觉Google一直在避免讨论这个话题</li>
+<li>Istio一直没有对 Service Mesh 技术进行标准化：只关注自己的 Istio API，对于标准化和基于标准化构建生态系统完全没兴趣。即便是统一数据平面API的标准化动作，也让人觉得是 Envoy 在推动。</li>
+<li>宣传和现实的差距：Istio 1.0 的 &ldquo;Product Ready&rdquo;，1.1 版本的&rdquo;Enterprise Ready&rdquo;，很让人无语，我很期待 1.2 版本出来时的口号。</li>
+<li>架构设计的不务实：Mixer 是被嘲弄的重灾区，躲在Mixer身后的Pilot其实问题也一堆，而 Mixer v2 的进展则成为衡量 Istio 未来走向的风向标，是要成为工业级可用的坚实产品，还是继续摆弄优雅架构做花瓶？未来一年我们拭目以待。</li>
+<li>整个社区对Istio的不满情绪一直在酝酿和累积：这次 SMI 推出引发的轰动，很大程度是这种情绪的发泄——除了Google之外几乎所有的 Servic Mesh 的玩家都参与进来了，这就足够说明问题了。</li>
+</ol>
+
+<p>在过去两年，社区一直在期待Google和Istio，但是，这种期待在持续两年的失望之后，开始转向另外的方向：或许我们要更多的考虑Istio之外的选择了。</p>
+
+<p>Service Mesh 的战争，我们原以为会以Istio的胜利而迅速结束，但是现在看来，可能这场战争才刚刚开始。</p>
+
+<p>是重新认真审视这张图片的时候了：</p>
+
+<p><img src="images/gartner.jpg" alt="" /></p>
+
+<p>SMI 的推出，意义并不仅仅在于这个 Service Mesh 标准本身，而是带有另外一种特殊含义，就如陈胜吴广的揭竿而起，传递给四方的消息是：天下苦秦久矣！</p>
+
+<p>文章最后，希望未来有更多的优秀 Service Mesh 产品出现，也希望 Istio 可以知耻而后勇。Service Mesh 技术要想成功普及，一定需要一个或者多个强力产品的出现，而 SMI 的出现则为这场短期不能结束的纷争带来了一个理论可能：无论产品竞争如何激烈，都不影响上层生态，从而避免站队失败的风险和由此带来的犹豫与观望。这才是我个人觉得 SMI 推出的最大意义所在。</p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ul>
+<li><a href="https://smi-spec.io/">smi官方网站</a></li>
+<li><a href="https://github.com/deislabs/smi-spec">smi-spec项目@github </a></li>
+<li><a href="https://www.redhat.com/en/blog/interoperability-new-service-mesh-interface">Interoperability with the new Service Mesh Interface</a></li>
+<li><a href="https://blog.fleeto.us/post/servicemesh-interface/">意外：Servicemesh Interface（SMI）</a></li>
+<li><a href="https://msft.today/hello-service-mesh-interface-smi-a-specification-for-service-mesh-interoperability/">Hello Service Mesh Interface (SMI): A specification for service mesh interoperability</a>: 来自微软的博客，比较权威，本文很多内容是援引自此文</li>
+<li><a href="https://medium.com/solo-io/service-mesh-interface-smi-and-our-vision-for-the-community-and-ecosystem-2edc7b728c43">Service Mesh Interface (SMI) and our Vision for the Community and Ecosystem</a>：作者 <a href="https://medium.com/@idit.levine_92620">Idit Levine</a>，是初创公司 solo.io 的创始人兼CEO，本文同样大量援引此文的内容</li>
+<li><a href="https://kccnceu19.sched.com/event/MRz7/sponsored-keynote-democratizing-service-mesh-on-kubernetes-gabe-monroy-lead-product-manager-microsoft-azure-container-compute">Democratizing Service Mesh on Kubernetes</a>: kubecon上宣布SMI的 keynote，作者 Gabe Monroy ，Microsoft Azure Container Compute的 Lead Product Manager，本文部分图片来自这个演讲的PPT</li>
+<li><a href="https://kinvolk.io/blog/2019/05/how-the-service-mesh-interface-smi-fits-into-the-kubernetes-landscape/">How the Service Mesh Interface (SMI) fits into the Kubernetes landscape</a>: 介绍SMI和其他类似的kubernetes Interface 如 CNI、CRI、CSI等。</li>
+<li><a href="https://blog.getambassador.io/kubecon-eu-2019-top-10-takeaways-123b5fcb30a8">KubeCon EU 2019: Top 10 Takeaways</a>: 来自网红 Daniel Bryant 的文章，包含对 SMI 和 Istio 的看法。</li>
+<li><a href="https://softwareengineeringdaily.com/2019/05/31/service-mesh-wars-with-william-morgan/">Service Mesh Wars with William Morgan</a>：这是我见过的抨击Istio最为猛烈的一篇文章，极其火爆，又很有道理的样子</li>
+<li><a href="https://www.infoworld.com/article/3400116/introducing-the-service-mesh-interface.html">To Istio and beyond: Azure’s Service Mesh Interface</a>: 有软文嫌疑，但是还是能看出微软推出SMI的基本想法</li>
+<li><a href="https://www.hashicorp.com/blog/hashicorp-consul-supports-microsoft-s-new-service-mesh-framework">HashiCorp Consul supports Microsoft’s new Service Mesh Interface</a>: 介绍 Consul Connect 对 SMI 的支持</li>
+</ul>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/containers-microservices-service-meshes/" data-toggle="tooltip" data-placement="top" title="容器、微服务和服务网格简史">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="http://www.servicemesher.com/blog/implementing-chatops-with-jenkins-x/" data-toggle="tooltip" data-placement="top" title="使用Jenkins X实现ChatOps">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/201905-servicemesh-development-trend/"><i class="fa fa-link"></i>Service Mesh发展趋势：云原生中流砥柱</a></li>
+         
+        <li><a href="/blog/kubernetes-service-mesh/"><i class="fa fa-link"></i>基于 Kubernetes 的 Service Mesh 简介</a></li>
+         
+        <li><a href="/blog/api-gateways-are-going-through-an-identity-crisis/"><i class="fa fa-link"></i>API Gateway的身份认同危机</a></li>
+         
+        <li><a href="/blog/from-sidecar-to-servicemesh/"><i class="fa fa-link"></i>从边车模式到 Service Mesh</a></li>
+         
+        <li><a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/"><i class="fa fa-link"></i>为 Envoy 构建控制平面指南第3部分：领域特定配置</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/cloud-native-weekly"><i class="fa fa-navicon"></i>cloud-native-weekly (3)</a>
+            </li>
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (5)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (2)</a>
+            </li>
+            
+            <li><a href="/categories/gitops"><i class="fa fa-navicon"></i>gitops (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (31)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (1)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (5)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/monitoring"><i class="fa fa-navicon"></i>monitoring (3)</a>
+            </li>
+            
+            <li><a href="/categories/practice"><i class="fa fa-navicon"></i>practice (16)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (25)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (123)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/anthos"><i class="fa fa-tags"></i> anthos</a>
+            </li>
+            
+            <li><a href="/tags/api-gateway"><i class="fa fa-tags"></i> api-gateway</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/app-mesh"><i class="fa fa-tags"></i> app-mesh</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/aws"><i class="fa fa-tags"></i> aws</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/circuit-breaking"><i class="fa fa-tags"></i> circuit-breaking</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/cloud-run"><i class="fa fa-tags"></i> cloud-run</a>
+            </li>
+            
+            <li><a href="/tags/cncf"><i class="fa fa-tags"></i> cncf</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/flagger"><i class="fa fa-tags"></i> flagger</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/glasnostic"><i class="fa fa-tags"></i> glasnostic</a>
+            </li>
+            
+            <li><a href="/tags/gloo"><i class="fa fa-tags"></i> gloo</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/grpc-web"><i class="fa fa-tags"></i> grpc-web</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/hystrix"><i class="fa fa-tags"></i> hystrix</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/ingresss"><i class="fa fa-tags"></i> ingresss</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/jenkins-x"><i class="fa fa-tags"></i> jenkins-x</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microprofile"><i class="fa fa-tags"></i> microprofile</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/nfv"><i class="fa fa-tags"></i> nfv</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/open-source"><i class="fa fa-tags"></i> open-source</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/operator"><i class="fa fa-tags"></i> operator</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/prow"><i class="fa fa-tags"></i> prow</a>
+            </li>
+            
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/servicemesh"><i class="fa fa-tags"></i> servicemesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/smi"><i class="fa fa-tags"></i> smi</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/supergloo"><i class="fa fa-tags"></i> supergloo</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/implementing-chatops-with-jenkins-x/">
+                          
+                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*UNy3SKvtH3QAAAAAAAAAAABkARQnAQ" class="img-responsive" alt="使用Jenkins X实现ChatOps">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/implementing-chatops-with-jenkins-x/">使用Jenkins X实现ChatOps</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/service-mesh-interface-detail/">
+                          
+                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*wk5LToh54pQAAAAAAAAAAABkARQnAQ" class="img-responsive" alt="Service Mesh Interface详细介绍">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/service-mesh-interface-detail/">Service Mesh Interface详细介绍</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/containers-microservices-service-meshes/">
+                          
+                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*ynV-TqegwKAAAAAAAAAAAABkARQnAQ" class="img-responsive" alt="容器、微服务和服务网格简史">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/containers-microservices-service-meshes/">容器、微服务和服务网格简史</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>
