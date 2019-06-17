@@ -4,8 +4,37 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/</loc>
-    <lastmod>2019-06-06T04:30:44+08:00</lastmod>
+    <lastmod>2019-06-14T10:30:32+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/</loc>
+    <lastmod>2019-06-14T10:30:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/</loc>
+    <lastmod>2019-06-14T10:30:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/envoy/</loc>
+    <lastmod>2019-06-14T10:30:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/translation/</loc>
+    <lastmod>2019-06-14T10:30:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-deployment-tradeoffs/</loc>
+    <lastmod>2019-06-14T10:30:32+08:00</lastmod>
   </url>
   
   <url>
@@ -16,24 +45,6 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/prow/</loc>
-    <lastmod>2019-06-06T04:30:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-06-06T04:30:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/</loc>
-    <lastmod>2019-06-06T04:30:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/categories/translation/</loc>
     <lastmod>2019-06-06T04:30:44+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -109,12 +120,6 @@
   <url>
     <loc>http://www.servicemesher.com/blog/201905-servicemesh-development-trend/</loc>
     <lastmod>2019-05-28T07:15:43+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/envoy/</loc>
-    <lastmod>2019-05-27T04:55:44+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

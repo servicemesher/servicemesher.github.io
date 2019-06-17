@@ -6,10 +6,19 @@
     <description>Recent content in Tags on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 06 Jun 2019 04:30:44 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 14 Jun 2019 10:30:32 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>envoy</title>
+      <link>http://www.servicemesher.com/tags/envoy/</link>
+      <pubDate>Fri, 14 Jun 2019 10:30:32 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/envoy/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Jenkins X</title>
@@ -89,15 +98,6 @@
       <pubDate>Wed, 29 May 2019 17:20:42 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/operator/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>envoy</title>
-      <link>http://www.servicemesher.com/tags/envoy/</link>
-      <pubDate>Mon, 27 May 2019 04:55:44 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/envoy/</guid>
       <description></description>
     </item>
     

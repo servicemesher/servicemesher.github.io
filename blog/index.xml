@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>构建Envoy的控制平面手册第5部分 - 部署的权衡</title>
+      <link>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-deployment-tradeoffs/</link>
+      <pubDate>Fri, 14 Jun 2019 10:30:32 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-deployment-tradeoffs/</guid>
+      <description>编者按 作为探索为Envoy构建控制平面系列文章的第5部分，本文介绍了部署控制平面的选项与权衡，着重阐述了保持控制平面与数据平面解耦的几大好处</description>
+    </item>
+    
+    <item>
       <title>使用Jenkins X实现ChatOps</title>
       <link>http://www.servicemesher.com/blog/implementing-chatops-with-jenkins-x/</link>
       <pubDate>Thu, 06 Jun 2019 04:30:44 +0800</pubDate>
