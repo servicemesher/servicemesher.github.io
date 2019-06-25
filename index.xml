@@ -2126,5 +2126,14 @@
       <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 18 马若飞 11 甄中元 11 宋净超 11 孙海洲 7 罗广明 6 陈冬 5 戴佳顺 5 崔秀龙 5 王帅俭 4 王全根 4 狄卫华 3</description>
     </item>
     
+    <item>
+      <title>贡献指南</title>
+      <link>http://www.servicemesher.com/contributing-specification/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.servicemesher.com/contributing-specification/</guid>
+      <description>总结归纳为下： 文章收录来源分为三类：原创、翻译、转载。 原创：管理员会对投稿文章质量做一定的考察，必要的情况下，作者需要联系社区管理员提供相关</description>
+    </item>
+    
   </channel>
 </rss>
