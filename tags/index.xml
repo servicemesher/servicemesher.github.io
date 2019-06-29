@@ -6,17 +6,35 @@
     <description>Recent content in Tags on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 14 Jun 2019 10:30:32 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2019 11:05:00 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>kubecon</title>
+      <link>http://www.servicemesher.com/tags/kubecon/</link>
+      <pubDate>Fri, 28 Jun 2019 11:05:00 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/kubecon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>envoy</title>
       <link>http://www.servicemesher.com/tags/envoy/</link>
-      <pubDate>Fri, 14 Jun 2019 10:30:32 +0800</pubDate>
+      <pubDate>Fri, 28 Jun 2019 10:41:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/envoy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gloo</title>
+      <link>http://www.servicemesher.com/tags/gloo/</link>
+      <pubDate>Fri, 28 Jun 2019 10:41:16 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/gloo/</guid>
       <description></description>
     </item>
     
@@ -152,15 +170,6 @@
       <pubDate>Mon, 20 May 2019 12:10:44 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/linkerd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>gloo</title>
-      <link>http://www.servicemesher.com/tags/gloo/</link>
-      <pubDate>Thu, 16 May 2019 12:20:44 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/gloo/</guid>
       <description></description>
     </item>
     

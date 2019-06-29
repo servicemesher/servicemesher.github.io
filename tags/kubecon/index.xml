@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kubecon on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/kubecon/</link>
+    <description>Recent content in kubecon on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 28 Jun 2019 11:05:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/kubecon/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>开源，社区与朋友们-2019 KubeCon &#43; ClondNativeCon &#43; Open Source Summit有感</title>
+      <link>http://www.servicemesher.com/blog/kubecon-cncf-oss-2019/</link>
+      <pubDate>Fri, 28 Jun 2019 11:05:00 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/kubecon-cncf-oss-2019/</guid>
+      <description>奇妙的 2019 KubeCon + ClondNativeCon + Open Source Summit 大会！在这里，我近距离接触了大神 Linus；见到了来自 ServiceMesher 社区的很多朋友；还遇到了搞 Kubernetes 的恩格斯后人！</description>
+    </item>
+    
+  </channel>
+</rss>

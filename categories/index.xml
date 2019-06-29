@@ -6,15 +6,24 @@
     <description>Recent content in Categories on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 14 Jun 2019 10:30:32 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2019 11:05:00 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>culture</title>
+      <link>http://www.servicemesher.com/categories/culture/</link>
+      <pubDate>Fri, 28 Jun 2019 11:05:00 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/categories/culture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>translation</title>
       <link>http://www.servicemesher.com/categories/translation/</link>
-      <pubDate>Fri, 14 Jun 2019 10:30:32 +0800</pubDate>
+      <pubDate>Fri, 28 Jun 2019 10:41:16 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/categories/translation/</guid>
       <description></description>
@@ -89,15 +98,6 @@
       <pubDate>Fri, 22 Feb 2019 14:08:59 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/categories/knative/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>culture</title>
-      <link>http://www.servicemesher.com/categories/culture/</link>
-      <pubDate>Tue, 19 Feb 2019 12:08:33 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/categories/culture/</guid>
       <description></description>
     </item>
     
