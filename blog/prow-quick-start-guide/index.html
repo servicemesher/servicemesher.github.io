@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prow 快速入门向导 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="prow, chatops, devops, kubernetes">
+  
+
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Prow 快速入门向导" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/prow-quick-start-guide//" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="Prow 是 Google 发起的适应云原生开源项目的 ChatOps 系统。Kubernetes、Istio 等项目都使用 Prow 实现开源协同。我们将以一个测试代码仓库为例，来演示在一个本地k8s集群上使用 Prow 来实现CI/CD的诸多效果。">
+  <meta property="og:description" content="Prow 是 Google 发起的适应云原生开源项目的 ChatOps 系统。Kubernetes、Istio 等项目都使用 Prow 实现开源协同。我们将以一个测试代码仓库为例，来演示在一个本地k8s集群上使用 Prow 来实现CI/CD的诸多效果。">
+  <meta name="twitter:description" content="Prow 是 Google 发起的适应云原生开源项目的 ChatOps 系统。Kubernetes、Istio 等项目都使用 Prow 实现开源协同。我们将以一个测试代码仓库为例，来演示在一个本地k8s集群上使用 Prow 来实现CI/CD的诸多效果。">
+  <meta property="og:description" content="Prow 是 Google 发起的适应云原生开源项目的 ChatOps 系统。Kubernetes、Istio 等项目都使用 Prow 实现开源协同。我们将以一个测试代码仓库为例，来演示在一个本地k8s集群上使用 Prow 来实现CI/CD的诸多效果。" />
+
+  
+  <meta name="referrer" content="never">
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+  
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="/img/servicemesher-logo.jpg" alt="Prow 快速入门向导 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Prow 快速入门向导 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Prow 快速入门向导 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Service Mesh列表</a></li>
+                      
+                        <li><a href="/envoy/">Envoy官方文档中文版</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio中文官网</a></li>
+                      
+                        <li><a href="/categories/practice/">实践汇总</a></li>
+                      
+                        <li><a href="/istio-handbook/">Istio Handbook</a></li>
+                      
+                        <li><a href="/getting-started-with-knative/">Knative入门</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">社区 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                        <li><a href="https://github.com/servicemesher/istio-knowledge-map">Istio知识图谱</a></li>
+                      
+                        <li><a href="/contributing-specification/">贡献指南</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="http:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Prow 快速入门向导</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年7月1日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://github.com/zhangsean">张新峰</a>
+                            
+                            
+                            
+                            |
+                            3900字 | 阅读大约需要8分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://github.com/zhangsean/prow-quickstart">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/devops">devops</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/prow/"><i>#prow</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/chatops/"><i>#chatops</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/devops/"><i>#devops</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/kubernetes/"><i>#kubernetes</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<h2 id="编者按">编者按</h2>
+
+<p>Prow 是 Google 发起的适应云原生开源项目的 ChatOps 系统。Kubernetes、Istio 等项目都使用 Prow 实现开源协同。
+* K8s 的 Prow 系统：<a href="https://prow.k8s.io/">https://prow.k8s.io/</a>
+* Prow 开源仓库：<a href="https://github.com/kubernetes/test-infra/">https://github.com/kubernetes/test-infra/</a>
+* Prow 官方文档：<a href="https://github.com/kubernetes/test-infra/blob/master/prow/README.md">https://github.com/kubernetes/test-infra/blob/master/prow/README.md</a></p>
+
+<p>我们将以我的 Github 测试仓库 <a href="https://github.com/zhangsean/prow-test">zhangsean/prow-test</a> 为例，来演示在一个本地k8s集群上使用 Prow 来实现CI/CD的诸多效果。</p>
+
+<h2 id="准备一个k8s集群">准备一个k8s集群</h2>
+
+<p>Prow 运行在 k8s 集群中，最好运行在有公网IP地址的k8s集群，可以免去 Webhook 转发的麻烦。临时测试可以使用本地集群。我使用 kind 创建一个本地 k8s 集群，使用 minikube 等其他工具都可以。</p>
+
+<pre><code class="language-shell"># 创建一个本地集群
+kind create cluster
+export KUBECONFIG=$(kind get kubeconfig-path)
+# 确认k8s启动成功
+kubectl version
+kubectl get po -A
+# 部署 Ingress 控制器会使访问更方便，如果你的 k8s 集群已经有 Ingress 或者想用 NodePort 则可以跳过
+# 以下 Traefik Ingress Controller 中启用了默认 https 协议，替换111.22.3.4成你的主机IP即可访问 http://traefik.主机IP.nip.io 查看 Traefik 控制界面
+curl -sSL https://github.com/zhangsean/prow-quickstart/blob/master/traefik-ds.yaml?raw= | sed 's|192.168.64.10|111.22.3.4|g' | kubectl apply -f -
+</code></pre>
+
+<h2 id="准备一个-github-机器人账号">准备一个 Github 机器人账号</h2>
+
+<blockquote>
+<p>说明：体验 Prow 效果并不需要额外注册一个 Github 机器人账号，用个人账号完全不影响 Prow 的效果，给 Prow 配置机器人账号只是可以在 PR 中清楚区分哪些是人为和机器人的操作。</p>
+</blockquote>
+
+<p>如果你还没有机器人账号，请在 Github 注册一个机器人账号，我注册了 <code>zhangsean-bot</code>。<br />
+在你的项目仓库中把机器人账号加入合作者中，复制邀请链接，用机器人账号登录 Github 打开邀请链接并接受邀请，这样机器人就有权限读取和操作你的仓库了。
+<img src="img-github-collaborators.png" alt="Github Tokens" /></p>
+
+<h2 id="准备-github-认证令牌">准备 Github 认证令牌</h2>
+
+<p>为了授权 Prow 访问 Github 项目动态，用机器人或个人账号登录 Github 并在 <a href="https://github.com/settings/tokens">Github Tokens</a> 中添加一个含有 <code>repo:status</code> 和 <code>public_repo</code> 权限的令牌。
+<img src="img-github-token.png" alt="Github Tokens" />
+添加成功后把生成的令牌字符串写入到 <code>oauth-token</code> 文件并保存到 k8s 中。</p>
+
+<pre><code class="language-shell">echo &quot;f192f1277d47aff3eb60e99530b1cdc6639fda3c&quot; &gt; oauth-token
+kubectl create secret generic oauth-token --from-file=oauth=./oauth-token
+</code></pre>
+
+<p>再生成一个用于 Github Webhook 认证的 hmac 令牌，并保存到 k8s 中：</p>
+
+<pre><code class="language-shell">openssl rand -hex 20 &gt; hmac-token
+kubectl create secret generic hmac-token --from-file=hmac=./hmac-token
+</code></pre>
+
+<h2 id="部署-prow">部署 Prow</h2>
+
+<pre><code class="language-shell"># 部署 Prow starter 集群，默认部署到 default 命名空间
+kubectl apply -f https://github.com/kubernetes/test-infra/blob/master/prow/cluster/starter.yaml?raw=
+# 等待所有 pods 状态都变成 Running
+kubectl get po
+# 查看 Prow 默认部署的 ingress
+kubectl get ing
+# 查看 deck 和 hook 服务的 NodePort 端口
+kubectl get svc
+</code></pre>
+
+<p>服务列表如下所示，<code>deck</code>的 NodePort 端口是<code>31920</code>，<code>hook</code>的 NodePort 端口是<code>30868</code>。</p>
+
+<pre><code class="language-shell">NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+deck         NodePort    10.0.13.133   &lt;none&gt;        80:31920/TCP     85s
+hook         NodePort    10.0.2.190    &lt;none&gt;        8888:30868/TCP   85s
+kubernetes   ClusterIP   10.0.0.1      &lt;none&gt;        443/TCP          28m
+tide         NodePort    10.0.86.177   &lt;none&gt;        80:31254/TCP     85s
+</code></pre>
+
+<blockquote>
+<p>注意：由于 Prow 配置 PR Status 时必须使用 https 访问，所以如果考虑启用 PR Status 功能，请为 deck 配置 https 访问地址（不要求SSL可信证书）。</p>
+</blockquote>
+
+<p>如果你的 k8s 集群有公网接入，可以配置 SLB 将流量转发到 <code>deck</code> 和 <code>hook</code> 服务，应该得到两个类似这样的网址：</p>
+
+<pre><code class="language-yaml">deck: http://prow.example.com/
+hook: http://hook.example.com/
+</code></pre>
+
+<p>如果直接通过有公网IP的节点IP:NodePort 访问，那么访问网址应该类似这样：</p>
+
+<pre><code class="language-yaml">deck: http://111.2.3.4:31920/
+hook: http://111.2.3.4:30868/
+</code></pre>
+
+<p>如果你的 k8s 集群已经有 Ingress 控制器，可以修改 Prow 默认的 Ingress 来配置访问地址：</p>
+
+<pre><code class="language-shell">$ kubectl get ingress
+NAME   HOSTS   ADDRESS   PORTS   AGE
+ing    *                 80      21h
+$ kubectl describe ingress ing
+Name:             ing
+Namespace:        default
+Address:
+Default backend:  default-http-backend:80 (&lt;none&gt;)
+Rules:
+  Host  Path  Backends
+  ----  ----  --------
+  *
+        /*      deck:80 (10.244.0.32:8080,10.244.0.33:8080)
+        /hook   hook:8888 (10.244.0.16:8888)
+# 必须把 deck 针对GKE配置的路径 /* 改成 / 才能适配普通 Ingress 控制器
+$ kubectl get ingress ing -o yaml | sed 's|path: /\*|path: /|g' | kubectl apply -f -
+# 验证 ingress 中 deck 服务路径是否调整为 /
+$ kubectl describe ingress ing
+Name:             ing
+Namespace:        default
+Address:
+Default backend:  default-http-backend:80 (&lt;none&gt;)
+Rules:
+  Host  Path  Backends
+  ----  ----  --------
+  *
+        /       deck:80 (10.244.0.32:8080,10.244.0.33:8080)
+        /hook   hook:8888 (10.244.0.16:8888)
+# 如果 ingress 需要绑定域名，比如 prow.example.com，以下是Mac的命令
+$ kubectl get ingress ing -o yaml | sed &quot;/\/hook/a\\
+\    host: prow.example.com\\
+&quot; | kubectl apply -f -
+# 验证 ingress 中域名配置
+$ kubectl describe ingress ing
+Name:             ing
+Namespace:        default
+Address:
+Default backend:  default-http-backend:80 (&lt;none&gt;)
+Rules:
+  Host              Path  Backends
+  ----              ----  --------
+  prow.example.com
+                    /       deck:80 (10.244.0.32:8080,10.244.0.33:8080)
+                    /hook   hook:8888 (10.244.0.16:8888)
+</code></pre>
+
+<p>那么通过ingress访问时的网址应该类似这样：</p>
+
+<pre><code class="language-yaml">deck: http://prow.example.com/
+hook: http://prow.example.com/hook/
+</code></pre>
+
+<p>如果你使用 <code>minikube</code> 启动本地 k8s 集群，通过 <code>minikube ip</code> 得到 k8s 的 node IP，则访问地址应该类似如下：</p>
+
+<pre><code class="language-yaml">deck: http://192.168.64.10:31920/
+hook: http://192.168.64.10:30868/
+</code></pre>
+
+<p>如果你使用 <code>kind</code> 启动本地 k8s 集群，则必须将以上2个端口映射到本地才能访问：</p>
+
+<pre><code class="language-shell"># 查看 kind 集群的节点名称，也就是容器名称
+$ kind get nodes
+kind-control-plane
+# 将 deck 服务的 NodePort 31920 端口映射到本地 8080 端口
+$ docker run -itd --name prow-deck -p 8080:80 --link kind-control-plane zhangsean/nginx-port-proxy kind-control-plane:31920
+# 将 hook 服务的 NodePort 30868 端口映射到本地 8088 端口
+$ docker run -itd --name prow-hook -p 8088:80 --link kind-control-plane zhangsean/nginx-port-proxy kind-control-plane:30868
+</code></pre>
+
+<h2 id="访问-prow-界面">访问 Prow 界面</h2>
+
+<p>打开 <code>deck</code> 的访问地址（比如 <a href="http://prow.example.com">http://prow.example.com</a>） 即可看到 Prow Status 界面。
+<img src="img-prow-status.png" alt="Prow Status" />
+发送一个空的 POST 请求给 <code>hook</code> 访问地址的 <code>/hook</code> 目录（比如 <a href="http://prow.example.com/hook">http://prow.example.com/hook</a> ）应该看到如下 <code>400</code> 的返回结果。</p>
+
+<pre><code class="language-shell">$ curl -i -d &quot;&quot; http://localhost:8088/hook
+HTTP/1.1 400 Bad Request
+Content-Type: text/plain; charset=utf-8
+X-Content-Type-Options: nosniff
+Date: Wed, 12 Jun 2019 04:37:12 GMT
+Content-Length: 47
+
+400 Bad Request: Missing X-GitHub-Event Header
+</code></pre>
+
+<h2 id="给本地-k8s-集群接入公网-webhook-访问">给本地 k8s 集群接入公网 Webhook 访问</h2>
+
+<p>如果你是本地 k8s 集群，必须给 <code>hook</code> 服务接入可被 Github 访问的公网访问地址，如果是公网 k8s 集群可以跳过这一步。</p>
+
+<p>先去 <a href="http://www.ultrahook.com/">www.ultrahook.com</a> 首页点击 <code>Get Start Now!</code> 注册完成即可免费获得 API Key，然后按提示安装 UltraHook 启动代理。</p>
+
+<pre><code class="language-shell"># 本地安装 UltraHook 客户端
+sudo gem install ultrahook
+# 将申请到的API Key 保存到 UltraHook 配置文件
+echo &quot;api_key: nYKv6q6X9lJUbDCGXIRQfJ6yNuip1234&quot; &gt; ~/.ultrahook
+# 新开一个窗口启动 UltraHook 代理，因为期间不能结束 ultrahook 进程，转发 Webhook 请求到已经转发到 hook 服务的本地8088端口
+ultrahook prow 8088
+</code></pre>
+
+<p>UltraHook 代理启动后会输出一个公网地址，复制这个地址用于在 Github 中添加 Webhook。</p>
+
+<pre><code class="language-shell">Authenticated as seanz
+Forwarding activated...
+http://prow.seanz.ultrahook.com -&gt; http://localhost:8088
+</code></pre>
+
+<p>测试发送一个空的 POST 请求到 Webhook 地址，ultrahook 应该输出一个日志返回400，如果没有日志输出则说明没有代理成功，请检查 ultrahook。
+&gt; 注意：不管 hook 后端是否实际接受成功或者验证失败，ultrahook 请求的返回码都是200，所以我们只能通过 ultrahook 日志来查看 hook 后端的实际处理结果。</p>
+
+<pre><code class="language-shell">curl -i -d &quot;&quot; http://prow.seanz.ultrahook.com/hook
+...
+[2019-06-12 13:30:36] POST http://localhost:8088/hook - 400
+</code></pre>
+
+<h2 id="给-github-仓库添加-webhook">给 Github 仓库添加 Webhook</h2>
+
+<p>以仓库 <code>zhangsean/prow-test</code> 为例，在项目 Settings → Webhooks 配置中点击 <code>Add webhook</code> 按钮，按如下提示填写相关信息并保存 webhook：</p>
+
+<pre><code class="language-yaml">Payload URL: http://prow.seanz.ultrahook.com/hook  # 上一步 UltraHook 生成的外网地址，加上 /hook 路径，这个路径是重点
+Content type: application/json
+Secret: `68f58d2dd9aa4ecd5fae8c0c0ac8cb8057e123456` # 通过 `cat hmac-token` 命令查看 hmac-token 的值
+Which events would you like to trigger this webhook?: Send me everything.
+</code></pre>
+
+<p><img src="img-github-webhook.png" alt="Github Webhook" />
+添加 webhook 成功后，新添加的 webhook 地址前会显示一个图标显示 webhook 接收端状态是否正常，确保状态为绿色的<code>√</code>。<br />
+如果状态为<code>×</code>说明 webhook 地址配置不正确，点击 webhook 地址进入 webhook 管理界面，下方<code>Recent Deliveries</code>会显示最近事件列表，点击事件UUID可以查看当前事件的推送请求和返回结果。在每个请求的 <code>Reponse</code> 标签中能查看Webhook请求返回的状态码和返回内容，有助于定位问题。<br />
+这里还可以通过点击 <code>Redeliver</code> 按钮重复推送这个事件，可以测试 webhook 接收端能否正常接收事件。
+<img src="img-github-webhook2.png" alt="Github Webhook2" /></p>
+
+<h2 id="启用插件">启用插件</h2>
+
+<p>Prow 自带了丰富的插件，可以通过 <code>Prow Status</code> 界面，左上角选择 <code>Plugins</code> 界面查看插件列表，点击某个插件的 <code>DETAILS</code> 按钮可以查看插件详情、适用场景、交互命令等。<br />
+插件仓库上方切换仓库列表即可过滤指定仓库启用了哪些插件，这里可以检查仓库的插件配置是否生效。</p>
+
+<p>默认部署是没有启用任何插件的，需要通过修改k8s的 <code>plugins.yaml</code> 配置为指定的项目仓库启用所需插件。<br />
+创建一个名为 <code>plugins.yaml</code> 的文件并参照如下内容配置需要的插件。<br />
+我已经列出了几个便于测试的常用插件，注释后面是交互命令格式。</p>
+
+<pre><code class="language-yaml">plugins:
+  zhangsean/prow-test: # 项目仓库名，只填写组织则可以应用到组织下的所有仓库
+  - size
+  - welcome
+  - owners-label
+  - wip
+  - cat # /meow
+  - dog # /woof
+  - pony # /pony
+  - yuks # /joke
+  - help # /help
+  - label # /key value, /kind bug, /language zh
+  - skip # /skip
+  - lgtm # /lgtm
+  - assign # /assign @user, /cc @user
+  - approve # /approve
+</code></pre>
+
+<p>官方建议通过 <code>checkconfig</code> 命令来验证配置文件是否正确。如果你没有大的改动，可以跳过。</p>
+
+<pre><code class="language-shell"># 安装 checkconfig
+go get k8s.io/test-infra/prow/cmd/checkconfig
+# 检查配置是否有语法错误
+checkconfig --plugin-config=./plugins.yaml
+</code></pre>
+
+<p>保存 <code>plugins</code> 配置到 k8s：</p>
+
+<pre><code class="language-shell">kubectl create configmap plugins \
+  --from-file=plugins.yaml=./plugins.yaml --dry-run -o yaml \
+  | kubectl replace configmap plugins -f -
+# 验证配置是否保存成功
+kubectl get cm plugins -o yaml
+</code></pre>
+
+<p>插件配置保存成功后，要过一会儿才能在 <code>Prow Plugin Catalog</code> 界面看到配置生效。
+<img src="img-prow-plugins.png" alt="Prow Plugs" /></p>
+
+<h2 id="测试-prow">测试 Prow</h2>
+
+<p>插件配置生效以后就可以测试Prow效果了，在 Github 仓库中发起一个PR，稍后就会看到<code>size</code>，<code>approve</code>这几个插件的效果。</p>
+
+<blockquote>
+<p>注意：如果没有创建机器人账号，直接在个人账号下添加的 Github Token，那么 Prow 的响应都会显示为个人账号的动作。</p>
+</blockquote>
+
+<p><img src="img-github-pr.png" alt="Github PR" /></p>
+
+<p>在 PR 中回复命令即可触发相关插件，比如回复 <code>/pony</code> 会自动插入一个马的图片。<br />
+管理员在满足合并要求的情况下回复 <code>/lgtm</code> 会触发 Prow 自动合并PR，其他命令交互效果请查看插件详情。
+<img src="img-github-pr2.png" alt="Github PR2" /></p>
+
+<h2 id="配置-prow-job">配置 Prow Job</h2>
+
+<p>配置 Prow Job 用于定时执行一些事务，比如定时执行 CI/CD 自动发布项目。<br />
+Prow 默认部署了一个 <code>echo-test</code> 测试任务，每隔10分钟显示当前时间。</p>
+
+<p>通过查看k8s中 <code>config</code> 配置的 <code>config.yaml</code> 文件即可看到这个Job的配置内容:</p>
+
+<pre><code class="language-shell">kubectl get configmap config -o yaml
+</code></pre>
+
+<p>我们把 <code>config.yaml</code> 文件的内容提取出来，通过修改这个文件并应用到 k8s 集群来配置 Prow Job：</p>
+
+<pre><code class="language-yaml">prowjob_namespace: default
+pod_namespace: test-pods
+periodics:
+- interval: 10m
+  agent: kubernetes
+  name: echo-test
+  spec:
+    containers:
+    - image: alpine
+      command: [&quot;/bin/date&quot;]
+</code></pre>
+
+<p>如果暂时不需要 Prow Job，可以把 <code>periodics</code> 配置清空，比如：</p>
+
+<pre><code class="language-yaml">prowjob_namespace: default
+pod_namespace: test-pods
+periodics:
+</code></pre>
+
+<p>官方建议通过 <code>checkconfig</code> 命令来验证配置文件是否正确，暂时可以跳过。</p>
+
+<pre><code class="language-shell">checkconfig --config-path=./config.yaml
+</code></pre>
+
+<p>保存 <code>config</code> 配置到 k8s 让 Prow Job 生效：</p>
+
+<pre><code class="language-shell">kubectl create configmap config \
+  --from-file=config.yaml=./config.yaml --dry-run -o yaml \
+  | kubectl replace configmap config -f -
+</code></pre>
+
+<p>Prow Job 应用后可以在 <code>Prow Status</code> 界面查看到执行记录：
+<img src="img-prow-job.png" alt="Prow Job" /></p>
+
+<h2 id="启用-prow-pr-status-功能">启用 Prow PR Status 功能</h2>
+
+<p>Prow PR Status 功能可以在 Prow 中查看个人相关的 PR 处于什么状态。Prow Starter集群默认没有启用 PR Status 功能，Prow 左侧看不到相关菜单，必须启用以后才会出现 <code>PR Status</code> 菜单。</p>
+
+<p>由于 PR Status 是针对项目的所有贡献者的，所以当贡献者访问 Prow 的 PR Status 功能时，浏览器会跳转到 Github 使用 OAuth 认证获得用户的授权后，浏览器会自动跳转回 PR Status 界面显示该贡献者相关的 PR 列表。</p>
+
+<blockquote>
+<p>注意：Prow 必须使用 https 访问才能正常使用 PR Status 功能。</p>
+</blockquote>
+
+<p>在 Github 个人账号 Settings → Developer settings → <a href="https://github.com/settings/developers">OAuth Apps</a> 中点击<code>New OAuth App</code>，参照如下信息添加一个 OAuth App.</p>
+
+<pre><code class="language-yaml">Application name: Prow PR Status
+Homepage URL: https://localhost:8080
+Authorization callback URL: https://localhost:8080
+</code></pre>
+
+<p><img src="img-github-oauth.png" alt="Github OAuth" />
+OAuth App 保存成功后，把生成的客户端ID和密钥填入 <code>github-oauth-config.yaml</code> 文件.</p>
+
+<pre><code class="language-yaml">client_id: e6403c9b594929axxxxx
+client_secret: 933edc0ed4f91db12ebc26165f40cd49b02xxxxx
+redirect_url: https://localhost:8080/github-login/redirect
+final_redirect_url: https://localhost:8080/pr
+</code></pre>
+
+<p><img src="img-github-oauth-secret.png" alt="Github OAuth" /></p>
+
+<p>再创建一个用于保存 cookie 的 <code>cookie.txt</code> 文件。</p>
+
+<pre><code class="language-shell">openssl rand -out cookie.txt -base64 64
+</code></pre>
+
+<p>把以上2个配置文件保存到 k8s 集群。</p>
+
+<pre><code class="language-shell">kubectl create secret generic github-oauth-config --from-file=secret=github-oauth-config.yaml
+kubectl create secret generic cookie --from-file=secret=cookie.txt
+</code></pre>
+
+<p>获取当前 deck 部署并添加配置以便启用 <code>PR Status</code> 功能。</p>
+
+<pre><code class="language-shell">kubectl get deploy deck -o yaml &gt; deck_deployment.yaml
+</code></pre>
+
+<p>在 <code>args</code> 中添加1个参数，务必注意缩进:</p>
+
+<pre><code class="language-yaml">- --oauth-url=/github-login
+</code></pre>
+
+<p>在 <code>volumeMounts</code> 下面添加2个挂载路径，务必注意缩进:</p>
+
+<pre><code class="language-yaml">- name: oauth-config
+  mountPath: /etc/github
+  readOnly: true
+- name: cookie-secret
+  mountPath: /etc/cookie
+  readOnly: true
+</code></pre>
+
+<p>在 <code>volumes</code> 下面添加2个卷引用，务必注意缩进:</p>
+
+<pre><code class="language-yaml">- name: oauth-config
+  secret:
+    secretName: github-oauth-config
+- name: cookie-secret
+  secret:
+    secretName: cookie
+</code></pre>
+
+<p>在 k8s 集群中更新 deck 部署：</p>
+
+<pre><code class="language-shell">kubectl apply -f deck_deployment.yaml
+# 检查 deck 的 pod 状态，直到所有 pod 都是 Running
+kubectl get po
+</code></pre>
+
+<p>等 deck 的所有 pod 都重建以后，刷新 <code>Prow Status</code> 界面，左侧菜单会多出一个 <code>PR Status</code> 菜单。<br />
+点击这个菜单会执行 OAuth 认证过程，跳转到 Github 中根据提示授权 Prow 读取 Github 的信息，授权成功后会回到 <code>PR Status</code> 界面显示当前用户开启的 PR 列表及其状态。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="http://www.servicemesher.com/blog/kubecon-cncf-oss-2019/" data-toggle="tooltip" data-placement="top" title="开源，社区与朋友们-2019 KubeCon &#43; ClondNativeCon &#43; Open Source Summit有感">&larr; 更旧</a>
+                        </li>
+                         
+                        </ul>
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/prometheus-monitor-k8s-1/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列1——监控框架</a></li>
+         
+        <li><a href="/blog/prometheus-monitor-k8s-2/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列2——监控部署</a></li>
+         
+        <li><a href="/blog/prometheus-monitor-k8s-3/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列3——业务指标采集</a></li>
+         
+        <li><a href="/blog/prometheus-operator-manual/"><i class="fa fa-link"></i>全手动部署prometheus-operator监控Kubernetes集群遇到的坑</a></li>
+         
+        <li><a href="/blog/kubernetes-resource-management/"><i class="fa fa-link"></i>Kubernetes资源管理概述</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/cloud-native-weekly"><i class="fa fa-navicon"></i>cloud-native-weekly (3)</a>
+            </li>
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (6)</a>
+            </li>
+            
+            <li><a href="/categories/devops"><i class="fa fa-navicon"></i>devops (1)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (2)</a>
+            </li>
+            
+            <li><a href="/categories/gitops"><i class="fa fa-navicon"></i>gitops (1)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (31)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (1)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (5)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/monitoring"><i class="fa fa-navicon"></i>monitoring (3)</a>
+            </li>
+            
+            <li><a href="/categories/practice"><i class="fa fa-navicon"></i>practice (16)</a>
+            </li>
+            
+            <li><a href="/categories/rate-limiting"><i class="fa fa-navicon"></i>rate-limiting (4)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (3)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (26)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/translation"><i class="fa fa-navicon"></i>translation (125)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">标签</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="/tags/ab-test"><i class="fa fa-tags"></i> ab-test</a>
+            </li>
+            
+            <li><a href="/tags/ambassador"><i class="fa fa-tags"></i> ambassador</a>
+            </li>
+            
+            <li><a href="/tags/ant-financial"><i class="fa fa-tags"></i> ant-financial</a>
+            </li>
+            
+            <li><a href="/tags/anthos"><i class="fa fa-tags"></i> anthos</a>
+            </li>
+            
+            <li><a href="/tags/api-gateway"><i class="fa fa-tags"></i> api-gateway</a>
+            </li>
+            
+            <li><a href="/tags/api-management"><i class="fa fa-tags"></i> api-management</a>
+            </li>
+            
+            <li><a href="/tags/app-mesh"><i class="fa fa-tags"></i> app-mesh</a>
+            </li>
+            
+            <li><a href="/tags/aspen-mesh"><i class="fa fa-tags"></i> aspen-mesh</a>
+            </li>
+            
+            <li><a href="/tags/aws"><i class="fa fa-tags"></i> aws</a>
+            </li>
+            
+            <li><a href="/tags/baggage"><i class="fa fa-tags"></i> baggage</a>
+            </li>
+            
+            <li><a href="/tags/chart"><i class="fa fa-tags"></i> chart</a>
+            </li>
+            
+            <li><a href="/tags/chatops"><i class="fa fa-tags"></i> chatops</a>
+            </li>
+            
+            <li><a href="/tags/ci-cd"><i class="fa fa-tags"></i> ci-cd</a>
+            </li>
+            
+            <li><a href="/tags/cilium"><i class="fa fa-tags"></i> cilium</a>
+            </li>
+            
+            <li><a href="/tags/circonus"><i class="fa fa-tags"></i> circonus</a>
+            </li>
+            
+            <li><a href="/tags/circuit-breaking"><i class="fa fa-tags"></i> circuit-breaking</a>
+            </li>
+            
+            <li><a href="/tags/cloud-native"><i class="fa fa-tags"></i> cloud-native</a>
+            </li>
+            
+            <li><a href="/tags/cloud-run"><i class="fa fa-tags"></i> cloud-run</a>
+            </li>
+            
+            <li><a href="/tags/cncf"><i class="fa fa-tags"></i> cncf</a>
+            </li>
+            
+            <li><a href="/tags/conduit"><i class="fa fa-tags"></i> conduit</a>
+            </li>
+            
+            <li><a href="/tags/consul"><i class="fa fa-tags"></i> consul</a>
+            </li>
+            
+            <li><a href="/tags/container"><i class="fa fa-tags"></i> container</a>
+            </li>
+            
+            <li><a href="/tags/coohom"><i class="fa fa-tags"></i> coohom</a>
+            </li>
+            
+            <li><a href="/tags/coredns"><i class="fa fa-tags"></i> coredns</a>
+            </li>
+            
+            <li><a href="/tags/crd"><i class="fa fa-tags"></i> crd</a>
+            </li>
+            
+            <li><a href="/tags/dashboard"><i class="fa fa-tags"></i> dashboard</a>
+            </li>
+            
+            <li><a href="/tags/devops"><i class="fa fa-tags"></i> devops</a>
+            </li>
+            
+            <li><a href="/tags/distributing-system"><i class="fa fa-tags"></i> distributing-system</a>
+            </li>
+            
+            <li><a href="/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="/tags/dubbo"><i class="fa fa-tags"></i> dubbo</a>
+            </li>
+            
+            <li><a href="/tags/envoy"><i class="fa fa-tags"></i> envoy</a>
+            </li>
+            
+            <li><a href="/tags/event-driven"><i class="fa fa-tags"></i> event-driven</a>
+            </li>
+            
+            <li><a href="/tags/evnet-mesh"><i class="fa fa-tags"></i> evnet-mesh</a>
+            </li>
+            
+            <li><a href="/tags/f5"><i class="fa fa-tags"></i> f5</a>
+            </li>
+            
+            <li><a href="/tags/faas"><i class="fa fa-tags"></i> faas</a>
+            </li>
+            
+            <li><a href="/tags/fintech"><i class="fa fa-tags"></i> fintech</a>
+            </li>
+            
+            <li><a href="/tags/fission"><i class="fa fa-tags"></i> fission</a>
+            </li>
+            
+            <li><a href="/tags/flagger"><i class="fa fa-tags"></i> flagger</a>
+            </li>
+            
+            <li><a href="/tags/fn"><i class="fa fa-tags"></i> fn</a>
+            </li>
+            
+            <li><a href="/tags/function"><i class="fa fa-tags"></i> function</a>
+            </li>
+            
+            <li><a href="/tags/gateway"><i class="fa fa-tags"></i> gateway</a>
+            </li>
+            
+            <li><a href="/tags/gitops"><i class="fa fa-tags"></i> gitops</a>
+            </li>
+            
+            <li><a href="/tags/glasnostic"><i class="fa fa-tags"></i> glasnostic</a>
+            </li>
+            
+            <li><a href="/tags/gloo"><i class="fa fa-tags"></i> gloo</a>
+            </li>
+            
+            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
+            </li>
+            
+            <li><a href="/tags/google"><i class="fa fa-tags"></i> google</a>
+            </li>
+            
+            <li><a href="/tags/grafana"><i class="fa fa-tags"></i> grafana</a>
+            </li>
+            
+            <li><a href="/tags/grpc"><i class="fa fa-tags"></i> grpc</a>
+            </li>
+            
+            <li><a href="/tags/grpc-web"><i class="fa fa-tags"></i> grpc-web</a>
+            </li>
+            
+            <li><a href="/tags/harshicorp"><i class="fa fa-tags"></i> harshicorp</a>
+            </li>
+            
+            <li><a href="/tags/helm"><i class="fa fa-tags"></i> helm</a>
+            </li>
+            
+            <li><a href="/tags/huawei"><i class="fa fa-tags"></i> huawei</a>
+            </li>
+            
+            <li><a href="/tags/hystrix"><i class="fa fa-tags"></i> hystrix</a>
+            </li>
+            
+            <li><a href="/tags/ibm"><i class="fa fa-tags"></i> ibm</a>
+            </li>
+            
+            <li><a href="/tags/infoq"><i class="fa fa-tags"></i> infoq</a>
+            </li>
+            
+            <li><a href="/tags/ingress"><i class="fa fa-tags"></i> ingress</a>
+            </li>
+            
+            <li><a href="/tags/ingress-gateway"><i class="fa fa-tags"></i> ingress-gateway</a>
+            </li>
+            
+            <li><a href="/tags/ingresss"><i class="fa fa-tags"></i> ingresss</a>
+            </li>
+            
+            <li><a href="/tags/iptables"><i class="fa fa-tags"></i> iptables</a>
+            </li>
+            
+            <li><a href="/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="/tags/jaeger"><i class="fa fa-tags"></i> jaeger</a>
+            </li>
+            
+            <li><a href="/tags/jenkins"><i class="fa fa-tags"></i> jenkins</a>
+            </li>
+            
+            <li><a href="/tags/jenkins-x"><i class="fa fa-tags"></i> jenkins-x</a>
+            </li>
+            
+            <li><a href="/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="/tags/knative"><i class="fa fa-tags"></i> knative</a>
+            </li>
+            
+            <li><a href="/tags/kong"><i class="fa fa-tags"></i> kong</a>
+            </li>
+            
+            <li><a href="/tags/kube-router"><i class="fa fa-tags"></i> kube-router</a>
+            </li>
+            
+            <li><a href="/tags/kubecon"><i class="fa fa-tags"></i> kubecon</a>
+            </li>
+            
+            <li><a href="/tags/kubeless"><i class="fa fa-tags"></i> kubeless</a>
+            </li>
+            
+            <li><a href="/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="/tags/kublr"><i class="fa fa-tags"></i> kublr</a>
+            </li>
+            
+            <li><a href="/tags/lets-encrypt"><i class="fa fa-tags"></i> lets-encrypt</a>
+            </li>
+            
+            <li><a href="/tags/linkerd"><i class="fa fa-tags"></i> linkerd</a>
+            </li>
+            
+            <li><a href="/tags/lyft"><i class="fa fa-tags"></i> lyft</a>
+            </li>
+            
+            <li><a href="/tags/matt-klein"><i class="fa fa-tags"></i> matt-klein</a>
+            </li>
+            
+            <li><a href="/tags/meetup"><i class="fa fa-tags"></i> meetup</a>
+            </li>
+            
+            <li><a href="/tags/microgateway"><i class="fa fa-tags"></i> microgateway</a>
+            </li>
+            
+            <li><a href="/tags/microprofile"><i class="fa fa-tags"></i> microprofile</a>
+            </li>
+            
+            <li><a href="/tags/microservice"><i class="fa fa-tags"></i> microservice</a>
+            </li>
+            
+            <li><a href="/tags/microservices"><i class="fa fa-tags"></i> microservices</a>
+            </li>
+            
+            <li><a href="/tags/middleware"><i class="fa fa-tags"></i> middleware</a>
+            </li>
+            
+            <li><a href="/tags/monitor"><i class="fa fa-tags"></i> monitor</a>
+            </li>
+            
+            <li><a href="/tags/monitoring"><i class="fa fa-tags"></i> monitoring</a>
+            </li>
+            
+            <li><a href="/tags/mosn"><i class="fa fa-tags"></i> mosn</a>
+            </li>
+            
+            <li><a href="/tags/naftis"><i class="fa fa-tags"></i> naftis</a>
+            </li>
+            
+            <li><a href="/tags/nfv"><i class="fa fa-tags"></i> nfv</a>
+            </li>
+            
+            <li><a href="/tags/open-shift"><i class="fa fa-tags"></i> open-shift</a>
+            </li>
+            
+            <li><a href="/tags/open-source"><i class="fa fa-tags"></i> open-source</a>
+            </li>
+            
+            <li><a href="/tags/openfaas"><i class="fa fa-tags"></i> openfaas</a>
+            </li>
+            
+            <li><a href="/tags/openshift"><i class="fa fa-tags"></i> openshift</a>
+            </li>
+            
+            <li><a href="/tags/opentracing"><i class="fa fa-tags"></i> opentracing</a>
+            </li>
+            
+            <li><a href="/tags/operator"><i class="fa fa-tags"></i> operator</a>
+            </li>
+            
+            <li><a href="/tags/paas"><i class="fa fa-tags"></i> paas</a>
+            </li>
+            
+            <li><a href="/tags/pilot"><i class="fa fa-tags"></i> pilot</a>
+            </li>
+            
+            <li><a href="/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="/tags/prow"><i class="fa fa-tags"></i> prow</a>
+            </li>
+            
+            <li><a href="/tags/proxy"><i class="fa fa-tags"></i> proxy</a>
+            </li>
+            
+            <li><a href="/tags/rate-limiting"><i class="fa fa-tags"></i> rate-limiting</a>
+            </li>
+            
+            <li><a href="/tags/red-hat"><i class="fa fa-tags"></i> red-hat</a>
+            </li>
+            
+            <li><a href="/tags/security"><i class="fa fa-tags"></i> security</a>
+            </li>
+            
+            <li><a href="/tags/servcie-mesh"><i class="fa fa-tags"></i> servcie-mesh</a>
+            </li>
+            
+            <li><a href="/tags/serverless"><i class="fa fa-tags"></i> serverless</a>
+            </li>
+            
+            <li><a href="/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="/tags/servicemesh"><i class="fa fa-tags"></i> servicemesh</a>
+            </li>
+            
+            <li><a href="/tags/sidecar"><i class="fa fa-tags"></i> sidecar</a>
+            </li>
+            
+            <li><a href="/tags/smi"><i class="fa fa-tags"></i> smi</a>
+            </li>
+            
+            <li><a href="/tags/sofa"><i class="fa fa-tags"></i> sofa</a>
+            </li>
+            
+            <li><a href="/tags/sofamesh"><i class="fa fa-tags"></i> sofamesh</a>
+            </li>
+            
+            <li><a href="/tags/sofamosn"><i class="fa fa-tags"></i> sofamosn</a>
+            </li>
+            
+            <li><a href="/tags/sofastack"><i class="fa fa-tags"></i> sofastack</a>
+            </li>
+            
+            <li><a href="/tags/source-code"><i class="fa fa-tags"></i> source-code</a>
+            </li>
+            
+            <li><a href="/tags/sre"><i class="fa fa-tags"></i> sre</a>
+            </li>
+            
+            <li><a href="/tags/supergloo"><i class="fa fa-tags"></i> supergloo</a>
+            </li>
+            
+            <li><a href="/tags/tls"><i class="fa fa-tags"></i> tls</a>
+            </li>
+            
+            <li><a href="/tags/tracing"><i class="fa fa-tags"></i> tracing</a>
+            </li>
+            
+            <li><a href="/tags/trulia"><i class="fa fa-tags"></i> trulia</a>
+            </li>
+            
+            <li><a href="/tags/tutorial"><i class="fa fa-tags"></i> tutorial</a>
+            </li>
+            
+            <li><a href="/tags/ucloud"><i class="fa fa-tags"></i> ucloud</a>
+            </li>
+            
+            <li><a href="/tags/ui"><i class="fa fa-tags"></i> ui</a>
+            </li>
+            
+            <li><a href="/tags/vamp"><i class="fa fa-tags"></i> vamp</a>
+            </li>
+            
+            <li><a href="/tags/vistio"><i class="fa fa-tags"></i> vistio</a>
+            </li>
+            
+            <li><a href="/tags/vizceral"><i class="fa fa-tags"></i> vizceral</a>
+            </li>
+            
+            <li><a href="/tags/x-protocol"><i class="fa fa-tags"></i> x-protocol</a>
+            </li>
+            
+            <li><a href="/tags/xds"><i class="fa fa-tags"></i> xds</a>
+            </li>
+            
+            <li><a href="/tags/xiaomi"><i class="fa fa-tags"></i> xiaomi</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/prow-quick-start-guide/">
+                          
+                          <img src="/img/blog/banners/006tKfTcgy1ftpp63o2m2j31ji15okjm.jpg" class="img-responsive" alt="Prow 快速入门向导">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/prow-quick-start-guide/">Prow 快速入门向导</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/kubecon-cncf-oss-2019/">
+                          
+                          <img src="/img/blog/banners/kubecon-cncf-oss-2019-banner.jpg" class="img-responsive" alt="开源，社区与朋友们-2019 KubeCon &#43; ClondNativeCon &#43; Open Source Summit有感">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/kubecon-cncf-oss-2019/">开源，社区与朋友们-2019 KubeCon &#43; ClondNativeCon &#43; Open Source Summit有感</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-2-identify-components/">
+                          
+                          <img src="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*AqTUQ7l0B3wAAAAAAAAAAABkARQnAQ" class="img-responsive" alt="为Envoy构建控制面指南第2部分：识别组件">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-2-identify-components/">为Envoy构建控制面指南第2部分：识别组件</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

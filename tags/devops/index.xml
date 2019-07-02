@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devops on ServiceMesher</title>
+    <link>http://www.servicemesher.com/tags/devops/</link>
+    <description>Recent content in devops on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 01 Jul 2019 03:13:13 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.servicemesher.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Prow 快速入门向导</title>
+      <link>http://www.servicemesher.com/blog/prow-quick-start-guide/</link>
+      <pubDate>Mon, 01 Jul 2019 03:13:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/prow-quick-start-guide/</guid>
+      <description>Prow 是 Google 发起的适应云原生开源项目的 ChatOps 系统。Kubernetes、Istio 等项目都使用 Prow 实现开源协同。我们将以一个测试代码仓库为例，来演示在一个本地k8s集群上使用 Prow 来实现CI/CD的诸多效果。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Prow 快速入门向导</title>
+      <link>http://www.servicemesher.com/blog/prow-quick-start-guide/</link>
+      <pubDate>Mon, 01 Jul 2019 03:13:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/prow-quick-start-guide/</guid>
+      <description>Prow 是 Google 发起的适应云原生开源项目的 ChatOps 系统。Kubernetes、Istio 等项目都使用 Prow 实现开源协同。我们将以一个测试代码仓库为例，来演示在一个本地k8s集群上使用 Prow 来实现CI/CD的诸多效果。</description>
+    </item>
+    
+    <item>
       <title>开源，社区与朋友们-2019 KubeCon &#43; ClondNativeCon &#43; Open Source Summit有感</title>
       <link>http://www.servicemesher.com/blog/kubecon-cncf-oss-2019/</link>
       <pubDate>Fri, 28 Jun 2019 11:05:00 +0800</pubDate>
@@ -27,6 +36,15 @@
       
       <guid>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-2-identify-components/</guid>
       <description>本文介绍如何为 Envoy 构建控制面指南的第2部分：识别组件。</description>
+    </item>
+    
+    <item>
+      <title>Envoy功能点详解之异常点检测</title>
+      <link>http://www.servicemesher.com/blog/envoy-feature-explain-outlier-detection/</link>
+      <pubDate>Fri, 21 Jun 2019 19:20:19 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/blog/envoy-feature-explain-outlier-detection/</guid>
+      <description>很多人把异常点驱逐和微服务熔断混为一谈，分不清最大驱逐比与恐慌阈值的区别等。本文将基于envoy官方文档(v1.10.0)，详细介绍异常点检测的类型、驱逐算法以及相关概念的解析。</description>
     </item>
     
     <item>

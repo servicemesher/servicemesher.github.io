@@ -6,10 +6,46 @@
     <description>Recent content in Tags on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 28 Jun 2019 11:05:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2019 03:13:13 +0800</lastBuildDate>
     
 	<atom:link href="http://www.servicemesher.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Prow</title>
+      <link>http://www.servicemesher.com/tags/prow/</link>
+      <pubDate>Mon, 01 Jul 2019 03:13:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/prow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chatops</title>
+      <link>http://www.servicemesher.com/tags/chatops/</link>
+      <pubDate>Mon, 01 Jul 2019 03:13:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/chatops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>http://www.servicemesher.com/tags/devops/</link>
+      <pubDate>Mon, 01 Jul 2019 03:13:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>http://www.servicemesher.com/tags/kubernetes/</link>
+      <pubDate>Mon, 01 Jul 2019 03:13:13 +0800</pubDate>
+      
+      <guid>http://www.servicemesher.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>kubecon</title>
@@ -48,15 +84,6 @@
     </item>
     
     <item>
-      <title>Prow</title>
-      <link>http://www.servicemesher.com/tags/prow/</link>
-      <pubDate>Thu, 06 Jun 2019 04:30:44 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/prow/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>SMI</title>
       <link>http://www.servicemesher.com/tags/smi/</link>
       <pubDate>Wed, 05 Jun 2019 15:54:19 +0800</pubDate>
@@ -89,15 +116,6 @@
       <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>
       
       <guid>http://www.servicemesher.com/tags/istio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>http://www.servicemesher.com/tags/kubernetes/</link>
-      <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     

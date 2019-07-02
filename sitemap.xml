@@ -4,19 +4,54 @@
   
   <url>
     <loc>http://www.servicemesher.com/categories/</loc>
-    <lastmod>2019-06-28T11:05:00+08:00</lastmod>
+    <lastmod>2019-07-01T03:13:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/tags/prow/</loc>
+    <lastmod>2019-07-01T03:13:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/blog/prow-quick-start-guide/</loc>
+    <lastmod>2019-07-01T03:13:13+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/</loc>
-    <lastmod>2019-06-28T11:05:00+08:00</lastmod>
+    <lastmod>2019-07-01T03:13:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/tags/</loc>
-    <lastmod>2019-06-28T11:05:00+08:00</lastmod>
+    <lastmod>2019-07-01T03:13:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/chatops/</loc>
+    <lastmod>2019-07-01T03:13:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/devops/</loc>
+    <lastmod>2019-07-01T03:13:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/devops/</loc>
+    <lastmod>2019-07-01T03:13:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
+    <lastmod>2019-07-01T03:13:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -61,18 +96,23 @@
   </url>
   
   <url>
+    <loc>http://www.servicemesher.com/blog/envoy-feature-explain-outlier-detection/</loc>
+    <lastmod>2019-06-21T19:20:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
+    <lastmod>2019-06-21T19:20:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-deployment-tradeoffs/</loc>
     <lastmod>2019-06-14T10:30:32+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://www.servicemesher.com/tags/jenkins-x/</loc>
-    <lastmod>2019-06-06T04:30:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/prow/</loc>
     <lastmod>2019-06-06T04:30:44+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -94,12 +134,6 @@
   </url>
   
   <url>
-    <loc>http://www.servicemesher.com/categories/service-mesh/</loc>
-    <lastmod>2019-06-05T15:54:19+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.servicemesher.com/tags/service-mesh/</loc>
     <lastmod>2019-06-05T15:54:19+08:00</lastmod>
     <priority>0</priority>
@@ -113,12 +147,6 @@
   
   <url>
     <loc>http://www.servicemesher.com/tags/istio/</loc>
-    <lastmod>2019-06-03T11:20:34+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.servicemesher.com/tags/kubernetes/</loc>
     <lastmod>2019-06-03T11:20:34+08:00</lastmod>
     <priority>0</priority>
   </url>
