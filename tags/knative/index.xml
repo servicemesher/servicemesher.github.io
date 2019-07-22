@@ -2,102 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>knative on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/knative/</link>
+    <link>https://www.servicemesher.com/tags/knative/</link>
     <description>Recent content in knative on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 16 May 2019 12:20:44 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/knative/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/knative/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Solo.io打造的Gloo——Knative中Istio的替代方案</title>
-      <link>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</link>
+      <link>https://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</link>
       <pubDate>Thu, 16 May 2019 12:20:44 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</guid>
+      <guid>https://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</guid>
       <description>本文介绍如何Solo.io公司研发的Gloo产品，可以作为使用Knative时部署Istio的替代方案。</description>
     </item>
     
     <item>
       <title>Google Cloud Run详细介绍</title>
-      <link>http://www.servicemesher.com/blog/google-cloud-run-intro/</link>
+      <link>https://www.servicemesher.com/blog/google-cloud-run-intro/</link>
       <pubDate>Mon, 13 May 2019 12:20:46 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/google-cloud-run-intro/</guid>
+      <guid>https://www.servicemesher.com/blog/google-cloud-run-intro/</guid>
       <description>在Cloud Next 2019 大会上，Google 宣布了 Cloud Run，这是一个新的基于容器运行 Serverless 应用的解决方案。Cloud Run 基于开源的 knative 项目，宣称要将 serverless 带入容</description>
     </item>
     
     <item>
       <title>Knative 入门系列2：serving 介绍</title>
-      <link>http://www.servicemesher.com/blog/knative-serving/</link>
+      <link>https://www.servicemesher.com/blog/knative-serving/</link>
       <pubDate>Tue, 12 Mar 2019 11:17:13 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/knative-serving/</guid>
+      <guid>https://www.servicemesher.com/blog/knative-serving/</guid>
       <description>本章介绍 Knative Serving 组件，描述 Knative Serving 如何部署并为应用和函数 (funtions) 提供服务。</description>
     </item>
     
     <item>
       <title>Knative 入门系列1：knative 概述</title>
-      <link>http://www.servicemesher.com/blog/knative-overview/</link>
+      <link>https://www.servicemesher.com/blog/knative-overview/</link>
       <pubDate>Mon, 11 Mar 2019 12:23:31 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/knative-overview/</guid>
+      <guid>https://www.servicemesher.com/blog/knative-overview/</guid>
       <description>本文是 Knative 入门系列的第一篇，knative 概述。</description>
     </item>
     
     <item>
       <title>Knative：精简代码之道</title>
-      <link>http://www.servicemesher.com/blog/knative-whittling-down-the-code/</link>
+      <link>https://www.servicemesher.com/blog/knative-whittling-down-the-code/</link>
       <pubDate>Fri, 01 Mar 2019 10:40:18 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/knative-whittling-down-the-code/</guid>
+      <guid>https://www.servicemesher.com/blog/knative-whittling-down-the-code/</guid>
       <description>本文介绍如何利用Knative提供的功能，减少自己需要编写的代码。</description>
     </item>
     
     <item>
       <title>Knative Eventing in-memory-channel实现原理解析</title>
-      <link>http://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</link>
+      <link>https://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</link>
       <pubDate>Fri, 22 Feb 2019 14:08:59 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</guid>
+      <guid>https://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</guid>
       <description>本文不对基本概念做介绍，本文主要是基于 Kubernetes Event Source example 为例分析 in-memory-channel 的实现原理。</description>
     </item>
     
     <item>
       <title>Knative：重新定义 serverless</title>
-      <link>http://www.servicemesher.com/blog/knative-redefine-serverless/</link>
+      <link>https://www.servicemesher.com/blog/knative-redefine-serverless/</link>
       <pubDate>Wed, 02 Jan 2019 11:35:38 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/knative-redefine-serverless/</guid>
+      <guid>https://www.servicemesher.com/blog/knative-redefine-serverless/</guid>
       <description>本文整理自敖小剑在2018年GIAC上海站的分享。</description>
     </item>
     
     <item>
       <title>Serverless 平台 knative 简介</title>
-      <link>http://www.servicemesher.com/blog/knative-serverless-platform/</link>
+      <link>https://www.servicemesher.com/blog/knative-serverless-platform/</link>
       <pubDate>Tue, 18 Dec 2018 19:43:14 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/knative-serverless-platform/</guid>
+      <guid>https://www.servicemesher.com/blog/knative-serverless-platform/</guid>
       <description>本文是对 Google 开源的 serverless 计算平台 knative 的介绍。</description>
     </item>
     
     <item>
       <title>Serverless Jenkins 和 Jenkins X</title>
-      <link>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</link>
+      <link>https://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</link>
       <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
+      <guid>https://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
       <description>本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。</description>
     </item>
     
     <item>
       <title>基于Kubernetes和Istio的Serverless框架Knative解析之Autoscaler</title>
-      <link>http://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/</link>
+      <link>https://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/</link>
       <pubDate>Tue, 07 Aug 2018 22:20:49 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/</guid>
+      <guid>https://www.servicemesher.com/blog/knative-serving-autoscaler-single-tenancy-deep-dive/</guid>
       <description>我们都是知道Kubernetes中个资源对象叫autoscaler，该对象在serverless架构中更是不可或缺，有了它可以负责应用的自动水平伸缩，用户再也不用关心示例的个数和资源消耗，本文是来自阿里巴巴UC事业群基础研发部的陈有坤同学对Knative的解析之autoscaler部分。</description>
     </item>
     

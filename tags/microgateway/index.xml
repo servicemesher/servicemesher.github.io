@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>microgateway on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/microgateway/</link>
+    <link>https://www.servicemesher.com/tags/microgateway/</link>
     <description>Recent content in microgateway on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 22 Nov 2018 21:56:14 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/microgateway/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/microgateway/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Istio像鸟一样轻盈？微网关博客系列（4）</title>
-      <link>http://www.servicemesher.com/blog/istio-is-it-a-bird-microgateway-blog-series-part-4/</link>
+      <link>https://www.servicemesher.com/blog/istio-is-it-a-bird-microgateway-blog-series-part-4/</link>
       <pubDate>Thu, 22 Nov 2018 21:56:14 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-is-it-a-bird-microgateway-blog-series-part-4/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-is-it-a-bird-microgateway-blog-series-part-4/</guid>
       <description>本文讲述Istio强大的功能以及Istio组件介绍。</description>
     </item>
     

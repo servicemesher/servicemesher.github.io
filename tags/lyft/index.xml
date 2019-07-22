@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>lyft on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/lyft/</link>
+    <link>https://www.servicemesher.com/tags/lyft/</link>
     <description>Recent content in lyft on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Sun, 02 Sep 2018 13:48:47 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/lyft/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/lyft/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Envoy服务网格在Lyft的实践及未来路线图</title>
-      <link>http://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</link>
+      <link>https://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</link>
       <pubDate>Sun, 02 Sep 2018 13:48:47 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</guid>
+      <guid>https://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</guid>
       <description>本文分享了Lyft对于Envoy的在服务网格领域的实践，主要为了解决级联故障的问题，以及Lyft对于Envoy的未来规划。</description>
     </item>
     

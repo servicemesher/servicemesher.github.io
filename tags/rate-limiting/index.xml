@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rate-Limiting on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/rate-limiting/</link>
+    <link>https://www.servicemesher.com/tags/rate-limiting/</link>
     <description>Recent content in Rate-Limiting on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 15 Nov 2018 13:20:46 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/rate-limiting/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/rate-limiting/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Envoy，gRPC和速率限制</title>
-      <link>http://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</link>
+      <link>https://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</link>
       <pubDate>Thu, 15 Nov 2018 13:20:46 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</guid>
+      <guid>https://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</guid>
       <description>本文使用C++构建了客户端/服务端应用，通过Envoy代理和gPRC协议进行通信，然后使用Go语言实现了Envoy速率限制服务。</description>
     </item>
     
     <item>
       <title>SRE 弹性能力：使用 Envoy 对应用进行速率限制</title>
-      <link>http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</link>
+      <link>https://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</link>
       <pubDate>Sun, 04 Nov 2018 12:00:46 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</guid>
+      <guid>https://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</guid>
       <description>本文详述了如何做速率限制服务来减轻客户端对 API 资源的消耗。</description>
     </item>
     
     <item>
       <title>速率限制系列part4—为Ambassador API网关设计速率限制服务</title>
-      <link>http://www.servicemesher.com/blog/designing-a-rate-limiting-service-for-ambassador-part-4/</link>
+      <link>https://www.servicemesher.com/blog/designing-a-rate-limiting-service-for-ambassador-part-4/</link>
       <pubDate>Wed, 11 Jul 2018 15:32:40 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/designing-a-rate-limiting-service-for-ambassador-part-4/</guid>
+      <guid>https://www.servicemesher.com/blog/designing-a-rate-limiting-service-for-ambassador-part-4/</guid>
       <description>先前关于速率限制文章主要描述如何构建并部署基于Java的速率限制服务，该服务可以和开源的Ambassador API网关以及Kubernetes集成。 大家或许会疑惑怎么样才能更好地设计速率限制服务，尤其是如何保证Ambassador以及其底层的Envoy代理的灵活性？这篇文章将给大家启发。</description>
     </item>
     
     <item>
       <title>速率限制part3—基于Ambassador API网关实现Java速率限制服务</title>
-      <link>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3/</link>
+      <link>https://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3/</link>
       <pubDate>Wed, 04 Jul 2018 12:26:02 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3/</guid>
+      <guid>https://www.servicemesher.com/blog/implementing-a-java-rate-limiting-service-for-the-ambassador-api-gateway-part3/</guid>
       <description>在本速率限制系列的第三篇文章中，根据实际Java语言编写的案例带领我们使用Ambassador API网关速率限制入门，并将实例部署到Kubernetes中，同时使用Java语言演示基于令牌通算法的速率限制方式。</description>
     </item>
     
     <item>
       <title>速率限制part2—作用于API网关的速率限制</title>
-      <link>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</link>
+      <link>https://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</link>
       <pubDate>Tue, 03 Jul 2018 12:11:49 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</guid>
+      <guid>https://www.servicemesher.com/blog/rate-limiting-for-api-gateway-daniel-bryant-part2/</guid>
       <description>在本速率限制系列的第一篇文章中，介绍了实施速率限制的动机，并讨论了几种实施方案（取决于你是否同时作为通信的发送端和接收端）以及相关的权衡。本文会更加深入地探讨 API 网关速率限制的需求。</description>
     </item>
     
     <item>
       <title>速率限制part1—分布式系统的一个实用工具</title>
-      <link>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</link>
+      <link>https://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</link>
       <pubDate>Fri, 29 Jun 2018 15:51:19 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</guid>
+      <guid>https://www.servicemesher.com/blog/rate-limiting-a-useful-tool-with-distributed-systems-part1/</guid>
       <description>在计算领域，速率限制通常用于控制服务发起或消耗的操作速率，或者是请求发送或接收的流量。如果你有一年以上的软件开发经验，那么你应该会遇到这个概念。但是，和很多软件架构所面临的挑战一样，比起实际出现的问题，需要思考的问题会更多。本文概述了现代分布式应用程序中的一些关于速率限制的实现方案、优势和挑战。</description>
     </item>
     

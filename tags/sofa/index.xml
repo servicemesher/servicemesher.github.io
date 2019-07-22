@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sofa on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/sofa/</link>
+    <link>https://www.servicemesher.com/tags/sofa/</link>
     <description>Recent content in sofa on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 02 Aug 2018 14:31:43 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/sofa/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/sofa/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Service Mesh数据平面SOFAMosn深层揭秘</title>
-      <link>http://www.servicemesher.com/blog/sofa-mosn-deep-dive/</link>
+      <link>https://www.servicemesher.com/blog/sofa-mosn-deep-dive/</link>
       <pubDate>Thu, 02 Aug 2018 14:31:43 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/sofa-mosn-deep-dive/</guid>
+      <guid>https://www.servicemesher.com/blog/sofa-mosn-deep-dive/</guid>
       <description>本文基于蚂蚁金服高级技术专家朵晓东在第二届Service Mesh Meetup北京站分享的部分内容所整理。</description>
     </item>
     
     <item>
       <title>蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案</title>
-      <link>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</link>
+      <link>https://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</link>
       <pubDate>Mon, 16 Jul 2018 15:51:34 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</guid>
+      <guid>https://www.servicemesher.com/blog/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/</guid>
       <description>蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案，同时开源了Go语言版的Sidecar—SOFA MOSN（可单独使用），期待通过社区贡献。</description>
     </item>
     

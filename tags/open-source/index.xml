@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>open source on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/open-source/</link>
+    <link>https://www.servicemesher.com/tags/open-source/</link>
     <description>Recent content in open source on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 26 Dec 2018 16:35:38 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Github中式开源志异</title>
-      <link>http://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</link>
+      <link>https://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</link>
       <pubDate>Wed, 26 Dec 2018 16:35:38 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</guid>
+      <guid>https://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</guid>
       <description>本文谈论了一些 GitHub 上中式开源的怪象，希望从事开源的读者引以为戒。</description>
     </item>
     

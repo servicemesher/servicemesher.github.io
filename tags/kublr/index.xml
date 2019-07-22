@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kublr on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/kublr/</link>
+    <link>https://www.servicemesher.com/tags/kublr/</link>
     <description>Recent content in kublr on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 13 Sep 2018 20:26:56 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/kublr/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/kublr/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>教程|使用Istio在Kubernetes集群中实现金丝雀部署</title>
-      <link>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</link>
+      <link>https://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</link>
       <pubDate>Thu, 13 Sep 2018 20:26:56 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</guid>
+      <guid>https://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes2/</guid>
       <description>作为Kublr推出的Istio教程第二篇文章本教程将一步步带领你熟悉Istio指令并解释指令的作用，并在Kubernetes集群中实现金丝雀部署。</description>
     </item>
     
     <item>
       <title>教程|使用Istio实现一个Service Mesh以简化微服务间的通信模式</title>
-      <link>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</link>
+      <link>https://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</link>
       <pubDate>Thu, 30 Aug 2018 15:21:45 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</guid>
+      <guid>https://www.servicemesher.com/blog/hands-on-canary-deployments-with-istio-and-kubernetes/</guid>
       <description>本文kublr出品的Istio Service Mesh教程的第1部分，主要讲解了Istio的部署和流量路由部分。</description>
     </item>
     

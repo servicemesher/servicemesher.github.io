@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>faas on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/faas/</link>
+    <link>https://www.servicemesher.com/tags/faas/</link>
     <description>Recent content in faas on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 09 Apr 2019 22:42:29 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/faas/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/faas/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>选择FaaS还是微服务？</title>
-      <link>http://www.servicemesher.com/blog/faas-vs-microservices/</link>
+      <link>https://www.servicemesher.com/blog/faas-vs-microservices/</link>
       <pubDate>Tue, 09 Apr 2019 22:42:29 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/faas-vs-microservices/</guid>
+      <guid>https://www.servicemesher.com/blog/faas-vs-microservices/</guid>
       <description>本文主要向读者介绍FaaS和微服务架构之间的区别以及如何根据自身情况选择正确的架构方案。</description>
     </item>
     
     <item>
       <title>Kubernetes（K8s）的无服务器框架的评估</title>
-      <link>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</link>
+      <link>https://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</link>
       <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</guid>
+      <guid>https://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</guid>
       <description>本文讲解了如何利用K8S的设计参数和服务编排功能，并将它们与无服务器框架和函数即服务（FaaS）结合起来。</description>
     </item>
     

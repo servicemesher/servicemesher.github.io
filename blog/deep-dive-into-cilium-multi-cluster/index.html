@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>深入了解Cilium多集群 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, kubernetes">
+  
+
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="深入了解Cilium多集群" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/deep-dive-into-cilium-multi-cluster//" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="ClusterMesh是Cilium的多集群实现，可以帮助cilium实现跨数据中心、跨VPC的多K8S集群管理，本文对于ClusterMesh的实现原理进行了深入探讨，并与istio的多集群管理进行了比较。">
+  <meta property="og:description" content="ClusterMesh是Cilium的多集群实现，可以帮助cilium实现跨数据中心、跨VPC的多K8S集群管理，本文对于ClusterMesh的实现原理进行了深入探讨，并与istio的多集群管理进行了比较。">
+  <meta name="twitter:description" content="ClusterMesh是Cilium的多集群实现，可以帮助cilium实现跨数据中心、跨VPC的多K8S集群管理，本文对于ClusterMesh的实现原理进行了深入探讨，并与istio的多集群管理进行了比较。">
+  <meta property="og:description" content="ClusterMesh是Cilium的多集群实现，可以帮助cilium实现跨数据中心、跨VPC的多K8S集群管理，本文对于ClusterMesh的实现原理进行了深入探讨，并与istio的多集群管理进行了比较。" />
+
+  
+  <meta name="referrer" content="never">
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+  
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="/img/servicemesher-logo.jpg" alt="深入了解Cilium多集群 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="深入了解Cilium多集群 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">深入了解Cilium多集群 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Service Mesh列表</a></li>
+                      
+                        <li><a href="/envoy/">Envoy官方文档中文版</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio中文官网</a></li>
+                      
+                        <li><a href="/categories/practice/">实践汇总</a></li>
+                      
+                        <li><a href="/istio-handbook/">Istio Handbook</a></li>
+                      
+                        <li><a href="/getting-started-with-knative/">Knative入门</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">社区 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                        <li><a href="https://github.com/servicemesher/istio-knowledge-map">Istio知识图谱</a></li>
+                      
+                        <li><a href="/contributing-specification/">贡献指南</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="https:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>深入了解Cilium多集群</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年7月3日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://cilium.io">Cilium</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/shinji3887">陆培尔</a>
+                            
+                            
+                            | 审校者
+                            
+                            <a href="https://jimmysong.io"><i>宋净超</i></a>
+                            
+                            
+                            |
+                            3700字 | 阅读大约需要8分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://cilium.io/blog/2019/03/12/clustermesh">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/cilium">cilium</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#service mesh</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/cilium/"><i>#cilium</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/bgp/"><i>#BGP</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p>本文是对ClusterMesh（Cilium的多集群实现）的深入研究。简而言之，ClusterMesh 提供：</p>
+
+<ul>
+<li>通过隧道或直接路由，以本地性能对多个Kubernetes集群进行Pod IP路由，而无需任何网关或代理。</li>
+<li>使用标准Kubernetes服务和coredns/kube-dns的透明服务发现。</li>
+<li>跨多个集群的网络策略实施。 策略可以指定为Kubernetes NetworkPolicy资源或扩展的CiliumNetworkPolicy CRD。</li>
+<li>透明加密，用于本地集群中的节点之间以及跨集群边界的所有通信。</li>
+</ul>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14871146-f7dca3e31d252eb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>多集群功能以层为单位构建，您可以选择使用所有层，也可以仅选择和使用所需的层。</p>
+
+<h2 id="用例">用例</h2>
+
+<p>在深入研究实现细节之前，让我们回顾一下连接多个Kubernetes集群的一些用例。</p>
+
+<h3 id="用例-高可用性">用例：高可用性</h3>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14871146-5d69ac8aba6c7b47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>对于大多数人来说，高可用性是最明显的用例。 此用例包括在多个区域（regions）或可用区（availability zones）中运行Kubernetes集群，并在每个集群中运行相同服务的副本。 一旦失败，请求可以故障转移到其他集群。 此用例中涵盖的故障情形主要不是整个区域或故障域的完全不可用。 更可能的情况是一个集群中资源暂时不可用或配置错误导致无法在一个集群中运行或扩展特定服务。</p>
+
+<h3 id="用例-共享服务">用例：共享服务</h3>
+
+<p>基于Kubernetes的平台的最初趋势是构建大型多租户Kubernetes集群。 为每个租户构建单个集群或为不同类别的服务构建集群越来越普遍，例如， 不同级别的安全敏感度。
+<img src="https://upload-images.jianshu.io/upload_images/14871146-c950c8dfbc5a9b0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" />
+但是，某些服务（如密钥管理，日志记录，监控或DNS）通常仍在所有集群之间共享。 这避免了在每个租户集群中维护这些服务的操作开销。</p>
+
+<p>此模型的主要动机是租户集群之间的隔离，为了维持该目标，租户集群连接到共享服务集群但未连接到其他租户集群。</p>
+
+<h3 id="用例-拆分有状态和无状态服务">用例：拆分有状态和无状态服务</h3>
+
+<p>运行有状态或无状态服务的操作复杂性是非常不同的。 无状态服务易于扩展，迁移和升级。 完全使用无状态服务运行集群可使集群保持灵活和敏捷。 从一个云提供商迁移到另一个云提供商非常简单。</p>
+
+<p>有状态服务可能会引入潜在的复杂依赖链。 迁移服务通常涉及存储迁移。
+<img src="https://upload-images.jianshu.io/upload_images/14871146-98e2a381af81e811.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" />
+为无状态和有状态分别运行独立的集群允许将依赖复杂性隔离到较少数量的集群，并使无状态集群依赖性保持自由。</p>
+
+<h2 id="控制平面">控制平面</h2>
+
+<h3 id="要求">要求</h3>
+
+<ul>
+<li>必须为所有Kubernetes工作节点分配唯一的IP地址，并且所有工作节点必须在彼此之间具有IP连接。</li>
+<li>必须为所有集群分配唯一的PodCIDR区间。</li>
+<li>必须将Cilium配置为使用etcd的kvstore。</li>
+<li>集群之间的网络必须允许集群间通信。 防火墙的具体配置要求将取决于Cilium是否配置为以直接路由或隧道模式运行。</li>
+</ul>
+
+<h3 id="架构">架构</h3>
+
+<p>控制平面基于etcd并尽可能保持简约：</p>
+
+<ul>
+<li>每个Kubernetes集群都维护自己的etcd集群，包含该集群的状态。 来自多个集群的状态永远不会在etcd本身中混淆。</li>
+<li>每个集群通过一组etcd代理公开它自己的etcd。 在其他集群中运行的Cilium代理连接到etcd代理以监视更改并将多集群相关状态复制到自己的集群中。 使用etcd代理确保了etcd观察者的可扩展性。 访问受TLS证书保护。</li>
+<li>从一个集群到另一个集群的访问始终是只读的。 这确保了故障域保持不变，即一个集群中的故障永远不会传播到其他集群中。</li>
+<li>配置通过简单的Kubernetes secrets资源进行，该资源包含远程etcd代理的寻址信息以及访问etcd代理所需的集群名称和证书。</li>
+</ul>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14871146-47bf320d6635c354.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<h2 id="pod-ip-路由">Pod IP 路由</h2>
+
+<p>pod IP路由是多集群能力的基础。 它允许跨集群的pod通过其pod IP相互联系。 Cilium可以在多种模式下运行以执行pod IP路由。 所有这些模式都能够执行多集群pod IP路由。</p>
+
+<h3 id="隧道模式">隧道模式</h3>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14871146-1488d363a7db42ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>隧道模式将pod中发出的所有网络数据包封装在所谓的封包头中。 封包头可以包含VXLAN或Geneve帧。 然后通过标准UDP包头传输该封装帧。 该概念类似于VPN隧道。</p>
+
+<ul>
+<li><strong>优点</strong>：pod IP在底层网络上永远不可见。 网络只能看到工作节点的IP地址。 这可以简化安装和防火墙规则。</li>
+<li><strong>缺点</strong>：所需的额外网络标头将降低网络的理论最大吞吐量。 确切的成本取决于配置的MTU，与使用MTU 9000的巨型帧相比，使用1500的传统MTU时会更加明显。</li>
+<li><strong>缺点</strong>：为了不消耗过多CPU，包括底层硬件在内的整个网络堆栈必须支持校验和和分段卸载，以计算校验和并在硬件中执行分段，就像对“常规”网络数据包所做的那样。如今，这种卸载功能的可用性非常常见。</li>
+</ul>
+
+<h3 id="直接路由模式">直接路由模式</h3>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14871146-51340f50bb80261e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>在直接路由模式中，所有网络数据包都直接路由到网络。 这要求网络能够路由pod IP。 可以使用多个选项实现跨节点传播pod IP路由信息：</p>
+
+<ul>
+<li>使用<code>--auto-direct-node-routes</code>选项，这是通过kvstore的超轻量级路由传播方法，如果所有工作节点共享一个单一的2层网络，该选项将起作用。 对于所有形式的基于云提供商的虚拟网络，通常都满足此要求。</li>
+<li>使用<a href="http://docs.cilium.io/en/stable/gettingstarted/kube-router/">kube-router集成</a>运行BGP路由守护进程。</li>
+<li>使用任何其他路由守护进程将路由注入标准Linux路由表（bird，quagga，&hellip;）</li>
+</ul>
+
+<p>当网络不再理解pod IP时，网络数据包地址需要伪装。</p>
+
+<ul>
+<li><strong>优点</strong>：减少的网络数据包标头可以优化网络吞吐量和延迟。</li>
+<li><strong>缺点</strong>：整个网络必须能够路由pod IP，这会增加操作的复杂性。</li>
+</ul>
+
+<h3 id="混合路由模式">混合路由模式</h3>
+
+<p>混合路由模式允许在可用时使用直接路由，这通常在本地集群或同一VPC中的其他集群中，而当跨越VPC或云提供商时可以回退到隧道模式。 这可以限制操作复杂性并且允许仅在需要时支付优化成本。</p>
+
+<h2 id="服务发现">服务发现</h2>
+
+<p>Cilium的多集群模型的服务发现是使用标准的Kubernetes <a href="https://kubernetes.io/docs/concepts/services-networking/service/">services</a> 构建的，旨在对现有的Kubernetes应用程序部署完全透明：</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+   kind: Service
+   metadata:
+     name: rebel-base
+     annotations:
+       io.cilium/global-service: &quot;true&quot;
+   spec:
+     type: ClusterIP
+     ports:
+     - port: 80
+     selector:
+       name: rebel-base
+</code></pre>
+
+<ul>
+<li>Cilium通过一个注释<code>io.cilium/global-service: &quot;true&quot;</code> 来监控Kubernetes服务和端点以及监听服务。 对于此类服务，具有相同名称和命名空间信息的所有服务将自动合并在一起，并形成跨集群可用的全局服务。</li>
+<li>根据标准Kubernetes运行状况检查逻辑，任何到全局服务的ClusterIP的流量都将自动负载平衡到所有集群中的端点。</li>
+<li>每个集群继续为每个服务维护自己的ClusterIP，这意味着Kubernetes和kube-dns / coredns不知道其他集群。 DNS服务器继续返回仅在本地集群中有效的ClusterIP，Cilium将透明地执行负载平衡。</li>
+<li>对于细粒度控制存在若干附加注释，例如单向暴露或亲和策略。</li>
+</ul>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14871146-b027eb4bd91ead46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>从<code>frontend-1</code>到ClusterIP <code>30.1.1.1</code>的所有流量将自动负载均衡到集群1 的后端pod IP<code>[10.0.0.1,10.0.0.2]</code>以及集群2的后端pod IP<code>[20.0.0.1,20.0.0.2]</code>。 每个集群将执行本地后端实例的运行状况检查，并在容器创建，销毁或变得不健康时通知其他集群。</p>
+
+<h2 id="透明加密">透明加密</h2>
+
+<p><a href="https://cilium.io/blog/2019/02/12/cilium-14/">Cilium 1.4</a>中引入的透明加密与多集群兼容。确保使用公共密钥配置所有集群中的所有节点，如此节点之间的所有通信都会自动加密。</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14871146-be3e56c01fa1ef78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<h2 id="多集群的网络策略">多集群的网络策略</h2>
+
+<p>简单版本是您从单个集群中熟悉的策略实施将简单地扩展并跨集群工作。 由于策略是使用pod标签指定的，因此允许<code>frontend</code>与<code>backend</code>通信的策略将应用于集群流量，就像流量跨越集群一样。</p>
+
+<p>Cilium<strong>不会</strong>跨集群自动传播NetworkPolicy或CiliumNetworkPolicy。 用户有责任将策略导入所有集群。 这是有意为之，因为这意味着每个集群都可以决定是否允许集群接收来自远程集群的通信或者发出到远程集群的通信。</p>
+
+<h3 id="允许特定集群的交叉路径">允许特定集群的交叉路径</h3>
+
+<p>可以仅建立适用于特定集群中的pod的策略。 集群名称由Cilium表示为每个pod上的标签，允许匹配的集群名称可以是<code>endpointSelector</code>或者是由<code>toEndpoints</code>和<code>fromEndpoints</code>构造的<code>matchLabels</code>标签：</p>
+
+<pre><code class="language-yaml">apiVersion: &quot;cilium.io/v2&quot;
+kind: CiliumNetworkPolicy
+metadata:
+  name: &quot;allow-cross-cluster&quot;
+  description: &quot;Allow x-wing in cluster1 to contact rebel-base in cluster2&quot;
+spec:
+  endpointSelector:
+    matchLabels:
+      name: x-wing
+      io.cilium.k8s.policy.cluster: cluster1
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        name: rebel-base
+        io.cilium.k8s.policy.cluster: cluster2
+</code></pre>
+
+<p>上面的示例策略将允许cluster1中的<code>x-wing</code>与cluster2中的<code>rebel-base</code>对话。 除非存在将通信列入白名单的附加策略，否则x-wing将无法与本地集群中的rebel-base通信。</p>
+
+<h2 id="与istio多集群的关系">与Istio多集群的关系</h2>
+
+<p>这两个项目都是独立的，但可以很好地相互补充。 组合Cilium和Istio多集群的常用方法是使用Cilium的多集群Pod IP路由层来满足<a href="https://istio.io/docs/setup/kubernetes/multicluster-install/">Istio多集群指南</a>的以下要求：</p>
+
+<blockquote>
+<p><em>每个集群中的所有pod CIDR必须可以相互路由。</em></p>
+</blockquote>
+
+<p>此外，Cilium策略执行功能可用于保护与Istio控制平面之间的通信，以及通过不支持的协议（如UDP或IPV6）保护sidecar的旁路尝试，以及防止受损的sidecar代理。</p>
+
+<p>还可以同时运行全局Istio服务和Cilium全局服务。 所有Istio托管服务都可以获得Cilium的全局服务，因为它们可以像常规服务一样通过DNS发现。</p>
+
+<h2 id="准备开始">准备开始</h2>
+
+<p>要开始使用，请按照手把手的<a href="http://docs.cilium.io/en/stable/gettingstarted/clustermesh/">ClusterMesh教程</a>进行操作，该教程将指导您完成将集群连接在一起的过程。 请务必加入我们的<a href="https://cilium.herokuapp.com/">Slack频道</a>，提出问题并展示您的设置。</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14871146-112faa9f90a9352b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="https://www.servicemesher.com/blog/prow-quick-start-guide/" data-toggle="tooltip" data-placement="top" title="Prow 快速入门向导">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="https://www.servicemesher.com/blog/using-opentracing-with-istio-part-1/" data-toggle="tooltip" data-placement="top" title="洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇一">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
+                        
+                        
+                        
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script>
+	const gitalk = new Gitalk({
+	  clientID: 'dd2e2e19dd8835a4c6c4',
+	  clientSecret: 'f5bb37514a092a909908881495fb0132ab073bc1',
+	  repo: 'gitalk',
+	  owner: 'servicemesher',
+	  admin: ['rootsongjc'],
+	  id: md5(location.pathname),      
+	  distractionFreeMode: false  
+	})
+
+	gitalk.render('gitalk-container')
+</script>
+
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/hands-on-canary-deployments-with-istio-and-kubernetes/"><i class="fa fa-link"></i>教程|使用Istio实现一个Service Mesh以简化微服务间的通信模式</a></li>
+         
+        <li><a href="/blog/deepin-service-mesh-tech-details/"><i class="fa fa-link"></i>深入解读Service Mesh背后的技术细节</a></li>
+         
+        <li><a href="/blog/prometheus-monitor-k8s-1/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列1——监控框架</a></li>
+         
+        <li><a href="/blog/prometheus-monitor-k8s-2/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列2——监控部署</a></li>
+         
+        <li><a href="/blog/prometheus-monitor-k8s-3/"><i class="fa fa-link"></i>Prometheus监控Kubernetes系列3——业务指标采集</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/cilium"><i class="fa fa-navicon"></i>cilium (3)</a>
+            </li>
+            
+            <li><a href="/categories/cloud-native"><i class="fa fa-navicon"></i>cloud-native (3)</a>
+            </li>
+            
+            <li><a href="/categories/cloud-native-weekly"><i class="fa fa-navicon"></i>cloud-native-weekly (3)</a>
+            </li>
+            
+            <li><a href="/categories/consul"><i class="fa fa-navicon"></i>consul (1)</a>
+            </li>
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (6)</a>
+            </li>
+            
+            <li><a href="/categories/devops"><i class="fa fa-navicon"></i>devops (3)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (23)</a>
+            </li>
+            
+            <li><a href="/categories/gitops"><i class="fa fa-navicon"></i>gitops (1)</a>
+            </li>
+            
+            <li><a href="/categories/grpc"><i class="fa fa-navicon"></i>grpc (2)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (85)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (12)</a>
+            </li>
+            
+            <li><a href="/categories/linkerd"><i class="fa fa-navicon"></i>linkerd (3)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/microprofile"><i class="fa fa-navicon"></i>microprofile (1)</a>
+            </li>
+            
+            <li><a href="/categories/microservices"><i class="fa fa-navicon"></i>microservices (4)</a>
+            </li>
+            
+            <li><a href="/categories/microsevices"><i class="fa fa-navicon"></i>microsevices (1)</a>
+            </li>
+            
+            <li><a href="/categories/monitoring"><i class="fa fa-navicon"></i>monitoring (3)</a>
+            </li>
+            
+            <li><a href="/categories/practice"><i class="fa fa-navicon"></i>practice (16)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (6)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (58)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/using-opentracing-with-istio-part-2/">
+                          
+                          <img src="/img/blog/banners/using-opentracing-with-istio-part-2.jpg" class="img-responsive" alt="洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/using-opentracing-with-istio-part-2/">洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/layer-7-observability-with-consul-service-mesh/">
+                          
+                          <img src="/img/blog/banners/franck-v-mMF7N2mNGCg-unsplash.jpg" class="img-responsive" alt="Consul Service Mesh的7层网络可观察性">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/layer-7-observability-with-consul-service-mesh/">Consul Service Mesh的7层网络可观察性</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/gitops-and-chatops/">
+                          
+                          <img src="/img/blog/banners/blogging-coding-copywriting-34140.jpg" class="img-responsive" alt="GitOps与ChatOps的落地实践">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/gitops-and-chatops/">GitOps与ChatOps的落地实践</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

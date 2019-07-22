@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>UCloud on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/ucloud/</link>
+    <link>https://www.servicemesher.com/tags/ucloud/</link>
     <description>Recent content in UCloud on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 14 Jun 2018 10:43:16 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/ucloud/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/ucloud/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>轻量Service Mesh在Ucloud的实践</title>
-      <link>http://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</link>
+      <link>https://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</link>
       <pubDate>Thu, 14 Jun 2018 10:43:16 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</guid>
+      <guid>https://www.servicemesher.com/blog/lightweight-service-mesh-practice-in-ucloud/</guid>
       <description>本文讲述的是UCloud对Istio做的部分改造，并在内部使用轻量Service Mesh的实践。</description>
     </item>
     

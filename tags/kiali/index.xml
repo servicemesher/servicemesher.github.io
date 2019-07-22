@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kiali on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/kiali/</link>
+    <link>https://www.servicemesher.com/tags/kiali/</link>
     <description>Recent content in kiali on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 22 Oct 2018 14:15:27 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/kiali/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/kiali/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kiali——Istio Service Mesh 的可观察性工具</title>
-      <link>http://www.servicemesher.com/blog/kiali-the-istio-service-mesh-observability-tool/</link>
+      <link>https://www.servicemesher.com/blog/kiali-the-istio-service-mesh-observability-tool/</link>
       <pubDate>Mon, 22 Oct 2018 14:15:27 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/kiali-the-istio-service-mesh-observability-tool/</guid>
+      <guid>https://www.servicemesher.com/blog/kiali-the-istio-service-mesh-observability-tool/</guid>
       <description>本文介绍了 Istio Service Mesh 中的可观察性工具 Kiali 的功能、架构和部分代码。</description>
     </item>
     

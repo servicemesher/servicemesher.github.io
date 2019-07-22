@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>culture on ServiceMesher</title>
-    <link>http://www.servicemesher.com/categories/culture/</link>
+    <link>https://www.servicemesher.com/categories/culture/</link>
     <description>Recent content in culture on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 28 Jun 2019 11:05:00 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/categories/culture/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/categories/culture/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>开源，社区与朋友们-2019 KubeCon &#43; ClondNativeCon &#43; Open Source Summit有感</title>
-      <link>http://www.servicemesher.com/blog/kubecon-cncf-oss-2019/</link>
+      <link>https://www.servicemesher.com/blog/kubecon-cncf-oss-2019/</link>
       <pubDate>Fri, 28 Jun 2019 11:05:00 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/kubecon-cncf-oss-2019/</guid>
+      <guid>https://www.servicemesher.com/blog/kubecon-cncf-oss-2019/</guid>
       <description>奇妙的 2019 KubeCon + ClondNativeCon + Open Source Summit 大会！在这里，我近距离接触了大神 Linus；见到了来自 ServiceMesher 社区的很多朋友；还遇到了搞 Kubernetes 的恩格斯后人！</description>
     </item>
     
     <item>
       <title>《深入浅出 Istio》读后感</title>
-      <link>http://www.servicemesher.com/blog/reading-istio-service-mesh-book/</link>
+      <link>https://www.servicemesher.com/blog/reading-istio-service-mesh-book/</link>
       <pubDate>Tue, 19 Feb 2019 12:08:33 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/reading-istio-service-mesh-book/</guid>
+      <guid>https://www.servicemesher.com/blog/reading-istio-service-mesh-book/</guid>
       <description>本文是《深入浅出 Istio》（崔秀龙著，电子工业出版社出版）一书的读后感。</description>
     </item>
     
     <item>
       <title>CNCF年度报告解读（2018年）</title>
-      <link>http://www.servicemesher.com/blog/cncf-annual-report-2018-review/</link>
+      <link>https://www.servicemesher.com/blog/cncf-annual-report-2018-review/</link>
       <pubDate>Fri, 15 Feb 2019 10:41:22 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/cncf-annual-report-2018-review/</guid>
+      <guid>https://www.servicemesher.com/blog/cncf-annual-report-2018-review/</guid>
       <description>本文是对 CNCF（云原生计算基金会）2018年年度报告的解读。</description>
     </item>
     
     <item>
       <title>在网格的边缘试探——企业服务行业如何试水 Istio</title>
-      <link>http://www.servicemesher.com/blog/explore-at-the-edge-of-istio-service-mesh/</link>
+      <link>https://www.servicemesher.com/blog/explore-at-the-edge-of-istio-service-mesh/</link>
       <pubDate>Fri, 11 Jan 2019 11:10:19 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/explore-at-the-edge-of-istio-service-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/explore-at-the-edge-of-istio-service-mesh/</guid>
       <description>本文根据崔秀龙在 2019 广州 Service Mesh Meetup#5 分享整理。</description>
     </item>
     
     <item>
       <title>Github中式开源志异</title>
-      <link>http://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</link>
+      <link>https://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</link>
       <pubDate>Wed, 26 Dec 2018 16:35:38 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</guid>
+      <guid>https://www.servicemesher.com/blog/strange-stories-from-chinese-github-participants/</guid>
       <description>本文谈论了一些 GitHub 上中式开源的怪象，希望从事开源的读者引以为戒。</description>
     </item>
     
     <item>
       <title>云原生世界中的隐形人如何拥抱 Istio</title>
-      <link>http://www.servicemesher.com/blog/invisible-men-in-the-world-of-cloudnative/</link>
+      <link>https://www.servicemesher.com/blog/invisible-men-in-the-world-of-cloudnative/</link>
       <pubDate>Wed, 28 Nov 2018 11:25:53 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/invisible-men-in-the-world-of-cloudnative/</guid>
+      <guid>https://www.servicemesher.com/blog/invisible-men-in-the-world-of-cloudnative/</guid>
       <description>一直想给我所从事的企业服务行业写点啥，又千头万绪不知从何说起。此次 KubeCon 上海一行，眼见 CNCF 高起朱楼大宴宾客，深受触动。企业服务这个巨大的“角落”，似乎已被遗忘。本文尝试给云原生时代的同学们讲讲这个似乎有点蒙昧的角落。也希望能给奋斗在企业服务项目中的朋友们一点启发。</description>
     </item>
     

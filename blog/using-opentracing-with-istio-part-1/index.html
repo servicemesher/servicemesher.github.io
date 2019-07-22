@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇一 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="Service Mesh, Istio, Opentracing, Jaeger">
+  
+
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇一" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/using-opentracing-with-istio-part-1//" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="本文将介绍如何利用OpenTracing来增强Istio/Envoy缺省的调用链跟踪实现：如何利用Opentracing来实现跨进程边界的分布式调用上下文传递；以及在Istio/Envoy生成的分布式调用跟踪基础上实现方法级的细粒度调用跟踪。">
+  <meta property="og:description" content="本文将介绍如何利用OpenTracing来增强Istio/Envoy缺省的调用链跟踪实现：如何利用Opentracing来实现跨进程边界的分布式调用上下文传递；以及在Istio/Envoy生成的分布式调用跟踪基础上实现方法级的细粒度调用跟踪。">
+  <meta name="twitter:description" content="本文将介绍如何利用OpenTracing来增强Istio/Envoy缺省的调用链跟踪实现：如何利用Opentracing来实现跨进程边界的分布式调用上下文传递；以及在Istio/Envoy生成的分布式调用跟踪基础上实现方法级的细粒度调用跟踪。">
+  <meta property="og:description" content="本文将介绍如何利用OpenTracing来增强Istio/Envoy缺省的调用链跟踪实现：如何利用Opentracing来实现跨进程边界的分布式调用上下文传递；以及在Istio/Envoy生成的分布式调用跟踪基础上实现方法级的细粒度调用跟踪。" />
+
+  
+  <meta name="referrer" content="never">
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+  
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="/img/servicemesher-logo.jpg" alt="洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇一 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇一 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇一 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Service Mesh列表</a></li>
+                      
+                        <li><a href="/envoy/">Envoy官方文档中文版</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio中文官网</a></li>
+                      
+                        <li><a href="/categories/practice/">实践汇总</a></li>
+                      
+                        <li><a href="/istio-handbook/">Istio Handbook</a></li>
+                      
+                        <li><a href="/getting-started-with-knative/">Knative入门</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">社区 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                        <li><a href="https://github.com/servicemesher/istio-knowledge-map">Istio知识图谱</a></li>
+                      
+                        <li><a href="/contributing-specification/">贡献指南</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="https:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇一</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年7月3日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://zhaohuabing.com">赵化冰</a>
+                            
+                            
+                            
+                            | 审校者
+                            
+                            <a href="https://guangmingluo.github.io/guangmingluo.io/"><i>罗广明</i></a>
+                            
+                            
+                            |
+                            6000字 | 阅读大约需要12分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://zhaohuabing.com/post/2019-06-22-using-opentracing-with-istio/">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/service-mesh">service-mesh</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/service-mesh/"><i>#Service Mesh</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#Istio</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/opentracing/"><i>#Opentracing</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/jaeger/"><i>#Jaeger</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<h2 id="分布式调用跟踪和opentracing规范">分布式调用跟踪和Opentracing规范</h2>
+
+<h3 id="什么是分布式调用跟踪">什么是分布式调用跟踪？</h3>
+
+<p>相比传统的“巨石”应用，微服务的一个主要变化是将应用中的不同模块拆分为了独立的进程。在微服务架构下，原来进程内的方法调用成为了跨进程的RPC调用。相对于单一进程的方法调用，跨进程调用的调试和故障分析是非常困难的，很难用传统的调试器或者日志打印来对分布式调用进行查看和分析。</p>
+
+<p><img src="monolith-microserivce.jpg" alt="" /></p>
+
+<p>如上图所示，一个来自客户端的请求经过了多个微服务进程。如果要对该请求进行分析，则必须将该请求经过的所有服务的相关信息都收集起来并关联在一起，这就是“分布式调用跟踪”。</p>
+
+<h3 id="什么是opentracing">什么是Opentracing？</h3>
+
+<h4 id="cncf-opentracing项目">CNCF Opentracing项目</h4>
+
+<p><a href="http://https://opentracing.io/">Opentracing</a>是<a href="https://www.cncf.io/">CNCF</a>（云原生计算基金会）下的一个项目，其中包含了一套分布式调用跟踪的标准规范，各种语言的API，编程框架和函数库。Opentracing的目的是定义一套分布式调用跟踪的标准，以统一各种分布式调用跟踪的实现。目前已有大量支持<a href="https://opentracing.io/docs/supported-tracers/">Opentracing规范的Tracer实现</a>，包括Jager,Skywalking,LightStep等。在微服务应用中采用Opentracing API实现分布式调用跟踪，可以避免vendor locking，以最小的代价和任意一个兼容Opentracing的基础设施进行对接。</p>
+
+<h4 id="opentracing概念模型">Opentracing概念模型</h4>
+
+<p>Opentracing的概念模型参见下图：</p>
+
+<p><img src="tracing_mental_model.png" alt="Opentracing概念模型" /></p>
+
+<p>如图所示，Opentracing中主要包含下述几个概念：</p>
+
+<ul>
+<li>Trace： 描述一个分布式系统中的端到端事务，例如来自客户端的一个请求。</li>
+<li>Span：一个具有名称和时间长度的操作，例如一个REST调用或者数据库操作等。Span是分布式调用跟踪的最小跟踪单位，一个Trace由多段Span组成。</li>
+<li>Span context：分布式调用跟踪的上下文信息，包括Trace id，Span id以及其它需要传递到下游服务的内容。一个Opentracing的实现需要将Span context通过某种序列化机制(Wire Protocol)在进程边界上进行传递，以将不同进程中的Span关联到同一个Trace上。这些Wire Protocol可以是基于文本的，例如HTTP header，也可以是二进制协议。</li>
+</ul>
+
+<h4 id="opentracing数据模型">Opentracing数据模型</h4>
+
+<p>一个Trace可以看成由多个相互关联的Span组成的有向无环图（DAG图）。下图是一个由8个Span组成的Trace：</p>
+
+<pre><code class="language-text">
+        [Span A]  ←←←(the root span)
+            |
+     +------+------+
+     |             |
+ [Span B]      [Span C] ←←←(Span C is a `ChildOf` Span A)
+     |             |
+ [Span D]      +---+-------+
+               |           |
+           [Span E]    [Span F] &gt;&gt;&gt; [Span G] &gt;&gt;&gt; [Span H]
+                                       ↑
+                                       ↑
+                                       ↑
+                         (Span G `FollowsFrom` Span F)
+
+</code></pre>
+
+<p>上图的trace也可以按照时间先后顺序表示如下：</p>
+
+<pre><code class="language-text">––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–&gt; time
+
+ [Span A···················································]
+   [Span B··············································]
+      [Span D··········································]
+    [Span C········································]
+         [Span E·······]        [Span F··] [Span G··] [Span H··]
+</code></pre>
+
+<p>Span的数据结构中包含以下内容：</p>
+
+<ul>
+<li>name: Span所代表的操作名称，例如REST接口对应的资源名称。</li>
+<li>Start timestamp: Span所代表操作的开始时间</li>
+<li>Finish timestamp: Span所代表的操作的的结束时间</li>
+<li>Tags：一系列标签，每个标签由一个key value键值对组成。该标签可以是任何有利于调用分析的信息，例如方法名，URL等。</li>
+<li>SpanContext：用于跨进程边界传递Span相关信息，在进行传递时需要结合一种序列化协议（Wire Protocol）使用。</li>
+<li>References：该Span引用的其它关联Span，主要有两种引用关系，Childof和FollowsFrom。
+
+<ul>
+<li>Childof： 最常用的一种引用关系，表示Parent Span和Child Span之间存在直接的依赖关系。例PRC服务端Span和RPC客户端Span，或者数据库SQL插入Span和ORM Save动作Span之间的关系。</li>
+<li>FollowsFrom：如果Parent Span并不依赖Child Span的执行结果，则可以用FollowsFrom表示。例如网上商店购物付款后会向用户发一个邮件通知，但无论邮件通知是否发送成功，都不影响付款成功的状态，这种情况则适用于用FollowsFrom表示。</li>
+</ul></li>
+</ul>
+
+<h4 id="跨进程调用信息传播">跨进程调用信息传播</h4>
+
+<p>SpanContext是Opentracing中一个让人比较迷惑的概念。在Opentracing的概念模型中提到SpanContext用于跨进程边界传递分布式调用的上下文。但实际上Opentracing只定义一个SpanContext的抽象接口，该接口封装了分布式调用中一个Span的相关上下文内容，包括该Span所属的Trace id，Span id以及其它需要传递到downstream服务的信息。SpanContext自身并不能实现跨进程的上下文传递，需要由Tracer（Tracer是一个遵循Opentracing协议的实现，如Jaeger，Skywalking的Tracer）将SpanContext序列化后通过Wire Protocol传递到下一个进程中，然后在下一个进程将SpanContext反序列化，得到相关的上下文信息，以用于生成Child Span。</p>
+
+<p>为了为各种具体实现提供最大的灵活性，Opentracing只是提出了跨进程传递SpanContext的要求，并未规定将SpanContext进行序列化并在网络中传递的具体实现方式。各个不同的Tracer可以根据自己的情况使用不同的Wire Protocol来传递SpanContext。</p>
+
+<p>在基于HTTP协议的分布式调用中，通常会使用HTTP Header来传递SpanContext的内容。常见的Wire Protocol包含Zipkin使用的<a href="https://github.com/openzipkin/b3-propagation">b3 HTTP header</a>，Jaeger使用的<a href="https://www.jaegertracing.io/docs/1.7/client-libraries/#trace-span-identity">uber-trace-id HTTP Header</a>,LightStep使用的&rdquo;x-ot-span-context&rdquo; HTTP Header等。Istio/Envoy支持b3 header和x-ot-span-context header,可以和Zipkin,Jaeger及LightStep对接。其中b3 HTTP header的示例如下：</p>
+
+<pre><code class="language-text">X-B3-TraceId: 80f198ee56343ba864fe8b2a57d3eff7
+X-B3-ParentSpanId: 05e3ac9a4f6e3b90
+X-B3-SpanId: e457b5a2e4d86bd1
+X-B3-Sampled: 1
+</code></pre>
+
+<h2 id="istio对分布式调用跟踪的支持">Istio对分布式调用跟踪的支持</h2>
+
+<p>Istio/Envoy为微服务提供了开箱即用的分布式调用跟踪功能。在安装了Istio和Envoy的微服务系统中，Envoy会拦截服务的入向和出向请求，为微服务的每个调用请求自动生成调用跟踪数据。通过在服务网格中接入一个分布式跟踪的后端系统，例如zipkin或者Jaeger，就可以查看一个分布式请求的详细内容，例如该请求经过了哪些服务，调用了哪个REST接口，每个REST接口所花费的时间等。</p>
+
+<p>需要注意的是，Istio/Envoy虽然在此过程中完成了大部分工作，但还是要求对应用代码进行少量修改：应用代码中需要将收到的上游HTTP请求中的b3 header拷贝到其向下游发起的HTTP请求的header中，以将调用跟踪上下文传递到下游服务。这部分代码不能由Envoy代劳，原因是Envoy并不清楚其代理的服务中的业务逻辑，无法将入向请求和出向请求按照业务逻辑进行关联。这部分代码量虽然不大，但需要对每一处发起HTTP请求的代码都进行修改，非常繁琐而且容易遗漏。当然，可以将发起HTTP请求的代码封装为一个代码库来供业务模块使用，来简化该工作。</p>
+
+<p>下面以一个简单的网上商店示例程序来展示Istio如何提供分布式调用跟踪。该示例程序由eshop,inventory，billing，delivery几个微服务组成，结构如下图所示：</p>
+
+<p><img src="eshop-demo.jpg" alt="" /></p>
+
+<p>eshop微服务接收来自客户端的请求，然后调用inventory，billing，delivery这几个后端微服务的REST接口来实现用户购买商品的checkout业务逻辑。本例的代码可以从github下载：<a href="https://github.com/zhaohuabing/istio-opentracing-demo.git">https://github.com/zhaohuabing/istio-opentracing-demo.git</a></p>
+
+<p>如下面的代码所示，我们需要在eshop微服务的应用代码中传递b3 HTTP Header。</p>
+
+<pre><code class="language-java"> @RequestMapping(value = &quot;/checkout&quot;)
+public String checkout(@RequestHeader HttpHeaders headers) {
+    String result = &quot;&quot;;
+    // Use HTTP GET in this demo. In a real world use case,We should use HTTP POST
+    // instead.
+    // The three services are bundled in one jar for simplicity. To make it work,
+    // define three services in Kubernets.
+    result += restTemplate.exchange(&quot;http://inventory:8080/createOrder&quot;, HttpMethod.GET,
+            new HttpEntity&lt;&gt;(passTracingHeader(headers)), String.class).getBody();
+    result += &quot;&lt;BR&gt;&quot;;
+    result += restTemplate.exchange(&quot;http://billing:8080/payment&quot;, HttpMethod.GET,
+            new HttpEntity&lt;&gt;(passTracingHeader(headers)), String.class).getBody();
+    result += &quot;&lt;BR&gt;&quot;;
+    result += restTemplate.exchange(&quot;http://delivery:8080/arrangeDelivery&quot;, HttpMethod.GET,
+            new HttpEntity&lt;&gt;(passTracingHeader(headers)), String.class).getBody();
+    return result;
+}
+private HttpHeaders passTracingHeader(HttpHeaders headers) {
+    HttpHeaders tracingHeaders = new HttpHeaders();
+    extractHeader(headers, tracingHeaders, &quot;x-request-id&quot;);
+    extractHeader(headers, tracingHeaders, &quot;x-b3-traceid&quot;);
+    extractHeader(headers, tracingHeaders, &quot;x-b3-spanid&quot;);
+    extractHeader(headers, tracingHeaders, &quot;x-b3-parentspanid&quot;);
+    extractHeader(headers, tracingHeaders, &quot;x-b3-sampled&quot;);
+    extractHeader(headers, tracingHeaders, &quot;x-b3-flags&quot;);
+    extractHeader(headers, tracingHeaders, &quot;x-ot-span-context&quot;);
+    return tracingHeaders;
+}
+</code></pre>
+
+<p>在Kubernets中部署该程序，查看Istio分布式调用跟踪的效果。</p>
+
+<ul>
+<li>首先部署Kubernets cluster，注意需要启用API Server的Webhook选项</li>
+<li>在Kubernets cluster中部署Istio，并且启用default namespace的sidecar auto injection</li>
+<li>在Kubernets cluster中部署eshop应用</li>
+</ul>
+
+<pre><code class="language-bash">git clone https://github.com/zhaohuabing/istio-opentracing-demo.git
+cd istio-opentracing-demo
+git checkout without-opentracing
+kubectl apply -f k8s/eshop.yaml
+</code></pre>
+
+<ul>
+<li>在浏览器中打开地址：<a href="http://${NODE_IP}:31380/checkout">http://${NODE_IP}:31380/checkout</a> ，以触发调用eshop示例程序的REST接口。</li>
+<li>在浏览器中打开Jaeger的界面 <a href="http://${NODE_IP}:30088">http://${NODE_IP}:30088</a> ，查看生成的分布式调用跟踪信息。</li>
+</ul>
+
+<p>注意:为了能在Kubernets Cluster外部访问到Jaeger的界面，需要修改Istio的缺省安装脚本，为Jaeger Service指定一个NodePort。修改方式参见下面的代码：</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+  kind: Service
+  metadata:
+    name: jaeger-query
+    namespace: istio-system
+    annotations:
+    labels:
+      app: jaeger
+      jaeger-infra: jaeger-service
+      chart: tracing
+      heritage: Tiller
+      release: istio
+  spec:
+    ports:
+      - name: query-http
+        port: 16686
+        protocol: TCP
+        targetPort: 16686
+        nodePort: 30088
+    type: NodePort
+    selector:
+      app: jaeger
+</code></pre>
+
+<p>Jaeger用图形直观地展示了这次调用的详细信息，可以看到客户端请求从Ingressgateway进入到系统中，然后调用了eshop微服务的checkout接口，checkout调用有三个child span，分别对应到inventory，billing和delivery三个微服务的REST接口。</p>
+
+<p><img src="istio-tracing.jpg" alt="" /></p>
+
+<h2 id="使用opentracing来传递分布式跟踪上下文">使用Opentracing来传递分布式跟踪上下文</h2>
+
+<p>Opentracing提供了基于Spring的代码埋点，因此我们可以使用Opentracing Spring框架来提供HTTP header的传递，以避免这部分硬编码工作。在Spring中采用Opentracing来传递分布式跟踪上下文非常简单，只需要下述两个步骤：</p>
+
+<ul>
+<li>在Maven POM文件中声明相关的依赖，一是对Opentracing Spring Cloud Starter的依赖；另外由于后端接入的是Jaeger，也需要依赖Jaeger的相关jar包。</li>
+<li>在Spring Application中声明一个Tracer bean。</li>
+</ul>
+
+<pre><code class="language-java">@Bean
+public Tracer jaegerTracer() {
+    // The following environment variables need to set
+    // JAEGER_ENDPOINT=&quot;http:///{IP}:{PORT}/api/traces&quot;
+    // JAEGER_PROPAGATION=&quot;b3&quot;
+    // JAEGER_TRACEID_128BIT=&quot;true&quot; Use 128bit tracer id to be compatible with the
+    // trace id generated by istio/envoy
+    return Configuration.fromEnv(&quot;eshop-opentracing&quot;).getTracer();
+}
+</code></pre>
+
+<blockquote>
+<p>注意：</p>
+
+<p>Jaeger tracer缺省使用的是uber-trace-id header,而Istio/Envoy不支持该header。因此需要指定Jaeger tracer使用b3 header格式，以和Istio/Envoy兼容。</p>
+
+<p>Jaeger tracer缺省使用64 bit的trace id, 而Istio/Envoy使用了128 bit的trace id。因此需要指定Jaeger tracer使用128 bit的trace id，以和Istio/Envoy生成的trace id兼容。</p>
+</blockquote>
+
+<p>部署采用Opentracing进行HTTP header传递的程序版本，其调用跟踪信息如下所示：</p>
+
+<p><img src="istio-tracing-opentracing.jpg" alt="" /></p>
+
+<p>从上图中可以看到，相比在应用代码中直接传递HTTP header的方式，采用Opentracing进行代码埋点后，相同的调用增加了7个Span，这7个Span是由Opentracing的tracer生成的。虽然我们并没有在代码中显示创建这些Span，但Opentracing的代码埋点会自动为每一个REST请求生成一个Span，并根据调用关系关联起来。</p>
+
+<p>Opentracing生成的这些Span为我们提供了更详细的分布式调用跟踪信息，从这些信息中可以分析出一个HTTP调用从客户端应用代码发起请求，到经过客户端的Envoy，再到服务端的Envoy，最后到服务端接受到请求各个步骤的耗时情况。从图中可以看到，Envoy转发的耗时在1毫秒左右，相对于业务代码的处理时长非常短，对这个应用而言，Envoy的处理和转发对于业务请求的处理效率基本没有影响。</p>
+
+<h2 id="在istio调用跟踪链中加入方法级的调用跟踪信息">在Istio调用跟踪链中加入方法级的调用跟踪信息</h2>
+
+<p>Istio/Envoy提供了跨服务边界的调用链信息，在大部分情况下，服务粒度的调用链信息对于系统性能和故障分析已经足够。但对于某些服务，需要采用更细粒度的调用信息来进行分析，例如一个REST请求内部的业务逻辑和数据库访问分别的耗时情况。在这种情况下，我们需要在服务代码中进行埋点，并将服务代码中上报的调用跟踪数据和Envoy生成的调用跟踪数据进行关联，以统一呈现Envoy和服务代码中生成的调用数据。</p>
+
+<p>在方法中增加调用跟踪的代码是类似的，因此我们用AOP + Annotation的方式实现，以简化代码。
+首先定义一个Traced注解和对应的AOP实现逻辑：</p>
+
+<pre><code class="language-java">@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+@Documented
+public @interface Traced {
+}
+</code></pre>
+
+<pre><code class="language-java">@Aspect
+@Component
+public class TracingAspect {
+    @Autowired
+    Tracer tracer;
+
+    @Around(&quot;@annotation(com.zhaohuabing.demo.instrument.Traced)&quot;)
+    public Object aroundAdvice(ProceedingJoinPoint jp) throws Throwable {
+        String class_name = jp.getTarget().getClass().getName();
+        String method_name = jp.getSignature().getName();
+        Span span = tracer.buildSpan(class_name + &quot;.&quot; + method_name).withTag(&quot;class&quot;, class_name)
+                .withTag(&quot;method&quot;, method_name).start();
+        Object result = jp.proceed();
+        span.finish();
+        return result;
+    }
+}
+</code></pre>
+
+<p>然后在需要进行调用跟踪的方法上加上Traced注解：</p>
+
+<pre><code class="language-java">@Component
+public class DBAccess {
+
+    @Traced
+    public void save2db() {
+        try {
+            Thread.sleep((long) (Math.random() * 100));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">@Component
+public class BankTransaction {
+    @Traced
+    public void transfer() {
+        try {
+            Thread.sleep((long) (Math.random() * 100));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+
+<p>demo程序的master branch已经加入了方法级代码跟踪，可以直接部署。</p>
+
+<pre><code class="language-bash">git checkout master
+kubectl apply -f k8s/eshop.yaml
+</code></pre>
+
+<p>效果如下图所示，可以看到trace中增加了transfer和save2db两个方法级的Span。</p>
+
+<p><img src="istio-tracing-opentracing-in-depth.jpg" alt="" /></p>
+
+<p>可以打开一个方法的Span，查看详细信息，包括Java类名和调用的方法名等，在AOP代码中还可以根据需要添加出现异常时的异常堆栈等信息。</p>
+
+<p><img src="istio-tracing-opentracing-in-depth-method.jpg" alt="" /></p>
+
+<h2 id="总结">总结</h2>
+
+<p>Istio/Envoy为微服务应用提供了分布式调用跟踪功能，提高了服务调用的可见性。我们可以使用Opentracing来代替应用硬编码，以传递分布式跟踪的相关http header；还可以通过Opentracing将方法级的调用信息加入到Istio/Envoy缺省提供的调用链跟踪信息中，以提供更细粒度的调用跟踪信息。</p>
+
+<h2 id="下一步">下一步</h2>
+
+<p>除了同步调用之外，异步消息也是微服务架构中常见的一种通信方式。在下一篇文章中，我将继续利用eshop demo程序来探讨如何通过Opentracing将Kafka异步消息也纳入到Istio的分布式调用跟踪中。</p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ol>
+<li><a href="https://github.com/zhaohuabing/istio-opentracing-demo">本文中eshop示例程序的源代码</a></li>
+<li><a href="https://opentracing.io/docs/">Opentracing docs</a></li>
+<li><a href="https://github.com/opentracing/specification/blob/master/specification.md">Opentracing specification</a></li>
+<li><a href="https://github.com/opentracing/specification/blob/master/rfc/trace_identifiers.md">Opentracing wire protocols</a></li>
+<li><a href="https://istio.io/docs/tasks/telemetry/distributed-tracing/overview/#trace-context-propagation">Istio Trace context propagation</a></li>
+<li><a href="https://medium.com/jaegertracing/using-opentracing-with-istio-envoy-d8a4246bdc15">Using OpenTracing with Istio/Envoy</a></li>
+<li><a href="https://github.com/apache/incubator-zipkin-b3-propagation">Zipkin-b3-propagation</a></li>
+<li><a href="https://www.infoq.cn/article/pqy*PFPhox9OQQ9iCRTt">Istio 调用链埋点原理剖析—是否真的“零修改”？</a></li>
+<li><a href="https://www.youtube.com/watch?v=ySR_FVNX4bQ&amp;t=184s">OpenTracing Project Deep Dive</a></li>
+</ol>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="https://www.servicemesher.com/blog/deep-dive-into-cilium-multi-cluster/" data-toggle="tooltip" data-placement="top" title="深入了解Cilium多集群">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="https://www.servicemesher.com/blog/gitops-and-chatops/" data-toggle="tooltip" data-placement="top" title="GitOps与ChatOps的落地实践">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
+                        
+                        
+                        
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script>
+	const gitalk = new Gitalk({
+	  clientID: 'dd2e2e19dd8835a4c6c4',
+	  clientSecret: 'f5bb37514a092a909908881495fb0132ab073bc1',
+	  repo: 'gitalk',
+	  owner: 'servicemesher',
+	  admin: ['rootsongjc'],
+	  id: md5(location.pathname),      
+	  distractionFreeMode: false  
+	})
+
+	gitalk.render('gitalk-container')
+</script>
+
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/201905-servicemesh-development-trend/"><i class="fa fa-link"></i>Service Mesh发展趋势：云原生中流砥柱</a></li>
+         
+        <li><a href="/blog/preventing-systemic-failure-circuit-breaking-part-2/"><i class="fa fa-link"></i>微服务中的熔断简介及工作原理详解（第2部分）</a></li>
+         
+        <li><a href="/blog/kubernetes-service-mesh/"><i class="fa fa-link"></i>基于 Kubernetes 的 Service Mesh 简介</a></li>
+         
+        <li><a href="/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/"><i class="fa fa-link"></i>Solo.io打造的Gloo——Knative中Istio的替代方案</a></li>
+         
+        <li><a href="/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/"><i class="fa fa-link"></i>Envoy service mesh、Prometheus和Grafana下的微服务监控</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/cilium"><i class="fa fa-navicon"></i>cilium (3)</a>
+            </li>
+            
+            <li><a href="/categories/cloud-native"><i class="fa fa-navicon"></i>cloud-native (3)</a>
+            </li>
+            
+            <li><a href="/categories/cloud-native-weekly"><i class="fa fa-navicon"></i>cloud-native-weekly (3)</a>
+            </li>
+            
+            <li><a href="/categories/consul"><i class="fa fa-navicon"></i>consul (1)</a>
+            </li>
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (6)</a>
+            </li>
+            
+            <li><a href="/categories/devops"><i class="fa fa-navicon"></i>devops (3)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (23)</a>
+            </li>
+            
+            <li><a href="/categories/gitops"><i class="fa fa-navicon"></i>gitops (1)</a>
+            </li>
+            
+            <li><a href="/categories/grpc"><i class="fa fa-navicon"></i>grpc (2)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (85)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (12)</a>
+            </li>
+            
+            <li><a href="/categories/linkerd"><i class="fa fa-navicon"></i>linkerd (3)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/microprofile"><i class="fa fa-navicon"></i>microprofile (1)</a>
+            </li>
+            
+            <li><a href="/categories/microservices"><i class="fa fa-navicon"></i>microservices (4)</a>
+            </li>
+            
+            <li><a href="/categories/microsevices"><i class="fa fa-navicon"></i>microsevices (1)</a>
+            </li>
+            
+            <li><a href="/categories/monitoring"><i class="fa fa-navicon"></i>monitoring (3)</a>
+            </li>
+            
+            <li><a href="/categories/practice"><i class="fa fa-navicon"></i>practice (16)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (6)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (58)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/using-opentracing-with-istio-part-2/">
+                          
+                          <img src="/img/blog/banners/using-opentracing-with-istio-part-2.jpg" class="img-responsive" alt="洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/using-opentracing-with-istio-part-2/">洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/layer-7-observability-with-consul-service-mesh/">
+                          
+                          <img src="/img/blog/banners/franck-v-mMF7N2mNGCg-unsplash.jpg" class="img-responsive" alt="Consul Service Mesh的7层网络可观察性">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/layer-7-observability-with-consul-service-mesh/">Consul Service Mesh的7层网络可观察性</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/gitops-and-chatops/">
+                          
+                          <img src="/img/blog/banners/blogging-coding-copywriting-34140.jpg" class="img-responsive" alt="GitOps与ChatOps的落地实践">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/gitops-and-chatops/">GitOps与ChatOps的落地实践</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

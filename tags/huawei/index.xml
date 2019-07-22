@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>huawei on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/huawei/</link>
+    <link>https://www.servicemesher.com/tags/huawei/</link>
     <description>Recent content in huawei on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 30 May 2018 15:00:22 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/huawei/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/huawei/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>一个商用级Service Mesh服务的设计之道</title>
-      <link>http://www.servicemesher.com/blog/the-desigin-patterns-for-a-commercial-service-mesh/</link>
+      <link>https://www.servicemesher.com/blog/the-desigin-patterns-for-a-commercial-service-mesh/</link>
       <pubDate>Wed, 30 May 2018 15:00:22 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/the-desigin-patterns-for-a-commercial-service-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/the-desigin-patterns-for-a-commercial-service-mesh/</guid>
       <description>本文分享了微服务中存在的问题，以及如何通过商用级的 Service Mesh 设计来解决问题，作者分享了华为的 Service Mesh 设计之道。</description>
     </item>
     

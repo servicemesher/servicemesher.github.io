@@ -2,22 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>knative on ServiceMesher</title>
-    <link>http://www.servicemesher.com/categories/knative/</link>
+    <link>https://www.servicemesher.com/categories/knative/</link>
     <description>Recent content in knative on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 22 Feb 2019 14:08:59 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 May 2019 12:20:44 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/categories/knative/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/categories/knative/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Solo.io打造的Gloo——Knative中Istio的替代方案</title>
+      <link>https://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</link>
+      <pubDate>Thu, 16 May 2019 12:20:44 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/gloo-by-solo-io-is-the-first-alternative-to-istio-on-knative/</guid>
+      <description>本文介绍如何Solo.io公司研发的Gloo产品，可以作为使用Knative时部署Istio的替代方案。</description>
+    </item>
+    
+    <item>
+      <title>Knative 入门系列2：serving 介绍</title>
+      <link>https://www.servicemesher.com/blog/knative-serving/</link>
+      <pubDate>Tue, 12 Mar 2019 11:17:13 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/knative-serving/</guid>
+      <description>本章介绍 Knative Serving 组件，描述 Knative Serving 如何部署并为应用和函数 (funtions) 提供服务。</description>
+    </item>
+    
+    <item>
+      <title>Knative 入门系列1：knative 概述</title>
+      <link>https://www.servicemesher.com/blog/knative-overview/</link>
+      <pubDate>Mon, 11 Mar 2019 12:23:31 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/knative-overview/</guid>
+      <description>本文是 Knative 入门系列的第一篇，knative 概述。</description>
+    </item>
+    
+    <item>
+      <title>Knative：精简代码之道</title>
+      <link>https://www.servicemesher.com/blog/knative-whittling-down-the-code/</link>
+      <pubDate>Fri, 01 Mar 2019 10:40:18 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/knative-whittling-down-the-code/</guid>
+      <description>本文介绍如何利用Knative提供的功能，减少自己需要编写的代码。</description>
+    </item>
+    
+    <item>
       <title>Knative Eventing in-memory-channel实现原理解析</title>
-      <link>http://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</link>
+      <link>https://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</link>
       <pubDate>Fri, 22 Feb 2019 14:08:59 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</guid>
+      <guid>https://www.servicemesher.com/blog/knative-eventing-in-memory-channel-deep-dive/</guid>
       <description>本文不对基本概念做介绍，本文主要是基于 Kubernetes Event Source example 为例分析 in-memory-channel 的实现原理。</description>
+    </item>
+    
+    <item>
+      <title>Serverless Jenkins 和 Jenkins X</title>
+      <link>https://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</link>
+      <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
+      <description>本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。</description>
     </item>
     
   </channel>

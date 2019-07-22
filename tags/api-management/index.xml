@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>API Management on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/api-management/</link>
+    <link>https://www.servicemesher.com/tags/api-management/</link>
     <description>Recent content in API Management on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 09 Oct 2018 12:26:41 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/api-management/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/api-management/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>API管理和服务网格——为什么说服务网格无法替代API管理</title>
-      <link>http://www.servicemesher.com/blog/api-management-and-service-mesh/</link>
+      <link>https://www.servicemesher.com/blog/api-management-and-service-mesh/</link>
       <pubDate>Tue, 09 Oct 2018 12:26:41 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/api-management-and-service-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/api-management-and-service-mesh/</guid>
       <description>本文分别介绍了API Management和Service Mesh，并简单分析了它们的共同点。</description>
     </item>
     

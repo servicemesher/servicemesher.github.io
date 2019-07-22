@@ -2,21 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>consul on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/consul/</link>
+    <link>https://www.servicemesher.com/tags/consul/</link>
     <description>Recent content in consul on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 04 Jul 2018 12:48:07 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/consul/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/consul/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Consul Service Mesh的7层网络可观察性</title>
+      <link>https://www.servicemesher.com/blog/layer-7-observability-with-consul-service-mesh/</link>
+      <pubDate>Fri, 12 Jul 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/layer-7-observability-with-consul-service-mesh/</guid>
+      <description>Consul团队写了一篇易懂、又有实操的如何在Service Mesh中，实现服务的可观察性的文章。即使没有太多基础，也能比较容易的看懂并了解service mesh中，如何实现服务的度量。</description>
+    </item>
+    
+    <item>
       <title>Service Mesh新成员：Consul 1.2</title>
-      <link>http://www.servicemesher.com/blog/consul-1-2-service-mesh/</link>
+      <link>https://www.servicemesher.com/blog/consul-1-2-service-mesh/</link>
       <pubDate>Wed, 04 Jul 2018 12:48:07 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/consul-1-2-service-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/consul-1-2-service-mesh/</guid>
       <description>本文是 HashiCorp 创始人 Mitchell Hashimoto 在 2018 年 6 月 26 日发布的关于 Consul 1.2 新功能 Service Mesh 的官方介绍。</description>
     </item>
     

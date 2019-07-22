@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>flagger on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/flagger/</link>
+    <link>https://www.servicemesher.com/tags/flagger/</link>
     <description>Recent content in flagger on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 09 Apr 2019 20:38:30 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/flagger/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/flagger/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>基于Flagger和Istio实现自动化金丝雀部署</title>
-      <link>http://www.servicemesher.com/blog/automated-canary-deployments-with-flagger-and-istio/</link>
+      <link>https://www.servicemesher.com/blog/automated-canary-deployments-with-flagger-and-istio/</link>
       <pubDate>Tue, 09 Apr 2019 20:38:30 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/automated-canary-deployments-with-flagger-and-istio/</guid>
+      <guid>https://www.servicemesher.com/blog/automated-canary-deployments-with-flagger-and-istio/</guid>
       <description>本文介绍如何使用Flagger和Istio实现自动化金丝雀部署。</description>
     </item>
     

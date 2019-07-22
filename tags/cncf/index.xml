@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cncf on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/cncf/</link>
+    <link>https://www.servicemesher.com/tags/cncf/</link>
     <description>Recent content in cncf on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 15 Feb 2019 10:41:22 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/cncf/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/cncf/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CNCF年度报告解读（2018年）</title>
-      <link>http://www.servicemesher.com/blog/cncf-annual-report-2018-review/</link>
+      <link>https://www.servicemesher.com/blog/cncf-annual-report-2018-review/</link>
       <pubDate>Fri, 15 Feb 2019 10:41:22 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/cncf-annual-report-2018-review/</guid>
+      <guid>https://www.servicemesher.com/blog/cncf-annual-report-2018-review/</guid>
       <description>本文是对 CNCF（云原生计算基金会）2018年年度报告的解读。</description>
     </item>
     

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SuperGloo on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/supergloo/</link>
+    <link>https://www.servicemesher.com/tags/supergloo/</link>
     <description>Recent content in SuperGloo on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 03 Jun 2019 11:20:34 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/supergloo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/supergloo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>容器、微服务和服务网格简史</title>
-      <link>http://www.servicemesher.com/blog/containers-microservices-service-meshes/</link>
+      <link>https://www.servicemesher.com/blog/containers-microservices-service-meshes/</link>
       <pubDate>Mon, 03 Jun 2019 11:20:34 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/containers-microservices-service-meshes/</guid>
+      <guid>https://www.servicemesher.com/blog/containers-microservices-service-meshes/</guid>
       <description>编者按 本文通过介绍一个构建和运行微服务的平台dotCloud的历史、容器间路由，进而阐述了它与现代服务网格的相同与不同之处；接着介绍了如何实</description>
     </item>
     
     <item>
       <title>SuperGloo—服务网格编排平台</title>
-      <link>http://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/</link>
+      <link>https://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/</link>
       <pubDate>Thu, 03 Jan 2019 15:49:46 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/</guid>
+      <guid>https://www.servicemesher.com/blog/supergloo-a-service-mesh-orchestrator/</guid>
       <description>作为服务网格的编排器，它为用户自由组合任何服务网格开启了方便之门，SuperGloo 也承载着 Solo 这家公司的愿景，混合云环境的云原生应用管理平台。</description>
     </item>
     

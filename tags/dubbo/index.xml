@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>dubbo on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/dubbo/</link>
+    <link>https://www.servicemesher.com/tags/dubbo/</link>
     <description>Recent content in dubbo on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 11 Sep 2018 19:06:22 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/dubbo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/dubbo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dubbo on x-protocol——SOFAMesh中的x-protocol示例演示</title>
-      <link>http://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</link>
+      <link>https://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</link>
       <pubDate>Tue, 11 Sep 2018 19:06:22 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/dubbo-on-x-protocol-in-sofa-mesh/</guid>
       <description>本文将以 Dubbo 为例，演示 SOFAMesh 中 Dubbo on x-protocol 场景下 Service Mesh 路由功能，涵盖 Version route 、Weighted route 功能。</description>
     </item>
     

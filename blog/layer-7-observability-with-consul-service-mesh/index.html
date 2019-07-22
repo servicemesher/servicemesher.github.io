@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consul Service Mesh的7层网络可观察性 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="observability, service mesh, consul">
+  
+
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Consul Service Mesh的7层网络可观察性" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/layer-7-observability-with-consul-service-mesh//" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="Consul团队写了一篇易懂、又有实操的如何在Service Mesh中，实现服务的可观察性的文章。即使没有太多基础，也能比较容易的看懂并了解service mesh中，如何实现服务的度量。">
+  <meta property="og:description" content="Consul团队写了一篇易懂、又有实操的如何在Service Mesh中，实现服务的可观察性的文章。即使没有太多基础，也能比较容易的看懂并了解service mesh中，如何实现服务的度量。">
+  <meta name="twitter:description" content="Consul团队写了一篇易懂、又有实操的如何在Service Mesh中，实现服务的可观察性的文章。即使没有太多基础，也能比较容易的看懂并了解service mesh中，如何实现服务的度量。">
+  <meta property="og:description" content="Consul团队写了一篇易懂、又有实操的如何在Service Mesh中，实现服务的可观察性的文章。即使没有太多基础，也能比较容易的看懂并了解service mesh中，如何实现服务的度量。" />
+
+  
+  <meta name="referrer" content="never">
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+  
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="/img/servicemesher-logo.jpg" alt="Consul Service Mesh的7层网络可观察性 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Consul Service Mesh的7层网络可观察性 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Consul Service Mesh的7层网络可观察性 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Service Mesh列表</a></li>
+                      
+                        <li><a href="/envoy/">Envoy官方文档中文版</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio中文官网</a></li>
+                      
+                        <li><a href="/categories/practice/">实践汇总</a></li>
+                      
+                        <li><a href="/istio-handbook/">Istio Handbook</a></li>
+                      
+                        <li><a href="/getting-started-with-knative/">Knative入门</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">社区 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                        <li><a href="https://github.com/servicemesher/istio-knowledge-map">Istio知识图谱</a></li>
+                      
+                        <li><a href="/contributing-specification/">贡献指南</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="https:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Consul Service Mesh的7层网络可观察性</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年7月12日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://www.hashicorp.com/">The Consul Team</a>
+                            
+                            
+                            | 译者 <a href="https://github.com/chengwhynot">张成</a>
+                            
+                            
+                            | 审校者
+                            
+                            <a href="104"><i>宋净超</i></a>
+                            
+                            
+                            |
+                            3600字 | 阅读大约需要8分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            <a href="https://www.hashicorp.com/blog/layer-7-observability-with-consul-service-mesh">查看原文</a>
+                            |
+                            
+                            
+                            归档于 <a href="/categories/service-mesh">service mesh</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/consul/"><i>#consul</i></a>
+                            
+                            <a style="text-transform:capitalize" href="/tags/observability/"><i>#observability</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<p><em>编者按：Consul团队写了一篇易懂、又有实操的如何在Service Mesh中，实现服务的可观察性的文章。即使没有太多基础，也能比较容易的看懂并了解service mesh中，如何实现服务的度量。</em></p>
+
+<h2 id="consul-service-mesh-的7层网络可观察性">Consul Service Mesh 的7层网络可观察性</h2>
+
+<p>这是系列博客的第二篇文章，重点介绍Consul服务网格中的新功能。</p>
+
+<h3 id="简介">简介</h3>
+
+<p>您之前可能已经听过“可观察性”一词，但它实际上意味着什么？ 它只是监控重新品牌，还是更多的可观察性？ 我们正在发布一系列博客文章，讨论服务网格的核心用例。 在本博客中，我们将详细介绍可观察性以及如何启用最近<a href="https://www.hashicorp.com/blog/hashicorp-consul-1-5">Consul 1.5发布</a>中包含的Consul Connect的新L7可观察性功能。</p>
+
+<p>首先，让我们重新审视一个熟悉的概念：监控。</p>
+
+<h4 id="监控">监控</h4>
+
+<p>监控意味着使用内部或外部工具检测应用程序和系统，以确定其状态。</p>
+
+<p>例如，您可能有一个外部运行状况检查，用于探测应用程序的状态或确定其当前的资源消耗。 您可能还有内部统计信息，用于报告特定代码块的性能，或执行某个数据库事务所需的时间。</p>
+
+<h4 id="可观察性">可观察性</h4>
+
+<p>可观察性来自工程和控制理论的世界。控制理论<a href="https://en.wikipedia.org/wiki/Observability">指出</a>可观察性本身就是一种描述“从外部产出的知识中推断出系统内部状态的程度”的措施。与监视哪些是你所做的相比，可观察性是系统的属性。如果外部输出，日志记录，度量，跟踪，健康检查等允许您了解其内部状态，则可以观察系统。</p>
+
+<p>可观察性对于频繁发布的现代分布式应用程序尤其重要。与通过进程内调用进行通信的单片体系结构相比，微服务体系结构在服务交互期间会出现更多故障，因为这些调用发生在可能不可靠的网络上。随着为测试创建逼真的类似生产的环境变得越来越困难，在客户开始之前检测生产中的问题变得更加重要。这些服务调用的视图可帮助团队及早发现故障，跟踪故障并设计弹性。</p>
+
+<p>借助模块化和可独立部署的（微）服务，很难实现对这些服务的可视性。单个用户请求可以流经多个服务，每个服务由不同的团队独立开发和部署。由于无法预测系统中可能发生的每个潜在故障或问题，因此您需要构建一旦部署后易于调试的系统。对网络的了解对于了解这些高度分布式系统的流量和性能至关重要。</p>
+
+<h3 id="服务网格">服务网格</h3>
+
+<p>服务网格是一种网络基础设施，它利用“边车”代理进行微服务部署。 由于边车代理存在于每个网络跃点，因此它捕获上游和下游通信。 因此，服务网格提供了对所有服务的外部性能的完全可见性。</p>
+
+<p>采用服务网格的一个主要好处是，边车代理队伍可以完全了解所有服务流量，并且可以以一致的方式公开指标，而不管不同的编程语言和框架。 应用程序仍需要进行检测，以便深入了解内部应用程序性能。</p>
+
+<h4 id="控制平面">控制平面</h4>
+
+<p>服务网格传统上由两个主要组件构成：控制平面和数据平面。 控制平面为网格中的所有正在运行的数据平面提供策略和配置。 数据平面通常是本地代理，作为应用程序的边车运行。 数据平面根据控制平面中的策略和服务图终止所有TLS连接和托管授权。 Consul构成服务网格的控制平面，简化了边车代理的配置，以实现安全的流量通信和度量收集。 Consul旨在支持各种代理作为sidecars，并且目前已经为Envoy提供了一流的支持，因为它具有轻量级的占用空间和可观察性支持。</p>
+
+<p><img src="1558253731-consul.png" alt="Envoy sidecar proxy with its upstream services" /></p>
+
+<p><em>Consul UI showing the Envoy sidecar proxy and its upstream services</em></p>
+
+<p>Consul 1.5引入了使用<code>consul connect envoy</code>命令立即为Consul Connect中的所有Envoy代理配置度量集合的功能。 在新的发现阶段，此命令从本地Consul代理获取集中存储的代理配置，并使用其值来引导Envoy代理。</p>
+
+<p>通过Consul Connect配置Envoy引导程序时，可以支持几种不同级别的自定义。 更高级别的配置是最简单的配置，涵盖了从Envoy获取指标所需的一切。</p>
+
+<p>可以通过创建配置文件来创建集中配置。</p>
+
+<pre><code class="language-bash">kind = &quot;proxy-defaults&quot;
+name = &quot;global&quot;
+
+config {
+  # (dog)statsd listener on either UDP or Unix socket. 
+  # envoy_statsd_url = &quot;udp://127.0.0.1:9125&quot;
+  envoy_dogstatsd_url = &quot;udp://127.0.0.1:9125&quot;
+
+  # IP:port to expose the /metrics endpoint on for scraping.
+  # prometheus_bind_addr = &quot;0.0.0.0:9102&quot;
+
+  # The flush interval in seconds.
+  envoy_stats_flush_interval = 10
+}
+</code></pre>
+
+<p>可以使用<code>consul config write &lt;filename&gt;</code>命令将此配置写入Consul。</p>
+
+<p>上述文件中的配置部分通过告知Envoy将指标发送到何处来启用指标收集。目前，Consul Connect通过集中配置支持以下度量标准输出格式：</p>
+
+<ul>
+<li><strong>StatsD</strong>：允许客户报告指标的网络协议，如计数器和计时器</li>
+<li><strong>DogStatsD</strong>：StatsD协议的扩展，支持直方图和指标标记</li>
+<li><strong>Prometheus</strong>：暴露出Prometheus可以抓取指标的终点</li>
+</ul>
+
+<p>DogStatsD接收器优于statsd，因为它允许标记指标，这对于能够在Grafana中正确过滤它们至关重要。一旦支持Envoy 1.10并发出直方图，prometheus端点对大多数用户来说都是一个不错的选择。</p>
+
+<p>Consul将使用该配置生成Envoy设置代理并配置相应统计信息接收器所需的引导配置。一旦Envoy代理被引导，它将开始发出指标。您可以在Prometheus等时间序列存储中捕获这些指标，并在Grafana等工具中查询它们，或将它们发送到托管监控解决方案。下面是一个Prometheus查询示例，您可以根据生成的指标编写，该查询将所有请求时间记录到上游“emojify-api”集群，然后按分位数对它们进行分组</p>
+
+<pre><code class="language-bash"># The response times of the emojify-api upstream, 
+# categorized by quantile 
+sum(envoy_cluster_upstream_rq_time{envoy_cluster_name=&quot;emojify-api&quot;} &gt; 0) by (quantile)
+</code></pre>
+
+<p><img src="1558253416-requesttime.png" alt="Resulting graph showing the request time quantiles" /><em>Resulting graph showing the request time quantiles</em></p>
+
+<p>Envoy根据其配置方式发出<a href="https://docs.datadoghq.com/integrations/envoy/#data-collected">大量</a>统计信息。 一般来说，有三类统计数据：</p>
+
+<ul>
+<li><strong>Downstream</strong> 与传入连接/请求相关的<strong>下游</strong>统计信息。</li>
+<li><strong>Upstream</strong> 与传出连接/请求相关的<strong>上游</strong>统计信息。</li>
+<li><strong>Server</strong> 描述Envoy服务器实例如何执行的<strong>服务器</strong>统计信息。</li>
+</ul>
+
+<p>统计信息的格式类似于`<code>envoy.&lt;category&gt;(.&lt;subcategory&gt;).metric</code>，我们感兴趣的一些类别是：</p>
+
+<ul>
+<li><strong>Cluster</strong>：Envoy连接的一组逻辑上相似的上游主机。</li>
+<li><strong>Listener</strong>：一个命名的网络位置，如端口或unix套接字，可由下游客户端连接。</li>
+<li><strong>TCP</strong>：连接，吞吐量等指标</li>
+<li><strong>HTTP</strong>：有关HTTP和HTTP/2连接和请求的指标。</li>
+</ul>
+
+<p><img src="1558253406-dashboard.png" alt="Grafana dashboard containing Envoy metrics" /></p>
+
+<p><em>Grafana dashboard containing Envoy metrics</em></p>
+
+<h3 id="l7可观察性">L7可观察性</h3>
+
+<p>默认情况下，Envoy代理L4或TCP层的连接。虽然这可能有用，但它不包括重要的协议特定信息，如请求率和指示错误所需的响应代码。</p>
+
+<p>例如，使用L4，您将看到发送和接收的连接数和字节数，但只有在连接意外终止时才会报告故障。当您的API或网站报告失败时，它们通常会响应特定于协议的错误消息，同时保持TCP连接处于活动状态或正常关闭它。例如，HTTP服务的响应带有状态代码，该状态代码指示响应的性质。当请求成功时，您将返回状态200，如果找不到，则返回404，当服务出现意外错误时，返回5xx。特使可以配置为记录每个响应的状态属于哪个类，以允许监视错误率。</p>
+
+<p>用于服务之间通信的另一个新兴协议是gRPC，它使用HTTP/2进行传输，使用Protocol Buffers作为接口定义和序列化格式，以执行远程过程调用。在为GRPC配置Envoy时，发出的指标将为您提供所调用的函数以及这些调用的结果状态。</p>
+
+<p>监控这些代码对于理解您的应用程序至关重要，但是，您需要在Envoy中启用一些其他配置，以便它了解您的应用正在使用L7。</p>
+
+<p>您可以通过在配置文件中设置服务默认值来指定服务的协议（请参阅下面的示例）。</p>
+
+<pre><code class="language-yaml">kind: &quot;service-defaults&quot;
+name: &quot;emojify-api&quot;
+protocol = &quot;http&quot;
+</code></pre>
+
+<p>然后使用<code>consul write &lt;filename&gt;</code>命令将其写入集中式配置。</p>
+
+<p>如果协议是“http”，“http2”或“grpc”，它将使侦听器发出L7指标。 在引导Envoy代理时，Consul将尝试从其引用的服务中解析上游协议。 如果已定义，则无需在上游指定协议。</p>
+
+<p>一旦通过Consul指定或发现代理和上游的协议字段，Envoy将配置集群以发出额外的L7指标，HTTP类别和指标的HTTP/GRPC子类别。</p>
+
+<p><img src="1558253409-l7metrics.png" alt="The emojify-cache and emojify-facebox clusters are emitting response codes with their metrics" /></p>
+
+<p><em>The emojify-cache and emojify-facebox clusters are emitting response codes with their metrics</em></p>
+
+<p>一旦您在Grafana中获得L7指标，您就可以开始更精确地关联事件，并了解系统中的故障是如何冒泡的。</p>
+
+<p>例如，如果emojify-api上游开始返回5xx响应代码，您可以查看对emojify-cache服务的调用，并查看Get调用是否也失败。</p>
+
+<pre><code class="language-bash"># Number of requests to the emojify-upstream, 
+# categorized by resulting response code
+sum(increase(envoy_cluster_upstream_rq_xx{envoy_cluster_name=&quot;emojify-api&quot;}[30s])) by (envoy_response_code_class)
+
+# Number of retry attempts to the emojify-api upstream
+sum(increase(envoy_cluster_upstream_rq_retry{envoy_cluster_name=&quot;emojify-api&quot;}[30s]))
+</code></pre>
+
+<p><img src="1558253412-requestcount.png" alt="Resulting graph showing the number of requests and retries" /></p>
+
+<p><em>Resulting graph showing the number of requests and retries</em></p>
+
+<pre><code class="language-bash"># Number of GRPC calls to the emojify-cache upstream, 
+# categorized by function called
+sum(increase(envoy_cluster_grpc_0{envoy_cluster_name=&quot;emojify-cache&quot;}[30s])) by (envoy_grpc_bridge_method)
+</code></pre>
+
+<p><img src="1558253414-requestgrpc.png" alt="Resulting graph showing the GRPC functions and their call count" /></p>
+
+<p><em>Resulting graph showing the GRPC functions and their call count</em></p>
+
+<p>通过使用分布式跟踪，您可以在系统上获得更好的可观察性。 这需要应用程序的一些合作来通过服务调用来发起跟踪和传播跟踪上下文。 可以将服务网格配置为集成并向跟踪添加跨度，以深入了解在代理中花费的时间。 这可以通过<code>envoy_tracing_json</code>字段提供，该字段接受JSON格式的Envoy跟踪配置。</p>
+
+<h3 id="总结">总结</h3>
+
+<p>通过使用集中式配置，您可以同时在中央位置为所有服务配置度量标准收集。 L7指标可让您更深入地了解服务的行为和性能。</p>
+
+<p>此处描述的L7可观察性功能已在<a href="https://hashicorp.com/blog/hashicorp-consul-1-5">Consul 1.5</a>中发布。 如果您想亲自试用新功能，这个<a href="https://instruqt.com/hashicorp/tracks/consul-l7-可观察性">演示</a>提供了一个无需安装的实践操场。 如果您想了解更多关于Kulnetes上Consul Connect的L7可观察性的信息，请查看HashiCorp关于此主题的学习<a href="https://learn.hashicorp.com/consul/getting-started-k8s/l7-observability-k8s">指南</a> 。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="https://www.servicemesher.com/blog/gitops-and-chatops/" data-toggle="tooltip" data-placement="top" title="GitOps与ChatOps的落地实践">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="https://www.servicemesher.com/blog/using-opentracing-with-istio-part-2/" data-toggle="tooltip" data-placement="top" title="洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
+                        
+                        
+                        
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script>
+	const gitalk = new Gitalk({
+	  clientID: 'dd2e2e19dd8835a4c6c4',
+	  clientSecret: 'f5bb37514a092a909908881495fb0132ab073bc1',
+	  repo: 'gitalk',
+	  owner: 'servicemesher',
+	  admin: ['rootsongjc'],
+	  id: md5(location.pathname),      
+	  distractionFreeMode: false  
+	})
+
+	gitalk.render('gitalk-container')
+</script>
+
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/consul-1-2-service-mesh/"><i class="fa fa-link"></i>Service Mesh新成员：Consul 1.2</a></li>
+         
+        <li><a href="/blog/deep-dive-into-cilium-multi-cluster/"><i class="fa fa-link"></i>深入了解Cilium多集群</a></li>
+         
+        <li><a href="/blog/guidance-for-building-a-control-plane-for-envoy-part-2-identify-components/"><i class="fa fa-link"></i>为Envoy构建控制面指南第2部分：识别组件</a></li>
+         
+        <li><a href="/blog/service-mesh-interface-detail/"><i class="fa fa-link"></i>Service Mesh Interface详细介绍</a></li>
+         
+        <li><a href="/blog/exploring-istio-telemetry-and-observability/"><i class="fa fa-link"></i>Istio遥测和可观察性探索</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/cilium"><i class="fa fa-navicon"></i>cilium (3)</a>
+            </li>
+            
+            <li><a href="/categories/cloud-native"><i class="fa fa-navicon"></i>cloud-native (3)</a>
+            </li>
+            
+            <li><a href="/categories/cloud-native-weekly"><i class="fa fa-navicon"></i>cloud-native-weekly (3)</a>
+            </li>
+            
+            <li><a href="/categories/consul"><i class="fa fa-navicon"></i>consul (1)</a>
+            </li>
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (6)</a>
+            </li>
+            
+            <li><a href="/categories/devops"><i class="fa fa-navicon"></i>devops (3)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (23)</a>
+            </li>
+            
+            <li><a href="/categories/gitops"><i class="fa fa-navicon"></i>gitops (1)</a>
+            </li>
+            
+            <li><a href="/categories/grpc"><i class="fa fa-navicon"></i>grpc (2)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (85)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (12)</a>
+            </li>
+            
+            <li><a href="/categories/linkerd"><i class="fa fa-navicon"></i>linkerd (3)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/microprofile"><i class="fa fa-navicon"></i>microprofile (1)</a>
+            </li>
+            
+            <li><a href="/categories/microservices"><i class="fa fa-navicon"></i>microservices (4)</a>
+            </li>
+            
+            <li><a href="/categories/microsevices"><i class="fa fa-navicon"></i>microsevices (1)</a>
+            </li>
+            
+            <li><a href="/categories/monitoring"><i class="fa fa-navicon"></i>monitoring (3)</a>
+            </li>
+            
+            <li><a href="/categories/practice"><i class="fa fa-navicon"></i>practice (16)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (6)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (58)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/using-opentracing-with-istio-part-2/">
+                          
+                          <img src="/img/blog/banners/using-opentracing-with-istio-part-2.jpg" class="img-responsive" alt="洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/using-opentracing-with-istio-part-2/">洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/layer-7-observability-with-consul-service-mesh/">
+                          
+                          <img src="/img/blog/banners/franck-v-mMF7N2mNGCg-unsplash.jpg" class="img-responsive" alt="Consul Service Mesh的7层网络可观察性">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/layer-7-observability-with-consul-service-mesh/">Consul Service Mesh的7层网络可观察性</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/gitops-and-chatops/">
+                          
+                          <img src="/img/blog/banners/blogging-coding-copywriting-34140.jpg" class="img-responsive" alt="GitOps与ChatOps的落地实践">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/gitops-and-chatops/">GitOps与ChatOps的落地实践</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://www.miibeian.gov.cn/"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

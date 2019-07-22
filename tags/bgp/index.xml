@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BGP on ServiceMesher</title>
+    <link>https://www.servicemesher.com/tags/bgp/</link>
+    <description>Recent content in BGP on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 03 Jul 2019 10:59:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.servicemesher.com/tags/bgp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>深入了解Cilium多集群</title>
+      <link>https://www.servicemesher.com/blog/deep-dive-into-cilium-multi-cluster/</link>
+      <pubDate>Wed, 03 Jul 2019 10:59:29 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/deep-dive-into-cilium-multi-cluster/</guid>
+      <description>ClusterMesh是Cilium的多集群实现，可以帮助cilium实现跨数据中心、跨VPC的多K8S集群管理，本文对于ClusterMesh的实现原理进行了深入探讨，并与istio的多集群管理进行了比较。</description>
+    </item>
+    
+  </channel>
+</rss>

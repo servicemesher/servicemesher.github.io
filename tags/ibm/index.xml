@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IBM on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/ibm/</link>
+    <link>https://www.servicemesher.com/tags/ibm/</link>
     <description>Recent content in IBM on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 28 Aug 2018 16:15:25 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/ibm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/ibm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>IBM云计算CTO讲述Istio项目的起源、分工及目标</title>
-      <link>http://www.servicemesher.com/blog/istio-aims-to-be-the-mesh-plumbing-for-containerized-microservices/</link>
+      <link>https://www.servicemesher.com/blog/istio-aims-to-be-the-mesh-plumbing-for-containerized-microservices/</link>
       <pubDate>Tue, 28 Aug 2018 16:15:25 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-aims-to-be-the-mesh-plumbing-for-containerized-microservices/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-aims-to-be-the-mesh-plumbing-for-containerized-microservices/</guid>
       <description>本文主要是IBM研究员兼云计算CTO Jason McGee对Istio项目的起源、分工与目标的解说。</description>
     </item>
     

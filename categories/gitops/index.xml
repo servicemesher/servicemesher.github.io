@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gitops on ServiceMesher</title>
-    <link>http://www.servicemesher.com/categories/gitops/</link>
+    <link>https://www.servicemesher.com/categories/gitops/</link>
     <description>Recent content in gitops on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 08 May 2019 22:40:05 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/categories/gitops/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/categories/gitops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Google混合云多云平台Anthos Config Management产品设计分析</title>
-      <link>http://www.servicemesher.com/blog/anthos-config-management-intro/</link>
+      <link>https://www.servicemesher.com/blog/anthos-config-management-intro/</link>
       <pubDate>Wed, 08 May 2019 22:40:05 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/anthos-config-management-intro/</guid>
+      <guid>https://www.servicemesher.com/blog/anthos-config-management-intro/</guid>
       <description>简单说，当你修改某个git管理下的yaml配置文件，里面描述了某个GKE私有集群某个cluster的node数量，然后Anthos Config Management会帮你自动的发命令并让节点数量变成你想要的那个。</description>
     </item>
     

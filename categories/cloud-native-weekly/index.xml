@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cloud native weekly on ServiceMesher</title>
-    <link>http://www.servicemesher.com/categories/cloud-native-weekly/</link>
+    <link>https://www.servicemesher.com/categories/cloud-native-weekly/</link>
     <description>Recent content in cloud native weekly on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 07 May 2019 15:12:53 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/categories/cloud-native-weekly/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/categories/cloud-native-weekly/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>云原生生态周报（Cloud Native Weekly）第3期</title>
-      <link>http://www.servicemesher.com/blog/cloud-native-weekly-03/</link>
+      <link>https://www.servicemesher.com/blog/cloud-native-weekly-03/</link>
       <pubDate>Tue, 07 May 2019 15:12:53 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/cloud-native-weekly-03/</guid>
+      <guid>https://www.servicemesher.com/blog/cloud-native-weekly-03/</guid>
       <description>这是 Cloud Native 周报第3期。</description>
     </item>
     
     <item>
       <title>云原生生态周报（Cloud Native Weekly）第2期</title>
-      <link>http://www.servicemesher.com/blog/cloud-native-weekly-02/</link>
+      <link>https://www.servicemesher.com/blog/cloud-native-weekly-02/</link>
       <pubDate>Tue, 23 Apr 2019 10:44:45 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/cloud-native-weekly-02/</guid>
+      <guid>https://www.servicemesher.com/blog/cloud-native-weekly-02/</guid>
       <description>这是 Cloud Native 周报第2期。</description>
     </item>
     
     <item>
       <title>云原生生态周报（Cloud Native Weekly）第1期</title>
-      <link>http://www.servicemesher.com/blog/cloud-native-weekly-01/</link>
+      <link>https://www.servicemesher.com/blog/cloud-native-weekly-01/</link>
       <pubDate>Tue, 16 Apr 2019 19:35:39 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/cloud-native-weekly-01/</guid>
+      <guid>https://www.servicemesher.com/blog/cloud-native-weekly-01/</guid>
       <description>这是 Cloud Native 周报第一期。</description>
     </item>
     

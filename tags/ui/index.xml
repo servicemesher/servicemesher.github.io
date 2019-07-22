@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ui on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/ui/</link>
+    <link>https://www.servicemesher.com/tags/ui/</link>
     <description>Recent content in ui on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 25 Oct 2018 10:44:46 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/ui/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/ui/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>小米正式开源Istio管理面板Naftis</title>
-      <link>http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</link>
+      <link>https://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</link>
       <pubDate>Thu, 25 Oct 2018 10:44:46 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</guid>
+      <guid>https://www.servicemesher.com/blog/naftis-istio-dashboard-xiaomi/</guid>
       <description>用Istio治理服务时须通过istioctl或kubectl，这种方式可能存在一些问题。因此小米武研推出Naftis，帮助用户更轻松地管理Istio。</description>
     </item>
     
     <item>
       <title>istio-ui——一款开源的简易Istio UI的介绍和使用教程</title>
-      <link>http://www.servicemesher.com/blog/istio-ui-tutorial/</link>
+      <link>https://www.servicemesher.com/blog/istio-ui-tutorial/</link>
       <pubDate>Mon, 22 Oct 2018 19:33:39 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-ui-tutorial/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-ui-tutorial/</guid>
       <description>本文介绍的是联邦车网的工程师朱经惠开源的istio-ui项目，该项目主要是为了减轻配置工作和减少犯错几率。</description>
     </item>
     

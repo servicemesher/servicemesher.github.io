@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cilium on ServiceMesher</title>
+    <link>https://www.servicemesher.com/categories/cilium/</link>
+    <description>Recent content in cilium on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 03 Jul 2019 10:59:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.servicemesher.com/categories/cilium/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>深入了解Cilium多集群</title>
+      <link>https://www.servicemesher.com/blog/deep-dive-into-cilium-multi-cluster/</link>
+      <pubDate>Wed, 03 Jul 2019 10:59:29 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/deep-dive-into-cilium-multi-cluster/</guid>
+      <description>ClusterMesh是Cilium的多集群实现，可以帮助cilium实现跨数据中心、跨VPC的多K8S集群管理，本文对于ClusterMesh的实现原理进行了深入探讨，并与istio的多集群管理进行了比较。</description>
+    </item>
+    
+    <item>
+      <title>Cilium 1.4 发布了，新功能一览</title>
+      <link>https://www.servicemesher.com/blog/cilium-1-4/</link>
+      <pubDate>Mon, 18 Feb 2019 17:59:29 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/cilium-1-4/</guid>
+      <description>Cilium 1.4：多集群服务路由，DNS授权，IPVLAN支持，透明加密，Flannel集成，与其他CNI的基准测试。</description>
+    </item>
+    
+    <item>
+      <title>Cilium 1.2发布—DNS安全性策略、EKS支持、ClusterMesh、kube-router集成等</title>
+      <link>https://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</link>
+      <pubDate>Mon, 27 Aug 2018 19:52:29 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/cilium1-2-dns-security-policies-eks-support-clustermesh-kube-router-integration/</guid>
+      <description>Cilum使用Kube-router在Kubernetes Pod与集群外部运行的服务之间建立连接，再引入基于DNS 名称的安全策略保护对集群外服务的访问，再增加Cluster Mesh增加对多Kubernetes集群的支持。</description>
+    </item>
+    
+  </channel>
+</rss>

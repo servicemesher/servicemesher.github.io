@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>open shift on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/open-shift/</link>
+    <link>https://www.servicemesher.com/tags/open-shift/</link>
     <description>Recent content in open shift on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 25 Sep 2018 16:09:49 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/open-shift/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/open-shift/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Red Hat OpenShift发布Istio预览版</title>
-      <link>http://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</link>
+      <link>https://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</link>
       <pubDate>Tue, 25 Sep 2018 16:09:49 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-on-openshift-technology-preview/</guid>
       <description>技术预览计划将为现有的OpenShift Container Platform客户提供在其OpenShift集群上部署和使用Istio平台的能力。红帽正在提供此计划，旨在收集反馈和经验，同时Red Hat期望在2019自然年提供OpenShift上Istio的全面支持和全面可用性。</description>
     </item>
     

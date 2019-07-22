@@ -2,31 +2,220 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>envoy on ServiceMesher</title>
-    <link>http://www.servicemesher.com/categories/envoy/</link>
+    <link>https://www.servicemesher.com/categories/envoy/</link>
     <description>Recent content in envoy on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 08 May 2019 10:12:18 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2019 10:41:16 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/categories/envoy/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/categories/envoy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>为Envoy构建控制面指南第2部分：识别组件</title>
+      <link>https://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-2-identify-components/</link>
+      <pubDate>Fri, 28 Jun 2019 10:41:16 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-2-identify-components/</guid>
+      <description>本文介绍如何为 Envoy 构建控制面指南的第2部分：识别组件。</description>
+    </item>
+    
+    <item>
+      <title>构建Envoy的控制平面手册第5部分 - 部署的权衡</title>
+      <link>https://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-deployment-tradeoffs/</link>
+      <pubDate>Fri, 14 Jun 2019 10:30:32 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-deployment-tradeoffs/</guid>
+      <description>编者按 作为探索为Envoy构建控制平面系列文章的第5部分，本文介绍了部署控制平面的选项与权衡，着重阐述了保持控制平面与数据平面解耦的几大好处</description>
+    </item>
+    
+    <item>
+      <title>部署Envoy代理来为Monzo提速</title>
+      <link>https://www.servicemesher.com/blog/deploying-envoy-proxy/</link>
+      <pubDate>Mon, 27 May 2019 04:55:44 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/deploying-envoy-proxy/</guid>
+      <description>本文介绍了使用Envoy来加速Monzo，对比了使用Linkerd和Envoy，通过试验证明Envoy拥有更小的延迟。</description>
+    </item>
+    
+    <item>
       <title>CNCF正在筹建通用数据平面API工作组，以制定数据平面的标准API</title>
-      <link>http://www.servicemesher.com/blog/cncf-udpa-wg/</link>
+      <link>https://www.servicemesher.com/blog/cncf-udpa-wg/</link>
       <pubDate>Wed, 08 May 2019 10:12:18 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/cncf-udpa-wg/</guid>
+      <guid>https://www.servicemesher.com/blog/cncf-udpa-wg/</guid>
       <description>CNCF正在筹建通用数据平面API工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准API，为L4/L7数据平面配置提供事实上的标准，初始成员将包括 Envoy 和 gRPC 项目的代表。</description>
     </item>
     
     <item>
+      <title>Envoy、服务网格和可观察性之企业最佳实践</title>
+      <link>https://www.servicemesher.com/blog/envoy-service-mesh-and-observability-best-practices-for-enterprises/</link>
+      <pubDate>Tue, 07 May 2019 11:50:05 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/envoy-service-mesh-and-observability-best-practices-for-enterprises/</guid>
+      <description>通过对Envoy创始人Matt Klein的采访，Matt分享了他对企业开始使用微服务部署Envoy所遇到的挑战以及可观察性的看法和选择。</description>
+    </item>
+    
+    <item>
+      <title>为 Envoy 构建控制面指南第4部分：构建的可扩展性</title>
+      <link>https://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/</link>
+      <pubDate>Mon, 22 Apr 2019 10:41:16 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-4-build-for-extensibility/</guid>
+      <description>本文介绍如何为 Envoy 构建控制面指南的第4部分：构建的可扩展性。</description>
+    </item>
+    
+    <item>
+      <title>为 Envoy 构建控制平面指南第3部分：领域特定配置</title>
+      <link>https://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/</link>
+      <pubDate>Thu, 04 Apr 2019 18:00:43 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/guidance-for-building-a-control-plane-for-envoy-part-3-domain-specific-configuration/</guid>
+      <description>本文介绍如何为 Envoy 构建控制平面指南的第3部分：领域特定配置。</description>
+    </item>
+    
+    <item>
+      <title>为 Envoy 赋能——如何基于 Envoy 构建一个多用途控制平面</title>
+      <link>https://www.servicemesher.com/blog/building-a-control-plane-for-envoy/</link>
+      <pubDate>Mon, 25 Mar 2019 21:02:19 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/building-a-control-plane-for-envoy/</guid>
+      <description>本文介绍如何利用 Gloo 提供的功能，减少自己需要编写的代码。</description>
+    </item>
+    
+    <item>
+      <title>Envoy Proxy构建控制平面指南</title>
+      <link>https://www.servicemesher.com/blog/guidance-for-building-a-control-plane-to-manage-envoy-proxy-at-the-edge-as-a-gateway-or-in-a-mesh/</link>
+      <pubDate>Wed, 06 Mar 2019 12:17:02 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/guidance-for-building-a-control-plane-to-manage-envoy-proxy-at-the-edge-as-a-gateway-or-in-a-mesh/</guid>
+      <description>Envoy Proxy构建控制平面指南。</description>
+    </item>
+    
+    <item>
+      <title>Envoy架构师Matt Klein对Envoy线程模型的简介</title>
+      <link>https://www.servicemesher.com/blog/envoy-threading-model/</link>
+      <pubDate>Wed, 20 Feb 2019 20:17:12 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/envoy-threading-model/</guid>
+      <description>Envoy的架构师Matt Klein对Envoy中多线程模型的简单介绍。</description>
+    </item>
+    
+    <item>
+      <title>REST的替代者：Envoy&#43;gRPC-Web</title>
+      <link>https://www.servicemesher.com/blog/envoy-and-grpc-web-a-fresh-new-alternative-to-rest/</link>
+      <pubDate>Mon, 28 Jan 2019 14:20:33 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/envoy-and-grpc-web-a-fresh-new-alternative-to-rest/</guid>
+      <description>本文为大家推荐的是一种REST的替代方案 Envoy + gRPC-Web。</description>
+    </item>
+    
+    <item>
       <title>Istio 的数据平面 Envoy Proxy 配置详解</title>
-      <link>http://www.servicemesher.com/blog/envoy-proxy-config-deep-dive/</link>
+      <link>https://www.servicemesher.com/blog/envoy-proxy-config-deep-dive/</link>
       <pubDate>Mon, 07 Jan 2019 17:48:01 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/envoy-proxy-config-deep-dive/</guid>
+      <guid>https://www.servicemesher.com/blog/envoy-proxy-config-deep-dive/</guid>
       <description>本文介绍了 Envoy proxy 的概念，对应的 xDS 的版本以及配置的详细解析。</description>
+    </item>
+    
+    <item>
+      <title>使用Envoy和Jaeger实现分布式追踪</title>
+      <link>https://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</link>
+      <pubDate>Tue, 11 Dec 2018 14:24:23 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</guid>
+      <description>本文用实例讲解了如何利用Envoy和Jaeger实现分布式追踪。</description>
+    </item>
+    
+    <item>
+      <title>Envoy中的数据统计</title>
+      <link>https://www.servicemesher.com/blog/envoy-stats/</link>
+      <pubDate>Fri, 07 Dec 2018 12:52:58 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/envoy-stats/</guid>
+      <description>本文讲述了Envoy数据统计系统的设计及实现原理。</description>
+    </item>
+    
+    <item>
+      <title>使用Istio和Envoy实践服务网格gRPC度量</title>
+      <link>https://www.servicemesher.com/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/</link>
+      <pubDate>Tue, 27 Nov 2018 19:09:15 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/istio-envoy-grpc-metrics-winning-with-service-mesh-in-practice/</guid>
+      <description>本文展示的是如何使用 Istio 和 Envoy 来对 gRPC 做度量。</description>
+    </item>
+    
+    <item>
+      <title>使用 Envoy 搭建 Service Mesh</title>
+      <link>https://www.servicemesher.com/blog/service-mesh-with-envoy-101/</link>
+      <pubDate>Fri, 23 Nov 2018 14:27:26 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/service-mesh-with-envoy-101/</guid>
+      <description>本文将简单的讨论下我们经常听到的 Service Mesh 是什么，以及如何使用 Envoy 构建服务网格(Service Mesh),使用速率限制服务来减轻客户端对 API 资源的消耗。</description>
+    </item>
+    
+    <item>
+      <title>使用Envoy将gRPC转码为HTTP/JSON</title>
+      <link>https://www.servicemesher.com/blog/transcoding-grpc-to-http-json-using-envoy/</link>
+      <pubDate>Thu, 22 Nov 2018 15:16:06 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/transcoding-grpc-to-http-json-using-envoy/</guid>
+      <description>本文用实例讲解了如何利用Envoy将gRPC转码为HTTP/JSON。</description>
+    </item>
+    
+    <item>
+      <title>Envoy service mesh、Prometheus和Grafana下的微服务监控</title>
+      <link>https://www.servicemesher.com/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/</link>
+      <pubDate>Tue, 20 Nov 2018 11:40:46 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/microservices-monitoring-with-envoy-service-mesh-prometheus-grafana/</guid>
+      <description>本文介绍了Envoy service mesh下结合Prometheus和Grafana实现的微服务监控方案。</description>
+    </item>
+    
+    <item>
+      <title>Envoy，gRPC和速率限制</title>
+      <link>https://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</link>
+      <pubDate>Thu, 15 Nov 2018 13:20:46 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/envoy-grpc-and-rate-limiting/</guid>
+      <description>本文使用C++构建了客户端/服务端应用，通过Envoy代理和gPRC协议进行通信，然后使用Go语言实现了Envoy速率限制服务。</description>
+    </item>
+    
+    <item>
+      <title>Cilium 1.3：支持Envoy、Cassandra和Memcached的Go语言扩展</title>
+      <link>https://www.servicemesher.com/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/</link>
+      <pubDate>Tue, 06 Nov 2018 12:20:51 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/cilium-13-go-extensions-for-envoy-cassandra-memcached-support/</guid>
+      <description>本文讲解了具备API感知的网络和安全性管理的开源软件Cilium1.3的新特性，并用示例演示新的Go扩展如何使用。</description>
+    </item>
+    
+    <item>
+      <title>SRE 弹性能力：使用 Envoy 对应用进行速率限制</title>
+      <link>https://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</link>
+      <pubDate>Sun, 04 Nov 2018 12:00:46 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/sre-resiliency-bolt-on-sidecar-rate-limiting-with-envoy-sidecar/</guid>
+      <description>本文详述了如何做速率限制服务来减轻客户端对 API 资源的消耗。</description>
+    </item>
+    
+    <item>
+      <title>Envoy 中的 xDS REST 和 gRPC 协议详解</title>
+      <link>https://www.servicemesher.com/blog/envoy-xds-protocol/</link>
+      <pubDate>Fri, 28 Sep 2018 19:07:20 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/envoy-xds-protocol/</guid>
+      <description>本文翻译自 Envoy 代码库中的文档，本文通过示例详解了 Envoy 的 xDS REST 和 gPRC 协议。</description>
+    </item>
+    
+    <item>
+      <title>Envoy服务网格在Lyft的实践及未来路线图</title>
+      <link>https://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</link>
+      <pubDate>Sun, 02 Sep 2018 13:48:47 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/envoy-service-mesh-cascading-failure/</guid>
+      <description>本文分享了Lyft对于Envoy的在服务网格领域的实践，主要为了解决级联故障的问题，以及Lyft对于Envoy的未来规划。</description>
     </item>
     
   </channel>

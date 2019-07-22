@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>microsevices on ServiceMesher</title>
+    <link>https://www.servicemesher.com/categories/microsevices/</link>
+    <description>Recent content in microsevices on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 02 Aug 2018 15:32:40 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.servicemesher.com/categories/microsevices/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>微服务中的Sidecar设计模式解析</title>
+      <link>https://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/</link>
+      <pubDate>Thu, 02 Aug 2018 15:32:40 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/</guid>
+      <description>Sidecar 设计模式已经越来越受欢迎，并在社区内得到更广泛的采用。构建具有高度可扩展性、弹性、安全性和可观察性的微服务架构具有挑战性。Service Mesh 架构的发展已经改变了游戏规则。它降低了与微服务架构相关的复杂性，并提供了许多功能，如负载平衡、服务发现、流量管理、熔断、遥测、故障注入等。</description>
+    </item>
+    
+  </channel>
+</rss>

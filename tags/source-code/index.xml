@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>source code on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/source-code/</link>
+    <link>https://www.servicemesher.com/tags/source-code/</link>
     <description>Recent content in source code on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 04 Jul 2018 19:44:08 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/source-code/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/source-code/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Istio源码解析系列part3—Mixer工作流程浅析</title>
-      <link>http://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</link>
+      <link>https://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</link>
       <pubDate>Wed, 04 Jul 2018 19:44:08 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-deepin-part3-mixer-workflow/</guid>
       <description>本系列文章主要从Istio源码出发深入剖析，让大家对istio有更深的认知，从而方便平时排查问题。本文是对Istio中Mixer的工作流程浅析。</description>
     </item>
     
     <item>
       <title>Istio源码解析系列part2—服务治理配置生效流程解析</title>
-      <link>http://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/</link>
+      <link>https://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/</link>
       <pubDate>Wed, 04 Jul 2018 19:24:37 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-deepin-part2-serivce-management-workflow/</guid>
       <description>本系列文章主要从Istio源码出发深入剖析，让大家对istio有更深的认知，从而方便平时排查问题。本文讲解Istio中的bookinfo示例并执行过文档中的task，介绍从执行istioctl指令到配置文件生效的整个流程。</description>
     </item>
     
     <item>
       <title>Istio源码解析系列part1—Istio源码架构介绍及开发环境搭建</title>
-      <link>http://www.servicemesher.com/blog/istio-deepin-part1-framework-and-environment/</link>
+      <link>https://www.servicemesher.com/blog/istio-deepin-part1-framework-and-environment/</link>
       <pubDate>Wed, 04 Jul 2018 19:11:00 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-deepin-part1-framework-and-environment/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-deepin-part1-framework-and-environment/</guid>
       <description>本系列文章主要从Istio源码出发深入剖析，让大家对istio有更深的认知，从而方便平时排查问题。本文讲解Istio源码架构及开发环境搭建。</description>
     </item>
     
     <item>
       <title>Istio Mixer Cache工作原理与源码分析part4－签名</title>
-      <link>http://www.servicemesher.com/blog/istio-mixer-cache-part4-signature/</link>
+      <link>https://www.servicemesher.com/blog/istio-mixer-cache-part4-signature/</link>
       <pubDate>Mon, 11 Jun 2018 14:03:34 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part4-signature/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-mixer-cache-part4-signature/</guid>
       <description>接前文，继续分析Mixer Check Cache的源码，这次的重点是签名算法，也就是Referenced::Signature()方法。</description>
     </item>
     
     <item>
       <title>Istio Mixer Cache工作原理与源码分析part3—主流程</title>
-      <link>http://www.servicemesher.com/blog/istio-mixer-cache-part3-main/</link>
+      <link>https://www.servicemesher.com/blog/istio-mixer-cache-part3-main/</link>
       <pubDate>Mon, 11 Jun 2018 13:43:10 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part3-main/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-mixer-cache-part3-main/</guid>
       <description>经过前面基本概念和实现原理的介绍，大家对mixer check cache应该有了基本的了解，下面我们开始展开源代码来细细研读。</description>
     </item>
     
     <item>
       <title>Istio Mixer Cache工作原理与源码分析part2－工作原理</title>
-      <link>http://www.servicemesher.com/blog/istio-mixer-cache-part2-principle/</link>
+      <link>https://www.servicemesher.com/blog/istio-mixer-cache-part2-principle/</link>
       <pubDate>Thu, 07 Jun 2018 19:19:44 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part2-principle/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-mixer-cache-part2-principle/</guid>
       <description>经过前面的基础概念的介绍，我们现在已经可以勾勒出一个mixer cache的实现轮廓，当然实际代码实现时会有很多细节。但是为了方便理解，我们在深入细节之前，先给出一个简化版本，让大家快速了解mixer cache的实现原理。后面的章节我们再逐渐深入。</description>
     </item>
     
     <item>
       <title>Istio Mixer Cache工作原理与源码分析part1－基本概念</title>
-      <link>http://www.servicemesher.com/blog/istio-mixer-cache-part1-concepts/</link>
+      <link>https://www.servicemesher.com/blog/istio-mixer-cache-part1-concepts/</link>
       <pubDate>Thu, 07 Jun 2018 19:16:21 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-mixer-cache-part1-concepts/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-mixer-cache-part1-concepts/</guid>
       <description>本系列文章将详细介绍Istio中Mixer Cache的工作原理，为了避免空谈，将引入广大程序员同学喜闻乐见的源码分析环节，并结合Mixer的接口API，详细展现Mixer Cache的各种细节。</description>
     </item>
     

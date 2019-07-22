@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jaeger on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/jaeger/</link>
-    <description>Recent content in jaeger on ServiceMesher</description>
+    <title>Jaeger on ServiceMesher</title>
+    <link>https://www.servicemesher.com/tags/jaeger/</link>
+    <description>Recent content in Jaeger on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 11 Dec 2018 14:24:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jul 2019 14:00:00 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/jaeger/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/jaeger/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二</title>
+      <link>https://www.servicemesher.com/blog/using-opentracing-with-istio-part-2/</link>
+      <pubDate>Wed, 17 Jul 2019 14:00:00 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/using-opentracing-with-istio-part-2/</guid>
+      <description>在实际项目中，除了同步调用之外，异步消息也是微服务架构中常见的一种通信方式。在本篇文章中，我将继续利用eshop demo程序来探讨如何通过Opentracing将Kafka异步消息也纳入到Istio的分布式调用跟踪中。</description>
+    </item>
+    
+    <item>
+      <title>洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇一</title>
+      <link>https://www.servicemesher.com/blog/using-opentracing-with-istio-part-1/</link>
+      <pubDate>Wed, 03 Jul 2019 12:00:00 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/using-opentracing-with-istio-part-1/</guid>
+      <description>本文将介绍如何利用OpenTracing来增强Istio/Envoy缺省的调用链跟踪实现：如何利用Opentracing来实现跨进程边界的分布式调用上下文传递；以及在Istio/Envoy生成的分布式调用跟踪基础上实现方法级的细粒度调用跟踪。</description>
+    </item>
+    
+    <item>
       <title>使用Envoy和Jaeger实现分布式追踪</title>
-      <link>http://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</link>
+      <link>https://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</link>
       <pubDate>Tue, 11 Dec 2018 14:24:23 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</guid>
+      <guid>https://www.servicemesher.com/blog/distributed-tracing-with-envoy-service-mesh-jaeger/</guid>
       <description>本文用实例讲解了如何利用Envoy和Jaeger实现分布式追踪。</description>
     </item>
     

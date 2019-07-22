@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>coohom on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/coohom/</link>
+    <link>https://www.servicemesher.com/tags/coohom/</link>
     <description>Recent content in coohom on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 25 Oct 2018 20:49:29 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/coohom/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/coohom/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>云端设计平台Coohom在生产环境中使用istio的经验与实践</title>
-      <link>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</link>
+      <link>https://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</link>
       <pubDate>Thu, 25 Oct 2018 20:49:29 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</guid>
+      <guid>https://www.servicemesher.com/blog/practice-for-coohom-using-istio-in-production/</guid>
       <description>本文是酷家乐的Coohom项目使用Istio服务网格的实践经验分享。</description>
     </item>
     

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloud native on ServiceMesher</title>
+    <link>https://www.servicemesher.com/categories/cloud-native/</link>
+    <description>Recent content in cloud native on ServiceMesher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 22 Apr 2019 13:54:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.servicemesher.com/categories/cloud-native/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>导致云原生微服务系统开发灾难性的8件事</title>
+      <link>https://www.servicemesher.com/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/</link>
+      <pubDate>Mon, 22 Apr 2019 13:54:05 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/</guid>
+      <description>本文介绍了作者认为在开发云原生微服务系统时会出现的8个问题，并告诫大家避免犯错。</description>
+    </item>
+    
+    <item>
+      <title>构建无缝集成的gRPC-Web和Istio的云原生应用教程</title>
+      <link>https://www.servicemesher.com/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/</link>
+      <pubDate>Mon, 10 Dec 2018 21:50:05 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/seamless-cloud-native-apps-with-grpc-web-and-istio/</guid>
+      <description>本文构建了一个简单的Web应用，该应用使用emoji替换用户输入文本中的关键字，并使用gRPC-Web和Istio与gRPC后端进行通信。</description>
+    </item>
+    
+    <item>
+      <title>云原生可移植性的神话</title>
+      <link>https://www.servicemesher.com/blog/myth-cloud-native-portability/</link>
+      <pubDate>Tue, 30 Oct 2018 17:15:17 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/myth-cloud-native-portability/</guid>
+      <description>本文介绍了云原生的可移植性，告诫读者应该看重生态系统而不是某个具体平台。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kong on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/kong/</link>
+    <link>https://www.servicemesher.com/tags/kong/</link>
     <description>Recent content in kong on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 15 Feb 2019 10:35:59 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/kong/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/kong/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kong mesh深度分析报告</title>
-      <link>http://www.servicemesher.com/blog/kong-mesh-analyse-report/</link>
+      <link>https://www.servicemesher.com/blog/kong-mesh-analyse-report/</link>
       <pubDate>Fri, 15 Feb 2019 10:35:59 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/kong-mesh-analyse-report/</guid>
+      <guid>https://www.servicemesher.com/blog/kong-mesh-analyse-report/</guid>
       <description>本文试用了 kong mesh 并与 istio + envoy 做了功能对比。</description>
     </item>
     
     <item>
       <title>Kong 1.0发布，从网关转型为服务控制平台</title>
-      <link>http://www.servicemesher.com/blog/kong-at-1-0-a-service-control-platform/</link>
+      <link>https://www.servicemesher.com/blog/kong-at-1-0-a-service-control-platform/</link>
       <pubDate>Thu, 20 Sep 2018 11:35:02 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/kong-at-1-0-a-service-control-platform/</guid>
+      <guid>https://www.servicemesher.com/blog/kong-at-1-0-a-service-control-platform/</guid>
       <description>Kong 1.0是该公司构建服务控制平台愿景的基础，该平台结合了人工智能、机器学习和其他先进技术，可以促进信息流在服务之间的流动。</description>
     </item>
     

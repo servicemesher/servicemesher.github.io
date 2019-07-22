@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linkerd on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/linkerd/</link>
+    <link>https://www.servicemesher.com/tags/linkerd/</link>
     <description>Recent content in Linkerd on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 20 May 2019 12:10:44 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/linkerd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/linkerd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>微服务中的熔断简介及工作原理详解（第2部分）</title>
-      <link>http://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</link>
+      <link>https://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</link>
       <pubDate>Mon, 20 May 2019 12:10:44 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</guid>
+      <guid>https://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</guid>
       <description>本文介绍了开发人员和运维人员两种不同视角下的微服务典型应用场景，对比了熔断功能的三种不同实现：Hystrix, Service Mesh (Istio、Linkerd) 和 Glasnostic。</description>
     </item>
     
     <item>
       <title>基于 Kubernetes 的 Service Mesh 简介</title>
-      <link>http://www.servicemesher.com/blog/kubernetes-service-mesh/</link>
+      <link>https://www.servicemesher.com/blog/kubernetes-service-mesh/</link>
       <pubDate>Mon, 20 May 2019 12:09:44 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/kubernetes-service-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/kubernetes-service-mesh/</guid>
       <description>文章介绍了为什么要用服务网格，以及简单的介绍了两个重要实现：Istio和Linkerd，鼓励大家上手实验。</description>
     </item>
     
     <item>
       <title>Istio和Linkerd的CPU基准测试</title>
-      <link>http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</link>
+      <link>https://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</link>
       <pubDate>Mon, 06 May 2019 21:50:05 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</guid>
+      <guid>https://www.servicemesher.com/blog/benchmarking-istio-and-linkerd-cpu/</guid>
       <description>本文对Istio和Linkerd的CPU使用情况做了基准测试和比较。</description>
     </item>
     
     <item>
       <title>Linkerd 2.0 GA版本发布</title>
-      <link>http://www.servicemesher.com/blog/linkerd-2-0-in-general-availability/</link>
+      <link>https://www.servicemesher.com/blog/linkerd-2-0-in-general-availability/</link>
       <pubDate>Wed, 19 Sep 2018 10:18:54 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/linkerd-2-0-in-general-availability/</guid>
+      <guid>https://www.servicemesher.com/blog/linkerd-2-0-in-general-availability/</guid>
       <description>Linkerd 2.0版本为Linkerd带来了性能、资源消耗和易用性方面的显着改进。它还将项目从集群范围的service mesh转换为可组合的service sidecar，旨在为开发人员和服务所有者提供在云原生环境中成功所需的关键工具。</description>
     </item>
     
     <item>
       <title>Conduit 0.5发布—以及R.I.P. Conduit</title>
-      <link>http://www.servicemesher.com/blog/rip-conduit/</link>
+      <link>https://www.servicemesher.com/blog/rip-conduit/</link>
       <pubDate>Mon, 09 Jul 2018 12:19:53 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/rip-conduit/</guid>
+      <guid>https://www.servicemesher.com/blog/rip-conduit/</guid>
       <description>2018年7月6日，Linkerd博客再次更新，宣布Conduit 0.5发布：在翻炒了无数次Prometheus支持的冷饭之后，终于发布了新的功能——TLS支持。紧接着一个更加重磅的消息：0.5将是Conduit最后一个版本，未来将作为Linkerd 2.0的基础继续存在——Conduit 的 Github 项目将会转移为Linkerd2。</description>
     </item>
     
     <item>
       <title>WePay如何使用Linkerd作为服务网格代理</title>
-      <link>http://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</link>
+      <link>https://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</link>
       <pubDate>Tue, 19 Jun 2018 11:42:58 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</guid>
+      <guid>https://www.servicemesher.com/blog/using-linkerd-as-a-service-mesh-proxy-at-wepay/</guid>
       <description>本文是WePay（一家做支付平台和风控产品的公司）使用Linkerd作为服务网格的代理的分享文章。</description>
     </item>
     

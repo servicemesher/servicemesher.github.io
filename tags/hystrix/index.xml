@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hystrix on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/hystrix/</link>
+    <link>https://www.servicemesher.com/tags/hystrix/</link>
     <description>Recent content in Hystrix on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 20 May 2019 12:10:44 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/hystrix/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/hystrix/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>微服务中的熔断简介及工作原理详解（第2部分）</title>
-      <link>http://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</link>
+      <link>https://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</link>
       <pubDate>Mon, 20 May 2019 12:10:44 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</guid>
+      <guid>https://www.servicemesher.com/blog/preventing-systemic-failure-circuit-breaking-part-2/</guid>
       <description>本文介绍了开发人员和运维人员两种不同视角下的微服务典型应用场景，对比了熔断功能的三种不同实现：Hystrix, Service Mesh (Istio、Linkerd) 和 Glasnostic。</description>
     </item>
     
     <item>
       <title>微服务断路器模式实现：Istio vs Hystrix</title>
-      <link>http://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/</link>
+      <link>https://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/</link>
       <pubDate>Fri, 08 Mar 2019 15:12:41 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/</guid>
       <description>由微服务同步通信的核心问题引入，讨论断路器模式，再深入阐述Istio与Hystrix两种断路器的实现原理，最后比较二者的优缺点和选型建议。</description>
     </item>
     

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jenkins on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/jenkins/</link>
+    <link>https://www.servicemesher.com/tags/jenkins/</link>
     <description>Recent content in jenkins on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 04 Dec 2018 14:47:13 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Serverless Jenkins 和 Jenkins X</title>
-      <link>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</link>
+      <link>https://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</link>
       <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
+      <guid>https://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
       <description>本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。</description>
     </item>
     
     <item>
       <title>使用Minikube-in-a-Container和Jenkins构建Istio</title>
-      <link>http://www.servicemesher.com/blog/building-istio-with-minikube-in-a-container-and-jenkins/</link>
+      <link>https://www.servicemesher.com/blog/building-istio-with-minikube-in-a-container-and-jenkins/</link>
       <pubDate>Mon, 04 Jun 2018 11:33:16 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/building-istio-with-minikube-in-a-container-and-jenkins/</guid>
+      <guid>https://www.servicemesher.com/blog/building-istio-with-minikube-in-a-container-and-jenkins/</guid>
       <description>本文讲述如何制作一个新的 Minikube-in-a-Container 容器和使用 Jenkins Pipeline 来构建和测试 Istio 的流程脚本。</description>
     </item>
     

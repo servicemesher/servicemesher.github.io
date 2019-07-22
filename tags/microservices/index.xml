@@ -2,111 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>microservices on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/microservices/</link>
+    <link>https://www.servicemesher.com/tags/microservices/</link>
     <description>Recent content in microservices on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 22 Apr 2019 13:54:05 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Apr 2019 22:42:29 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>导致云原生微服务系统开发灾难性的8件事</title>
-      <link>http://www.servicemesher.com/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/</link>
-      <pubDate>Mon, 22 Apr 2019 13:54:05 +0800</pubDate>
-      
-      <guid>http://www.servicemesher.com/blog/eight-things-leads-to-developing-catastrophic-cloud-native-microservices-system/</guid>
-      <description>本文介绍了作者认为在开发云原生微服务系统时会出现的8个问题，并告诫大家避免犯错。</description>
-    </item>
     
     <item>
       <title>选择FaaS还是微服务？</title>
-      <link>http://www.servicemesher.com/blog/faas-vs-microservices/</link>
+      <link>https://www.servicemesher.com/blog/faas-vs-microservices/</link>
       <pubDate>Tue, 09 Apr 2019 22:42:29 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/faas-vs-microservices/</guid>
+      <guid>https://www.servicemesher.com/blog/faas-vs-microservices/</guid>
       <description>本文主要向读者介绍FaaS和微服务架构之间的区别以及如何根据自身情况选择正确的架构方案。</description>
     </item>
     
     <item>
       <title>Istio——企业级微服务解决方案</title>
-      <link>http://www.servicemesher.com/blog/istio-kubernetes-service-mesh/</link>
+      <link>https://www.servicemesher.com/blog/istio-kubernetes-service-mesh/</link>
       <pubDate>Wed, 20 Feb 2019 11:44:49 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/istio-kubernetes-service-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/istio-kubernetes-service-mesh/</guid>
       <description>本文介绍了什么是Istio，并详细分析了Istio的优势，最后分享了关于Istio的一些落地经验。</description>
     </item>
     
     <item>
       <title>微服务生态从百家争鸣阶段演化到服务网格</title>
-      <link>http://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</link>
+      <link>https://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</link>
       <pubDate>Thu, 13 Dec 2018 19:23:09 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/from-fragmented-microservices-ecosystem-to-service-mesh/</guid>
       <description>本文中概述了应用架构的演进及微服务生态是如何演化到服务网格的。</description>
     </item>
     
     <item>
       <title>为什么要选择Service Mesh？</title>
-      <link>http://www.servicemesher.com/blog/why-is-service-mesh/</link>
+      <link>https://www.servicemesher.com/blog/why-is-service-mesh/</link>
       <pubDate>Thu, 08 Nov 2018 15:20:46 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/why-is-service-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/why-is-service-mesh/</guid>
       <description>除非你长期与世隔绝，否则你应该听说过Kubernetes，他已经称为高速发展的互联网公司的一条准则。最近又有一个热门话题&amp;ndash;Ser</description>
     </item>
     
     <item>
       <title>在Play with Kubernetes平台上以测试驱动的方式部署Istio</title>
-      <link>http://www.servicemesher.com/blog/test-drive-your-first-istio-deployment-using-play-with-kubernetes-platform-cloud-computing/</link>
+      <link>https://www.servicemesher.com/blog/test-drive-your-first-istio-deployment-using-play-with-kubernetes-platform-cloud-computing/</link>
       <pubDate>Fri, 07 Sep 2018 12:33:30 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/test-drive-your-first-istio-deployment-using-play-with-kubernetes-platform-cloud-computing/</guid>
+      <guid>https://www.servicemesher.com/blog/test-drive-your-first-istio-deployment-using-play-with-kubernetes-platform-cloud-computing/</guid>
       <description>在Docker提供的免费的Kubernetes试玩平台上，使用好奇心驱动的方式部署一个Istio Service Mesh。本方式适合没有测试资源又不想自己整环境的，只是想上去爽一把的人士。</description>
     </item>
     
     <item>
       <title>后Kubernetes时代的微服务</title>
-      <link>http://www.servicemesher.com/blog/microservices-post-kubernetes/</link>
+      <link>https://www.servicemesher.com/blog/microservices-post-kubernetes/</link>
       <pubDate>Fri, 07 Sep 2018 12:27:58 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/microservices-post-kubernetes/</guid>
+      <guid>https://www.servicemesher.com/blog/microservices-post-kubernetes/</guid>
       <description>在Kubernetes诞生的前几年微服务还是分布式系统最流行的架构风格。但Kubernetes和云原生运动已经改变了应用程序设计和开发的方方面面。在本文中，我要质疑微服务的一些理念，指明它们在后Kubernetes时代不会再像以前那样强大。</description>
     </item>
     
     <item>
       <title>微服务中的Sidecar设计模式解析</title>
-      <link>http://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/</link>
+      <link>https://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/</link>
       <pubDate>Thu, 02 Aug 2018 15:32:40 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/</guid>
+      <guid>https://www.servicemesher.com/blog/sidecar-design-pattern-in-microservices-ecosystem/</guid>
       <description>Sidecar 设计模式已经越来越受欢迎，并在社区内得到更广泛的采用。构建具有高度可扩展性、弹性、安全性和可观察性的微服务架构具有挑战性。Service Mesh 架构的发展已经改变了游戏规则。它降低了与微服务架构相关的复杂性，并提供了许多功能，如负载平衡、服务发现、流量管理、熔断、遥测、故障注入等。</description>
     </item>
     
     <item>
       <title>Service Mesh 如何解决微服务中的3个主要挑战</title>
-      <link>http://www.servicemesher.com/blog/how-service-mesh-addresses-3-major-microservices/</link>
+      <link>https://www.servicemesher.com/blog/how-service-mesh-addresses-3-major-microservices/</link>
       <pubDate>Sat, 28 Jul 2018 17:11:16 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/how-service-mesh-addresses-3-major-microservices/</guid>
+      <guid>https://www.servicemesher.com/blog/how-service-mesh-addresses-3-major-microservices/</guid>
       <description>本文讲述的是企业在实施微服务时遇到的挑战，以及如何使用Service Mesh应对这些挑战。</description>
     </item>
     
     <item>
       <title>Istio服务网格的崛起</title>
-      <link>http://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/</link>
+      <link>https://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/</link>
       <pubDate>Tue, 12 Jun 2018 15:06:25 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/the-rise-of-the-istio-service-mesh/</guid>
       <description>本文将探讨为什么我会坚信Istio会很受欢迎并给出了四个原因，分别从微服务与转型、微服务先驱Netflix OSS的案例、分布式架构的方面来阐述微服务使用服务网格的必然性。</description>
     </item>
     
     <item>
       <title>Service Mesh：重塑微服务市场</title>
-      <link>http://www.servicemesher.com/blog/service-mesh-rebuild-microservice-market/</link>
+      <link>https://www.servicemesher.com/blog/service-mesh-rebuild-microservice-market/</link>
       <pubDate>Mon, 21 May 2018 21:48:05 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/service-mesh-rebuild-microservice-market/</guid>
+      <guid>https://www.servicemesher.com/blog/service-mesh-rebuild-microservice-market/</guid>
       <description>今天我们不谈技术，不谈架构，也不谈具体的产品，我们来聊一聊在未来一两年之内，Service Mesh技术会在微服务相关的市场带来什么样的变化？</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ci-cd on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/ci-cd/</link>
+    <link>https://www.servicemesher.com/tags/ci-cd/</link>
     <description>Recent content in ci-cd on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 04 Dec 2018 14:47:13 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/ci-cd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/ci-cd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Serverless Jenkins 和 Jenkins X</title>
-      <link>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</link>
+      <link>https://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</link>
       <pubDate>Tue, 04 Dec 2018 14:47:13 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
+      <guid>https://www.servicemesher.com/blog/serverless-jenkins-with-jenkins-x/</guid>
       <description>本文主要介绍了serverless Jenkins起源和基本使用，Jenkins X是可供团队使用的一站式服务，可用来进行Prow ChatOps编排静态、无服务器或Knative构建作业，其中包括用于Kubernetes工作负载的自动化CI/CD以及更多自动化。</description>
     </item>
     

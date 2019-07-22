@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ingress on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/ingress/</link>
+    <link>https://www.servicemesher.com/tags/ingress/</link>
     <description>Recent content in ingress on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 15 May 2019 12:23:01 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/ingress/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/ingress/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>如何为服务网格选择入口网关？</title>
-      <link>http://www.servicemesher.com/blog/how-to-pick-gateway-for-service-mesh/</link>
+      <link>https://www.servicemesher.com/blog/how-to-pick-gateway-for-service-mesh/</link>
       <pubDate>Wed, 15 May 2019 12:23:01 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/how-to-pick-gateway-for-service-mesh/</guid>
+      <guid>https://www.servicemesher.com/blog/how-to-pick-gateway-for-service-mesh/</guid>
       <description>本文将对Service Mesh对外暴露服务的各种方式进行详细介绍和对比分析，并根据分析结果提出一个可用于产品部署的入口网关解决方案。</description>
     </item>
     
     <item>
       <title>Kubernetes Ingress Controller的使用介绍及高可用落地</title>
-      <link>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</link>
+      <link>https://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</link>
       <pubDate>Wed, 17 Apr 2019 11:23:34 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</guid>
+      <guid>https://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</guid>
       <description>本文是对 Kubernetes 的 Ingress controller 的介绍、部署及高可用说明。</description>
     </item>
     
     <item>
       <title>8款开源的Kubernetes Ingress Controller/API Gateway推荐</title>
-      <link>http://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</link>
+      <link>https://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</link>
       <pubDate>Thu, 20 Sep 2018 18:00:47 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</guid>
+      <guid>https://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</guid>
       <description>本文是对可作为Kubernetes中的API网关的开源软件的推荐列表。</description>
     </item>
     

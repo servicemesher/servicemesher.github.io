@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vamp on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/vamp/</link>
+    <link>https://www.servicemesher.com/tags/vamp/</link>
     <description>Recent content in vamp on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 20 Aug 2018 21:04:02 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/vamp/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/vamp/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用Let’s Encrypt在Kubernetes上保护Istio的Ingress服务</title>
-      <link>http://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</link>
+      <link>https://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</link>
       <pubDate>Mon, 20 Aug 2018 21:04:02 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</guid>
+      <guid>https://www.servicemesher.com/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</guid>
       <description>这是Vamp在kubernetes之上部署Istio系列文章中的第三篇，内容是关于Vamp试图通过Vamp Lamia实现的更多细节以及我们为什么选择Istio的原因。</description>
     </item>
     
     <item>
       <title>使用Istio 0.8对Kubernetes进行A/B测试</title>
-      <link>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0-8/</link>
+      <link>https://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0-8/</link>
       <pubDate>Fri, 13 Jul 2018 12:38:44 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0-8/</guid>
+      <guid>https://www.servicemesher.com/blog/ab-testing-on-kubernetes-with-istio-0-8/</guid>
       <description>本文讲述Vamp（一款商业版的云原生应用平台）如何在Kubernetes上采用Istio进行流量路由的经验</description>
     </item>
     

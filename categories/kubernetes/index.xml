@@ -2,58 +2,121 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kubernetes on ServiceMesher</title>
-    <link>http://www.servicemesher.com/categories/kubernetes/</link>
+    <link>https://www.servicemesher.com/categories/kubernetes/</link>
     <description>Recent content in kubernetes on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 17 Apr 2019 11:23:34 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 May 2019 12:09:44 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>基于 Kubernetes 的 Service Mesh 简介</title>
+      <link>https://www.servicemesher.com/blog/kubernetes-service-mesh/</link>
+      <pubDate>Mon, 20 May 2019 12:09:44 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/kubernetes-service-mesh/</guid>
+      <description>文章介绍了为什么要用服务网格，以及简单的介绍了两个重要实现：Istio和Linkerd，鼓励大家上手实验。</description>
+    </item>
+    
+    <item>
       <title>Kubernetes Ingress Controller的使用介绍及高可用落地</title>
-      <link>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</link>
+      <link>https://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</link>
       <pubDate>Wed, 17 Apr 2019 11:23:34 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</guid>
+      <guid>https://www.servicemesher.com/blog/kubernetes-ingress-controller-deployment-and-ha/</guid>
       <description>本文是对 Kubernetes 的 Ingress controller 的介绍、部署及高可用说明。</description>
     </item>
     
     <item>
       <title>kubernetes dashboard在ssl的各种场景下的手动部署</title>
-      <link>http://www.servicemesher.com/blog/general-kubernetes-dashboard/</link>
+      <link>https://www.servicemesher.com/blog/general-kubernetes-dashboard/</link>
       <pubDate>Wed, 17 Apr 2019 11:23:34 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/general-kubernetes-dashboard/</guid>
+      <guid>https://www.servicemesher.com/blog/general-kubernetes-dashboard/</guid>
       <description>本文是对 Kubernetes 的 dashboard有关ssl下各个场景的相关说明。</description>
     </item>
     
     <item>
       <title>面向 Kubernetes 编程：Kubernetes 是下一代操作系统</title>
-      <link>http://www.servicemesher.com/blog/the-data-center-os-kubernetes/</link>
+      <link>https://www.servicemesher.com/blog/the-data-center-os-kubernetes/</link>
       <pubDate>Wed, 20 Feb 2019 16:33:31 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/the-data-center-os-kubernetes/</guid>
+      <guid>https://www.servicemesher.com/blog/the-data-center-os-kubernetes/</guid>
       <description>此文章着重介绍如何在入门阶段使用 Kubernetes，以及要面向 Kubernetes 编程带来的优势。</description>
     </item>
     
     <item>
       <title>Kubernetes资源管理概述</title>
-      <link>http://www.servicemesher.com/blog/kubernetes-resource-management/</link>
+      <link>https://www.servicemesher.com/blog/kubernetes-resource-management/</link>
       <pubDate>Thu, 20 Dec 2018 15:14:54 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/kubernetes-resource-management/</guid>
+      <guid>https://www.servicemesher.com/blog/kubernetes-resource-management/</guid>
       <description>本文是关于 Kubernetes 中资源管理的概述。</description>
     </item>
     
     <item>
       <title>如何从零开始编写一个Kubernetes CRD</title>
-      <link>http://www.servicemesher.com/blog/kubernetes-crd-quick-start/</link>
+      <link>https://www.servicemesher.com/blog/kubernetes-crd-quick-start/</link>
       <pubDate>Wed, 12 Dec 2018 11:39:01 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/kubernetes-crd-quick-start/</guid>
+      <guid>https://www.servicemesher.com/blog/kubernetes-crd-quick-start/</guid>
       <description>本文首先向你简单介绍了 Kubernetes，然后教你从零开始构建一个 Kubernetes CRD。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes（K8s）的无服务器框架的评估</title>
+      <link>https://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</link>
+      <pubDate>Thu, 08 Nov 2018 13:20:46 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/evaluation-of-serverless-frameworks-for-kbe/</guid>
+      <description>本文讲解了如何利用K8S的设计参数和服务编排功能，并将它们与无服务器框架和函数即服务（FaaS）结合起来。</description>
+    </item>
+    
+    <item>
+      <title>如何将云原生工作负载映射到Kubernetes中的控制器</title>
+      <link>https://www.servicemesher.com/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/</link>
+      <pubDate>Wed, 31 Oct 2018 20:01:03 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/how-to-map-cloud-native-workloads-to-kubernetes-controllers/</guid>
+      <description>本文介绍了如何将云原生工作负载映射到Kubernetes中的控制器。</description>
+    </item>
+    
+    <item>
+      <title>Istio和Kubernetes帮助Trulia房产网站消除单体架构增强微服务的可观测性</title>
+      <link>https://www.servicemesher.com/blog/microservice-observability-with-istio/</link>
+      <pubDate>Wed, 26 Sep 2018 15:49:30 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/microservice-observability-with-istio/</guid>
+      <description>在kubernetes和istio的帮助下，Trulia能够分解PHP单体架构替换成可持续交付的微服务架构。团队不再被迫手动将工具添加到单个代码库或基础架构自动化中。</description>
+    </item>
+    
+    <item>
+      <title>8款开源的Kubernetes Ingress Controller/API Gateway推荐</title>
+      <link>https://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</link>
+      <pubDate>Thu, 20 Sep 2018 18:00:47 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/nginx-ingress-vs-kong-vs-traefik-vs-haproxy-vs-voyager-vs-contour-vs-ambassador/</guid>
+      <description>本文是对可作为Kubernetes中的API网关的开源软件的推荐列表。</description>
+    </item>
+    
+    <item>
+      <title>在Play with Kubernetes平台上以测试驱动的方式部署Istio</title>
+      <link>https://www.servicemesher.com/blog/test-drive-your-first-istio-deployment-using-play-with-kubernetes-platform-cloud-computing/</link>
+      <pubDate>Fri, 07 Sep 2018 12:33:30 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/test-drive-your-first-istio-deployment-using-play-with-kubernetes-platform-cloud-computing/</guid>
+      <description>在Docker提供的免费的Kubernetes试玩平台上，使用好奇心驱动的方式部署一个Istio Service Mesh。本方式适合没有测试资源又不想自己整环境的，只是想上去爽一把的人士。</description>
+    </item>
+    
+    <item>
+      <title>后Kubernetes时代的微服务</title>
+      <link>https://www.servicemesher.com/blog/microservices-post-kubernetes/</link>
+      <pubDate>Fri, 07 Sep 2018 12:27:58 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/microservices-post-kubernetes/</guid>
+      <description>在Kubernetes诞生的前几年微服务还是分布式系统最流行的架构风格。但Kubernetes和云原生运动已经改变了应用程序设计和开发的方方面面。在本文中，我要质疑微服务的一些理念，指明它们在后Kubernetes时代不会再像以前那样强大。</description>
     </item>
     
   </channel>

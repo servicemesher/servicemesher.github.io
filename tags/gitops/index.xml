@@ -2,21 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gitops on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/gitops/</link>
+    <link>https://www.servicemesher.com/tags/gitops/</link>
     <description>Recent content in gitops on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 31 May 2018 21:12:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jul 2019 09:24:17 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>GitOps与ChatOps的落地实践</title>
+      <link>https://www.servicemesher.com/blog/gitops-and-chatops/</link>
+      <pubDate>Thu, 11 Jul 2019 09:24:17 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/gitops-and-chatops/</guid>
+      <description>本文介绍GitOps和ChatOps这两种DevOps实践，通过版本控制软件Git和实时聊天软件来达到提升交付速度和研发效率的目的。</description>
+    </item>
+    
+    <item>
       <title>Istio的GitOps—像代码一样管理Istio配置</title>
-      <link>http://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</link>
+      <link>https://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</link>
       <pubDate>Thu, 31 May 2018 21:12:03 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</guid>
+      <guid>https://www.servicemesher.com/blog/gitops-for-istio-manage-istio-config-like-code/</guid>
       <description>本文是 Weaveworks 的 CEO 对 GitOps 工作流程和 Istio 的看法。本文还介绍了如何使用 GitOps 上线和管理 Istio 的金丝雀部署。以上观点来自哥本哈根 Kubecon 上的 Weaveworks 的分享。</description>
     </item>
     

@@ -2,21 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>chatops on ServiceMesher</title>
-    <link>http://www.servicemesher.com/tags/chatops/</link>
+    <link>https://www.servicemesher.com/tags/chatops/</link>
     <description>Recent content in chatops on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 01 Jul 2019 03:13:13 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jul 2019 09:24:17 +0800</lastBuildDate>
     
-	<atom:link href="http://www.servicemesher.com/tags/chatops/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.servicemesher.com/tags/chatops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>GitOps与ChatOps的落地实践</title>
+      <link>https://www.servicemesher.com/blog/gitops-and-chatops/</link>
+      <pubDate>Thu, 11 Jul 2019 09:24:17 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/gitops-and-chatops/</guid>
+      <description>本文介绍GitOps和ChatOps这两种DevOps实践，通过版本控制软件Git和实时聊天软件来达到提升交付速度和研发效率的目的。</description>
+    </item>
+    
+    <item>
       <title>Prow 快速入门向导</title>
-      <link>http://www.servicemesher.com/blog/prow-quick-start-guide/</link>
+      <link>https://www.servicemesher.com/blog/prow-quick-start-guide/</link>
       <pubDate>Mon, 01 Jul 2019 03:13:13 +0800</pubDate>
       
-      <guid>http://www.servicemesher.com/blog/prow-quick-start-guide/</guid>
+      <guid>https://www.servicemesher.com/blog/prow-quick-start-guide/</guid>
       <description>Prow 是 Google 发起的适应云原生开源项目的 ChatOps 系统。Kubernetes、Istio 等项目都使用 Prow 实现开源协同。我们将以一个测试代码仓库为例，来演示在一个本地k8s集群上使用 Prow 来实现CI/CD的诸多效果。</description>
     </item>
     
