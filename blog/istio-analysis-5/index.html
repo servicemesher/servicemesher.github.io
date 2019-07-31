@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Istio 庖丁解牛五：多集群网格实现分析 · Service Mesh|服务网格中文社区</title>
+  <meta name="author" content="Jimmy Song(宋净超)" />
+
+  
+  <meta name="keywords" content="service mesh, 服务网格, istio">
+  
+
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+  <link href="/css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+  
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="ServiceMesher">
+
+  
+  <link rel="stylesheet" href="/css/prism.css" />
+
+  
+  <meta property="og:title" content="Istio 庖丁解牛五：多集群网格实现分析" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/istio-analysis-5//" />
+  <meta property="og:image" content="/img/servicemesher-avatar-banner.jpg" />
+  <meta property="og:image:alt" content="ServiceMesher Logo" />
+
+  
+  <meta name="description" content="在 istio 的应用场景中，异地多集群网格是其中最复杂的场景之一，本文将对「多网络单控制面」的搭建和连通过程进行分析。">
+  <meta property="og:description" content="在 istio 的应用场景中，异地多集群网格是其中最复杂的场景之一，本文将对「多网络单控制面」的搭建和连通过程进行分析。">
+  <meta name="twitter:description" content="在 istio 的应用场景中，异地多集群网格是其中最复杂的场景之一，本文将对「多网络单控制面」的搭建和连通过程进行分析。">
+  <meta property="og:description" content="在 istio 的应用场景中，异地多集群网格是其中最复杂的场景之一，本文将对「多网络单控制面」的搭建和连通过程进行分析。" />
+
+  
+  <meta name="referrer" content="never">
+
+  
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?154337f0d95f0b110f98c1d5d7038895";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+
+  
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="/img/servicemesher-logo.jpg" alt="Istio 庖丁解牛五：多集群网格实现分析 logo" class="hidden-xs hidden-sm">
+                    <img src="/img/logosmall.jpg" alt="Istio 庖丁解牛五：多集群网格实现分析 logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Istio 庖丁解牛五：多集群网格实现分析 - 跳到主页</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">切换导航</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">主页</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">博客</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文档 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/awesome-servicemesh/">Service Mesh列表</a></li>
+                      
+                        <li><a href="/envoy/">Envoy官方文档中文版</a></li>
+                      
+                        <li><a href="https://preliminary.istio.io/zh/">Istio中文官网</a></li>
+                      
+                        <li><a href="/categories/practice/">实践汇总</a></li>
+                      
+                        <li><a href="/istio-handbook/">Istio Handbook</a></li>
+                      
+                        <li><a href="/getting-started-with-knative/">Knative入门</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">社区 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="/tags/meetup">Meetup</a></li>
+                      
+                        <li><a href="/authors/">作者投稿</a></li>
+                      
+                        <li><a href="/translators/">译者投稿</a></li>
+                      
+                        <li><a href="https://github.com/servicemesher/istio-knowledge-map">Istio知识图谱</a></li>
+                      
+                        <li><a href="/contributing-specification/">贡献指南</a></li>
+                      
+                        <li><a href="/activity/">活动</a></li>
+                      
+                    </ul>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">联系我们</a>
+                    
+                  </li>
+                  
+                  
+                    <li>
+                        <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+                        <span class="hidden-sm hidden-md hidden-lg">搜索</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+                    </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+<div id="modalSearch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">博客搜索</h4>
+      </div>
+      <div class="modal-body">
+          
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="输入文章标题或摘要" name="search" autocomplete="off" autofocus="autofocus"/>
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("X4YB3WOBNV", "d2134c5a8d250e6d3246594240c45201");
+var index = client.initIndex("servicemesher");
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            baseURL="https:\/\/www.servicemesher.com\/"
+            baseURL=baseURL.substring(0,baseURL.length-1)
+            return '<span>' + '<a href="' + baseURL + suggestion.url+ '">' +
+                suggestion._highlightResult.title.value + '</a></span>'+
+                '<span>'+suggestion._highlightResult.summary.value+'</span>';
+        }
+    }
+});
+</script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Istio 庖丁解牛五：多集群网格实现分析</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+                        <div class="well">
+                            <div class="author-category">
+                            <i class="fa fa-calendar-o">
+                            2019年7月30日
+                            </i>
+                            |
+                            
+                            作者 <a href="https://imfox.io">钟华</a>
+                            
+                            
+                            
+                            |
+                            4500字 | 阅读大约需要9分钟
+                            </div>
+                            
+                            
+                            <div class="author-category">
+                            
+                            
+                            归档于 <a href="/categories/istio">istio</a>
+                            
+                            |
+                            
+                            
+                            
+                            标签
+                            
+                            <a style="text-transform:capitalize" href="/tags/istio/"><i>#istio</i></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div id="post-content">
+                          
+
+<h2 id="1-多集群网格背景介绍">1.多集群网格背景介绍</h2>
+
+<p>Istio 并不是单一领域的技术，它综合了诸多服务治理领域的解决方案和最佳实践。在模型上，istio 提供了多个层次的抽象，以适配不同的平台场景; 在实际应用上，istio 提供了若干可选的开源系统和技术，并合理的将这些系统组合在一起，以实现服务网格中的「连接」、「安全」、「控制」和「可观测性」。</p>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135253.png" alt="image-20190729153848023" /></p>
+
+<p>在 istio 的应用场景中，异地多集群网格是其中最复杂的场景之一。istio 在 1.1 后提供了三种多集群的连通拓扑：</p>
+
+<ol>
+<li>多控制面</li>
+<li>单网络单控制面</li>
+<li>多网络单控制面</li>
+</ol>
+
+<p>第一种「多控制面连通拓扑」，严格的讲每个 kubernetes 集群仍然是独立的服务网格，各网格之间服务实例无法共享，互相访问不透明. 应用场景有限，实现简单。</p>
+
+<p>第二种「单网络单控制面拓扑」，实现了多 kubernetes 集群融合为一个服务网格，但是该种拓扑对网络有严格的要求: 需要所有集群处于同一个扁平网络，pod ip 互通且不重叠，使用 VPN 连通多集群网络是常见的一个选项。 不过这些网络需求在实际环境可能难以满足，也限制了该拓扑的应用场景。</p>
+
+<p>第三种「多网络单控制面」，同样实现了多 kubernetes 集群融合为一个服务网格，且在网络上没有上述限制，每个多 kubernetes 集群是一个独立的网络，甚至可以分布于不同地域。 但其实现也最复杂，该拓扑模型可以实现「地域感知路由」、「异地容灾」等高级应用场景。</p>
+
+<p>本文将对第三种「多网络单控制面」的搭建和连通过程进行分析:</p>
+
+<p><img src="https://istio.io/docs/setup/kubernetes/install/multicluster/shared-gateways/diagram.svg" alt="Shared Istio control plane topology spanning multiple Kubernetes clusters using gateways" /></p>
+
+<p>本文约定术语:</p>
+
+<ul>
+<li><p>集群: 指单个 kubernetes 集群。</p></li>
+
+<li><p>主集群: 特指在「多网络单控制面」拓扑中，包含控制面的 kubernetes 集群。</p></li>
+
+<li><p>子集群:  特指在「多网络单控制面」拓扑中，不包含控制面的 kubernetes 集群。</p></li>
+
+<li><p>网格:  特指在「多网络单控制面」拓扑中，所有 kubernetes 集群组成的唯一服务网格。</p></li>
+
+<li><p>网络: 在「多网络单控制面」拓扑中，每个 kubernetes 集群都有独立的网格。</p></li>
+</ul>
+
+<p>在该拓扑中，只有主集群中存在一个控制面，所有集群都可以包含数据面，所有数据面的服务实例共享且可以透明互通。我们可以简单描述该拓扑的连通需求:</p>
+
+<ul>
+<li>主集群控制面需要获得所有集群的服务发现数据，也就是控制面需要能访问所有集群的 kube api。</li>
+<li>子集群的数据面需要能主动联通主集群控制面，因此主集群需要通过 ingress gateway，将控制面组件暴露给子集群使用。</li>
+<li>所有包含数据面的集群，需要将内部业务服务，通过 ingress gateway 暴露出去，用以实现整个网格的服务互通。</li>
+<li>主集群控制面需要知悉整个网格的网络拓扑，每个服务实例也需要标记自身所处网络。 这是因为每个具体服务实例收到的 xDS 数据，都是和自身所处的网络强相关的。</li>
+</ul>
+
+<p>本文将尝试在广州和新加坡地域各自创建一个 kubernetes 集群，在广州集群创建 istio 控制面，然后将 2 个集群进行连通，实现「多网络单控制面」的多集群服务网格。</p>
+
+<p>相关代码汇总于: <a href="https://github.com/zhongfox/multicluster-demo">https://github.com/zhongfox/multicluster-demo</a></p>
+
+<hr />
+
+<h2 id="2-主集群配置">2. 主集群配置</h2>
+
+<p>首先分别在广州和新加坡地域创建好 kubernetes 集群，并获得 kube api 访问凭证存于本地，kube config context 分别命名为 guangzhou 和 singapore.</p>
+
+<p>在广州集群上，安装好单集群 istio 组件:</p>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-151144.png" alt="image-20190729231121442" /></p>
+
+<h3 id="2-1-主集群访问子集群-kube-api">2.1 主集群访问子集群 kube api</h3>
+
+<p>istio 控制面只存在于广州主集群中，控制面需要能获取到所有集群的服务发现数据，因此主集群中需要配置子集群的访问凭证:</p>
+
+<p>使用 guangzhou kube context:</p>
+
+<pre><code class="language-plain">% kubectl config use-context guangzhou
+</code></pre>
+
+<p>将 singapore 集群访问凭证存到 guangzhou 集群的 secret 中:</p>
+
+<pre><code class="language-plain">% kubectl --context=guangzhou -n istio-system create secret \
+  generic singapore-secret --from-file singapore
+</code></pre>
+
+<p>同时需要给该 secret 设置 label <code>istio/multiCluster=true</code>:</p>
+
+<pre><code class="language-plain">kubectl label --context=guangzhou secret singapore-secret istio/multiCluster=true -n istio-system
+</code></pre>
+
+<p>在 Pilot 源码中，会创建 SecretController 来 list/watch lable <code>istio/multiCluster=true</code> 的 secret，并实例化 remoteKubeController，作为网格服务发现数据的来源之一。</p>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135224.png" alt="image-20190729172916130" /></p>
+
+<h3 id="2-2-将控制面组件暴露给子集群使用">2.2 将控制面组件暴露给子集群使用</h3>
+
+<p>在主集群中创建 ingress gateway <code>meshexpansion-gateway</code> 将 Pilot，Mixer 和 citadel 暴露给子集群使用:</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: meshexpansion-gateway
+  namespace: istio-system
+  labels:
+    app: gateways
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 15011
+      protocol: TCP
+      name: tcp-pilot
+    hosts:
+    - &quot;*&quot;
+  - port:
+      number: 8060
+      protocol: TCP
+      name: tcp-citadel
+    hosts:
+    - &quot;*&quot;
+  - port:
+      number: 15004
+      name: tls-mixer
+      protocol: TLS
+    tls:
+      mode: AUTO_PASSTHROUGH
+    hosts:
+    - &quot;*&quot;
+</code></pre>
+
+<p>该 gateway 要生效，还需要配置相关的 VirtualService:</p>
+
+<ol>
+<li>创建 VirtualService <code>meshexpansion-vs-pilot</code>，将主集群 Pilot 通过 gateway 暴露给子集群使用.</li>
+<li>创建 VirtualService <code>meshexpansion-vs-citadel</code>，将主集群 Citadel 通过 gateway 暴露给子集群使用.</li>
+</ol>
+
+<p>以上配置在<a href="https://github.com/zhongfox/multicluster-demo/blob/master/install/primarycluster-meshexpansion-gateway.yaml">install/primarycluster-meshexpansion-gateway.yaml</a>中，等同于执行:</p>
+
+<pre><code class="language-plain">% kubectl apply -f install/primarycluster-meshexpansion-gateway.yaml
+</code></pre>
+
+<p>以上步骤配置完毕后，我们还需要将网格中对 Pilot，Mixer 的访问调整为以上端口，包括:</p>
+
+<p>1) 网格全局配置:</p>
+
+<pre><code class="language-plain">% kubectl -nistio-system edit cm istio
+
+......
+defaultConfig:
+  discoveryAddress: istio-pilot.istio-system:15011
+......
+mixerCheckServer: istio-policy.istio-system.svc.cluster.local:15004
+mixerReportServer: istio-telemetry.istio-system.svc.cluster.local:15004
+</code></pre>
+
+<p>2) 控制面中 <code>istio-ingressgateway</code> <code>istio-egressgateway</code>的启动参数，修改对 pilot 的访问地址，从 15010(HTTP 端口)改为 15011(mTLS 端口):</p>
+
+<pre><code class="language-plain">- --discoveryAddress
+- istio-pilot:15011
+</code></pre>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135216.png" alt="image-20190729173048701" /></p>
+
+<h3 id="2-3-数据面创建-ingress-gateway">2.3 数据面创建 ingress gateway</h3>
+
+<p>每个包含数据面的集群，都需要提供 ingress gateway，使得其他集群数据面可以访问本集群数据面服务:</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: cluster-aware-gateway
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 443
+      name: tls
+      protocol: TLS
+    tls:
+      mode: AUTO_PASSTHROUGH
+    hosts:
+    - &quot;*.local&quot;
+</code></pre>
+
+<p>以上配置在<a href="https://github.com/zhongfox/multicluster-demo/blob/master/install/primarycluster-cluster-aware-gateway.yaml">install/primarycluster-cluster-aware-gateway.yaml</a>中，等同于执行:</p>
+
+<pre><code class="language-plain">% kubectl apply -f install/primarycluster-cluster-aware-gateway.yaml
+</code></pre>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135209.png" alt="image-20190729173523592" /></p>
+
+<h4 id="关于-mtls-和-auto-passthrough">关于 mTLS 和 AUTO_PASSTHROUGH</h4>
+
+<p>通常来说，istio Ingress Gateway 需要配套指定服务的 VirtualService，用以指定 ingress 流量的后端服务. 但在此拓扑中，该 ingress Gateway 需要作为本数据面所有服务的流量入口. 也就是所有服务共享单个 ingress gateway (单个 IP)，这里其实是利用了 TLS 中的 <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI(Server Name Indication)</a>。</p>
+
+<blockquote>
+<p>SNI(Server Name Indication)指定了 TLS 握手时要连接的 主机名。 SNI 协议是为了支持同一个 IP(和端口)支持多个域名</p>
+</blockquote>
+
+<p>传统的 Ingress Gateway 承载的是南北流量(server-client)，这里的 Ingress Gateway 属于网格内部流量，承载的是东西流量(server-server).</p>
+
+<p>设置<code>AUTO_PASSTHROUGH</code>，可以允许服务无需配置 VirtualService，而直接使用 TLS 中的 SNI 值来表示 upstream，服务相关的 service/subset/port 都可以编码到 SNI 内容中.</p>
+
+<p>我们看看以上的 Gateway <code>cluster-aware-gateway</code> 443 端口开启<code>AUTO_PASSTHROUGH</code> 后的 xDS 效果:</p>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-30-023631.png" alt="image-20190730103626893" /></p>
+
+<p>其中 Listener Filter <code>envoy.listener.tls_inspector</code> 会检测传输是否是 TLS，如果是的话，会进一步提取 SNI (或者 ALPN)，SNI 信息在后续 FilterChain 中可以用来路由。</p>
+
+<p>Network Filter <code>envoy.filters.network.sni_cluster</code> 会利用 SNI 信息来判断 upstream cluster，该 filter 不会影响非 TLS 的连接。</p>
+
+<h3 id="2-4-控制面-mtls-认证">2.4 控制面 mTLS 认证</h3>
+
+<p>1) 控制面组件<code>citadel</code>负责管理网格内的证书，我们需要给 citadel 提供 ca 证书、秘钥和根证书:</p>
+
+<pre><code class="language-plain">% kubectl -n istio-system create secret generic cacerts \
+  --from-file=certs/ca-cert.pem --from-file=certs/ca-key.pem \
+  --from-file=certs/root-cert.pem --from-file=certs/cert-chain.pem
+</code></pre>
+
+<p>2) 创建好 secret 后，我们需要将其挂载到 citadel pod 中:</p>
+
+<pre><code class="language-yaml">     volumeMounts:
+     - name: cacerts
+       mountPath: /etc/cacerts
+       readOnly: true
+ ......
+ volumes:
+ - name: cacerts
+   secret:
+    secretName: cacerts
+    optional: true
+</code></pre>
+
+<p>3) 并将其传入 citadel 启动参数:</p>
+
+<pre><code class="language-plain">- --self-signed-ca=false
+- --signing-cert=/etc/cacerts/ca-cert.pem
+- --signing-key=/etc/cacerts/ca-key.pem
+- --root-cert=/etc/cacerts/root-cert.pem
+- --cert-chain=/etc/cacerts/cert-chain.pem
+</code></pre>
+
+<p>4) 更新网格全局配置，设置<code>controlPlaneAuthPolicy</code>为<code>MUTUAL_TLS</code></p>
+
+<pre><code class="language-plain">% kubectl -nistio-system edit cm istio
+......
+defaultConfig:
+  controlPlaneAuthPolicy: MUTUAL_TLS
+</code></pre>
+
+<p>5) 控制面组件 istio-pilot、istio-telemetry、isito-policy 的 sidecar，以及 istio-ingressgateway，istio-egressgateway 增加启动参数以支持控制面 mTLS 认证:</p>
+
+<pre><code class="language-plain">- --controlPlaneAuthPolicy
+- MUTUAL_TLS
+</code></pre>
+
+<h4 id="关于-controlplaneauth">关于 ControlPlaneAuth</h4>
+
+<p>控制面组件开启<code>MUTUAL_TLS</code>，最终会体现到控制面组件(telemetry/policy/pilot)的 envoy xDS 中:</p>
+
+<pre><code class="language-yaml">tls_context:
+  common_tls_context:
+    alpn_protocols:
+    - h2
+    tls_certificates:
+    - certificate_chain:
+        filename: /etc/certs/cert-chain.pem
+      private_key:
+        filename: /etc/certs/key.pem
+    validation_context:
+      trusted_ca:
+        filename: /etc/certs/root-cert.pem
+  require_client_certificate: true
+</code></pre>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135204.png" alt="image-20190729173651673" /></p>
+
+<h3 id="2-4-开启服务间-mtls-认证">2.4 开启服务间 mTLS 认证</h3>
+
+<p>使用 istio CRD <code>MeshPolicy</code>开启网格全局 mTLS:</p>
+
+<pre><code class="language-yaml">apiVersion: &quot;authentication.istio.io/v1alpha1&quot;
+kind: &quot;MeshPolicy&quot;
+metadata:
+  name: &quot;default&quot;
+  labels:
+    app: security
+    chart: security
+    heritage: Tiller
+    release: istio
+spec:
+  peers:
+  - mtls: {}
+</code></pre>
+
+<p>以上配置会开启网格内流量的服务端和客户端 TLS 认证，需要注意的是，客户端 TLS 认证会被关联的 DestinationRule 里的<code>tls</code>属性覆盖， 所以如果使用了 DestinationRule，需要在 DestinationRule 中显示指定开启 mTLS:</p>
+
+<pre><code class="language-yaml">tls:
+  mode: ISTIO_MUTUAL
+</code></pre>
+
+<p>另外在全局 mtls 认证会有些例外: 比如 k8s api server 没有 sidecar，所以客户端访问 api server 需要禁用 mtls:</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: &quot;api-server&quot;
+  namespace: istio-system
+  labels:
+    app: security
+spec:
+  host: &quot;kubernetes.default.svc.cluster.local&quot;
+  trafficPolicy:
+    tls:
+      mode: DISABLE
+</code></pre>
+
+<p>以上配置在<a href="https://github.com/zhongfox/multicluster-demo/blob/master/install/primarycluster-services-mtls.yaml">install/primarycluster-services-mtls.yaml</a>中，等同于执行:</p>
+
+<pre><code class="language-plain">% kubectl apply -f install/primarycluster-services-mtls.yaml
+</code></pre>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135158.png" alt="image-20190729173735897" /></p>
+
+<hr />
+
+<h2 id="3-子集群配置">3. 子集群配置</h2>
+
+<h3 id="3-1-部署子集群-istio-配置">3.1 部署子集群 istio 配置</h3>
+
+<p>获取主集群控制面的 gateway 地址，作为子集群访问控制面的入口地址:</p>
+
+<pre><code class="language-plain">export CONTROL_PANEL_GW=$(kubectl --context guangzhou -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+</code></pre>
+
+<p>参考<a href="https://istio.io/docs/setup/kubernetes/install/multicluster/shared-gateways/#setup-cluster-2">https://istio.io/docs/setup/kubernetes/install/multicluster/shared-gateways/#setup-cluster-2</a>，安装子集群 istio 配置:</p>
+
+<pre><code class="language-plain">% helm template --name istio-remote --namespace=istio-system \
+  --values install/kubernetes/helm/istio/values-istio-remote.yaml \
+  --set global.mtls.enabled=true \
+  --set gateways.enabled=true \
+  --set security.selfSigned=false \
+  --set global.controlPlaneSecurityEnabled=true \
+  --set global.createRemoteSvcEndpoints=true \
+  --set global.remotePilotCreateSvcEndpoint=true \
+  --set global.remotePilotAddress=${CONTROL_PANEL_GW} \
+  --set global.remotePolicyAddress=${CONTROL_PANEL_GW} \
+  --set global.remoteTelemetryAddress=${CONTROL_PANEL_GW} \
+  --set gateways.istio-ingressgateway.env.ISTIO_META_NETWORK=&quot;network2&quot; \
+  --set global.network=&quot;network2&quot; \
+  install/kubernetes/helm/istio &gt; istio-remote.yaml
+</code></pre>
+
+<p>该文件内容较多，输出内容可以参考<a href="https://github.com/zhongfox/multicluster-demo/blob/master/install/istio-remote-1.1.11.yaml">https://github.com/zhongfox/multicluster-demo/blob/master/install/istio-remote-1.1.11.yaml</a></p>
+
+<p>将输出内容部署到新加坡集群中:</p>
+
+<pre><code class="language-plain">% kubectl config use-context singapore
+% kubectl create ns istio-system
+% kubectl apply -f istio-remote.yaml
+</code></pre>
+
+<p>子集群同样需要创建 mTLS 认证所需的 secret:</p>
+
+<pre><code class="language-plain">% kubectl create secret generic cacerts -n istio-system --from-file=certs/ca-cert.pem --from-file=certs/ca-key.pem --from-file=certs/root-cert.pem --from-file=certs/cert-chain.pem
+</code></pre>
+
+<h3 id="3-2-子集群配置解读">3.2 子集群配置解读</h3>
+
+<p>子集群中并没有安装 istio 控制面组件，也不存在任何 istio CRD，以上操作在子集群中创建了若干 kubernetes 原生资源，用以实现子集群和主集群的连通，我们看看其中的一些重要配置:</p>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135151.png" alt="image-20190729161910641" /></p>
+
+<p>在新加坡集群中，并没有 pilot、telemetry、policy 等组件 Pod，但是存在相关的 Headless Service (ClusterIP 为 None)，并添加它们的 endpoints 指向广州主集群的控制面 ingress Gateway IP，以此实现单控制面共享。</p>
+
+<hr />
+
+<h2 id="4-网络拓扑配置">4. 网络拓扑配置</h2>
+
+<p>控制面需要知悉整个网格的网络拓扑，每个服务实例也需要标记自身所处网络. 这是因为每个具体服务实例收到的 xDS 数据，都是和自身所处的网络强相关的。</p>
+
+<p>1) 获取各集群的 ingress gateway ip:</p>
+
+<pre><code class="language-plain">% export GZ_INGRESS=$(kubectl -n istio-system --context guangzhou get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+
+% export SG_INGRESS=$(kubectl -n istio-system --context singapore get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+</code></pre>
+
+<p>2) 将各集群 ip 配置到网格全局配置中(替换 IP):</p>
+
+<pre><code class="language-yaml">% kubectl --context guangzhou -n istio-system edit cm istio
+
+meshNetworks: |-
+  networks:
+    network1:
+      endpoints:
+      - fromRegistry: Kubernetes
+      gateways:
+      - address: ${GZ_INGRESS}
+        port: 443
+    network2:
+      endpoints:
+      - fromRegistry: singapore
+      gateways:
+      - address: ${SG_INGRESS}
+        port: 443
+</code></pre>
+
+<p>3) 每个集群的网络标识需要独立设置，该标识是注入到 sidecar 的环境变量中，因此需要在各集群中修改 sidecar injector 配置:</p>
+
+<p>广州主集群:</p>
+
+<pre><code class="language-plain">% kubectl --context guangzhou -nistio-system edit cm istio-sidecar-injector
+......
+env:
+- name: ISTIO_META_NETWORK
+  value: &quot;network1&quot;
+</code></pre>
+
+<p>新加坡子集群:</p>
+
+<pre><code class="language-plain">% kubectl --context singapore -nistio-system edit cm istio-sidecar-injector
+......
+env:
+- name: ISTIO_META_NETWORK
+  value: &quot;network2&quot;
+</code></pre>
+
+<p>4) 更新已有组件的网络标识: 控制面组件的 sidecar 并不是由<code>istio-sidecar-injector</code>注入的，因此需要手动修改它们的网络标识，包括<code>istio-ingressgateway</code> <code>istio-egressgateway</code>等:</p>
+
+<pre><code class="language-plain">kubectl --context=guangzhou -nistio-system edit deploy istio-ingressgateway
+......
+env:
+- name: ISTIO_META_NETWORK
+  value: &quot;network1&quot;
+</code></pre>
+
+<hr />
+
+<h2 id="5-多集群网格验证">5. 多集群网格验证</h2>
+
+<p>至此，由广州和新加坡 2 个异地集群组成的服务网格已经搭建完成，我们来验证一下:</p>
+
+<p>我们在 2 个集群中分别部署一套在线电子商城 demo( github.com/TencentCloudContainerTeam/tcm-demo)，其中的推荐系统(recommend)，广州集群部署 v1 版本，新加坡集群部署 v2 版本，其中 recommend v1 版本不包含 banner，recommend v2 版本会显示一个 banner:</p>
+
+<pre><code class="language-plain">% kubectl --context guangzhou apply -f install/primarycluster-apps.yaml
+% kubectl --context singapore apply -f install/subcluster-apps.yaml
+</code></pre>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135141.png" alt="image-20190729175507376" /></p>
+
+<p>创建 ingress gateway，放通对 mall 服务的访问流量:</p>
+
+<pre><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: mall-gateway
+  namespace: base
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - &quot;*&quot;
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mall
+  namespace: base
+spec:
+  hosts:
+  - &quot;*&quot;
+  gateways:
+  - mall-gateway
+  http:
+  - route:
+    - destination:
+        host: mall
+        port:
+          number: 7000
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mall
+  namespace: base
+spec:
+  host: mall
+  subsets:
+  - labels:
+      app: mall
+    name: v1
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+</code></pre>
+
+<p>等价于执行:</p>
+
+<pre><code class="language-plain">% kubectl --context guangzhou apply -f install/primarycluster-apps-routing.yaml
+</code></pre>
+
+<p>注意虽然以上流控 CRD 是 apply 到主集群，但是因为广州和新加坡共享一个控制面，因此这些流控设置在 2 个集群都会生效:</p>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135135.png" alt="image-20190729213030343" /></p>
+
+<p>现在我们分别通过广州和新加坡地域的 ingress gateway IP 访问 mall 应用，多访问几次，可以发现，无论从哪里地域进入，随机的可以访问到 recommend v1 (无 banner)和 recommend v2 (有 banner)，证明 2 个地域的服务实例是透明共享的:</p>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135126.png" alt="image-20190729145727003" /></p>
+
+<p>还可以通过工具 istioctl 查看 xDS 数据，比如我们查看广州集群 mall pod 获得的 xDS，其中有 2 个 recommend 服务的 endpoints:</p>
+
+<p><img src="http://zhongfox-blogimage-1256048497.cos.ap-guangzhou.myqcloud.com/2019-07-29-135120.png" alt="image-20190729150633160" /></p>
+
+<p><code>172.25.0.26:7000</code>是广州集群的 recommend v1 pod，而<code>119.28.109.157:443</code>对应的是新加坡集群 recommend v2 pod. 这些服务实例对业务代码来说是透明的，访问 recommend 服务可以随机路由到任一集群。</p>
+
+                        </div>
+                        
+                        
+                        
+                        
+                        <ul class="pager blog-pager">
+                        
+                        <li class="previous">
+                        <a href="https://www.servicemesher.com/blog/using-opentracing-with-istio-part-2/" data-toggle="tooltip" data-placement="top" title="洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二">&larr; 更旧</a>
+                        </li>
+                         
+                        <li class="next">
+                        <a href="https://www.servicemesher.com/blog/service-mesh-istio-limits-and-benefits-part-1/" data-toggle="tooltip" data-placement="top" title="服务网格的三个技术优势及其运维局限-第1部分">更新 &rarr;</a>
+                        </li>
+                        
+                        </ul>
+                        
+                        
+                        
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script>
+	const gitalk = new Gitalk({
+	  clientID: 'dd2e2e19dd8835a4c6c4',
+	  clientSecret: 'f5bb37514a092a909908881495fb0132ab073bc1',
+	  repo: 'gitalk',
+	  owner: 'servicemesher',
+	  admin: ['rootsongjc'],
+	  id: md5(location.pathname),      
+	  distractionFreeMode: false  
+	})
+
+	gitalk.render('gitalk-container')
+</script>
+
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        <div class="panel panel-default sidebar-menu">
+     
+    <div class="panel-heading">
+     <h3 class="panel-title">相关文章</h3>
+    </div>
+    <div class="panel-body">
+     <ul class="nav nav-pills nav-stacked">
+        
+        <li><a href="/blog/how-to-pick-gateway-for-service-mesh/"><i class="fa fa-link"></i>如何为服务网格选择入口网关？</a></li>
+         
+        <li><a href="/blog/istio-analysis-4/"><i class="fa fa-link"></i>Istio 庖丁解牛四：pilot discovery</a></li>
+         
+        <li><a href="/blog/istio-monitoring-explained/"><i class="fa fa-link"></i>Istio 监控详解</a></li>
+         
+        <li><a href="/blog/the-service-mesh-era-istios-role-in-the-future-of-hybrid-cloud/"><i class="fa fa-link"></i>服务网格时代：Istio在混合云未来扮演的角色</a></li>
+         
+        <li><a href="/blog/data-plane-setup/"><i class="fa fa-link"></i>Istio Sidecar 注入过程解密</a></li>
+         
+     </ul>
+    </div>
+     
+</div>
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">分类</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/cilium"><i class="fa fa-navicon"></i>cilium (3)</a>
+            </li>
+            
+            <li><a href="/categories/cloud-native"><i class="fa fa-navicon"></i>cloud-native (3)</a>
+            </li>
+            
+            <li><a href="/categories/cloud-native-weekly"><i class="fa fa-navicon"></i>cloud-native-weekly (3)</a>
+            </li>
+            
+            <li><a href="/categories/consul"><i class="fa fa-navicon"></i>consul (1)</a>
+            </li>
+            
+            <li><a href="/categories/culture"><i class="fa fa-navicon"></i>culture (6)</a>
+            </li>
+            
+            <li><a href="/categories/devops"><i class="fa fa-navicon"></i>devops (3)</a>
+            </li>
+            
+            <li><a href="/categories/envoy"><i class="fa fa-navicon"></i>envoy (23)</a>
+            </li>
+            
+            <li><a href="/categories/gitops"><i class="fa fa-navicon"></i>gitops (1)</a>
+            </li>
+            
+            <li><a href="/categories/grpc"><i class="fa fa-navicon"></i>grpc (2)</a>
+            </li>
+            
+            <li><a href="/categories/istio"><i class="fa fa-navicon"></i>istio (86)</a>
+            </li>
+            
+            <li><a href="/categories/istio-mixer-cache"><i class="fa fa-navicon"></i>istio-mixer-cache (4)</a>
+            </li>
+            
+            <li><a href="/categories/istio-source-deepin"><i class="fa fa-navicon"></i>istio-source-deepin (6)</a>
+            </li>
+            
+            <li><a href="/categories/knative"><i class="fa fa-navicon"></i>knative (6)</a>
+            </li>
+            
+            <li><a href="/categories/kubernetes"><i class="fa fa-navicon"></i>kubernetes (12)</a>
+            </li>
+            
+            <li><a href="/categories/linkerd"><i class="fa fa-navicon"></i>linkerd (3)</a>
+            </li>
+            
+            <li><a href="/categories/meetup"><i class="fa fa-navicon"></i>meetup (5)</a>
+            </li>
+            
+            <li><a href="/categories/microprofile"><i class="fa fa-navicon"></i>microprofile (1)</a>
+            </li>
+            
+            <li><a href="/categories/microservices"><i class="fa fa-navicon"></i>microservices (4)</a>
+            </li>
+            
+            <li><a href="/categories/microsevices"><i class="fa fa-navicon"></i>microsevices (1)</a>
+            </li>
+            
+            <li><a href="/categories/monitoring"><i class="fa fa-navicon"></i>monitoring (3)</a>
+            </li>
+            
+            <li><a href="/categories/practice"><i class="fa fa-navicon"></i>practice (16)</a>
+            </li>
+            
+            <li><a href="/categories/serverless"><i class="fa fa-navicon"></i>serverless (6)</a>
+            </li>
+            
+            <li><a href="/categories/service-mesh"><i class="fa fa-navicon"></i>service-mesh (59)</a>
+            </li>
+            
+            <li><a href="/categories/sofamesh"><i class="fa fa-navicon"></i>sofamesh (9)</a>
+            </li>
+            
+            <li><a href="/categories/sofamosn"><i class="fa fa-navicon"></i>sofamosn (2)</a>
+            </li>
+            
+            <li><a href="/categories/tutorial"><i class="fa fa-navicon"></i>tutorial (3)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>关于我们</h4>
+
+            <p><p>传播Service Mesh技术、构建开源文化、推动Service Mesh在企业中落地</p><img src=/img/servicemesher-wechat-tiny.jpg></p>
+
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>最新博客</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/service-mesh-istio-limits-and-benefits-part-1/">
+                          
+                          <img src="/img/blog/banners/Rundale-Palace-service-mesh.png" class="img-responsive" alt="服务网格的三个技术优势及其运维局限-第1部分">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/service-mesh-istio-limits-and-benefits-part-1/">服务网格的三个技术优势及其运维局限-第1部分</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/istio-analysis-5/">
+                          
+                          <img src="/img/blog/banners/006tKfTcly1g1o2g4k3ofj31420u0hdw.jpg" class="img-responsive" alt="Istio 庖丁解牛五：多集群网格实现分析">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/istio-analysis-5/">Istio 庖丁解牛五：多集群网格实现分析</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/blog/using-opentracing-with-istio-part-2/">
+                          
+                          <img src="/img/blog/banners/using-opentracing-with-istio-part-2.jpg" class="img-responsive" alt="洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/using-opentracing-with-istio-part-2/">洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>联系</h4>
+
+            <p>加我微信（请备注姓名-公司），加入微信交流群，参与社区活动</p><p><img src="/img/jimmysong-wechat-tiny.jpg"></p>
+      
+
+
+            <a href="/contact" class="btn btn-small btn-template-main">跳到联系页面</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright ©️ 2018, ServiceMesher all rights reserved.</p>
+            
+            
+            <p class="pull-left">&nbsp;<a href="http://icp.chinaz.com/info?q=servicemesher.com"> 京ICP备15032932号-5</a></p>
+            
+            <p class="pull-right">
+              模板来自 <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+              移植到 Hugo 来自 <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+<script src="/js/prism.js"></script>
+
+
+<script src="/js/algoliasearch.min.js"></script>
+<script src="/js/autocomplete.min.js"></script>
+
+
+  </body>
+</html>

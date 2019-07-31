@@ -6,10 +6,28 @@
     <description>Recent content on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 17 Jul 2019 14:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jul 2019 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://www.servicemesher.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>服务网格的三个技术优势及其运维局限-第1部分</title>
+      <link>https://www.servicemesher.com/blog/service-mesh-istio-limits-and-benefits-part-1/</link>
+      <pubDate>Wed, 31 Jul 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/service-mesh-istio-limits-and-benefits-part-1/</guid>
+      <description>编者按 本文作者洞察全局，高屋建瓴，结合当前服务网格的形势，分析了服务网格普遍的局限性，以及从开发者角度讲述服务网格带来的三个有价值的好处：可</description>
+    </item>
+    
+    <item>
+      <title>Istio 庖丁解牛五：多集群网格实现分析</title>
+      <link>https://www.servicemesher.com/blog/istio-analysis-5/</link>
+      <pubDate>Tue, 30 Jul 2019 11:24:01 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/istio-analysis-5/</guid>
+      <description>在 istio 的应用场景中，异地多集群网格是其中最复杂的场景之一，本文将对「多网络单控制面」的搭建和连通过程进行分析。</description>
+    </item>
     
     <item>
       <title>洞若观火：使用OpenTracing增强Istio的调用链跟踪-篇二</title>
@@ -2177,7 +2195,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.servicemesher.com/authors/</guid>
-      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 16 赵化冰 8 崔秀龙 6 钟华 5 高松 3 郑伟 3 罗佳豪 3 张馆长 3 云原生编辑部 3 丁轶群 3 陈</description>
+      <description>以下是投稿的作者及原创文章数目统计信息。 作者 文章数 宋净超 21 敖小剑 16 赵化冰 8 钟华 6 崔秀龙 6 高松 3 郑伟 3 罗佳豪 3 张馆长 3 云原生编辑部 3 丁轶群 3 陈</description>
     </item>
     
     <item>
@@ -2204,7 +2222,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.servicemesher.com/translators/</guid>
-      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 18 马若飞 11 甄中元 11 宋净超 11 孙海洲 7 罗广明 6 陈冬 5 戴佳顺 5 崔秀龙 5 王帅俭 4 王全根 4 张成 4 狄</description>
+      <description>以下是投稿的译者及译文数目统计信息。 译者 文章数 殷龙飞 18 马若飞 11 甄中元 11 宋净超 11 罗广明 7 孙海洲 7 陈冬 5 戴佳顺 5 崔秀龙 5 王帅俭 4 王全根 4 张成 4 狄</description>
     </item>
     
     <item>

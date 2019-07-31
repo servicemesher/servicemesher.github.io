@@ -6,10 +6,19 @@
     <description>Recent content in istio on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 29 May 2019 17:20:42 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jul 2019 11:24:01 +0800</lastBuildDate>
     
 	<atom:link href="https://www.servicemesher.com/categories/istio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Istio 庖丁解牛五：多集群网格实现分析</title>
+      <link>https://www.servicemesher.com/blog/istio-analysis-5/</link>
+      <pubDate>Tue, 30 Jul 2019 11:24:01 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/blog/istio-analysis-5/</guid>
+      <description>在 istio 的应用场景中，异地多集群网格是其中最复杂的场景之一，本文将对「多网络单控制面」的搭建和连通过程进行分析。</description>
+    </item>
     
     <item>
       <title>Istio遥测和可观察性探索</title>

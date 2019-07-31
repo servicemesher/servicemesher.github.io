@@ -6,7 +6,7 @@
     <description>Recent content in Categories on ServiceMesher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 17 Jul 2019 14:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jul 2019 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://www.servicemesher.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>service mesh</title>
       <link>https://www.servicemesher.com/categories/service-mesh/</link>
-      <pubDate>Wed, 17 Jul 2019 14:00:00 +0800</pubDate>
+      <pubDate>Wed, 31 Jul 2019 00:00:00 +0800</pubDate>
       
       <guid>https://www.servicemesher.com/categories/service-mesh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>istio</title>
+      <link>https://www.servicemesher.com/categories/istio/</link>
+      <pubDate>Tue, 30 Jul 2019 11:24:01 +0800</pubDate>
+      
+      <guid>https://www.servicemesher.com/categories/istio/</guid>
       <description></description>
     </item>
     
@@ -53,15 +62,6 @@
       <pubDate>Fri, 28 Jun 2019 10:41:16 +0800</pubDate>
       
       <guid>https://www.servicemesher.com/categories/envoy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>istio</title>
-      <link>https://www.servicemesher.com/categories/istio/</link>
-      <pubDate>Wed, 29 May 2019 17:20:42 +0800</pubDate>
-      
-      <guid>https://www.servicemesher.com/categories/istio/</guid>
       <description></description>
     </item>
     
